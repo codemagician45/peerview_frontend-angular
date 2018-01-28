@@ -6,7 +6,7 @@ import {CourseService, AuthenticationService} from "../../../services/services";
 import {DateAdapter, MatDatepicker, NativeDateAdapter} from "@angular/material";
 import {Student} from "../../../models/models";
 declare var swal: any;
-import qs from 'query-string';
+import * as qs from 'query-string';
 
 
 @Component({

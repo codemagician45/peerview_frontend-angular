@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SignUp, SignIn, User, Student, ExStudent, ForgotPassword, SignInSocial, ResetPassword } from "../models/models";
 import { HttpClient } from "@angular/common/http";
-import qs from 'query-string';
+import * as qs from 'query-string';
 
 
 @Injectable()
