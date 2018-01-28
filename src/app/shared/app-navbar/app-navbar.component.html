@@ -11,12 +11,9 @@
               <div class="form-container">
                 <form action="">
                   <input type="text" class="search-field" placeholder="Type search text here...">
-                  <div class="submit-container">
-                    <input type="submit" value="" class="submit">
-                  </div>
+                  <div class="submit-container"><input type="submit" value="" class="submit"></div>
                 </form>
                 <div class="clear"></div>
-
                 <a [routerLink]="['/advanced-search']" class="advance-search-link">Advanced Search</a>
               </div>
             </div>
@@ -27,15 +24,15 @@
             <a href="javascript:void(0);" data-toggle="dropdown" (click)="userMenuOpen = !userMenuOpen">
               <img class="profile-pic" src="/assets/images/profile.jpg" alt="">
               <span class="header-caret"></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" *ngIf="userMenuOpen">
-                    <span class="icon-arrow-up"></span>
-                    <li><a routerLink="/my/profile">My Profile</a></li>
-                    <li><a routerLink="/account-settings">Account Setting</a></li>
-                    <li><a routerLink="/support" target="_blank">Peersview Support</a></li>
-                    <li><a routerLink="/">Log-Out</a></li>
-                </ul>
-                </span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" *ngIf="userMenuOpen">
+              <span class="icon-arrow-up"></span>
+              <li><a routerLink="/my/profile">My Profile</a></li>
+              <li><a routerLink="/account-settings">Account Setting</a></li>
+              <li><a routerLink="/support" target="_blank">Peersview Support</a></li>
+              <li><a routerLink="/">Log-Out</a></li>
+            </ul>
+          </span>
         </span>
         <a class="navbar-brand" href="/home"><img src="/assets/images/logo.png" alt="peersview"/></a>
       </div>
@@ -79,12 +76,9 @@
               <div class="form-container">
                 <form action="">
                   <input type="text" class="search-field" placeholder="Type search text here...">
-                  <div class="submit-container">
-                    <input type="submit" value="" class="submit">
-                  </div>
+                  <div class="submit-container"><input type="submit" value="" class="submit"></div>
                 </form>
                 <div class="clear"></div>
-
                 <a [routerLink]="['/advanced-search']" class="advance-search-link">Advanced Search</a>
               </div>
             </div>
@@ -95,8 +89,7 @@
             </a>
             <div class="inline-flyout dropdown-menu"><span class="icon-arrow-up"></span>
               <div>
-                <div class="flyout-title">
-                  Messages
+                <div class="flyout-title">Messages
                   <a routerLink="/messages" class="ext-action">New Message</a>
                 </div>
                 <ul class="conversation-list">
@@ -156,10 +149,8 @@
           </li>
           <li class="dropdown userli" [class.open]="userMenuOpen">
             <a href="javascript:void(0);" data-toggle="dropdown-menu" (click)="openRightMenu('userMenuOpen')">
-              <span class="welcome-user">Welcome {{_userService?.loggedInUser?.firstname}}</span>
-              <img class="profile-pic"
-                   src="/assets/images/profile.jpg"
-                   alt=""/><span class="header-caret"></span>
+              <span class="welcome-user" *ngIf="userData">Welcome <span class="user-name"> {{userData.firstName}}</span></span>
+              <img class="profile-pic" src="/assets/images/profile.jpg" alt=""/><span class="header-caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <span class="icon-arrow-up"></span>
