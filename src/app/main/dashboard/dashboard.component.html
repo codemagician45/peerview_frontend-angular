@@ -1,0 +1,75 @@
+<app-navbar [active]="'campus'"></app-navbar>
+<div class="fixed-header grey clearfix">
+    <div class="col-md-3 forum-leftmenu fixed-sidebar-wrapper dash-nav">
+        <div class="sticky-width">
+            <div class="fixed-sidebar text-lower">
+                <ul>
+                    <li class="active-link forum-home"><a href="#dash">
+                        <i class="material-icons">insert_chart</i>
+                        <span class="link-text">Dashboard</span></a>
+                    </li>
+                    <li class="forum-career">
+                        <a href="javascript:void(0);" ng-click="vm.dropdownOpen = !vm.dropdownOpen">
+                            <i class="material-icons">people</i>
+                            <span class="link-text">Group Management<i class="material-icons pull-right">keyboard_arrow_down</i></span>
+                        </a>
+                        <div class="dropdown-list-item" ng-if="vm.dropdownOpen">
+                            <a routerLink="/community/classes-list">All Classes</a>
+                            <a routerLink="/community/class">Auditing</a>
+                            <a routerLink="/community/class">Business Accounting</a>
+                            <a routerLink="/community/class">Forensic Accounting</a>
+                        </div>
+                    </li>
+                    <li class="forum-career">
+                        <a href="javascript:void(0);" ng-click="vm.dropdownOpen2 = !vm.dropdownOpen2">
+                            <i class="material-icons">work</i>
+                            <span class="link-text">Content Archives<i class="material-icons pull-right">keyboard_arrow_down</i></span>
+                        </a>
+                        <div class="dropdown-list-item" ng-if="vm.dropdownOpen2">
+                            <a routerLink="/community/classes-list">All Classes</a>
+                            <a routerLink="/community/class">Auditing</a>
+                            <a routerLink="/community/class">Business Accounting</a>
+                            <a routerLink="/community/class">Forensic Accounting</a>
+                        </div>
+                    </li>
+                    <li class="forum-home"><a href="#dash">
+                        <i class="material-icons">system_update_alt</i>
+                        <span class="link-text">Import data</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 forum-tab fixed-sidebar-content dash-content">
+        <div class="clearfix">
+            <div class="col-xs-12">
+                <label class="dash-head-input-label"><i class="material-icons purple">search</i>Monitor Keyword</label>
+                <div class="input-group dash-head-input">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-blue" type="button">Search Keyword</button>
+                    </span>
+                </div>
+                <div class="keyword-result">
+                    <h2 class="result-count">
+                        <span>54</span> posts are using this keyword
+                        <a class="btn flat-btn pull-right" href=""><i class="material-icons">voicemail</i>View Post</a>
+                    </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="chart-wrapper">
+                    <div class="wrapper-header">
+                        <span>Keywords</span>
+                        <mat-input-container>
+                            <input mdInput [matDatepicker]="picker"
+                                   placeholder="Choose a date" (focus)="picker.open()">
+                                   <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+                        </mat-input-container>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

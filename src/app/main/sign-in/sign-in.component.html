@@ -1,0 +1,41 @@
+<div class="page-bg hero-page">
+    <!--nav start-->
+    <div class="container">
+        <app-navbar-unauth [page]="'sign-in'"></app-navbar-unauth>
+        <!--/.nav-collapse -->
+        <div class="clear"></div>
+        <!--sign in form-->
+        <div class="landing-content" id="signin-form">
+            <div class="landing-header">
+                <h1>SIGN IN</h1>
+            </div>
+            <div class="form-signin">
+                <div class="row form-bg">
+                    <div class="col-md-6 form-inner email-sign-form" [ngClass]='{"mobile-hidden" : !isFormVisible}'>
+                        <form #signinForm="ngForm" (ngSubmit)="onSubmit()">
+                            <input type="text" class="form-control" placeholder="Email" id="email" name="email" [(ngModel)]="model.email" required/>
+                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" [(ngModel)]="model.password" required/>
+                            <div *ngIf="responceError" class="alert alert-danger">
+                                {{responceError}}
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"/>
+                                    Remember me</label>
+                            </div>
+                          <button type="submit" class="link-highlight-green-btn">
+                            Sign In
+                          </button>
+                            <!--<input type="submit" class="btn link-highlight-green" value="Sign In"/>-->
+                        </form>
+                        <a [routerLink]="['/forgot-password']" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <app-sign-social [type]="'sign-in'" (showForm)="showForm($event)"></app-sign-social>
+                </div>
+
+            </div>
+        </div>
+        <!--sign in form-->
+    </div>
+    <!--nav end-->
+</div>

@@ -1,0 +1,391 @@
+<app-navbar [active]="'forum'"></app-navbar>
+<div class="forum-page-bg">
+    <div class="forum-header">
+        <div class="container">
+            <div class="question-widget">
+                <h4 class="question-title">Ask a question?</h4>
+                <div class="question-input"><span class="by-user-img"><img src="/assets/images/profile.jpg"
+                                                                           alt=""/></span>
+                    <span class="by-user-text"><i class="input-caret"></i>
+        <input type="text" class="form-control" placeholder="What’s your question?"/>
+        <a href="javascript:void(0);" class="btn-publish"></a>
+         </span></div>
+            </div>
+        </div>
+    </div>
+    <div class="topic-selection">
+        <div class="container">
+            <label>Select Course</label>
+            <span class="select-options dropdown "> <a href="javascript:void(0);" data-toggle="dropdown"><span
+                    class="selected">General Community</span> <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="javascript:void(0);">General Community</a></li>
+      <li><a href="javascript:void(0);">Accounting and Finance</a></li>
+      <li><a href="javascript:void(0);">Agriculture &amp; Forestry</a></li>
+      <li><a href="javascript:void(0);">Anatomy &amp; Physiology</a></li>
+      <li><a href="javascript:void(0);">Anthropology</a></li>
+      <li><a href="javascript:void(0);">Architecture &amp; The built environment</a></li>
+      <li><a href="javascript:void(0);">Astronomy</a></li>
+      <li><a href="javascript:void(0);">Biological science</a></li>
+      <li><a href="javascript:void(0);">Business &amp; Management</a></li>
+      <li><a href="javascript:void(0);">Chemistry</a></li>
+      <li><a href="javascript:void(0);">Classics &amp; Ancient History</a></li>
+      <li><a href="javascript:void(0);">Communication and Media studies</a></li>
+      <li><a href="javascript:void(0);">Computer Science and Information Systems</a></li>
+      <li><a href="javascript:void(0);">Creative Arts</a></li>
+      <li><a href="javascript:void(0);">Dentistry</a></li>
+      <li><a href="javascript:void(0);">Development Studies</a></li>
+      <li><a href="javascript:void(0);">Earth &amp; Marine Science</a></li>
+      <li><a href="javascript:void(0);">Economics</a></li>
+      <li><a href="javascript:void(0);">Education &amp; Training</a></li>
+      <li><a href="javascript:void(0);">Engineering-  Aeronautical</a></li>
+      <li><a href="javascript:void(0);">Engineering- Civil &amp; Structural</a></li>
+      <li><a href="javascript:void(0);">Engineering- Computer&amp; Network</a></li>
+      <li><a href="javascript:void(0);">Engineering- Electrical</a></li>
+      <li><a href="javascript:void(0);">Engineering- Mineral &amp; Mining</a></li>
+      <li><a href="javascript:void(0);">Engineering-Chemical</a></li>
+      <li><a href="javascript:void(0);">Engineering-Mechanical</a></li>
+      <li><a href="javascript:void(0);">English Language &amp; Literature</a></li>
+      <li><a href="javascript:void(0);">Ethnicity, Gender &amp; Diversity</a></li>
+      <li><a href="javascript:void(0);">Finance </a></li>
+      <li><a href="javascript:void(0);">Geography</a></li>
+      <li><a href="javascript:void(0);">Hospitality &amp; Leisure Management </a></li>
+      <li><a href="javascript:void(0);">Human Resource Management</a></li>
+      <li><a href="javascript:void(0);">International Relations</a></li>
+      <li><a href="javascript:void(0);">Journalism</a></li>
+      <li><a href="javascript:void(0);">Law and Legal Studies</a></li>
+      <li><a href="javascript:void(0);">Library &amp; Information Management</a></li>
+      <li><a href="javascript:void(0);">Life Sciences</a></li>
+      <li><a href="javascript:void(0);">Linguistics</a></li>
+      <li><a href="javascript:void(0);">Logistics &amp; Supply Chain Management</a></li>
+      <li><a href="javascript:void(0);">Marketing</a></li>
+      <li><a href="javascript:void(0);">Material Science</a></li>
+      <li><a href="javascript:void(0);">Mathematics</a></li>
+      <li><a href="javascript:void(0);">Medicine</a></li>
+      <li><a href="javascript:void(0);">Modern Language</a></li>
+      <li><a href="javascript:void(0);">Nursing</a></li>
+      <li><a href="javascript:void(0);">Optometry</a></li>
+      <li><a href="javascript:void(0);">Others</a></li>
+      <li><a href="javascript:void(0);">Performing Arts</a></li>
+      <li><a href="javascript:void(0);">Pharmacology</a></li>
+      <li><a href="javascript:void(0);">Pharmacy</a></li>
+      <li><a href="javascript:void(0);">Philosophy</a></li>
+      <li><a href="javascript:void(0);">Product Design</a></li>
+      <li><a href="javascript:void(0);">Psychology</a></li>
+      <li><a href="javascript:void(0);">Public Policy</a></li>
+      <li><a href="javascript:void(0);">Social &amp; Political science</a></li>
+      <li><a href="javascript:void(0);">Social Work</a></li>
+      <li><a href="javascript:void(0);">Sociology</a></li>
+      <li><a href="javascript:void(0);">Sports</a></li>
+      <li><a href="javascript:void(0);">Sports Science</a></li>
+      <li><a href="javascript:void(0);">Statistics and Operations</a></li>
+      <li><a href="javascript:void(0);">Theology, Divinity and Religious Studies</a></li>
+      <li><a href="javascript:void(0);">Urban Planning</a></li>
+      <li><a href="javascript:void(0);">Veterinary Science</a></li>
+      <li><a href="javascript:void(0);">Zoology</a></li>
+    </ul>
+    </span></div>
+    </div>
+    <div class="container forum">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-width">
+                    <div class="forum-sidebar text-lower">
+                        <ul>
+                            <li class="forum-home"><a routerLink="/forum/home"><i></i><span
+                                    class="link-text">Home</span></a>
+                            </li>
+                            <li class="forum-course"><a routerLink="/forum/post-graduate"><i></i><span
+                                    class="link-text">Postgraduate Students Community</span></a>
+                            </li>
+                            <li class="forum-course"><a routerLink="/forum/post-graduate"><i></i><span
+                                    class="link-text">Undergraduate Students Community</span></a>
+                            </li>
+                            <li class="active-link forum-course"><a routerLink="/forum/post-secondary"><i></i><span
+                                    class="link-text">Post-secondary Students Community</span></a></li>
+                            <li class="forum-career"><a routerLink="/forum/careers"><i></i><span class="link-text">Careers Community</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="sec-heading">Latest discussion</div>
+                <div class="latest-post post-sep">
+                    <div class="top-post">
+                        <div class="row">
+                            <div class="col-md-4"><img src="/assets/images/latest-post-img.jpg" class="img-responsive"
+                                                       alt=""/>
+                            </div>
+                            <div class="col-md-8 top-user-left">
+                                <h2>Who is taking … exam</h2>
+                                <div class="post-share">
+                                    <ul>
+                                        <li class="view">670 Views</li>
+                                        <li class="share">100 Shares</li>
+                                        <li class="follow"><a class="follow-link" href="javascript:void(0);">Follow</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="marginT20">10 Answers&nbsp;&nbsp;•&nbsp;&nbsp;<a
+                                        href="javascript:void(0);"><u>View All</u></a></p>
+                            </div>
+                        </div>
+                        <div class="spacer10"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><br/>
+                <span class="comment-user-profile">Data journalist at The Economist</span> <small class="comment-time">Answering Thu at 10:30 PM</small> </span>
+                                </div>
+                                <p class="comment-info">I loved watching this video. I am a visual learner and seeing
+                                    such good teaching in practice was very helpful for me. I do like the idea of
+                                    getting students to challenge others thinking. I am going... <a
+                                            href="javascript:void(0);">VIEW MORE</a></p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span class="comment-by-user">Brendamarmon77</span><br/>
+                <span class="comment-user-profile">Data journalist at The Economist</span> <small class="comment-time">Answering Thu at 10:30 PM</small> </span>
+                                </div>
+                                <p class="comment-info">I loved watching this video. I am a visual learner and seeing
+                                    such good teaching in practice was very helpful for me. I do like the idea of
+                                    getting students to challenge others thinking. I am going... <a
+                                            href="javascript:void(0);">VIEW MORE</a></p>
+                            </div>
+                            <div class="col-md-4"><a href="javascript:void(0);" class="btn-lg-answer"><i></i><br/>
+                                Write Answer</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Who Participates</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing such good teaching in
+                                    practice was very helpful for me. I do like the idea of getting students to
+                                    challenge each others thinking. I am going...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Attend an Introduction to The CoPeers Community</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Who Participates</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing such good teaching in
+                                    practice was very helpful for me. I do like the idea of getting students to
+                                    challenge each others thinking. I am going...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Attend an Introduction to The CoPeers Community</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Who Participates</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing such good teaching in
+                                    practice was very helpful for me. I do like the idea of getting students to
+                                    challenge each others thinking. I am going...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+                <!--top post-->
+                <div class="top-post">
+                    <div class="row">
+                        <div class="col-md-4"><img src="/assets/images/test-img.jpg" alt="" class="img-responsive"/>
+                        </div>
+                        <div class="col-md-8 top-user-left">
+                            <h2>Attend an Introduction to The CoPeers Community</h2>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                    <li class="pull-right"><a href="javascript:void(0);" class="link-answer">Write
+                                        Answer</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-user">
+                                <div class="top-user-detail"><img src="/assets/images/user4.jpg" alt=""/> <span
+                                        class="user-info-left"> <span
+                                        class="comment-by-user">David Heinemeier</span><span
+                                        class="comment-user-profile">Data journalist at The Economist</span> <small
+                                        class="comment-time">Answering Thu at 10:30 PM</small> </span></div>
+                                <p>I loved watching this video. I am a visual learner and seeing...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--top post-->
+            </div>
+            <div class="col-md-3">
+                <div class="widget">
+                    <div class="widget-title">Top Questions for you</div>
+                    <ul class="question-list">
+                        <li><span class="lbl-question">Question asked</span> <span class="lbl-by-user">John Smith (politics) <small>• 57m</small></span>
+                            <h5 class="question-asked">What if Kejriwal kills Modi?</h5>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-white">Write Answer</a></li>
+                        <li><span class="lbl-question">Question asked</span> <span class="lbl-by-user">John Smith (politics) <small>• 57m</small></span>
+                            <h5 class="question-asked">What if Kejriwal kills Modi?</h5>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-white">Write Answer</a></li>
+                        <li><span class="lbl-question">Question asked</span> <span class="lbl-by-user">John Smith (politics) <small>• 57m</small></span>
+                            <h5 class="question-asked">What if Kejriwal kills Modi?</h5>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-white">Write Answer</a></li>
+                        <li><span class="lbl-question">Question asked</span> <span class="lbl-by-user">John Smith (politics) <small>• 57m</small></span>
+                            <h5 class="question-asked">What if Kejriwal kills Modi?</h5>
+                            <div class="post-share">
+                                <ul>
+                                    <li class="view">670 Views</li>
+                                    <li class="share">100 Shares</li>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-white">Write Answer</a></li>
+                    </ul>
+                </div>
+                <div class="widget ad"> AD</div>
+                <div class="sidebar-footer">
+                    <p>Copyright 2017 All rights reserved.</p>
+                    <ul>
+                        <li><a href="javascript:void(0);">About Us</a></li>
+                        <li><a href="javascript:void(0);">Our Team</a></li>
+                        <li><a href="javascript:void(0);">Careers</a></li>
+                        <li><a href="javascript:void(0);">Support</a></li>
+                        <li><a href="javascript:void(0);">Events</a></li>
+                        <li><a href="javascript:void(0);">Campus</a></li>
+                        <li><a href="javascript:void(0);">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0);">Terms & Conditions</a></li>
+                        <li><a href="javascript:void(0);">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

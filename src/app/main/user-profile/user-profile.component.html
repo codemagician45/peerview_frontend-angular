@@ -1,0 +1,266 @@
+<app-navbar></app-navbar>
+
+<div class="container fixed-header grey">
+    <div class="row">
+        <div class="col-md-2 fixed-sidebar-wrapper">
+            <div class="post-share options-dropdown profile-dropdown">
+              <div ngbDropdown class="d-inline-block" placement="bottom-right">
+                <button class="flat-btn purple" ngbDropdownToggle>
+                  Options<i class="material-icons">keyboard_arrow_down</i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <ul>
+                    <li class="dropdown-item">
+                      <a class="flat-btn purple" href="#"><i class="material-icons">block</i>Block user</a>
+                    </li>
+                    <li class="dropdown-item">
+                      <a class="flat-btn purple" (click)="report()"><i class="material-icons">flag</i><span class="link-name">Report</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div stickyWidget class="sticky-width wide">
+                <!--left sidebar-->
+                <div class="fixed-sidebar not-fixed">
+                    <div class="text-right">
+                      <button class="btn  visible-xs follow-button"
+                              [ngClass]="{'btn-blue': btnText === 'Follow', 'btn-primary': btnText === 'Following'}"
+                              (click)="follow()">{{btnText}}</button>
+                    </div>
+                    <div class="sidebar-info">
+
+                        <img class="user-avatar" src="/assets/images/john.jpg" alt="" (click)="openAvatar()"/>
+                        <h4>John Smith</h4>
+                        <ul class="post-share user-star hidden-xs">
+                            <li><i class="star fill"></i> <i class="star fill"></i> <i class="star fill"></i> <i
+                                    class="star fill"></i> <i class="star"></i></li>
+                        </ul>
+                        <div class="user-profile-actions">
+                            <a class="btn flat-btn purple"
+                               (click)="openMessage()" data-toggle="modal"
+                               data-target="#user-message-modal">
+                              <i class="material-icons">comment</i>
+                              Message
+                            </a>
+                          <ul class="post-share user-star visible-xs">
+                            <li>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star"></i>
+                            </li>
+                          </ul>
+                            <a class="btn flat-btn purple" (click)="openPostTo()" data-toggle="modal"
+                               data-target="#post-modal"><i class="material-icons">border_color</i>Post To</a>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <div class="profile-info not-capital">
+                            <span> <i class="material-icons purple">info</i> I am a math professor</span>
+                        </div>
+                        <div class="profile-info">
+                            <span> <i class="material-icons purple">person</i>  Student<br/>Los Anageles, LA</span>
+                        </div>
+                        <div class="profile-info">
+                            <span> <i class="material-icons purple">account_balance</i> St. Marry's Univercity</span>
+                        </div>
+                        <div class="profile-info">
+                            <span> <i class="material-icons purple">school</i> Accounting and Finance</span>
+                        </div>
+                        <div class="profile-info">
+                            <span> <i class="material-icons purple">today</i> 2nd July</span>
+                        </div>
+                    </div>
+                    <div class="widget media-widget hidden-xs">
+                        <h5 class="widget-title"><i class="material-icons purple">local_offer</i>Interest</h5>
+                        <ul class="tags">
+                            <li><a href="javascript:void(0);">Politics</a></li>
+                            <li><a href="javascript:void(0);">Fashions</a></li>
+                            <li><a href="javascript:void(0);">Music</a></li>
+                            <li><a href="javascript:void(0);">Car Racing</a></li>
+                            <li><a href="javascript:void(0);">Politics</a></li>
+                            <li><a href="javascript:void(0);">Fashions</a></li>
+                            <li><a href="javascript:void(0);">Music</a></li>
+                            <li><a href="javascript:void(0);">Car Racing</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget media-widget hidden-xs">
+                        <h5 class="widget-title"><i class="material-icons purple">book</i>Accomplishments </h5>
+                        <div class="accomplish">
+                            <p class="widget-sub-title">Previous Education:</p>
+                            <p>Nullam at ipsum porttitor, interdum magna vestibulum, scelerisque tortor</p>
+                        </div>
+                    </div>
+                    <div class="widget media-widget hidden-xs">
+                        <h5 class="widget-title "><i class="material-icons purple">photo_library</i> Media / Pictures (14)</h5>
+                        <ul class="media">
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media1.jpg"
+                                    alt=""/></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media2.jpg"
+                                    alt=""/></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media3.jpg"
+                                    alt=""/></a></li>
+                        </ul>
+                        <div class="text-right widget-bottom">
+                            <a href="javascript:void(0);" class="btn flat-btn purple">View All</a>
+                        </div>
+                    </div>
+                    <div class="widget media-widget hidden-xs">
+                        <h5 class="widget-title"><i class="material-icons">collections</i>Awards (3)</h5>
+                        <div id="awards-slider">
+                            <owl-carousel class="owl-theme" [items]="items" [options]="properties">
+                                <div class="item"><img src="/assets/images/stars.jpg" alt=""></div>
+                                <div class="item"><img src="/assets/images/stars.jpg" alt=""></div>
+                                <div class="item"><img src="/assets/images/stars.jpg" alt=""></div>
+                            </owl-carousel>
+                        </div>
+                    </div>
+                </div>
+                <!--left sidebar-->
+            </div>
+        </div>
+        <div class="col-md-10 fixed-sidebar-content ">
+
+            <!--content area-->
+            <div class="col-md-8 col-xs-12">
+
+              <ngb-tabset class="profile-tabs">
+                <ngb-tab title="Timeline">
+                  <ng-template ngbTabContent>
+                    <div>
+                      <div class="tab-pill hidden-xs"><span>TIMELINE</span></div>
+                      <!--post-->
+                      <div class="top-post">
+                        <div class="row">
+                          <div class="col-md-3 forum-user-details text-right">
+                            <img src="/assets/images/user4.jpg" alt="">
+                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                            <div class="post-share ">
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star"></i></div>
+                          </div>
+                          <div class="col-md-9 top-user-left">
+                            <p class="post-time">10 h ago</p>
+                              <h3 class="post-title grey" (click)="openPostDetail()">Saudi Government Linked
+                              To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                          </div>
+                          <div class="col-xs-12 post-text">
+                            <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                              deserunt mollit anim id est laborum</p>
+                            <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="top-post">
+                        <div class="row">
+                          <div class="col-md-3 forum-user-details text-right">
+                            <img src="/assets/images/user4.jpg" alt="">
+                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                            <div class="post-share ">
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star"></i></div>
+                          </div>
+                          <div class="col-md-9 top-user-left">
+                            <p class="post-time">10 h ago</p>
+                              <h3 class="post-title grey" (click)="openPostDetail()">Saudi Government Linked
+                              To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                          </div>
+                          <div class="col-xs-12 post-text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                              irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                              pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                              deserunt mollit anim id est laborum</p>
+                            <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="top-post">
+                        <div class="row">
+                          <div class="col-md-3 forum-user-details text-right">
+                            <img src="/assets/images/user4.jpg" alt="">
+                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                            <div class="post-share ">
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star fill"></i>
+                              <i class="star"></i></div>
+                          </div>
+                          <div class="col-md-9 top-user-left">
+                            <p class="post-time">10 h ago</p>
+                              <h3 class="post-title grey" (click)="openPostDetail()">Saudi Government Linked
+                              To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                          </div>
+                          <div class="col-xs-12 post-text">
+                            <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                          </div>
+                        </div>
+                      </div>
+                      <!--post-->
+                      <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Media">
+                  <ng-template ngbTabContent>
+                    <app-social-widget></app-social-widget>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Followers(32)">
+                  <ng-template ngbTabContent>
+                    <app-followers></app-followers>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Following(32)">
+                  <ng-template ngbTabContent>
+                    <app-following></app-following>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+            <!--content area-->
+            <!--right sidebar-->
+            <div class="col-md-4 col-xs-12">
+                <!--<button style="margin-bottom: 20px;" class="btn btn-blue btn-default hidden-xs">Follow</button>-->
+
+              <div stickyWidget>
+                <button class="btn  hidden-xs follow-button"
+                        style="margin-bottom: 20px;"
+                        [ngClass]="{'btn-blue': btnText === 'Follow', 'btn-primary': btnText === 'Following'}"
+                        (click)="follow()">{{btnText}}</button>
+
+                <app-following class="hidden-xs"></app-following>
+                <app-social-widget class="hidden-xs"></app-social-widget>
+                <app-followers class="hidden-xs"></app-followers>
+                <app-sidebar-image></app-sidebar-image>
+                <app-sidebar-footer></app-sidebar-footer>
+              </div>
+
+            </div>
+            <!--right sidebar-->
+        </div>
+    </div>
+</div>

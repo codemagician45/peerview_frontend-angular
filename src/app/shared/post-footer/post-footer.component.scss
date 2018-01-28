@@ -1,0 +1,21 @@
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+
+  &__list {
+    //width: 50%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    //flex-wrap: wrap;
+
+  }
+  i {
+    cursor: pointer;
+  }
+  .dropdown-item a {
+    cursor: pointer;
+  }
+}

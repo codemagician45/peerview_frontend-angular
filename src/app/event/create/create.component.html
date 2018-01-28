@@ -1,0 +1,139 @@
+<app-navbar [active]="'leisure'"></app-navbar>
+
+<div class="container fixed-header">
+    <div>
+        <!-- Nav pills -->
+        <ul class="nav nav-pills">
+            <li><a routerLink="/events/home">Home</a></li>
+            <li><a routerLink="/my/events">My Events</a></li>
+            <li><a routerLink="/deals-hub">Deals Hub</a></li>
+        </ul>
+        <!-- Tab pills -->
+        <div class="clear"></div>
+        <div class="tab-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="block-left">
+                        <!--alert messages-->
+                        <!--<div class="alert alert-danger">Error Message</div>
+                            <div class="alert alert-warning">Warning Message</div>
+                            <div class="alert alert-success">Success Message</div>
+                            <div class="alert alert-info">Info Message</div>-->
+                        <!--alert messages-->
+                        <div class="form-group">
+                            <label>Events Title</label>
+                            <input type="text" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Description</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group split-fields">
+                                <label>Event starts</label>
+                                <br/>
+                                <input type="text" class="form-control field-calender datepicker well well-sm"/>
+                                <input type="text" class="form-control field-time" placeholder="00:00 HRS"/>
+                            </div>
+                            <div class="col-md-6 form-group split-fields">
+                                <label>Event End</label>
+                                <br/>
+                                <input type="text" class="form-control field-calender datepicker well well-sm"/>
+                                <input type="text" class="form-control field-time" placeholder="00:00 HRS"/>
+                            </div>
+                            <div class="col-md-6 form-group split-fields">
+                                <label>Ticket sales Closes</label>
+                                <br/>
+                                <input type="text" class="form-control field-calender datepicker well well-sm"/>
+                                <input type="text" class="form-control field-time" placeholder="00:00 HRS"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Venue Address</label>
+                            <input type="text" class="form-control field-loc"
+                                   placeholder="Enter your event venue address"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Venue City</label>
+                            <select class="form-control field-loc" [(ngModel)]="city">
+                                <option value="">Select Venue City</option>
+                                <option *ngFor="let city of cities" value="city.id">{{city.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="clear"></div>
+                                <div class="col-md-4">
+                                    <div class="event-media">
+                                        <p>Upload Events<br/>
+                                            Poster</p>
+                                        <input type="button" class="btn btn-white" value="Upload"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="event-media">
+                                        <p>Post/<br/>
+                                            Upload Images</p>
+                                        <input type="button" class="btn btn-white" value="Upload"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="event-media">
+                                        <p>Add Media/<br/>
+                                            Video</p>
+                                        <input type="button" class="btn btn-white" value="Upload"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="block-right">
+                        <div class="sec-highlight">
+                            <div class="">
+                                <label>Ticket price</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="sec-highlight">
+                            <div class="form-group">
+                                <label>Is event for students of a specific institution? <br/>
+                                    If yes Add Institutions name</label>
+                                <input type="text" class="form-control"/>
+                            </div>
+                            <div class="option-to">
+                                <p>Option to <a href="javascript:void(0);">Skip Dress Code</a></p>
+                                <ul class="tags">
+                                    <li *ngFor="let type of dresstypes"><a href="javascript:void(0);">{{type.name}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sec-highlight">
+                            <div class="form-group">
+                                <label>Event Organiser Bank account details</label>
+                                <input type="text" class="form-control" placeholder="Account Number"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Select type of Advert:</label>
+                                <br/>
+                                <label class="radio-inline">
+                                    <input *ngFor="let type of eventtypes" type="radio" id="type.id" checked="checked"
+                                           value="option1">
+                                    {{type.name}} </label>
+                            </div>
+                            <div class="">
+                                <label>Contact details:</label>
+                                <textarea class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 bottom-button">
+                    <input type="button" class="btn btn-lg btn-primary" value="Publish"/>
+                    <input type="button" class="btn btn-lg btn-grey" value="Preview"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

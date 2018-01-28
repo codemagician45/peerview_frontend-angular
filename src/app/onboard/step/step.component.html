@@ -1,0 +1,57 @@
+<div class="detail-page container">
+    <div class="header">
+        <nav class="navbar navbar-default">
+            <div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#index"><img src="/assets/images/logo-blue.png" alt="peersview"/></a>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+    </div>
+    <div>
+        <div class="process-header">
+            <h1>Just a few more details</h1>
+        </div>
+        <div class="borad-outer">
+            <div class="progress-ind">
+                <ul>
+                    <li *ngFor="let step of steps" (click)="setStep(null, step.number)" [ngClass]="{'active': step.active, 'complete': step.complete}">
+                        <span class="bubble">
+                            <i></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div [hidden]="getActiveStep().activeVariation != '1'">
+              <app-one (setStep)="setStep($event)"> </app-one>
+            </div>
+
+            <div [hidden]="getActiveStep().activeVariation != '2'">
+              <app-two (setStep)="setStep($event)"> </app-two>
+            </div>
+            
+            <div [hidden]="getActiveStep().activeVariation != '2ex'">
+              <app-two-ex (setStep)="setStep($event)"> </app-two-ex>
+            </div>
+            
+            <div [hidden]="getActiveStep().activeVariation != '2opt'">
+              <app-two-opt (setStep)="setStep($event)"> </app-two-opt>
+            </div>
+                        
+            <div [hidden]="getActiveStep().activeVariation != '2org'">
+              <app-two-org (setStep)="setStep($event)"> </app-two-org>
+            </div>
+    
+            <div [hidden]="getActiveStep().activeVariation != '3'">
+              <app-three> </app-three>
+            </div>
+            
+        </div>
+    </div>
+</div>

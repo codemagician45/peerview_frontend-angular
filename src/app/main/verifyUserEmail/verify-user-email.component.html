@@ -1,0 +1,15 @@
+<div class="page-bg hero-page">
+    <!--nav start-->
+    <div class="container">
+        <app-navbar-unauth [page]="'veEmail'"></app-navbar-unauth>
+        <div class="landing-content" id="forgot-form">
+            <div class="landing-header">
+                <h1>Email Verifcation</h1>
+            </div>
+         <div class="form-signin">
+             <h2 class="text-danger text-center" *ngIf="errorMessage"><strong>Oops!</strong>{{this.errorMessage}}</h2>
+        </div>
+    </div>
+</div>
+    <!--nav end-->
+</div>

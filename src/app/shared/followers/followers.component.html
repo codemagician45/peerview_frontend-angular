@@ -1,0 +1,10 @@
+<div class="widget peers-online-widget following-widget">
+    <h5 class="widget-title"><i class="material-icons">person</i> Followers (<strong>{{followers.length}}</strong>)</h5>
+    <ul class="users-list">
+        <li data-toggle="tooltip" *ngFor="let item of followers" title="{{item.first_name}} {{item.last_name}}"><img src="/assets/images/user1.jpg" alt=""
+                                                           ng-click="vm.openUsersProfile('sm')"/></li>
+    </ul>
+    <div class="widget-bottom">
+        <a class="link-und" (click)="showAll()">View All</a>
+    </div>
+</div>

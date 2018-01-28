@@ -1,0 +1,13 @@
+<div class="col-md-6 social-sign-block" [ngClass]='{"social-sign-in" : type == "sign-in", "social-sign-up": type == "sign-up"}'>
+    <a (click)="signIn('facebook')" class="fb"></a> 
+    <a (click)="signIn('linkedin')" class="in"></a> 
+    <a (click)="signIn('google')" class="g-plus"></a>
+    <a [hidden]='isEmailButtonHidden' (click)="showEmailForm()" class="email">
+        <span *ngIf='type == "sign-up"'>
+            Sign Up with Email
+        </span>
+        <span *ngIf='type == "sign-in"'>
+            Sign In with Email
+        </span>
+    </a>
+</div>

@@ -1,0 +1,335 @@
+<div class="blogs">
+  <div class="header">
+    <nav class="navbar navbar-default nav-landing">
+      <div class="container">
+        <div class="navbar-header">
+
+          <a *ngIf="navName === 'blogs'" class="navbar-brand" href="/home">
+            <img src="/assets/images/logo.png" alt="peersview"/>
+          </a>
+
+          <a *ngIf="navName === 'blogs-index'" class="navbar-brand" href="/landing">
+            <img src="/assets/images/logo.png" alt="peersview"/>
+          </a>
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-md-push-9 col-xs-12">
+        <div class="blogs__right-panel">
+          <h3 class="blogs__right-panel-heading">Categories</h3>
+          <ul class="blogs__categories">
+            <li class="blogs__category">
+              <a class="blogs__category-link _active">All Students</a>
+            </li>
+            <li class="blogs__category">
+              <a class="blogs__category-link">Science</a>
+            </li>
+            <li class="blogs__category">
+              <a class="blogs__category-link">Art</a>
+            </li>
+            <li class="blogs__category">
+              <a class="blogs__category-link">English</a>
+            </li>
+            <li class="blogs__category">
+              <a class="blogs__category-link">Literature</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9 col-md-pull-3 col-xs-12">
+        <div class="blogs__container">
+          <div class="blogs__search">
+            <form #addpostForm="ngForm" class="blogs__search-form" content-type="multipart/form-data">
+              <label for="search" class="blogs__search-label">Search blog post</label>
+              <!--<div>-->
+              <i class="blogs__input-caret"></i>
+              <!--<textarea class="blogs__search-textarea" name="title" id="search" placeholder="Search a blog post"></textarea>-->
+              <input type="text" class="blogs__search-textarea" name="title" id="search"
+                     placeholder="Search a blog post">
+
+              <!--</div>-->
+              <input type="submit" class="btn btn-blue blogs__search-btn" value="SEARCH"/>
+            </form>
+          </div>
+          <div class="blogs__post-header">
+            <ul class="blogs__tags">
+              <li class="blogs__tag _color_blue">Sport</li>
+            </ul>
+            <h1 class="blogs__post-heading">5 Socialization Tips For Exchange Students</h1>
+            <div class="blogs__post-meta">
+              <span class="blogs__post-author">By Xavier Selman</span>
+              <span class="blogs__post-time">
+                <i class="material-icons">query_builder</i>
+                2w ago
+              </span>
+            </div>
+            <div class="blogs__post-meta _bg_gray">
+              <span class="blogs__post-comments">
+                  <i class="material-icons">chat</i>
+                  23 comments
+              </span>
+              <span class="blogs__post-likes">
+                <i class="material-icons">thumb_up</i>
+                1 489 likes
+              </span>
+            </div>
+            <br>
+            <br>
+            <img src="assets/images/blogs__post-full.png" class="blogs__post-img-full" alt="">
+
+            <div class="blogs__post">
+              <div class="blogs__post-content">
+                <p>
+                  Flying abroad to study is a dream for a lot of students but can easily turn into a living nightmare to
+                  those who are intimidated by novelty. We don’t blame you. As an exchange student, you’re probably
+                  overwhelmed by what you see and hear. We get it: you’re not used to the unfamiliarity of the
+                  environment.
+                </p>
+                <p>
+                  It doesn’t have to be this way. A foreign exchange program can give you some of the best
+                  university-related experiences you’ll ever have. You’ll meet a ton of cool people from different
+                  cultures and understand the world from their perspective. You’ll go to places you never knew existed
+                  and eat food you’ve never thought of tasting. All it takes is one small step towards confidence.
+                </p>
+                <p>
+                  Getting yourself familiar with the people is a good way to get started. Listed below are five
+                  socialization tips for even the most introverted foreign students:
+                </p>
+
+                <div class="blogs__post-content-heading">1.) Start with your host family</div>
+                <p>
+                  Easing into a new environment becomes a smoother transition when you have people to help you out.
+                  That’s where host families come in. The host family is your primary introduction to local culture
+                  (provided that they are locals, which they usually are!)
+                </p>
+                <p>
+                  Simple moments like preparing food or running errands together can already kick start your
+                  socialization process. Because you know host families have volunteered to have you there, you can be
+                  sure that they are sincere in helping you become more familiar with your environment. Small trips to
+                  the local market or their favorite restaurant can mean the difference between a fulfilling exchange
+                  trip and a lonely one.
+                </p>
+
+                <div class="blogs__post-content-heading">2.) Forget what you think you know about people</div>
+                <p>
+                  Visiting another country as a student can feel surreal, and for all the right reasons. You are on your
+                  own in another country, socializing with people you have never met before. In order for this to be
+                  successful, one of the things you should immediately do is to forget what you think you know about
+                  people.
+                </p>
+                <p>
+                  No one wants to be seen as a stereotype. Archetypes and generalizations can only limit the way you
+                  understand a culture. This can easily affect the way you subconsciously treat people. Forget
+                  stereotypes. Build up your own opinions from your personal experiences.
+                </p>
+
+
+                <div class="blogs__post-content-heading">3.) Ask a lot of questions</div>
+                <p>
+                  It’s never easy to start a conversation with statements, so why not try by asking questions? Even to
+                  the shyest of exchange students, asking a question will feel like a natural impulse. Think of it as a
+                  door to a better conversation. A simple “what are we doing today in class?” already serves as a good
+                  conversation opener. \
+                </p>
+                <p>
+                  A good thing about questions is that it is one of the least awkward forms of socialization because it
+                  is not presumptuous in nature. As long as you stick with objective, non-personal questions to start
+                  the conversation, you’ll find yourself inching closer and closer to a better conversation topic sooner
+                  or later.
+                </p>
+
+
+                <div class="blogs__post-content-heading">4.) Say thank you when you can</div>
+                <p>
+                  Isn’t it frustrating when language barriers limit the way you communicate with people? Knowing an
+                  entirely different language is not the sole way to connect with those around you. If you can’t speak
+                  in their native tongue (and no one is expecting you to, really), go for the universal language of
+                  gratitude.
+                </p>
+                <p>
+                  Say thank you when you can to let your peers know that you appreciate them. Because gratitude is
+                  self-explanatory, you can be sure that small acts of kindness (such as appreciation) will go a long
+                  way, whether or not said in a specific language.
+                </p>
+
+
+                <div class="blogs__post-content-heading">5.) Go online</div>
+
+                <p>
+                  If real-life groups in university are too intimidating, you can always start by looking for online
+                  groups. Various social networks host student-friendly groups that enable students to connect with each
+                  other online before meeting in person to ensure compatibility.
+
+                </p>
+                <p>
+                  More and more alternative networking sites are designed to match students according to culture,
+                  interests, and location. These specific elements will help you find an online buddy in no time!
+
+                </p>
+                <p>
+                  Going online: Let’s do it the <a href="/">Peersview</a> way
+
+                </p>
+                <p>
+                  With <a href="/">Peersview</a> you can meet other exchange students in your area and around the world!
+                  Find out what other foreign students are saying about their own experience in the Community section! With
+                  Peersview, you get to ask your peers questions you wouldn’t dare ask in-person. Receive answers from
+                  local student experts… who knows, maybe you’ll find someone to tour you around the city.
+                </p>
+                <p>
+                  New in town? Looking for tickets for an upcoming event? <a href="/">Peersview's</a> Leisure tab is
+                  dedicated for fun and enjoyment. Find student-organized activities as well as event tickets sold at a
+                  student-friendly price.
+                </p>
+
+                <img src="assets/images/blogs__post-img.png" alt="" class="blogs__post-content-img">
+                <!--<span class="blogs__post-content-img-description">The device uses a magnet to bend the trajectory of a beam of ions, and the amount </span>-->
+              </div>
+            </div>
+            <div class="blogs__post-social">
+              <div class="blogs__post-social-likes">
+                <button class="blogs__post-social-btn">
+                  <i class="material-icons">thumb_up</i>
+                  LIKE
+                </button>
+                <div class="blogs__post-social-like-counter">234</div>
+              </div>
+              <ul class="blogs__post-social-links">
+                <li class="blogs__post-social-link _facebook">
+                  <a (click)="faceBookShare()">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li class="blogs__post-social-link _twitter">
+                  <a (click)="twitterShare()">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/>
+                    </svg>
+                  </a>
+                </li>
+                <li class="blogs__post-social-link _google">
+                  <a (click)="googleShare()">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z"></path>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ul class="blogs__post-comments">
+              <li class="blogs__post-comment">
+                <div class="blogs__comment">
+                  <div class="blogs__comment-wrapper">
+                    <img src="/assets/images/user1.jpg" alt="" class="blogs__comment-avatar">
+                    <div class="blogs__comment-content">
+                      <div class="blogs__comment-content-header">
+                        <span class="blogs__comment-name">Mark Grey</span>
+                        <span class="blogs__comment-time">15 minutes ago </span>
+                      </div>
+                      <div class="blogs__comment-content-text">
+                        he development of the mass spectrometer allowed the mass of atoms to be measured with increased
+                        accuracy. The device uses a magnet to bend the trajectory of a beam of ions, and the amount of
+                        is determined by the ratio of an atom's mass to its charge. The chemist Francis William Aston
+                        used this instrument to show that isotopes had
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blogs__comment-footer">
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">subdirectory_arrow_right</i>
+                      Reply (1)
+                    </button>
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">favorite</i>
+                      46
+                    </button>
+                  </div>
+                </div>
+                <div class="blogs__comment-reply">
+                  <div class="blogs__comment-wrapper">
+                    <img src="/assets/images/user2.jpg" alt="" class="blogs__comment-avatar">
+                    <div class="blogs__comment-content">
+                      <div class="blogs__comment-content-header">
+                        <span class="blogs__comment-name">BREDLEY ONE</span>
+                        <span class="blogs__comment-time">10 minutes ago </span>
+                      </div>
+                      <div class="blogs__comment-content-text">
+                        The protons and neutrons in the nucleus are attracted to each other by a different force, the
+                        nuclear force, which is usually stronger than the electromagnetic force repelling the positively
+                        charged
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blogs__comment-footer">
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">subdirectory_arrow_right</i>
+                      Reply
+                    </button>
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">favorite</i>
+                      46
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li class="blogs__post-comment">
+                <div class="blogs__comment">
+                  <div class="blogs__comment-wrapper">
+                    <img src="/assets/images/user3.jpg" alt="" class="blogs__comment-avatar">
+                    <div class="blogs__comment-content">
+                      <div class="blogs__comment-content-header">
+                        <span class="blogs__comment-name">Austin Wily</span>
+                        <span class="blogs__comment-time">7 minutes ago </span>
+                      </div>
+                      <div class="blogs__comment-content-text">
+                        For atoms with low atomic numbers, a nucleus that has more neutrons than protons tends to drop
+                        to a lower energy state through radioactive decay so that the neutron–proton ratio is closer to
+                        one. However, as the atomic number increases, a higher proportion of neutrons is required to
+                        offset the mutual repulsion of the protons.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="blogs__comment-footer">
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">subdirectory_arrow_right</i>
+                      Reply
+                    </button>
+                    <button class="blogs__comment-btn">
+                      <i class="material-icons">favorite</i>
+                      16
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="blogs__leave-comment">
+              <div class="blogs__leave-comment-wrapper">
+                <img src="/assets/images/user2.jpg" alt="" class="blogs__leave-comment-avatar">
+                <textarea class="blogs__leave-comment-textarea" placeholder="Leave a comment..."></textarea>
+              </div>
+              <div class="blogs__leave-comment-footer">
+                <button class="blogs__leave-comment-btn">Comment</button>
+              </div>
+            </div>
+            <div class="blogs__load-more-wrapper">
+              <button class="blogs__load-more">LOAD MORE</button>
+            </div>
+            <div class="blogs__load-more-wrapper">
+              <a routerLink="/" class="blogs__load-more">BACK TO SITE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

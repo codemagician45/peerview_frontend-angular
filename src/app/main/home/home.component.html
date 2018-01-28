@@ -1,0 +1,179 @@
+<app-navbar [active]="'home'"></app-navbar>
+
+<div class="container fixed-header grey forum">
+  <div class="row">
+    <!--left sidebar-->
+    <div class="col-md-2 fixed-sidebar-wrapper home-sidebar hidden-xs">
+      <div stickyWidget class="sticky-width wide home-sidebar">
+        <!--left sidebar-->
+        <div class="fixed-sidebar">
+          <div class="widget profile-widget">
+            <div class="top-info">
+              <a  class="user-img">
+                <!--routerLink="/my/profile"-->
+                <img src="/assets/images/profile-pic-lg.jpg" alt="Peersview" (click)="openAvatar()"/>
+              </a>
+              <h3 class="user-name"><a href="/my/profile">{{_userService?.loggedInUser?.firstName}} {{_userService?.loggedInUser?.lastName}}</a></h3>
+              <div class="post-share ">
+                <i class="star" *ngFor="let i of [1,2,3,4,5]" [ngClass]="{ 'fill': stars > i-1 }"></i>
+              </div>
+            </div>
+            <div class="follow-box">
+              <a routerLink="/followers-following">
+                <i class="material-icons">reply</i>
+                <p>Following</p>
+                <span>{{following}}</span>
+              </a>
+              <a routerLink="/followers-following">
+                <i class="material-icons">person</i>
+                <p>Followers</p>
+                <span>{{followers}}</span>
+              </a>
+            </div>
+          </div>
+          <div class="widget quick-feed">
+            <h3>
+              <p><span>5</span> things to do</p>
+              <p>in <span>15</span> minutes</p>
+            </h3>
+            <ul class="list">
+              <!--<li><a (click)="openInvite()">Invite your peers</a></li>-->
+<!--              <li><a>Invite your peers</a></li>
+              <li><a routerLink="/my/profile">Complete Your profile</a></li>
+              <li><a routerLink="/peers-list">Follow a few Peers</a></li>
+              <li><a routerLink="/forum/home">Checkout the Forum</a></li>
+              <li><a routerLink="/community">Join your school's Campus</a></li>-->
+              <li>Invite your peers</li>
+              <li>Complete Your profile</li>
+              <li>Follow a few Peers</li>
+              <li>Checkout the Community</li>
+              <li>Join your school's Campus</li>
+            </ul>
+          </div>
+        </div>
+        <!--left sidebar-->
+      </div>
+    </div>
+
+    <!--left sidebar-->
+    <!--content area-->
+    <div class="col-md-10 fixed-sidebar-content home-content padding-left-0">
+      <div class="row">
+        <div class="col-xs-12" style="width: calc(100% + 5px);margin-left: -10px; padding-right: 0">
+          <app-post-poll-map [post]="true" [poll]="true" [story]="true"></app-post-poll-map>
+          <!--<app-post-poll-map [post]="true" [poll]="true" [map]="true" [story]="true"></app-post-poll-map>-->
+        </div>
+        <div class="col-md-8 col-xs-12">
+          <div class="clear spacer10"></div>
+          <div class="news-post">
+            <div class="tab-pill"><span>Top Stories</span></div>
+            <perfect-scrollbar class="posts-preview" [ngClass]="{'_opened': showmore}">
+              <ul class="home-stories-list">
+                <li *ngFor="let story of newstories; let i=index;" [ngStyle]="{ 'display': i<3 || showmore ?'':'none'}">
+                  <a [attr.href]="story.Url" target="_blank">{{story.Title}}</a>
+                  <span class="pull-right home-stories-list__right-info">
+                    <a [attr.href]="story.Url" target="_blank" class="news-ref">{{story.source}}</a>{{story.Date | date}}
+                    <a [attr.href]="story.Root_Url" target="_blank">{{story.Root_name}}</a>
+                </span>
+                </li>
+              </ul>
+            </perfect-scrollbar>
+
+
+            <div class="news-post-footer view-more-news text-right">
+              <i mdTooltip="Reload News List" (click) = "reloadnews()" class="material-icons autorenew-icon">autorenew</i>
+
+              <a (click)="moreNews($event)">
+                <span class="view_more">View More</span>
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="tab-pill"><span>LATEST</span></div>
+            <a class="see-new-posts">
+                <span class="view_more">See 5 new posts</span>
+              </a>
+            <div id="Post1" class="top-post" *ngFor="let post of posts">
+              <div class="row">
+                <div class="col-md-3 forum-user-details text-right">
+                  <img src="/assets/images/user4.jpg" alt="">
+                  <div class="forum-user-info">
+                    <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
+                        <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
+                    <p>{{post.user.schoolName | titlecase }}</p>
+                    <div class="post-share ">
+                      <i class="star fill"></i>
+                      <i class="star fill"></i>
+                      <i class="star fill"></i>
+                      <i class="star fill"></i>
+                      <i class="star"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-9 top-user-left">
+                  <p class="post-time">{{post.createdAt |  date :'short' }}</p>
+                  <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
+                </div>
+                <div class="col-xs-12 post-text">
+                  <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                  <p>{{post.message | titlecase}}</p>
+
+                  <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount"
+                  [post]="post" [replies]="post.postReply.length"></app-post-footer>
+                </div>
+              </div>
+            </div>
+            <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+          </div>
+        </div>
+        <!--content area-->
+        <!--right sidebar-->
+        <div class="col-md-4 col-xs-12" >
+          <div stickyWidget>
+            <div class="widget events hidden-xs">
+              <h5 class="widget-title invite-your-peers">Invite Your Peers</h5>
+              <div class="invite-form">
+                <div class="form-group">
+                  <label>Invite via Email</label>
+                  <input type="text" class="form-control" placeholder="Email" [(ngModel)] = "invitepeer.email"/>
+                </div>
+                <input type="button" value="Continue" class="btn btn-white" (click)="inviteuser()" />
+                <div class="or-text">
+                  <div class="line"></div>
+                  <span>OR</span>
+                </div>
+                <div class="email-site">
+                  <a class="email-fb" href="https://www.facebook.com" target="_blank">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z"/>
+                    </svg>
+                  </a>
+                  <a class="email-twitter" href="https://twitter.com/" target="_blank">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/>
+                    </svg>
+
+                  </a>
+                  <a class="email-gmail" href="http://gmail.com/" target="_blank">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <app-peers-may-know class="hidden-xs"></app-peers-may-know>
+            <app-sidebar-image class="hidden-xs"></app-sidebar-image>
+            <app-sidebar-footer></app-sidebar-footer>
+          </div>
+
+        </div>
+      </div>
+      <!--right sidebar-->
+    </div>
+
+  </div>
+</div>

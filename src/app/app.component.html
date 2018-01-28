@@ -1,0 +1,158 @@
+<!--
+<div class="header">
+    <nav class="navbar navbar-default nav-landing navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <span class="mobile-action">
+        <a href="#notification" class="notification"><i></i></a>
+        <a href="#messages" class="message"><i></i></a>
+        <span class="dropdown userli"><a href="javascript:void(0);" data-toggle="dropdown"><img class="profile-pic"
+                                                                                                src="/assets/images/profile.jpg"
+                                                                                                alt=""><span
+                class="header-caret"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <span class="icon-arrow-up"></span>
+              <li><a href="#myProfile">My Profile</a></li>
+              <li><a href="#accountSettings">Account Setting</a></li>
+                <li><a href="">Peersview Support</a></li>
+              <li><a href="index.html">Log-Out</a></li>
+            </ul>
+          </span>
+        </span>
+                <a class="navbar-brand" href="#home"><img src="/assets/images/logo.png" alt="peersview"/></a></div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="nav-home" ng-class="{active: vm.active === 'home'}"><a href="#home"><img
+                            src="/assets/images/home_icon.png"/> Home</a></li>
+                    <li class="nav-forum" ng-class="{active: vm.active === 'forum'}"><a href="#forumHome"><img
+                            src="/assets/images/forum_icon.png"/> Forum</a></li>
+                    <li class="nav-comm" ng-class="{active: vm.active === 'campus'}"><a href="#community"><img
+                            src="/assets/images/people_icon.png"/> Campus</a></li>
+                    <li class="nav-events" ng-class="{active: vm.active === 'leisure'}"><a href="#eventsLanding"><img
+                            src="/assets/images/event_icon.png"/> Leisure</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown search"><a href="javascript:void(0);" data-toggle="dropdown"><img
+                            src="/assets/images/search_icon.png"/></a>
+                        <div id="search-form" class="dropdown-menu"><span class="icon-arrow-up"></span>
+                            <div class="form-container">
+                                <form action="">
+                                    <input type="text" class="search-field" placeholder="Type search text here...">
+                                    <div class="submit-container">
+                                        <input type="submit" value="" class="submit">
+                                    </div>
+                                </form>
+                                <div class="clear"></div>
+                                <a href="#advancedSearch" class="advance-search-link">Advanced Search</a></div>
+                        </div>
+                    </li>
+                    <li class="message"><a href="javascript:void(0);" class="dropdown-toggle"
+                                           data-toggle="dropdown"><img src="/assets/images/message_icon.png"/></a>
+                        <div class="inline-flyout dropdown-menu"><span class="icon-arrow-up"></span>
+                            <div>
+                                <div class="flyout-title">Messages<a href="javascript:void(0);"
+                                                                     ng-click="vm.openNewMessage('md')"
+                                                                     class="ext-action">New Message</a></div>
+                                <ul class="conversation-list">
+                                    <li class="co-row"><a href="#messages">
+                                        <div class="co-img"><img src="/assets/images/user1.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Angela Gill</span> <span
+                                                class="co-day">Tue</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="#messages">
+                                        <div class="co-img"><img src="/assets/images/user2.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Faith Black</span> <span
+                                                class="co-day">Tue</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="#messages">
+                                        <div class="co-img"><img src="/assets/images/user3.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Olivia Metcalfe</span> <span
+                                                class="co-day">Tue</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="#messages">
+                                        <div class="co-img"><img src="/assets/images/user4.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Adekunle Amodu</span> <span
+                                                class="co-day">Tue</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="#messages">
+                                        <div class="co-img"><img src="/assets/images/user5.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Gordon Piper</span> <span
+                                                class="co-day">Tue</span></div>
+                                    </a></li>
+                                </ul>
+                                <div class="flyout-view"><a href="#messages">View All</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="notification"><a href="javascript:void(0);" class="dropdown-toggle"
+                                                data-toggle="dropdown"><img src="/assets/images/notification_icon.png"/>
+                    </a>
+                        <div class="inline-flyout dropdown-menu"><span class="icon-arrow-up"></span>
+                            <div>
+                                <div class="flyout-title">Notifications</div>
+                                <ul class="conversation-list">
+                                    <li class="co-row"><a href="javascript:void(0);">
+                                        <div class="co-img"><img src="/assets/images/user1.jpg" alt=""></div>
+                                        <div class="co-info"><span
+                                                class="co-name">Angela Gill started following you</span> <span
+                                                class="co-time">2 hours ago</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="javascript:void(0);">
+                                        <div class="co-img"><img src="/assets/images/user2.jpg" alt=""></div>
+                                        <div class="co-info"><span
+                                                class="co-name">Faith Black commented on your post</span> <span
+                                                class="co-time">3 hours ago</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="javascript:void(0);">
+                                        <div class="co-img"><img src="/assets/images/user3.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Olivia Metcalfe like your post</span>
+                                            <span class="co-time">4 hours ago</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="javascript:void(0);">
+                                        <div class="co-img"><img src="/assets/images/user5.jpg" alt=""></div>
+                                        <div class="co-info"><span class="co-name">Gordon Piper invite you to join the community</span>
+                                            <span class="co-time">Today at 1:20pm</span></div>
+                                    </a></li>
+                                    <li class="co-row"><a href="javascript:void(0);">
+                                        <div class="co-img"><img src="/assets/images/user4.jpg" alt=""></div>
+                                        <div class="co-info"><span
+                                                class="co-name">Adekunle Amodu likes your post.</span> <span
+                                                class="co-time">Yesterday at 5:35pm</span></div>
+                                    </a></li>
+                                </ul>
+                                <div class="flyout-view"><a href="#notification">View All</a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown userli"><a href="javascript:void(0);" data-toggle="dropdown"><span
+                            class="welcome-user">Welcome John</span> <img class="profile-pic"
+                                                                          src="/assets/images/profile.jpg"
+                                                                          alt=""/><span class="header-caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <span class="icon-arrow-up"></span>
+                            <li><a href="#myProfile">My Profile</a></li>
+                            <li><a href="#accountSettings">Account Setting</a></li>
+                            <li><a href="">Peersview Support</a></li>
+                            <li><a href="index.html">Log-Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse --
+</div>
+</nav>
+</div>
+-->
+
+<div  class='page-loader' [ngClass]="{'loading': loading}">
+    <div class="wrapper">
+        <div class="cssload-loader"></div>
+    </div>
+</div>
+<router-outlet name="primary">
+
+</router-outlet>

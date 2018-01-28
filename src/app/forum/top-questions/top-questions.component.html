@@ -1,0 +1,19 @@
+<div class="top_qustions">
+<div class="widget">
+    <div class="widget-title title_text"><h3>Top questions for you?</h3></div>
+    <ul class="question-list">
+        <li *ngFor="let question of allquestions">
+            <h5 class="question-asked">{{question.question | titlecase}}</h5>
+            <p class="question-user">by <a routerLink="/user-profile">{{question.author}}</a> {{question.createdat | timeAgo }}</p>
+            <div class="post-share">
+                <ul>
+                    <li class=""><i class="material-icons">remove_red_eye</i>{{question.views}} Views</li>
+                    <li class=""><i class="material-icons">redo</i>{{question.shares}} Shares</li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);" class="btn btn-white flat-btn"><i class="material-icons">create</i> Write
+                Answer</a>
+        </li>
+    </ul>
+</div>
+</div>

@@ -1,0 +1,363 @@
+<app-navbar [active]="'leisure'"></app-navbar>
+<div class="container fixed-header event-detail ">
+  <div class="row">
+      <div class="col-md-3 forum-leftmenu fixed-sidebar-wrapper forum-sidebar hidden-xs">
+          <div class="sticky sticky-width wide ">
+              <div class=" fixed-sidebar text-lower">
+                  <ul>
+                      <li class="active-link forum-home"><a routerLink="/events/home">
+                          <span class="link-text"><i class="material-icons">date_range</i> Home</span></a>
+                      </li>
+                      <li class="forum-career"><a routerLink="/my/events">
+                          <span class="link-text"><i class="material-icons">perm_contact_calendar</i> My Events</span></a>
+                      </li>
+                      <li class="forum-career"><a routerLink="/deals-hub">
+                          <span class="link-text"><i class="material-icons">work</i> Deals Hub</span></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    <div class="col-md-9 fixed-sidebar-content">
+      <div class="detail-mobile-menu dark visible-xs">
+        <!--menu-wrapper-->
+        <!--<button (click)="mobileMenuOpen = !mobileMenuOpen" class="forum-mobile-menu btn flat-btn">-->
+        <!--<i class="material-icons">date_range</i>-->
+        <!--<span class="">Home</span>-->
+        <!--<i class="material-icons">keyboard_arrow_down</i>-->
+        <!--</button>-->
+        <!--*ngIf="mobileMenuOpen"-->
+        <ul>
+          <li class="active-link forum-career">
+            <a routerLink="/my/events">
+              <i class="material-icons">perm_contact_calendar</i>
+              <span class="">My Events</span>
+            </a>
+          </li>
+          <li class="forum-career">
+            <a routerLink="/deals-hub">
+              <i class="material-icons">work</i>
+              <span class="">Deals Hub</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-9 paddingR0">
+          <div class="event-banner slider-split" id="events-slider">
+            <owl-carousel class="owl-theme" [items]="items" [options]="properties">
+              <div class="item"
+                   style="background:url(/assets/images/event-banner.jpg) no-repeat; height:355px;">
+                <div class="event-header-info"><span class="opp-news">Scholarship opportunity for SLC card +2 appeared students</span>
+                  <h1 class="event-tagline">Education Expo <span>2016</span></h1>
+                  <span class="event-detail-loc">(Bay Area, Sans Francisco, 6-7th October)</span>
+                </div>
+              </div>
+              <div class="item"
+                   style="background:url(/assets/images/event-banner.jpg) no-repeat; height:355px;">
+                <div class="event-header-info"><span class="opp-news">Scholarship opportunity for SLC card +2 appeared students</span>
+                  <h1 class="event-tagline">Education Expo <span>2016</span></h1>
+                  <span class="event-detail-loc">(Bay Area, Sans Francisco, 6-7th October)</span>
+                </div>
+              </div>
+            </owl-carousel>
+          </div>
+        </div>
+        <div class="col-md-3 paddingL0">
+          <div class="slider-right-info">
+            <ul class="event-info-list">
+              <li>
+                <label>Ticket Type:</label>
+                <span class="value">Paid Entry</span></li>
+              <li>
+                <label>End:</label>
+                <span class="value">4th October</span></li>
+            </ul>
+            <div class="pricing-block">
+              <div class="event-user-price">$25</div>
+              <div class="event-user-qty"> <span class="qty-input">
+            <label>Qty.</label>
+            <input type="text" class="form-control" value="1" readonly="readonly" name='quantity'/>
+            </span> <span class="qty-action"> <a href="javascript:void(0)" class="qty-up qtyplus"><i></i></a> <a
+                href="javascript:void(0)"
+                class="qty-down qtyminus"
+                field='quantity'><i></i></a> </span>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <p><a href="javascript:void(0);" (click)="openBookTicketConfirmationDialog()" class="btn btn-primary btn-block">Book Ticket</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row leisure-event-detail">
+        <div class="col-md-8 events-timeline">
+          <!--create post-->
+          <div class="hidden-xs">
+            <app-post-poll-map [post]="true" [poll]="true" [full]="true"></app-post-poll-map>
+          </div>
+          <div class="guest-list" style="display:none;">
+            <input type="text" class="form-control" placeholder="Add Name"/>
+            <div class="bottom-block">
+              <input type="button" class="btn btn-blue btn-sm" value="Add"/>
+            </div>
+          </div>
+          <div class="tab-pill"><span class="text-bold">Latest discussion</span></div>
+          <!--create post-->
+          <div class="top-post">
+            <div class="row">
+              <div class="col-md-3 forum-user-details text-right">
+                <img src="/assets/images/user4.jpg" alt="">
+                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                <div class="post-share ">
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star"></i></div>
+              </div>
+              <div class="col-md-9 top-user-left">
+                <p class="post-time">10 h ago</p>
+                <h3 class="post-title grey" (click)="openDialog()">Saudi Government Linked
+                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
+              </div>
+              <div class="col-xs-12 post-text">
+                <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum</p>
+                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+              </div>
+            </div>
+          </div>
+          <div class="top-post">
+            <div class="row">
+              <div class="col-md-3 forum-user-details text-right">
+                <img src="/assets/images/user4.jpg" alt="">
+                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                <div class="post-share ">
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star"></i></div>
+              </div>
+              <div class="col-md-9 top-user-left">
+                <p class="post-time">10 h ago</p>
+                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government Linked
+                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
+              </div>
+              <div class="col-xs-12 post-text">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                  deserunt mollit anim id est laborum</p>
+                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+              </div>
+            </div>
+          </div>
+          <div class="top-post">
+            <div class="row">
+              <div class="col-md-3 forum-user-details text-right">
+                <img src="/assets/images/user4.jpg" alt="">
+                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                <div class="post-share ">
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star fill"></i>
+                  <i class="star"></i></div>
+              </div>
+              <div class="col-md-9 top-user-left">
+                <p class="post-time">10 h ago</p>
+                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government Linked
+                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
+              </div>
+              <div class="col-xs-12 post-text">
+                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-white btn-block" href="javascript:void(0);">Load More...</a>
+        </div>
+        <div class="col-md-4">
+          <div class="highlight-box">
+            <div class="mid-bar"><span class="event-det-venue">Venue: 123, Main Street, London, UK</span>
+              <span class="event-det-date">6-7th Oct, 2016</span> <span class="event-det-time">5pm</span>
+            </div>
+            <div class="event-org">
+              <div class="event-org-info">
+                <p class="event-title">Event Organizer</p>
+                <img class="org-profile" src="/assets/images/profile-pic-lg.jpg" alt="">
+                <span class="org-name">
+                                  <h2>John Smith</h2>
+                                  <p class="profile-desc">Students&nbsp;|&nbsp;Los Anageles, LA</p>
+                              </span>
+              </div>
+              <div class="org-action">
+                <input type="button" value="Call" class="btn btn-primary"/>
+                <div class="spacer10"></div>
+                <input type="button" value="Message" class="btn btn-primary"/>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="event-info-content">
+              <div id="detail-tabs">
+
+                <md-tab-group>
+                  <md-tab label="About Event">
+                    <h6 class="event-tag-line"> Quisque maximus quis mi ac efficitur. In tempor
+                      suscipit magna et suscipit. Pellentesque habitant morbi tristique senectus
+                      et netus et malesuada fames ac turpis egestas. Nullam cursus et libero ut
+                      suscipit. Integer ultrices, mauris et ornare aliquet, nibh risus auctor sem,
+                      sed efficitur ipsum leo quis velit. Maecenas in orci molestie, fermentum
+                      felis at, maximus ex. Proin dignissim pharetra mi. </h6>
+                    <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                      congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                      elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                      commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                      netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                      ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                      placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                      vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                      libero lacinia, varius ante quis, mollis quam.</p>
+                    <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                      congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                      elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                      commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                      netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                      ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                      placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                      vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                      libero lacinia, varius ante quis, mollis quam.</p>
+                    <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                      congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                      elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                      commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                      netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                      ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                      placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                      vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                      libero lacinia, varius ante quis, mollis quam.</p>
+                  </md-tab>
+                  <md-tab label="Guest List">
+                    <div class="event-org-info guest" *ngFor="let guest of guestlist">
+                      <img class="org-profile" src="/assets/images/profile-pic-lg.jpg" alt="">
+                      <span class="org-name">
+                                              <h2>{{guest.user.firstName | titlecase}} {{guest.user.lastName | titlecase}}</h2>
+                                              <p class="profile-desc">{{guest.location}}</p>
+                                          </span>
+                    </div>
+                  </md-tab>
+                  <md-tab label="VIP">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1"
+                             placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail2">Phone number/Email</label>
+                      <input type="text" class="form-control" id="exampleInputEmail2"
+                             placeholder="Email">
+                    </div>
+                    <button class="btn btn-blue">Submit</button>
+                  </md-tab>
+                </md-tab-group>
+
+
+                <!-- Nav tabs -->
+                <!--                                <ul class="nav nav-tabs" role="tablist">
+                                                  <li role="presentation" class="active">
+                                                    <a href="#about" aria-controls="about" role="tab" data-toggle="tab">About Event</a>
+                                                  </li>
+                                                  <li role="presentation">
+                                                    <a href="#guestList" aria-controls="guestList" role="tab" data-toggle="tab">Guest List</a>
+                                                  </li>
+                                                  <li role="presentation">
+                                                    <a href="#vip" aria-controls="vip" role="tab" data-toggle="tab">VIP</a>
+                                                  </li>
+                                              </ul>-->
+
+                <!-- Tab panes -->
+                <!--
+                                              <div class="tab-content">
+                                                  <div role="tabpanel" class="tab-pane active" id="about">
+                                                      <h6 class="event-tag-line"> Quisque maximus quis mi ac efficitur. In tempor
+                                                          suscipit magna et suscipit. Pellentesque habitant morbi tristique senectus
+                                                          et netus et malesuada fames ac turpis egestas. Nullam cursus et libero ut
+                                                          suscipit. Integer ultrices, mauris et ornare aliquet, nibh risus auctor sem,
+                                                          sed efficitur ipsum leo quis velit. Maecenas in orci molestie, fermentum
+                                                          felis at, maximus ex. Proin dignissim pharetra mi. </h6>
+                                                      <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                                                          congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                                                          elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                                                          commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                                                          netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                                                          ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                                                          placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                                                          vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                                                          libero lacinia, varius ante quis, mollis quam.</p>
+                                                      <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                                                          congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                                                          elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                                                          commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                                                          netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                                                          ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                                                          placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                                                          vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                                                          libero lacinia, varius ante quis, mollis quam.</p>
+                                                      <p>Nulla malesuada ante ac lectus blandit elementum. Nulla interdum diam eu leo
+                                                          congue molestie. In porta elit vitae suscipit egestas. Sed sed malesuada
+                                                          elit, eget volutpat dolor. Proin faucibus placerat diam id vestibulum. Etiam
+                                                          commodo mattis rhoncus. Pellentesque habitant morbi tristique senectus et
+                                                          netus et malesuada fames ac turpis egestas. In nec consequat tortor. Mauris
+                                                          ut efficitur turpis. Suspendisse et justo at erat molestie aliquet. Nullam
+                                                          placerat ornare tincidunt. Donec erat lectus, sollicitudin non vestibulum
+                                                          vel, aliquet nec mi. Aenean molestie nulla in suscipit dictum. Nullam nec
+                                                          libero lacinia, varius ante quis, mollis quam.</p>
+                                                  </div>
+                                                  <div role="tabpanel" class="tab-pane" id="guestList">
+                                                      <div class="event-org-info guest" *ngFor="let guest of guestlist">
+                                                          <img class="org-profile" src="/assets/images/profile-pic-lg.jpg" alt="">
+                                                          <span class="org-name">
+                                                              <h2>{{guest.name | titlecase}}</h2>
+                                                              <p class="profile-desc">{{guest.location}}</p>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                                  <div role="tabpanel" class="tab-pane" id="vip">
+                                                      <div class="form-group">
+                                                          <label for="exampleInputEmail1">Name</label>
+                                                          <input type="text" class="form-control" id="exampleInputEmail1"
+                                                                 placeholder="Email">
+                                                      </div>
+                                                      <div class="form-group">
+                                                          <label for="exampleInputEmail2">Phone number/Email</label>
+                                                          <input type="text" class="form-control" id="exampleInputEmail2"
+                                                                 placeholder="Email">
+                                                      </div>
+                                                      <button class="btn btn-blue">Submit</button>
+                                                  </div>
+                                              </div>
+                                            -->
+              </div>
+            </div>
+          </div>
+          <div class="visible-xs">
+            <br>
+            <app-post-poll-map [post]="true" [poll]="true" [full]="true"></app-post-poll-map>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

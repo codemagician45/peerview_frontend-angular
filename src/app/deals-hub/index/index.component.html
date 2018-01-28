@@ -1,0 +1,71 @@
+<app-navbar [active]="'leisure'"></app-navbar>
+<div class="container fixed-header">
+    <div class="row">
+        <div class="col-md-3 forum-leftmenu fixed-sidebar-wrapper forum-sidebar hidden-xs">
+            <div class="sticky-width wide sticky">
+                <div class="fixed-sidebar text-lower">
+                    <ul>
+                        <li class="forum-home"><a routerLink="/events/home">
+                            <span class="link-text"><i class="material-icons">date_range</i> Home</span></a>
+                        </li>
+                        <li class="forum-career"><a routerLink="/my/events">
+                            <span class="link-text"><i class="material-icons">perm_contact_calendar</i> My Events</span></a>
+                        </li>
+                        <li class="active-link forum-career"><a routerLink="/deals-hub">
+                            <span class="link-text"><i class="material-icons">work</i> Deals Hub</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 fixed-sidebar-content">
+            <div class="menu-wrapper dark visible-xs">
+                <button (click)="mobileMenuOpen = !mobileMenuOpen" class="forum-mobile-menu btn flat-btn">
+                    <i class="material-icons">work</i>
+                    <span class="">Deals Hub</span>
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </button>
+                <ul *ngIf="mobileMenuOpen">
+                    <li class="forum-home">
+                        <a routerLink="/events/home">
+                            <i class="material-icons">date_range</i>
+                            <span class="">Home</span></a>
+                    </li>
+                    <li class="active-link forum-career"><a routerLink="/my/events">
+                        <i class="material-icons">perm_contact_calendar</i>
+                        <span class="">My Events</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Tab pills -->
+            <div class="spacer20"></div>
+            <h4 class="deal-title">We're working to find you amazing deals. Listed below are all of the deals currently on offer for students.</h4>
+
+            <ul class="nav nav-tabs deals-tabs">
+                <li class="active"><a href="#" class="tabChange" data-tab-name="">All</a></li>
+                <li><a href="#" class="tabChange" data-tab-name="Retail">Retail</a></li>
+                <li><a href="#" class="tabChange" data-tab-name="Restaurants and Bars">Restaurants and Bars</a></li>
+                <li><a href="#" class="tabChange" data-tab-name="Technology">Technology</a></li>
+                <li><a href="#" class="tabChange" data-tab-name="Cellphone Companies">Cellphone Companies</a></li>
+                <li><a href="#" class="tabChange" data-tab-name="Other">Other</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="all">
+                    <div class="deals-wrapper">
+                        <div class="deals-item" *ngFor="let deal of deals" [class.hidden]="current_type && current_type !== deal.type">
+                            <span class="badge {{ deal.badge }}">{{ deal.type}}</span>
+                            <h4>{{ deal.header }}</h4>
+                            <p [style.maxHeight]="getStyle(deal)">{{ deal.text }}</p>
+                            <a href="#" (click)="more($event, deal)">
+                                <span *ngIf="!deal.more">
+                                    Read more
+                                </span>
+                                <span *ngIf="deal.more">
+                                    Less
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

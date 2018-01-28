@@ -1,0 +1,71 @@
+<app-navbar active="'campus'"></app-navbar>
+
+<div class="container fixed-header grey">
+  <div class="row">
+    <div class="col-md-2 fixed-sidebar-wrapper">
+      <div class="sticky-width wide">
+        <app-community-navbar [active]="'feed'"></app-community-navbar>
+      </div>
+    </div>
+    <div class="col-md-10 fixed-sidebar-content">
+      <div class="col-xs-12 post-actions">
+        <div class="page-title text-center">
+          <p><img src="/assets/images/badge.png"/> a lower energy state is achieved</p>
+          <h3>Accounting and Finance</h3>
+        </div>
+        <div>
+          <app-post-poll-map [post]="true" [poll]="true"></app-post-poll-map>
+        </div>
+        <!--create post-->
+      </div>
+
+      <!--right sidebar-->
+      <div class="col-xs-12 col-sm-6 col-md-4 col-md-push-8 col-sm-push-6 ">
+        <div stickyWidget>
+          <app-peers-online></app-peers-online>
+          <app-sidebar-footer class="hidden-xs"></app-sidebar-footer>
+        </div>
+
+      </div>
+      <!--right sidebar-->
+      <!--content area-->
+      <div class="col-xs-12 col-sm-6 col-md-8 col-md-pull-4 col-sm-pull-6">
+        <!--create post-->
+        <div>
+          <div>
+            <div class="tab-pill"><span>TIMELINE</span></div>
+            <div class="top-post" *ngFor="let post of freshersfeedposts" >
+              <div class="row">
+                <div class="col-md-3 forum-user-details text-right">
+                  <img src="/assets/images/user4.jpg" alt="">
+                  <p>{{post.firstName}} {{post.lastName}}</p>
+                  <div class="post-share ">
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star"></i></div>
+                </div>
+                <div class="col-md-9 top-user-left">
+                  <!-- <p class="post-time">{{post.createdAt | timeAgo}}</p> -->
+                  <p class="post-time">{{post.createdAt}}</p>
+
+                  <h3 class="post-title grey">{{post.message}}</h3>
+                </div>
+                <div class="col-xs-12 post-text">
+                  <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                  <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="false" [replies]="post.campusPostReply.length"></app-post-footer>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--content area-->
+      <div class="visible-xs-block">
+        <app-sidebar-footer ></app-sidebar-footer>
+      </div>
+    </div>
+  </div>
+</div>

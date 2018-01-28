@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+<div class="container fixed-header">
+    <div class="row">
+        <div class="col-md-3 paddingR0">
+            <div class="message-left">
+                <div class="sec-heading">Messages
+                    <a class="icon-new-msg" (click)="showNewMessageForm()">
+                        <i title="New Message" data-toggle="tooltip" data-placement="left">&nbsp;</i>
+                    </a>
+                </div>
+                <ul class="conversation-list">
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user1.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Angela Gill</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user2.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Faith Black</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user3.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Olivia Metcalfe</span> <span
+                                class="co-day">Tue</span></div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user4.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Adekunle Amodu</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user5.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Gordon Piper</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user6.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">David Ball</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user7.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Megan Vaughan</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                    <li class="co-row"><a href="javascript:void(0);" (click)="showDialog()">
+                        <div class="co-img"><img src="/assets/images/user8.jpg" alt=""/></div>
+                        <div class="co-info"><span class="co-name">Gavin Newman</span> <span class="co-day">Tue</span>
+                        </div>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 paddingL0">
+            <div class="message-right" *ngIf="dialog_shown">
+                <div class="co-user-details">
+                    <div class="co-img-lg"><img src="/assets/images/user1.jpg" alt=""></div>
+                    <div class="co-info-lg">
+                        <div class="user-profile-info">
+                            <div class="co-name-lg">Angela Gill</div>
+                            <ul>
+                                <li class="info-add">Student | Los Anageles, LA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-scroll">
+                    <p class="triangle-border left"><span>How are you doing?</span></p>
+                    <p class="triangle-border right"><span>doing great, thanks. How are you?</span></p>
+                    <p class="triangle-border left">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border right">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border left">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border right">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border left">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border right">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border left">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                    <p class="triangle-border right">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></p>
+                </div>
+                <div class="message-post">
+                    <textarea class="form-control" placeholder="Type a message..."></textarea>
+                    <a href="javascript:void(0);" class="send-msg">Send</a></div>
+            </div>
+
+            <div class="message-right" *ngIf="new_message_form_shown">
+              <h3>New Message</h3>
+              <app-new-message-form></app-new-message-form> 
+            </div>
+        </div>
+        <div class="col-md-3">
+            <app-sidebar-image></app-sidebar-image>
+            <app-sidebar-footer></app-sidebar-footer>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div stickyWidget class="fixed-sidebar campus-sidebar">
+    <div class="sidebar-info">
+        <a routerLink="/"><img src="/assets/images/big-log.png" alt=""/></a>
+        <h4>Peersview Campus</h4>
+    </div>
+  <div class="mobile-menu-toggle visible-xs">
+    <a href="javascript:void(0);" (click)="mobileMenu = !mobileMenu">
+      <span *ngIf="active == 'feed'">
+        <span class="link-text"><i class="material-icons">person_pin</i> All Students <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'freshers-home'">
+        <span class="link-text"><i class="material-icons">school</i> Freshers Feed <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'course-list'">
+        <span class="link-text"><i class="material-icons">account_balance</i> Course Feed <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'class'">
+        <span class="link-text"><i class="material-icons">book</i> Classes <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'student-home'">
+        <span class="link-text"><i class="material-icons">people</i> Student Group <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'group'">
+        <span class="link-text"><i class="material-icons">group_work</i> Societies & Clubs <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'marketplace'">
+        <span class="link-text"><i class="material-icons">add_shopping_cart</i> Market Place <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+      <span *ngIf="active == 'job-center'">
+        <span class="link-text"><i class="material-icons">work</i> Job Center <i class="material-icons pull-right">keyboard_arrow_down</i></span>
+      </span>
+    </a>
+  </div>
+  <ul class="campus-nav" [class.open]="mobileMenu">
+        <li [class.active-link]="active == 'feed'">
+            <a routerLink="/community/feed">
+                <span class="link-text"><i class="material-icons">person_pin</i> All Students</span>
+            </a>
+        </li>
+        <li [class.active-link]="active == 'freshers-home'">
+            <a routerLink="/community/freshers-home">
+                <span class="link-text"><i class="material-icons">school</i> Freshers Feed</span>
+            </a>
+        </li>
+        <li [class.active-link]="active == 'course-list'">
+            <a routerLink="/community/course-list">
+                <span class="link-text"><i class="material-icons">account_balance</i> Course Feed</span>
+            </a>
+        </li>
+        <li [class.active-link]="active == 'class'">
+            <a routerLink="/community/classes-list" >
+              <!--(click)="toggle($event)"-->
+                <span class="link-text"><i class="material-icons">book</i> Classes</span>
+            </a>
+            <div class="dropdown-list-item" *ngIf="dropDownOpen">
+                <a routerLink="/community/classes-detail">All Classes</a>
+                <a routerLink="/community/class">Auditing</a>
+                <a routerLink="/community/class">Business Accounting</a>
+                <a routerLink="/community/class">Forensic Accounting</a>
+            </div>
+        </li>
+
+        <li [class.active-link]="active == 'group'">
+            <a routerLink="/community/group">
+                <span class="link-text"><i class="material-icons">group_work</i> Societies & Clubs</span>
+            </a>
+        </li>
+        <li [class.active-link]="active == 'student-home'">
+          <a routerLink="/community/student-home">
+            <span class="link-text"><i class="material-icons">people</i> Student Group</span>
+          </a>
+        </li>
+        <li [class.active-link]="active == 'marketplace'">
+            <a routerLink="/marketplace">
+                <span class="link-text"><i class="material-icons">add_shopping_cart</i> Market Place</span>
+            </a>
+        </li>
+        <li [class.active-link]="active == 'job-center'">
+            <a routerLink="/community/job-center">
+                <span class="link-text"><i class="material-icons">work</i> Job Center</span>
+            </a>
+        </li>
+    </ul>
+</div>

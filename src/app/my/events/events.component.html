@@ -1,0 +1,71 @@
+<app-navbar [active]="'leisure'"></app-navbar>
+
+<div class="container fixed-header">
+    <div class="row">
+        <!-- Nav pills -->
+        <div class="col-md-3 forum-leftmenu fixed-sidebar-wrapper forum-sidebar hidden-xs">
+            <div class="sticky-width wide sticky">
+                <div class="fixed-sidebar text-lower">
+                    <ul>
+                        <li class="forum-home"><a routerLink="/events/home">
+                            <span class="link-text"><i class="material-icons">date_range</i> Home</span></a>
+                        </li>
+                        <li class="active-link forum-career"><a routerLink="/my/events">
+                            <span class="link-text"><i class="material-icons">perm_contact_calendar</i> My Events</span></a>
+                        </li>
+                        <li class="forum-career"><a routerLink="/deals-hub">
+                            <span class="link-text"><i class="material-icons">work</i> Deals Hub</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 forum-tab fixed-sidebar-content" style="padding: 0 30px;">
+          <div class="menu-wrapper dark visible-xs">
+            <button (click)="mobileMenuOpen = !mobileMenuOpen" class="forum-mobile-menu btn flat-btn">
+              <i class="material-icons">perm_contact_calendar</i>
+              <span class="">My Events</span>
+               <i class="material-icons">keyboard_arrow_down</i>
+            </button>
+            <ul *ngIf="mobileMenuOpen">
+              <li class="forum-home">
+                <a routerLink="/events/home">
+                <i class="material-icons">date_range</i>
+                <span class="">Home</span></a>
+              </li>
+              <li class="forum-career"><a routerLink="/deals-hub">
+                <i class="material-icons">work</i>
+                <span class="">Deals Hub</span></a>
+              </li>
+            </ul>
+          </div>
+            <!-- Tab pills -->
+            <div class="spacer20"></div>
+            <a routerLink="/events/create" class="create-btn">Create an Event</a>
+            <div class="page-title">My Events</div>
+            <div class="row">
+                <div class="col-md-9">
+                    <ul class="eve-list">
+                        <li *ngFor = "let event of events">
+                            <div class="col-md-2 col-sm-2 eve-date-time">
+                                <strong>{{event.startDate| date:'d'}}</strong>
+                                <span class="eve-month-year">{{event.startDate | date:'MMM, y'}}</span>
+                            </div>
+                            <div class="col-md-10 col-sm-10">
+                                <h3 class="eve-name">
+                                    <a routerLink="['/events','detail', event.id]">{{event.title |titlecase}}</a>
+                                </h3>
+                                <p><span class="item-loc">Venue: {{event.venueAddress |titlecase}}</span><span
+                                        class="item-time">{{event.startDate.slice(1,5)}}</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <app-sidebar-image></app-sidebar-image>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,182 @@
+<app-navbar></app-navbar>
+<div class="container fixed-header grey">
+    <div class="row">
+        <div class="col-md-2 fixed-sidebar-wrapper">
+            <div stickyWidget class="sticky-width wide">
+                <!--left sidebar-->
+                <div class="fixed-sidebar">
+                    <div class="sidebar-info">
+                        <img class="user-avatar" src="/assets/images/toranto-uni.png" alt="" (click)="openAvatar()"/>
+                        <h4>University of Toronto</h4>
+                        <ul class="post-share user-star">
+                            <li><i class="star fill"></i> <i class="star fill"></i> <i class="star fill"></i> <i
+                                    class="star fill"></i> <i class="star"></i></li>
+                        </ul>
+                    </div>
+                    <div class="profile-info">
+                        <a href="https://www.utoronto.ca/" target="_blank"> <i
+                                class="material-icons purple">account_balance</i> https://www.utoronto.ca/</a>
+                    </div>
+                    <div class="widget media-widget hidden-xs">
+                        <h5 class="widget-title "><i class="material-icons purple">photo_library</i> Media / Pictures (14)</h5>
+                        <ul class="media">
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media1.jpg"
+                                    alt=""/></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media2.jpg"
+                                    alt=""/></a></li>
+                            <li><i class="btn-play"></i><a href="javascript:void(0);"><img
+                                    src="/assets/images/media3.jpg"
+                                    alt=""/></a></li>
+                        </ul>
+                        <div class="text-right widget-bottom">
+                            <a href="javascript:void(0);" class="btn flat-btn purple">View All</a>
+                        </div>
+                    </div>
+                </div>
+                <!--left sidebar-->
+            </div>
+        </div>
+        <div class="col-md-10 fixed-sidebar-content ">
+            <!--left sidebar-->
+            <!--content area-->
+            <div class="col-md-8 ">
+                <ngb-tabset class="profile-tabs">
+                    <ngb-tab title="Timeline">
+                        <ng-template ngbTabContent>
+                            <div>
+                                <div class="tab-pill hidden-xs"><span>TIMELINE</span></div>
+                                <!--post-->
+                                <div class="top-post">
+                                    <div class="row">
+                                        <div class="col-md-3 forum-user-details text-right">
+                                            <img src="/assets/images/user4.jpg" alt="">
+                                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                                            <div class="post-share ">
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star"></i></div>
+                                        </div>
+                                        <div class="col-md-9 top-user-left">
+                                            <p class="post-time">10 h ago</p>
+                                            <h3 class="post-title grey" (click)="openPostDetail()">Saudi
+                                                Government Linked
+                                                To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                                        </div>
+                                        <div class="col-xs-12 post-text">
+                                            <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor
+                                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud
+                                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                Duis aute
+                                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                                fugiat nulla
+                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                                qui officia
+                                                deserunt mollit anim id est laborum</p>
+                                          <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-post">
+                                    <div class="row">
+                                        <div class="col-md-3 forum-user-details text-right">
+                                            <img src="/assets/images/user4.jpg" alt="">
+                                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                                            <div class="post-share ">
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star"></i></div>
+                                        </div>
+                                        <div class="col-md-9 top-user-left">
+                                            <p class="post-time">10 h ago</p>
+                                            <h3 class="post-title grey" (click)="openPostDetail()">Saudi
+                                                Government Linked
+                                                To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                                        </div>
+                                        <div class="col-xs-12 post-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor
+                                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                quis nostrud
+                                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                Duis aute
+                                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                                fugiat nulla
+                                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                                qui officia
+                                                deserunt mollit anim id est laborum</p>
+                                          <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-post">
+                                    <div class="row">
+                                        <div class="col-md-3 forum-user-details text-right">
+                                            <img src="/assets/images/user4.jpg" alt="">
+                                            <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                                            <div class="post-share ">
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star fill"></i>
+                                                <i class="star"></i></div>
+                                        </div>
+                                        <div class="col-md-9 top-user-left">
+                                            <p class="post-time">10 h ago</p>
+                                            <h3 class="post-title grey" (click)="openPostDetail()">Saudi
+                                                Government Linked
+                                                To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                                        </div>
+                                        <div class="col-xs-12 post-text">
+                                          <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--post-->
+                                <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+                            </div>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Media">
+                        <ng-template ngbTabContent>
+                            <app-social-widget></app-social-widget>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Followers(32)">
+                        <ng-template ngbTabContent>
+                            <app-followers></app-followers>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Following(32)">
+                        <ng-template ngbTabContent>
+                            <app-following></app-following>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+            <!--content area-->
+            <!--right sidebar-->
+            <div class="col-md-4 ">
+                <app-following class="hidden-xs"></app-following>
+                <app-social-widget class="hidden-xs"></app-social-widget>
+                <app-followers class="hidden-xs"></app-followers>
+                <app-sidebar-image></app-sidebar-image>
+                <app-sidebar-footer></app-sidebar-footer>
+            </div>
+            <!--right sidebar-->
+        </div>
+
+    </div>
+</div>

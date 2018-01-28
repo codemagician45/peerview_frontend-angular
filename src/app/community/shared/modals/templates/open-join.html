@@ -1,0 +1,25 @@
+<div class="modal-brand"><img src="images/peersview-brand.png" alt=""/></div>
+<h4 class="modal-heading">Join Your University</h4>
+<div class="modal-body">
+    <div class="alert alert-success" id="email-confirmation" style="display:none;"><i class="icon-success"></i>Sent
+        confirmation link to registered email.
+    </div>
+    <div>
+        <div class="form-group">
+            <label class="form-label">Select Your Institution</label>
+            <select class="form-control">
+                <option>Select</option>
+                <option>Peersview Campus</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-grey" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-blue join-community" (click)="ok()" >Join With Institutions Account</button>
+    <div class="checkbox note-text marginT10">
+        <label>
+            <input type="checkbox"/>
+            I agree to the Terms & Conditions, Privacy Policy and Code of Conduct</label>
+    </div>
+</div>

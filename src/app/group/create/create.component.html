@@ -1,0 +1,68 @@
+<app-navbar [active]="'campus'"></app-navbar>
+<div class="container fixed-header">
+    <div class="row">
+        <div class="col-md-2 fixed-sidebar-wrapper">
+            <div class="sticky-width wide">
+                <!--left sidebar-->
+                <app-community-navbar [active]="'group'"></app-community-navbar>
+                <!--left sidebar-->
+            </div>
+        </div>
+        <form #changepasswordform="ngForm" (ngSubmit)="creategroup()">
+            <div class="col-md-10 fixed-sidebar-content">
+                <h1 class="page-title">Create Study Group</h1>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>Enter Group Name</label>
+                            <input type="text" class="form-control" placeholder="Group Name" name="groupname" [(ngModel)] ="group.name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Description</label>
+                            <textarea class="form-control" placeholder="Description: this would appear on the group page" rows="6" name="groupdescription" [(ngModel)]="group.description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Group Admin Email</label>
+                            <input type="text" class="form-control" placeholder="Admin Email Address" name="groupadminemail" [(ngModel)] ="group.adminEmail" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Upload Group Image</label>
+                            <br/>
+                            <div class="upload-input"> Drag it here...<br/> or
+                                <br/>
+                                <a href="javascript:void(0);">Choose a file</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>Privacy:</label>
+                            <br/>
+                            <div class="checkbox">
+                                <label>
+                                <input type="radio" name="privacy" value="1" [(ngModel)] = "group.privacy">
+                                &nbsp;<strong>Public:</strong> Visible to everyone</label>                                &nbsp;
+                                <span class="note-text">(Note - Public group is subject to confirmation by Admin)</span></div>
+                            <div class="checkbox">
+                                <label>
+                                <input type="radio" name="privacy" value="2" [(ngModel)]="group.privacy"/>
+                                &nbsp;<strong>Private</strong>: User must request to join group</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                <input type="radio" name="privacy" value="3" [(ngModel)]="group.privacy"/>
+                                &nbsp;<strong>Secret:</strong> User must receive invite before they can join.</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="reset" class="btn btn-grey marginL10">Cancel </button>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

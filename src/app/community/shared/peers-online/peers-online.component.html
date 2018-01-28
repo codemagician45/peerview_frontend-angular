@@ -1,0 +1,12 @@
+<div class="widget peers-online-widget">
+    <h5 class="widget-title"><i class="material-icons">people</i>Online Members</h5>
+  <ul class="users-list">
+    <li *ngFor="let peer of peers;let i=index" [class.hidden-peer]="peer.hidden" data-toggle="tooltip"
+        title="{{ peer.name.first }} {{ peer.name.last }}">
+      <img src="{{ peer.picture.thumbnail }}" alt=""/>
+    </li>
+  </ul>
+  <div class="widget-bottom">
+    <a class="link-und" (click)="visibilityToggle()">View All</a>
+  </div>
+</div>

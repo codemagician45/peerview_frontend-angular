@@ -1,0 +1,55 @@
+<app-navbar [active]="'campus'"></app-navbar>
+
+<div class="container fixed-header">
+    <div class="row">
+        <div class="col-md-2 fixed-sidebar-wrapper">
+          <div class="sticky-width wide">
+                <app-community-navbar [active]="'class'"></app-community-navbar>
+            </div>
+        </div>
+        <div class="col-md-10 fixed-sidebar-content">
+            <h1 class="text-center sub-title">
+              Welcome to Accounting and Finance!
+              <a routerLink="/community/classes-list" class="pull-right btn btn-primary" id="btn-change">Change your Course</a>
+            </h1>
+            <h4 class="text-with-button">
+              To Get started you need to Add your Classes
+            </h4>
+            <ul class="items-list">
+                <li>
+                    <label for="default">Auditing
+                        <input type="checkbox" id="default" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+                <li>
+                    <label for="primary">Business Accounting
+                        <input type="checkbox" id="primary" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+                <li>
+                    <label for="info">Forensic Accounting
+                        <input type="checkbox" id="info" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+                <li>
+                    <label for="success">Economic
+                        <input type="checkbox" id="success" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+                <li>
+                    <label for="warning">Introduction to Finance
+                        <input type="checkbox" id="warning" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+                <li>
+                    <label for="danger">Finance
+                        <input type="checkbox" id="danger" class="badgebox">
+                        <span class="badge">✓</span></label>
+                </li>
+            </ul>
+            <div class="spacer20"></div>
+            <a routerLink="/community/class" class="pull-right btn btn-blue btn-process" id="btn-process">Proceed</a>
+            <div class="spacer20"></div>
+        </div>
+    </div>
+</div>

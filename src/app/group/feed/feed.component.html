@@ -1,0 +1,176 @@
+<app-navbar [active]="'campus'"></app-navbar>
+
+<div class="container fixed-header grey">
+  <div class="row">
+    <div class="col-md-2 fixed-sidebar-wrapper">
+      <div class="sticky-width wide">
+        <!--left sidebar-->
+        <app-community-navbar [active]="'group'"></app-community-navbar>
+        <!--left sidebar-->
+      </div>
+    </div>
+    <div class="col-md-10 fixed-sidebar-content">
+      <!--content area-->
+      <!--create post-->
+
+      <!--create post-->
+      <div class="col-xs-12 post-actions">
+        <h3 class="tab-heading group-heading">Accounting and Finance
+          <a href="javascript:void(0);" class="btn btn-primary btn-block">Leave Group</a>
+        </h3>
+        <div>
+          <app-post-poll-map [post]="true" [poll]="true" [map]="true"></app-post-poll-map>
+        </div>
+      </div>
+      <!--create post-->
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-12 col-md-push-8 col-sm-push-6 col-sm-6 col-md-4">
+            <div stickyWidget>
+              <app-peers-online></app-peers-online>
+
+              <div class="widget events">
+                <h5 class="widget-title">Invite Members</h5>
+                <div class="invite-form">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Member Name"/>
+                  </div>
+                  <input type="button" value="Continue" class="btn btn-white"
+                         ng-click="vm.openInvite('md')"/>
+                  <div class="or-text">
+                    <div class="line"></div>
+                    <span>OR</span>
+                  </div>
+                  <div class="email-site">
+                    <a class="email-fb" href="https://www.facebook.com" target="_blank">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#ffffff"
+                              d="M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z"/>
+                      </svg>
+                    </a>
+                    <a class="email-mail" href="https://gmail.com" target="_blank">
+
+                      <svg fill="#ffffff" style="width:24px;height:24px" viewBox="0 0 24 24"
+                           xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                      </svg>
+
+                    </a>
+                    <a class="email-gmail" href="http://gmail.com/" target="_blank">
+                      <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="#ffffff"
+                              d="M23,11H21V9H19V11H17V13H19V15H21V13H23M8,11V13.4H12C11.8,14.4 10.8,16.4 8,16.4C5.6,16.4 3.7,14.4 3.7,12C3.7,9.6 5.6,7.6 8,7.6C9.4,7.6 10.3,8.2 10.8,8.7L12.7,6.9C11.5,5.7 9.9,5 8,5C4.1,5 1,8.1 1,12C1,15.9 4.1,19 8,19C12,19 14.7,16.2 14.7,12.2C14.7,11.7 14.7,11.4 14.6,11H8Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <app-brainstorming-map></app-brainstorming-map>
+              <app-active-poll></app-active-poll>
+
+              <app-sidebar-footer class="hidden-xs"></app-sidebar-footer>
+            </div>
+
+          </div>
+
+          <div class="col-xs-12 col-md-pull-4 col-sm-pull-6  col-sm-8 col-md-8">
+            <div class="tab-pill"><span>TIMELINE</span></div>
+            <div class="top-post">
+              <div class="row">
+                <div class="col-md-3 forum-user-details text-right">
+                  <img src="/assets/images/user4.jpg" alt="">
+                  <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                  <div class="post-share ">
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star"></i></div>
+                </div>
+                <div class="col-md-9 top-user-left">
+                  <p class="post-time">10 h ago</p>
+                  <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government
+                    Linked To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                </div>
+                <div class="col-xs-12 post-text">
+                  <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+                  <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                </div>
+              </div>
+            </div>
+            <div class="top-post">
+              <div class="row">
+                <div class="col-md-3 forum-user-details text-right">
+                  <img src="/assets/images/user4.jpg" alt="">
+                  <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                  <div class="post-share ">
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star"></i></div>
+                </div>
+                <div class="col-md-9 top-user-left">
+                  <p class="post-time">10 h ago</p>
+                  <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government
+                    Linked To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                </div>
+                <div class="col-xs-12 post-text">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+                  <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                </div>
+              </div>
+            </div>
+            <div class="top-post">
+              <div class="row">
+                <div class="col-md-3 forum-user-details text-right">
+                  <img src="/assets/images/toranto-uni.png" alt="">
+                  <p><a href="#businessProfile">Torronto University</a></p>
+                  <div class="post-share ">
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star fill"></i>
+                    <i class="star"></i></div>
+                </div>
+                <div class="col-md-9 top-user-left">
+                  <p class="post-time">10 h ago</p>
+                  <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government
+                    Linked To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                </div>
+                <div class="col-xs-12 post-text">
+                  <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+
+                </div>
+              </div>
+            </div>
+            <!--post-->
+            <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+          </div>
+          <div class="visible-xs-block">
+            <app-sidebar-footer ></app-sidebar-footer>
+          </div>
+        </div>
+      </div>
+      <!--content area-->
+      <!--right sidebar-->
+
+      <!--right sidebar-->
+    </div>
+  </div>
+</div>

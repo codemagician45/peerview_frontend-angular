@@ -1,0 +1,73 @@
+<app-navbar [active]="'campus'"></app-navbar>
+<div class="container fixed-header">
+    <div class="row">
+        <div class="col-md-2 fixed-sidebar-wrapper">
+            <div class="sticky-width sticky wide">
+                <!--left sidebar-->
+              <app-community-navbar [active]="'marketplace'"></app-community-navbar>
+                <!--left sidebar-->
+            </div>
+        </div>
+        <div class="col-md-10 fixed-sidebar-content">
+            <h1 class="page-title">Economics: The Original 1948</h1>
+            <p style="padding-left: 10px;"><span class="item-loc">The YMCA of Greater Toronto</span><span
+                    class="item-time">Added on 31-Mar-2017 at 9:10 PM</span></p>
+            <div class="">
+                <div class="col-md-8">
+                    <div class="slider-wrap" id="forum-slider">
+                        <owl-carousel class="owl-theme" [items]="items" [options]="properties">
+                            <div class="item"><img src="/assets/images/item-img.jpg" alt=""/></div>
+                            <div class="item"><img src="/assets/images/item-img.jpg" alt=""/></div>
+                            <div class="item"><img src="/assets/images/item-img.jpg" alt=""/></div>
+                            <div class="item"><img src="/assets/images/item-img.jpg" alt=""/></div>
+                        </owl-carousel>
+                    </div>
+                    <div class="item-details">
+                        <ul class="item-details-list">
+                            <li>
+                                <label>Author</label>
+                                Paul Samuelson
+                            </li>
+                            <li>
+                                <label>Edition</label>
+                                1st Edition
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                        <p>
+                            <label>Description</label>
+                            It is a used but in great condition </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="user-details">
+                        <div class="item-price">$100</div>
+                        <div class="user-info">
+                            <ul>
+                                <li>
+                                    <label>Seller Info</label>
+                                    <span>Adekunle Amodu</span></li>
+                                <li>
+                                    <label>Phone Number</label>
+                                    <span>019094563</span></li>
+                                <li>
+                                    <label>Email Address</label>
+                                    <span>B.k@yahoo.com</span></li>
+                            </ul>
+                            <ul class="social-list">
+                                <a href="javascript:void(0);" class="fb" data-toggle="tooltip" title=""
+                                   data-original-title="Facebook"></a> <a href="javascript:void(0);" class="linkedin"
+                                                                          data-toggle="tooltip" title=""
+                                                                          data-original-title="Linkedin"></a> <a
+                                    href="javascript:void(0);" class="twitter" data-toggle="tooltip" title=""
+                                    data-original-title="Twitter"></a> <a href="javascript:void(0);" class="insta"
+                                                                          data-toggle="tooltip" title=""
+                                                                          data-original-title="Instagram"></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
