@@ -8,4 +8,5 @@ export class Student {
         private user_id: number;
         private city: string;
         private gender: string;
+        private birthDate: Date;
 }

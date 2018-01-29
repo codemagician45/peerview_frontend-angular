@@ -34,8 +34,7 @@
                 <div class="filter-field">
                     <!-- <date-picker ngModel name="date" [showClearButton]="false" [closeBySelection]="true"></date-picker> -->
                     <mat-input-container>
-                      <input mdInput [matDatepicker]="picker"
-                              placeholder="Date of birth" (focus)="picker.open()">
+                      <input mdInput matInput [matDatepicker]="picker" placeholder="Date of birth" (focus)="picker.open()" [(ngModel)]="model.birthDate" name="birthDate">
                       <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
                   </mat-input-container>
                   <mat-datepicker #picker></mat-datepicker>

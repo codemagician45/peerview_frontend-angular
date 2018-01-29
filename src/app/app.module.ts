@@ -9,7 +9,7 @@ import {
     DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter, MatDialogModule
 } from "@angular/material";
 
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule, MatInputModule } from '@angular/material';
 
 const MY_DATE_FORMATS = {
     parse: {
@@ -33,7 +33,7 @@ import {
     CampusFreshersFeedPostService,
     CampusSocietyClubService,
     CampusStudentGroupService,
-    CommunityService,    
+    CommunityService,
     CourseService,
     EventService,
     ForumService,
@@ -68,11 +68,12 @@ tinymce.init({});
         BrowserModule,
         MatDialogModule,
         MatNativeDateModule,
-        MatDatepickerModule, 
+        MatDatepickerModule,
+        MatInputModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         HttpClientModule,
-        RouterModule, 
+        RouterModule,
     ],
     providers: [
         {provide: DateAdapter, useClass: NativeDateAdapter},
@@ -81,8 +82,8 @@ tinymce.init({});
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true,
-        }, 
-        CanActivateViaAuthGuard, 
+        },
+        CanActivateViaAuthGuard,
         AccountSettingService,
         AuthenticationService,
         CampusService,
@@ -91,7 +92,7 @@ tinymce.init({});
         CampusFreshersFeedPostService,
         CampusSocietyClubService,
         CampusStudentGroupService,
-        CommunityService,    
+        CommunityService,
         CourseService,
         EventService,
         ForumService,

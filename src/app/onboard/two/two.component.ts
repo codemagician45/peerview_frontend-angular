@@ -54,7 +54,7 @@ export class TwoComponent implements OnInit {
        const model = this.model;
        model.courseIds = [parseInt(this.model.courseIds.toString())];
        this._authenticationService.updateStudent(model).subscribe((resp) => {
-            if (resp["error"] === 'ERROR') {
+            if (resp["status"] === 'SUCCESS') {
                 this.setStep.emit('3');
             }
         });
