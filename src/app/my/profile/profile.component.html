@@ -23,7 +23,7 @@
           <div class="info-group">
 
             <div class="profile-info">
-              <span> <i class="material-icons purple about_ur_self">info</i><p class="about_ur_self">Tell us about yourself</p></span>
+              <span> <i class="material-icons purple about_ur_self">info</i><p class="about_ur_self">{{user?.aboutMe || 'Tell us about yourself'}}</p></span>
 
               <a class="flat-btn btn edit" (click)="openAboutMeModal()">
                 <i class="material-icons purple">create</i>

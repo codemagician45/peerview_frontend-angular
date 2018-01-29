@@ -4,12 +4,16 @@
 
     <div class="modal-body ng-scope">
       <div class="form-group">
-        <textarea class="form-control" rows="5">Tell people about yourself...</textarea>
+        <textarea
+          class="form-control"
+          rows="5"
+          placeholder="Tell people about yourself..."
+          [(ngModel)]="aboutMe"></textarea>
       </div>
     </div>
     <div class="modal-footer ng-scope">
-      <button type="button" class="btn btn-grey" (click)="cancel()">Cancel</button>
-      <button type="button" class="btn btn-blue">Save</button>
+      <button type="button" class="btn btn-grey" (click)="onCancel()">Cancel</button>
+      <button type="button" class="btn btn-blue" (click)="onSave();">Save</button>
     </div>
   </div>
 </div>

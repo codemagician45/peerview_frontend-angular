@@ -14,6 +14,11 @@ export class AccountSettingService {
     return this.http.put(`user/password`, item);
   }
 
+  updateAboutMe(aboutMe: any) {
+    aboutMe = {aboutMe: aboutMe};
+    return this.http.put(`user/about-me`, aboutMe);
+  }
+
   getuserprofile() {
     return this.http.get('user/profile');
   }
