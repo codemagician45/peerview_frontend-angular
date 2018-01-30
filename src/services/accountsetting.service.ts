@@ -1,6 +1,15 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { UserOnboardingDetails } from "../models/models";
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  UserOnboardingDetails
+} from "../models/models";
 
 @Injectable()
 export class AccountSettingService {
@@ -14,9 +23,17 @@ export class AccountSettingService {
     return this.http.put(`user/password`, item);
   }
 
-  updateAboutMe(aboutMe: any) {
+  public updateAboutMe(aboutMe: any): Observable<Object> {
     aboutMe = {aboutMe: aboutMe};
     return this.http.put(`user/about-me`, aboutMe);
+  }
+
+  public getUserInterests(): Observable<Object> {
+    return this.http.get(`user/interests`);
+  }
+
+  public removeUserInterest(userInterestId): Observable<Object> {
+    return this.http.delete(`user/interest/${userInterestId}`);
   }
 
   getuserprofile() {
