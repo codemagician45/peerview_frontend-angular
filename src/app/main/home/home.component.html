@@ -4,11 +4,9 @@
     <!--left sidebar-->
     <div class="col-md-2 fixed-sidebar-wrapper home-sidebar hidden-xs">
       <div stickyWidget class="sticky-width wide home-sidebar">
-        <!--left sidebar-->
         <div class="fixed-sidebar">
           <div class="widget profile-widget">
             <div class="top-info">
-              <!--routerLink="/my/profile"-->
               <a class="user-img"><img src="/assets/images/profile-pic-lg.jpg" alt="Peersview" (click)="openAvatar()" /></a>
               <h3 class="user-name" *ngIf="userData"><a href="/my/profile"><span class="user-name"> {{userData.firstName}} {{userData.lastName}}</span></a></h3>
               <div class="post-share "><i class="star" *ngFor="let i of [1,2,3,4,5]" [ngClass]="{ 'fill': stars > i-1 }"></i></div>
@@ -32,12 +30,6 @@
               <p>in <span>15</span> minutes</p>
             </h3>
             <ul class="list">
-              <!--<li><a (click)="openInvite()">Invite your peers</a></li>-->
-              <!--              <li><a>Invite your peers</a></li>
-              <li><a routerLink="/my/profile">Complete Your profile</a></li>
-              <li><a routerLink="/peers-list">Follow a few Peers</a></li>
-              <li><a routerLink="/forum/home">Checkout the Forum</a></li>
-              <li><a routerLink="/community">Join your school's Campus</a></li>-->
               <li>Invite your peers</li>
               <li>Complete Your profile</li>
               <li>Follow a few Peers</li>
@@ -56,7 +48,6 @@
       <div class="row">
         <div class="col-xs-12" style="width: calc(100% + 5px);margin-left: -10px; padding-right: 0">
           <app-post-poll-map [post]="true" [poll]="true" [story]="true"></app-post-poll-map>
-          <!--<app-post-poll-map [post]="true" [poll]="true" [map]="true" [story]="true"></app-post-poll-map>-->
         </div>
         <div class="col-md-8 col-xs-12">
           <div class="clear spacer10"></div>
@@ -161,3 +152,4 @@
     </div>
   </div>
 </div>
+<app-post-poll-map (onEditorKeyup)="refreshPost($event)"></app-post-poll-map>
