@@ -59,8 +59,8 @@ export class AuthenticationService {
     return this.http.post("users/details/add", exStudent);
   }
 
-  updateInterests(interests: Number[]) {
-    return this.http.post("users/interests", interests);
+  updateInterests(interests: Array[]) {
+    return this.http.post("user/interests", {'interestIds': interests});
   }
 
   getfollowingusers(userid: number) {

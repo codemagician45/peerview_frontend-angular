@@ -1,0 +1,28 @@
+.interest-title
+{
+    font-size: 18px;  font-weight: bold;  margin-left: 5px; padding: 20px 0 10px 0px;
+
+    text-align: left;
+
+    color: #8d36c3;
+}
+
+.interest-title:first-child {
+  padding: 0 0 10px 0;
+}
+
+.subinterest
+{
+    color: #8d36c3;
+}
+
+.added-tags-list
+{
+    border-bottom: 1px solid #8d36c3;
+}
+
+.suggest-sub-interest-input
+{
+    width: 70%;
+    height: 35px;  margin: 10px 10px;  text-indent: 5px; border: 1px solid #8d36c3; border-radius: 3px;
+}
