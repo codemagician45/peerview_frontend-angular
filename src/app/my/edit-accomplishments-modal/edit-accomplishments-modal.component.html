@@ -1,18 +1,14 @@
 <div class="edit-accomplishments-modal">
-  <!--<div class="modal-brand"><img src="images/peersview-brand.png" alt=""/></div>-->
   <h3 class="modal-heading">Accomplishments</h3>
-  <!--<h5 class="modal-heading">Forums are great for colaborating and sharing things with your peers</h5>-->
-  <!--<div class="modal-divider"></div>-->
   <div class="modal-body">
     <div>
       <div class="form-group">
-        <textarea class="form-control" rows="5">Donec maximus semper velit. Vivamus faucibus accumsan odio. In quam purus, consequat eget hendrerit sit amet, consectetur eget orci. Ut sit amet suscipit ligula, in commodo tortor. Nullam at ipsum porttitor, interdum magna vestibulum, scelerisque tortor.</textarea>
+        <textarea class="form-control" rows="5" (change)="onChangeAccomplishments($event.target.value)">{{user.accomplishments}}</textarea>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-grey" (click)="close()">Cancel</button>
-    <button type="button" class="btn btn-blue">Add</button>
+    <button type="button" class="btn btn-grey" (click)="onClose();">Cancel</button>
+    <button type="button" class="btn btn-blue" (click)="onAddOrUpdate();">{{user.accomplishments ? 'Update': 'Add'}}</button>
   </div>
-
 </div>

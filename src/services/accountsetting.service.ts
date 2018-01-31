@@ -28,6 +28,11 @@ export class AccountSettingService {
     return this.http.put(`user/about-me`, aboutMe);
   }
 
+  public updateUserAccomplishments(accomplishments: any): Observable<Object> {
+    accomplishments = {accomplishments};
+    return this.http.put(`user/accomplishments`, accomplishments);
+  }
+
   public getUserInterests(): Observable<Object> {
     return this.http.get(`user/interests`);
   }

@@ -6,11 +6,10 @@
         <span class="purple text-bold">CREDITS: {{credits}}</span>
       </div>
       <div stickyWidget class="sticky-width sticky wide">
-
         <!--left sidebar-->
         <div class="fixed-sidebar not-fixed">
           <div class="sidebar-info">
-            <img class="user-avatar" src="/assets/images/john.jpg" alt="" (click)="openAvatar()"/>
+            <img class="user-avatar" src="/assets/images/john.jpg" alt="" (click)="openAvatar()" />
             <h4>{{user?.Username}}</h4>
             <ul class="post-share user-star">
               <li>
@@ -21,15 +20,12 @@
               class="material-icons purple">create</i> </a>
           </div>
           <div class="info-group">
-
             <div class="profile-info">
               <span> <i class="material-icons purple about_ur_self">info</i><p class="about_ur_self">{{user?.aboutMe || 'Tell us about yourself'}}</p></span>
-
               <a class="flat-btn btn edit" (click)="openAboutMeModal()">
                 <i class="material-icons purple">create</i>
               </a>
             </div>
-
             <div class="profile-info">
               <span> <i class="material-icons purple">person</i>{{user?.employment_place}}</span>
             </div>
@@ -61,8 +57,6 @@
               class="material-icons purple">create</i> </a></h5>
             <div class="accomplish">
               {{user?.accomplishments}}
-              <!-- <p class="widget-sub-title">Previous Education:</p>
-              <p>Nullam at ipsum porttitor, interdum magna vestibulum, scelerisque tortor</p> -->
             </div>
           </div>
           <div class="widget media-widget hidden-xs">
@@ -95,7 +89,6 @@
       </div>
     </div>
     <div class="col-md-10 fixed-sidebar-content ">
-
       <!--right sidebar-->
       <div class="col-md-4 col-md-push-8">
         <div stickyWidget>
@@ -106,10 +99,8 @@
           <app-sidebar-image></app-sidebar-image>
           <app-sidebar-footer class="hidden-xs"></app-sidebar-footer>
         </div>
-
       </div>
       <!--right sidebar-->
-
       <!--content area-->
       <div class="col-md-8 col-md-pull-4 my-profile">
         <div>
@@ -134,12 +125,8 @@
               </div>
               <div class="col-xs-12 post-text">
                 <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                  aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                 <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
 
               </div>
@@ -163,14 +150,9 @@
                   To 9/11 Hijackers In Newly Released U.S. Report</h3>
               </div>
               <div class="col-xs-12 post-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                  aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
                 <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
-
               </div>
             </div>
           </div>
@@ -193,41 +175,16 @@
               </div>
               <div class="col-xs-12 post-text">
                 <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
-
               </div>
             </div>
           </div>
           <!--post-->
           <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
         </div>
-        <!--
-                      <ngb-tabset class="profile-tabs">
-                        <ngb-tab title="Timeline">
-                          <ng-template ngbTabContent>
-
-                          </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="Media">
-                          <ng-template ngbTabContent>
-                            <app-social-widget></app-social-widget>
-                          </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="Followers(32)">
-                          <ng-template ngbTabContent>
-                            <app-followers></app-followers>
-                          </ng-template>
-                        </ngb-tab>
-                        <ngb-tab title="Following(32)">
-                          <ng-template ngbTabContent>
-                            <app-following></app-following>
-                          </ng-template>
-                        </ngb-tab>
-                      </ngb-tabset>
-                      -->
       </div>
       <!--content area-->
       <div class="visible-xs-block">
-        <app-sidebar-footer ></app-sidebar-footer>
+        <app-sidebar-footer></app-sidebar-footer>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material";
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material";
+import { AccountSettingService } from '../../../services/accountsetting.service';
 
 @Component({
   selector: 'app-edit-accomplishments-modal',
@@ -7,14 +8,30 @@ import {MatDialog} from "@angular/material";
   styleUrls: ['./edit-accomplishments-modal.component.css']
 })
 export class EditAccomplishmentsModalComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: any,
+    private dialog: MatDialog,
+    private accountSettingService: AccountSettingService) {}
 
-  constructor(private dialog: MatDialog) { }
+  private user = this.data;
+  private userAccomplishments: string;
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onChangeAccomplishments(value) {
+    this.userAccomplishments = value;
   }
 
-  close() {
+  onClose() {
     this.dialog.closeAll();
   }
 
+  onAddOrUpdate() {
+    if (this.user.accomplishments === this.userAccomplishments || !this.userAccomplishments) {return;}
+    this.accountSettingService.updateUserAccomplishments(this.userAccomplishments)
+    .subscribe(() => {
+      let editAccomplishmentsModalComponent = this.dialog.getDialogById('EditAccomplishmentsModalComponent');
+      editAccomplishmentsModalComponent.close(this.userAccomplishments);
+    });
+  }
 }

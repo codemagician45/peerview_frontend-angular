@@ -36,8 +36,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this._accountservice.getusercredits()
-    .subscribe(resp => {
-      this.credits = resp["userCredits"]['totalCredits'];
+    .subscribe((response: any) => {
+      this.credits = response.userCredits.totalCredits
       if (this.credits > 400) {
         this.stars = 5;
       } else if (this.credits > 300) {
@@ -66,7 +66,15 @@ export class ProfileComponent implements OnInit {
   }
 
   openAccomplishments() {
-    this.dialog.open(EditAccomplishmentsModalComponent);
+    this.dialog.open(EditAccomplishmentsModalComponent, {
+      data: this.user,
+      id: 'EditAccomplishmentsModalComponent'
+    })
+    .afterClosed()
+    .subscribe(accomplishments => {
+      if (!accomplishments) {return;}
+      this.user.accomplishments = accomplishments;
+    });
   }
 
   openAboutMeModal() {
