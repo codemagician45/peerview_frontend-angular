@@ -24,16 +24,10 @@ export class ThreeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._courseService.getInterest().subscribe((resp) => {
-      const a = _.map(resp["interestCategory"], (value: any, key) => {
+    this._courseService.getInterest().subscribe((response: any) => {
+      const a = _.map(response.interestCategory, (value: any, key) => {
         this.interests.push({ "id": value.id, "value": value.name });
         const parsedValues: any[] = [];
-
-        // value.map((currentItem) => {
-        //     // console.log(currentItem);
-        //     parsedValues.push({"id": currentItem["subinterest_id"],
-        //     "value": currentItem["subinterest_title"], interestid: currentItem["interest_id"], interest_value:key, parentisselected: false});
-        // });
         this.subinterests = _.union(this.subinterests, parsedValues);
       });
 
@@ -50,11 +44,10 @@ export class ThreeComponent implements OnInit {
     this.selectedInterests.forEach((item, i) => {
       if (this.selectedInterests.length > 0) {
         const catId = item.id;
-        this._courseService.getSubInterest(catId).subscribe((resp) => {
-          this.selectedInterests[i]['subinterests'] = resp["interests"];
+        this._courseService.getSubInterest(catId).subscribe((response: any) => {
+          this.selectedInterests[i]['subinterests'] = response.interests;
 
           this.subinterests.forEach((item) => {
-            console.log('item', item)
             if (item.interestid === interest.id) {
               item.parentisselected = interest.isselected;
               if (!interest.isselected) {
@@ -66,28 +59,11 @@ export class ThreeComponent implements OnInit {
         });
       }
     });
-
-    // this.subinterests.forEach((item) => {
-    //     console.log("anmol",item)
-    //          if (item.interestid === interest.id) {
-    //              item.parentisselected = interest.isselected;
-    //              if (!interest.isselected) {
-    //                  item.isselected = false;
-    //                  item.isdisabled = false;
-    //              }
-    //
-    //          }
-    //      });
-    //      this.subinterests = this.subinterests;
-    //      console.log(this.subinterests,"xcfvdfdsf")
   }
 
   toggleSubInterest(subinterest, selectedIndex) {
-    // console.log(this.selectedInterests, subinterest, selectedIndex)
     const sI = _.findIndex(this.selectedInterests[selectedIndex]['subinterests'], subinterest);
-    // console.log(sI, "sI")
     let interest = this.interests.filter(interest => {
-      // console.log(this.subinterests[sI].id,sI,"sI")
       return interest.id == this.selectedInterests[selectedIndex].id;
     })[0];
 
@@ -100,7 +76,6 @@ export class ThreeComponent implements OnInit {
     }
 
     this.selectedInterests[selectedIndex]['subinterests'][sI].isselected = !this.selectedInterests[selectedIndex]['subinterests'][sI].isselected;
-
     this.selectedInterests[selectedIndex]['subinterests'].forEach(
       function(subinterest) {
         subinterest.isdisabled = this.getSelectedSubinterestsCountInGroup(subinterest) >= this.maxSelectedSubInterestsCount && !subinterest.isselected;
@@ -121,21 +96,17 @@ export class ThreeComponent implements OnInit {
     }
 
     finalInterestsHandler = [].concat.apply([], finalInterestsHandler)
-    finalInterests = finalInterestsHandler;
+    let finalInterests = finalInterestsHandler;
 
     if (finalInterests.length < 5) {
       alert("At Least Five Sub Interests are required");
     } else {
-      this._authenticationService.updateInterests(finalInterests).subscribe((resp) => {
-        console.log(resp);
-        if (resp['status'] === 'SUCCESS' && resp['http_code'] === 201) {
-          this.router.navigate(["/home"]);
-        }
+      this._authenticationService.updateInterests(finalInterests).subscribe((response) => {
+        this.router.navigate(["/home"]);
       }, (error) => {
         console.log(error);
       });
     }
-    // console.log(finalInterests);
   }
 
   getInterestClass(interest) {
