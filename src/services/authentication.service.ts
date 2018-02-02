@@ -59,7 +59,7 @@ export class AuthenticationService {
     return this.http.post("users/details/add", exStudent);
   }
 
-  updateInterests(interests: Array[]) {
+  updateInterests(interests: Array<object>[]) {
     return this.http.post("user/interests", {'interestIds': interests});
   }
 
