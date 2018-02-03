@@ -3639,7 +3639,8 @@ i.icon-success {
   background-position: 0 0;
 }
 
-.load-more a {
+.load-more .btn {
+  width: 100%;
   background: #631990;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -5066,6 +5067,7 @@ i.icon-success {
 
 .forum-user-details p,
 .forum-user-details p a {
+  text-transform: capitalize;
   color: #323c47;
   font-size: 16px;
   padding-left: 0px;

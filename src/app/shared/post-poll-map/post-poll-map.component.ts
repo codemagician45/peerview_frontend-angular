@@ -26,6 +26,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   newpoll     : Poll = new Poll();
   newstory    : Story = new Story();
   errorMessage: any;
+  private  _isDisabled = false;
   private _postSaveEmitterService = EmitterService.get('postSaveEmitter');
   constructor(private _postservice: PostService) { }
 
@@ -159,20 +160,18 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
 
   createpost() {
     /*Disable post button after submit to prevent post duplication*/
-    $('.post-btn').attr('disabled', 'disabled');
+    this._isDisabled = true;
     if ($('.create-pots-textarea').val() === '') {
       swal('Oops','Empty Content', "error");
-      $('.post-btn').removeAttr('disabled');
+      this._isDisabled = false;
     } else {
-      this._postservice.createpost(this.newpost["message"]).subscribe((resp) => {
-        if (resp['status'] === 'SUCCESS') {
+      this._postservice.createpost(this.newpost["message"]).subscribe((response : any) => {
           swal('Sucess', "Post Created Successfully", "success");
           $('.create-pots-textarea').val('');
-          $('.post-btn').removeAttr('disabled');
-          this._postSaveEmitterService.emit('success');
-        }
+          this._isDisabled = false;
+          this._postSaveEmitterService.emit(response.postId);
       }, error => {
-        $('.post-btn').removeAttr('disabled');
+        this._isDisabled = false;
         if (error['error'].body) {
           swal('Oops', error['error'].body.status_message, 'error')
         } else {

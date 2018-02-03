@@ -38,10 +38,8 @@
             </ul>
           </div>
         </div>
-        <!--left sidebar-->
       </div>
     </div>
-
     <!--left sidebar-->
     <!--content area-->
     <div class="col-md-10 fixed-sidebar-content home-content padding-left-0">
@@ -73,35 +71,42 @@
           <div>
             <div class="tab-pill"><span>LATEST</span></div>
             <a class="see-new-posts"><span class="view_more">See 5 new posts</span></a>
-            <div id="Post1" class="top-post" *ngFor="let post of posts">
-              <div class="row">
-                <div class="col-md-3 forum-user-details text-right">
-                  <img src="/assets/images/user4.jpg" alt="">
-                  <div class="forum-user-info">
-                    <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
-                      <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
-                    <p>{{post.user.schoolName | titlecase }}</p>
-                    <div class="post-share ">
-                      <i class="star fill"></i>
-                      <i class="star fill"></i>
-                      <i class="star fill"></i>
-                      <i class="star fill"></i>
-                      <i class="star"></i>
+            <div id="posts-container">
+              <!-- <div *ngFor="let index of posts"> -->
+                <div id="Post1" class="top-post" *ngFor="let post of posts">
+                  <div class="row">
+                    <div class="col-md-3 forum-user-details text-right">
+                      <img src="/assets/images/user4.jpg" alt="">
+                      <div class="forum-user-info">
+                        <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
+                          <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
+                        <p>{{post.user.schoolName | titlecase }}</p>
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-9 top-user-left">
+                      <p class="post-time">{{post.createdAt | date :'short' }}</p>
+                      <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
+                    </div>
+                    <div class="col-xs-12 post-text">
+                      <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                      <p>{{post.message | titlecase}}</p>
+                      <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></app-post-footer>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-9 top-user-left">
-                  <p class="post-time">{{post.createdAt | date :'short' }}</p>
-                  <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
-                </div>
-                <div class="col-xs-12 post-text">
-                  <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
-                  <p>{{post.message | titlecase}}</p>
-                  <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></app-post-footer>
-                </div>
-              </div>
+              <!-- </div> -->
             </div>
-            <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+
+            <div class="load-more">
+              <button type="button" class="btn btn-load-more-posts" name="button" (click)="loadMorePost()" [disabled]="_isDisabled"><span class="no-more-post-to-show">load more...</span> </button>
+            </div>
           </div>
         </div>
         <!--content area-->

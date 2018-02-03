@@ -14,7 +14,7 @@
           <input class="upload-file" id="uploadImage" type="file" style="display:none;"/>
           <div class="bottom-block">
             <label for="uploadImage" class="img-upload flat-btn"> <i class="material-icons">link</i> </label>
-            <input type="submit" class="btn btn-blue btn-sm post-btn" value="ADD POST">
+            <input type="submit" class="btn btn-blue btn-sm post-btn" value="ADD POST" [disabled]="_isDisabled">
           </div>
         </div>
       </form>

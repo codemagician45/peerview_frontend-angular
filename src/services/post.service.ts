@@ -25,8 +25,9 @@ export class PostService {
   gettopstories() {
     return this.http.get("topStories");
   }
-  getallposts() {
-    return this.http.get(`posts`);
+
+  getallposts(limit: Number, offset: Number) {
+    return this.http.get(`posts?limit=${limit}&offset=${offset}`, {});
   }
 
   getpost(postId: Number) {
