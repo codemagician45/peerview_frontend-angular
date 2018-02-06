@@ -1,3 +1,5 @@
+$page-bg: url('../images/page-bg.jpg');
+
 html {
   overflow-x: hidden;
 }
@@ -241,7 +243,7 @@ body.fixed-header {
 .list-item li {
   padding: 5px 0 5px 15px;
   list-style-position: inside;
-  background: url(/assets/images/icon-arrow-right.png) no-repeat 0 9px;
+  background: url(/src/assets/images/icon-arrow-right.png) no-repeat 0 9px;
 }
 
 ol.list-item li {
@@ -260,7 +262,7 @@ ol.list-item li {
 }
 
 .back-menu a {
-  background: url(/assets/images/icon-back.png) no-repeat;
+  background: url(/src/assets/images/icon-back.png) no-repeat;
   padding: 0 0 0 25px;
 }
 
@@ -313,7 +315,7 @@ a.purple i {
   margin-bottom: 10px;
   border: solid 1px #d8d8d8;
   border-radius: 3px;
-  background: url(/assets/images/tabBG.png) repeat-x #e4e2e2;
+  background: url(/src/assets/images/tabBG.png) repeat-x #e4e2e2;
 }
 
 .page-tabs > li > a {
@@ -368,7 +370,7 @@ a.purple i {
 
 /* back to top css*/
 #backToTop {
-  background: url(/assets/images/back-to-top.png) no-repeat;
+  background: url(/src/assets/images/back-to-top.png) no-repeat;
   position: fixed;
   right: 35px;
   bottom: 35px;
@@ -470,7 +472,7 @@ a.purple i {
 }
 
 i.icon-success {
-  background: url(/assets/images/icon-sucess.png) no-repeat;
+  background: url(/src/assets/images/icon-sucess.png) no-repeat;
   width: 14px;
   height: 13px;
   display: inline-block;
@@ -486,7 +488,7 @@ i.icon-success {
   height: 19px;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/forum-sprite.png) no-repeat 3px -283px;
+  background: url(/src/assets/images/forum-sprite.png) no-repeat 3px -283px;
 }
 
 .icon-course {
@@ -494,7 +496,7 @@ i.icon-success {
   height: 19px;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/forum-sprite.png) no-repeat 0 -98px;
+  background: url(/src/assets/images/forum-sprite.png) no-repeat 0 -98px;
 }
 
 .icon-website {
@@ -502,7 +504,7 @@ i.icon-success {
   height: 19px;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/forum-sprite.png) no-repeat 0 -342px;
+  background: url(/src/assets/images/forum-sprite.png) no-repeat 0 -342px;
 }
 
 .icon-home {
@@ -510,7 +512,7 @@ i.icon-success {
   height: 19px;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/forum-sprite.png) no-repeat 0 0px;
+  background: url(/src/assets/images/forum-sprite.png) no-repeat 0 0px;
 }
 
 .icon-date {
@@ -518,14 +520,14 @@ i.icon-success {
   height: 19px;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/forum-sprite.png) no-repeat 0 -423px;
+  background: url(/src/assets/images/forum-sprite.png) no-repeat 0 -423px;
 }
 
 .icon-verified {
   width: 28px;
   height: 27px;
   display: inline-block;
-  background: url(/assets/images/icon-verified.jpg) no-repeat;
+  background: url(/src/assets/images/icon-verified.jpg) no-repeat;
   vertical-align: middle;
 }
 
@@ -736,7 +738,7 @@ i.icon-success {
 .nav-home i {
   width: 14px;
   height: 13px;
-  background: url(/assets/images/nav-icons.png) no-repeat 0 -5px;
+  background: url(/src/assets/images/nav-icons.png) no-repeat 0 -5px;
 }
 
 .nav-home.active i {
@@ -746,7 +748,7 @@ i.icon-success {
 .nav-forum i {
   width: 17px;
   height: 18px;
-  background: url(/assets/images/nav-icons.png) no-repeat -134px -3px;
+  background: url(/src/assets/images/nav-icons.png) no-repeat -134px -3px;
 }
 
 .nav-forum.active i {
@@ -756,7 +758,7 @@ i.icon-success {
 .nav-comm i {
   width: 16px;
   height: 14px;
-  background: url(/assets/images/nav-icons.png) no-repeat -268px -5px;
+  background: url(/src/assets/images/nav-icons.png) no-repeat -268px -5px;
 }
 
 .nav-comm.active i {
@@ -766,7 +768,7 @@ i.icon-success {
 .nav-profile i {
   width: 15px;
   height: 15px;
-  background: url(/assets/images/nav-icons.png) no-repeat -446px -4px;
+  background: url(/src/assets/images/nav-icons.png) no-repeat -446px -4px;
 }
 
 .nav-profile.active i {
@@ -776,7 +778,7 @@ i.icon-success {
 .nav-events i {
   width: 16px;
   height: 15px;
-  background: url(/assets/images/nav-icons.png) no-repeat -618px -3px;
+  background: url(/src/assets/images/nav-icons.png) no-repeat -618px -3px;
 }
 
 .nav-events.active i {
@@ -801,7 +803,7 @@ i.icon-success {
   width: 9px;
   height: 6px;
   display: inline-block;
-  background: url(/assets/images/header-caret.png) no-repeat;
+  background: url(/src/assets/images/header-caret.png) no-repeat;
   vertical-align: middle;
   margin-left: 5px;
 }
@@ -830,21 +832,21 @@ i.icon-success {
   width: 16px;
   height: 17px;
   display: inline-block;
-  background: url(/assets/images/header-icons.png) no-repeat 0 0;
+  background: url(/src/assets/images/header-icons.png) no-repeat 0 0;
 }
 
 .message i {
   width: 23px;
   height: 17px;
   display: inline-block;
-  background: url(/assets/images/header-icons.png) no-repeat -38px 0;
+  background: url(/src/assets/images/header-icons.png) no-repeat -38px 0;
 }
 
 .search i {
   width: 16px;
   height: 17px;
   display: inline-block;
-  background: url(/assets/images/header-icons.png) no-repeat -84px 0;
+  background: url(/src/assets/images/header-icons.png) no-repeat -84px 0;
 }
 
 .navbar-default .navbar-right > li > a {
@@ -1072,7 +1074,7 @@ i.icon-success {
   position: absolute;
   width: 16px;
   height: 14px;
-  background: url(/assets/images/arrow-top-icon.png) no-repeat;
+  background: url(/src/assets/images/arrow-top-icon.png) no-repeat;
   right: 20px;
   top: -12px;
 }
@@ -1157,7 +1159,7 @@ i.icon-success {
   height: 32px;
   cursor: pointer;
   border: 0 solid #000;
-  background: url(/assets/images/magnifier.png) 20px 6px no-repeat;
+  background: url(/src/assets/images/magnifier.png) 20px 6px no-repeat;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
@@ -1242,7 +1244,7 @@ i.icon-success {
 
 /*landing pages*/
 .page-bg {
-  background: url(/assets/images/page-bg.jpg) no-repeat;
+  background: $page-bg no-repeat;
   background-size: cover;
   position: absolute;
   left: 0;
@@ -1253,7 +1255,7 @@ i.icon-success {
 }
 
 .inner-header {
-  background: url(/assets/images/page-bg.jpg) no-repeat;
+  background: $page-bg no-repeat;
   background-size: cover;
   padding: 0 0 20px 0;
   margin: 0 0 30px 0;
@@ -1366,13 +1368,13 @@ i.icon-success {
 }
 
 .plan-table .cell-basic {
-  background: url(/assets/images/bg-basic.png) repeat;
+  background: url(/src/assets/images/bg-basic.png) repeat;
   border-top-color: #1a0e22;
   text-align: center;
 }
 
 .plan-table .cell-premium {
-  background: url(/assets/images/bg-premium.png) repeat;
+  background: url(/src/assets/images/bg-premium.png) repeat;
   border-top-color: #39164f;
   text-align: center;
 }
@@ -1457,7 +1459,7 @@ i.icon-success {
 }
 
 .form-bg {
-  background: url(/assets/images/bg-basic.png) repeat;
+  background: url(/src/assets/images/bg-basic.png) repeat;
 }
 
 .social-sign-block {
@@ -1477,10 +1479,10 @@ i.icon-success {
   cursor: pointer;
 }
 .social-sign-up a {
-  background: url(/assets/images/btn-social-signup.png) no-repeat 0 0;
+  background: url(/src/assets/images/btn-social-signup.png) no-repeat 0 0;
 }
 .social-sign-in a {
-  background: url(/assets/images/btn-social-signin.png) no-repeat 0 0;
+  background: url(/src/assets/images/btn-social-signin.png) no-repeat 0 0;
 }
 .social-sign-in a.fb, .social-sign-up a.fb {
   background-position: 0 0;
@@ -1612,12 +1614,12 @@ i.icon-success {
 }
 
 .board-block .expertise {
-  background: url(/assets/images/icon-add-exp.png) no-repeat 20px 14px !important;
+  background: url(/src/assets/images/icon-add-exp.png) no-repeat 20px 14px !important;
   float: left;
 }
 
 .board-block .institue {
-  background: url(/assets/images/icon-institue.png) no-repeat 20px 14px !important;
+  background: url(/src/assets/images/icon-institue.png) no-repeat 20px 14px !important;
 }
 
 .board-block .designation.datepicker {
@@ -1634,17 +1636,17 @@ i.icon-success {
 }
 
 .board-block .designation {
-  background: url(/assets/images/icon-note.png) no-repeat 5px 14px !important;
+  background: url(/src/assets/images/icon-note.png) no-repeat 5px 14px !important;
   padding-left: 30px;
 }
 
 .board-block .calender-date {
-  background: url(/assets/images/icon-calender.png) no-repeat 5px 14px !important;
+  background: url(/src/assets/images/icon-calender.png) no-repeat 5px 14px !important;
   padding-left: 25px;
 }
 
 .board-block .search-text {
-  background: url(/assets/images/icon-search.png) no-repeat 20px 14px !important;
+  background: url(/src/assets/images/icon-search.png) no-repeat 20px 14px !important;
   padding-left: 45px;
 }
 
@@ -1694,7 +1696,7 @@ i.icon-success {
 }
 
 .filter-field .arrow-down {
-  background: url(/assets/images/icon-arrow-down.png) no-repeat;
+  background: url(/src/assets/images/icon-arrow-down.png) no-repeat;
   width: 9px;
   height: 6px;
   position: absolute;
@@ -1703,7 +1705,7 @@ i.icon-success {
 }
 
 .filter-field.arrow-icon {
-  background: url(/assets/images/icon-arrow-down.png) no-repeat 98% center;
+  background: url(/src/assets/images/icon-arrow-down.png) no-repeat 98% center;
 }
 
 .board-tab-content {
@@ -1778,252 +1780,252 @@ i.icon-success {
 }
 
 .tile-view li.list-accounting {
-  background: url(/assets/images/interest/accounting.jpg) no-repeat;
+  background: url(/src/assets/images/interest/accounting.jpg) no-repeat;
 }
 
 .tile-view li.list-animal {
-  background: url(/assets/images/interest/animal.jpg) no-repeat;
+  background: url(/src/assets/images/interest/animal.jpg) no-repeat;
 }
 
 .tile-view li.list-architecture {
-  background: url(/assets/images/interest/architecture.jpg) no-repeat;
+  background: url(/src/assets/images/interest/architecture.jpg) no-repeat;
 }
 
 .tile-view li.list-books {
-  background: url(/assets/images/interest/books.jpg) no-repeat;
+  background: url(/src/assets/images/interest/books.jpg) no-repeat;
 }
 
 .tile-view li.list-business {
-  background: url(/assets/images/interest/business.jpg) no-repeat;
+  background: url(/src/assets/images/interest/business.jpg) no-repeat;
 }
 
 .tile-view li.list-sports {
-  background: url(/assets/images/interest/sports.jpg) no-repeat;
+  background: url(/src/assets/images/interest/sports.jpg) no-repeat;
 }
 
 .tile-view li.list-food {
-  background: url(/assets/images/interest/food.jpg) no-repeat;
+  background: url(/src/assets/images/interest/food.jpg) no-repeat;
 }
 
 .tile-view li.list-movies {
-  background: url(/assets/images/interest/movies.jpg) no-repeat;
+  background: url(/src/assets/images/interest/movies.jpg) no-repeat;
 }
 
 .tile-view li.list-music {
-  background: url(/assets/images/interest/music.jpg) no-repeat;
+  background: url(/src/assets/images/interest/music.jpg) no-repeat;
 }
 .tile-view li.list-nhl {
-  background: url(/assets/images/nhl-logo.jpg) no-repeat;
+  background: url(/src/assets/images/nhl-logo.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 
 }
 .tile-view .list-travel--holiday {
-  background: url(/assets/images/travel-holiday.jpg) no-repeat;
+  background: url(/src/assets/images/travel-holiday.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view .list-english-premier-league {
-  background: url(/assets/images/english-premier.jpg) no-repeat;
+  background: url(/src/assets/images/english-premier.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .tile-view li.list-nfl {
-  background: url(/assets/images/nfl-logo.jpg) no-repeat;
+  background: url(/src/assets/images/nfl-logo.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 
 .tile-view li.list-nba {
-  background: url(/assets/images/nba-logo.jpg) no-repeat;
+  background: url(/src/assets/images/nba-logo.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .tile-view li.list-mlb {
-  background: url(/assets/images/mlb.jpg) no-repeat;
+  background: url(/src/assets/images/mlb.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view .list-films {
-  background: url(/assets/images/films.jpg) no-repeat;
+  background: url(/src/assets/images/films.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view .list-religion {
-  background: url(/assets/images/religion.jpg) no-repeat;
+  background: url(/src/assets/images/religion.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view .list-aerospace {
-  background: url(/assets/images/aerospace.jpg) no-repeat;
+  background: url(/src/assets/images/aerospace.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view .list-celebrity {
-   background: url(/assets/images/celeb.jpg) no-repeat;
+   background: url(/src/assets/images/celeb.jpg) no-repeat;
    background-size: cover;
    background-position: center;
  }
 .tile-view .list-technology-brands {
-  background: url(/assets/images/tech-brands.jpg) no-repeat;
+  background: url(/src/assets/images/tech-brands.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 .tile-view li.list-fitness--health {
-  background: url(/assets/images/interest/fitness.jpg) no-repeat;
+  background: url(/src/assets/images/interest/fitness.jpg) no-repeat;
 }
 
 .tile-view li.list-photography {
-  background: url(/assets/images/interest/photography.jpg) no-repeat;
+  background: url(/src/assets/images/interest/photography.jpg) no-repeat;
 }
 
 .tile-view li.list-politics {
-  background: url(/assets/images/interest/politics.jpg) no-repeat;
+  background: url(/src/assets/images/interest/politics.jpg) no-repeat;
 }
 
 .tile-view li.list-philosophy {
-  background: url(/assets/images/interest/philosophy.jpg) no-repeat;
+  background: url(/src/assets/images/interest/philosophy.jpg) no-repeat;
 }
 
 .tile-view li.list-psychology {
-  background: url(/assets/images/interest/psychology.jpg) no-repeat;
+  background: url(/src/assets/images/interest/psychology.jpg) no-repeat;
 }
 
 .tile-view li.list-science {
-  background: url(/assets/images/interest/science.jpg) no-repeat;
+  background: url(/src/assets/images/interest/science.jpg) no-repeat;
 }
 
 .tile-view li.list-sex {
-  background: url(/assets/images/interest/sex.jpg) no-repeat;
+  background: url(/src/assets/images/interest/sex.jpg) no-repeat;
 }
 
 .tile-view li.list-stories {
-  background: url(/assets/images/interest/stories.jpg) no-repeat;
+  background: url(/src/assets/images/interest/stories.jpg) no-repeat;
 }
 
 .tile-view li.list-technology {
-  background: url(/assets/images/interest/technoloy.jpg) no-repeat;
+  background: url(/src/assets/images/interest/technoloy.jpg) no-repeat;
 }
 
 .tile-view li.list-technology-products {
-  background: url(/assets/images/interest/technoloy.jpg) no-repeat;
+  background: url(/src/assets/images/interest/technoloy.jpg) no-repeat;
 }
 
 
 .tile-view li.list-travelling {
-  background: url(/assets/images/interest/travelling.jpg) no-repeat;
+  background: url(/src/assets/images/interest/travelling.jpg) no-repeat;
 }
 
 .tile-view li.list-visiting--travelling {
-  background: url(/assets/images/interest/travelling.jpg) no-repeat;
+  background: url(/src/assets/images/interest/travelling.jpg) no-repeat;
 }
 
 .tile-view li.list-world-news {
-  background: url(/assets/images/interest/world-news.jpg) no-repeat;
+  background: url(/src/assets/images/interest/world-news.jpg) no-repeat;
 }
 
 .tile-view li.list-gaming {
-  background: url(/assets/images/interest/gaming.jpg) no-repeat;
+  background: url(/src/assets/images/interest/gaming.jpg) no-repeat;
 }
 
 .tile-view li.list-history {
-  background: url(/assets/images/interest/history.jpg) no-repeat;
+  background: url(/src/assets/images/interest/history.jpg) no-repeat;
 }
 
 .tile-view li.list-finance {
-  background: url(/assets/images/interest/finance.jpg) no-repeat;
+  background: url(/src/assets/images/interest/finance.jpg) no-repeat;
 }
 
 .tile-view li.list-marketing {
-  background: url(/assets/images/interest/marketing.jpg) no-repeat;
+  background: url(/src/assets/images/interest/marketing.jpg) no-repeat;
 }
 
 .tile-view li.list-law {
-  background: url(/assets/images/interest/law.jpg) no-repeat;
+  background: url(/src/assets/images/interest/law.jpg) no-repeat;
 }
 
 .tile-view li.list-literature {
-  background: url(/assets/images/interest/literature.jpg) no-repeat;
+  background: url(/src/assets/images/interest/literature.jpg) no-repeat;
 }
 
 .tile-view li.list-book-authors {
-  background: url(/assets/images/interest/literature.jpg) no-repeat;
+  background: url(/src/assets/images/interest/literature.jpg) no-repeat;
 }
 
 .tile-view li.list-motoring {
-  background: url(/assets/images/interest/motoring.jpg) no-repeat;
+  background: url(/src/assets/images/interest/motoring.jpg) no-repeat;
 }
 
 .tile-view li.list-automobiles {
-  background: url(/assets/images/interest/motoring.jpg) no-repeat;
+  background: url(/src/assets/images/interest/motoring.jpg) no-repeat;
 }
 
 .tile-view li.list-economics {
-  background: url(/assets/images/interest/economics.jpg) no-repeat;
+  background: url(/src/assets/images/interest/economics.jpg) no-repeat;
 }
 
 .tile-view li.list-engineering {
-  background: url(/assets/images/interest/engineering.jpg) no-repeat;
+  background: url(/src/assets/images/interest/engineering.jpg) no-repeat;
 }
 
 .tile-view li.list-fashion--style {
-  background: url(/assets/images/interest/fashion.jpg) no-repeat;
+  background: url(/src/assets/images/interest/fashion.jpg) no-repeat;
 }
 .tile-view li.list-fashion--beauty {
-  background: url(/assets/images/interest/fashion.jpg) no-repeat;
+  background: url(/src/assets/images/interest/fashion.jpg) no-repeat;
 }
 
 .tile-view li.list-cooking {
-  background: url(/assets/images/interest/cooking.jpg) no-repeat;
+  background: url(/src/assets/images/interest/cooking.jpg) no-repeat;
 }
 
 .tile-view li.list-fine-art {
-  background: url(/assets/images/interest/fine-art.jpg) no-repeat;
+  background: url(/src/assets/images/interest/fine-art.jpg) no-repeat;
 }
 
 .tile-view li.list-computer-programming {
-  background: url(/assets/images/interest/computer-programming.jpg) no-repeat;
+  background: url(/src/assets/images/interest/computer-programming.jpg) no-repeat;
 }
 
 .tile-view li.list-energy {
-  background: url(/assets/images/interest/energy.jpg) no-repeat;
+  background: url(/src/assets/images/interest/energy.jpg) no-repeat;
 }
 
 .tile-view li.list-education {
-  background: url(/assets/images/interest/education.jpg) no-repeat;
+  background: url(/src/assets/images/interest/education.jpg) no-repeat;
 }
 
 .tile-view li.list-journalism {
-  background: url(/assets/images/interest/journalism.jpg) no-repeat;
+  background: url(/src/assets/images/interest/journalism.jpg) no-repeat;
 }
 
 .tile-view li.list-tv-series {
-  background: url(/assets/images/tv-series.jpg) no-repeat;
+  background: url(/src/assets/images/tv-series.jpg) no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 .tile-view li.list-mathematics {
-  background: url(/assets/images/interest/mathematics.jpg) no-repeat;
+  background: url(/src/assets/images/interest/mathematics.jpg) no-repeat;
 }
 
 .tile-view li.list-entertainment {
-  background: url(/assets/images/interest/entertainment.jpg) no-repeat;
+  background: url(/src/assets/images/interest/entertainment.jpg) no-repeat;
 }
 
 .tile-view li.list-animation {
-  background: url(/assets/images/interest/animation.jpg) no-repeat;
+  background: url(/src/assets/images/interest/animation.jpg) no-repeat;
 }
 
 .tile-view li.list-comics {
-  background: url(/assets/images/interest/comics.jpg) no-repeat;
+  background: url(/src/assets/images/interest/comics.jpg) no-repeat;
 }
 
 .tile-view li.list-current-affairs-television-service {
-  background: url(/assets/images/interest/television.jpg) no-repeat;
+  background: url(/src/assets/images/interest/television.jpg) no-repeat;
 }
 .interest-checkbox {
   transition: opacity 0.3s;
@@ -2067,7 +2069,7 @@ i.icon-success {
 }
 
 .add-new {
-  background: url(/assets/images/icon-add.png) no-repeat;
+  background: url(/src/assets/images/icon-add.png) no-repeat;
   width: 24px;
   height: 23px;
   display: inline-block;
@@ -2075,7 +2077,7 @@ i.icon-success {
 }
 
 .icon-add-exp {
-  background: url(/assets/images/icon-add.png) no-repeat;
+  background: url(/src/assets/images/icon-add.png) no-repeat;
   display: inline-block;
   float: right;
   width: 40%;
@@ -2154,7 +2156,7 @@ i.icon-success {
   width: 15px;
   height: 16px;
   display: inline-block;
-  background: url(/assets/images/icon-delete.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-delete.png) no-repeat 0 0;
   vertical-align: middle;
   margin-left: 20px;
 }
@@ -2260,18 +2262,18 @@ i.icon-success {
 }
 
 .student-bg {
-  background: url(/assets/images/sel-student.jpg) no-repeat;
+  background: url(/src/assets/images/sel-student.jpg) no-repeat;
   height: 265px;
 }
 
 .exstudent-bg {
-  background: url(/assets/images/sel-exstudent.jpg) no-repeat;
+  background: url(/src/assets/images/sel-exstudent.jpg) no-repeat;
   height: 265px;
   display: block;
 }
 
 .business-org-bg {
-  background: url(/assets/images/sel-busines-org.jpg) no-repeat;
+  background: url(/src/assets/images/sel-busines-org.jpg) no-repeat;
   height: 265px;
   font-size: 30px;
   padding-top: 70px;
@@ -2816,7 +2818,7 @@ i.icon-success {
 }
 
 .member-count {
-  background: url(/assets/images/icon-user.png) no-repeat 0 2px;
+  background: url(/src/assets/images/icon-user.png) no-repeat 0 2px;
   padding: 0 0 0 17px;
   font-size: 11px;
   color: #898f9c;
@@ -2846,7 +2848,7 @@ i.icon-success {
 
 .help-content ul li {
   padding: 5px 0;
-  background: url(/assets/images/icon-question.png) no-repeat 0 7px;
+  background: url(/src/assets/images/icon-question.png) no-repeat 0 7px;
   padding: 5px 0 5px 25px;
 }
 
@@ -2887,7 +2889,7 @@ i.icon-success {
   color: #631990;
   margin: 0 0 5px 0;
   display: block;
-  background: url(/assets/images/icon-calender.png) no-repeat 0 3px;
+  background: url(/src/assets/images/icon-calender.png) no-repeat 0 3px;
   padding: 0 0 0 25px;
 }
 
@@ -3011,7 +3013,7 @@ i.icon-success {
 }
 
 .media .btn-play {
-  background: url(/assets/images/icon-play.png) no-repeat;
+  background: url(/src/assets/images/icon-play.png) no-repeat;
   width: 41px;
   height: 41px;
   position: absolute;
@@ -3053,7 +3055,7 @@ i.icon-success {
   display: inline-block;
   vertical-align: middle;
   margin-left: 8px;
-  background: url(/assets/images/sidebar-social.png) no-repeat 0 0;
+  background: url(/src/assets/images/sidebar-social.png) no-repeat 0 0;
 }
 
 .social-list a.fb {
@@ -3104,7 +3106,7 @@ i.icon-success {
   width: 28px;
   height: 26px;
   display: inline-block;
-  background: url(/assets/images/icon-follow.png) no-repeat;
+  background: url(/src/assets/images/icon-follow.png) no-repeat;
   display: inline-block;
   position: absolute;
   top: -3px;
@@ -3271,12 +3273,12 @@ i.icon-success {
   border: 0 none;
   width: 100%;
   display: block;
-  background: url(/assets/images/icon-add-sm.png) no-repeat 0 6px transparent;
+  background: url(/src/assets/images/icon-add-sm.png) no-repeat 0 6px transparent;
   padding-left: 15px;
 }
 
 .btn-add-new {
-  background: url(/assets/images/icon-add-sm.png) no-repeat 10px 10px;
+  background: url(/src/assets/images/icon-add-sm.png) no-repeat 10px 10px;
   padding: 5px 25px;
   border-top: solid 1px #e9eaed;
   display: block;
@@ -3379,7 +3381,7 @@ i.icon-success {
 
 .news-post .news-title {
   padding: 8px 15px 8px 50px;
-  background: #f4f4f4 url(/assets/images/icon-news.png) no-repeat 15px 6px;
+  background: #f4f4f4 url(/src/assets/images/icon-news.png) no-repeat 15px 6px;
   text-transform: uppercase;
   margin-bottom: 5px;
 }
@@ -3437,7 +3439,7 @@ i.icon-success {
 }
 
 .post-shared {
-  background: url(/assets/images/share-icons.png) no-repeat 0 -113px;
+  background: url(/src/assets/images/share-icons.png) no-repeat 0 -113px;
   padding: 1px 0 0 25px;
   color: #898f9c;
   font-size: 11px;
@@ -3604,22 +3606,22 @@ i.icon-success {
 }
 
 .post-share ul li.reply a {
-  background: url(/assets/images/share-icons.png) no-repeat 0 0;
+  background: url(/src/assets/images/share-icons.png) no-repeat 0 0;
   padding: 1px 0 2px 25px;
 }
 
 .post-share ul li.view {
-  background: url(/assets/images/share-icons.png) no-repeat 0 -54px;
+  background: url(/src/assets/images/share-icons.png) no-repeat 0 -54px;
   padding: 1px 0 0 25px;
 }
 
 .post-share ul li.share a {
-  background: url(/assets/images/share-icons.png) no-repeat 0 -113px;
+  background: url(/src/assets/images/share-icons.png) no-repeat 0 -113px;
   padding: 2px 0 2px 25px;
 }
 
 .post-share ul li.report a {
-  background: url(/assets/images/share-icons.png) no-repeat 0 -175px;
+  background: url(/src/assets/images/share-icons.png) no-repeat 0 -175px;
   padding: 1px 0 0 20px;
 }
 
@@ -3630,7 +3632,7 @@ i.icon-success {
 .post-share .star {
   width: 14px;
   height: 13px;
-  background: url(/assets/images/star-icon-sm.png) no-repeat 0 -22px;
+  background: url(/src/assets/images/star-icon-sm.png) no-repeat 0 -22px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -3757,7 +3759,7 @@ i.icon-success {
 .link-view {
   float: right;
   font-size: 12px;
-  background: url(/assets/images/icon-arrow-right.png) no-repeat right center;
+  background: url(/src/assets/images/icon-arrow-right.png) no-repeat right center;
   padding: 0 10px 0 0;
   margin: 5px 0 0 0;
 }
@@ -3796,7 +3798,7 @@ i.icon-success {
   width: 14px;
   height: 4px;
   display: inline-block;
-  background: url(/assets/images/icon-more.png) no-repeat;
+  background: url(/src/assets/images/icon-more.png) no-repeat;
   cursor: pointer;
 }
 
@@ -3821,7 +3823,7 @@ i.icon-success {
 .rating .star {
   width: 31px;
   height: 26px;
-  background: url(/assets/images/star-icon-md.png) no-repeat 0 -47px;
+  background: url(/src/assets/images/star-icon-md.png) no-repeat 0 -47px;
   display: inline-block;
   vertical-align: bottom;
   vertical-align: middle;
@@ -3842,7 +3844,7 @@ i.icon-success {
   width: 21px;
   height: 21px;
   display: block;
-  background: url(/assets/images/icon-close.png) no-repeat;
+  background: url(/src/assets/images/icon-close.png) no-repeat;
   float: right;
   margin: -20px -40px 0 0;
 }
@@ -3901,7 +3903,7 @@ i.icon-success {
 }
 
 .community-page {
-  background: url(/assets/images/community-banner.jpg) no-repeat;
+  background: url(/src/assets/images/community-banner.jpg) no-repeat;
   background-size: cover;
   text-align: center;
   padding: 30px 0;
@@ -4040,7 +4042,7 @@ i.icon-success {
   width: 9px;
   height: 6px;
   display: inline-block;
-  background: url(/assets/images/icon-arrow-down.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-arrow-down.png) no-repeat 0 0;
   float: right;
   margin: 5px 0 0 0;
   display: none;
@@ -4167,7 +4169,7 @@ i.icon-success {
 }
 
 .active-user {
-  background: url(/assets/images/icon-user-fill.png) no-repeat 0 3px;
+  background: url(/src/assets/images/icon-user-fill.png) no-repeat 0 3px;
   padding: 0 0 0 17px;
   color: #631a90;
   float: right;
@@ -4200,7 +4202,7 @@ i.icon-success {
   margin: 0 5px 0 0;
   display: inline-block;
   vertical-align: middle;
-  background: url(/assets/images/campus-sprite.png) no-repeat 0 0;
+  background: url(/src/assets/images/campus-sprite.png) no-repeat 0 0;
 }
 
 .campus-menu a i.icon-all-students {
@@ -4237,7 +4239,7 @@ i.icon-success {
 
 /*club page css*/
 .club {
-  background: url(/assets/images/club-bg.jpg) no-repeat;
+  background: url(/src/assets/images/club-bg.jpg) no-repeat;
   min-height: 600px;
   text-align: center;
   color: #fff;
@@ -4257,7 +4259,7 @@ i.icon-success {
 }
 
 .my-club {
-  background: url(/assets/images/my-club-bg.jpg) no-repeat 0 0;
+  background: url(/src/assets/images/my-club-bg.jpg) no-repeat 0 0;
   min-height: 600px;
   text-align: center;
 }
@@ -4380,7 +4382,7 @@ i.icon-success {
 }
 
 .question-title {
-  background: url(/assets/images/icon-help.png) no-repeat 0 1px;
+  background: url(/src/assets/images/icon-help.png) no-repeat 0 1px;
   padding: 0 0 0 25px;
   font-size: 16px;
   font-family: 'Conv_MavenPro-Bold';
@@ -4443,7 +4445,7 @@ i.icon-success {
   width: 17px;
   height: 18px;
   display: inline-block;
-  background: url(/assets/images/icon-arrow-input.png) no-repeat;
+  background: url(/src/assets/images/icon-arrow-input.png) no-repeat;
   position: absolute;
   left: -14px;
   top: 20px;
@@ -4456,7 +4458,7 @@ i.icon-success {
   position: absolute;
   right: 20px;
   top: 15px;
-  background: url(/assets/images/icon-publish.png) no-repeat;
+  background: url(/src/assets/images/icon-publish.png) no-repeat;
 }
 
 .by-user-text p {
@@ -4563,14 +4565,14 @@ i.icon-success {
 }
 
 .edit-btn {
-  background-image: url(/assets/images/icon-pencil.png);
+  background-image: url(/src/assets/images/icon-pencil.png);
   background-repeat: no-repeat;
   background-position: 10px 8px;
   padding-left: 35px;
 }
 
 .edit-btn:hover, .edit-btn:focus {
-  background-image: url(/assets/images/icon-pencil.png);
+  background-image: url(/src/assets/images/icon-pencil.png);
   background-repeat: no-repeat;
   background-position: 10px -36px;
   background-color: #631990;
@@ -4595,7 +4597,7 @@ i.icon-success {
 
 .btn-add-feed {
   border: solid 1px #631990;
-  background: url(/assets/images/icon-add-btn.png) no-repeat 93% center;
+  background: url(/src/assets/images/icon-add-btn.png) no-repeat 93% center;
   display: block;
   color: #631990;
   font-size: 16px;
@@ -4630,7 +4632,7 @@ i.icon-success {
 }
 
 .link-answer {
-  background: url(/assets/images/icon-pencil.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-pencil.png) no-repeat 0 0;
   padding: 1px 0 2px 25px;
 }
 
@@ -4750,7 +4752,7 @@ i.icon-success {
   width: 16px;
   height: 16px;
   display: inline-block;
-  background: url(/assets/images/icon-pencil.png) no-repeat 0 -44px;
+  background: url(/src/assets/images/icon-pencil.png) no-repeat 0 -44px;
   margin: 70px 0 10px;
 }
 
@@ -4843,7 +4845,7 @@ i.icon-success {
 }
 
 .event-title-tag {
-  background: url(/assets/images/events-title-bg.png) no-repeat;
+  background: url(/src/assets/images/events-title-bg.png) no-repeat;
   width: 82px;
   height: 26px;
   display: inline-block;
@@ -4852,7 +4854,7 @@ i.icon-success {
 }
 
 .event-category {
-  background: url(/assets/images/arrow-right.png) no-repeat right center;
+  background: url(/src/assets/images/arrow-right.png) no-repeat right center;
   padding: 0 30px 0 0;
   margin: 0 10px 0 0;
 }
@@ -4860,7 +4862,7 @@ i.icon-success {
 .event-more-info {
   display: inline-block;
   margin: 5px 0 0 0;
-  background: url(/assets/images/arrow-right.png) no-repeat right center;
+  background: url(/src/assets/images/arrow-right.png) no-repeat right center;
   padding: 0 30px 0 0;
 }
 
@@ -5007,7 +5009,7 @@ i.icon-success {
   position: absolute;
   right: -21px;
   top: 0px;
-  background: url(/assets/images/sidebar-active-arrow.png) no-repeat;
+  background: url(/src/assets/images/sidebar-active-arrow.png) no-repeat;
 }
 
 .fixed-sidebar .link-text {
@@ -5049,7 +5051,7 @@ i.icon-success {
 }
 
 .input-caret.grey-caret {
-  background: url(/assets/images/caret-grey.png) no-repeat !important;
+  background: url(/src/assets/images/caret-grey.png) no-repeat !important;
   left: -16px !important;
   top: 30px !important;
   z-index: 1;
@@ -5408,7 +5410,7 @@ i.icon-success {
 
 /*home page css*/
 .home-bg {
-  background: url(/assets/images/home-bg.jpg) no-repeat;
+  background: url(/src/assets/images/home-bg.jpg) no-repeat;
   height: 700px;
   background-size: cover;
 }
@@ -5439,7 +5441,7 @@ i.icon-success {
 }
 
 .btn-learn-more {
-  background: url(/assets/images/learn-btn-bg.png) repeat;
+  background: url(/src/assets/images/learn-btn-bg.png) repeat;
   border: solid 1px #7b7371;
   border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -5457,7 +5459,7 @@ i.icon-success {
 .arrow-go-down {
   text-align: center;
   margin-top: 30px;
-  background: url(/assets/images/icon-go-down.png) no-repeat;
+  background: url(/src/assets/images/icon-go-down.png) no-repeat;
   width: 34px;
   height: 18px;
   display: inline-block;
@@ -5491,7 +5493,7 @@ i.icon-success {
 
 /*about page css*/
 .about-bg {
-  background: url(/assets/images/about-bg.jpg) no-repeat;
+  background: url(/src/assets/images/about-bg.jpg) no-repeat;
   height: 635px;
   background-size: cover;
 }
@@ -5516,7 +5518,7 @@ i.icon-success {
 }
 
 .whats-block {
-  background: url(/assets/images/whats-peersview.jpg) no-repeat 0 0px;
+  background: url(/src/assets/images/whats-peersview.jpg) no-repeat 0 0px;
   background-size: cover;
   min-height: 746px;
 }
@@ -5571,7 +5573,7 @@ h1.whats-title {
 }
 
 .team-block {
-  background: url(/assets/images/team-bg.png) no-repeat center 0;
+  background: url(/src/assets/images/team-bg.png) no-repeat center 0;
   padding: 130px 0;
 }
 
@@ -5742,17 +5744,17 @@ h1.whats-title {
 }
 
 .field-calender {
-  background: url(/assets/images/icon-calender.png) no-repeat 10px 13px !important;
+  background: url(/src/assets/images/icon-calender.png) no-repeat 10px 13px !important;
   text-indent: 20px;
 }
 
 .field-time {
-  background: url(/assets/images/icon-time.png) no-repeat 10px 13px !important;
+  background: url(/src/assets/images/icon-time.png) no-repeat 10px 13px !important;
   text-indent: 20px;
 }
 
 .field-loc {
-  background: url(/assets/images/icon-loc.png) no-repeat 10px 13px !important;
+  background: url(/src/assets/images/icon-loc.png) no-repeat 10px 13px !important;
   text-indent: 20px;
 }
 
@@ -5805,7 +5807,7 @@ h1.whats-title {
   height: 38px;
   border: 1px solid #d29ff1;
   width: 260px;
-  background: url(/assets/images/icon-search.png) no-repeat 10px 10px #fff !important;
+  background: url(/src/assets/images/icon-search.png) no-repeat 10px 10px #fff !important;
   padding-left: 35px;
 }
 
@@ -5842,7 +5844,7 @@ h1.whats-title {
 }
 
 .select-event-date .form-control {
-  background: url(/assets/images/icon-calender.png) no-repeat 10px 10px transparent !important;
+  background: url(/src/assets/images/icon-calender.png) no-repeat 10px 10px transparent !important;
   text-transform: uppercase;
   padding: 0px 0px 0px 35px;
   border: 0 none;
@@ -5911,7 +5913,7 @@ h1.whats-title {
 }
 
 .event-det-venue {
-  background: url(/assets/images/icon-loc.png) no-repeat 0 center;
+  background: url(/src/assets/images/icon-loc.png) no-repeat 0 center;
   color: #989898;
   font-size: 14px;
   margin-right: 10px;
@@ -5919,14 +5921,14 @@ h1.whats-title {
 }
 
 .event-det-date {
-  background: url(/assets/images/icon-calender.png) no-repeat 0 center;
+  background: url(/src/assets/images/icon-calender.png) no-repeat 0 center;
   color: #989898;
   font-size: 14px;
   margin-right: 10px;
 }
 
 .event-det-time {
-  background: url(/assets/images/icon-time.png) no-repeat 0 center;
+  background: url(/src/assets/images/icon-time.png) no-repeat 0 center;
   color: #989898;
   font-size: 14px;
   text-transform: uppercase;
@@ -6024,7 +6026,7 @@ h1.whats-title {
   position: absolute;
   right: -157px;
   top: -1px;
-  background: url(/assets/images/opp-bg.png) no-repeat;
+  background: url(/src/assets/images/opp-bg.png) no-repeat;
   width: 157px;
   height: 224px;
   color: #fff;
@@ -6058,7 +6060,7 @@ h1.whats-title {
 }
 
 .slider-split .opp-news {
-  background: url(/assets/images/opp-bg-gn.png) no-repeat;
+  background: url(/src/assets/images/opp-bg-gn.png) no-repeat;
 }
 
 .slider-split .event-detail-loc {
@@ -6148,7 +6150,7 @@ h1.whats-title {
   width: 11px;
   height: 7px;
   display: block;
-  background: url(/assets/images/qty-arrow.png) no-repeat center 0;
+  background: url(/src/assets/images/qty-arrow.png) no-repeat center 0;
   text-indent: -9999em;
 }
 
@@ -6197,7 +6199,7 @@ h1.whats-title {
 }
 
 .top-offers {
-  background: url(/assets/images/top-offers-bg.jpg) repeat-x left top #f4f3ef;
+  background: url(/src/assets/images/top-offers-bg.jpg) repeat-x left top #f4f3ef;
   border: solid 1px #ebebeb;
   padding: 10px;
   font-size: 18px;
@@ -6219,7 +6221,7 @@ h1.whats-title {
 }
 
 .offer-infographic {
-  background: url(/assets/images/offer-graphic.jpg) no-repeat;
+  background: url(/src/assets/images/offer-graphic.jpg) no-repeat;
   position: absolute;
   right: 0px;
   bottom: 0px;
@@ -6252,12 +6254,12 @@ h1.whats-title {
 }
 
 .deal-loc {
-  background: url(/assets/images/icon-loc.png) no-repeat;
+  background: url(/src/assets/images/icon-loc.png) no-repeat;
   padding: 0 0 0 25px;
 }
 
 .deal-phone {
-  background: url(/assets/images/icon-phone.png) no-repeat;
+  background: url(/src/assets/images/icon-phone.png) no-repeat;
   padding: 0 0 0 25px;
 }
 
@@ -6345,7 +6347,7 @@ h1.whats-title {
 }
 
 .events-banner {
-  background: url(/assets/images/events-banner-new.jpg) no-repeat left bottom;
+  background: url(/src/assets/images/events-banner-new.jpg) no-repeat left bottom;
   background-size: cover;
   padding: 30px;
   font-size: 30px;
@@ -6517,7 +6519,7 @@ h1.whats-title {
   width: 30px;
   height: 30px;
   display: inline-block;
-  background: url(/assets/images/img-plus-icon.png) no-repeat 0 0;
+  background: url(/src/assets/images/img-plus-icon.png) no-repeat 0 0;
   position: relative;
   top: 18px;
 }
@@ -6557,12 +6559,12 @@ h1.whats-title {
 }
 
 .item-loc {
-  background: url(/assets/images/icon-loc.png) no-repeat;
+  background: url(/src/assets/images/icon-loc.png) no-repeat;
   padding: 0 0 0 20px;
 }
 
 .item-time {
-  background: url(/assets/images/icon-time.png) no-repeat;
+  background: url(/src/assets/images/icon-time.png) no-repeat;
   padding: 0 0 0 20px;
   margin-left: 20px;
 }
@@ -6614,7 +6616,7 @@ h1.whats-title {
   width: 25px;
   height: 24px;
   position: absolute;
-  background: url(/assets/images/icon-enlarge.png) no-repeat;
+  background: url(/src/assets/images/icon-enlarge.png) no-repeat;
   left: 55px;
   top: 65px;
   cursor: pointer;
@@ -6688,7 +6690,7 @@ h1.whats-title {
 }
 
 .user-rating-val {
-  background: url(/assets/images/rating-med.png) no-repeat;
+  background: url(/src/assets/images/rating-med.png) no-repeat;
   width: 72px;
   height: 71px;
   display: inline-block;
@@ -6721,7 +6723,7 @@ h1.whats-title {
   width: 46px;
   height: 32px;
   display: inline-block;
-  background: url(/assets/images/icon-more-dropdown.png) no-repeat;
+  background: url(/src/assets/images/icon-more-dropdown.png) no-repeat;
   vertical-align: middle;
 }
 
@@ -6768,7 +6770,7 @@ h1.whats-title {
 .news-block {
   color: #631990;
   text-align: center;
-  padding: 40px 0 40px 0; /*background:url(/assets/images/news-infographic.png) no-repeat center bottom #fff;*/
+  padding: 40px 0 40px 0; /*background:url(/src/assets/images/news-infographic.png) no-repeat center bottom #fff;*/
 }
 
 .news-block .hgroup {
@@ -6804,14 +6806,14 @@ h1.whats-title {
   width: 107px;
   height: 92px;
   display: inline-block;
-  background: url(/assets/images/icon-comment.png) no-repeat;
+  background: url(/src/assets/images/icon-comment.png) no-repeat;
   vertical-align: top;
   font-style: normal;
   color: transparent;
 }
 
 .forum-block {
-  background: url(/assets/images/forum-block-bg.jpg) no-repeat;
+  background: url(/src/assets/images/forum-block-bg.jpg) no-repeat;
   background-size: cover;
   color: #fff;
   height: 600px;
@@ -6832,7 +6834,7 @@ h1.whats-title {
   width: 65px;
   height: 65px;
   display: inline-block;
-  background: url(/assets/images/forum-list.png) no-repeat 0 0;
+  background: url(/src/assets/images/forum-list.png) no-repeat 0 0;
   vertical-align: middle;
 }
 
@@ -6878,11 +6880,11 @@ h1.whats-title {
   display: inline-block;
   vertical-align: middle;
   margin: 0 10px 0 0;
-  background: url(/assets/images/icon-watch.png) no-repeat;
+  background: url(/src/assets/images/icon-watch.png) no-repeat;
 }
 
 .peers-header {
-  background: url(/assets/images/peers-header-bg.jpg) no-repeat 0 0;
+  background: url(/src/assets/images/peers-header-bg.jpg) no-repeat 0 0;
   background-size: cover;
   color: #fff;
   text-align: center;
@@ -6940,7 +6942,7 @@ h1.whats-title {
 }
 
 .events-block {
-  background: url(/assets/images/events-block-bg.jpg) no-repeat 0 -100px #000;
+  background: url(/src/assets/images/events-block-bg.jpg) no-repeat 0 -100px #000;
   background-size: cover;
   color: #fff;
   height: 622px;
@@ -6977,7 +6979,7 @@ h1.whats-title {
 
 .list-info > li {
   padding: 20px;
-  background: url(/assets/images/list-bg.png) repeat;
+  background: url(/src/assets/images/list-bg.png) repeat;
   border-radius: 3px;
   -webkit-border-radius: 3px;
   margin: 10px;
@@ -7002,7 +7004,7 @@ h1.whats-title {
 }
 
 .academic-block {
-  background: url(/assets/images/academic-bg.jpg) no-repeat 0 150px;
+  background: url(/src/assets/images/academic-bg.jpg) no-repeat 0 150px;
   min-height: 500px;
   padding: 50px 0;
 }
@@ -7042,13 +7044,13 @@ h1.whats-title {
 }
 
 .inline-widget h4.title-toggle {
-  background: url(/assets/images/icon-plus.png) no-repeat 0 2px;
+  background: url(/src/assets/images/icon-plus.png) no-repeat 0 2px;
   padding: 0 0 0 30px;
   cursor: pointer;
 }
 
 .inline-widget h4.title-toggle.open {
-  background: url(/assets/images/icon-minus.png) no-repeat 0 2px;
+  background: url(/src/assets/images/icon-minus.png) no-repeat 0 2px;
 }
 
 .inline-widget p {
@@ -7074,7 +7076,7 @@ h1.whats-title {
   width: 59px;
   height: 59px;
   display: inline-block;
-  background: url(/assets/images/peersview-brand.png) no-repeat;
+  background: url(/src/assets/images/peersview-brand.png) no-repeat;
   position: absolute;
   left: 48%;
   top: -30px;
@@ -7192,13 +7194,13 @@ h1.whats-title {
 
 .faq-list li h3 {
   font-size: 18px;
-  background: url(/assets/images/icon-plus.png) no-repeat 0 2px;
+  background: url(/src/assets/images/icon-plus.png) no-repeat 0 2px;
   padding: 0 0 0 30px;
   cursor: pointer;
 }
 
 .faq-list li h3.open {
-  background: url(/assets/images/icon-minus.png) no-repeat 0 2px;
+  background: url(/src/assets/images/icon-minus.png) no-repeat 0 2px;
 }
 
 .faq-list li .accordion-description {
@@ -7449,7 +7451,7 @@ h1.whats-title {
   height: 23px;
   display: inline-block;
   float: right;
-  background: url(/assets/images/icon-new-msg.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-new-msg.png) no-repeat 0 0;
   margin: 0 10px 0 0;
 }
 
@@ -7519,7 +7521,7 @@ h1.whats-title {
 }
 
 .icon-lock {
-  background: url(/assets/images/icon-lock.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-lock.png) no-repeat 0 0;
   width: 10px;
   height: 12px;
   display: inline-block;
@@ -7621,7 +7623,7 @@ h1.whats-title {
 }
 
 .job-list li {
-  background: url(/assets/images/icon-arrow-right.png) no-repeat 0 9px;
+  background: url(/src/assets/images/icon-arrow-right.png) no-repeat 0 9px;
   padding: 5px 0 5px 20px;
 }
 
@@ -7653,7 +7655,7 @@ h1.whats-title {
 .helpful-yes, .helpful-no {
   width: 41px;
   height: 30px;
-  background: url(/assets/images/icon-helpful.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-helpful.png) no-repeat 0 0;
   display: inline-block;
   vertical-align: middle;
   margin: 0 5px 0 0;
@@ -7711,19 +7713,19 @@ h1.whats-title {
 }
 
 .icon-cn-user {
-  background: url(/assets/images/contact-icon.png) no-repeat 0 7px;
+  background: url(/src/assets/images/contact-icon.png) no-repeat 0 7px;
 }
 
 .icon-cn-email {
-  background: url(/assets/images/contact-icon.png) no-repeat 0 -57px;
+  background: url(/src/assets/images/contact-icon.png) no-repeat 0 -57px;
 }
 
 .icon-cn-phone {
-  background: url(/assets/images/contact-icon.png) no-repeat 0 -115px;
+  background: url(/src/assets/images/contact-icon.png) no-repeat 0 -115px;
 }
 
 .icon-cn-globe {
-  background: url(/assets/images/contact-icon.png) no-repeat 0 -188px;
+  background: url(/src/assets/images/contact-icon.png) no-repeat 0 -188px;
 }
 
 /*contact page css*/
@@ -7780,7 +7782,7 @@ footer ul li a:hover, footer ul li a:focus {
   height: 36px;
   display: inline-block;
   margin-right: 12px;
-  background: url(/assets/images/icon-social.png) no-repeat 0 0;
+  background: url(/src/assets/images/icon-social.png) no-repeat 0 0;
 }
 
 .social-icons a.fb {
@@ -8103,7 +8105,7 @@ body._bg_gray {
     width: 8px;
     height: 12px;
     display: inline-block;
-    background: url(/assets/images/slider-arrow-sm.png) no-repeat;
+    background: url(/src/assets/images/slider-arrow-sm.png) no-repeat;
     text-indent: -99999em;
     top: 12px;
     right: 0px;
@@ -8114,7 +8116,7 @@ body._bg_gray {
     width: 8px;
     height: 12px;
     display: inline-block;
-    background: url(/assets/images/slider-arrow-sm.png) no-repeat;
+    background: url(/src/assets/images/slider-arrow-sm.png) no-repeat;
     text-indent: -99999em;
     top: 12px;
     left: 0px;

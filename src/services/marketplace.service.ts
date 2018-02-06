@@ -1,16 +1,22 @@
-import {Injectable} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
 
 @Injectable()
 export class MarketPlaceService {
-    constructor(private http:HttpClient){
-    }
+  constructor (private http: HttpClient) {}
 
-    getmarketplace(campusId: Number) {
-        return this.http.get(`campus/${campusId}/marketplace`)
-    }
+  public getmarketplace (campusId: Number): Observable<Object> {
+    return this.http.get(`campus/${campusId}/marketplace`);
+  }
 
-    getcampusmarketplace(marketpaceId: Number) {
-        return this.http.get(`campus/marketplace/${marketpaceId}`)
-    }
+  public getcampusmarketplace (marketpaceId: Number): Observable<Object> {
+    return this.http.get(`campus/marketplace/${marketpaceId}`);
+  }
 }

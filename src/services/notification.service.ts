@@ -1,18 +1,22 @@
-import {Injectable} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-
-
-
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
 
 @Injectable()
 export class NotificationService {
-    constructor(private http: HttpClient) {
+  constructor (private http: HttpClient) {}
 
-    }
-    getNotifications(start: number, size: number) {
-       return this.http.get(`notifications/${start}/${size}`);
-    }
-    getMessages(start: number, size: number) {
-        return this.http.get(`message/headers/${start}/${size}`);
-     }
+  public getNotifications (start: number, size: number): Observable<Object> {
+    return this.http.get(`notifications/${start}/${size}`);
+  }
+
+  public getMessages (start: number, size: number): Observable<Object> {
+    return this.http.get(`message/headers/${start}/${size}`);
+  }
 }

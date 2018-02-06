@@ -73,8 +73,12 @@ export class AccountSettingService {
     return this.http.post(`user/${followuserid}/follow`, {});
   }
 
-  getUserInfo(userid: number){
+  getUserInfo(userid: number) {
     return this.http.get(`user/${userid}/info`, {});
+  }
+
+  getUserProfile(): Observable<Object> {
+    return this.http.get(`user/profile`);
   }
 
   updateuser(user: any) {

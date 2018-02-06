@@ -16,7 +16,7 @@ export class AppNavBarComponent implements OnInit {
   searchOpen       = false;
   messagesOpen     = false;
   notificationOpen = false;
-  userData         = null;
+  private _user: any;
 
   constructor(
     private _userService: UserService,
@@ -26,7 +26,7 @@ export class AppNavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUserInfo();
+    this.getUserProfile();
     this._notificationservice.getNotifications(1, 5).subscribe(resp => {
       if (resp["error"] === false) {
         this.notifications = resp["Notifications"];
@@ -55,15 +55,14 @@ export class AppNavBarComponent implements OnInit {
     this[variable]        = !oldCondition;
   }
 
-  getUserInfo() {
+  private getUserProfile(): void {
     let user     = localStorage.getItem("user");
     let userInfo = JSON.parse(user);
     let userId   = userInfo.id;
-    this._accountsettingservice.getUserInfo(userId).subscribe(response => {
-      this.userData    = response["user"];
-      if (response["error"] === false) {
-        alert(response["Message"]);
-      }
+    this._accountsettingservice.getUserProfile()
+    .subscribe((response: any) => {
+      this._user = response.user;
+      console.log(this._user)
     }, error => {
       console.log(error);
     })

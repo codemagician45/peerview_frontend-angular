@@ -1,106 +1,121 @@
-import {Injectable} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-
-import {Observable} from "rxjs/Observable";
-import { LikeCommunityPost, Community, ReplyCommunityPost, ReportCommunityPost, RateCommunityPost, CommunityPoll, CommunityPost, CommunityCareer, CommunityBrainstormingMap } from "../models/models";
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  LikeCommunityPost,
+  Community,
+  ReplyCommunityPost,
+  ReportCommunityPost,
+  RateCommunityPost,
+  CommunityPoll,
+  CommunityPost,
+  CommunityCareer,
+  CommunityBrainstormingMap
+} from '../models/models';
 
 @Injectable()
 export class CommunityService {
-    constructor(private http: HttpClient) {}
+  constructor (private http: HttpClient) {}
 
-    getjob(id: Number) {
-        return this.http.get(`job/${id}`);
-    }
+  public getjob (id: Number): Observable<Object> {
+    return this.http.get(`job/${id}`);
+  }
 
-    getjobs(campusId: Number=1) {
-        return this.http.get(`campus/${campusId}/jobs`)
-    }
-    createsellerad(campusId:number, item: any) {
-        return this.http.post(`campus/${campusId}/marketplace`, item);
-    }
+  public getjobs (campusId: Number = 1): Observable<Object> {
+    return this.http.get(`campus/${campusId}/jobs`);
+  }
 
-    getuserclubs(campusId: Number = 1) {
-        return this.http.get(`campus/${campusId}/society-clubs?isMyClub=true`);
-    }
+  public createsellerad (campusId: number, item: any): Observable<Object> {
+    return this.http.post(`campus/${campusId}/marketplace`, item);
+  }
 
-    getsocietyclubs(instituteId: Number=1) {
-        return this.http.get(`campus/${instituteId}/society-clubs`);
-    }
+  public getuserclubs (campusId: Number = 1): Observable<Object> {
+    return this.http.get(`campus/${campusId}/society-clubs?isMyClub=true`);
+  }
 
+  public getsocietyclubs (instituteId: Number = 1): Observable<Object> {
+    return this.http.get(`campus/${instituteId}/society-clubs`);
+  }
 
-    followclub(clubid: Number) {
-        return this.http.post(`socitiesclubs/user/follow/`, {"socitiesclubsId": clubid});
-    }
+  public followclub (clubid: Number): Observable<Object> {
+    return this.http.post(`socitiesclubs/user/follow/`, { 'socitiesclubsId': clubid });
+  }
 
-    unfollowclub(clubid: Number) {
-        return this.http.post(`socitiesclubs/user/unfollow/`, {"socitiesclubsId": clubid});
-    }
+  public unfollowclub (clubid: Number): Observable<Object> {
+    return this.http.post(`socitiesclubs/user/unfollow/`, { 'socitiesclubsId': clubid });
+  }
 
-    creategroup(group: any) {
-        group.instituteId = 1;
-        return this.http.post("groups", group);
-    }
+  public creategroup (group: any): Observable<Object> {
+    group.instituteId = 1;
+    return this.http.post('groups', group);
+  }
 
-    createcommunity(community: Community){
-        return this.http.post(`community`, community)
-    }
+  public createcommunity (community: Community): Observable<Object> {
+    return this.http.post('community', community);
+  }
 
-    likepost(postid: number, like:LikeCommunityPost) {
-        return this.http.post(`community/post/${postid}/like`, like);
-     }
-    
-      replypost(postId:number, reply:ReplyCommunityPost) {
-        return this.http.post(`community/post/${postId}/reply`, reply);
-      }
-    
-     reportpost(postId:number, report:ReportCommunityPost) {
-        return this.http.post(`community/post/${postId}/report`, report);
-      }
-    
-      ratepost(postId:number, rate:RateCommunityPost) {
-        return this.http.post(`community/post/${postId}/rating`, rate);
-      }
-    
-      postviewpost(postId:number) {
-        return this.http.post(`community/post/${postId}/pageview`, {});
-      }
- 
-      createpoll(communityId:number, poll: CommunityPoll){
-        return this.http.post(`community/${communityId}/post/poll`, poll);
-      }
- 
-      createpost(communityId:number, post:CommunityPost){
-        return this.http.post(`community/${communityId}/post`, post);
-      }
+  public likepost (postid: number, like: LikeCommunityPost): Observable<Object> {
+    return this.http.post(`community/post/${postid}/like`, like);
+  }
 
-      //TO-DO No difference in endpoint or method description for private post
+  public replypost (postId: number, reply: ReplyCommunityPost): Observable<Object> {
+    return this.http.post(`community/post/${postId}/reply`, reply);
+  }
 
-      createcareer(career: CommunityCareer){
-            return this.http.post("community/post/career", career);
-      }
+  public reportpost (postId: number, report: ReportCommunityPost): Observable<Object> {
+    return this.http.post(`community/post/${postId}/report`, report);
+  }
 
-      createbrainstormingmap(communityId:number, map: CommunityBrainstormingMap){
-          return this.http.post(`community/${communityId}/post/brainstorming`, map);
-      }
+  public ratepost (postId: number, rate: RateCommunityPost): Observable<Object> {
+    return this.http.post(`community/post/${postId}/rating`, rate);
+  }
 
-      //TO-DO use params for query string
-      getposts(communityId:number, userStudyLevelId:number, courseId:number) {
-        return this.http.get(`community/${communityId}/posts`);
-      }
+  public postviewpost (postId: number): Observable<Object> {
+    return this.http.post(`community/post/${postId}/pageview`, {});
+  }
 
-      getpost(postId:number) {
-        return this.http.get(`community/post/${postId}`);
-      }
+  public createpoll (communityId: number, poll: CommunityPoll): Observable<Object> {
+    return this.http.post(`community/${communityId}/post/poll`, poll);
+  }
 
-      getprivateposts(communityId:number) {
-        return this.http.get(`community/${communityId}/posts?isprivate=true`);
-      }
+  public createpost (communityId: number, post: CommunityPost): Observable<Object> {
+    return this.http.post(`community/${communityId}/post`, post);
+  }
 
-      getcareerposts() {
-        return this.http.get(`community/career/posts`);
-      }
+  // TO-DO No difference in endpoint or method description for private post
 
-      updatebrainstormingmap(communityPostId:number, map: CommunityBrainstormingMap){
-        return this.http.post(`community/${communityPostId}/post/brainstorming`, map);
-      }
+  public createcareer (career: CommunityCareer): Observable<Object> {
+    return this.http.post('community/post/career', career);
+  }
+
+  public createbrainstormingmap (communityId: number, map: CommunityBrainstormingMap): Observable<Object> {
+    return this.http.post(`community/${communityId}/post/brainstorming`, map);
+  }
+
+  // TO-DO use params for query string
+  public getposts (communityId: number, userStudyLevelId: number, courseId: number): Observable<Object> {
+    return this.http.get(`community/${communityId}/posts`);
+  }
+
+  public getpost (postId: number): Observable<Object> {
+    return this.http.get(`community/post/${postId}`);
+  }
+
+  public getprivateposts (communityId: number): Observable<Object> {
+    return this.http.get(`community/${communityId}/posts?isprivate=true`);
+  }
+
+  public getcareerposts (): Observable<Object> {
+    return this.http.get(`community/career/posts`);
+  }
+
+  public updatebrainstormingmap (communityPostId: number, map: CommunityBrainstormingMap): Observable<Object> {
+    return this.http.post(`community/${communityPostId}/post/brainstorming`, map);
+  }
 }

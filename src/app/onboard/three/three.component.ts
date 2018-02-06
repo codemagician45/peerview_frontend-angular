@@ -81,6 +81,8 @@ export class ThreeComponent implements OnInit {
         subinterest.isdisabled = this.getSelectedSubinterestsCountInGroup(subinterest) >= this.maxSelectedSubInterestsCount && !subinterest.isselected;
       }.bind(this)
     );
+
+    return false;
   }
 
   submitInterests() {
@@ -160,6 +162,8 @@ export class ThreeComponent implements OnInit {
 
         return next['subinterests'].length - prev['subinterests'].length
       });
+
+    return true;
   }
 
   saveSubinterest(event, interestId) {
@@ -191,6 +195,8 @@ export class ThreeComponent implements OnInit {
     this.subinterests.splice(indexPosition + 1, 0, newSubinterest);
 
     event.target.value = '';
+
+    return true;
   }
 
   getSelectedSubinterestsCountInGroup(subinterest) {

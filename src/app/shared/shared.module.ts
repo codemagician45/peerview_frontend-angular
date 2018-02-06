@@ -36,6 +36,10 @@ import { ReportModalComponent } from './report-modal/report-modal.component';
 import { ReportModalUserComponent } from './report-modal-user/report-modal-user.component';
 import {StickyWidgetDirective} from "../directives/sticky-widget.directive";
 
+// Cloudinary module
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -45,6 +49,7 @@ import {StickyWidgetDirective} from "../directives/sticky-widget.directive";
         MatDialogModule,
         MatTooltipModule,
         FormsModule,
+        CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
         //NgbDropdownModule.forRoot(),
     ],
     declarations: [

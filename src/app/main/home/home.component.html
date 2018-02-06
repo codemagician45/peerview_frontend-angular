@@ -7,8 +7,17 @@
         <div class="fixed-sidebar">
           <div class="widget profile-widget">
             <div class="top-info">
-              <a class="user-img"><img src="/assets/images/profile-pic-lg.jpg" alt="Peersview" (click)="openAvatar()" /></a>
-              <h3 class="user-name" *ngIf="userData"><a href="/my/profile"><span class="user-name"> {{userData.firstName}} {{userData.lastName}}</span></a></h3>
+              <a class="user-img">
+                <cl-image
+                  public-id="{{_user?.profilePicture}}"
+                  *ngIf="_user?.profilePicture"
+                  (click)="openAvatar()"></cl-image>
+              </a>
+              <h3 class="user-name" *ngIf="_user">
+                <a href="/my/profile">
+                  <span class="user-name"> {{_user.firstName}} {{_user.lastName}}</span>
+                </a>
+              </h3>
               <div class="post-share "><i class="star" *ngFor="let i of [1,2,3,4,5]" [ngClass]="{ 'fill': stars > i-1 }"></i></div>
             </div>
             <div class="follow-box">

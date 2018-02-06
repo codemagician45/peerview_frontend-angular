@@ -8,9 +8,9 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let peer of peers">
               <div class="profile-widget peers profile-sm">
-                <div class="top-info"> 
+                <div class="top-info">
                   <a href="user-profile.html" class="user-img">
-                    <img src="images/{{peer.profilePicture}}" alt="Peersview">
+                    <img [src]="profilePicture" alt="Peersview">
                   </a>
                   <span class="user-profile-info">
                     <h2><a href="user-profile.html">{{peer.firstName | titlecase }} {{peer.lastName | titlecase }}</a></h2>

@@ -1,3 +1,8 @@
-.user-name {
-  text-transform: capitalize;
+.app-navbar-component {
+  .user-name {
+    text-transform: capitalize;
+  }
+  .userli {
+    margin-top: 14px;
+  }
 }

@@ -41,6 +41,10 @@ import {ReCaptchaModule} from 'angular2-recaptcha';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { LoadingModule } from 'ngx-loading';
 
+// Cloudinary module
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -71,8 +75,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
         ImportModule,
         ReCaptchaModule,
         Angular2SocialLoginModule,
-        LoadingModule, 
+        LoadingModule,
         PerfectScrollbarModule,
+        CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
    ],
     declarations: [
         IndexComponent, AboutUsComponent,

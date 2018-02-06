@@ -2,6 +2,8 @@ import {Component} from "@angular/core";
 import {MatDialog} from "@angular/material";
 import { Router } from '@angular/router';
 
+const peersviewBrand = require('../../../../../assets/images/peersview-brand.png');
+
 @Component({
     selector: "app-open-join",
     templateUrl: "../templates/open-join.html",

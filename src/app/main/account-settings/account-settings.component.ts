@@ -42,7 +42,7 @@ export class AccountSettingsComponent implements OnInit {
         if(this.pagemodel["course_id"] !== undefined && this.pagemodel["course_id"] > 0) {
             this.pagemodel["course_name"]=this.courses.filter(x=> x.id == this.pagemodel["course_id"])[0].course;
         }
-        
+
     });
         $(".tabChange").click(function (e) {
             const that = $(this);

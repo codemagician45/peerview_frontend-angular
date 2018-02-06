@@ -1,70 +1,84 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Story, Poll, LikePost, ReplyPost, RatePost, ReportPost, SharePost } from "../models/models";
-
-// import {Observable} from "rxjs/observable";
-// import {Forum} from "../models/models";
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  Story,
+  Poll,
+  LikePost,
+  ReplyPost,
+  RatePost,
+  ReportPost,
+  SharePost
+} from '../models/models';
 
 @Injectable()
 export class PostService {
-  constructor(private http: HttpClient) {
+  constructor (private http: HttpClient) {}
 
-  }
-  createpost(message: string) {
-    const post = { "message": message };
-    return this.http.post(`post`, post);
+  public createpost (message: string): Observable<Object> {
+    const post = {message};
+    return this.http.post('post', post);
   }
 
-  createstory(story: Story) {
+  public createstory (story: Story): Observable<Object> {
     return this.http.post(`post/story`, story);
   }
 
-  createpoll(poll: Poll) {
-    return this.http.post("post/poll", poll);
-  }
-  gettopstories() {
-    return this.http.get("topStories");
+  public createpoll (poll: Poll): Observable<Object> {
+    return this.http.post('post/poll', poll);
   }
 
-  getallposts(limit: Number, offset: Number) {
+  public gettopstories (): Observable<Object> {
+    return this.http.get('topStories');
+  }
+
+  public getallposts (limit: Number, offset: Number): Observable<Object> {
     return this.http.get(`posts?limit=${limit}&offset=${offset}`, {});
   }
 
-  getpost(postId: Number) {
+  public getpost (postId: Number): Observable<Object> {
     return this.http.get(`post/${postId}`);
   }
-  sharepost(postid: number, share: SharePost) {
+
+  public sharepost (postid: number, share: SharePost): Observable<Object> {
     return this.http.post(`post/share/${postid}`, share);
   }
-  likepost(postId:number, like: LikePost) {
+
+  public likepost (postId: number, like: LikePost): Observable<Object> {
     return this.http.post(`post/${postId}/like`, like);
   }
 
-  replypost(postId: number, reply: ReplyPost) {
+  public replypost (postId: number, reply: ReplyPost): Observable<Object> {
     return this.http.post(`post/${postId}/reply`, reply);
   }
 
-  reportpost(postId: number, report: ReportPost) {
+  public reportpost (postId: number, report: ReportPost): Observable<Object> {
     return this.http.post(`post/${postId}/report`, report);
   }
 
-  ratepost(postId: number, rate: RatePost) {
+  public ratepost (postId: number, rate: RatePost): Observable<Object> {
     return this.http.post(`post/${postId}/rating`, rate);
   }
 
-  viewpost(postId: number) {
+  public viewpost (postId: number): Observable<Object> {
     return this.http.post(`post/${postId}/pageview`, {});
   }
 
-  getrating(postId: number) {
+  public getrating (postId: number): Observable<Object> {
     return this.http.get(`post/rating/${postId}`);
   }
 
-  getcategoryId(categoryCode: string) {
+  public getcategoryId (categoryCode: string): Observable<Object> {
     return this.http.get(`post/category/${categoryCode}`);
   }
 
-  searchpost(searchkeyword: string) {
+  public searchpost (searchkeyword: string): Observable<Object> {
     return this.http.get(`advance-search/post?keyword='${searchkeyword}'`);
   }
 }

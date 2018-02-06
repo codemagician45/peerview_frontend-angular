@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   stars = 0;
   posts = [];
   credits = 0;
-  userData = null;
   newstory = {};
   following = 0;
   followers = 0;
@@ -40,6 +39,7 @@ export class HomeComponent implements OnInit {
   private _hasAddedPostCounter = 0;
   private _isDisabled    = false;
   private _counter = 0;
+  private _user: any;
 
   ngOnInit() {
     this.getUserInfo();
@@ -70,11 +70,13 @@ export class HomeComponent implements OnInit {
       console.log('Error Retrieving Followers');
       console.log(error);
     });
+
     this._authservice.getfollowingusers(user ? user.id : 0).subscribe(resp => {
       if (resp['error'] === false) { this.following = resp['followers'].length }
     }, error => {
       console.log(error);
     });
+
     this._postservice.gettopstories().subscribe(resp => {
       if (resp['error'] === false) {
         this.newstories = resp['news'];
@@ -87,14 +89,9 @@ export class HomeComponent implements OnInit {
 
   /*Get User info then display name on the sidenav*/
   getUserInfo() {
-    let user = localStorage.getItem('user');
-    let userInfo = JSON.parse(user);
-    let userId = userInfo.id;
-    this._accountservice.getUserInfo(userId).subscribe(response => {
-      this.userData = response['user'];
-      if (response['error'] === false) {
-        alert(response['Message']);
-      }
+    this._accountservice.getUserProfile()
+    .subscribe((response: any) => {
+      this._user = response.user;
     }, error => {
       console.log(error);
     })
@@ -108,10 +105,12 @@ export class HomeComponent implements OnInit {
       console.error(error);
     });
   }
+
   moreNews(e) {
     this.showmore = !this.showmore;
     $(e.currentTarget).find('.view_more').text(this.showmore ? 'View Less' : 'View More')
   }
+
   reloadnews() {
     this._postservice.gettopstories().subscribe(resp => {
       if (resp['error'] === false) {
@@ -165,7 +164,7 @@ export class HomeComponent implements OnInit {
     this.dialog.open(ShowImageComponent, {
       panelClass: 'avatar-dialog',
       data: {
-        src: '/assets/images/profile-pic-lg.jpg'
+        profilePicture: this._user.profilePicture
       },
     });
   }
