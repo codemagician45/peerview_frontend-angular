@@ -34,36 +34,12 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         use: 'file-loader?name=assets/[name].[hash].[ext]'
-        // |gif|svg|woff|woff2|ttf|eot|ico
-        // test: /\.(png|jpe?g)$/,
-        //
-        // use: [
-        //   {
-        //     loader: 'file-loader',
-        //     options: {
-        //       name: '[name].[hash].[ext]'
-        //     }
-        //   }
-        // ]
-        // use: 'file-loader?name=assets/[name].[hash].[ext]'
       },
       {
         test: /\.scss$/,
         include: helpers.root('src'),
-        // loader: 'to-string-loader!style-loader!css-loader!resolve-url-loader!sass-loader'
         loaders: ['to-string-loader', 'style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
       },
-      // {
-      //   test: /\.scss$/,
-      //   exclude: helpers.root('src'),
-      //   loaders: ['to-string-loader', 'style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
-      //   // loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'resolve-url-loader','sass-loader']})
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   exclude: helpers.root('src', 'app'),
-      //   loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['to-string-loader', 'css-loader', 'sass-loader']})
-      // },
       {
         test: /\.css$/,
         include: [helpers.root('src')],
@@ -71,7 +47,6 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(

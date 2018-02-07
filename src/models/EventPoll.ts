@@ -1,5 +1,5 @@
-export class EventPoll{
-    private question: string;
-    private options: string[];
-    private duration: number;
+export class EventPoll {
+  private question: string;
+  private options: string[];
+  private duration: number;
 }

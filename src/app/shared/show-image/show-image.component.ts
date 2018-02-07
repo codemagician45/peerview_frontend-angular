@@ -1,6 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { Router } from "@angular/router";
+import {
+  Component,
+  OnInit,
+  Inject
+} from '@angular/core';
+import {
+  MAT_DIALOG_DATA
+} from '@angular/material';
+import {
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-show-image',
@@ -8,15 +16,14 @@ import { Router } from "@angular/router";
   styleUrls: ['./show-image.component.scss']
 })
 export class ShowImageComponent implements OnInit {
-  constructor(
+  constructor (
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  public ngOnInit (): void {}
 
-  accountPage() {
+  protected accountPage (): void {
     this.router.navigate(['account-settings']);
   }
 }

@@ -9,108 +9,107 @@ import {
 } from 'rxjs/Observable';
 import {
   UserOnboardingDetails
-} from "../models/models";
+} from '../models/models';
 
 @Injectable()
 export class AccountSettingService {
-  constructor(private http: HttpClient) {}
+  constructor (private http: HttpClient) {}
 
-  getAccountSetting() {
-    return this.http.get("accountSettings");
+  public getAccountSetting (): Observable<Object> {
+    return this.http.get('accountSettings');
   }
 
-  updatepassword(item: any) {
+  public updatepassword (item: any): Observable<Object> {
     return this.http.put(`user/password`, item);
   }
 
-  public updateAboutMe(aboutMe: any): Observable<Object> {
+  public updateAboutMe (aboutMe: any): Observable<Object> {
     aboutMe = {aboutMe: aboutMe};
     return this.http.put(`user/about-me`, aboutMe);
   }
 
-  public updateUserAccomplishments(accomplishments: any): Observable<Object> {
+  public updateUserAccomplishments (accomplishments: any): Observable<Object> {
     accomplishments = {accomplishments};
     return this.http.put(`user/accomplishments`, accomplishments);
   }
 
-  public getUserInterests(): Observable<Object> {
+  public getUserInterests (): Observable<Object> {
     return this.http.get(`user/interests`);
   }
 
-  public removeUserInterest(userInterestId): Observable<Object> {
+  public removeUserInterest (userInterestId): Observable<Object> {
     return this.http.delete(`user/interest/${userInterestId}`);
   }
 
-  getuserprofile() {
+  public getuserprofile (): Observable<Object> {
     return this.http.get('user/profile');
   }
 
-  getusercredits() {
+  public getusercredits (): Observable<Object> {
     return this.http.get('user/credits' );
   }
 
-  getusertimeline(){
+  public getusertimeline (): Observable<Object> {
     return this.http.get(`user/timeline`);
   }
 
-  getpeopleyoumayknow() {
+  public getpeopleyoumayknow (): Observable<Object> {
     return this.http.get('peers-list');
   }
 
-  updatesecurityandprivacy(userid:number, model: any) {
+  public updatesecurityandprivacy (userid: number, model: any): Observable<Object> {
     return this.http.put(`users/${userid}/security`, model);
   }
 
-  unblockuser(unblockuserid: number, body: any) {
+  public unblockuser (unblockuserid: number, body: any): Observable<Object> {
     return this.http.delete(`users/${unblockuserid}/unblock`, body);
   }
 
-  unfollowuser(unfollowuserid: number){
+  public unfollowuser (unfollowuserid: number): Observable<Object> {
     return this.http.delete(`user/${unfollowuserid}/follow`);
   }
 
-  followuser(followuserid: number){
+  public followuser (followuserid: number): Observable<Object> {
     return this.http.post(`user/${followuserid}/follow`, {});
   }
 
-  getUserInfo(userid: number) {
+  public getUserInfo (userid: number): Observable<Object> {
     return this.http.get(`user/${userid}/info`, {});
   }
 
-  getUserProfile(): Observable<Object> {
+  public getUserProfile (): Observable<Object> {
     return this.http.get(`user/profile`);
   }
 
-  updateuser(user: any) {
+  public updateuser (user: any): Observable<Object> {
     return this.http.put(`users/${user.id}`, user);
   }
 
-  updateaboutus(about: any) {
-    return this.http.post("", about);
+  public updateaboutus (about: any): Observable<Object> {
+    return this.http.post('', about);
   }
 
-  invitebyemail(email_body: any) {
-    return this.http.post("user/invite-users", email_body);
+  public invitebyemail (email_body: any): Observable<Object> {
+    return this.http.post('user/invite-users', email_body);
   }
 
-  passwordreset(jotToken, item) {
-    return this.http.put(`user/password-reset/${jotToken}`,item)
+  public passwordreset (jotToken, item): Observable<Object> {
+    return this.http.put(`user/password-reset/${jotToken}`, item);
   }
 
-  updateuserInterests(interestIds: number[]) {
+  public updateuserInterests (interestIds: number[]): Observable<Object> {
     return this.http.post(`user/interests`, interestIds);
   }
 
-  updateonboardingdetails(onboard: UserOnboardingDetails){
+  public updateonboardingdetails (onboard: UserOnboardingDetails): Observable<Object> {
     return this.http.post(`user/onboarding/details`, onboard);
   }
 
-  searchuser(searchkeyword: string) {
+  public searchuser (searchkeyword: string): Observable<Object> {
     return this.http.get(`advance-search/user?keyword='${searchkeyword}'`);
   }
 
-  generalsearch(searchkeyword: string) {
+  public generalsearch (searchkeyword: string): Observable<Object> {
     return this.http.get(`search?searchString='${searchkeyword}'`);
   }
-
 }

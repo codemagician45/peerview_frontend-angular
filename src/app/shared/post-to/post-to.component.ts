@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-post-to',
@@ -6,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-to.component.scss']
 })
 export class PostToComponent implements OnInit {
+  constructor () { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public ngOnInit (): void {}
 }

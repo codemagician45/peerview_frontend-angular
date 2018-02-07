@@ -1,6 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material";
-import {AccountSettingService} from '../../../services/accountsetting.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  MatDialog
+} from '@angular/material';
+import {
+  AccountSettingService
+} from '../../../services/accountsetting.service';
 
 @Component({
   selector: 'app-edit-interest-modal',
@@ -8,34 +15,33 @@ import {AccountSettingService} from '../../../services/accountsetting.service';
   styleUrls: ['./edit-interest-modal.component.css']
 })
 export class EditInterestModalComponent implements OnInit {
-  constructor(
+  constructor (
     private dialog: MatDialog,
     private accountSettingService: AccountSettingService
   ) {}
 
   private userInterests: Array<string>;
 
-  ngOnInit() {
-    // Call here the service
+  public ngOnInit (): void {
     this.accountSettingService.getUserInterests()
-    .subscribe((response: any) => {
-      this.userInterests = response.interests;
-    });
+      .subscribe((response: any) => {
+        this.userInterests = response.interests;
+      });
   }
 
-  onClose() {
-   this.dialog.closeAll();
+  protected onClose (): void {
+    this.dialog.closeAll();
   }
 
-  onDelete(interest) {
+  protected onDelete (interest): void {
     this.accountSettingService.removeUserInterest(interest.id)
-    .subscribe(() => {
-      let position = this.userInterests.indexOf(interest);
-      this.userInterests.splice(position, 1);
-    });
+      .subscribe(() => {
+        let position = this.userInterests.indexOf(interest);
+        this.userInterests.splice(position, 1);
+      });
   }
 
-  update() {
-    console.log("Update Interests Commencing");
+  protected update (): void {
+    console.log('Update Interests Commencing');
   }
 }

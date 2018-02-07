@@ -1,10 +1,7 @@
 export class PasswordChange {
-    constructor(
-       ) {
+  constructor () {}
 
-    }
-
-    public currentpassword: String;
-    public password: String;
-    public confirmPassword: String;
+  public currentpassword: String;
+  public password: String;
+  public confirmPassword: String;
 }

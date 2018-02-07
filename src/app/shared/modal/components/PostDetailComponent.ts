@@ -1,8 +1,9 @@
-import {Component} from "@angular/core";
+import {
+  Component
+} from '@angular/core';
 
 @Component({
-    selector: "app-post-detail",
-    templateUrl: "../templates/post-detail.html",
+  selector: 'app-post-detail',
+  templateUrl: '../templates/post-detail.html'
 })
-export class PostDetailComponent {
-}
+export class PostDetailComponent {}

@@ -15,16 +15,16 @@ import {
 } from './profile/profile.component';
 import {
   SharedModule
-} from "../shared/shared.module";
+} from '../shared/shared.module';
 import {
   MyRoutingModule
-} from "./my-routing.module";
+} from './my-routing.module';
 import {
   OwlModule
-} from "ng2-owl-carousel";
+} from 'ng2-owl-carousel';
 import {
   NgbTabsetModule, NgbDropdownModule
-} from "@ng-bootstrap/ng-bootstrap";
+} from '@ng-bootstrap/ng-bootstrap';
 import {
   EditInterestModalComponent
 } from './edit-interest-modal/edit-interest-modal.component';

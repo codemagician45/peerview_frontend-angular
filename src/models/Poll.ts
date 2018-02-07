@@ -1,5 +1,5 @@
-export class Poll{
-    private question: string;
-    private options: string[];
-    private duration: number;
+export class Poll {
+  private question: string;
+  private options: string[];
+  private duration: number;
 }

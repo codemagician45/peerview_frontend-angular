@@ -1,62 +1,74 @@
-import { Component, OnInit, Input, OnDestroy, AfterViewInit, EventEmitter, Output } from '@angular/core';
-import { PostService } from "../../../services/services";
-import { Story, Poll } from '../../../models/models';
-/*Import EmitterService*/
-import { EmitterService } from '../emitter/emitter.component';
-declare var tinymce: any;
-declare var swal: any;
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  AfterViewInit,
+  EventEmitter,
+  Output
+} from '@angular/core';
+import {
+  PostService
+} from '../../../services/services';
+import {
+  Story, Poll
+} from '../../../models/models';
+import {
+  EmitterService
+} from '../emitter/emitter.component';
 
+declare let tinymce: any;
+declare let swal: any;
 @Component({
   selector: 'app-post-poll-map',
   templateUrl: './post-poll-map.component.html',
   styleUrls: ['./post-poll-map.component.scss']
 })
-
 export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() post                   = false;
-  @Input() poll                   = false;
-  @Input() map                    = false;
-  @Input() story                  = false;
-  @Input() full                   = false;
-  @Input() elementId              : String;
-  @Output() onEditorKeyup         = new EventEmitter<any>();
+  constructor (private _postservice: PostService) {}
 
-  editor;
-  newpost     = {};
-  newpoll     : Poll = new Poll();
-  newstory    : Story = new Story();
-  errorMessage: any;
-  private  _isDisabled = false;
+  @Input() private post = false;
+  @Input() private poll = false;
+  @Input() private map = false;
+  @Input() private story = false;
+  @Input() private full = false;
+  @Input() private elementId: String;
+  @Output() private onEditorKeyup = new EventEmitter<any>();
+
+  private editor;
+  private newpost = {};
+  private newpoll: Poll = new Poll();
+  private newstory: Story = new Story();
+  private errorMessage: any;
+  private _isDisabled = false;
   private _postSaveEmitterService = EmitterService.get('postSaveEmitter');
-  constructor(private _postservice: PostService) { }
 
-  ngOnInit() {
-  }
+  public ngOnInit (): void {}
 
-  ngAfterViewInit() {
+  public ngAfterViewInit (): void {
     tinymce.init({
       selector: '#share-story-textarea',
       plugins: ['link', 'paste'],
       max_height: 300,
       menubar: false,
-      toolbar: "bold italic save attach",
+      toolbar: 'bold italic save attach',
       skin_url: 'assets/skins/lightgray',
       setup: editor => {
         this.editor = editor;
         editor.addButton('attach', {
           text: false,
           icon: 'upload',
-          onclick: function() {
-            var fileToUpload = $('form.share-story').find('input.fileToUpload');
+          onclick: (): void => {
+            let fileToUpload = $('form.share-story').find('input.fileToUpload');
             fileToUpload.click();
-            fileToUpload.bind('change', function() {
-              var str = 'File: ' + fileToUpload.val().toString();
+            fileToUpload.bind('change', function (): void {
+              let str = 'File: ' + fileToUpload.val().toString();
               if (str.length > 22) {
-                var str_start = str.substr(0, 12) + '...';
+                let str_start = str.substr(0, 12) + '...';
                 str = str_start + str.substr(16, 22);
               }
 
-              $('form.share-story').find("span#file_text").html(str);
+              $('form.share-story').find('span#file_text').html(str);
               $('form.share-story').find('button.clear_file').removeClass('hidden');
             });
           }
@@ -64,28 +76,30 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
         editor.addButton('save', {
           text: 'SHARE',
           icon: false,
-          onclick: function() {
+          onclick: function (): void {
             $('form.share-story').submit();
           }
         });
-        editor.on('init', function(evt) {
-          var toolbar = $(evt.target.editorContainer)
+        editor.on('init', function (evt): void {
+          let toolbar = $(evt.target.editorContainer)
             .find('>.mce-container-body >.mce-top-part');
-          var editor = $(evt.target.editorContainer)
+          let currentEditor = $(evt.target.editorContainer)
             .find('>.mce-container-body >.mce-edit-area');
 
           // switch the order of the elements
-          toolbar.detach().insertAfter(editor);
+          toolbar.detach().insertAfter(currentEditor);
 
           this.dom.setStyle(this.dom.select('body'), 'background-color', '#f9f9f9');
 
-          if (this.getContent() == '') {
-            this.setContent("<p id='placeholder' style='color: #989898;'>Tell your story...</p>");
+          if (this.getContent() === '') {
+            this.setContent(`<p id='placeholder' style='color: #989898;'>Tell your story...</p>`);
           }
         });
-        editor.on('focus', function() {
+
+        editor.on('focus', function (): void {
           this.dom.remove(this.dom.select('p#placeholder'));
         });
+
         editor.on('keyup', () => {
           const content = editor.getContent();
           this.onEditorKeyup.emit(content);
@@ -94,100 +108,99 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy (): void {
     tinymce.remove(this.editor);
   }
 
-  postLink(e) {
+  protected postLink (e): void {
     $('.create-poll, .brain-map, .ask-question, .share-story, .guest-list').hide();
     $('.create-post, .timeline-block').fadeIn();
     $('.post-action li').removeClass('active');
-    $(e.target).closest("li").addClass('active');
+    $(e.target).closest('li').addClass('active');
   }
 
-  brainLink(e) {
+  protected brainLink (e): void {
     $('.create-post, .create-poll, .timeline-block, .ask-question').hide();
     $('.brain-map').fadeIn();
     $('.post-action li').removeClass('active');
     $(e.target).closest('li').addClass('active');
   }
 
-  pollLink(e) {
+  protected pollLink (e): void {
     $('.create-post, .brain-map, .ask-question, .share-story, .guest-list').hide();
     $('.create-poll, .timeline-block').fadeIn();
     $('.post-action li').removeClass('active');
     $(e.target).closest('li').addClass('active');
   }
 
-  shareStoryLink(e) {
+  protected shareStoryLink (e): void {
     $('.create-post, .brain-map, .ask-question, .create-poll').hide();
     $('.share-story').fadeIn();
     $('.post-action li').removeClass('active');
     $(e.target).closest('li').addClass('active');
   }
 
-  addPoll() {
+  protected addPoll (): void {
     const currentchildren = $('.poll-option').children().length;
     if (currentchildren < 4) {
       const poll = `
         <li>
-          <input type="text" placeholder="Add an option" />
+          <input type='text' placeholder='Add an option' />
         </li>`;
       $('.poll-option').append(poll);
     } else {
-      //alert("Maximum of 4 options are permitted");
-      this.errorMessage = "Maximum of 4 options are permitted";
+      this.errorMessage = 'Maximum of 4 options are permitted';
     }
-
   }
 
-  createpoll() {
+  protected createpoll (): void {
     let options = [];
-    $('.poll-option >> :input').each(function(a, b) {
+    $('.poll-option >> :input').each(function (a, b): void {
       options.push($(b).val());
     });
-    //this.newpoll["name"] = $("#newpoll_name").val();
+
     this.newpoll['options'] = options;
-    //this.newpoll["timeLimit"] =1;
     this._postservice.createpoll(this.newpoll).subscribe(resp => {
-      //console.log(resp);
-      if (resp['error'] === false) { alert(resp['Message']) }
-      else { console.log(resp); }
+      if (resp['error'] === false) {
+        alert(resp['Message']);
+      } else {
+        console.log(resp);
+      }
     }, error => {
       console.log(error);
     });
   }
 
-  createpost() {
+  protected createpost (): void {
     /*Disable post button after submit to prevent post duplication*/
     this._isDisabled = true;
     if ($('.create-pots-textarea').val() === '') {
-      swal('Oops','Empty Content', "error");
+      swal('Oops', 'Empty Content', 'error');
       this._isDisabled = false;
     } else {
-      this._postservice.createpost(this.newpost["message"]).subscribe((response : any) => {
-          swal('Sucess', "Post Created Successfully", "success");
-          $('.create-pots-textarea').val('');
-          this._isDisabled = false;
-          this._postSaveEmitterService.emit(response.postId);
+      this._postservice.createpost(this.newpost['message']).subscribe((response: any) => {
+        swal('Sucess', 'Post Created Successfully', 'success');
+        $('.create-pots-textarea').val('');
+        this._isDisabled = false;
+        this._postSaveEmitterService.emit(response.postId);
       }, error => {
         this._isDisabled = false;
         if (error['error'].body) {
-          swal('Oops', error['error'].body.status_message, 'error')
+          swal('Oops', error['error'].body.status_message, 'error');
         } else {
-          swal('Oops', error['error'].status_message, 'error')
+          swal('Oops', error['error'].status_message, 'error');
         }
       });
     }
   }
 
-  addstory() {
-    this._postservice.createstory(this.newstory).subscribe((resp) => {
-      console.log(resp);
+  protected addstory (): void {
+    this._postservice.createstory(this.newstory).subscribe((response: any) => {
+      console.log(response);
     });
   }
 
-  clearFile() {
+  protected clearFile (): void {
     // $('form.share-story').find('input.fileToUpload').val('')
     // $('form.share-story').find("span#file_text").html('');
     // $('form.share-story').find('button.clear_file').addClass('hidden');

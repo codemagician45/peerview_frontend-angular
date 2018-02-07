@@ -1,11 +1,28 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {MatDialog} from "@angular/material";
-import {PostDetailComponent} from "../modal/components/PostDetailComponent";
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
+import {
+  MatDialog
+} from '@angular/material';
+import {
+  PostDetailComponent
+} from '../modal/components/PostDetailComponent';
+import {
+  ShareModalComponent
+} from '../share-modal/share-modal.component';
+import {
+  ReportModalComponent
+} from '../report-modal/report-modal.component';
+import {
+  UserService,
+  PostService
+} from '../../../services/services';
+import {
+  LikePost
+} from '../../../models/models';
 import * as Ps from 'perfect-scrollbar';
-import {ShareModalComponent} from "../share-modal/share-modal.component";
-import {ReportModalComponent} from "../report-modal/report-modal.component";
-import {UserService, PostService} from "../../../services/services";
-import { LikePost } from '../../../models/models';
 
 @Component({
   selector: 'app-post-footer',
@@ -13,55 +30,52 @@ import { LikePost } from '../../../models/models';
   styleUrls: ['./post-footer.component.scss']
 })
 export class PostFooterComponent implements OnInit {
-  @Input() likes = 0;
-  @Input() replies = 0;
-  @Input() views = 0;
-  @Input() share = 0;
-  @Input() post : any;
-  @Input('reply-link') replyLink = '';
-  public user :any;
-
-  constructor(
+  constructor (
     public dialog: MatDialog,
     private _userservice: UserService,
     private _postservice: PostService
-  ) { }
+  ) {}
 
-  ngOnInit() {
+  @Input() protected likes = 0;
+  @Input() protected replies = 0;
+  @Input() protected views = 0;
+  @Input() protected share = 0;
+  @Input() protected post: any;
+  @Input('reply-link') private replyLink = '';
+  public user: any;
+
+  public ngOnInit (): void {
     this.user = this._userservice.getLoggedInUser();
     this.post = this.post || {};
   }
 
-  openPostDetail() {
+  protected openPostDetail (): void {
     if (this.replyLink) {
-      return
+      return;
     }
+
     this.dialog.open(PostDetailComponent);
-    setTimeout(()=>{
-      // const container = document.querySelector('.mat-dialog-container');
+    setTimeout(() => {
       const container = $('.mat-dialog-container')[0];
-      //Ps.initialize(container);
-    }, 200)
+    }, 200);
   }
 
-  openShare() {
+  protected openShare (): void {
     this.dialog.open(ShareModalComponent);
   }
 
-  report() {
-    this.dialog.open(ReportModalComponent)
+  protected report (): void {
+    this.dialog.open(ReportModalComponent);
   }
 
-  likepost() {
-    this._postservice.likepost(this.post.id, new LikePost()).subscribe(resp =>{
-      console.log(resp);
-      if(resp["error"] === false) {
-        alert(resp["Message"]);
+  protected likepost (): void {
+    this._postservice.likepost(this.post.id, new LikePost()).subscribe(resp => {
+      if (resp['error'] === false) {
+        alert(resp['Message']);
       }
     }, error => {
-      console.error("Error Liking Post");
+      console.error('Error Liking Post');
       console.error(error);
-    })
+    });
   }
-
 }

@@ -23,38 +23,38 @@ export interface IParams {
 }
 
 export class MindMapParams {
-  animationDuration = 0;
-  closeAnimationDuration = 0;
-  circleRadius = 60;
-  maxRadiusMultiplier = 2.3;
-  minRadiusMultiplier = 1;
-  triangleMultiplier = 1.3;
-  dragCircle = 6;
-  dragBorder = 3;
-  maxCharacters = 85;
-  positionMultiplier = 2.5;
-  fontSize = 16;
-  maxFontSizeMultiplier = 1;
-  minFontSizeMultiplier = (1 / 2.3);
-  maxBranches = 5;
-  maxDepth = 5;
-  maxScale = 1.7;
-  minScale = 0.2;
-
-  constructor(params: IParams = {}) {
+  constructor (params: IParams = {}) {
     Object.assign(this, params);
   }
 
-  get maxFontSize() {
+  public animationDuration = 0;
+  public closeAnimationDuration = 0;
+  public circleRadius = 60;
+  public maxRadiusMultiplier = 2.3;
+  public minRadiusMultiplier = 1;
+  public triangleMultiplier = 1.3;
+  public dragCircle = 6;
+  public dragBorder = 3;
+  public maxCharacters = 85;
+  public positionMultiplier = 2.5;
+  public fontSize = 16;
+  public maxFontSizeMultiplier = 1;
+  public minFontSizeMultiplier = (1 / 2.3);
+  public maxBranches = 5;
+  public maxDepth = 5;
+  public maxScale = 1.7;
+  public minScale = 0.2;
+
+  get maxFontSize (): number {
     return this.fontSize * this.maxFontSizeMultiplier;
   }
-  get minFontSize() {
+  get minFontSize (): number {
     return this.fontSize * this.minFontSizeMultiplier;
   }
-  get maxRadius() {
+  get maxRadius (): number {
     return this.circleRadius * this.maxRadiusMultiplier;
   }
-  get minRadius() {
+  get minRadius (): number {
     return this.circleRadius * this.minRadiusMultiplier;
   }
 }

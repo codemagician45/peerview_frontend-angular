@@ -1,5 +1,5 @@
-export class CampusPoll{
-    private question: string;
-    private options: string[];
-    private duration: number;
+export class CampusPoll {
+  private question: string;
+  private options: string[];
+  private duration: number;
 }

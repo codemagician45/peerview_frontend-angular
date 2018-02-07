@@ -1,6 +1,6 @@
-import {Component, OnInit, AfterViewInit, ElementRef, ViewChild, HostListener, Input} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
-import {MindMap} from './mind-map/mind-map';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, HostListener, Input } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { MindMap } from './mind-map/mind-map';
 
 @Component({
   selector: 'app-full-brainstorming-map',
@@ -8,27 +8,25 @@ import {MindMap} from './mind-map/mind-map';
   styleUrls: ['./full-brainstorming-map.component.scss']
 })
 export class FullBrainstormingMapComponent implements OnInit, AfterViewInit {
-  @Input('show-input') showInput = true;
-
-  @ViewChild('brainstormingMap') elem: ElementRef;
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    event.target.innerWidth;
-  }
-
-  public invokeEvent:Subject<any> = new Subject();
-
-  private map: any;
-  mapId: any;
-  keyword: string;
-  maxCharacters = 85;
-  inputImage: any = 'rect';
-
-  constructor() {
+  constructor () {
     this.mapId = 'brainstorming-map-id-' + Math.floor(Math.random() * (100000)) + 100000;
   }
 
-  ngOnInit() {
+  @Input('show-input') protected showInput = true;
+  @ViewChild('brainstormingMap') protected elem: ElementRef;
+  public invokeEvent: Subject<any> = new Subject();
+  protected keyword: string;
+  protected maxCharacters = 85;
+  protected inputImage: any = 'rect';
+  private map: any;
+  private mapId: any;
+
+  @HostListener('window:resize', ['$event'])
+  private onResize (event): void {
+    event.target.innerWidth;
+  }
+
+  public ngOnInit (): void {
     this.invokeEvent.subscribe((value) => {
       switch (value) {
         case 'rect':
@@ -53,41 +51,38 @@ export class FullBrainstormingMapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
+  public ngAfterViewInit (): void {
     const demoData = {
-      "name": "Topic text",
-      "children": [
+      'name': 'Topic text',
+      'children': [
         {
-          "name": "Related node 1",
-          "children": [],
-          "node_id": 2,
-          "closed": false
+          'name': 'Related node 1',
+          'children': [],
+          'node_id': 2,
+          'closed': false
         },
         {
-          "name": "Related node 2",
-          "children": [],
-          "node_id": 3,
-          "closed": false
+          'name': 'Related node 2',
+          'children': [],
+          'node_id': 3,
+          'closed': false
         }
       ],
-      "node_id": 1,
-      "closed": false
+      'node_id': 1,
+      'closed': false
     };
-    const paddings = 20;
 
+    const paddings = 20;
     const width = this.elem.nativeElement.offsetWidth - 2 * paddings;
     const height = width * 0.6;
 
     this.map = new MindMap();
-
     this.map.setEventObservable(this.invokeEvent);
-
-    this.map.init(this.mapId, width, height, demoData)
+    this.map.init(this.mapId, width, height, demoData);
   }
 
-  addKeyword() {
+  protected addKeyword (): void {
     this.map.addNode(this.keyword);
     this.keyword = '';
   }
-
 }

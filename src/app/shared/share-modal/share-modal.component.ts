@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-share-modal',
@@ -6,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./share-modal.component.css']
 })
 export class ShareModalComponent implements OnInit {
+  constructor () {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public ngOnInit (): void {}
 }

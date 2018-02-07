@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-
-import * as _ from "lodash";
-import { CourseService, AuthenticationService } from "../../../services/services";
+/* tslint:disable:no-bitwise */
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  CourseService,
+  AuthenticationService
+} from '../../../services/services';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-three',
@@ -10,49 +18,50 @@ import { CourseService, AuthenticationService } from "../../../services/services
   styleUrls: ['./three.component.scss']
 })
 export class ThreeComponent implements OnInit {
-  interests: any[] = [];
-  subinterests: any[] = [];
-  term = '';
-  searchResult: any = [];
-  maxSelectedInterestsCount = 5;
-  selectedInterests: any[] = [];
-  maxSelectedSubInterestsCount = 4;
-
-  constructor(private _courseService: CourseService,
+  constructor (
+    private _courseService: CourseService,
     private _authenticationService: AuthenticationService,
-    private router: Router) {
-  }
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  private interests: any[] = [];
+  private subinterests: any[] = [];
+  private term = '';
+  private searchResult: any = [];
+  private maxSelectedInterestsCount = 5;
+  private selectedInterests: any[] = [];
+  private maxSelectedSubInterestsCount = 4;
+
+  public ngOnInit (): void {
     this._courseService.getInterest().subscribe((response: any) => {
       const a = _.map(response.interestCategory, (value: any, key) => {
-        this.interests.push({ "id": value.id, "value": value.name });
+        this.interests.push({ 'id': value.id, 'value': value.name });
         const parsedValues: any[] = [];
         this.subinterests = _.union(this.subinterests, parsedValues);
       });
 
-      this.interests = _.orderBy(this.interests, ["value"], ["asc"]);
-      this.subinterests = _.orderBy(this.subinterests, ["interest_value", "value"], ["asc", "asc"]);
-      this.subinterests = _.pull(this.subinterests, { "value": "" });
+      this.interests = _.orderBy(this.interests, ['value'], ['asc']);
+      this.subinterests = _.orderBy(this.subinterests, ['interest_value', 'value'], ['asc', 'asc']);
+      this.subinterests = _.pull(this.subinterests, { 'value': '' });
     });
 
   }
 
-  toggleInterest(interest: any) {
+  protected toggleInterest (interest: any): void {
     interest.isselected = !interest.isselected;
-    this.selectedInterests = this.interests.filter(function(item) { return item.isselected; });
-    this.selectedInterests.forEach((item, i) => {
+    this.selectedInterests = this.interests.filter((item) => { return item.isselected; });
+    this.selectedInterests.forEach((selectedInterest, i) => {
       if (this.selectedInterests.length > 0) {
-        const catId = item.id;
+        const catId = selectedInterest.id;
         this._courseService.getSubInterest(catId).subscribe((response: any) => {
           this.selectedInterests[i]['subinterests'] = response.interests;
 
-          this.subinterests.forEach((item) => {
-            if (item.interestid === interest.id) {
-              item.parentisselected = interest.isselected;
+          this.subinterests.forEach((subInterest) => {
+            if (subInterest.interestid === interest.id) {
+              subInterest.parentisselected = interest.isselected;
               if (!interest.isselected) {
-                item.isselected = false;
-                item.isdisabled = false;
+                subInterest.isselected = false;
+                subInterest.isdisabled = false;
               }
             }
           });
@@ -61,10 +70,10 @@ export class ThreeComponent implements OnInit {
     });
   }
 
-  toggleSubInterest(subinterest, selectedIndex) {
+  protected toggleSubInterest (subinterest, selectedIndex): any {
     const sI = _.findIndex(this.selectedInterests[selectedIndex]['subinterests'], subinterest);
-    let interest = this.interests.filter(interest => {
-      return interest.id == this.selectedInterests[selectedIndex].id;
+    let interest = this.interests.filter(interestData => {
+      return interestData.id === this.selectedInterests[selectedIndex].id;
     })[0];
 
     if (!interest.isselected && this.selectedInterests.length >= this.maxSelectedInterestsCount) {
@@ -75,20 +84,21 @@ export class ThreeComponent implements OnInit {
       this.toggleInterest(interest);
     }
 
-    this.selectedInterests[selectedIndex]['subinterests'][sI].isselected = !this.selectedInterests[selectedIndex]['subinterests'][sI].isselected;
+    this.selectedInterests[selectedIndex]['subinterests'][sI].isselected = !this.selectedInterests[selectedIndex]['subinterests'][sI].isselected; // tslint:disable:max-line-length
     this.selectedInterests[selectedIndex]['subinterests'].forEach(
-      function(subinterest) {
-        subinterest.isdisabled = this.getSelectedSubinterestsCountInGroup(subinterest) >= this.maxSelectedSubInterestsCount && !subinterest.isselected;
+      function (subinterestResult): void {
+        subinterestResult.isdisabled = this.getSelectedSubinterestsCountInGroup(subinterest) >= this.maxSelectedSubInterestsCount && !subinterestResult.isselected;
       }.bind(this)
     );
 
     return false;
   }
 
-  submitInterests() {
+  public submitInterests (): void {
     let finalInterestsHandler = [];
+    let finalInterests;
     for (let fI = 0; fI < this.selectedInterests.length; fI++) {
-      const finalInterests = _.filter(this.selectedInterests[fI]['subinterests'], (item) => {
+      finalInterests = _.filter(this.selectedInterests[fI]['subinterests'], (item) => {
         return item.isselected === true;
       }).map((item) => {
         return item['id'];
@@ -97,25 +107,25 @@ export class ThreeComponent implements OnInit {
       finalInterestsHandler.push(finalInterests);
     }
 
-    finalInterestsHandler = [].concat.apply([], finalInterestsHandler)
-    let finalInterests = finalInterestsHandler;
+    finalInterestsHandler = [].concat.apply([], finalInterestsHandler);
+    finalInterests = finalInterestsHandler;
 
     if (finalInterests.length < 5) {
-      alert("At Least Five Sub Interests are required");
+      alert('At Least Five Sub Interests are required');
     } else {
       this._authenticationService.updateInterests(finalInterests).subscribe((response) => {
-        this.router.navigate(["/home"]);
+        this.router.navigate(['/home']);
       }, (error) => {
         console.log(error);
       });
     }
   }
 
-  getInterestClass(interest) {
-    return 'list-' + interest.value.toLowerCase().replace(/\s+/g, "-").replace(/[^0-9a-zA-Z\-]/g, "");
+  public getInterestClass (interest): string {
+    return 'list-' + interest.value.toLowerCase().replace(/\s+/g, '-').replace(/[^0-9a-zA-Z\-]/g, '');
   }
 
-  search() {
+  public search (): any {
     let searchResult = {};
 
     if (!this.term) {
@@ -136,7 +146,7 @@ export class ThreeComponent implements OnInit {
         return subinterest.value && ~subinterest.value.toLowerCase().indexOf(this.term.toLowerCase());
       })
       .forEach(subinterest => {
-        let interest = this.interests.filter((interest) => { return subinterest.interestid == interest.id })[0];
+        let interest = this.interests.filter((interestResult) => { return subinterest.interestid === interestResult.id; })[0];
 
         if (!searchResult[interest.id]) {
           searchResult[interest.id] = interest;
@@ -160,24 +170,24 @@ export class ThreeComponent implements OnInit {
           return 1;
         }
 
-        return next['subinterests'].length - prev['subinterests'].length
+        return next['subinterests'].length - prev['subinterests'].length;
       });
 
     return true;
   }
 
-  saveSubinterest(event, interestId) {
+  public saveSubinterest (event, interestId): any {
     if (!event.target.value) { return false; }
 
     let indexPosition = 0;
     this.subinterests.forEach((subinterest, index) => {
-      indexPosition = interestId == subinterest.interestid ? index : indexPosition;
+      indexPosition = interestId === subinterest.interestid ? index : indexPosition;
     });
 
     this.subinterests[indexPosition].last_in_group = false;
 
-    let interest = this.interests.filter(interest => {
-      return interest.id == interestId;
+    let interest = this.interests.filter(interestResult => {
+      return interestResult.id === interestId;
     })[0];
 
     let newSubinterest = {
@@ -190,7 +200,7 @@ export class ThreeComponent implements OnInit {
       value: event.target.value,
       isdisabled: this.getSelectedSubinterestsCountInGroup(this.subinterests[indexPosition]) >= this.maxSelectedSubInterestsCount,
       parentisselected: true
-    }
+    };
 
     this.subinterests.splice(indexPosition + 1, 0, newSubinterest);
 
@@ -199,15 +209,15 @@ export class ThreeComponent implements OnInit {
     return true;
   }
 
-  getSelectedSubinterestsCountInGroup(subinterest) {
+  public getSelectedSubinterestsCountInGroup (subinterest): any {
     let subinterestsCount = {};
     this.selectedInterests.forEach(interest => {
-      subinterestsCount[interest.id] = this.subinterests.filter(subinterest => {
-        return subinterest.isselected && interest.id == subinterest.interestid;
+      subinterestsCount[interest.id] = this.subinterests.filter(subinterestResult => {
+        return subinterestResult.isselected && interest.id === subinterestResult.interestid;
       }
       ).length;
-    }
-    );
+    });
+
     return subinterestsCount[subinterest.interestid];
   }
 }

@@ -1,54 +1,67 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { LikeCampusSocietyClubPost, ReplyCampusSocietyClubPost, ReportCampusSocietyClubPost, RateCampusSocietyClubPost, CampusCourseClassPost, CampusSocietyClubPost, CampusSocietyClub } from "../models/models";
-
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  LikeCampusSocietyClubPost,
+  ReplyCampusSocietyClubPost,
+  ReportCampusSocietyClubPost,
+  RateCampusSocietyClubPost,
+  CampusCourseClassPost,
+  CampusSocietyClubPost,
+  CampusSocietyClub
+} from '../models/models';
 
 @Injectable()
 export class CampusSocietyClubService {
-  constructor(private http: HttpClient) {
-  }
+  constructor (private http: HttpClient) {}
 
-  likepost(postid: number, like: LikeCampusSocietyClubPost) {
+  public likepost (postid: number, like: LikeCampusSocietyClubPost): Observable<Object> {
     return this.http.post(`campus/society-club/post/${postid}/like`, like);
   }
 
-  replypost(postId: number, reply: ReplyCampusSocietyClubPost) {
+  public replypost (postId: number, reply: ReplyCampusSocietyClubPost): Observable<Object> {
     return this.http.post(`campus/society-club/post/${postId}/reply`, reply);
   }
 
-  reportpost(postId: number, report: ReportCampusSocietyClubPost) {
+  public reportpost (postId: number, report: ReportCampusSocietyClubPost): Observable<Object> {
     return this.http.post(`campus/society-club/post/${postId}/report`, report);
   }
 
-  ratepost(postId: number, rate: RateCampusSocietyClubPost) {
+  public ratepost (postId: number, rate: RateCampusSocietyClubPost): Observable<Object> {
     return this.http.post(`campus/society-club/post/${postId}/rating`, rate);
   }
 
-  viewpost(postId: number) {
+  public viewpost (postId: number): Observable<Object> {
     return this.http.post(`campus/society-club/post/${postId}/pageview`, {});
   }
 
-  createpoll(campusId: number, poll: CampusCourseClassPost) {
+  public createpoll (campusId: number, poll: CampusCourseClassPost): Observable<Object> {
     return this.http.post(`campus/society-club/${campusId}/post/poll`, poll);
   }
 
-  createpost(campusId: number, post: CampusSocietyClubPost) {
+  public createpost (campusId: number, post: CampusSocietyClubPost): Observable<Object> {
     return this.http.post(`campus/society-club/${campusId}/post`, post);
   }
 
-  createsocietyclub(campusId: number, societyclub: CampusSocietyClub) {
+  public createsocietyclub (campusId: number, societyclub: CampusSocietyClub): Observable<Object> {
     return this.http.post(`campus/${campusId}/society-club`, societyclub);
   }
 
-  getclubs(campusId: number) {
+  public getclubs (campusId: number): Observable<Object> {
     return this.http.get(`campus/${campusId}/society-clubs`);
   }
 
-  getclubposts(campusId: number, clubId: number) {
+  public getclubposts (campusId: number, clubId: number): Observable<Object> {
     return this.http.get(`campus/${campusId}/society-clubs/${clubId}/posts`);
   }
 
-  getclubpost(postId: number) {
+  public getclubpost (postId: number): Observable<Object> {
     return this.http.get(`campus/society-clubs/post/${postId}`);
   }
 }

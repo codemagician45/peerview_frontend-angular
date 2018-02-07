@@ -1,9 +1,6 @@
 export class SignIn {
-
-    constructor(
-        public email: String,
-        public password: String,
-    ) {
-
-    }
-} 
+  constructor (
+    public email: String,
+    public password: String
+  ) {}
+}

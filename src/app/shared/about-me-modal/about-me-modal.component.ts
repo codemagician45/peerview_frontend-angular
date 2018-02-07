@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material";
-import {AccountSettingService} from '../../../services/accountsetting.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  MatDialog
+} from '@angular/material';
+import {
+  AccountSettingService
+} from '../../../services/accountsetting.service';
 
 @Component({
   selector: 'app-about-me-modal',
@@ -8,26 +15,26 @@ import {AccountSettingService} from '../../../services/accountsetting.service';
   styleUrls: ['./about-me-modal.component.scss']
 })
 export class AboutMeModalComponent implements OnInit {
-  constructor(
+  constructor (
     private dialog: MatDialog,
     private accountSettingService: AccountSettingService
   ) {}
 
   private aboutMe: string;
 
-  ngOnInit() {}
+  public ngOnInit (): void {}
 
-  onCancel() {
+  protected onCancel (): void {
     this.dialog.closeAll();
   }
 
-  onSave() {
+  protected onSave (): void {
     if (this.aboutMe) {
       this.accountSettingService.updateAboutMe(this.aboutMe)
-      .subscribe((user: any) => {
-        let aboutModelComponentRef = this.dialog.getDialogById('AboutMeModalComponent');
-        aboutModelComponentRef.close(this.aboutMe);
-      });
+        .subscribe((user: any) => {
+          let aboutModelComponentRef = this.dialog.getDialogById('AboutMeModalComponent');
+          aboutModelComponentRef.close(this.aboutMe);
+        });
     }
   }
 }

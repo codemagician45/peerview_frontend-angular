@@ -1,19 +1,15 @@
-export class LikeCampusFreshersFeedPost{
+export class LikeCampusFreshersFeedPost {}
 
+export class RateCampusFreshersFeedPost {}
+
+export class ReplyCampusFreshersFeedPost {
+  private comment: string;
 }
 
-export class RateCampusFreshersFeedPost{
-    
-}
-
-export class ReplyCampusFreshersFeedPost{
-    private comment: string;
-}
-
-export class ReportCampusFreshersFeedPost{
-    private reason:string;
+export class ReportCampusFreshersFeedPost {
+  private reason: string;
 }
 
 export class CampusFreshersFeedPost {
-    private message:string;
+  private message: string;
 }

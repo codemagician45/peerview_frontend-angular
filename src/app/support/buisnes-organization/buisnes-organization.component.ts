@@ -1,19 +1,18 @@
-import {Component, OnInit} from "@angular/core";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
-    selector: "app-buisnes-organization",
-    templateUrl: "./buisnes-organization.component.html",
-    styleUrls: ["./buisnes-organization.component.scss"]
+  selector: 'app-buisnes-organization',
+  templateUrl: './buisnes-organization.component.html',
+  styleUrls: ['./buisnes-organization.component.scss']
 })
 export class BuisnesOrganizationComponent implements OnInit {
+  constructor () {}
 
-    public header = "Business Organisations";
-    public sub_header = "";
+  public sub_header = '';
+  public header = 'Business Organisations';
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
-
+  public ngOnInit (): void {}
 }

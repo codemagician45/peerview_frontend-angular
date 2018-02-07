@@ -1,15 +1,25 @@
-import {Observable} from "rxjs/Observable";
-import * as d3 from "d3";
-import {MindMapParams} from "./mind-map-params";
-import {MindMapHelper} from "./mind-map-helper";
-import {MindMapShapes} from "./mind-map-shapes";
-import {Subject} from "rxjs/Subject";
+import {
+  Observable
+} from 'rxjs/Observable';
+import * as d3 from 'd3';
+import {
+  MindMapParams
+} from './mind-map-params';
+import {
+  MindMapHelper
+} from './mind-map-helper';
+import {
+  MindMapShapes
+} from './mind-map-shapes';
+import {
+  Subject
+} from 'rxjs/Subject';
 
 export class MindMap {
-  canvasWidth: number;
-  canvasHeight: number;
-  chosenNode: any;
-  canvas: any;
+  public canvasWidth: number;
+  public canvasHeight: number;
+  public chosenNode: any;
+  public canvas: any;
 
   private params: MindMapParams;
   private helper: MindMapHelper;
@@ -26,17 +36,17 @@ export class MindMap {
   private originalId = 0;
   private soundId = 0;
 
-  private rerender() {
+  private rerender (): void {
     this.render();
     this.update([0, 0]);
   }
 
-  private render() {
+  private render (): void {
     this.setData = d3
       .tree()
       .size([360, 120])
       .separation((a, b) => {
-        return (a.parent == b.parent ? 1 : 2) / a.depth;
+        return (a.parent === b.parent ? 1 : 2) / a.depth;
       });
 
     this.hierarchyData = d3.hierarchy(this.originalData);
@@ -44,46 +54,46 @@ export class MindMap {
     this.hierarchyData
       .descendants()
       .forEach((descendant, dataAndEvents) => {
-        descendant.data.closed = "true" == descendant.data.closed;
+        descendant.data.closed = 'true' === descendant.data.closed;
       });
 
-    this.gMind = this.canvas.select(".gmind");
+    this.gMind = this.canvas.select('.gmind');
 
     if (this.gMind.empty()) {
-      this.gMind = this.canvas.append("g").attr("class", "gmind");
+      this.gMind = this.canvas.append('g').attr('class', 'gmind');
     }
-    this.scrubber = this.gMind.select(".glink");
+    this.scrubber = this.gMind.select('.glink');
     if (this.scrubber.empty()) {
-      this.scrubber = this.gMind.append("g").attr("class", "glink");
+      this.scrubber = this.gMind.append('g').attr('class', 'glink');
     }
-    this.gNodeItems = this.gMind.select(".gnode");
+    this.gNodeItems = this.gMind.select('.gnode');
     if (this.gNodeItems.empty()) {
-      this.gNodeItems = this.gMind.append("g").attr("class", "gnode");
+      this.gNodeItems = this.gMind.append('g').attr('class', 'gnode');
     }
 
     const zoomFunc = d3
       .zoom()
       .scaleExtent([this.params.minScale, this.params.maxScale])
-      .on("zoom", (e) => {
-        const h = "scale(" + d3.event.transform.k + ")";
-        const y = "translate(" + d3.event.transform.x + "," + d3.event.transform.y + ")";
-        this.gMind.attr("transform", y + h);
+      .on('zoom', (e) => {
+        const h = 'scale(' + d3.event.transform.k + ')';
+        const y = 'translate(' + d3.event.transform.x + ',' + d3.event.transform.y + ')';
+        this.gMind.attr('transform', y + h);
       });
 
-    setTimeout(()=> {
+    setTimeout(() => {
       this.helper.autoScale(this.canvas, zoomFunc);
     }, 10);
 
     this.canvas.call(zoomFunc);
   }
 
-  private draw(ctx, event) {
+  private draw (ctx, event): number[] {
     const theta2 = (ctx - 90) / 180 * Math.PI;
 
     return [event * Math.cos(theta2), event * Math.sin(theta2)];
   }
 
-  private update(position) {
+  private update (position): void {
 
     this.setData(this.hierarchyData);
 
@@ -109,8 +119,8 @@ export class MindMap {
     });
 
     const conf = this.gNodeItems
-      .selectAll(".node")
-      .data(this.descendants, (ignores)  => ignores.id);
+      .selectAll('.node')
+      .data(this.descendants, (ignores) => ignores.id);
 
     const wrapEnter = conf.enter();
     const pointer = conf.exit();
@@ -118,12 +128,12 @@ export class MindMap {
     const map = this;
 
     const node = wrapEnter
-      .append("g")
-      .attr("class", "node")
-      .attr("transform", (dataAndEvents) => {
-        return "translate(" + position[0]  + "," + position[1]  + ")";
+      .append('g')
+      .attr('class', 'node')
+      .attr('transform', (dataAndEvents) => {
+        return 'translate(' + position[0] + ',' + position[1] + ')';
       })
-      .on("mousedown", function(e) {
+      .on('mousedown', function (e): void {
 
         if (!d3.event.defaultPrevented) {
           e.chosen = typeof e.chosen !== 'undefined' ? e.chosen : true;
@@ -134,9 +144,9 @@ export class MindMap {
           map.chosenNode = e.chosen ? e : null;
 
           node
-            .select(".shape")
+            .select('.shape')
             .style('stroke', '')
-            .style("stroke-width", 0);
+            .style('stroke-width', 0);
 
           node
             .select('.drag-helper')
@@ -144,9 +154,9 @@ export class MindMap {
 
           d3
             .select(this)
-            .select(".shape")
+            .select('.shape')
             .style('stroke', color)
-            .style("stroke-width", border);
+            .style('stroke-width', border);
 
           d3
             .select(this)
@@ -155,46 +165,46 @@ export class MindMap {
 
           const currentShape = d3
             .select(this)
-            .select(".shape")
+            .select('.shape')
             .attr('class')
             .split(' ')[1]
             .split('-')[1];
 
           if (map.eventObservable) {
-            map.eventObservable.next(currentShape)
+            map.eventObservable.next(currentShape);
           }
 
         }
       })
-      .on("mouseover", function(dataAndEvents) {
+      .on('mouseover', function (dataAndEvents): void {
         d3
           .select(this)
-          .style("cursor", "pointer")
-          .select("text")
-          .style("fill-opacity", 1);
+          .style('cursor', 'pointer')
+          .select('text')
+          .style('fill-opacity', 1);
       })
-      .on("mouseout", function(dataAndEvents) {
+      .on('mouseout', function (dataAndEvents): void {
         d3
           .select(this)
-          .select("text")
+          .select('text')
           .transition()
           .duration(map.params.animationDuration);
 
       });
 
     const shapeWrapper = node
-      .append("g")
-      .attr("class", "shape-wrapper")
-      .append("g");
+      .append('g')
+      .attr('class', 'shape-wrapper')
+      .append('g');
 
     const textScaleFn = this.helper.getTextScaleFn();
 
     shapeWrapper
-      .each(function(d, i) {
+      .each(function (d, i): void {
         let initialRadius = d.data.radius ? d.data.radius : textScaleFn(d.data.name.length);
         // let initialRadius = d.data.radius ? d.data.radius : this.helper.getTextScaleFn()(d.data.name.length);
         const currentEl = d3.select(this);
-        switch(d.depth) {
+        switch (d.depth) {
           case 0: {
             map.shapesHelper.setRect(currentEl, initialRadius);
             break;
@@ -223,47 +233,47 @@ export class MindMap {
         map.shapesHelper.setDragHelper(currentEl, d, initialRadius);
       });
 
-    node.append("foreignObject")
-      .attr("width", map.params.circleRadius * 2)
-      .attr("height", map.params.circleRadius * 2)
-      .attr("transform", function(dataAndEvents) {
-        return "translate(" + -(map.params.circleRadius) + "," + - (map.params.circleRadius) + ")";
+    node.append('foreignObject')
+      .attr('width', map.params.circleRadius * 2)
+      .attr('height', map.params.circleRadius * 2)
+      .attr('transform', function (dataAndEvents): string {
+        return 'translate(' + -(map.params.circleRadius) + ',' + - (map.params.circleRadius) + ')';
       })
-      .append("xhtml:body")
-      .html(function(item) {
+      .append('xhtml:body')
+      .html(function (item): any {
         return item.data.name;
       })
-      .attr('fs',map.params.fontSize)
-      .style("font", `${map.params.fontSize}px 'Tahoma'`)
-      .style("color", "white")
-      .style("height", "100%")
-      .style("margin", "0")
-      .style("padding", "10%")
-      .style("display", "flex")
-      .style("justify-content", "center")
-      .style("align-items", "center")
-      .style("background", "transparent")
-      .style("text-align", "center");
+      .attr('fs', map.params.fontSize)
+      .style('font', `${map.params.fontSize}px 'Tahoma'`)
+      .style('color', 'white')
+      .style('height', '100%')
+      .style('margin', '0')
+      .style('padding', '10%')
+      .style('display', 'flex')
+      .style('justify-content', 'center')
+      .style('align-items', 'center')
+      .style('background', 'transparent')
+      .style('text-align', 'center');
 
     const group = node
       .merge(conf)
       .transition()
       .duration(map.params.animationDuration)
-      .attr("transform", function(propData) {
-        return "translate(" + propData.pos[0] * map.params.positionMultiplier + "," + propData.pos[1] * map.params.positionMultiplier + ")";
+      .attr('transform', function (propData): string {
+        return 'translate(' + propData.pos[0] * map.params.positionMultiplier + ',' + propData.pos[1] * map.params.positionMultiplier + ')';
       });
 
     const layer = pointer
       .transition()
       .duration(map.params.closeAnimationDuration)
-      .attr("transform", function(dataAndEvents) {
-        return "translate(" + position[0] + "," + position[1] + ")";
+      .attr('transform', function (dataAndEvents): string {
+        return 'translate(' + position[0] + ',' + position[1] + ')';
       })
       .remove();
 
     const ret = this.scrubber
-      .selectAll(".link")
-      .data(this.links, function(evt) {
+      .selectAll('.link')
+      .data(this.links, function (evt): any {
         return evt.target.id;
       });
 
@@ -272,76 +282,76 @@ export class MindMap {
     const args = ret.exit();
 
     files
-      .append("path")
-      .attr("class", "link")
-      .attr("fill", "none")
-      .attr("stroke", "rgba(20,20,20,0.2)")
-      .attr("stroke-width", 20)
-      .attr("opacity", 0)
-      .attr("d", function(dataAndEvents) {
+      .append('path')
+      .attr('class', 'link')
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(20,20,20,0.2)')
+      .attr('stroke-width', 20)
+      .attr('opacity', 0)
+      .attr('d', function (dataAndEvents): any {
         const self = {
-          x : position[0] * map.params.positionMultiplier,
-          y : position[1] * map.params.positionMultiplier
+          x: position[0] * map.params.positionMultiplier,
+          y: position[1] * map.params.positionMultiplier
         };
         return map.helper.link({
-          source : self,
-          target : self
+          source: self,
+          target: self
         });
       })
       .merge(ret)
       .transition()
       .duration(map.params.animationDuration)
-      .attr("opacity", 1)
-      .attr("d", function(e) {
+      .attr('opacity', 1)
+      .attr('d', function (e): string {
         const c = {
-          x : e.source.pos[0] * map.params.positionMultiplier,
-          y : e.source.pos[1] * map.params.positionMultiplier
+          x: e.source.pos[0] * map.params.positionMultiplier,
+          y: e.source.pos[1] * map.params.positionMultiplier
         };
         const d = {
-          x : e.target.pos[0] * map.params.positionMultiplier,
-          y : e.target.pos[1] * map.params.positionMultiplier
+          x: e.target.pos[0] * map.params.positionMultiplier,
+          y: e.target.pos[1] * map.params.positionMultiplier
         };
-        return "M" + c.x + "," + c.y + "L" + d.x + "," + d.y;
+        return 'M' + c.x + ',' + c.y + 'L' + d.x + ',' + d.y;
       });
 
     args
       .transition()
       .duration(map.params.closeAnimationDuration)
-      .attr("opacity", 0)
-      .attr("d", function(dataAndEvents) {
+      .attr('opacity', 0)
+      .attr('d', function (dataAndEvents): string {
         const c = {
-          x : position[0],
-          y : position[1]
+          x: position[0],
+          y: position[1]
         };
         const d = {
-          x : position[0],
-          y : position[1]
+          x: position[0],
+          y: position[1]
         };
-        return "M" + c.x + "," + c.y + "L" + d.x + "," + d.y;
+        return 'M' + c.x + ',' + c.y + 'L' + d.x + ',' + d.y;
       })
       .remove();
 
     this.descendants
-      .forEach(function(propData) {
+      .forEach(function (propData): void {
         propData.prevPos = [propData.pos[0], propData.pos[1]];
       });
 
 
     const dragFn = d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended);
+      .on('start', dragstarted)
+      .on('drag', dragged)
+      .on('end', dragended);
 
     shapeWrapper.call(dragFn);
 
-    function dragstarted(d) {
-      d3.select(this).raise().classed("active", true);
+    function dragstarted (d): void {
+      d3.select(this).raise().classed('active', true);
     }
 
-    function dragged(d) {
+    function dragged (d): void {
       const currentShape = d3
         .select(this)
-        .select(".shape")
+        .select('.shape')
         .attr('class')
         .split(' ')[1]
         .split('-')[1];
@@ -349,7 +359,7 @@ export class MindMap {
 
       const shape = d3
         .select(this)
-        .select(".shape");
+        .select('.shape');
 
       const currentRadius = parseFloat(shape.attr('cR'));
 
@@ -366,22 +376,22 @@ export class MindMap {
       const newFontSize = currentFontSize * newRadius / currentRadius;
 
       body
-        .attr('fs',newFontSize)
-        .style("font", `${newFontSize}px 'Tahoma'`);
+        .attr('fs', newFontSize)
+        .style('font', `${newFontSize}px 'Tahoma'`);
 
       let data;
 
       switch (currentShape) {
         case 'rect': {
           shape
-            .attr("width", newRadius * 2)
-            .attr("height", newRadius * 2)
-            .attr("transform",`translate(${-newRadius},${-newRadius})`);
+            .attr('width', newRadius * 2)
+            .attr('height', newRadius * 2)
+            .attr('transform', `translate(${-newRadius},${-newRadius})`);
           break;
         }
         case 'circle': {
           shape
-            .attr("r", elem => newRadius);
+            .attr('r', elem => newRadius);
           break;
         }
         case 'hexagon': {
@@ -411,21 +421,21 @@ export class MindMap {
 
       d3
         .select(this)
-        .select(".drag-helper")
-        .attr("transform", `translate(${newRadius},${newRadius})`
+        .select('.drag-helper')
+        .attr('transform', `translate(${newRadius},${newRadius})`
         );
     }
 
-    function dragended(d) {
-      d3.select(this).classed("active", false);
+    function dragended (d): void {
+      d3.select(this).classed('active', false);
     }
   }
 
-  setEventObservable(observable) {
+  public setEventObservable (observable): void {
     this.eventObservable = observable;
   }
 
-  init(id, width, height, data, params = {}) {
+  public init (id, width, height, data, params = {}): void {
     this.canvas = d3
       .select(`#${id}`)
       .append('svg')
@@ -444,16 +454,16 @@ export class MindMap {
     this.rerender();
   }
 
-  addNode(name) {
+  public addNode (name): void {
     const minNumber = 0;
     const maxNumber = 100;
 
     const child = {
-      "name": name,
-      "radius": 0,
-      "children": [],
-      "closed": false,
-      "node_id": Math.floor(Math.random() * (maxNumber - minNumber)) + maxNumber
+      'name': name,
+      'radius': 0,
+      'children': [],
+      'closed': false,
+      'node_id': Math.floor(Math.random() * (maxNumber - minNumber)) + maxNumber
     };
 
     if (this.chosenNode.depth > this.params.maxDepth - 1) {
@@ -462,10 +472,9 @@ export class MindMap {
     }
 
     const node_id = this.chosenNode.data.node_id;
-
     const parent = this.helper.getParent(node_id, this.originalData);
 
-    if (!parent) { throw new Error(`Didn't find parent with id - ${node_id}; in array - ${self}`)}
+    if (!parent) { throw new Error(`Didn't find parent with id - ${node_id}; in array - ${self}`); }
 
     if (!parent.children) {
       parent.children = [child];
@@ -478,5 +487,4 @@ export class MindMap {
 
     this.rerender();
   }
-
 }

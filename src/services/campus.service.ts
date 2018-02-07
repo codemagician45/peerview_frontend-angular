@@ -1,64 +1,79 @@
-import {Injectable} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { LikeCampusPost, CampusPoll, RateCampusPost, ReplyCampusPost, ReportCampusPost, CampusPost, CampusMarketPlace } from "../models/models";
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  LikeCampusPost,
+  CampusPoll,
+  RateCampusPost,
+  ReplyCampusPost,
+  ReportCampusPost,
+  CampusPost,
+  CampusMarketPlace
+} from '../models/models';
 
 @Injectable()
 export class CampusService {
-    constructor(private http:HttpClient) {
-    }
+  constructor (private http: HttpClient) {}
 
-    getfreshersfeedpost(campusId:Number = 1, freshersFeedId: Number=1){
-        return this.http.get(`campus/${campusId}/freshers-feed/${freshersFeedId}/posts`);
-    }
+  public getfreshersfeedpost (campusId: Number = 1, freshersFeedId: Number = 1): Observable<Object> {
+    return this.http.get(`campus/${campusId}/freshers-feed/${freshersFeedId}/posts`);
+  }
 
-    getcampusposts(campusId: Number){
-       return this.http.get(`campus/${campusId}/posts`)
-    }
-    sharepost(postid: number, share: any) {
-        return this.http.post(`post/share/${postid}`, share);
-    }
+  public getcampusposts (campusId: Number): Observable<Object> {
+    return this.http.get(`campus/${campusId}/posts`);
+  }
 
-    likepost(postid: number, like:LikeCampusPost) {
-       return this.http.post(`campus/post/${postid}/like`, like);
-    }
-   
-     replypost(postId:number, reply:ReplyCampusPost) {
-       return this.http.post(`campus/post/${postId}/reply`, reply);
-     }
-   
-    reportpost(postId:number, report:ReportCampusPost) {
-       return this.http.post(`campus/post/${postId}/report`, report);
-     }
-   
-     ratepost(postId:number, rate:RateCampusPost) {
-       return this.http.post(`campus/post/${postId}/rating`, rate);
-     }
-   
-     postviewpost(postId:number) {
-       return this.http.post(`campus/post/${postId}/pageview`, {});
-     }
+  public sharepost (postid: number, share: any): Observable<Object> {
+    return this.http.post(`post/share/${postid}`, share);
+  }
 
-     createpoll(campusId:number, poll: CampusPoll){
-       return this.http.post(`campus/${campusId}/post/poll`, poll);
-     }
+  public likepost (postid: number, like: LikeCampusPost): Observable<Object> {
+    return this.http.post(`campus/post/${postid}/like`, like);
+  }
 
-     createpost(campusId:number, post:CampusPost){
-       return this.http.post(`campus/${campusId}/post`, post);
-     }
+  public replypost (postId: number, reply: ReplyCampusPost): Observable<Object> {
+    return this.http.post(`campus/post/${postId}/reply`, reply);
+  }
 
-     getcampuspost(postId: number){
-       return this.http.get(`campus/post/${postId}`);
-     }
+  public reportpost (postId: number, report: ReportCampusPost): Observable<Object> {
+    return this.http.post(`campus/post/${postId}/report`, report);
+  }
 
-     getjob(jobId:number) {
-       return this.http.get(`campus/job/${jobId}`);
-     }
+  public ratepost (postId: number, rate: RateCampusPost): Observable<Object> {
+    return this.http.post(`campus/post/${postId}/rating`, rate);
+  }
 
-     createmarketplace(campusId: number, market: CampusMarketPlace){
-       return this.http.post(`campus/${campusId}/marketplace`, market)
-     }
+  public postviewpost (postId: number): Observable<Object> {
+    return this.http.post(`campus/post/${postId}/pageview`, {});
+  }
 
-     createuserclasses(campusCourseClassIds: number[]) {
-       return this.http.post("campus/user/classes", campusCourseClassIds);
-     }
+  public createpoll (campusId: number, poll: CampusPoll): Observable<Object> {
+    return this.http.post(`campus/${campusId}/post/poll`, poll);
+  }
+
+  public createpost (campusId: number, post: CampusPost): Observable<Object> {
+    return this.http.post(`campus/${campusId}/post`, post);
+  }
+
+  public getcampuspost (postId: number): Observable<Object> {
+    return this.http.get(`campus/post/${postId}`);
+  }
+
+  public getjob (jobId: number): Observable<Object> {
+    return this.http.get(`campus/job/${jobId}`);
+  }
+
+  public createmarketplace (campusId: number, market: CampusMarketPlace): Observable<Object> {
+    return this.http.post(`campus/${campusId}/marketplace`, market);
+  }
+
+  public createuserclasses (campusCourseClassIds: number[]): Observable<Object> {
+    return this.http.post('campus/user/classes', campusCourseClassIds);
+  }
 }

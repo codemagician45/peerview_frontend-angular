@@ -1,13 +1,10 @@
 export class Forum {
+  constructor () {}
 
-    constructor(
-    ) {
-
-    }
-    question: string;
-    shares: number;
-    views: number;
-    author: string;
-    authorid: number;
-    createdat: string;
+  public question: string;
+  public shares: number;
+  public views: number;
+  public author: string;
+  public authorid: number;
+  public createdat: string;
 }

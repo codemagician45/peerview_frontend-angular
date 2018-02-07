@@ -1,37 +1,39 @@
-import {Component, OnInit} from "@angular/core";
-import {AuthenticationService, UserService} from "../../../services/services";
-import {Router} from "@angular/router";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  AuthenticationService,
+  UserService
+} from '../../../services/services';
+import {
+  Router
+} from '@angular/router';
+
 @Component({
-    selector: "app-followers",
-    templateUrl: "./followers.component.html",
-    styleUrls: ["./followers.component.scss"]
+  selector: 'app-followers',
+  templateUrl: './followers.component.html',
+  styleUrls: ['./followers.component.scss']
 })
 export class FollowersComponent implements OnInit {
+  constructor (
+    private _authservice: AuthenticationService,
+    private _userService: UserService,
+    private router: Router
+  ) {}
 
-    constructor(
-      private _authservice:AuthenticationService,
-      private _userService: UserService,
-      private router: Router
-    ) {
+  protected followers = [];
 
-    }
-    followers = [];
+  public ngOnInit (): void {
+    const user = this._userService.getLoggedInUser();
+    this._authservice.getfollowers(user ? user.id : 0).subscribe((response: any) => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+  }
 
-    ngOnInit() {
-      const user = this._userService.getLoggedInUser();
-        this._authservice.getfollowers(user ? user.id : 0).subscribe(resp => {
-            if(resp["error"] === false) {
-               this.followers = resp["followers"];
-            }
-
-           }, error => {
-               console.log(error);
-           });
-
-    }
-
-    showAll(){
-      this.router.navigate(['/my/followers-following', { type: 'followers' }]);
-    }
-
+  protected showAll (): void {
+    this.router.navigate(['/my/followers-following', { type: 'followers' }]);
+  }
 }

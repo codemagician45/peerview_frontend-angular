@@ -1,3 +1,3 @@
 export class ForgotPassword {
-    constructor(public email: String) {}
-} 
+  constructor (public email: String) {}
+}
