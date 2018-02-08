@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
   protected invitepeer = { email: '' };
 
   public ngOnInit (): void {
-    this.getUserInfo();
+    this.getUserProfile();
     this.getPosts();
     this.postSavedSubcriber();
 
@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
   }
 
   /*Get User info then display name on the sidenav*/
-  protected getUserInfo (): void {
+  protected getUserProfile (): void {
     this._accountservice.getUserProfile()
     .subscribe((response: any) => {
       this._user = response.user;
