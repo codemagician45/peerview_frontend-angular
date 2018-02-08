@@ -10,7 +10,7 @@
     "tslintcheck": "$(npm bin)/tslint --project tslint.json '**/*.ts' --exclude 'node_modules/**'"
   },
   "pre-commit": [
-    "npm run tslintcheck"
+    "tslintcheck"
   ],
   "private": true,
   "dependencies": {
