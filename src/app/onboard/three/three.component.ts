@@ -8,7 +8,8 @@ import {
 } from '@angular/router';
 import {
   CourseService,
-  AuthenticationService
+  AuthenticationService,
+  OnboardingService
 } from '../../../services/services';
 import * as _ from 'lodash';
 
@@ -21,16 +22,19 @@ export class ThreeComponent implements OnInit {
   constructor (
     private _courseService: CourseService,
     private _authenticationService: AuthenticationService,
+    private _onboardingService: OnboardingService,
     private router: Router
   ) {}
 
-  private interests: any[] = [];
-  private subinterests: any[] = [];
-  private term = '';
-  private searchResult: any = [];
-  private maxSelectedInterestsCount = 5;
-  private selectedInterests: any[] = [];
-  private maxSelectedSubInterestsCount = 4;
+  protected interests: any[] = [];
+  protected subinterests: any[] = [];
+  protected term = '';
+  protected searchResult: any = [];
+  protected maxSelectedInterestsCount = 5;
+  protected selectedInterests: any[] = [];
+  protected maxSelectedSubInterestsCount = 4;
+  protected suggestedInterest: any[] = [];
+  protected isDisabled: any[] = [];
 
   public ngOnInit (): void {
     this._courseService.getInterest().subscribe((response: any) => {
@@ -219,5 +223,48 @@ export class ThreeComponent implements OnInit {
     });
 
     return subinterestsCount[subinterest.interestid];
+  }
+
+  protected submitSuggested (event, interestCategoryID, selectedIndex): void {
+    if (event.keyCode === 13 || event.type === 'click') {
+      if (this.suggestedInterest[selectedIndex]) {
+        this.isDisabled[selectedIndex] = true;
+        let suggestedInterest = this.suggestedInterest[selectedIndex];
+        let selectedSubInterest = this.selectedInterests[selectedIndex].subinterests;
+
+        if (!this.alreadySuggested(selectedSubInterest, suggestedInterest, selectedIndex)) {
+          this._onboardingService.saveSuggestedInterest(interestCategoryID, this.suggestedInterest[selectedIndex]).subscribe((response) => {
+            // addind suggested field to determined and show delete function
+            response['interest']['suggested'] = true;
+            selectedSubInterest.push(response['interest']);
+
+            this.suggestedInterest[selectedIndex] = null;
+            this.isDisabled[selectedIndex] = false;
+          });
+        } else {
+          this.suggestedInterest[selectedIndex] = null;
+          this.isDisabled[selectedIndex] = false;
+        }
+      }
+    }
+  }
+
+  private alreadySuggested (selectedSubInterestHolder, suggestedInterest, selectedIndex): any {
+    let interestAlreadySuggested = false;
+    for (let i = 0; i < selectedSubInterestHolder.length; i++) {
+      let selectedSubInterest = selectedSubInterestHolder[i].name || selectedSubInterestHolder[i].value;
+      if (selectedSubInterest.toLowerCase() === suggestedInterest.toLowerCase()) {
+        interestAlreadySuggested = true;
+        break;
+      }
+    }
+
+    return interestAlreadySuggested;
+  }
+
+  protected deleteSuggested (interestId, selectedInterestIndex, selSubInterestIndex): void {
+    this._onboardingService.deleteSuggestedInterest(interestId).subscribe((response) => {
+      this.selectedInterests[selectedInterestIndex].subinterests.splice(selSubInterestIndex, 1);
+    });
   }
 }

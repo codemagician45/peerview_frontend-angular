@@ -1,4 +1,3 @@
-interest-title
 <div class="borad-outer">
   <div class="status-selection">
     <h3 class="sub-title">Tell us about all the stuff you love</h3>
@@ -9,8 +8,8 @@ interest-title
         <div class="board-header">Select 5 interests of yours</div>
         <div class="board-bar count1">
           <span class="filter-field">
-                        <input [(ngModel)]="term" (ngModelChange)="search()" class="form-control search-text" placeholder="Search your interests" type="text" >
-                    </span>
+            <input [(ngModel)]="term" (ngModelChange)="search()" class="form-control search-text" placeholder="Search your interests" type="text" >
+          </span>
           <a href="javascript:void(0);" class="icon-add-exp"></a>
           <div class="clear"></div>
         </div>
@@ -20,12 +19,9 @@ interest-title
               <li *ngFor="let interest of searchResult" class="{{getInterestClass(interest)}} interest-checkbox search-result-interest" [ngClass]="{'disabled': selectedInterests.length >= maxSelectedInterestsCount && !interest.isselected, 'has-subinterests': interest.subinterests.length}">
                 <div class="checkbox">
                   <label>
-                                        <input type="checkbox" name="{{interest.value}}"
-                                            [ngModel]="interest.isselected"
-                                            (change)="toggleInterest(interest)"
-                                        />
-                                        {{interest.value}}
-                                    </label>
+                    <input type="checkbox" name="{{interest.value}}"[ngModel]="interest.isselected" (change)="toggleInterest(interest)"/>
+                    {{interest.value}}
+                  </label>
                   <ul class="added-tags-list">
                     <li class="subinterest" {{subinterest}} *ngFor="let subinterest of subinterests" [ngClass]="{'activesubinterest': subinterest.isselected === true, 'disabled' : subinterest.isdisabled}" (click)="toggleSubInterest(subinterest)">
                       {{subinterest.value}}
@@ -42,11 +38,9 @@ interest-title
               <li *ngFor="let interest of interests" class="{{getInterestClass(interest)}} interest-checkbox" [ngClass]="{'disabled': selectedInterests.length >= maxSelectedInterestsCount && !interest.isselected}">
                 <div class="checkbox">
                   <label>
-                                        <input type="checkbox" name="{{interest.value}}"
-                                            [ngModel]="interest.isselected"
-                                            (change)="toggleInterest(interest)"
-                                        />{{interest.value}}
-                                    </label>
+                    <input type="checkbox" name="{{interest.value}}" [ngModel]="interest.isselected" (change)="toggleInterest(interest)"/>
+                    {{interest.value}}
+                  </label>
                 </div>
               </li>
             </ul>
@@ -61,19 +55,20 @@ interest-title
             <ng-container *ngFor="let selectedInterest of selectedInterests; let selectedInterestIndex = index">
               <li class="interest-title">{{(selectedInterest.value).toUpperCase()}}</li>
               <ul class="added-tags-list">
-                <ng-container *ngFor="let subinterest of selectedInterest.subinterests">
-                  <li class="subinterest" [ngClass]="{'activesubinterest': subinterest.isselected === true, 'disabled' : subinterest.isdisabled}" (click)="toggleSubInterest(subinterest, selectedInterestIndex)"><span>{{subinterest.value}}</span> {{subinterest.name}} </li>
+                <ng-container *ngFor="let subinterest of selectedInterest.subinterests; let selSubInterestIndex = index">
+                  <li class="subinterest" [ngClass]="{'activesubinterest': subinterest.isselected === true, 'disabled' : subinterest.isdisabled}" (click)="toggleSubInterest(subinterest, selectedInterestIndex)"><span>{{subinterest.value}}</span> {{subinterest.name}} <i class="delete-tag" *ngIf="subinterest.suggested" (click)="deleteSuggested(subinterest.id, selectedInterestIndex, selSubInterestIndex); $event.stopPropagation()"></i></li>
                   <!-- <div *ngIf="subinterest.last_in_group || last" class="bottom-button marginT10">
-                                    <input type="text" class="int-input" placeholder="Suggest a Sub-Interest in {{subinterest.interest_value}}"
-                                        (keyup.enter)="saveSubinterest($event, subinterest.interestid)"
-                                    >
-                                </div> -->
-                </ng-container>
+                  <input type="text" class="int-input" placeholder="Suggest a Sub-Interest in {{subinterest.interest_value}}"
+                  (keyup.enter)="saveSubinterest($event, subinterest.interestid)">
+                  </div> -->
+                </ng-container> <br>
+                <div class="suggest-interest-container">
+                  <input type="text" class="suggest-sub-interest-input" placeholder="{{'Suggest a Sub-interest for ' + (selectedInterest.value).toUpperCase()}}" [(ngModel)]="suggestedInterest[selectedInterestIndex]" (keypress)="submitSuggested($event, selectedInterest.id, selectedInterestIndex)"
+                    [disabled]="isDisabled[selectedInterestIndex]" />
+                  <button type="button" class="btn btn-xs btn-primary visible-sm visible-xs visible-md" (click)="submitSuggested($event, selectedInterest.id, selectedInterestIndex)">Submit</button>
+                </div>
               </ul>
-              <input type="text" class="suggest-sub-interest-input" placeholder="{{'Suggest a Sub-interest for ' + (selectedInterest.value).toUpperCase()}}"/>
             </ng-container>
-
-
           </div>
         </div>
       </div>

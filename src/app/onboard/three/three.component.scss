@@ -1,19 +1,17 @@
 .interest-title
 {
-    font-size: 18px;  font-weight: bold;  margin-left: 5px; padding: 20px 0 10px 0px;
-
-    text-align: left;
-
-    color: #8d36c3;
+    font-size: 18px;  font-weight: bold;  margin-left: 5px; padding: 20px 0 10px 0;  text-align: left;  color: #8d36c3;
 }
 
-.interest-title:first-child {
-  padding: 0 0 10px 0;
+.interest-title:first-child
+{
+    padding: 0 0 10px 0;
 }
 
 .subinterest
 {
     color: #8d36c3;
+    text-transform: capitalize;
 }
 
 .added-tags-list
@@ -23,6 +21,20 @@
 
 .suggest-sub-interest-input
 {
-    width: 70%;
-    height: 35px;  margin: 10px 10px;  text-indent: 5px; border: 1px solid #8d36c3; border-radius: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    width: 100%;  height: 35px;  margin: 10px 10px;  text-indent: 5px; border: 1px solid #8d36c3; border-radius: 3px;
+}
+
+.suggest-interest-container
+{
+    display: flex;
+
+    button
+    {
+        margin: 10px 10px; border-color: #8d36c3;
+        background-color: #8d36c3;
+    }
 }
