@@ -112,4 +112,8 @@ export class AccountSettingService {
   public generalsearch (searchkeyword: string): Observable<Object> {
     return this.http.get(`search?searchString='${searchkeyword}'`);
   }
+
+  public searchInterests (searchkeyword: string): Observable<Object> {
+    return this.http.get(`search/interests?keyword=${searchkeyword}`);
+  }
 }
