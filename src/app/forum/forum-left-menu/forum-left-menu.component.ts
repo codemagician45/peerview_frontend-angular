@@ -1,6 +1,14 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {MatDialog} from "@angular/material";
-import {CreateNewForumComponent} from "../modal/create-new-forum/create-new-forum.component";
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
+import {
+  MatDialog
+} from '@angular/material';
+import {
+  CreateNewForumComponent
+} from '../modal/create-new-forum/create-new-forum.component';
 
 @Component({
   selector: 'app-forum-left-menu',
@@ -8,17 +16,16 @@ import {CreateNewForumComponent} from "../modal/create-new-forum/create-new-foru
   styleUrls: ['./forum-left-menu.component.scss']
 })
 export class ForumLeftMenuComponent implements OnInit {
-  @Input() page: string;
-  constructor(public dialog: MatDialog) { }
-  
-  isCollapsed = true;
-  
-  ngOnInit() {
+  constructor (public dialog: MatDialog) {}
+
+  @Input() protected page: string;
+  protected isCollapsed = true;
+
+  public ngOnInit (): void {
     $(window).scrollTop(0);
   }
 
-  addNewForum() {
+  protected addNewForum (): void {
     this.dialog.open(CreateNewForumComponent);
   }
-
 }

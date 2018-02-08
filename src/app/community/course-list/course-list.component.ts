@@ -1,24 +1,24 @@
-import {Component, OnInit} from "@angular/core";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
-    selector: "app-course-list",
-    templateUrl: "./course-list.component.html",
-    styleUrls: ["./course-list.component.scss"]
+  selector: 'app-course-list',
+  templateUrl: './course-list.component.html',
+  styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent implements OnInit {
+  constructor () {}
 
-    constructor() {
+  public ngOnInit (): void {
+    if ($(window).width() > 1025) {
+      const $sticky = $('.sticky');
+      $sticky.css({ position: 'fixed', top: '86px' });
     }
+  }
 
-    ngOnInit() {
-        if ($(window).width() > 1025) {
-
-            const $sticky = $(".sticky");
-            $sticky.css({position: "fixed", top: "86px"});
-        }
-    }
-
-  openTab(tab) {
+  protected openTab (tab): void {
     const li = $('.nav-tabs').find('li');
 
     if (tab === 'tab1') {
@@ -33,5 +33,4 @@ export class CourseListComponent implements OnInit {
       $('#tab2').show();
     }
   }
-
 }

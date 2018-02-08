@@ -1,32 +1,35 @@
-import {Directive, ElementRef, Input, HostListener} from '@angular/core';
-// import Sticky from 'sticky-js';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  HostListener
+} from '@angular/core';
 
 @Directive({ selector: '[sticky]' })
 export class StickyDirective {
-  stuck = false;
-  stickPoint: any;
+  constructor (private el: ElementRef) {
+    this.stickPoint = this.getDistance();
+  }
+
+  private stuck = false;
+  private stickPoint: any;
+
   @HostListener('window:scroll', ['$event'])
-  onScroll(event) {
+  private onScroll (event): any {
     const distance = this.getDistance() - window.pageYOffset;
     const offset = window.pageYOffset;
-    // readout.innerHTML = stickPoint + '   ' + distance + '   ' + offset + '   ' + stuck;
 
-    if ( (distance <= 0) && !this.stuck) {
+    if ((distance <= 0) && !this.stuck) {
       this.el.nativeElement.style.position = 'fixed';
       this.el.nativeElement.style.top = '0px';
       this.stuck = true;
-    } else if (this.stuck && (offset <= this.stickPoint)){
+    } else if (this.stuck && (offset <= this.stickPoint)) {
       this.el.nativeElement.style.position = 'static';
       this.stuck = false;
     }
   }
 
-  constructor(private el: ElementRef) {
-    // el.nativeElement.style.backgroundColor = 'yellow';
-    this.stickPoint = this.getDistance()
-  }
-
-  private getDistance() {
-    return this.el.nativeElement.offsetTop
+  private getDistance (): any {
+    return this.el.nativeElement.offsetTop;
   }
 }

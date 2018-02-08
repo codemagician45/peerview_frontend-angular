@@ -1,23 +1,26 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
-    selector: "app-contact",
-    templateUrl: "./contact.component.html",
-    styleUrls: ["./contact.component.scss"]
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-    navName: string = 'contact';
+  constructor (private route: ActivatedRoute) {}
 
-    constructor(private route: ActivatedRoute) {
-    }
+  protected navName: string = 'contact';
 
-    ngOnInit() {
-      this.route
-        .data
-        .subscribe(data => {
-          this.navName = data['name'];
-        });
-    }
-
+  public ngOnInit (): void {
+    this.route
+    .data
+    .subscribe((data: any) => {
+      this.navName = data['name'];
+    });
+  }
 }

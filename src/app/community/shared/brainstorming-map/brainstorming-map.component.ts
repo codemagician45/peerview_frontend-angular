@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-brainstorming-map',
@@ -6,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brainstorming-map.component.css']
 })
 export class BrainstormingMapComponent implements OnInit {
+  constructor () {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public ngOnInit (): void {}
 }

@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
     selector: 'app-terms-of-use',
@@ -6,11 +9,7 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./terms-of-use.component.scss']
 })
 export class TermsOfUseComponent implements OnInit {
+  constructor () {}
 
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
-
+  public ngOnInit (): void {}
 }

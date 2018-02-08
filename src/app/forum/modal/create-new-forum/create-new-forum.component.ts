@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  MatDialog
+} from '@angular/material';
 
 @Component({
   selector: 'app-create-new-forum',
@@ -7,15 +12,11 @@ import {MatDialog} from "@angular/material";
   styleUrls: ['./create-new-forum.component.css']
 })
 export class CreateNewForumComponent implements OnInit {
+  constructor (private dialog: MatDialog) {}
 
-  constructor(
-    private dialog: MatDialog
-  ) { }
+  public ngOnInit (): void {}
 
-  ngOnInit() {
-  }
-
-  cancel() {
+  protected cancel (): void {
     this.dialog.closeAll();
   }
 }

@@ -1,38 +1,41 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-
-import {SignIn, ForgotPassword} from "../../../models/models";
-import {AuthenticationService, UserService} from "../../../services/services";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  SignIn,
+  ForgotPassword
+} from '../../../models/models';
+import {
+  AuthenticationService,
+  UserService
+} from '../../../services/services';
 
 @Component({
-    selector: 'app-sign-in',
-    templateUrl: './forgot-password.component.html',
-    styleUrls: ['./forgot-password.component.scss']
+  selector: 'app-sign-in',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-    forgotPassModel = new ForgotPassword('');
+  constructor (
+    private _authenticationService: AuthenticationService,
+    private _userService: UserService,
+    private router: Router
+  ) {}
 
-    constructor(private _authenticationService: AuthenticationService,
-                private _userService: UserService,
-                private router: Router) {}
+  protected forgotPassModel = new ForgotPassword('');
 
-    ngOnInit() {}
+  public ngOnInit (): void { }
 
-   /*
-   *  Forgot Password Submit Function 
-   */
-    forgotPasswordSubmit() {
-        this._authenticationService.restorePassword(this.forgotPassModel).subscribe(
-            (resp) => {
-                if (resp["status"] === 'SUCCESS') {
-                 alert('Password reset link has been sent to your email.');
-                }
-            },
-            (error) => {
-                if (error["error"].status === "ERROR") {
-                    alert(error["error"].status_message);
-                }
-            }
-        );
-    }
+  protected forgotPasswordSubmit (): void {
+    this._authenticationService.restorePassword(this.forgotPassModel)
+    .subscribe((response: any) => {
+      alert('Password reset link has been sent to your email.');
+    }, (error) => {
+      alert(error['error'].status_message);
+    });
+  }
 }

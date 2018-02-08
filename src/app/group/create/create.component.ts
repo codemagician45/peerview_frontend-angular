@@ -1,29 +1,30 @@
-import {Component, OnInit} from "@angular/core";
-import {CommunityService} from "../../../services/services";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  CommunityService
+} from '../../../services/services';
 
 @Component({
-    selector: "app-create",
-    templateUrl: "./create.component.html",
-    styleUrls: ["./create.component.scss"]
+  selector: 'app-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-    public group: any = {};
-    constructor(private _communityservice: CommunityService) {
-    }
+  constructor (private _communityservice: CommunityService) {}
 
-    ngOnInit() {
-    }
+  public group: any = {};
 
-    creategroup() {
-        this._communityservice.creategroup(this.group).subscribe(resp => {
-            console.log(resp);
-            if(resp["error"] === false) {
-                alert(resp["Message"]);
-                this.group = {};
-            }
-        }, error => {
-            console.error("Error Creating Posts");
-            console.error(error);
-        });
-    }
+  public ngOnInit (): void {}
+
+  protected creategroup (): void {
+    this._communityservice.creategroup(this.group)
+    .subscribe((response: any) => {
+      console.log(response);
+    }, error => {
+      console.error('Error Creating Posts');
+      console.error(error);
+    });
+  }
 }

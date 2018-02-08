@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-active-poll',
@@ -6,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./active-poll.component.css']
 })
 export class ActivePollComponent implements OnInit {
+  constructor () {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public ngOnInit (): void {}
 }

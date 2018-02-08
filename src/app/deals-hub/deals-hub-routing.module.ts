@@ -1,15 +1,21 @@
-import {Routes, RouterModule} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {IndexComponent} from "./index/index.component";
+import {
+  Routes,
+  RouterModule
+} from '@angular/router';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  IndexComponent
+} from './index/index.component';
 
-const routes: Routes = [
-    {path: "", component: IndexComponent},
-];
+const routes: Routes = [{
+  path: '',
+  component: IndexComponent
+}];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
-    providers: []
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
-export class DealsHubRoutingModule {
-}
+export class DealsHubRoutingModule {}

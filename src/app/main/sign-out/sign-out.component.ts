@@ -1,18 +1,26 @@
-import { Component, OnInit } from "@angular/core";
-import {Router} from "@angular/router";
-import {UserService} from "../../../services/services";
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  UserService
+} from '../../../services/services';
 
 @Component({
-  selector: "app-sign-out",
-  template: ""
+  selector: 'app-sign-out',
+  template: ''
 })
 export class SignOutComponent implements OnInit {
+  constructor (
+    private userservice: UserService,
+    private router: Router
+  ) {}
 
-  constructor(private _userservice: UserService, private router: Router) { }
-
-  ngOnInit() {
-    this._userservice.logoutuser();
-    this.router.navigate(["/"]);
+  public ngOnInit (): void {
+    this.userservice.logoutuser();
+    this.router.navigate(['/']);
   }
-
 }
