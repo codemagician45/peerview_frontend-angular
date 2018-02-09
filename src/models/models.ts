@@ -29,3 +29,4 @@ export * from './Poll';
 export * from './EventPost';
 export * from './EventPoll';
 export * from './Response';
+export * from './Course';
