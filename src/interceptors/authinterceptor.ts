@@ -27,7 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
         'content-type': 'application/json',
         'token': this.userService.isAuthenticated() ? this.userService.getLoggedInUser().token : ''
       },
-      url: `${CONFIG.api}${req.url}`
+      url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
 
     return next.handle(authReq);
