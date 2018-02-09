@@ -32,7 +32,7 @@ export class AppNavBarComponent implements OnInit {
   private searchOpen = false;
   private messagesOpen = false;
   private notificationOpen = false;
-  private _user: any;
+  private user: any;
 
   public ngOnInit (): void {
     this.getUserProfile();
@@ -70,8 +70,8 @@ export class AppNavBarComponent implements OnInit {
     let userId = userInfo.id;
     this._accountsettingservice.getUserProfile()
       .subscribe((response: any) => {
-        this._user = response.user;
-        console.log(this._user);
+        this.user = response.user;
+        console.log(this.user);
       }, error => {
         console.log(error);
       });

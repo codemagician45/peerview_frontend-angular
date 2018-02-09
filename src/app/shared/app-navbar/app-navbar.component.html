@@ -156,13 +156,13 @@
                  </li>
                  <li class="dropdown userli" [class.open]="userMenuOpen">
                    <a href="javascript:void(0);" data-toggle="dropdown-menu" (click)="openRightMenu('userMenuOpen')">
-                       <span class="welcome-user" *ngIf="_user">
+                       <span class="welcome-user" *ngIf="user">
                        Welcome
-                       <span class="user-name"> {{_user.firstName}}</span>
+                       <span class="user-name"> {{user.firstName}}</span>
                        </span>
                        <cl-image
-                          public-id="{{_user.profilePicture}}" 
-                          *ngIf="_user?.profilePicture"
+                          public-id="{{user.profilePicture}}"
+                          *ngIf="user?.profilePicture"
                           [ngStyle]="{'border-radius': '50%'}"></cl-image>
                        <span class="header-caret"></span>
                     </a>
