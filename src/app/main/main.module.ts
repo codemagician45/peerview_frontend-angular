@@ -85,6 +85,7 @@ import {
 import {
   MatDatepickerModule,
   MatDialogModule,
+  MatFormFieldModule,
   MatInputModule,
   MatTooltipModule
 } from '@angular/material';
@@ -149,7 +150,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SharedModule,
     OwlModule,
     MatDialogModule,
-    MatDatepickerModule, MatInputModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
     FormsModule,
     RouterModule,
     MatTooltipModule,
