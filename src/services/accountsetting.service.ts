@@ -57,8 +57,8 @@ export class AccountSettingService {
     return this.http.get('peers-list');
   }
 
-  public updatesecurityandprivacy (userid: number, model: any): Observable<Object> {
-    return this.http.put(`users/${userid}/security`, model);
+  public updateSecurityaPrivacy (model: {profilePrivacy: boolean, protectPost: boolean, userPrivacyId: number}): Observable<Object> {
+    return this.http.put(`user/security`, model);
   }
 
   public unblockuser (unblockuserid: number, body: any): Observable<Object> {
