@@ -9,6 +9,10 @@ import {
   UserService
 } from '../../../services/services';
 import {
+  UserModel,
+  UserResponse,
+  CourseResponse,
+  Course,
   AccountSetting
 } from '../../../models/models';
 import {
@@ -36,11 +40,14 @@ export class AccountSettingsComponent implements OnInit {
   public active: string = 'general';
   public isNewCardOpen = false;
   protected languages: any[] = [];
-  protected courses: any[] = [];
   protected passwordchange = {};
   protected pagemodel = {};
+  protected user = new UserModel();
+  protected courses: Course[] = [];
 
   public ngOnInit (): void {
+    this.getUserProfile();
+    this.getCourses();
     let self = this;
     this._accountsettingservice.getAccountSetting()
     .subscribe((response: any) => {
@@ -50,9 +57,6 @@ export class AccountSettingsComponent implements OnInit {
     });
 
     this.languages = this._courseservice.getlanguages();
-    this._courseservice.getCourses().subscribe((response: any) => {
-      console.log(response);
-    });
 
     $('.tabChange').click(function (e): void {
       const that = $(this);
@@ -78,7 +82,8 @@ export class AccountSettingsComponent implements OnInit {
     $('.setting-edit').fadeIn();
   }
 
-  protected changepassword (): void {
+  protected onSavePassword (): void {
+    console.log(this.passwordchange);
     this._accountsettingservice.updatepassword(this.passwordchange)
     .subscribe((response: any) => {
       console.log(response);
@@ -87,14 +92,14 @@ export class AccountSettingsComponent implements OnInit {
     });
   }
 
-  protected updatesecurityandprivacy (): void {
+  protected onUpdatesecurityPrivacy (): void {
     const model = {
-      protect_post: this.pagemodel['protect_post'],
-      contact_privacy: this.pagemodel['contact_privacy'],
-      profile_privacy: this.pagemodel['profile_privacy']
+      protectPost: this.user.protectPost,
+      profilePrivacy: this.user.profilePrivacy,
+      userPrivacyId: this.user.userPrivacyId
     };
 
-    this._accountsettingservice.updatesecurityandprivacy(this._userservice.loggedInUser ? this._userservice.loggedInUser.id : 0, model)
+    this._accountsettingservice.updateSecurityaPrivacy(model)
     .subscribe(resp => {
       console.log(resp);
     }, error => {
@@ -121,6 +126,21 @@ export class AccountSettingsComponent implements OnInit {
       console.log(response);
     }, error => {
       console.log(error);
+    });
+  }
+
+  private getUserProfile (): void {
+    this._accountsettingservice.getUserProfile()
+    .subscribe((response: UserResponse) => {
+      this.user = response.user;
+      console.log(this.user);
+    });
+  }
+
+  private getCourses (): void {
+    this._courseservice.getCourses()
+    .subscribe((response: CourseResponse) => {
+      this.courses = response.courses;
     });
   }
 }
