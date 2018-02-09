@@ -1,4 +1,5 @@
-$page-bg: url('../images/page-bg.jpg');
+$pageBg: url('https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg');
+$iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v1518100570/iconArrowRight.png');
 
 html {
   overflow-x: hidden;
@@ -1244,7 +1245,7 @@ i.icon-success {
 
 /*landing pages*/
 .page-bg {
-  background: $page-bg no-repeat;
+  background: $pageBg no-repeat;
   background-size: cover;
   position: absolute;
   left: 0;
@@ -1255,7 +1256,7 @@ i.icon-success {
 }
 
 .inner-header {
-  background: $page-bg no-repeat;
+  background: $pageBg no-repeat;
   background-size: cover;
   padding: 0 0 20px 0;
   margin: 0 0 30px 0;
@@ -1696,7 +1697,7 @@ i.icon-success {
 }
 
 .filter-field .arrow-down {
-  background: url(/src/assets/images/icon-arrow-down.png) no-repeat;
+  background: $iconArrowRight no-repeat;
   width: 9px;
   height: 6px;
   position: absolute;
@@ -1705,7 +1706,7 @@ i.icon-success {
 }
 
 .filter-field.arrow-icon {
-  background: url(/src/assets/images/icon-arrow-down.png) no-repeat 98% center;
+  background: $iconArrowRight no-repeat 98% center;
 }
 
 .board-tab-content {
