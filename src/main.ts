@@ -11,7 +11,7 @@ import {
   CONFIG
 } from './config';
 
-if (CONFIG.environment === 'production') {
+if (process.env.NODE_ENV === 'production') {
   enableProdMode();
 }
 
