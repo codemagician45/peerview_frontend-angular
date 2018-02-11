@@ -35,6 +35,14 @@ export class PostsReponse extends Response {
   public posts: Array<Post>;
 }
 
-export class UserCredits extends Response {
-  public userCredits: {totalCredits: number};
+export class UserCreditsResponse extends Response {
+  public userCredits: UserTotalCredits;
+}
+
+export interface UserTotalCredits {
+   totalCredits: number;
+}
+
+export class PostResponse extends Response {
+  public post: Post;
 }

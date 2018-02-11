@@ -1,6 +1,6 @@
 <app-navbar [active]="'home'"></app-navbar>
 <div class="container fixed-header grey forum">
-  <div class="row">
+  <div class="row home-component">
     <!--left sidebar-->
     <div class="col-md-2 fixed-sidebar-wrapper home-sidebar hidden-xs">
       <div stickyWidget class="sticky-width wide home-sidebar">
@@ -8,17 +8,18 @@
           <div class="widget profile-widget">
             <div class="top-info">
               <a class="user-img">
-                <cl-image
-                  public-id="{{_user?.profilePicture}}"
-                  *ngIf="_user?.profilePicture"
-                  (click)="openAvatar()"></cl-image>
+                <cl-image public-id="{{user?.profilePicture}}" *ngIf="user?.profilePicture" (click)="openAvatar()"></cl-image>
               </a>
-              <h3 class="user-name" *ngIf="_user">
+              <h3 class="user-name" *ngIf="user">
                 <a href="/my/profile">
-                  <span class="user-name"> {{_user.firstName}} {{_user.lastName}}</span>
+                  <span class="user-name"> {{user.firstName}} {{user.lastName}}</span>
                 </a>
               </h3>
-              <div class="post-share "><i class="star" *ngFor="let i of [1,2,3,4,5]" [ngClass]="{ 'fill': stars > i-1 }"></i></div>
+              <div class="post-share ">
+                <span class="stars" *ngIf="starsPercentage">
+                  <span [style.width]="starsPercentage"></span>
+                </span>
+              </div>
             </div>
             <div class="follow-box">
               <a routerLink="/followers-following">
@@ -82,34 +83,34 @@
             <a class="see-new-posts"><span class="view_more">See 5 new posts</span></a>
             <div id="posts-container">
               <!-- <div *ngFor="let index of posts"> -->
-                <div id="Post1" class="top-post" *ngFor="let post of posts">
-                  <div class="row">
-                    <div class="col-md-3 forum-user-details text-right">
-                      <img src="/assets/images/user4.jpg" alt="">
-                      <div class="forum-user-info">
-                        <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
-                          <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
-                        <p>{{post.user.schoolName | titlecase }}</p>
-                        <div class="post-share ">
-                          <i class="star fill"></i>
-                          <i class="star fill"></i>
-                          <i class="star fill"></i>
-                          <i class="star fill"></i>
-                          <i class="star"></i>
-                        </div>
+              <div id="Post1" class="top-post" *ngFor="let post of posts">
+                <div class="row">
+                  <div class="col-md-3 forum-user-details text-right">
+                    <img src="/assets/images/user4.jpg" alt="">
+                    <div class="forum-user-info">
+                      <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
+                        <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
+                      <p>{{post.user.schoolName | titlecase }}</p>
+                      <div class="post-share ">
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star"></i>
                       </div>
                     </div>
-                    <div class="col-md-9 top-user-left">
-                      <p class="post-time">{{post.createdAt | date :'short' }}</p>
-                      <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
-                    </div>
-                    <div class="col-xs-12 post-text">
-                      <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
-                      <p>{{post.message | titlecase}}</p>
-                      <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></app-post-footer>
-                    </div>
+                  </div>
+                  <div class="col-md-9 top-user-left">
+                    <p class="post-time">{{post.createdAt | date :'short' }}</p>
+                    <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
+                  </div>
+                  <div class="col-xs-12 post-text">
+                    <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                    <p>{{post.message | titlecase}}</p>
+                    <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></app-post-footer>
                   </div>
                 </div>
+              </div>
               <!-- </div> -->
             </div>
 

@@ -11,6 +11,12 @@ import {
   CourseService
 } from '../../../services/services';
 import {
+  UserResponse,
+  UserCreditsResponse,
+  PostsReponse,
+  PostResponse
+} from '../../../models/models';
+import {
   MatDialog
 } from '@angular/material';
 import {
@@ -37,23 +43,25 @@ import * as Ps from 'perfect-scrollbar';
 })
 export class HomeComponent implements OnInit {
   constructor (
-    private _userService: UserService,
-    private _postservice: PostService,
-    private _accountservice: AccountSettingService,
-    private _authservice: AuthenticationService,
-    private _couserservice: CourseService,
+    private userService: UserService,
+    private postservice: PostService,
+    private accountservice: AccountSettingService,
+    private authservice: AuthenticationService,
+    private couserservice: CourseService,
     public dialog: MatDialog,
   ) {
-    this._isDisabled = false;
+    this.isDisabled = false;
+    this.getUserCredits();
   }
 
-  private _postSavedSubscriber = EmitterService.get('postSaveEmitter');
-  private _limit = 5;
-  private _offset = 10;
-  private _hasAddedPostCounter = 0;
-  private _isDisabled = false;
-  private _counter = 0;
-  private _user: any;
+  private postSavedSubscriber = EmitterService.get('postSaveEmitter');
+  private limit = 5;
+  private offset = 10;
+  private hasAddedPostCounter = 0;
+  private isDisabled = false;
+  private counter = 0;
+  private starsPercentage     = '';
+  private user: any;
   protected stars = 0;
   protected posts = [];
   protected credits = 0;
@@ -63,6 +71,7 @@ export class HomeComponent implements OnInit {
   protected newstories = [];
   protected showmore = false;
   protected invitepeer = { email: '' };
+  protected btnLoadMoreText = 'load more...';
 
   public ngOnInit (): void {
     this.getUserProfile();
@@ -73,43 +82,25 @@ export class HomeComponent implements OnInit {
       const $sticky = $('.sticky');
       $sticky.css({ position: 'fixed', top: '86px' });
     }
-
-    this._accountservice.getusercredits()
-    .subscribe((response: any) => {
-      this.credits = response.userCredits.totalCredits;
-      if (this.credits > 400) {
-        this.stars = 5;
-      } else if (this.credits > 300) {
-        this.stars = 4;
-      } else if (this.credits > 200) {
-        this.stars = 3;
-      } else if (this.credits > 100) {
-        this.stars = 2;
-      } else if (this.credits > 0) {
-        this.stars = 1;
-      }
-    }, (error) => {
-      console.log('Error retrieving User Credits');
-      console.log(error);
-    });
-
-    const user = this._userService.getLoggedInUser();
-    this._authservice.getfollowers(user ? user.id : 0).subscribe((response: any) => {
+    /*Skipped since api not available yet*/
+    const user = this.userService.getLoggedInUser();
+    this.authservice.getfollowers(user ? user.id : 0)
+    .subscribe(response => {
       console.log(response);
     }, error => {
       console.log('Error Retrieving Followers');
       console.log(error);
     });
 
-    this._authservice.getfollowingusers(user ? user.id : 0)
-    .subscribe((response: any) => {
+    this.authservice.getfollowingusers(user ? user.id : 0)
+    .subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);
     });
 
-    this._postservice.gettopstories()
-    .subscribe((response: any) => {
+    this.postservice.gettopstories()
+    .subscribe(response => {
       console.log(response);
     }, error => {
       console.log('Error Retrieving stories');
@@ -117,18 +108,43 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  private getUserCredits (): void {
+    this.accountservice.getusercredits()
+    .subscribe((response: UserCreditsResponse) => {
+      this.credits = response.userCredits.totalCredits;
+
+      let result = (this.credits /  100) * 20;
+      if (result >= 100) {
+        this.stars = 100;
+      } else {
+        this.stars = result;
+      }
+      this.starsPercentage = this.getStars(this.stars);
+
+    }, error => {
+      console.log('Error retrieving User Credits');
+      console.log(error);
+    });
+  }
+
+  private getStars (credits): string {
+  let val = parseFloat(credits.toString());
+  return val + '%';
+}
+
   /*Get User info then display name on the sidenav*/
   protected getUserProfile (): void {
-    this._accountservice.getUserProfile()
-    .subscribe((response: any) => {
-      this._user = response.user;
+    this.accountservice.getUserProfile()
+    .subscribe((response: UserResponse) => {
+      this.user = response.user;
     }, error => {
       console.log(error);
     });
   }
 
   protected inviteuser (): void {
-    this._accountservice.invitebyemail(this.invitepeer).subscribe(resp => {
+    this.accountservice.invitebyemail(this.invitepeer)
+    .subscribe(resp => {
       alert('An Email Invite has been sent out');
     }, error => {
       console.error('Error Inviting User');
@@ -141,36 +157,16 @@ export class HomeComponent implements OnInit {
     $(e.currentTarget).find('.view_more').text(this.showmore ? 'View Less' : 'View More');
   }
 
+/*Waiting for toppost api*/
   protected reloadnews (): void {
-    this._postservice.gettopstories().subscribe(resp => {
-      if (resp['error'] === false) {
-        this.newstories = resp['news'];
-      }
+    this.postservice.gettopstories()
+    .subscribe(response => {
+      console.log(response);
+      // this.newstories = response.news;
     }, error => {
       console.log('Error Retrieving stories');
       console.log(error);
     });
-  }
-
-  protected postLink (e): void {
-    $('.create-poll, .brain-map, .ask-question, .share-story, .guest-list').hide();
-    $('.create-post, .timeline-block').fadeIn();
-    $('.post-action li').removeClass('active');
-    $(e.target).closest('li').addClass('active');
-  }
-
-  protected pollLink (e): void {
-    $('.create-post, .brain-map, .ask-question, .share-story, .guest-list').hide();
-    $('.create-poll, .timeline-block').fadeIn();
-    $('.post-action li').removeClass('active');
-    $(e.target).closest('li').addClass('active');
-  }
-
-  protected shareStoryLink (e): void {
-    $('.create-post, .brain-map, .ask-question, .create-poll').hide();
-    $('.share-story').fadeIn();
-    $('.post-action li').removeClass('active');
-    $(e.target).closest('li').addClass('active');
   }
 
   protected openInvite (): void {
@@ -192,28 +188,31 @@ export class HomeComponent implements OnInit {
     this.dialog.open(ShowImageComponent, {
       panelClass: 'avatar-dialog',
       data: {
-        profilePicture: this._user.profilePicture
+        profilePicture: this.user.profilePicture
       },
     });
   }
 
   /*Subscribe on postSaveEmitter in order to refresh post list after posting new*/
-  protected postSavedSubcriber (): void {
-    this._postSavedSubscriber.subscribe(response => {
-      this._postservice.getpost(response).subscribe((data: any) => {
+  private postSavedSubcriber (): void {
+    this.postSavedSubscriber
+    .subscribe(response => {
+      this.postservice.getpost(response)
+      .subscribe((data: PostResponse) => {
         this.posts.unshift(data.post);
-        this._hasAddedPostCounter += 1;
+        this.hasAddedPostCounter += 1;
       });
     });
   }
 
   /*Get Posts List From Api*/
   protected getPosts (): void {
-    this._postservice.getallposts(10, 0).subscribe((response: any) => {
+    this.postservice.getallposts(10, 0)
+    .subscribe((response: PostsReponse) => {
       this.posts = response.posts;
       if (this.posts.length <= 0) {
-        this._isDisabled = true;
-        $('.btn-load-more-posts').text('No More Posts To Show');
+        this.isDisabled = true;
+        this.btnLoadMoreText = 'No More Posts To Show';
       }
     }, error => {
       // alert('Error Retrieving All Posts');
@@ -222,22 +221,23 @@ export class HomeComponent implements OnInit {
 
   protected loadMorePost (): void {
     /*Disable post button after submit to prevent post duplication*/
-    this._isDisabled = true;
-    this._counter = this._hasAddedPostCounter;
+    this.isDisabled = true;
+    this.counter = this.hasAddedPostCounter;
 
-    this._offset = this._offset + this._counter;
-    this._postservice.getallposts(this._limit, this._offset)
-    .subscribe((response: any) => {
-      this._offset = 5 + this._offset;
-      this._limit = 5;
+    this.offset = this.offset + this.counter;
+    this.postservice.getallposts(this.limit, this.offset)
+    .subscribe((response: PostsReponse) => {
+      this.offset = 5 + this.offset;
+      this.limit = 5;
       this.posts = this.posts.concat(response.posts);
-      this._hasAddedPostCounter = 0;
-      let responseLength = response.length;
+      this.hasAddedPostCounter = 0;
+
       if (response.posts.length > 0) {
-        this._isDisabled = false;
+        this.isDisabled = false;
       } else {
-        $('.btn-load-more-posts').text('No More Posts To Show');
+        this.btnLoadMoreText = 'No More Posts To Show';
       }
+
     }, error => {
     });
   }
