@@ -117,13 +117,7 @@
                   public-id="{{post.user.profilePicture}}">
                 </cl-image>
                 <p>{{post.user.firstName}} {{post.user.lastName}}<span class="mobile-time visible-xs">10h ago</span></p>
-                <div class="post-share ">
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star"></i>
-                </div>
+                <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
               </div>
               <div class="col-md-9 top-user-left">
                 <p class="post-time">10 h ago</p>
@@ -135,6 +129,7 @@
                   {{post.message}}
                 </p>
                 <app-post-footer
+                  [post]="post"
                   [likes]="post.likeCount"
                   [ratingCount]="post.ratingCount"
                   [views]="post.pageviewCount"

@@ -56,13 +56,12 @@ export class ProfileComponent implements OnInit {
   protected posts: Array<Post>;
   protected user: UserModel = GUser.getUser();
   private credits = 0;
-  private stars = 0;
+  private stars: Array<string> = [];
   private followers = [];
   private following = [];
 
   public ngOnInit (): void {
     this.getUserTimeline();
-    this.getUserCredits();
   }
 
   protected openInterest (): void {
@@ -104,30 +103,9 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  private getUserCredits (): void {
-    this.accountSettingService.getusercredits()
-    .subscribe((response: any) => {
-      this.credits = response.userCredits.totalCredits;
-      if (this.credits > 400) {
-        this.stars = 5;
-      } else if (this.credits > 300) {
-        this.stars = 4;
-      } else if (this.credits > 200) {
-        this.stars = 3;
-      } else if (this.credits > 100) {
-        this.stars = 2;
-      } else if (this.credits > 0) {
-        this.stars = 1;
-      }
-    }, error => {
-      console.log(error);
-    });
-  }
-
   private getUserTimeline (): void {
     this.accountSettingService.getUsertimeline()
     .subscribe((response: PostsReponse) => {
-      console.log(response);
       this.posts = response.posts;
     });
   }
