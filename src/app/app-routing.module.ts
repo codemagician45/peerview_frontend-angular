@@ -36,15 +36,6 @@ export const appRoutes: Routes = [{
 }, {
   path: '',
   loadChildren: './main/main.module#MainModule'
-    // loadChildren: () => new Promise(function (resolve, reject) {
-    //   (require as any).ensure([], function (require: any) {
-    //     resolve(require('./main/main.module')['MainModule']);
-    //   }, function (error) {
-    //     console.log('error');
-    //     console.log(error);
-    //     reject({ loadChunkError: true });
-    //   });
-    // })
 }];
 
 @NgModule({
