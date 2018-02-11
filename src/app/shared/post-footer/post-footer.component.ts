@@ -20,7 +20,8 @@ import {
   PostService
 } from '../../../services/services';
 import {
-  LikePost
+  LikePost,
+  Post
 } from '../../../models/models';
 import * as Ps from 'perfect-scrollbar';
 
@@ -40,23 +41,28 @@ export class PostFooterComponent implements OnInit {
   @Input() protected replies = 0;
   @Input() protected views = 0;
   @Input() protected share = 0;
-  @Input() protected post: any;
+  @Input() protected post: Post;
   @Input() protected ratingCount: number = 0;
+  @Input() protected disableRepliesLink: boolean;
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   public user: any;
 
   public ngOnInit (): void {
     this.user = this.userservice.getLoggedInUser();
-    this.post = this.post || {};
-  }
-
-  public ngAfterViewInit (): void {
-    this.starsToBeAdded();
   }
 
   protected onOpenPostDetailDialogComponent (): void {
-    this.dialog.open(PostDetailComponent);
+    /**
+     * Because we do have reusable component
+     * We will be having infinite onOpenPostDetailDialogComponent
+     * for this one to be disble we have to check if
+     * disableRepliesLink = true which is set inside
+     * under PostDetailComponent
+     */
+    !this.disableRepliesLink && this.dialog.open(PostDetailComponent, {
+      data: this.post
+    });
   }
 
   protected openShare (): void {
@@ -75,29 +81,6 @@ export class PostFooterComponent implements OnInit {
     }, error => {
       console.error('Error Liking Post');
       console.error(error);
-    });
-  }
-
-  /**
-   * This would be added as an array
-   * for the stars in the like of the
-   * Post
-   */
-  private starsToBeAdded (): void {
-    let roundOf = Math.round(this.ratingCount);
-
-    Array.from({length: roundOf}, () => {
-      this.stars.push('star');
-    });
-
-    if (roundOf > this.ratingCount) {
-      this.stars.push('star_half');
-    }
-
-    let remainingStars = 5 - this.stars.length;
-
-    Array.from({length: remainingStars}, () => {
-      this.stars.push('star_border');
     });
   }
 }
