@@ -5,6 +5,30 @@ import {
   CommonModule
 } from '@angular/common';
 import {
+  MatAutocompleteModule
+} from '@angular/material/autocomplete';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
+import {
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
+import {
+  OwlModule
+} from 'ng2-owl-carousel';
+import {
+  NgbTabsetModule, NgbDropdownModule
+} from '@ng-bootstrap/ng-bootstrap';
+import {
+  CloudinaryModule,
+  CloudinaryConfiguration
+} from '@cloudinary/angular-5.x';
+import {
+  Cloudinary
+} from 'cloudinary-core';
+import {
   ClubListComponent
 } from './club-list/club-list.component';
 import {
@@ -20,20 +44,11 @@ import {
   MyRoutingModule
 } from './my-routing.module';
 import {
-  OwlModule
-} from 'ng2-owl-carousel';
-import {
-  NgbTabsetModule, NgbDropdownModule
-} from '@ng-bootstrap/ng-bootstrap';
-import {
   EditInterestModalComponent
 } from './edit-interest-modal/edit-interest-modal.component';
 import {
   EditAccomplishmentsModalComponent
 } from './edit-accomplishments-modal/edit-accomplishments-modal.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -47,7 +62,8 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
   ],
   declarations: [
     ClubListComponent,
