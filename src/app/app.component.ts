@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 import {
   Router,
@@ -10,6 +11,15 @@ import {
 import {
   Title
 } from '@angular/platform-browser';
+import {
+  AccountSettingService
+} from '../services/services';
+import {
+  UserResponse
+} from '../models/models';
+import {
+  GUser
+} from './global/user';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +27,11 @@ import {
   styleUrls: ['./app.component.scss'],
 
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor (
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private accountSettingService: AccountSettingService,
     private titleService: Title) {
     /**************Loader Function Intialize on change Router***********************/
     router.events.subscribe((val) => {
@@ -41,6 +52,13 @@ export class AppComponent {
   }
 
   protected loading: boolean;
+
+  public ngOnInit (): void {
+    this.accountSettingService.getUserProfile()
+    .subscribe((response: UserResponse) => {
+      GUser.setUser(response.user);
+    });
+  }
 
   protected getTitle (state, parent): any {
     let data = [];
