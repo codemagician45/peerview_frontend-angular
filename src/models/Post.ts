@@ -29,6 +29,7 @@ export class PostReply {
 }
 
 export class Post {
+  public id?: number;
   public courseId: number;
   public message: string;
   public likeCount: number;
