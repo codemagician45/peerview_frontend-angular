@@ -7,7 +7,7 @@
     "dev": "$(npm bin)/webpack-dev-server --inline --progress --port 4200",
     "build-prod": "$(npm bin)/rimraf dist && $(npm bin)/webpack --config config/webpack.prod.ts",
     "prod-lite": "$(npm bin)/lite-server --baseDir='dist'",
-    "tslintcheck": "$(npm bin)/tslint --project tslint.json '**/*.ts' --exclude 'node_modules/**'"
+    "tslintcheck": "$(npm bin)/tslint --project tslint.json --exclude 'node_modules/**'"
   },
   "pre-commit": [
     "tslintcheck"
