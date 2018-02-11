@@ -119,6 +119,9 @@ import {
 import {
   StickyWidgetDirective
 } from '../directives/sticky-widget.directive';
+import {
+  SharedStarsComponent
+} from './components/stars/stars.component';
 
 @NgModule({
   imports: [
@@ -159,7 +162,8 @@ import {
     UnfollowPopupComponent,
     ReportModalComponent,
     ReportModalUserComponent,
-    StickyWidgetDirective
+    StickyWidgetDirective,
+    SharedStarsComponent
   ],
   exports: [
     SidebarImageComponent, SidebarFooterComponent,
@@ -186,7 +190,8 @@ import {
     FullBrainstormingMapComponent,
     PostToComponent,
     ShowImageComponent,
-    StickyWidgetDirective
+    StickyWidgetDirective,
+    SharedStarsComponent
   ],
   entryComponents: [
     PostDetailComponent,
