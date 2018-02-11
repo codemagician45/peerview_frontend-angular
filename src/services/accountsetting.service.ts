@@ -49,7 +49,7 @@ export class AccountSettingService {
     return this.http.get('user/credits' );
   }
 
-  public getusertimeline (): Observable<Object> {
+  public getUsertimeline (): Observable<Object> {
     return this.http.get(`user/timeline`);
   }
 

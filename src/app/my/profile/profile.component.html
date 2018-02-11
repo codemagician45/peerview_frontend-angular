@@ -9,7 +9,11 @@
         <!--left sidebar-->
         <div class="fixed-sidebar not-fixed">
           <div class="sidebar-info">
-            <img class="user-avatar" src="/assets/images/john.jpg" alt="" (click)="openAvatar()" />
+            <cl-image
+              public-id="{{user?.profilePicture}}"
+              *ngIf="user?.profilePicture"
+              (click)="onOpenShowImageDialogComponent()">
+            </cl-image>
             <h4>{{user?.Username}}</h4>
             <ul class="post-share user-star">
               <li>
@@ -106,80 +110,48 @@
         <div>
           <div class="tab-pill hidden-xs"><span>TIMELINE</span></div>
           <!--post-->
-          <div class="top-post">
+          <div class="top-post" *ngFor="let post of posts; let i = index;">
             <div class="row">
               <div class="col-md-3 forum-user-details text-right">
-                <img src="/assets/images/user4.jpg" alt="">
-                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
+                <cl-image
+                  public-id="{{post.user.profilePicture}}">
+                </cl-image>
+                <p>{{post.user.firstName}} {{post.user.lastName}}<span class="mobile-time visible-xs">10h ago</span></p>
                 <div class="post-share ">
                   <i class="star fill"></i>
                   <i class="star fill"></i>
                   <i class="star fill"></i>
                   <i class="star fill"></i>
-                  <i class="star"></i></div>
+                  <i class="star"></i>
+                </div>
               </div>
               <div class="col-md-9 top-user-left">
                 <p class="post-time">10 h ago</p>
-                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government Linked
-                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
+                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">{{post.title}}</h3>
               </div>
               <div class="col-xs-12 post-text">
-                <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                  aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
-
-              </div>
-            </div>
-          </div>
-          <div class="top-post">
-            <div class="row">
-              <div class="col-md-3 forum-user-details text-right">
-                <img src="/assets/images/user4.jpg" alt="">
-                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
-                <div class="post-share ">
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star"></i></div>
-              </div>
-              <div class="col-md-9 top-user-left">
-                <p class="post-time">10 h ago</p>
-                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government Linked
-                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
-              </div>
-              <div class="col-xs-12 post-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                  aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
-              </div>
-            </div>
-          </div>
-          <div class="top-post">
-            <div class="row">
-              <div class="col-md-3 forum-user-details text-right">
-                <img src="/assets/images/user4.jpg" alt="">
-                <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span></p>
-                <div class="post-share ">
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star fill"></i>
-                  <i class="star"></i></div>
-              </div>
-              <div class="col-md-9 top-user-left">
-                <p class="post-time">10 h ago</p>
-                <h3 class="post-title grey" ng-click="vm.openPostDetail('lg')">Saudi Government Linked
-                  To 9/11 Hijackers In Newly Released U.S. Report</h3>
-              </div>
-              <div class="col-xs-12 post-text">
-                <app-post-footer [likes]="123" [views]="670" [share]="123" [replies]="106"></app-post-footer>
+                <!-- post.attachments here -->
+                <p>
+                  {{post.message}}
+                </p>
+                <app-post-footer
+                  [likes]="post.likeCount"
+                  [ratingCount]="post.ratingCount"
+                  [views]="post.pageviewCount"
+                  [share]="post.shareCount"
+                  [replies]="post.postReplyCount"></app-post-footer>
               </div>
             </div>
           </div>
           <!--post-->
-          <div class="load-more"><a href="javascript:void(0);">load more...</a></div>
+          <div class="load-more">
+            <button
+              type="button"
+              class="btn btn-load-more-posts"
+              (click)="onLoadMorePost()">
+                load more
+            </button>
+          </div>
         </div>
       </div>
       <!--content area-->

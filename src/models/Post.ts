@@ -1,3 +1,7 @@
+import {
+  UserModel
+} from './User';
+
 export class LikePost {}
 
 export class RatePost {
@@ -18,9 +22,22 @@ export class SharePost {
   private message: string;
 }
 
+export class PostReply {
+  public comment: string;
+  public createdAt: Date;
+  public user: UserModel;
+}
+
 export class Post {
-  private courseId: number;
-  private message: string;
+  public courseId: number;
+  public message: string;
+  public likeCount: number;
+  public pageviewCount: number;
+  public postReply: Array<PostReply>;
+  public ratingCount: number;
+  public roundedRating?: number;
+  public shareCount: number;
+  public title?: string;
 }
 
 export class Career {

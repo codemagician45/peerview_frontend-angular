@@ -1,40 +1,32 @@
-<div class="post-footer post-share">
-
-  <ul class="post-footer__list">
-    <li>
+<div class="app-post-footer">
+  <ul class="body">
+    <li class="star-section">
       <button class="flat-btn" (click)="likepost()">
-        <img src="/assets/images/icon_like.png"/>
+        <i class="material-icons like">thumb_up</i>
       </button>
-      <i class="star fill"></i>
-      <i class="star fill"></i>
-      <i class="star fill"></i>
-      <i class="star fill"></i>
-      <i class="star"></i>
+      <i class="material-icons star" *ngFor="let star of stars" [ngClass]="{'yellow-fill': star === 'star'}">{{star}}</i>
+      <!-- <i class="material-icons star">star_border</i>
+      <i class="material-icons star">star_border</i>
+      <i class="material-icons star">star_border</i>
+      <i class="material-icons star">star_border</i>
+      <i class="material-icons star">star_border</i> -->
       <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes"><span class="link-name" >Likes</span> ({{likes}})</span>
     </li>
-    <li>
-      <i class="material-icons">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; views</span>
+    <li class="eye-section">
+      <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; views</span>
     </li>
-
     <li *ngIf="share !== false" class='share-section'>
       <button class="flat-btn purple" (click)="openShare()">
         <i class="material-icons">share</i> <span class="link-name">Share</span><ng-container *ngIf="share">({{share}})</ng-container>
       </button>
     </li>
-
-    <li *ngIf="replies !== false && replies !== testt" (click)="openPostDetail()" class='reply-section'>
-      <a class="reply-link">
-        <i class="material-icons">reply</i>{{replies}} <span class="link-name">Replies</span>
-      </a>
+    <li (click)="onOpenPostDetailDialogComponent()" class="reply-section">
+      <!-- <a class="reply-link"> -->
+      <i class="material-icons reply">reply</i>{{replies}} <span class="link-name">Replies</span>
+      <!-- </a> -->
     </li>
-
-   <li>
+    <li>
       <div ngbDropdown class="d-inline-block" placement="bottom-right">
-        <button class="flat-btn purple" ngbDropdownToggle>
-          <i class="material-icons">more_vert</i>
-        </button>
-
-
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           <ul>
             <li class="dropdown-item" *ngIf="user.id === post.author_id">
@@ -47,8 +39,5 @@
         </div>
       </div>
     </li>
-
-
-
   </ul>
 </div>

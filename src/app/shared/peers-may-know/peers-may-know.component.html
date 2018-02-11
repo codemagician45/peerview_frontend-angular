@@ -2,7 +2,9 @@
     <h3 class="peers-widget-title">Peers You May Know<a [routerLink]="['/peers-list']">VIEW ALL</a></h3>
     <div class="peer-item" *ngFor="let peer of peers">
         <button class="flat-btn"><i class="material-icons">person_add</i></button>
-        <img src="/assets/images/user4.jpg"/>
+        <cl-image
+          public-id="{{peer?.profilePicture}}">
+        </cl-image>
         <p class="peer-name">{{peer.firstName}} {{peer.lastName}}</p>
         <span><i class="material-icons">account_balance</i>{{peer.institutionName}}</span>
         <span>

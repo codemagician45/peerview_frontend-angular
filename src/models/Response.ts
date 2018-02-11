@@ -4,6 +4,9 @@ import {
 import {
   Course
 } from './Course';
+import {
+  Post
+} from './Post';
 
 
 export class Response {
@@ -22,4 +25,16 @@ export class UserResponse extends Response {
 
 export class CourseResponse extends Response {
   public courses: Array<Course>;
+}
+
+export class PeersListResponse extends Response {
+  public peersList: Array<UserModel>;
+}
+
+export class PostsReponse extends Response {
+  public posts: Array<Post>;
+}
+
+export class UserCredits extends Response {
+  public userCredits: {totalCredits: number};
 }

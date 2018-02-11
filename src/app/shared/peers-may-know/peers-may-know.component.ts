@@ -9,6 +9,9 @@ import {
   AccountSettingService,
   UserService
 } from '../../../services/services';
+import {
+  PeersListResponse
+} from '../../../models/models';
 
 @Component({
   selector: 'app-peers-may-know',
@@ -18,16 +21,17 @@ import {
 export class PeersMayKnowComponent implements OnInit {
   constructor (
     private http: HttpClient,
-    private accountsettingservice: AccountSettingService,
+    private accountSettingService: AccountSettingService,
     private userservice: UserService
   ) {}
 
   public peers: any[];
-  public user = this.userservice.getLoggedInUser();
+  public user: any;
 
   public ngOnInit (): void {
-    this.accountsettingservice.getpeopleyoumayknow().subscribe(resp => {
-      this.peers = resp['peersList'];
+    this.accountSettingService.getpeopleyoumayknow()
+    .subscribe((response: PeersListResponse) => {
+      this.peers = response.peersList;
     }, error => {
       console.log(error);
     });

@@ -41,7 +41,9 @@ export class PostFooterComponent implements OnInit {
   @Input() protected views = 0;
   @Input() protected share = 0;
   @Input() protected post: any;
+  @Input() protected ratingCount: number = 0;
   @Input('reply-link') private replyLink = '';
+  protected stars: Array<string> = [];
   public user: any;
 
   public ngOnInit (): void {
@@ -49,15 +51,12 @@ export class PostFooterComponent implements OnInit {
     this.post = this.post || {};
   }
 
-  protected openPostDetail (): void {
-    if (this.replyLink) {
-      return;
-    }
+  public ngAfterViewInit (): void {
+    this.starsToBeAdded();
+  }
 
+  protected onOpenPostDetailDialogComponent (): void {
     this.dialog.open(PostDetailComponent);
-    setTimeout(() => {
-      const container = $('.mat-dialog-container')[0];
-    }, 200);
   }
 
   protected openShare (): void {
@@ -76,6 +75,29 @@ export class PostFooterComponent implements OnInit {
     }, error => {
       console.error('Error Liking Post');
       console.error(error);
+    });
+  }
+
+  /**
+   * This would be added as an array
+   * for the stars in the like of the
+   * Post
+   */
+  private starsToBeAdded (): void {
+    let roundOf = Math.round(this.ratingCount);
+
+    Array.from({length: roundOf}, () => {
+      this.stars.push('star');
+    });
+
+    if (roundOf > this.ratingCount) {
+      this.stars.push('star_half');
+    }
+
+    let remainingStars = 5 - this.stars.length;
+
+    Array.from({length: remainingStars}, () => {
+      this.stars.push('star_border');
     });
   }
 }
