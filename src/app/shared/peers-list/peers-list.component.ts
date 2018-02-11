@@ -12,15 +12,15 @@ import {
 })
 export class PeersListComponent implements OnInit {
   constructor (
-    private _accountservice: AccountSettingService,
-    private _userservice: UserService
+    private accountservice: AccountSettingService,
+    private userservice: UserService
   ) {}
 
   public peers: any[] = [];
   private profilePicture: string = '../../../assets/images/{{peer.profilePicture}}';
 
   public ngOnInit (): void {
-    this._accountservice.getpeopleyoumayknow().subscribe(response => {
+    this.accountservice.getpeopleyoumayknow().subscribe(response => {
       console.log(response);
     }, error => {
       console.log('Error Retrieving People You may Know');

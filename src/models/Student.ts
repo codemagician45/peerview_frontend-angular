@@ -5,7 +5,7 @@ export class Student {
   private schoolName: string;
   private userStudyLevelId: number;
   public courseIds: number[];
-  private user_id: number;
+  private userId: number;
   private city: string;
   private gender: string;
   private birthDate: Date;

@@ -23,8 +23,8 @@ import * as _ from 'lodash';
 })
 export class TwoExComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
-    private _courseservice: CourseService,
+    private authenticationService: AuthenticationService,
+    private courseService: CourseService,
     private router: Router) {}
 
   @Output() private setStep: EventEmitter<string> = new EventEmitter();
@@ -32,7 +32,7 @@ export class TwoExComponent implements OnInit {
   private courses = [];
 
   public ngOnInit (): void {
-    this._courseservice.getCourses().subscribe((resp) => {
+    this.courseService.getCourses().subscribe((resp) => {
       this.courses = _.orderBy(resp['courses'], ['course'], ['asc']);
     });
   }
@@ -53,7 +53,7 @@ export class TwoExComponent implements OnInit {
   protected onSubmit (): void {
     this.model.expertise = JSON.stringify(this.model.expertiseArray);
     console.log(JSON.stringify(this.model));
-    this._authenticationService.updateExStudent(this.model).subscribe((response: any) => {
+    this.authenticationService.updateExStudent(this.model).subscribe((response: any) => {
       console.log(response);
     }, (error) => {
       console.log(error);

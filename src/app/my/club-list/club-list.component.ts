@@ -22,14 +22,14 @@ import {
 })
 export class ClubListComponent implements OnInit {
   constructor (
-    private _communityservice: CommunityService,
+    private communityService: CommunityService,
     public dialog: MatDialog
   ) {}
 
   protected clubs: any[] = [];
 
   public ngOnInit (): void {
-    this._communityservice.getuserclubs().subscribe((response: any) => {
+    this.communityService.getuserclubs().subscribe((response: any) => {
       this.clubs = response.campusSocietyClubs;
     }, error => {
       console.log(error);
@@ -37,7 +37,7 @@ export class ClubListComponent implements OnInit {
   }
 
   protected unfollowclub (clubid: number): void {
-    this._communityservice.unfollowclub(clubid).subscribe((response: any) => {
+    this.communityService.unfollowclub(clubid).subscribe((response: any) => {
       console.log(response);
     }, error => {
       console.log(error);

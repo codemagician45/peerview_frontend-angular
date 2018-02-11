@@ -25,8 +25,8 @@ declare var swal: any;
 })
 export class TwoComponent implements OnInit {
   constructor (private router: Router,
-    private _courseService: CourseService,
-    private _authenticationService: AuthenticationService
+    private courseService: CourseService,
+    private authenticationService: AuthenticationService
   ) {
     this.model = new Student();
     this.model['gender'] = 'gender';
@@ -44,13 +44,13 @@ export class TwoComponent implements OnInit {
   private model: Student;
 
   public ngOnInit (): void {
-    this._courseService.getCourses().subscribe((resp) => {
+    this.courseService.getCourses().subscribe((resp) => {
       if (resp['status'] === 'SUCCESS') {
         this.courses = resp['courses'];
       }
     });
 
-    this._courseService.getLevelOfStudy().subscribe((response: any) => {
+    this.courseService.getLevelOfStudy().subscribe((response: any) => {
       this.studyLevel = response.userStudyLevel;
     });
   }
@@ -58,7 +58,7 @@ export class TwoComponent implements OnInit {
   protected onSubmit (): void {
     const model = this.model;
     model.courseIds = [parseInt(this.model.courseIds.toString(), 10)];
-    this._authenticationService.updateStudent(model).subscribe((response: any) => {
+    this.authenticationService.updateStudent(model).subscribe((response: any) => {
       console.log(response);
     }, (error) => {
       this.setStep.emit('3');

@@ -11,10 +11,10 @@ import { AuthService } from 'angular2-social-login';
 })
 export class SignSocialComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router,
-    public _authSocial: AuthService
+    public authService: AuthService
   ) {}
 
   @Input() protected type: string;
@@ -24,7 +24,7 @@ export class SignSocialComponent implements OnInit {
   public ngOnInit (): void { }
 
   public signIn (provider): void {
-    let sub = this._authSocial.login(provider).subscribe((data) => {
+    let sub = this.authService.login(provider).subscribe((data) => {
       let firstName = data['name'].split(' ')[0];
       let lastName = data['name'].split(' ').slice(1).join(' ');
 
@@ -36,11 +36,11 @@ export class SignSocialComponent implements OnInit {
         type: data['provider'] + 'id'
       };
 
-      this._authenticationService.authenticateCustomerWithSocial(obj).subscribe(
+      this.authenticationService.authenticateCustomerWithSocial(obj).subscribe(
         (resp) => {
           if (resp['status'] === 'SUCCESS') {
             let user = resp['user'];
-            this._userService.setLoggedInUser(user);
+            this.userService.setLoggedInUser(user);
             this.router.navigate(['/home']);
           } else {
             alert(resp['Message']);

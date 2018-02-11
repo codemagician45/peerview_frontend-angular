@@ -12,12 +12,12 @@ import {
   styleUrls: ['./top-questions.component.scss']
 })
 export class TopQuestionsComponent implements OnInit {
-  constructor (private _forumservice: ForumService) {}
+  constructor (private forumservice: ForumService) {}
 
   protected allquestions: any[] = [];
 
   public ngOnInit (): void {
-    this._forumservice.getPopularQuestions()
+    this.forumservice.getPopularQuestions()
     .subscribe((response: any) => {
       console.log(response);
     }, error => {

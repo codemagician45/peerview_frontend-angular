@@ -5,29 +5,29 @@ import {
 
 @Injectable()
 export class EmitterService {
-  public static _emitters: { [channel: string]: EventEmitter<any> } = {};
+  public static emitters: { [channel: string]: EventEmitter<any> } = {};
 
   public static get (channel: string): EventEmitter<any> {
-    if (!this._emitters[channel]) {
-      this._emitters[channel] = new EventEmitter();
+    if (!this.emitters[channel]) {
+      this.emitters[channel] = new EventEmitter();
     }
-    return this._emitters[channel];
+    return this.emitters[channel];
   }
 
   public static remove (channel: string): any {
-    this._emitters[channel].unsubscribe();
-    delete this._emitters[channel];
-    return this._emitters[channel];
+    this.emitters[channel].unsubscribe();
+    delete this.emitters[channel];
+    return this.emitters[channel];
   }
 
   public static clear (channel): any {
     let self = this;
     for (let i = 0; i < channel.length; i++) {
       /** */
-      if (self._emitters[channel[i]] && self._emitters[channel[i]].unsubscribe) {
-        self._emitters[channel[i]].unsubscribe();
-        delete self._emitters[channel[i]];
-        return self._emitters[channel[i]];
+      if (self.emitters[channel[i]] && self.emitters[channel[i]].unsubscribe) {
+        self.emitters[channel[i]].unsubscribe();
+        delete self.emitters[channel[i]];
+        return self.emitters[channel[i]];
       }
     }
 

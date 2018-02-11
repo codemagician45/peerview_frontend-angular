@@ -21,7 +21,7 @@ import * as $ from 'jquery';
 })
 export class IndexComponent implements OnInit, AfterViewInit {
   constructor (
-    private userservice: UserService,
+    private userService: UserService,
     private router: Router,
     private scrollSpyService: ScrollSpyService
   ) {}
@@ -59,7 +59,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit (): void {
-    if (this.userservice.isAuthenticated()) {
+    if (this.userService.isAuthenticated()) {
       this.router.navigate(['/home']);
     }
 
@@ -104,12 +104,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
     $(e.target).closest('li').find('.accordion-description').slideToggle();
   }
 
-  protected tab (e, number): boolean {
+  protected tab (e, index): boolean {
     const that = $(e.target);
 
     $('.containers').hide();
-    $('#container' + number).fadeIn();
-    $('#container' + number).addClass('in');
+    $('#container' + index).fadeIn();
+    $('#container' + index).addClass('in');
     $('.inline-tabs li').removeClass();
     that.parent().addClass('active');
 

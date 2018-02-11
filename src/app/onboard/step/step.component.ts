@@ -15,7 +15,10 @@ import {
   templateUrl: './step.component.html',
 })
 export class StepComponent implements OnInit, OnDestroy {
-  constructor (private route: ActivatedRoute, private location: Location) {}
+  constructor (
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   protected steps = [{
     number: 1,
@@ -48,9 +51,9 @@ export class StepComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  protected setStep (variation, number = null): void {
+  protected setStep (variation, num = null): void {
     let activeStepIndex = this.steps.findIndex(function (step): boolean {
-      if (number && number === step.number) {
+      if (num && num === step.number) {
         return true;
       }
       for (let i = 0; i < step.variations.length; i++) {

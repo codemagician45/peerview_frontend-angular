@@ -32,8 +32,8 @@ import * as Ps from 'perfect-scrollbar';
 export class PostFooterComponent implements OnInit {
   constructor (
     public dialog: MatDialog,
-    private _userservice: UserService,
-    private _postservice: PostService
+    private userservice: UserService,
+    private postservice: PostService
   ) {}
 
   @Input() protected likes = 0;
@@ -45,7 +45,7 @@ export class PostFooterComponent implements OnInit {
   public user: any;
 
   public ngOnInit (): void {
-    this.user = this._userservice.getLoggedInUser();
+    this.user = this.userservice.getLoggedInUser();
     this.post = this.post || {};
   }
 
@@ -69,7 +69,7 @@ export class PostFooterComponent implements OnInit {
   }
 
   protected likepost (): void {
-    this._postservice.likepost(this.post.id, new LikePost()).subscribe(resp => {
+    this.postservice.likepost(this.post.id, new LikePost()).subscribe(resp => {
       if (resp['error'] === false) {
         alert(resp['Message']);
       }

@@ -20,9 +20,9 @@ import * as _ from 'lodash';
 })
 export class ThreeComponent implements OnInit {
   constructor (
-    private _courseService: CourseService,
-    private _authenticationService: AuthenticationService,
-    private _onboardingService: OnboardingService,
+    private courseService: CourseService,
+    private authenticationService: AuthenticationService,
+    private onboardingService: OnboardingService,
     private router: Router
   ) {}
 
@@ -37,7 +37,7 @@ export class ThreeComponent implements OnInit {
   protected isDisabled: any[] = [];
 
   public ngOnInit (): void {
-    this._courseService.getInterest().subscribe((response: any) => {
+    this.courseService.getInterest().subscribe((response: any) => {
       const a = _.map(response.interestCategory, (value: any, key) => {
         this.interests.push({ 'id': value.id, 'value': value.name });
         const parsedValues: any[] = [];
@@ -57,7 +57,7 @@ export class ThreeComponent implements OnInit {
     this.selectedInterests.forEach((selectedInterest, i) => {
       if (this.selectedInterests.length > 0) {
         const catId = selectedInterest.id;
-        this._courseService.getSubInterest(catId).subscribe((response: any) => {
+        this.courseService.getSubInterest(catId).subscribe((response: any) => {
           this.selectedInterests[i]['subinterests'] = response.interests;
 
           this.subinterests.forEach((subInterest) => {
@@ -117,7 +117,7 @@ export class ThreeComponent implements OnInit {
     if (finalInterests.length < 5) {
       alert('At Least Five Sub Interests are required');
     } else {
-      this._authenticationService.updateInterests(finalInterests).subscribe((response) => {
+      this.authenticationService.updateInterests(finalInterests).subscribe((response) => {
         this.router.navigate(['/home']);
       }, (error) => {
         console.log(error);
@@ -233,7 +233,7 @@ export class ThreeComponent implements OnInit {
         let selectedSubInterest = this.selectedInterests[selectedIndex].subinterests;
 
         if (!this.alreadySuggested(selectedSubInterest, suggestedInterest, selectedIndex)) {
-          this._onboardingService.saveSuggestedInterest(interestCategoryID, this.suggestedInterest[selectedIndex]).subscribe((response) => {
+          this.onboardingService.saveSuggestedInterest(interestCategoryID, this.suggestedInterest[selectedIndex]).subscribe((response) => {
             // addind suggested field to determined and show delete function
             response['interest']['suggested'] = true;
             selectedSubInterest.push(response['interest']);
@@ -263,7 +263,7 @@ export class ThreeComponent implements OnInit {
   }
 
   protected deleteSuggested (interestId, selectedInterestIndex, selSubInterestIndex): void {
-    this._onboardingService.deleteSuggestedInterest(interestId).subscribe((response) => {
+    this.onboardingService.deleteSuggestedInterest(interestId).subscribe((response) => {
       this.selectedInterests[selectedInterestIndex].subinterests.splice(selSubInterestIndex, 1);
     });
   }

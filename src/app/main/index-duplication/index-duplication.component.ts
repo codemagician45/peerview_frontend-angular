@@ -25,7 +25,7 @@ export class IndexDuplicationComponent implements OnInit, AfterViewInit {
     private userservice: UserService,
     private router: Router,
     private scrollSpyService: ScrollSpyService,
-    private _authenticationservice: AuthenticationService
+    private authenticationService: AuthenticationService
   ) {}
 
   public items: any;
@@ -106,11 +106,11 @@ export class IndexDuplicationComponent implements OnInit, AfterViewInit {
     $('html,body').animate({ scrollTop: 0 }, 'slow');
   }
 
-  protected tab (e, number): boolean {
+  protected tab (e, index): boolean {
     const that = $(e.target);
     $('.containers').hide();
-    $('#container' + number).fadeIn();
-    $('#container' + number).addClass('in');
+    $('#container' + index).fadeIn();
+    $('#container' + index).addClass('in');
     $('.inline-tabs li').removeClass();
     that.parent().addClass('active');
 
@@ -118,7 +118,7 @@ export class IndexDuplicationComponent implements OnInit, AfterViewInit {
   }
 
   protected signupforbeta (): void {
-    this._authenticationservice.signupforbeta(this.signup)
+    this.authenticationService.signupforbeta(this.signup)
     .subscribe((response: any) => {
       this.signup.success = true;
     }, (error) => {

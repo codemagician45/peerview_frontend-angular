@@ -12,14 +12,14 @@ import {
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  constructor (private _communityservice: CommunityService) {}
+  constructor (private communityservice: CommunityService) {}
 
   public group: any = {};
 
   public ngOnInit (): void {}
 
   protected creategroup (): void {
-    this._communityservice.creategroup(this.group)
+    this.communityservice.creategroup(this.group)
     .subscribe((response: any) => {
       console.log(response);
     }, error => {

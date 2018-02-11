@@ -16,7 +16,7 @@ import * as _ from 'lodash';
 export class CreateComponent implements OnInit {
   constructor (
     private courseService: CourseService,
-    private _eventservice: EventService
+    private eventService: EventService
   ) {}
 
   public cities: any;
@@ -30,12 +30,12 @@ export class CreateComponent implements OnInit {
       this.cities = _.orderBy(response['cities'], ['name'], ['asc']);
     });
 
-    this._eventservice.getEventType()
+    this.eventService.getEventType()
     .subscribe((response: any) => {
       this.eventtypes = response.eventTypes;
     });
 
-    this._eventservice.getEventDressCode()
+    this.eventService.getEventDressCode()
     .subscribe((response: any) => {
       this.dresstypes = response.eventDressCodes;
     });

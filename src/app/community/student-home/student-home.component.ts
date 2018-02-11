@@ -12,7 +12,7 @@ import {
   styleUrls: ['./student-home.component.scss']
 })
 export class StudentHomeComponent implements OnInit {
-  constructor (private _communityservice: CommunityService) {}
+  constructor (private communityService: CommunityService) {}
 
   protected publicgroups: any[] = [{
     name: 'Public group name 1',
@@ -31,14 +31,14 @@ export class StudentHomeComponent implements OnInit {
   }];
 
   public ngOnInit (): void {
-    this._communityservice.getuserclubs()
+    this.communityService.getuserclubs()
     .subscribe((response: any) => {
       this.mygroups = response.campusStudentGroups;
     }, error => {
       console.log(error);
     });
 
-    this._communityservice.getsocietyclubs()
+    this.communityService.getsocietyclubs()
     .subscribe((response: any) => {
       this.publicgroups = response.campusStudentGroups;
     }, error => {

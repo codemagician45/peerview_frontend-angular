@@ -16,14 +16,14 @@ import {
 })
 export class EventsComponent implements OnInit {
   constructor (
-    private _eventservice: EventService,
-    private _userservice: UserService
+    private eventService: EventService,
+    private userService: UserService
   ) {}
 
   protected events: Event[] = [];
 
   public ngOnInit (): void {
-    this._eventservice.getAuthorEvents(this._userservice.loggedInUser ? this._userservice.loggedInUser.id : 0)
+    this.eventService.getAuthorEvents(this.userService.loggedInUser ? this.userService.loggedInUser.id : 0)
     .subscribe(response => {
       console.log(response);
     }, error => {

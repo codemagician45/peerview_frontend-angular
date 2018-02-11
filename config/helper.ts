@@ -1,9 +1,9 @@
 let path = require('path');
-let _root = path.resolve(__dirname, '..');
+let rootPath = path.resolve(__dirname, '..');
 
 function root (args): void {
   args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [_root].concat(args));
+  return path.join.apply(path, [rootPath].concat(args));
 }
 
 exports.root = root;

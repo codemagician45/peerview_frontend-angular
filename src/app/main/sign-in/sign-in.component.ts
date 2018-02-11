@@ -21,8 +21,8 @@ import {
 })
 export class SignInComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -46,11 +46,11 @@ export class SignInComponent implements OnInit {
     }
 
     if (isValid && this.model.email && this.model.password) {
-      this._authenticationService.authenticateCustomer(this.model)
+      this.authenticationService.authenticateCustomer(this.model)
       .subscribe((response: any) => {
         this.submitted = true;
         const user = response.user;
-        this._userService.setLoggedInUser(user);
+        this.userService.setLoggedInUser(user);
         this.router.navigate(['/home']);
       }, (error) => {
         this.responceError = error['error'].status_message;

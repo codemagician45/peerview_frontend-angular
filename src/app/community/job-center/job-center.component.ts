@@ -12,7 +12,7 @@ import {
   styleUrls: ['./job-center.component.scss']
 })
 export class JobCenterComponent implements OnInit {
-  constructor (private _communityservice: CommunityService) {}
+  constructor (private communityService: CommunityService) {}
 
   protected jobs: any[] = [];
 
@@ -22,7 +22,7 @@ export class JobCenterComponent implements OnInit {
       $sticky.css({ position: 'fixed', top: '86px' });
     }
 
-    this._communityservice.getjobs()
+    this.communityService.getjobs()
     .subscribe((response: any) => {
       this.jobs = response.campusJobs;
     }, error => {

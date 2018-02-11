@@ -18,15 +18,15 @@ import {
 export class PeersMayKnowComponent implements OnInit {
   constructor (
     private http: HttpClient,
-    private _accountsettingservice: AccountSettingService,
-    private _userservice: UserService
+    private accountsettingservice: AccountSettingService,
+    private userservice: UserService
   ) {}
 
   public peers: any[];
-  public user = this._userservice.getLoggedInUser();
+  public user = this.userservice.getLoggedInUser();
 
   public ngOnInit (): void {
-    this._accountsettingservice.getpeopleyoumayknow().subscribe(resp => {
+    this.accountsettingservice.getpeopleyoumayknow().subscribe(resp => {
       this.peers = resp['peersList'];
     }, error => {
       console.log(error);

@@ -16,7 +16,7 @@ import {
 })
 export class SellComponent implements OnInit {
   constructor (
-    private _communityservice: CommunityService,
+    private communityService: CommunityService,
     private router: Router
   ) {}
 
@@ -30,7 +30,7 @@ export class SellComponent implements OnInit {
   }
 
   protected onsubmit (): void {
-    this._communityservice.createsellerad(1, this.item)
+    this.communityService.createsellerad(1, this.item)
     .subscribe((response: any) => {
       this.item = {};
       this.router.navigate(['marketplace']);

@@ -23,7 +23,7 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
   constructor (
-    private _courseservice: CourseService,
+    private courseService: CourseService,
     public dialog: MatDialog
   ) {}
 
@@ -33,11 +33,11 @@ export class HomeComponent implements OnInit {
   protected courselevel: any[] = [];
 
   public ngOnInit (): void {
-    this._courseservice.getCourses().subscribe((resp) => {
+    this.courseService.getCourses().subscribe((resp) => {
       this.courses = _.orderBy(resp['courses'], ['course'], ['asc']);
     });
 
-    this._courseservice.getLevelOfStudy()
+    this.courseService.getLevelOfStudy()
     .subscribe((response: any) => {
       this.courselevel = response.userStudyLevel;
     });

@@ -22,8 +22,8 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
   constructor (
-    private _eventservice: EventService,
-    private _courseservice: CourseService,
+    private eventService: EventService,
+    private courseService: CourseService,
     private route: ActivatedRoute
   ) {
     this.items = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   protected date: any = new Date();
 
   public ngOnInit (): void {
-    this._eventservice.getEvents().subscribe((response: any) => {
+    this.eventService.getEvents().subscribe((response: any) => {
       this.events = response.events;
     }, error => {
       console.log(error);
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       this.cityid = Number(param);
     });
 
-    this._courseservice.getCountryCities()
+    this.courseService.getCountryCities()
     .subscribe((response: any) => {
       this.canadiancities = _.orderBy(response['cities'], ['name'], ['asc']);
     });

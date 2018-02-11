@@ -17,16 +17,16 @@ import {
 })
 export class FollowersComponent implements OnInit {
   constructor (
-    private _authservice: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) {}
 
   protected followers = [];
 
   public ngOnInit (): void {
-    const user = this._userService.getLoggedInUser();
-    this._authservice.getfollowers(user ? user.id : 0).subscribe((response: any) => {
+    const user = this.userService.getLoggedInUser();
+    this.authenticationService.getfollowers(user ? user.id : 0).subscribe((response: any) => {
       console.log(response);
     }, error => {
       console.log(error);

@@ -13,7 +13,7 @@ import { ShowImageComponent } from '../../shared/show-image/show-image.component
 })
 export class ProfileComponent implements OnInit {
   constructor (
-    private _accountservice: AccountSettingService,
+    private accountSettingService: AccountSettingService,
     public dialog: MatDialog
   ) {
     this.items = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
   private following = [];
 
   public ngOnInit (): void {
-    this._accountservice.getusercredits()
+    this.accountSettingService.getusercredits()
       .subscribe((response: any) => {
         this.credits = response.userCredits.totalCredits;
         if (this.credits > 400) {
@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       });
 
-    this._accountservice.getuserprofile()
+    this.accountSettingService.getuserprofile()
       .subscribe((response: any) => {
         this.user = response.user;
       }, error => {

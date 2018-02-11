@@ -10,8 +10,7 @@ import {
   ForgotPassword
 } from '../../../models/models';
 import {
-  AuthenticationService,
-  UserService
+  AuthenticationService
 } from '../../../services/services';
 
 @Component({
@@ -21,8 +20,7 @@ import {
 })
 export class ForgotPasswordComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {}
 
@@ -31,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
   public ngOnInit (): void { }
 
   protected forgotPasswordSubmit (): void {
-    this._authenticationService.restorePassword(this.forgotPassModel)
+    this.authenticationService.restorePassword(this.forgotPassModel)
     .subscribe((response: any) => {
       alert('Password reset link has been sent to your email.');
     }, (error) => {

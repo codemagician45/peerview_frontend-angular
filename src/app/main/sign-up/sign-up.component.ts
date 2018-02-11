@@ -11,8 +11,7 @@ import {
   SignIn
 } from '../../../models/models';
 import {
-  AuthenticationService,
-  UserService
+  AuthenticationService
 } from '../../../services/services';
 
 declare var swal: any;
@@ -23,8 +22,7 @@ declare var swal: any;
 })
 export class SignUpComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
     private router: Router
   ) {
     this.loading = true;
@@ -44,7 +42,7 @@ export class SignUpComponent implements OnInit {
     const splitnames = this.model.name.split(' ');
     this.model.firstName = splitnames[0];
     this.model.lastName = splitnames[1];
-    this._authenticationService.registerCustomer(this.model).subscribe((resp) => {
+    this.authenticationService.registerCustomer(this.model).subscribe((resp) => {
       if (resp['status'] === 'SUCCESS') {
         this.submitted = true;
         this.router.navigate(['/onBoard']);

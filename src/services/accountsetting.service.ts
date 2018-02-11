@@ -89,8 +89,8 @@ export class AccountSettingService {
     return this.http.post('', about);
   }
 
-  public invitebyemail (email_body: any): Observable<Object> {
-    return this.http.post('user/invite-users', email_body);
+  public invitebyemail (emailBody: any): Observable<Object> {
+    return this.http.post('user/invite-users', emailBody);
   }
 
   public passwordreset (jotToken, item): Observable<Object> {

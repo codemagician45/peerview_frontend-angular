@@ -1,6 +1,6 @@
 import * as webpack from 'webpack';
 import * as webpackMerge from 'webpack-merge';
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 let commonConfig = require('./webpack.common.ts');
 let helpers = require('./helper.ts');
 

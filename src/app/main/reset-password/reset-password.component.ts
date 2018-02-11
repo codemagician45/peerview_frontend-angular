@@ -24,10 +24,10 @@ declare var swal: any;
 })
 export class ResetpasswordComponent implements OnInit {
   constructor (
-    private _authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private router: Router, private route: ActivatedRoute
   ) {
-    this._authenticationService.authenticatetoken()
+    this.authenticationService.authenticatetoken()
     .subscribe((response: any) => {
       this.sucessMessage = 'true';
     }, (error) => {
@@ -53,7 +53,7 @@ export class ResetpasswordComponent implements OnInit {
   protected resetPassword (): void {
     this.sub = this.route.params.subscribe((params: any) => {
       this.token = params.token;
-      this._authenticationService.resetPassword(this.model, this.token)
+      this.authenticationService.resetPassword(this.model, this.token)
       .subscribe(res => {
         if (res['status'] === 'SUCCESS') {
           this.responceSucess = 'Password Reset Successfully!!';

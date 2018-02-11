@@ -20,9 +20,9 @@ import * as $ from 'jquery';
 })
 export class AppNavBarComponent implements OnInit {
   constructor (
-    private _userService: UserService,
-    private _accountsettingservice: AccountSettingService,
-    private _notificationservice: NotificationService
+    private userService: UserService,
+    private accountSettingService: AccountSettingService,
+    private notificationService: NotificationService
   ) {}
 
   @Input('active') protected active: string;
@@ -36,14 +36,14 @@ export class AppNavBarComponent implements OnInit {
 
   public ngOnInit (): void {
     this.getUserProfile();
-    this._notificationservice.getNotifications(1, 5).subscribe(resp => {
+    this.notificationService.getNotifications(1, 5).subscribe(resp => {
       if (resp['error'] === false) {
         this.notifications = resp['Notifications'];
       }
     }, error => {
       console.log(error);
     });
-    this._notificationservice.getMessages(1, 5).subscribe(resp => {
+    this.notificationService.getMessages(1, 5).subscribe(resp => {
       if (resp['error'] === false) {
         this.messages = resp['Messages'];
       }
@@ -68,7 +68,7 @@ export class AppNavBarComponent implements OnInit {
     let user = localStorage.getItem('user');
     let userInfo = JSON.parse(user);
     let userId = userInfo.id;
-    this._accountsettingservice.getUserProfile()
+    this.accountSettingService.getUserProfile()
       .subscribe((response: any) => {
         this.user = response.user;
         console.log(this.user);

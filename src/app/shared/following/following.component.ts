@@ -17,17 +17,18 @@ import {
 })
 export class FollowingComponent implements OnInit {
   constructor (
-    private _authservice: AuthenticationService,
-    private _userService: UserService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
     private router: Router
   ) {}
 
   private following = [];
 
   public ngOnInit (): void {
-    const user = this._userService.getLoggedInUser();
+    const user = this.userService.getLoggedInUser();
 
-    this._authservice.getfollowingusers(user ? user.id : 0).subscribe((response: any) => {
+    this.authenticationService.getfollowingusers(user ? user.id : 0)
+    .subscribe((response: any) => {
       console.log(response);
     }, error => {
       console.log(error);

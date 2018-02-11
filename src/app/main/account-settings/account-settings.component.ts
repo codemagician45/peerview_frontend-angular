@@ -29,10 +29,10 @@ import * as $ from 'jquery';
 })
 export class AccountSettingsComponent implements OnInit {
   constructor (
-    private _accountsettingservice: AccountSettingService,
-    private _userservice: UserService,
+    private accountSettingService: AccountSettingService,
+    private userservice: UserService,
     private dateAdapter: DateAdapter<NativeDateAdapter>,
-    private _courseservice: CourseService
+    private courseService: CourseService
   ) {
     this.dateAdapter.setLocale('en-EN');
   }
@@ -49,14 +49,14 @@ export class AccountSettingsComponent implements OnInit {
     this.getUserProfile();
     this.getCourses();
     let self = this;
-    this._accountsettingservice.getAccountSetting()
+    this.accountSettingService.getAccountSetting()
     .subscribe((response: any) => {
       console.log(response);
     }, (error) => {
       console.log(error);
     });
 
-    this.languages = this._courseservice.getlanguages();
+    this.languages = this.courseService.getlanguages();
 
     $('.tabChange').click(function (e): void {
       const that = $(this);
@@ -84,7 +84,7 @@ export class AccountSettingsComponent implements OnInit {
 
   protected onSavePassword (): void {
     console.log(this.passwordchange);
-    this._accountsettingservice.updatepassword(this.passwordchange)
+    this.accountSettingService.updatepassword(this.passwordchange)
     .subscribe((response: any) => {
       console.log(response);
     }, error => {
@@ -99,7 +99,7 @@ export class AccountSettingsComponent implements OnInit {
       userPrivacyId: this.user.userPrivacyId
     };
 
-    this._accountsettingservice.updateSecurityaPrivacy(model)
+    this.accountSettingService.updateSecurityaPrivacy(model)
     .subscribe(resp => {
       console.log(resp);
     }, error => {
@@ -112,7 +112,7 @@ export class AccountSettingsComponent implements OnInit {
     let userindex = this.pagemodel['blocked'].indexOf(user);
     console.log(userindex);
     this.pagemodel['blocked'].splice(userindex, 1);
-    this._accountsettingservice.unblockuser(user.blocked_by, { 'unblock_id': user.blocked })
+    this.accountSettingService.unblockuser(user.blocked_by, { 'unblock_id': user.blocked })
     .subscribe((response: any) => {
       console.log(response);
     }, error => {
@@ -121,7 +121,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   protected updateuser (): void {
-    this._accountsettingservice.updateuser(this.pagemodel)
+    this.accountSettingService.updateuser(this.pagemodel)
     .subscribe((response: any) => {
       console.log(response);
     }, error => {
@@ -130,7 +130,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   private getUserProfile (): void {
-    this._accountsettingservice.getUserProfile()
+    this.accountSettingService.getUserProfile()
     .subscribe((response: UserResponse) => {
       this.user = response.user;
       console.log(this.user);
@@ -138,7 +138,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   private getCourses (): void {
-    this._courseservice.getCourses()
+    this.courseService.getCourses()
     .subscribe((response: CourseResponse) => {
       this.courses = response.courses;
     });

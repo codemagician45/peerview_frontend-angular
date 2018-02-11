@@ -1,6 +1,6 @@
 let webpack = require('webpack');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 let helpers = require('./helper');
 
 module.exports = {

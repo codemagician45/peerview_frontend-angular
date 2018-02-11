@@ -92,7 +92,7 @@
         "variable-declaration": "space"
       }
     ],
-    "variable-name": false,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
     "whitespace": [
       true,
       "check-branch",

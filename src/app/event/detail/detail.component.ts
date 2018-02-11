@@ -13,7 +13,7 @@ export class DetailComponent implements OnInit {
   constructor (
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private _eventservice: EventService
+    private eventService: EventService
   ) {
     this.items = [1, 2, 3, 4, 5, 6, 7, 8];
     this.properties = {
@@ -35,20 +35,20 @@ export class DetailComponent implements OnInit {
   protected event: any;
 
   public ngOnInit (): void {
-    this._eventservice.getEvent(this.eventid)
+    this.eventService.getEvent(this.eventid)
     .subscribe((response: any) => {
       this.event = response.event;
     }, error => {
     });
 
-    this._eventservice.getGuestList(this.eventid)
+    this.eventService.getGuestList(this.eventid)
     .subscribe((response: any) => {
       this.guestlist = response.eventGuestList;
     }, error => {
       console.log(error);
     });
 
-    this._eventservice.getVipGuestList(this.eventid)
+    this.eventService.getVipGuestList(this.eventid)
     .subscribe((response: any) => {
       this.vipguestlist = response.eventVIP;
     }, error => {

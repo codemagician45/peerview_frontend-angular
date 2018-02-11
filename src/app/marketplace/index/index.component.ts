@@ -13,7 +13,7 @@ import * as $ from 'jquery';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-  constructor (private _communityservice: MarketPlaceService) {}
+  constructor (private marketPlaceService: MarketPlaceService) {}
 
   protected marketplaceitems: any[] = [];
 
@@ -23,7 +23,7 @@ export class IndexComponent implements OnInit {
       $sticky.css({ position: 'fixed', top: '86px' });
     }
 
-    this._communityservice.getmarketplace(1).subscribe((response: any) => {
+    this.marketPlaceService.getmarketplace(1).subscribe((response: any) => {
       this.marketplaceitems = response.campusMarketplace;
     }, error => {
       console.log(error);

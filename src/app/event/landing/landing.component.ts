@@ -19,7 +19,7 @@ import * as _ from 'lodash';
 export class LandingComponent implements OnInit {
   constructor (
     public router: Router,
-    private _courseservice: CourseService
+    private courseService: CourseService
   ) {}
 
   protected canadiancities: any[] = [];
@@ -31,7 +31,7 @@ export class LandingComponent implements OnInit {
       $sticky.css({ position: 'fixed', top: '66px' });
     }
 
-    this._courseservice.getCountryCities()
+    this.courseService.getCountryCities()
     .subscribe((response: any) => {
       this.canadiancities = _.orderBy(response['cities'], ['name'], ['asc']);
     });
