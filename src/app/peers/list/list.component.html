@@ -1,0 +1,40 @@
+<div class="peers-list-component">
+  <shared-navbar-component></shared-navbar-component>
+  <div class="container fixed-header">
+    <div class="row">
+      <div class="col-md-9 peers-list__container">
+        <div class="sec-heading">Peers List</div>
+        <div class="">
+          <div class="row">
+            <div class="col-md-4" *ngFor="let peer of peersList; let i = index;">
+              <div class="profile-widget peers profile-sm">
+                <div class="top-info">
+                  <cl-image
+                    public-id="{{peer?.profilePicture}}"
+                    *ngIf="peer?.profilePicture">
+                      <cl-transformation height=130 width="130" crop="fit">
+                      </cl-transformation>
+                  </cl-image>
+                  <span class="user-profile-info">
+                    <h2>
+                      <a href="user-profile.html">{{peer.firstName}} {{peer.lastName}}</a>
+                    </h2>
+                    <ul class="peers-info">
+                      <li><i class="icon-institute" data-toggle="tooltip" title="" data-original-title="Institution"></i>{{peer.institutionName}}</li>
+                      <li><i class="icon-course" data-toggle="tooltip" title="" data-original-title="Course"></i>{{peer.schoolName}}</li>
+                    </ul>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!-- done delele the commented component below -->
+        <!-- <app-sidebar-image class="hidden-xs"></app-sidebar-image> -->
+        <shared-sidebar-footer-component></shared-sidebar-footer-component>
+      </div>
+    </div>
+  </div>
+</div>
