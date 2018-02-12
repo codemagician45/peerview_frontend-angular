@@ -37,6 +37,9 @@ export const appRoutes: Routes = [{
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
 }, {
+  path: 'user',
+  loadChildren: './user/user.module#UserModule'
+}, {
   path: '',
   loadChildren: './main/main.module#MainModule'
 }];

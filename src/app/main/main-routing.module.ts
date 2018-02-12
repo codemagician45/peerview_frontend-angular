@@ -38,9 +38,6 @@ import {
   OnBoardEmailComponent
 } from './onBoard/on-Board-email.component';
 import {
-  VerifyUserEmailComponent
-} from './verifyUserEmail/verify-user-email.component';
-import {
   SignInComponent
 } from './sign-in/sign-in.component';
 import {
@@ -137,12 +134,6 @@ const routes: Routes = [{
   }, {
     path: 'onBoard',
     component: OnBoardEmailComponent
-  }, {
-    path: 'verify-email/:jotToken',
-    component: VerifyUserEmailComponent,
-    data: {
-      name: 'veEmail'
-    }
   }, {
     path: 'sign-in',
     component: SignInComponent
