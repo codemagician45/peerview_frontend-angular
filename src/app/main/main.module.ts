@@ -44,9 +44,6 @@ import {
   OnBoardEmailComponent
 } from './onBoard/on-Board-email.component';
 import {
-  VerifyUserEmailComponent
-} from './verifyUserEmail/verify-user-email.component';
-import {
   SignInComponent
 } from './sign-in/sign-in.component';
 import {
@@ -173,7 +170,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MessagesComponent,
     SignUpComponent,
     OnBoardEmailComponent,
-    VerifyUserEmailComponent,
     SignInComponent,
     SignSocialComponent,
     ForgotPasswordComponent,
