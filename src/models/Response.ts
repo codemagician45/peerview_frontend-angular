@@ -27,10 +27,6 @@ export class CourseResponse extends Response {
   public courses: Array<Course>;
 }
 
-export class PeersListResponse extends Response {
-  public peersList: Array<UserModel>;
-}
-
 export class PostsReponse extends Response {
   public posts: Array<Post>;
 }
@@ -46,3 +42,8 @@ export interface UserTotalCredits {
 export class PostResponse extends Response {
   public post: Post;
 }
+
+export interface PeersListResponse extends Response {
+  peersList: Array<UserModel>;
+}
+
