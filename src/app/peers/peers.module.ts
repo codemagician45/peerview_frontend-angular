@@ -28,8 +28,8 @@ import {
 
 @NgModule({
   imports : [
-    peersRouting,
     SharedModule,
+    peersRouting,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
   ],
   declarations : [

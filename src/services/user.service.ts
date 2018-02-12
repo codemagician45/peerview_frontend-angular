@@ -2,6 +2,12 @@ import {
   Injectable
 } from '@angular/core';
 import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
   SignUp,
   SignIn,
   User
@@ -9,7 +15,7 @@ import {
 
 @Injectable()
 export class UserService {
-  constructor () {}
+  constructor (private http: HttpClient) {}
 
   public loggedInUser: User = this.getLoggedInUser();
 
@@ -45,5 +51,9 @@ export class UserService {
     localStorage.removeItem('user');
     localStorage.clear();
     this.loggedInUser = null;
+  }
+
+  public verifyEmail (jotToken: string, token: string): Observable<Object> {
+    return this.http.post(`user/verify-email/${jotToken}`, {token: token});
   }
 }

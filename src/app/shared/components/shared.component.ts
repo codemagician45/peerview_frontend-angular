@@ -26,6 +26,10 @@ import {
 import {
   TimeAgoPipe
 } from 'time-ago-pipe';
+/*providers*/
+import {
+  UserService
+} from '../../../services/user.service';
 
 @NgModule({
   imports: [
@@ -44,6 +48,8 @@ import {
     SharedNavBarComponent,
     TimeAgoPipe
   ],
-  providers: []
+  providers: [
+    UserService
+  ]
 })
 export class SharedModule {}
