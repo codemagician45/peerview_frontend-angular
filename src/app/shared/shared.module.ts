@@ -72,9 +72,6 @@ import {
   ShareModalComponent
 } from './share-modal/share-modal.component';
 import {
-  PeersListComponent
-} from './peers-list/peers-list.component';
-import {
   BrainstormingMapComponent
 } from '../community/shared/brainstorming-map/brainstorming-map.component';
 import {
@@ -146,9 +143,7 @@ import {
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
-    PeersListComponent,
     FollowersFollowingComponent,
-    PeersListComponent,
     BrainstormingMapComponent,
     ActivePollComponent,
     CreateClubPageComponent,
@@ -177,9 +172,7 @@ import {
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
-    PeersListComponent,
     FollowersFollowingComponent,
-    PeersListComponent,
     BrainstormingMapComponent,
     ActivePollComponent,
     CreateClubPageComponent,

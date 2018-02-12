@@ -71,9 +71,6 @@ import {
   HomeComponent
 } from './home/home.component';
 import {
-  PeersListComponent
-} from '../shared/peers-list/peers-list.component';
-import {
   UserProfileComponent
 } from './user-profile/user-profile.component';
 import {

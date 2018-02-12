@@ -71,9 +71,6 @@ import {
   CanActivateViaAuthGuard
 } from '../../interceptors/canactivateviaauthguard';
 import {
-  PeersListComponent
-} from '../shared/peers-list/peers-list.component';
-import {
   BlogsComponent
 } from './blogs/blogs.component';
 import {
@@ -167,9 +164,6 @@ const routes: Routes = [{
   }, {
     path: 'business-profile',
     component: BusinessProfileComponent
-  }, {
-    path: 'peers-list',
-    component: PeersListComponent
   }, {
     path: 'home',
     component: HomeComponent,

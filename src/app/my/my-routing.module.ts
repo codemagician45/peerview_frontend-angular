@@ -15,9 +15,6 @@ import {
   ProfileComponent
 } from './profile/profile.component';
 import {
-  PeersListComponent
-} from '../shared/peers-list/peers-list.component';
-import {
   FollowersFollowingComponent
 } from '../shared/followers-following/followers-following.component';
 
