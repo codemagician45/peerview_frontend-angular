@@ -34,6 +34,9 @@ export const appRoutes: Routes = [{
   path: 'deals-hub',
   loadChildren: './deals-hub/deals-hub.module#DealsHubModule',
 }, {
+  path: 'peers',
+  loadChildren: './peers/peers.module#PeersModule',
+}, {
   path: '',
   loadChildren: './main/main.module#MainModule'
 }];
