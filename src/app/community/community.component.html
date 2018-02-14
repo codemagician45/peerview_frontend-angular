@@ -1,0 +1,299 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="forum-page-bg">
+  <div class="container forum fixed-header grey">
+    <div class="row">
+      <div class="col-md-3 forum-leftmenu forum-sidebar fixed-sidebar-wrapper">
+        <community-left-menu-component></community-left-menu-component>
+      </div>
+      <div class="col-md-9 forum-tab fixed-sidebar-content">
+        <community-tab-menu-component></community-tab-menu-component>
+        <div class="forum-header">
+          <div class="question-widget">
+            <h4 class="question-title">Ask a question?</h4>
+            <p class="question-title">Make sure your question is clear and in professional language</p>
+            <div class="question-input">
+              <div class="by-user-img">
+                <cl-image
+                  public-id="{{user.profilePicture}}"
+                  *ngIf="user.profilePicture">
+                </cl-image>
+                <p>{{user.firstName}} {{user.lastName}}</p>
+              </div>
+              <div class="by-user-text">
+                <i class="input-caret grey-caret"></i>
+                <div class="placeholder_text">
+                  <input class="upload-file" id="uploadImage" type="file" style="display:none;" />
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="What’s your question?"
+                    [(ngModel)]="message"/>
+                  <label for="uploadImage" class="img-upload flat-btn"><i
+                                                    class="material-icons">link</i></label>
+                </div>
+                <a (click)="communityPost();" class=" btn btn-blue">Post</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content col-md-9 col-xs-12">
+          <div class="tab-pane fade in active" id="general">
+            <div class="forum-feed">
+              <div class="row">
+                <div>
+                  <span class="header-tab">Latest discussion</span>
+                  <div class="top-post" *ngFor="let communityPost of communityPosts;">
+                    <div class="row">
+                      <div class="col-md-3 forum-user-details text-right">
+                        <img src="/assets/images/user4.jpg" alt="">
+                        <p>{{communityPost.user.firstName}} {{communityPost.user.lastName}}<span class="mobile-time visible-xs">10h ago</span><span class="un-name">University of Toronto</span></p>
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i></div>
+                      </div>
+                      <div class="col-md-9 top-user-left">
+                        <div class="top-user">
+                          <div class="forum-post">
+                            <i class="input-caret grey-caret"></i>
+                            <p>
+                              {{communityPost.message}}
+                            </p>
+                          </div>
+                          <shared-post-options-component
+                            [likes]="communityPost.likeCount"
+                            [views]="communityPost.pageviewCount"
+                            [replies]="communityPost.postReply"
+                            [ratingCount]="communityPost.ratingCount"
+                            [reply-link]="'/forum/home-reply'"
+                            [post]="communityPost"></shared-post-options-component>
+                          <div class="post-sub-footer">
+                            <button class="flat-btn btn btn-blue follow-button" (click)="follow($event)">
+                                                      <i class="material-icons">redo</i>
+                                                      <span class="btn-text">Follow</span>
+                                                    </button>
+                            <a routerLink="/forum/home-reply" class="flat-btn pull-right"><i
+                                                                class="material-icons">create</i> Answer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="course">
+            <div class="col-xs-12 forum-feed">
+              <div class="row">
+                <div>
+                  <!--top post-->
+                  <span class="header-tab">Latest discussion</span>
+                  <div class="top-post">
+                    <div class="row">
+                      <div class="col-md-3 forum-user-details text-right">
+                        <img src="/assets/images/user4.jpg" alt="">
+                        <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span><span class="un-name">University of Toronto</span></p>
+
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i></div>
+                      </div>
+                      <div class="col-md-9 top-user-left">
+                        <div class="top-user">
+                          <div class="forum-post">
+                            <i class="input-caret grey-caret"></i>
+                            <p>I loved watching this video. I am a visual learner and seeing such good teaching in practice was very helpful for me. I do like the idea of getting students to challenge each others thinking. I am going...</p>
+                          </div>
+                          <!-- <app-post-footer [likes]="123" [views]="670" [share]="false" [replies]="106" [reply-link]="'/forum/home-reply'"></app-post-footer> -->
+
+                          <div class="post-sub-footer">
+                            <button class="flat-btn btn btn-blue follow-button" (click)="follow($event)">
+                                                            <i class="material-icons">redo</i>
+                                                            <span class="btn-text">Follow</span>
+                                                          </button>
+
+                            <a routerLink="/forum/home-reply" class="flat-btn pull-right"><i
+                                                                class="material-icons">create</i> Answer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--top post-->
+                  <div class="top-post">
+                    <div class="row">
+                      <div class="col-md-3 forum-user-details text-right">
+                        <img src="/assets/images/user4.jpg" alt="">
+                        <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span><span class="un-name">University of Toronto</span></p>
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i></div>
+                      </div>
+                      <div class="col-md-9 top-user-left">
+                        <div class="top-user">
+                          <div class="forum-post">
+                            <i class="input-caret grey-caret"></i>
+                            <p>I loved watching this video. I am a visual learner and seeing such good teaching in practice was very helpful for me. I do like the idea of getting students to challenge each others thinking. I am going...</p>
+                          </div>
+                          <!-- <app-post-footer [likes]="123" [views]="670" [share]="false" [replies]="106" [reply-link]="'/forum/home-reply'"></app-post-footer> -->
+
+                          <div class="post-sub-footer">
+                            <button class="flat-btn btn btn-blue follow-button" (click)="follow($event)">
+                                                      <i class="material-icons">redo</i>
+                                                      <span class="btn-text">Follow</span>
+                                                    </button>
+                            <a routerLink="/forum/home-reply" class="flat-btn pull-right"><i
+                                                                class="material-icons">create</i> Answer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <app-top-questions class="visible-xs"></app-top-questions> -->
+                  <div class="top-post">
+                    <div class="row">
+                      <div class="col-md-3 forum-user-details text-right">
+                        <img src="/assets/images/user4.jpg" alt="">
+                        <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span><span class="un-name">University of Toronto</span></p>
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i></div>
+                      </div>
+                      <div class="col-md-9 top-user-left">
+                        <div class="top-user">
+                          <div class="forum-post">
+                            <i class="input-caret grey-caret"></i>
+                            <p>I loved watching this video. I am a visual learner and seeing such good teaching in practice was very helpful for me. I do like the idea of getting students to challenge each others thinking. I am going...</p>
+                          </div>
+                          <!-- <app-post-footer [likes]="123" [views]="670" [share]="false" [replies]="106" [reply-link]="'/forum/home-reply'"></app-post-footer> -->
+
+                          <div class="post-sub-footer">
+                            <button class="flat-btn btn btn-blue follow-button" (click)="follow($event)">
+                                                      <i class="material-icons">redo</i>
+                                                      <span class="btn-text">Follow</span>
+                                                    </button>
+                            <a routerLink="/forum/home-reply" class="flat-btn pull-right"><i
+                                                                class="material-icons">create</i> Answer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-post">
+                    <div class="row">
+                      <div class="col-md-3 forum-user-details text-right">
+                        <img src="/assets/images/user4.jpg" alt="">
+                        <p>Mark Grey<span class="mobile-time visible-xs">10h ago</span><span class="un-name">University of Toronto</span></p>
+                        <div class="post-share ">
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star fill"></i>
+                          <i class="star"></i></div>
+                      </div>
+                      <div class="col-md-9 top-user-left">
+                        <div class="top-user">
+                          <div class="forum-post">
+                            <i class="input-caret grey-caret"></i>
+                            <p>I loved watching this video. I am a visual learner and seeing such good teaching in practice was very helpful for me. I do like the idea of getting students to challenge each others thinking. I am going...</p>
+                          </div>
+                          <!-- <app-post-footer [likes]="123" [views]="670" [share]="false" [replies]="106" [reply-link]="'/forum/home-reply'"></app-post-footer> -->
+
+                          <div class="post-sub-footer">
+                            <button class="flat-btn btn btn-blue follow-button" (click)="follow($event)">
+                                                      <i class="material-icons">redo</i>
+                                                      <span class="btn-text">Follow</span>
+                                                    </button>
+                            <a routerLink="/forum/home-reply" class="flat-btn pull-right"><i
+                                                                class="material-icons">create</i> Answer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-12 forum-feed">
+          <h4 class="title_list">Top 5 Students in Chemistry </h4>
+          <div class="col-md-12 col-xs-12 nopadding student_list">
+            <div class="col-md-3 col-xs-3 img_resposive">
+              <span class="text_conting">1.</span>
+              <img src="/assets/images/wobi.png" alt="" />
+            </div>
+            <div class="col-md-9 col-xs-9 student_details">
+              <h3>Mark Grey</h3>
+              <p>University of Toronto </p>
+            </div>
+          </div>
+          <!---student--->
+          <div class="col-md-12  col-xs-12 nopadding student_list">
+            <div class="col-md-3 col-xs-3 img_resposive">
+              <span class="text_conting">2.</span>
+              <img src="/assets/images/wobi.png" alt="" />
+            </div>
+            <div class="col-md-9 col-xs-9 student_details">
+              <h3>Mark Grey</h3>
+              <p>University of Toronto </p>
+            </div>
+          </div>
+          <!---student--->
+          <div class="col-md-12 col-xs-12 nopadding student_list">
+            <div class="col-md-3 col-xs-3 img_resposive">
+              <span class="text_conting">3.</span>
+              <img src="/assets/images/profile.jpg" alt="" />
+            </div>
+            <div class="col-md-9 col-xs-9 student_details">
+              <h3>Mark Grey</h3>
+              <p>University of Toronto </p>
+            </div>
+          </div>
+          <!---student--->
+          <div class="col-md-12 col-xs-12 nopadding student_list">
+            <div class="col-md-3 col-xs-3 img_resposive">
+              <span class="text_conting">4.</span>
+              <img src="/assets/images/user4.jpg" alt="" />
+            </div>
+            <div class="col-md-9 col-xs-9 student_details">
+              <h3>Mark Grey</h3>
+              <p>University of Toronto </p>
+            </div>
+          </div>
+          <!---student--->
+          <div class="col-md-12 col-xs-12 nopadding student_list">
+            <div class="col-md-3 col-xs-3 img_resposive">
+              <span class="text_conting">5.</span>
+              <img src="/assets/images/wobi.png" alt="" />
+            </div>
+            <div class="col-md-9 col-xs-9 student_details">
+              <h3>Mark Grey</h3>
+              <p>University of Toronto </p>
+            </div>
+          </div>
+          <!---student--->
+          <div stickyWidget sidebarapp>
+            <!-- <app-top-questions class=""></app-top-questions> -->
+            <!-- <app-sidebar-image></app-sidebar-image> -->
+            <!--<app-brainstorming-map></app-brainstorming-map>this one is alredy commented-->
+            <!-- <app-sidebar-footer></app-sidebar-footer> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

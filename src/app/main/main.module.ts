@@ -56,8 +56,11 @@ import {
   ResetpasswordComponent
 } from './reset-password/reset-password.component';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
+import {
+  SharedModule
+} from '../shared/components/shared.module';
 import {
   AdvancedSearchComponent
 } from './advanced-search/advanced-search.component';
@@ -141,6 +144,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     MainRoutingModule,
+    SharedModuleProxy,
     SharedModule,
     OwlModule,
     MatDialogModule,

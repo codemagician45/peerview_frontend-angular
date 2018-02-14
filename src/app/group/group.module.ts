@@ -17,19 +17,15 @@ import {
   GroupRoutingModule
 } from './group-routing.module';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
-import {
-  CommunityModule
-} from '../community/community.module';
 
 @NgModule({
   imports: [
     CommonModule,
     GroupRoutingModule,
-    SharedModule,
-    FormsModule,
-    CommunityModule
+    SharedModuleProxy,
+    FormsModule
   ],
   declarations: [
     FeedComponent,

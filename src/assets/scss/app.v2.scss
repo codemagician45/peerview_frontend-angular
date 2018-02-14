@@ -311,38 +311,6 @@ a.purple i {
 
 /*common css*/
 
-/*tabs*/
-.page-tabs {
-  margin-bottom: 10px;
-  border: solid 1px #d8d8d8;
-  border-radius: 3px;
-  background: url(/src/assets/images/tabBG.png) repeat-x #e4e2e2;
-}
-
-.page-tabs > li > a {
-  padding: 10px 75px !important;
-  border-top: 3px solid transparent;
-  font-weight: bold;
-  color: #631a90;
-  text-transform: uppercase;
-}
-
-.page-tabs > li.active > a, .page-tabs > li > a:hover {
-  border-top: solid 3px #631a90 !important;
-  border-bottom: 1px solid #fff !important;
-}
-
-.page-tabs > li.active > a, .page-tabs > li.active > a:focus, .page-tabs > li.active > a:active {
-  color: #333;
-}
-
-.page-tabs > li > a {
-  border-radius: 0;
-  margin-right: 0 !important
-}
-
-/*tabs*/
-
 /*A-Z pagination*/
 .ln-letters {
   overflow: hidden;
@@ -5378,22 +5346,22 @@ i.icon-success {
   color: #4e4e4e;
 }
 
-.forum-tab .page-tab ul li a img {
-  width: 22px;
-  margin-left: 10px;
-}
-
-.forum-tab .page-tab ul li a .passive {
-  display: inline;
-}
-
-.forum-tab .page-tab ul li a .active {
-  display: none;
-}
-
-.forum-tab .page-tab ul li.active a .passive {
-  display: none;
-}
+// .forum-tab .page-tab ul li a img {
+//   width: 22px;
+//   margin-left: 10px;
+// }
+//
+// .forum-tab .page-tab ul li a .passive {
+//   display: inline;
+// }
+//
+// .forum-tab .page-tab ul li a .active {
+//   display: none;
+// }
+//
+// .forum-tab .page-tab ul li.active a .passive {
+//   display: none;
+// }
 
 .forum-tab .page-tab ul li.active a .active {
   display: inline;

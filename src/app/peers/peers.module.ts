@@ -18,7 +18,7 @@ import {
 } from './list/list.component';
 import {
   SharedModule
-} from '../shared/components/shared.component';
+} from '../shared/components/shared.module';
 import {
   peersRouting
 } from './peers-routing.component';

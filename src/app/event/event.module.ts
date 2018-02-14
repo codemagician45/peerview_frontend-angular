@@ -23,7 +23,7 @@ import {
   LandingComponent
 } from './landing/landing.component';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 import {
   EventRoutingModule
@@ -43,7 +43,7 @@ import {
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
+    SharedModuleProxy,
     EventRoutingModule,
     OwlModule,
     MatDialogModule,

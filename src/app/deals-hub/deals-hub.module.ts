@@ -11,14 +11,14 @@ import {
   DealsHubRoutingModule
 } from './deals-hub-routing.module';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DealsHubRoutingModule,
-    SharedModule
+    SharedModuleProxy
   ],
   declarations: [IndexComponent]
 })

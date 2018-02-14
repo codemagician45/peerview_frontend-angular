@@ -1,4 +1,4 @@
-<app-navbar [active]="'home'"></app-navbar>
+<shared-navbar-component [active]="'home'"></shared-navbar-component>
 <div class="container fixed-header grey forum">
   <div class="row home-component">
     <!--left sidebar-->
@@ -107,7 +107,7 @@
                   <div class="col-xs-12 post-text">
                     <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
                     <p>{{post.message | titlecase}}</p>
-                    <app-post-footer [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></app-post-footer>
+                    <shared-post-options-component [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></shared-post-options-component>
                   </div>
                 </div>
               </div>

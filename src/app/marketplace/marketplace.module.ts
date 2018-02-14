@@ -14,7 +14,7 @@ import {
   IndexComponent
 } from './index/index.component';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 import {
   MarketplaceRoutingModule
@@ -23,19 +23,15 @@ import {
   OwlModule
 } from 'ng2-owl-carousel';
 import {
-  CommunityModule
-} from '../community/community.module';
-import {
   FormsModule
 } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
+    SharedModuleProxy,
     MarketplaceRoutingModule,
     OwlModule,
-    CommunityModule,
     FormsModule
   ],
   declarations: [

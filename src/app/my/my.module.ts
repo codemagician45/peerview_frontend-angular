@@ -38,7 +38,7 @@ import {
   ProfileComponent
 } from './profile/profile.component';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 import {
   MyRoutingModule
@@ -54,7 +54,7 @@ import {
   imports: [
     CommonModule,
     MyRoutingModule,
-    SharedModule,
+    SharedModuleProxy,
     OwlModule,
     NgbTabsetModule.forRoot(),
     NgbDropdownModule.forRoot(),

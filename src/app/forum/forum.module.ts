@@ -23,7 +23,7 @@ import {
   ForumRoutingModule
 } from './forum-routing.module';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 import {
   TopQuestionsComponent } from './top-questions/top-questions.component';
@@ -40,9 +40,6 @@ import {
   MatDialogModule
 } from '@angular/material';
 import {
-  BrainstormingMapComponent
-} from '../community/shared/brainstorming-map/brainstorming-map.component';
-import {
   ForumItemComponent
 } from './forum-item/forum-item.component';
 import {
@@ -52,9 +49,6 @@ import {
   NgbDropdownModule
 } from '@ng-bootstrap/ng-bootstrap';
 import {
-  ActivePollComponent
-} from '../community/shared/active-poll/active-poll.component';
-import {
   ForumLeftMenuComponent
 } from './forum-left-menu/forum-left-menu.component';
 
@@ -63,7 +57,7 @@ import {
     MatDialogModule,
     CommonModule,
     ForumRoutingModule,
-    SharedModule,
+    SharedModuleProxy,
     ImportModule,
     NgbCollapseModule.forRoot(),
     NgbDropdownModule.forRoot()

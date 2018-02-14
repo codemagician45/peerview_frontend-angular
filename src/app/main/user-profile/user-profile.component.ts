@@ -3,8 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  PostDetailComponent
-} from '../../shared/modal/components/PostDetailComponent';
+  SharedPostDetailModalComponent
+} from '../../shared/modals/post-detail/post-detail.component';
 import {
   MatDialog
 } from '@angular/material';
@@ -63,7 +63,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   protected openPostDetail (): void {
-    this.dialog.open(PostDetailComponent);
+    this.dialog.open(SharedPostDetailModalComponent);
     setTimeout(() => {
       const container = $('.mat-dialog-container')[0];
     }, 200);

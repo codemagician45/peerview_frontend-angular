@@ -20,6 +20,9 @@ import {
 import {
   GUser
 } from './global/user';
+import {
+  UserClass
+} from './shared/classes';
 
 @Component({
   selector: 'app-root',
@@ -57,6 +60,7 @@ export class AppComponent implements OnInit {
     this.accountSettingService.getUserProfile()
     .subscribe((response: UserResponse) => {
       GUser.setUser(response.user);
+      UserClass.setUser(response.user);
     });
   }
 

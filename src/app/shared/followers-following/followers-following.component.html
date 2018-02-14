@@ -1,10 +1,10 @@
-<app-navbar></app-navbar>
+<shared-navbar-component></shared-navbar-component>
 <div class="container fixed-header">
   <div class="row">
     <div class="col-md-9 followers-following">
       <a class="pull-right followers-following-back-profile" routerLink="/user-profile">Back to profile</a>
       <ul class="nav nav-tabs page-tabs">
-        <li><a (click)="openTab('following')"  data-toggle="tab">Following</a></li>
+        <li><a (click)="openTab('following')" data-toggle="tab">Following</a></li>
         <li><a (click)="openTab('followers')" data-toggle="tab">Followers</a></li>
       </ul>
       <div class="tab-content marginT20">

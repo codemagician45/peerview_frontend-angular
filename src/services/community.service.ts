@@ -18,6 +18,9 @@ import {
   CommunityCareer,
   CommunityBrainstormingMap
 } from '../models/models';
+import {
+  UserClass
+} from '../app/shared/classes';
 
 @Injectable()
 export class CommunityService {
@@ -117,5 +120,15 @@ export class CommunityService {
 
   public updatebrainstormingmap (communityPostId: number, map: CommunityBrainstormingMap): Observable<Object> {
     return this.http.post(`community/${communityPostId}/post/brainstorming`, map);
+  }
+
+  public getPosts (): Observable<Object> {
+    return this.http.get(`community/posts`);
+  }
+
+  public post (message: string): Observable<Object> {
+    console.log('messageeeeeeeeeeeeeeeee');
+    console.log(message);
+    return this.http.post(`community/post`, {message: message});
   }
 }

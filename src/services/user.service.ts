@@ -56,4 +56,12 @@ export class UserService {
   public verifyEmail (jotToken: string, token: string): Observable<Object> {
     return this.http.post(`user/verify-email/${jotToken}`, {token: token});
   }
+
+  public getUserprofile (): Observable<Object> {
+    return this.http.get('user/profile');
+  }
+
+  public getUserStudyLevels (): Observable<Object> {
+    return this.http.get('/user/study-levels');
+  }
 }

@@ -33,9 +33,6 @@ import {
   AppNavBarUnauthComponent
 } from './app-navbar-unauth/app-navbar-unauth.component';
 import {
-  AppNavBarComponent
-} from './app-navbar/app-navbar.component';
-import {
   SidebarFooterComponent
 } from './sidebar-footer/sidebar-footer.component';
 import {
@@ -57,9 +54,6 @@ import {
   ImportModule
 } from '../import.module';
 import {
-  PostDetailComponent
-} from './modal/components/PostDetailComponent';
-import {
   RouterModule
 } from '@angular/router';
 import {
@@ -72,12 +66,6 @@ import {
   ShareModalComponent
 } from './share-modal/share-modal.component';
 import {
-  BrainstormingMapComponent
-} from '../community/shared/brainstorming-map/brainstorming-map.component';
-import {
-  ActivePollComponent
-} from '../community/shared/active-poll/active-poll.component';
-import {
   FollowersFollowingComponent
 } from './followers-following/followers-following.component';
 import {
@@ -89,12 +77,6 @@ import {
 import {
   PostPollMapComponent
 } from './post-poll-map/post-poll-map.component';
-import {
-  CommunityNavbarComponent
-} from '../community/shared/community-navbar/community-navbar.component';
-import {
-  PostFooterComponent
-} from './post-footer/post-footer.component';
 import {
   FullBrainstormingMapComponent
 } from './full-brainstorming-map/full-brainstorming-map.component';
@@ -117,12 +99,12 @@ import {
   StickyWidgetDirective
 } from '../directives/sticky-widget.directive';
 import {
-  SharedStarsComponent
-} from './components/stars/stars.component';
+  SharedModule
+} from './components/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     HttpClientModule,
     ImportModule,
     RouterModule,
@@ -133,61 +115,46 @@ import {
   ],
   declarations: [
     SidebarImageComponent, SidebarFooterComponent,
-    AppNavBarComponent,
     AppNavBarUnauthComponent,
     SocialWidgetComponent,
     FollowersComponent,
     FollowingComponent,
     PeersMayKnowComponent,
-    PostDetailComponent,
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
     FollowersFollowingComponent,
-    BrainstormingMapComponent,
-    ActivePollComponent,
     CreateClubPageComponent,
     AboutMeModalComponent,
     PostPollMapComponent,
-    CommunityNavbarComponent,
-    PostFooterComponent,
     FullBrainstormingMapComponent,
     PostToComponent,
     ShowImageComponent,
     UnfollowPopupComponent,
     ReportModalComponent,
     ReportModalUserComponent,
-    StickyWidgetDirective,
-    SharedStarsComponent
+    StickyWidgetDirective
   ],
   exports: [
     SidebarImageComponent, SidebarFooterComponent,
-    AppNavBarComponent,
     AppNavBarUnauthComponent,
     SocialWidgetComponent,
     FollowersComponent,
     FollowingComponent,
     PeersMayKnowComponent,
-    PostDetailComponent,
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
     FollowersFollowingComponent,
-    BrainstormingMapComponent,
-    ActivePollComponent,
     CreateClubPageComponent,
     AboutMeModalComponent,
     PostPollMapComponent,
-    CommunityNavbarComponent,
-    PostFooterComponent,
     FullBrainstormingMapComponent,
     PostToComponent,
     ShowImageComponent,
-    StickyWidgetDirective,
-    SharedStarsComponent
+    StickyWidgetDirective
   ],
   entryComponents: [
-    PostDetailComponent,
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
@@ -200,4 +167,4 @@ import {
     ReportModalUserComponent
   ]
 })
-export class SharedModule {}
+export class SharedModuleProxy {}

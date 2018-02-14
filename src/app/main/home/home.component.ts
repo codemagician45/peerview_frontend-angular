@@ -20,17 +20,14 @@ import {
   MatDialog
 } from '@angular/material';
 import {
-  PostDetailComponent
-} from '../../shared/modal/components/PostDetailComponent';
+  SharedPostDetailModalComponent
+} from '../../shared/modals/post-detail/post-detail.component';
 import {
   ShareModalComponent
 } from '../../shared/share-modal/share-modal.component';
 import {
   EmitterService
 } from '../../shared/emitter/emitter.component';
-import {
-  OpenInviteComponent
-} from '../../community/shared/modals/components/OpenInviteComponent';
 import {
   ShowImageComponent
 } from '../../shared/show-image/show-image.component';
@@ -170,11 +167,10 @@ export class HomeComponent implements OnInit {
   }
 
   protected openInvite (): void {
-    this.dialog.open(OpenInviteComponent);
   }
 
   protected openPostDetail (): void {
-    this.dialog.open(PostDetailComponent);
+    this.dialog.open(SharedPostDetailModalComponent);
     setTimeout(() => {
       const container = $('.mat-dialog-container')[0];
     }, 200);

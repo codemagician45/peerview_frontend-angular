@@ -6,9 +6,6 @@ import {
   RouterModule
 } from '@angular/router';
 import {
-  TimeAgoPipe
-} from 'time-ago-pipe';
-import {
   StickyDirective
 } from './directives/sticky.directive';
 import {
@@ -18,11 +15,9 @@ import {
 @NgModule({
   imports: [],
   declarations: [
-    TimeAgoPipe,
     StickyDirective
   ],
   exports: [
-    TimeAgoPipe,
     StickyDirective,
     NguiStickyModule
   ]

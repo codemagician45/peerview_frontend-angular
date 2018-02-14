@@ -7,8 +7,8 @@ import {
   MatDialogRef
 } from '@angular/material';
 import {
-  PostDetailComponent
-} from '../../shared/modal/components/PostDetailComponent';
+  SharedPostDetailModalComponent
+} from '../../shared/modals/post-detail/post-detail.component';
 import {
   ShowImageComponent
 } from '../../shared/show-image/show-image.component';
@@ -29,7 +29,7 @@ export class BusinessProfileComponent implements OnInit {
   }
 
   protected openPostDetail (): void {
-    this.dialog.open(PostDetailComponent);
+    this.dialog.open(SharedPostDetailModalComponent);
   }
 
   protected openAvatar (): void {

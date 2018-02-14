@@ -21,7 +21,8 @@ import {
   DateAdapter,
   MAT_DATE_FORMATS,
   NativeDateAdapter,
-  MatDialogModule
+  MatDialogModule,
+  MAT_DIALOG_DATA
 } from '@angular/material';
 import {
   MatDatepickerModule,
@@ -56,16 +57,13 @@ import {
 import {
   RouterModule
 } from '@angular/router';
-import {
-  OpenJoinComponent
-} from './community/shared/modals/components/OpenJoinComponent';
-import {
-  OpenInviteComponent
-} from './community/shared/modals/components/OpenInviteComponent';
 import 'tinymce';
 import 'tinymce/themes/modern/theme';
 import 'tinymce/plugins/paste';
 import 'tinymce/plugins/link';
+import {
+  NgbModule
+} from '@ng-bootstrap/ng-bootstrap';
 
 const MY_DATE_FORMATS = {
   parse: {
@@ -79,13 +77,23 @@ const MY_DATE_FORMATS = {
   }
 };
 
+import {
+  SharedPostDetailModalComponent
+} from './shared/modals';
+import {
+  SharedModule
+} from './shared/components/shared.module';
+import {
+  CanActivateUserProfile
+} from './shared/can-activate';
+
 declare var tinymce: any;
 tinymce.init({});
 
 @NgModule({
   declarations: [
     AppComponent,
-    OpenJoinComponent, OpenInviteComponent
+    SharedPostDetailModalComponent
   ],
   imports: [
     BrowserModule,
@@ -96,9 +104,14 @@ tinymce.init({});
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    SharedModule,
+    NgbModule.forRoot()
   ],
   providers: [{
+    provide: MAT_DIALOG_DATA,
+    useValue: []
+  }, {
     provide: DateAdapter,
     useClass: NativeDateAdapter
   }, {
@@ -126,13 +139,13 @@ tinymce.init({});
     NotificationService,
     OnboardingService,
     PostService,
-    UserService
+    UserService,
+    CanActivateUserProfile
   ],
   bootstrap: [AppComponent],
   exports: [],
   entryComponents: [
-    OpenJoinComponent,
-    OpenInviteComponent
+    SharedPostDetailModalComponent
   ]
 })
 export class AppModule {}

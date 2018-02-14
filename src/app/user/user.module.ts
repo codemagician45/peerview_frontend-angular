@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   SharedModule
-} from '../shared/components/shared.component';
+} from '../shared/components/shared.module';
 import {
   userRouting
 } from './user-routing.component';

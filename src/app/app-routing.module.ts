@@ -6,10 +6,14 @@ import {
   RouterModule
 } from '@angular/router';
 
+import {
+  CanActivateUserProfile
+} from './shared/can-activate';
+// {
+//   path: 'community',
+//   loadChildren: './community/community.module#CommunityModule'
+// },
 export const appRoutes: Routes = [{
-  path: 'community',
-  loadChildren: './community/community.module#CommunityModule'
-}, {
   path: 'support',
   loadChildren: './support/support.module#SupportModule'
 }, {
@@ -27,15 +31,24 @@ export const appRoutes: Routes = [{
 }, {
   path: 'marketplace',
   loadChildren: './marketplace/marketplace.module#MarketplaceModule'
-}, {
-  path: 'forum',
-  loadChildren: './forum/forum.module#ForumModule'
-}, {
+},
+//  {
+//   path: 'forum',
+//   loadChildren: './forum/forum.module#ForumModule'
+// },
+{
   path: 'deals-hub',
   loadChildren: './deals-hub/deals-hub.module#DealsHubModule',
 }, {
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
+}, {
+  path: 'campus',
+  loadChildren: './campus/campus.module#CampusModule'
+}, {
+  path: 'community',
+  loadChildren: './community/community.module#CommunityModule',
+  canActivate: [CanActivateUserProfile]
 }, {
   path: 'user',
   loadChildren: './user/user.module#UserModule'

@@ -157,10 +157,10 @@ const routes: Routes = [{
     component: BusinessProfileComponent
   }, {
     path: 'home',
-    component: HomeComponent,
-    canActivate: [
-      CanActivateViaAuthGuard
-    ]
+    component: HomeComponent
+    // canActivate: [
+    //   CanActivateViaAuthGuard
+    // ]
   }, {
     path: 'user-profile',
     component: UserProfileComponent

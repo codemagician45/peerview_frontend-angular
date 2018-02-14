@@ -32,14 +32,14 @@ import {
   SupportHeaderComponent
 } from './shared/support-header/support-header.component';
 import {
-  SharedModule
+  SharedModuleProxy
 } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SupportRoutingModule,
-    SharedModule
+    SharedModuleProxy
   ],
   declarations: [
     SupportHeaderComponent,
