@@ -1,0 +1,52 @@
+<!-- <div class="col-md-2 fixed-sidebar-wrapper home-sidebar home-left-sidebar-component hidden-xs "> -->
+<div class="home-left-sidebar-component">
+  <div stickyWidget class="sticky-width wide home-sidebar">
+    <div class="fixed-sidebar">
+      <div class="widget profile-widget">
+        <div class="top-info">
+          <a class="user-img">
+            <cl-image
+              public-id="{{user?.profilePicture}}"
+              *ngIf="user?.profilePicture" (click)="openAvatar()">
+            </cl-image>
+          </a>
+          <h3 class="user-name" *ngIf="user">
+            <a href="/my/profile">
+              <span class="user-name"> {{user.firstName}} {{user.lastName}}</span>
+            </a>
+          </h3>
+          <div class="post-share ">
+            <span class="stars" *ngIf="starsPercentage">
+              <span [style.width]="starsPercentage"></span>
+            </span>
+          </div>
+        </div>
+        <div class="follow-box">
+          <a routerLink="/followers-following">
+            <i class="material-icons">reply</i>
+            <p>Following</p>
+            <span>{{following}}</span>
+          </a>
+          <a routerLink="/followers-following">
+            <i class="material-icons">person</i>
+            <p>Followers</p>
+            <span>{{followers}}</span>
+          </a>
+        </div>
+      </div>
+      <div class="widget quick-feed">
+        <h3>
+          <p><span>5</span> things to do</p>
+          <p>in <span>15</span> minutes</p>
+        </h3>
+        <ul class="list">
+          <li>Invite your peers</li>
+          <li>Complete Your profile</li>
+          <li>Follow a few Peers</li>
+          <li>Checkout the Community</li>
+          <li>Join your school's Campus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

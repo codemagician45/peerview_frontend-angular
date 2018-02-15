@@ -1,0 +1,38 @@
+.shared-post-textarea-component {
+  .nav-pills {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    padding-bottom: 10px;
+    border: none;
+    li a {
+      background-color: #f4f4f4;
+      color: #323c47;
+      &:hover {
+        background-color: #f4f4f4;
+        color: #323c47;
+      }
+    }
+    .active a {
+      background-color: #f4f4f4;
+      border-bottom: 2px solid #323c47;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      &:hover {
+        background-color: #f4f4f4;
+        color: #323c47;
+      }
+    }
+  }
+  .post {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    textarea {
+      height: 140px;
+    }
+  }
+  .options {
+    padding: 10px;
+  }
+}

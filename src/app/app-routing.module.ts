@@ -53,6 +53,9 @@ export const appRoutes: Routes = [{
   path: 'user',
   loadChildren: './user/user.module#UserModule'
 }, {
+  path: 'home',
+  loadChildren: './home/home.module#HomeModule'
+}, {
   path: '',
   loadChildren: './main/main.module#MainModule'
 }];

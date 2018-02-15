@@ -23,7 +23,7 @@ export class CanActivateUserProfile implements CanActivate {
 
   public canActivate (): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.userService.getUserprofile()
+      this.userService.getProfile()
       .subscribe((response: UserResponse) => {
         UserClass.setUser(response.user);
 

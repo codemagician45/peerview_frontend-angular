@@ -1,0 +1,83 @@
+<shared-navbar-component [active]="'home'"></shared-navbar-component>
+<div class="home-component">
+  <div class="container-fluid row">
+    <home-left-sidebar-component
+      class="col-lg-3 col-md-3 hidden-xs hidden-sm"
+      [user]="user">
+    </home-left-sidebar-component>
+    <!--left sidebar-->
+    <!--content area-->
+    <div class="col-lg-6 col-md-6 center-section">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- [post]="true" [poll]="true" [story]="true" -->
+          <shared-post-textarea-component></shared-post-textarea-component>
+        </div>
+          <div class="news-post">
+            <div class="tab-pill"><span>Top Stories</span></div>
+            <perfect-scrollbar class="posts-preview" [ngClass]="{'_opened': showmore}">
+              <ul class="home-stories-list">
+                <li *ngFor="let story of newstories; let i=index;" [ngStyle]="{ 'display': i<3 || showmore ?'':'none'}">
+                  <a [attr.href]="story.Url" target="_blank">{{story.Title}}</a>
+                  <span class="pull-right home-stories-list__right-info">
+                    <a [attr.href]="story.Url" target="_blank" class="news-ref">{{story.source}}</a>{{story.Date | date}}
+                    <a [attr.href]="story.Root_Url" target="_blank">{{story.Root_name}}</a>
+                </span>
+                </li>
+              </ul>
+            </perfect-scrollbar>
+
+            <div class="news-post-footer view-more-news text-right">
+              <i mdTooltip="Reload News List" (click)="reloadnews()" class="material-icons autorenew-icon">autorenew</i>
+              <a (click)="moreNews($event)"><span class="view_more">View More</span></a>
+            </div>
+          </div>
+          <div>
+            <div class="tab-pill"><span>LATEST</span></div>
+            <a class="see-new-posts"><span class="view_more">See 5 new posts</span></a>
+            <div id="posts-container">
+              <!-- <div *ngFor="let index of posts"> -->
+              <div id="Post1" class="top-post" *ngFor="let post of posts">
+                <div class="row">
+                  <div class="col-md-3 forum-user-details text-right">
+                    <img src="/assets/images/user4.jpg" alt="">
+                    <div class="forum-user-info">
+                      <p>{{post.user.firstName | titlecase }} {{post.user.lastName |titlecase}}
+                        <span class="mobile-time visible-xs">{{post.createdAt}}</span></p>
+                      <p>{{post.user.schoolName | titlecase }}</p>
+                      <div class="post-share ">
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star fill"></i>
+                        <i class="star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-9 top-user-left">
+                    <p class="post-time">{{post.createdAt | date :'short' }}</p>
+                    <h3 class="story-title" (click)="openPostDetail()">{{post.message | titlecase}}</h3>
+                  </div>
+                  <div class="col-xs-12 post-text">
+                    <img class="img-responsive" src="/assets/images/post-img1.jpg" alt="">
+                    <p>{{post.message | titlecase}}</p>
+                    <shared-post-options-component [likes]="post.likeCount" [views]="post.pageviewCount" [share]="post.shareCount" [post]="post" [replies]="post.postReply.length"></shared-post-options-component>
+                  </div>
+                </div>
+              </div>
+              <!-- </div> -->
+            </div>
+
+            <div class="load-more">
+              <button type="button" class="btn btn-load-more-posts" name="button" (click)="loadMorePost()" [disabled]="_isDisabled"><span class="no-more-post-to-show">load more...</span> </button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <home-right-sidebar-component
+      class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+    </home-right-sidebar-component>
+  </div>
+</div>
+<!-- <app-post-poll-map (onEditorKeyup)="refreshPost($event)"></app-post-poll-map> -->

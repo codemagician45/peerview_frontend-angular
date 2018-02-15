@@ -49,6 +49,9 @@ import {
 import {
   EditAccomplishmentsModalComponent
 } from './edit-accomplishments-modal/edit-accomplishments-modal.component';
+import {
+  SharedModule
+} from '../shared/components/shared.module';
 
 @NgModule({
   imports: [
@@ -63,6 +66,7 @@ import {
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    SharedModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
   ],
   declarations: [

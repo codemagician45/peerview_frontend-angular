@@ -7,6 +7,9 @@ import {
 import {
   UserStudyLevelModel
 } from './user-study-level';
+import {
+  PostModel
+} from './post';
 
 export class Response {
   public status: string;
@@ -24,4 +27,12 @@ export class CommunityPostResponse extends Response {
 
 export class UserStudyLevelsResponse extends Response {
   public userStudyLevels: Array<UserStudyLevelModel>;
+}
+
+export interface PeersListResponse extends Response {
+  peersList: Array<UserModel>;
+}
+
+export class PostsResponse extends Response {
+  public posts: Array<PostModel>;
 }

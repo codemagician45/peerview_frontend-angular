@@ -200,14 +200,14 @@ body.fixed-header {
   position: relative;
 }
 
-.sticky-width {
-  width: 178px;
-}
+// .sticky-width {
+//   width: 178px;
+// }
 
-.sticky-width.wide {
-  width: 240px;
-  z-index: 100
-}
+// .sticky-width.wide {
+//   width: 240px;
+//   z-index: 100
+// }
 
 .sticky-width.wide.small {
   width: 220px;
@@ -864,30 +864,30 @@ i.icon-success {
 
 /*header css*/
 
-.fixed-header {
-  margin-top: 68px;
-  padding-top: 12px;
-}
-
-.fixed-header.grey {
-  background-color: #f4f4f4;
-}
-
-.fixed-header.forum {
-  margin-top: 68px;
-}
-
-.fixed-header.forum .fixed-sidebar-content {
-  padding-left: 0;
-}
-
-.fixed-sidebar-content.dash-content {
-  padding: 30px 100px;
-}
-
-.fixed-sidebar-content.padding-left-0 {
-  padding-left: 0;
-}
+// .fixed-header {
+//   margin-top: 68px;
+//   padding-top: 12px;
+// }
+//
+// .fixed-header.grey {
+//   background-color: #f4f4f4;
+// }
+//
+// .fixed-header.forum {
+//   margin-top: 68px;
+// }
+//
+// .fixed-header.forum .fixed-sidebar-content {
+//   padding-left: 0;
+// }
+//
+// .fixed-sidebar-content.dash-content {
+//   padding: 30px 100px;
+// }
+//
+// .fixed-sidebar-content.padding-left-0 {
+//   padding-left: 0;
+// }
 
 .dash-head-input-label {
   margin-left: -20px;

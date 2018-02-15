@@ -193,7 +193,7 @@ export class HomeComponent implements OnInit {
   private postSavedSubcriber (): void {
     this.postSavedSubscriber
     .subscribe(response => {
-      this.postservice.getpost(response)
+      this.postservice.getPost(response)
       .subscribe((data: PostResponse) => {
         this.posts.unshift(data.post);
         this.hasAddedPostCounter += 1;
@@ -203,7 +203,7 @@ export class HomeComponent implements OnInit {
 
   /*Get Posts List From Api*/
   protected getPosts (): void {
-    this.postservice.getallposts(10, 0)
+    this.postservice.getPosts(10, 0)
     .subscribe((response: PostsReponse) => {
       this.posts = response.posts;
       if (this.posts.length <= 0) {
@@ -221,7 +221,7 @@ export class HomeComponent implements OnInit {
     this.counter = this.hasAddedPostCounter;
 
     this.offset = this.offset + this.counter;
-    this.postservice.getallposts(this.limit, this.offset)
+    this.postservice.getPosts(this.limit, this.offset)
     .subscribe((response: PostsReponse) => {
       this.offset = 5 + this.offset;
       this.limit = 5;

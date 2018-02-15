@@ -39,6 +39,12 @@ import {
   SharedStarsComponent
 } from './stars/stars.component';
 import {
+  SharedPeersYouMayKnowComponent
+} from './peers-you-may-know/peers-you-may-know.component';
+import {
+  SharedPostTextareaComponent
+} from './post-textarea/post-textarea.component';
+import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
@@ -59,6 +65,8 @@ import {
     SharedNavBarComponent,
     SharedPostOptionsComponent,
     SharedStarsComponent,
+    SharedPeersYouMayKnowComponent,
+    SharedPostTextareaComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -70,6 +78,8 @@ import {
     SharedNavBarComponent,
     SharedPostOptionsComponent,
     SharedStarsComponent,
+    SharedPeersYouMayKnowComponent,
+    SharedPostTextareaComponent,
     TimeAgoPipe
   ],
   providers: [

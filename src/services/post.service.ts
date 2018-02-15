@@ -38,11 +38,11 @@ export class PostService {
     return this.http.get('topStories');
   }
 
-  public getallposts (limit: Number, offset: Number): Observable<Object> {
+  public getPosts (limit: number, offset: number): Observable<Object> {
     return this.http.get(`posts?limit=${limit}&offset=${offset}`, {});
   }
 
-  public getpost (postId: Number): Observable<Object> {
+  public getPost (postId: number): Observable<Object> {
     return this.http.get(`post/${postId}`);
   }
 

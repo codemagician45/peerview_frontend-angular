@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<shared-navbar-component></shared-navbar-component>
 <div class="container fixed-header grey">
   <div class="row">
     <div class="col-md-2 fixed-sidebar-wrapper">
@@ -128,13 +128,13 @@
                 <p>
                   {{post.message}}
                 </p>
-                <app-post-footer
+                <shared-post-options-component
                   [post]="post"
                   [likes]="post.likeCount"
                   [ratingCount]="post.ratingCount"
                   [views]="post.pageviewCount"
                   [share]="post.shareCount"
-                  [replies]="post.postReplyCount"></app-post-footer>
+                  [replies]="post.postReplyCount"></shared-post-options-component>
               </div>
             </div>
           </div>

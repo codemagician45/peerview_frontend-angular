@@ -1,0 +1,21 @@
+<div class="shared-post-textarea-component">
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Write a Post</a></li>
+    <li role="presentation"><a href="#">Create Poll</a></li>
+    <li role="presentation"><a href="#">Share a Story</a></li>
+  </ul>
+
+  <div class="post">
+    <textarea
+      class="form-control"
+      placeholder="Whats happening?"
+      name="post_title"
+      [(ngModel)]="postMessage">
+    </textarea>
+    <input class="upload-file" id="uploadImage" type="file" style="display:none;"/>
+    <div class="text-right options">
+      <label for="uploadImage" class="img-upload flat-btn"> <i class="material-icons">link</i> </label>
+      <input type="submit" class="btn btn-blue btn-sm post-btn" value="ADD POST">
+    </div>
+  </div>
+</div>

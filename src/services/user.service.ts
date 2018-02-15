@@ -57,11 +57,15 @@ export class UserService {
     return this.http.post(`user/verify-email/${jotToken}`, {token: token});
   }
 
-  public getUserprofile (): Observable<Object> {
+  public getProfile (): Observable<Object> {
     return this.http.get('user/profile');
   }
 
   public getUserStudyLevels (): Observable<Object> {
-    return this.http.get('/user/study-levels');
+    return this.http.get('user/study-levels');
+  }
+
+  public getPeerslist (): Observable<Object> {
+    return this.http.get('user/peers-list');
   }
 }
