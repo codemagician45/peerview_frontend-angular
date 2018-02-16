@@ -1,0 +1,50 @@
+.navbar-desktop-component {
+  .navbar-default {
+    display: flex;
+    align-items: center;
+    font-family: 'Conv_MavenPro-Bold';
+    font-size: 12px;
+    background-color: #631a90;
+  }
+  .notification-icon, .search-icon {
+    cursor: pointer;
+    color: #ffffff;
+  }
+  .nav-right {
+    position: relative;
+    display: inline-flex;
+    float: right;
+  }
+  .nav-left {
+    position: relative;
+    float: left;
+  }
+  .users-menu {
+    margin-left: 15px;
+    .welcome-user {
+      color: #ffffff;
+    }
+  }
+  .input-search {
+    display: inline-flex;
+    width: 260px;
+    padding: 10px;
+    input {
+      border-radius: 0;
+    }
+  }
+  .users-message {
+    width: 260px;
+  }
+  .users-search, .users-message, .users-notification, .users-dropdown {
+    &:before {
+      content: "";
+      position: absolute;
+      border-bottom: 10px solid white;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      top: -10px;
+      right: 5px;
+    }
+  }
+}

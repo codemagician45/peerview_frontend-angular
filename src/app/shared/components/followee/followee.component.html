@@ -1,0 +1,22 @@
+<div class="shared-followee-component">
+  <h5>
+    <i class="material-icons color-purple">reply</i>
+    Following (<strong>{{followee.length}}</strong>)
+  </h5>
+  <ul class="users-list">
+    <li
+      data-toggle="tooltip"
+      title="{{follows.followee.firstName}} {{follows.followee.lastName}}"
+      *ngFor="let follows of followee">
+        <cl-image
+          public-id="{{follows.followee.profilePicture}}"
+          radius="max"
+          width="50">
+        </cl-image>
+        <img src="/assets/images/user1.jpg" alt="" ng-click="vm.openUsersProfile('sm')"/>
+    </li>
+  </ul>
+  <div class="view-all text-right color-purple">
+    View All
+  </div>
+</div>

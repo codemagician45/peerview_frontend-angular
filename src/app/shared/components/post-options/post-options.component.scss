@@ -8,6 +8,9 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
     display: flex;
     justify-content: space-between;
     width: 100%;
+    li {
+      display: flex;
+    }
   }
   .dropdown-item a {
     cursor: pointer;

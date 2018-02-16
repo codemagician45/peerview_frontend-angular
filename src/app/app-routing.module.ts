@@ -53,6 +53,10 @@ export const appRoutes: Routes = [{
   path: 'user',
   loadChildren: './user/user.module#UserModule'
 }, {
+  path: 'profile',
+  loadChildren: './profile/profile.module#ProfileModule',
+  canActivate: [CanActivateUserProfile]
+}, {
   path: 'home',
   loadChildren: './home/home.module#HomeModule'
 }, {

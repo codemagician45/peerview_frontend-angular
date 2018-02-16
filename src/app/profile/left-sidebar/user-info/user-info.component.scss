@@ -1,0 +1,37 @@
+.profile-left-sidebar-user-info-component {
+  height: 100%;
+  background: #fff;
+  .about-me {
+    display: flex;
+    align-items: center;
+    // min-height: 60px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .company, .institution, .course, .birth-date {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .user {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .edit-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  div:nth-child(2) {
+    word-wrap: break-word;
+  }
+}

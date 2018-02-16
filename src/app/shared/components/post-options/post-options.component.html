@@ -1,18 +1,15 @@
 <div class="shared-post-options-component">
   <ul class="body">
     <li class="star-section">
-      <button class="flat-btn" (click)="likepost()">
-        <i class="material-icons like">thumb_up</i>
-      </button>
-      <!-- <i class="material-icons star" *ngFor="let star of stars" [ngClass]="{'yellow-fill': star === 'star'}">{{star}}</i> -->
+      <i (click)="likepost()" class="material-icons like">thumb_up</i>
       <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
-      <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes"><span class="link-name" >Likes</span> ({{likes}})</span>
+      <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes || likes === 0"><span class="link-name" >Likes</span> ({{likes}})</span>
     </li>
     <li class="eye-section">
       <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; views</span>
     </li>
     <li class='share-section' *ngIf="share">
-      <button class="flat-btn purple" (click)="openShare()">
+      <button (click)="openShare()">
         <i class="material-icons">share</i> <span class="link-name">Share</span><ng-container *ngIf="share">({{share}})</ng-container>
       </button>
     </li>

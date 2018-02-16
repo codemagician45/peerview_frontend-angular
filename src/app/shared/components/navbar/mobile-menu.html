@@ -1,0 +1,62 @@
+<ul class="nav navbar-nav navbar-left">
+   <li class="nav-home">
+      <a routerLink="/home" [ngClass]="{active: active === 'home'}">
+        <cl-image
+          public-id="homeIcon"
+          class="light"
+          width="22">
+        </cl-image>
+        <cl-image
+          public-id="homeIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Home
+      </a>
+   </li>
+   <li class="nav-forum">
+      <a routerLink="/forum/home" [ngClass]="{active: active === 'forum'}">
+        <cl-image
+          public-id="forumIcon"
+          class="light"
+          width="22">
+        </cl-image>
+        <cl-image
+          public-id="forumIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Community
+      </a>
+   </li>
+   <li class="nav-comm">
+      <a routerLink="/community" [ngClass]="{active: active === 'campus'}">
+        <cl-image
+          public-id="peopleIcon"
+          class="light"
+          width="22">
+        </cl-image>
+        <cl-image
+          public-id="peopleIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Campus
+      </a>
+   </li>
+   <li class="nav-events">
+      <a routerLink="/events/landing" [ngClass]="{active: active === 'leisure'}">
+        <cl-image
+          public-id="eventIcon"
+          class="light"
+          width="22">
+        </cl-image>
+        <cl-image
+          public-id="peopleIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Leisure
+      </a>
+   </li>
+</ul>

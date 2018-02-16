@@ -1,0 +1,33 @@
+<!-- <div class="widget peers-online-widget following-widget">
+  <h5 class="widget-title"><i class="material-icons">person</i> Followers (<strong>{{followers.length}}</strong>)</h5>
+  <ul class="users-list">
+    <li data-toggle="tooltip" *ngFor="let item of followers" title="{{item.first_name}} {{item.last_name}}">
+      <img src="/assets/images/user1.jpg" alt="" ng-click="vm.openUsersProfile('sm')" />
+    </li>
+  </ul>
+  <div class="widget-bottom">
+    <a class="link-und" (click)="showAll()">View All</a>
+  </div>
+</div> -->
+
+<div class="shared-followers-component">
+  <h5>
+    <i class="material-icons color-purple">reply</i>
+    Followers (<strong>{{followers.length}}</strong>)
+  </h5>
+  <ul class="users-list">
+    <li
+      data-toggle="tooltip"
+      title="{{follows.follower.firstName}} {{follows.follower.lastName}}"
+      *ngFor="let follows of followers">
+        <cl-image
+          public-id="{{follows.follower.profilePicture}}"
+          radius="max"
+          width="50">
+        </cl-image>
+    </li>
+  </ul>
+  <div class="view-all text-right color-purple">
+    View All
+  </div>
+</div>

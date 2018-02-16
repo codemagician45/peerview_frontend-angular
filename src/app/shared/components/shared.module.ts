@@ -33,6 +33,12 @@ import {
   SharedNavBarComponent
 } from './navbar/navbar.component';
 import {
+  NavbarMobileComponent
+} from './navbar/mobile/mobile.component';
+import {
+  NavbarDesktopComponent
+} from './navbar/desktop/desktop.component';
+import {
   SharedPostOptionsComponent
 } from './post-options/post-options.component';
 import {
@@ -44,6 +50,15 @@ import {
 import {
   SharedPostTextareaComponent
 } from './post-textarea/post-textarea.component';
+import {
+  SharedFolloweeComponent
+} from './followee/followee.component';
+import {
+  SharedSocialComponent
+} from './social/social.component';
+import {
+  SharedFollowersComponent
+} from './followers/followers.component';
 import {
   TimeAgoPipe
 } from 'time-ago-pipe';
@@ -63,10 +78,15 @@ import {
   declarations: [
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    NavbarMobileComponent,
+    NavbarDesktopComponent,
     SharedPostOptionsComponent,
     SharedStarsComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,
+    SharedFolloweeComponent,
+    SharedSocialComponent,
+    SharedFollowersComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -76,10 +96,15 @@ import {
     CloudinaryModule,
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    NavbarMobileComponent,
+    NavbarDesktopComponent,
     SharedPostOptionsComponent,
     SharedStarsComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,
+    SharedFolloweeComponent,
+    SharedSocialComponent,
+    SharedFollowersComponent,
     TimeAgoPipe
   ],
   providers: [

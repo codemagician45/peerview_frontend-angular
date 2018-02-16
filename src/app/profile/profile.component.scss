@@ -1,0 +1,19 @@
+.profile-component {
+  profile-left-sidebar-component {
+    position: sticky;
+    top: 5%;
+    ::-webkit-scrollbar {
+      width: 0px;  /* remove scrollbar space */
+      background: transparent;  /* optional: just make scrollbar invisible */
+    }
+  }
+  profile-content-component {
+    margin-top: 7%;
+    padding: 0;
+  }
+  profile-right-sidebar-component {
+    position: sticky;
+    top: 5%;
+  }
+}
+

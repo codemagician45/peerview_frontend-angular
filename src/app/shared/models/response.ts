@@ -36,3 +36,11 @@ export interface PeersListResponse extends Response {
 export class PostsResponse extends Response {
   public posts: Array<PostModel>;
 }
+
+export class FolloweeResponse extends Response {
+  public followee: Array<UserModel>;
+}
+
+export class FollowersResponse extends Response {
+  public followers: Array<UserModel>;
+}

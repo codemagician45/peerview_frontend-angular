@@ -10,3 +10,4 @@ import '@ng-bootstrap/ng-bootstrap';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 import './styles.scss';
+import 'bootstrap-sass/assets/javascripts/bootstrap/dropdown';

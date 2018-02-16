@@ -1,0 +1,50 @@
+<div class="navbar-mobile-component">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="nav-left">
+        <cl-image
+          alt="peersview"
+          public-id="logo"
+          width="75">
+        </cl-image>
+      </div>
+      <div class="nav-right">
+        <span class="dropdown">
+          <a data-toggle="dropdown" id="users-search">
+            <i class="material-icons search-icon" >search</i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right users-search" aria-labelledby="users-search">
+            <div class="input-search">
+              <input type="text" class="form-control" placeholder="Type search text here...">
+              <button class="btn btn-primary btn-xs">
+              <i class="material-icons search-icon" >search</i>
+              </button>
+            </div>
+            <div class="clear"></div>
+            <a [routerLink]="['/advanced-search']" class="advance-search-link">Advanced Search</a>
+          </div>
+        </span>
+        <i class="material-icons notification-icon" [routerLink]="['/notification']">notifications_none</i>
+        <i class="material-icons notification-icon" [routerLink]="['/messages']">mail_outline</i>
+        <span class="dropdown users-menu">
+           <a id="users-menu" data-toggle="dropdown">
+             <cl-image
+                public-id="{{user.profilePicture}}"
+                *ngIf="user?.profilePicture"
+                width="22"
+                [ngStyle]="{'border-radius': '50%'}">
+              </cl-image>
+             <span class="header-caret"></span>
+           </a>
+           <ul class="dropdown-menu dropdown-menu-right users-dropdown" aria-labelledby="users-menu">
+              <span class="icon-arrow-up"></span>
+              <li><a routerLink="/my/profile">My Profile</a></li>
+              <li><a routerLink="/account-settings">Account Setting</a></li>
+              <li><a routerLink="/support" target="_blank">Peersview Support</a></li>
+              <li><a routerLink="/">Log-Out</a></li>
+           </ul>
+        </span>
+      </div>
+    </div>
+  </nav>
+</div>

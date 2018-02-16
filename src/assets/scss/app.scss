@@ -1,0 +1,34 @@
+/**
+ * This would be our global css
+ */
+
+// general
+body, html {
+  height: 100%;
+  font-family: 'Conv_MavenPro-Regular';
+  background: #f4f4f4;
+}
+
+ul, li, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// color specific
+.color-purple {
+  color: #631990;
+}
+
+// button
+.btn-primary {
+  background: #631990;
+  border-color: #631990;
+  color: #ffffff;
+  border-radius: 0;
+  &:hover, &:focus {
+    background: #570e83;
+    border-color: #570e83;
+    color: #ffffff;
+  }
+}

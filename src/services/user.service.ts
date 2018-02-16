@@ -68,4 +68,16 @@ export class UserService {
   public getPeerslist (): Observable<Object> {
     return this.http.get('user/peers-list');
   }
+
+  public getFollowee (): Observable<Object> {
+    return this.http.get('user/followee');
+  }
+
+  public getFollowers (): Observable<Object> {
+    return this.http.get('user/followers');
+  }
+
+  public getTimeline (): Observable<Object> {
+    return this.http.get(`user/timeline`);
+  }
 }

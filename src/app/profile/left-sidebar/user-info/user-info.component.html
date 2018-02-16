@@ -1,0 +1,71 @@
+<div class="profile-left-sidebar-user-info-component">
+  <div class="user text-center">
+    <cl-image
+      public-id="{{user?.profilePicture}}"
+      width="120"
+      radius="max"
+      *ngIf="user?.profilePicture"
+      (click)="onOpenShowImageDialogComponent()">
+    </cl-image>
+    <h4>{{user.firstName}} {{user.lastName}}</h4>
+    <ul>
+      <li>
+        <i class="material-icons color-purple">star</i>
+        <i class="material-icons color-purple">star</i>
+        <i class="material-icons color-purple">star</i>
+        <i class="material-icons color-purple">star</i>
+        <i class="material-icons color-purple">star</i>
+      </li>
+    </ul>
+    <div class="edit-profile">
+      Edit Profile
+      <i class="material-icons color-purple">create</i>
+    </div>
+  </div>
+  <div class="about-me text-center">
+    <div class="col-sm-2">
+      <i class="material-icons purple">info</i>
+    </div>
+    <div class="col-sm-8">
+      {{user?.aboutMe || 'Tell us about yourself'}}
+    </div>
+    <div class="col-sm-2">
+      <i class="material-icons color-purple">create</i>
+      <!-- <a class="flat-btn btn edit float-right" (click)="openAboutMeModal()">
+
+      </a> -->
+    </div>
+  </div>
+  <div class="company text-center">
+    <div class="col-sm-2">
+      <i class="material-icons color-purple">person</i>
+    </div>
+    <div  class="col-sm-10">
+      {{user?.company}}
+    </div>
+  </div>
+  <div class="institution text-center">
+    <div class="col-sm-2">
+      <i class="material-icons color-purple">account_balance</i>
+    </div>
+    <div  class="col-sm-10">
+      {{user?.institutionName}}
+    </div>
+  </div>
+  <div class="course text-center">
+    <div class="col-sm-2">
+      <i class="material-icons color-purple">school</i>
+    </div>
+    <div  class="col-sm-10">
+      {{user?.courseId}}
+    </div>
+  </div>
+  <div class="birth-date text-center">
+    <div class="col-sm-2">
+      <i class="material-icons color-purple">today</i>
+    </div>
+    <div class="col-sm-10">
+      {{user?.birthDate}}
+    </div>
+  </div>
+</div>
