@@ -47,4 +47,46 @@
       </div>
     </div>
   </nav>
+  <div class="nav-menu">
+    <div class="col-xs-3 text-center home">
+      <a [routerLink]="['/home']" [ngClass]="{active: active === 'home'}">
+        <cl-image
+          public-id="homeIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Home
+      </a>
+    </div>
+    <div class="col-xs-3 text-center community">
+      <a [routerLink]="['/community']">
+        <cl-image
+          public-id="forumIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Community
+      </a>
+    </div>
+    <div class="col-xs-3 text-center campus">
+      <a [routerLink]="['/campus']">
+        <cl-image
+          public-id="peopleIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Campus
+      </a>
+    </div>
+    <div class="col-xs-3 text-center campus">
+      <a [routerLink]="['/leisure']">
+        <cl-image
+          public-id="peopleIconBlack"
+          class="dark"
+          width="22">
+        </cl-image>
+         Leisure
+      </a>
+    </div>
+  </div>
 </div>

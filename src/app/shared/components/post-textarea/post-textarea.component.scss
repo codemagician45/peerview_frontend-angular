@@ -1,15 +1,11 @@
 .shared-post-textarea-component {
-  .nav-pills {
-    position: relative;
-    left: 10%;
-    width: 80%;
-    padding-bottom: 10px;
-    border: none;
-    li a {
-      background-color: #f4f4f4;
-      color: #323c47;
-      &:hover {
-        background-color: #f4f4f4;
+  .post-menu {
+    display: inline-flex;
+    li {
+      padding: 10px;
+      a {
+        font-size: 14px;
+        font-weight: 500;
         color: #323c47;
       }
     }
@@ -26,8 +22,6 @@
   }
   .post {
     position: relative;
-    left: 10%;
-    width: 80%;
     textarea {
       height: 140px;
     }
@@ -35,4 +29,27 @@
   .options {
     padding: 10px;
   }
+
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {
+    .post-menu {
+      li a {
+        font-size: 15px;
+      }
+    }
+  }
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {
+    .post-menu {
+      li a {
+        font-size: 20px;
+      }
+    }
+  }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
 }

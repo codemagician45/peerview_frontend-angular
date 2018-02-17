@@ -20,6 +20,14 @@
     position: relative;
     top: -8px;
   }
+  .input-search {
+    display: inline-flex;
+    width: 260px;
+    padding: 10px;
+    input {
+      border-radius: 0;
+    }
+  }
   .users-search, .users-message, .users-notification, .users-dropdown {
     &:before {
       content: "";
@@ -29,6 +37,19 @@
       border-right: 8px solid transparent;
       top: -10px;
       right: 5px;
+    }
+  }
+  .nav-menu {
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    z-index: 2;
+    .home, .community, .campus, .leisure {
+      padding: 10px;
+      background-color: #ccc;
+      a {
+        display: grid;
+      }
     }
   }
 }
