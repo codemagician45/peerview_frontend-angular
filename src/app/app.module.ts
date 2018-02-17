@@ -61,9 +61,6 @@ import 'tinymce';
 import 'tinymce/themes/modern/theme';
 import 'tinymce/plugins/paste';
 import 'tinymce/plugins/link';
-import {
-  NgbModule
-} from '@ng-bootstrap/ng-bootstrap';
 
 const MY_DATE_FORMATS = {
   parse: {
@@ -105,8 +102,7 @@ tinymce.init({});
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    SharedModule,
-    NgbModule.forRoot()
+    SharedModule
   ],
   providers: [{
     provide: MAT_DIALOG_DATA,

@@ -36,9 +36,6 @@ import {
   MatTabsModule,
   MatDatepickerModule
 } from '@angular/material';
-import {
-  NgbModule
-} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -49,7 +46,6 @@ import {
     MatDialogModule,
     MatTabsModule,
     MatDatepickerModule,
-    NgbModule.forRoot(),
     FormsModule
   ],
   declarations: [

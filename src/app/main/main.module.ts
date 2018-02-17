@@ -87,12 +87,6 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import {
-  NgbModule,
-  NgbTabset,
-  NgbTabsetModule,
-  NgbDropdownModule
-} from '@ng-bootstrap/ng-bootstrap';
-import {
   RouterModule
 } from '@angular/router';
 import {
@@ -154,8 +148,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     RouterModule,
     MatTooltipModule,
-    NgbDropdownModule.forRoot(),
-    NgbTabsetModule.forRoot(),
     ScrollSpyModule.forRoot(),
     ImportModule,
     ReCaptchaModule,

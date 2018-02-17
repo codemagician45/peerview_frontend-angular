@@ -31,9 +31,6 @@ import {
   ImportModule
 } from '../import.module';
 import {
-  NgbCollapseModule
-} from '@ng-bootstrap/ng-bootstrap';
-import {
   CreateNewForumComponent
 } from './modal/create-new-forum/create-new-forum.component';
 import {
@@ -42,12 +39,6 @@ import {
 import {
   ForumItemComponent
 } from './forum-item/forum-item.component';
-import {
-  NgbModule,
-  NgbTabset,
-  NgbTabsetModule,
-  NgbDropdownModule
-} from '@ng-bootstrap/ng-bootstrap';
 import {
   ForumLeftMenuComponent
 } from './forum-left-menu/forum-left-menu.component';
@@ -58,9 +49,7 @@ import {
     CommonModule,
     ForumRoutingModule,
     SharedModuleProxy,
-    ImportModule,
-    NgbCollapseModule.forRoot(),
-    NgbDropdownModule.forRoot()
+    ImportModule
   ],
   exports: [
     HomeReplyComponent,

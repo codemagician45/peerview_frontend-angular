@@ -19,9 +19,6 @@ import {
   OwlModule
 } from 'ng2-owl-carousel';
 import {
-  NgbTabsetModule, NgbDropdownModule
-} from '@ng-bootstrap/ng-bootstrap';
-import {
   CloudinaryModule,
   CloudinaryConfiguration
 } from '@cloudinary/angular-5.x';
@@ -59,8 +56,6 @@ import {
     MyRoutingModule,
     SharedModuleProxy,
     OwlModule,
-    NgbTabsetModule.forRoot(),
-    NgbDropdownModule.forRoot(),
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,

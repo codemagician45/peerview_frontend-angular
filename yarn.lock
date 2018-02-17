@@ -168,10 +168,6 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@cloudinary/angular-5.x/-/angular-5.x-1.0.1.tgz#64ca4d1f516c780147c17e3d80d281299c0af79c"
 
-"@ng-bootstrap/ng-bootstrap@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0.tgz#8f2ae70db2fe1dcbf5e0acb49dc2b1bbba2be8d2"
-
 "@ngui/sticky@0.6.3":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@ngui/sticky/-/sticky-0.6.3.tgz#339eaf88ae51bb383621628d102f29e5e121e8c3"
@@ -5190,10 +5186,6 @@ moment@*, moment@^2.14.1:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
-moment@2.18.1:
-  version "2.18.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
-
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -5254,12 +5246,6 @@ negotiator@0.6.1:
 netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
-
-ng-bootstrap@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/ng-bootstrap/-/ng-bootstrap-1.6.3.tgz#d41fd42154c0593422cb83c473a3828aa7525bf5"
-  dependencies:
-    moment "2.18.1"
 
 ng2-datepicker@2.2.5:
   version "2.2.5"

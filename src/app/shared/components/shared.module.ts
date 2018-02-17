@@ -12,9 +12,6 @@ import {
   FormsModule
 } from '@angular/forms';
 import {
-  NgbModule
-} from '@ng-bootstrap/ng-bootstrap';
-import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 /*third party*/
@@ -72,7 +69,6 @@ import {
     RouterModule,
     CommonModule,
     FormsModule,
-    NgbModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
   ],
   declarations: [
@@ -92,7 +88,6 @@ import {
   exports: [
     CommonModule,
     FormsModule,
-    NgbModule,
     CloudinaryModule,
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
