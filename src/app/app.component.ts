@@ -40,18 +40,23 @@ export class AppComponent implements OnInit {
     router.events.subscribe((val) => {
       if (val instanceof NavigationStart) {
         this.loading = true;
+        console.log('start');
       } else if (val instanceof NavigationEnd) {
+        console.log('end');
+        console.log(this.getTitle(router.routerState, router.routerState.root).join('-'));
         this.loading = false;
       }
     });
 
     /*************Get Title from route*********************/
-    router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        let title = this.getTitle(router.routerState, router.routerState.root).join('-');
-        titleService.setTitle(title);
-      }
-    });
+    // router.events.subscribe(event => {
+    //   console.log('event')
+    //   console.log(event);
+    //   if (event instanceof NavigationEnd) {
+    //     let title = this.getTitle(router.routerState, router.routerState.root).join('-');
+    //     titleService.setTitle(title);
+    //   }
+    // });
   }
 
   protected loading: boolean;

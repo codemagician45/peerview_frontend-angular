@@ -12,9 +12,15 @@
   .nav-right {
     float: right;
     position: relative;
+    i {
+      padding: 0 5px;
+    }
   }
   .nav-left {
     float: left;
+    .brand-image {
+      cursor: pointer;
+    }
   }
   .users-menu {
     position: relative;

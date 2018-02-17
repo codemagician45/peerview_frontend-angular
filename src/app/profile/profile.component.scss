@@ -1,26 +1,33 @@
+/**
+ * Basically Just used position and top
+ * changes for the conmponent selector
+ * css styles; nothing more nothing less
+ */
 .profile-component {
   profile-left-sidebar-component {
     position: sticky;
-    top: 5%;
+    top: 0;
+  }
+  profile-right-sidebar-component {
+    position: sticky;
+    top: 0;
+  }
+  .profile-left-sidebar-component {
+    padding-top: 95px;
     ::-webkit-scrollbar {
       width: 0px;  /* remove scrollbar space */
       background: transparent;  /* optional: just make scrollbar invisible */
     }
   }
-  profile-content-component {
-    margin-top: 6%;
-    padding: 0;
+  .profile-content-component {
+    padding-top: 50px;
   }
-  profile-right-sidebar-component {
+  .profile-right-sidebar-component {
     position: sticky;
-    top: 5%;
+    padding-top: 50px;
   }
   // Custom, iPhone Retina
-  @media only screen and (min-width : 320px) {
-    .profile-left-sidebar-component {
-      margin-top: 95px;
-    }
-  }
+  @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
   @media only screen and (min-width : 480px) {}
   // Small Devices, Tablets
@@ -28,7 +35,7 @@
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {
     .profile-left-sidebar-component {
-      margin-top: 0;
+      padding-top: 50px;
     }
   }
   // Large Devices, Wide Screens

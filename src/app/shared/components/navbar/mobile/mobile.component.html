@@ -4,8 +4,10 @@
       <div class="nav-left">
         <cl-image
           alt="peersview"
+          class="brand-image"
           public-id="logo"
-          width="75">
+          width="75"
+          [routerLink]="['/home']">
         </cl-image>
       </div>
       <div class="nav-right">
@@ -49,43 +51,27 @@
   </nav>
   <div class="nav-menu">
     <div class="col-xs-3 text-center home">
-      <a [routerLink]="['/home']" [ngClass]="{active: active === 'home'}">
-        <cl-image
-          public-id="homeIconBlack"
-          class="dark"
-          width="22">
-        </cl-image>
-         Home
+      <a [routerLink]="['/home']">
+        <i class="material-icons">home</i>
+        Home
       </a>
     </div>
     <div class="col-xs-3 text-center community">
       <a [routerLink]="['/community']">
-        <cl-image
-          public-id="forumIconBlack"
-          class="dark"
-          width="22">
-        </cl-image>
-         Community
+        <i class="material-icons">forum</i>
+        Community
       </a>
     </div>
     <div class="col-xs-3 text-center campus">
       <a [routerLink]="['/campus']">
-        <cl-image
-          public-id="peopleIconBlack"
-          class="dark"
-          width="22">
-        </cl-image>
-         Campus
+        <i class="material-icons">group</i>
+        Campus
       </a>
     </div>
     <div class="col-xs-3 text-center campus">
       <a [routerLink]="['/leisure']">
-        <cl-image
-          public-id="peopleIconBlack"
-          class="dark"
-          width="22">
-        </cl-image>
-         Leisure
+        <i class="material-icons">card_giftcard</i>
+        Leisure
       </a>
     </div>
   </div>

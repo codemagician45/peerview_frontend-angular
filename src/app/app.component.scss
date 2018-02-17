@@ -1,91 +1,49 @@
 .page-loader {
-    position: fixed;
-    z-index: 999999999;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999;
+  background: rgba(244, 244, 244, 0.8);
+  transition: all 0.2s;
+  .outer {
+    position: absolute;
     top: 0;
+    left: 0;
     bottom: 0;
     right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(244, 244, 244, 0.8);
-    transition: all 0.2s;
-    visibility: hidden;
-    opacity: 0;
-}
-.loading {
-    visibility: visible;
-    opacity: 1;
-}
-.wrapper {
     display: block;
     height: 221px;
     width: 210px;
     margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.cssload-loader {
+  }
+  .inner {
+    position: relative;
+    display: inline-block;
     width: 75px;
     height: 75px;
-    border-radius: 50%;
     margin: 5em;
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-	background:rgb(99,26,144);
-}
-.cssload-loader,
-.cssload-loader:before,
-.cssload-loader:after {
-    animation: 1.15s infinite ease-in-out;
-    -o-animation: 1.15s infinite ease-in-out;
-    -ms-animation: 1.15s infinite ease-in-out;
-    -webkit-animation: 1.15s infinite ease-in-out;
-    -moz-animation: 1.15s infinite ease-in-out;
-}
-.cssload-loader:before,
-.cssload-loader:after {
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    vertical-align: middle;
+    background:rgb(99,26,144);
+    animation: 1.15s infinite ease-in-out;
+   animation-name: cssload-loader;
+    &:before, &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: 1.15s infinite ease-in-out;
+    }
+  }
 }
-
-.cssload-loader { animation-name: cssload-loader;
-    -o-animation-name: cssload-loader;
-    -ms-animation-name: cssload-loader;
-    -webkit-animation-name: cssload-loader;
-    -moz-animation-name: cssload-loader;
-}
-
 
 @keyframes cssload-loader {
-    from { transform: scale(0); opacity: 1; }
-    to	 { transform: scale(1); opacity: 0; }
-}
-
-@-o-keyframes cssload-loader {
-    from { -o-transform: scale(0); opacity: 1; }
-    to	 { -o-transform: scale(1); opacity: 0; }
-}
-
-@-ms-keyframes cssload-loader {
-    from { -ms-transform: scale(0); opacity: 1; }
-    to	 { -ms-transform: scale(1); opacity: 0; }
-}
-
-@-webkit-keyframes cssload-loader {
-    from { -webkit-transform: scale(0); opacity: 1; }
-    to	 { -webkit-transform: scale(1); opacity: 0; }
-}
-
-@-moz-keyframes cssload-loader {
-    from { -moz-transform: scale(0); opacity: 1; }
-    to	 { -moz-transform: scale(1); opacity: 0; }
+  from {transform: scale(0); opacity: 1;}
+  to	 {transform: scale(1); opacity: 0;}
 }

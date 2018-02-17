@@ -8,11 +8,15 @@ body, html {
   font-family: 'Conv_MavenPro-Regular';
   background: #f4f4f4;
 }
-
 ul, li, ol {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+a {
+  &:hover, &:focus, &:active {
+    color: #570e83;
+  }
 }
 
 // color specific
@@ -23,12 +27,16 @@ ul, li, ol {
 // button
 .btn-primary {
   background: #631990;
-  border-color: #631990;
+  border: 1px solid #631990;
   color: #ffffff;
   border-radius: 0;
-  &:hover, &:focus {
+  &:hover, &:focus, &:active {
     background: #570e83;
-    border-color: #570e83;
+    border: 1px solid #631990;
     color: #ffffff;
+    &:focus {
+      background: #570e83;
+      border: 1px solid #631990;
+    }
   }
 }
