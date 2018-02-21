@@ -9,6 +9,15 @@
     margin: 0;
     padding: 0;
   }
+  .center-section {
+    padding: 5px;
+    .top-post {
+      margin: 5px 0;
+      background-color: #ffffff;
+      padding: 20px;
+      font-family: Georgia;
+    }
+  }
   home-left-sidebar-component {
     position: sticky;
     top: 5%;

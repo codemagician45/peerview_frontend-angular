@@ -1,45 +1,4 @@
 <div class="profile-content-component">
   <div class="timeline-text hidden-xs"><span>TIMELINE</span></div>
-  <div class="post" *ngFor="let post of posts; let i = index;">
-    <div class="row">
-      <div class="col-md-3">
-        <cl-image
-          public-id="{{post.user.profilePicture}}"
-          *ngIf="post?.user?.profilePicture"
-          radius="max"
-          width="50">
-        </cl-image>
-        <p>
-          {{post.user.firstName}} {{post.user.lastName}}
-          <span class="visible-xs">10h ago</span>
-        </p>
-        <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
-      </div>
-      <div class="col-md-9">
-        <p class="post-time">10 h ago</p>
-        <h3 (click)="onShowPostDetailDialogComponent()">{{post.title}}</h3>
-      </div>
-      <div class="col-xs-12 post-message">
-        <!-- post.attachments here -->
-        <p>
-          {{post.message}}
-        </p>
-        <shared-post-options-component
-          [post]="post"
-          [likes]="post.likeCount"
-          [ratingCount]="post.ratingCount"
-          [views]="post.pageviewCount"
-          [share]="post.shareCount"
-          [replies]="post.postReplyCount"></shared-post-options-component>
-      </div>
-    </div>
-  </div>
-  <div class="load-more">
-    <button
-      type="button"
-      class="btn btn-primary btn-block btn-lg"
-      (click)="onLoadMorePost()">
-        Load More
-    </button>
-  </div>
+  <shared-post-component [posts]="posts"></shared-post-component>
 </div>

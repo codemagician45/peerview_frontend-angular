@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.postService.getPosts(10, 0)
     .subscribe((response: PostsResponse) => {
       this.posts = response.posts;
+      console.log(this.posts);
       if (this.posts.length <= 0) {
         // this.isDisabled = true;
         // this.btnLoadMoreText = 'No More Posts To Show';

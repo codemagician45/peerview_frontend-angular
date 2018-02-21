@@ -7,10 +7,15 @@
   profile-left-sidebar-component {
     position: sticky;
     top: 0;
+    padding: 0;
   }
   profile-right-sidebar-component {
     position: sticky;
     top: 0;
+    padding: 0;
+  }
+  profile-content-component {
+    padding: 5px;
   }
   .profile-left-sidebar-component {
     padding-top: 95px;
