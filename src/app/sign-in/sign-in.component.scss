@@ -1,0 +1,34 @@
+.sign-in-component {
+  height: 100%;
+  background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+  background-size: cover;
+  h1 {
+    margin-bottom: 75px;
+  }
+  .left-side {
+    padding: 30px;
+    background: #e7e7e8;
+    .form-control {
+      border: 0 none;
+      border-radius: 0px;
+      box-shadow: 2px 2px 0 #a1a1a2;
+      font-size: 16px;
+      font-family: 'Conv_MavenPro-Bold';
+      color: #8d36c3;
+      background: #ffffff;
+      &::placeholder {
+        color: #8d36c3;
+      }
+    }
+  }
+  .background {
+    background-color: rgba(83, 32, 114, 0.5);
+  }
+  .reverse-child {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .sign-in-button {
+    margin-top: 10px;
+  }
+}
