@@ -1,0 +1,29 @@
+.index-campus-page-students-component {
+  padding: 10px 0;
+  background: #2d153d;
+  border-top: solid 1px #503462;
+  .inline-widget {
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 7px;
+    border: solid 1px #bababa;
+    box-shadow: 0 0 5px #b7b7b7;
+    .inline-widget-header {
+      display: flex;
+      align-items: center;
+      .material-icons {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  .inline-content {
+    overflow: hidden;
+    max-height: 0;
+    li {
+      margin: 6px;
+      list-style-type: disc;
+    }
+  }
+}

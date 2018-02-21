@@ -1,0 +1,20 @@
+.index-community-page-component {
+  padding: 0 0 40px 0;
+  background: url('http://res.cloudinary.com/peersview-com/image/upload/v1519072493/communityBg.jpg') no-repeat;
+  background-size: cover;
+  .community-show-sticky {
+    display: block;
+  }
+  small {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+  }
+  .color-white {
+    margin-bottom: 40px;
+    .col-md-6 {
+      font-size: 20px;
+    }
+  }
+}

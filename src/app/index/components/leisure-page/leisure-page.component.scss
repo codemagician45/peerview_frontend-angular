@@ -1,0 +1,33 @@
+.index-leisure-page-component {
+  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519065568/leisureBg.jpg') no-repeat 0 -100px #000;
+  background-size: cover;
+  color: #fff;
+  padding: 40px 0;
+  .leisure-block {
+    .header-block {
+      h5 {
+        font-size: 20px;
+        font-family: Conv_MavenPro-Bold;
+        text-transform: uppercase;
+      }
+      small {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #fff;
+      }
+    }
+    h3 {
+      margin-top: 0;
+    }
+    .center-block {
+      padding-top: 30px;
+      font-size: 20px;
+    }
+  }
+  .col-sm-12 {
+    margin-bottom: 30px;
+  }
+  .watch-video {
+    font-size: 20px;
+  }
+}

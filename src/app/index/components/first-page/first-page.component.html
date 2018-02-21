@@ -1,0 +1,43 @@
+<div class="index-first-page-component">
+  <div class="container">
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#index-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" [routerLink]="[]">
+            <cl-image
+              alt="peersview"
+              public-id="logo"
+              width="80"
+              [routerLink]="['']">
+            </cl-image>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="index-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="about-us text-center"><a>ABOUT US</a></li>
+            <li class="sign-in">
+              <a class="btn btn-success" [routerLink]="['/sign-in']">SIGN-IN</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="clear"></div>
+    <div class="banner-title text-center">
+      <div class="tagline">
+        <h1>The Social Network For Students</h1>
+        <h3>Connect.Learn.Play</h3>
+      </div>
+      <button class="btn btn-primary sign-up-for-free">SIGN UP FOR FREE</button>
+      <div class="clear"></div>
+      <a class="learn-more">Learn what you can do with Peersview</a>
+      <p class="text-center"><a class="arrow-go-down bounce"></a></p>
+    </div>
+  </div>
+</div>
