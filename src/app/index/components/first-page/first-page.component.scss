@@ -1,12 +1,16 @@
 .index-first-page-component {
+  height: 100%;
   background: url('https://res.cloudinary.com/peersview-com/image/upload/v1518882672/indexFirstPageBg.jpg') no-repeat;
-  height: 700px;
   background-size: cover;
   * {
     font-family: 'ProximaNovaAltLight';
   }
+  .container {
+    height: 100%;
+  }
   .navbar {
     padding-top: 20px;
+    z-index: 1;
     .icon-bar {
       background: #ffffff;
     }
@@ -35,7 +39,11 @@
     letter-spacing: 1px;
   }
   .banner-title {
-    padding: 150px 0 0 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     font-family: 'ProximaNovaAltLight';
     color: #ffffff;
     .tagline {
@@ -62,4 +70,15 @@
       color: #fff;
     }
   }
+
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {}
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {}
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
 }

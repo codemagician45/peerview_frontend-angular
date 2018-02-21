@@ -22,7 +22,6 @@ export class IndexOnResizeActiveDirectiveComponent {
   @HostListener('window:scroll', ['$event'])
   private onWindowScroll (): void {
     let windowTop = this.window.scrollY;
-    let indexStickyNavbar = this.el.nativeElement.querySelector('.index-component-sticky');
     let communityStickyNavbar = this.el.nativeElement.querySelector('.community-show-sticky');
     let community = this.el.nativeElement.querySelector('.index-community-page-component');
     let trendingNow = this.el.nativeElement.querySelector('.index-trending-now-page-component');
@@ -37,34 +36,32 @@ export class IndexOnResizeActiveDirectiveComponent {
 
     if (((windowTop) >= community.offsetTop)
     && (windowTop <= (community.offsetTop + (community.clientHeight - communityStickyNavbar.clientHeight)))) {
-      this.renderer.addClass(indexStickyNavbar, 'sticky-navbar-show');
       removeActiveClass.forEach(element => {
         this.renderer.removeClass(element, 'active');
       });
       this.renderer.addClass(addActiveClassInCommunity, 'active');
     } else if ((windowTop + communityStickyNavbar.clientHeight) >= (trendingNow.offsetTop)
     && windowTop <= (trendingNow.offsetTop + (trendingNow.clientHeight - communityStickyNavbar.clientHeight))) {
-      this.renderer.addClass(indexStickyNavbar, 'sticky-navbar-show');
       removeActiveClass.forEach(element => {
         this.renderer.removeClass(element, 'active');
       });
       this.renderer.addClass(addActiveClassInTrendingNow, 'active');
     }  else if ((windowTop + communityStickyNavbar.clientHeight) >= (leisure.offsetTop)
     && windowTop <= (leisure.offsetTop + (leisure.clientHeight - communityStickyNavbar.clientHeight))) {
-      this.renderer.addClass(indexStickyNavbar, 'sticky-navbar-show');
       removeActiveClass.forEach(element => {
         this.renderer.removeClass(element, 'active');
       });
       this.renderer.addClass(addActiveClassInLeisure, 'active');
     } else if ((windowTop + communityStickyNavbar.clientHeight) >= (campus.offsetTop)
     && windowTop <= (campus.offsetTop + (campus.clientHeight - communityStickyNavbar.clientHeight))) {
-      this.renderer.addClass(indexStickyNavbar, 'sticky-navbar-show');
       removeActiveClass.forEach(element => {
         this.renderer.removeClass(element, 'active');
       });
       this.renderer.addClass(addActiveClassInCampus, 'active');
-    } else if (windowTop < community.offsetTop) {
-      this.renderer.removeClass(indexStickyNavbar, 'sticky-navbar-show');
+    } else {
+      removeActiveClass.forEach(element => {
+        this.renderer.removeClass(element, 'active');
+      });
     }
   }
 }
