@@ -9,4 +9,8 @@ import '@cloudinary/angular-5.x';
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 import './styles.scss';
+import 'bootstrap-sass/assets/javascripts/bootstrap/transition';
 import 'bootstrap-sass/assets/javascripts/bootstrap/dropdown';
+import 'bootstrap-sass/assets/javascripts/bootstrap/collapse';
+import 'bootstrap-sass/assets/javascripts/bootstrap/carousel';
+
