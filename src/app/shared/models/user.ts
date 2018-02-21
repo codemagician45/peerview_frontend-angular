@@ -4,8 +4,10 @@ import {
 
 export class UserModel {
   public id: number;
-  public firstName?: string;
-  public lastname: string;
+  public firstName: string;
+  public lastName: string;
+  public name?: string;
+  public confirmPassword?: string;
   public password: string;
   public email: string;
   public language: string;
