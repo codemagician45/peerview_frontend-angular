@@ -27,9 +27,6 @@ import {
   PostsReponse,
   Post
 } from '../../../models/models';
-import {
-  GUser
-} from '../../global/user';
 
 @Component({
   selector: 'app-profile',
@@ -54,7 +51,6 @@ export class ProfileComponent implements OnInit {
   public items: any;
   public properties: any;
   protected posts: Array<Post>;
-  protected user: UserModel = GUser.getUser();
   private credits = 0;
   private stars: Array<string> = [];
   private followers = [];
@@ -70,13 +66,13 @@ export class ProfileComponent implements OnInit {
 
   protected openAccomplishments (): void {
     this.dialog.open(EditAccomplishmentsModalComponent, {
-      data: this.user,
+      // data: this.user,
       id: 'EditAccomplishmentsModalComponent'
     })
       .afterClosed()
       .subscribe(accomplishments => {
         if (!accomplishments) { return; }
-        this.user.accomplishments = accomplishments;
+        // this.user.accomplishments = accomplishments;
       });
   }
 
@@ -87,14 +83,14 @@ export class ProfileComponent implements OnInit {
       .afterClosed()
       .subscribe(aboutMe => {
         if (!aboutMe) { return; }
-        this.user.aboutMe = aboutMe;
+        // this.user.aboutMe = aboutMe;
       });
   }
 
   protected onOpenShowImageDialogComponent (): void {
     this.dialog.open(ShowImageComponent, {
       data: {
-        profilePicture: this.user.profilePicture
+        // profilePicture: this.user.profilePicture
       },
     });
   }

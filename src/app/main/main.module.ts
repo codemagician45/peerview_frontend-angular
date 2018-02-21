@@ -64,15 +64,15 @@ import {
 import {
   AdvancedSearchComponent
 } from './advanced-search/advanced-search.component';
-import {
-  BusinessProfileComponent
-} from './business-profile/business-profile.component';
+// import {
+//   BusinessProfileComponent
+// } from './business-profile/business-profile.component';
 import {
   HomeComponent
 } from './home/home.component';
-import {
-  UserProfileComponent
-} from './user-profile/user-profile.component';
+// import {
+//   UserProfileComponent
+// } from './user-profile/user-profile.component';
 import {
   DashboardComponent
 } from './dashboard/dashboard.component';
@@ -171,9 +171,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ForgotPasswordComponent,
     ResetpasswordComponent,
     AdvancedSearchComponent,
-    BusinessProfileComponent,
+    // BusinessProfileComponent,
     HomeComponent,
-    UserProfileComponent,
+    // UserProfileComponent,
     DashboardComponent,
     SignOutComponent,
     BlogsComponent,

@@ -52,9 +52,9 @@ import {
 import {
   AdvancedSearchComponent
 } from './advanced-search/advanced-search.component';
-import {
-  BusinessProfileComponent
-} from './business-profile/business-profile.component';
+// import {
+//   BusinessProfileComponent
+// } from './business-profile/business-profile.component';
 import {
   HomeComponent
 } from './home/home.component';
@@ -77,10 +77,12 @@ import {
   IndexDuplicationComponent
 } from './index-duplication/index-duplication.component';
 
-const routes: Routes = [{
-    path: '',
-    component: IndexComponent
-  }, {
+const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: IndexComponent
+  // },
+  {
     path: 'landing',
     component: IndexDuplicationComponent
   }, {
@@ -137,43 +139,45 @@ const routes: Routes = [{
   }, {
     path: 'sign-in',
     component: SignInComponent
-  }, {
-    path: 'sign-out',
-    component: SignOutComponent
-  }, {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent
-  }, {
-    path: 'reset-password/:token',
-    component: ResetpasswordComponent,
-    data: {
-      name: 'resetPssword'
-    }
-  }, {
-    path: 'advanced-search',
-    component: AdvancedSearchComponent
-  }, {
-    path: 'business-profile',
-    component: BusinessProfileComponent
-  }, {
-    path: 'user-profile',
-    component: UserProfileComponent
-  }, {
-    path: 'dash',
-    component: DashboardComponent
-  }, {
-    path: 'blogs',
-    component: BlogsComponent,
-    data: {
-      name: 'blogs'
-    }
-  }, {
-    path: 'blogs-index',
-    component: BlogsComponent,
-    data: {
-      name: 'blogs-index'
-    }
-  }
+  },
+
+  // {
+  //   path: 'sign-out',
+  //   component: SignOutComponent
+  // }, {
+  //   path: 'forgot-password',
+  //   component: ForgotPasswordComponent
+  // }, {
+  //   path: 'reset-password/:token',
+  //   component: ResetpasswordComponent,
+  //   data: {
+  //     name: 'resetPssword'
+  //   }
+  // }, {
+  //   path: 'advanced-search',
+  //   component: AdvancedSearchComponent
+  // }, {
+  //   path: 'business-profile',
+  //   component: BusinessProfileComponent
+  // }, {
+  //   path: 'user-profile',
+  //   component: UserProfileComponent
+  // }, {
+  //   path: 'dash',
+  //   component: DashboardComponent
+  // }, {
+  //   path: 'blogs',
+  //   component: BlogsComponent,
+  //   data: {
+  //     name: 'blogs'
+  //   }
+  // }, {
+  //   path: 'blogs-index',
+  //   component: BlogsComponent,
+  //   data: {
+  //     name: 'blogs-index'
+  //   }
+  // }
 ];
 
 @NgModule({

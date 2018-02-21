@@ -42,14 +42,14 @@ export class SignUpComponent implements OnInit {
     const splitnames = this.model.name.split(' ');
     this.model.firstName = splitnames[0];
     this.model.lastName = splitnames[1];
-    this.authenticationService.registerCustomer(this.model).subscribe((resp) => {
-      if (resp['status'] === 'SUCCESS') {
-        this.submitted = true;
-        this.router.navigate(['/onBoard']);
-      }
-    }, (error) => {
-      this.responceError = error['error'].status_message;
-    });
+    // this.authenticationService.registerCustomer(this.model).subscribe((resp) => {
+    //   if (resp['status'] === 'SUCCESS') {
+    //     this.submitted = true;
+    //     this.router.navigate(['/onBoard']);
+    //   }
+    // }, (error) => {
+    //   this.responceError = error['error'].status_message;
+    // });
   }
 
   get diagnostic (): string {
