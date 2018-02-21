@@ -16,10 +16,7 @@ import {
 } from '../services/services';
 import {
   UserResponse
-} from '../models/models';
-import {
-  GUser
-} from './global/user';
+} from './shared/models';
 import {
   UserClass
 } from './shared/classes';
@@ -64,7 +61,7 @@ export class AppComponent implements OnInit {
   public ngOnInit (): void {
     this.accountSettingService.getUserProfile()
     .subscribe((response: UserResponse) => {
-      GUser.setUser(response.user);
+
       UserClass.setUser(response.user);
     });
   }

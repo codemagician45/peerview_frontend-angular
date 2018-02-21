@@ -58,11 +58,25 @@ export const appRoutes: Routes = [{
   canActivate: [CanActivateUserProfile]
 }, {
   path: 'home',
-  loadChildren: './home/home.module#HomeModule'
-}, {
+  loadChildren: './home/home.module#HomeModule',
+  canActivate: [CanActivateUserProfile]
+},
+// {
+//   path: '',
+//   loadChildren: './main/main.module#MainModule'
+// }
+{
   path: '',
-  loadChildren: './main/main.module#MainModule'
-}];
+  loadChildren: './index/index.module#IndexModule',
+  canActivate: [CanActivateUserProfile]
+}, {
+  path: 'sign-up',
+  loadChildren: './sign-up/sign-up.module#SignUpModule'
+}, {
+  path: 'sign-in',
+  loadChildren: './sign-in/sign-in.module#SignInModule'
+}
+];
 
 @NgModule({
   imports: [
