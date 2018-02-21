@@ -27,10 +27,6 @@ export class AuthenticationService {
     return this.http.post('user/social-login', signInSocial);
   }
 
-  public registerCustomer (signUp: SignUp): Observable<Object> {
-    return this.http.post('user/register', signUp);
-  }
-
   /* Forgot Password User Service */
   public restorePassword (email: ForgotPassword): Observable<Object> {
     return this.http.post('user/forgot-password', email);

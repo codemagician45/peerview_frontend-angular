@@ -12,6 +12,9 @@ import {
   SignIn,
   User
 } from '../models/models';
+import {
+  UserModel
+} from '../app/shared/models';
 
 @Injectable()
 export class UserService {
@@ -79,5 +82,9 @@ export class UserService {
 
   public getTimeline (): Observable<Object> {
     return this.http.get(`user/timeline`);
+  }
+
+  public signUp (user: UserModel): Observable<Object> {
+    return this.http.post('user/register', user);
   }
 }
