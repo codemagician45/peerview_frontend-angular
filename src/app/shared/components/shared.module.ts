@@ -30,6 +30,9 @@ import {
   SharedNavBarComponent
 } from './navbar/navbar.component';
 import {
+  SharedNavbarUnauthComponent
+} from './navbar-unauth/navbar-unauth.component';
+import {
   NavbarMobileComponent
 } from './navbar/mobile/mobile.component';
 import {
@@ -57,6 +60,9 @@ import {
   SharedFollowersComponent
 } from './followers/followers.component';
 import {
+  SharedPostComponent
+} from './post/post.component';
+import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
@@ -74,6 +80,7 @@ import {
   declarations: [
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    SharedNavbarUnauthComponent,
     NavbarMobileComponent,
     NavbarDesktopComponent,
     SharedPostOptionsComponent,
@@ -83,6 +90,7 @@ import {
     SharedFolloweeComponent,
     SharedSocialComponent,
     SharedFollowersComponent,
+    SharedPostComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -91,6 +99,7 @@ import {
     CloudinaryModule,
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    SharedNavbarUnauthComponent,
     NavbarMobileComponent,
     NavbarDesktopComponent,
     SharedPostOptionsComponent,
@@ -100,10 +109,12 @@ import {
     SharedFolloweeComponent,
     SharedSocialComponent,
     SharedFollowersComponent,
+    SharedPostComponent,
     TimeAgoPipe
   ],
   providers: [
-    UserService
+    UserService,
+    {provide: Window, useValue: window}
   ]
 })
 export class SharedModule {}
