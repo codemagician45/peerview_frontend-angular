@@ -68,7 +68,7 @@ export const appRoutes: Routes = [{
 {
   path: '',
   loadChildren: './index/index.module#IndexModule',
-  canActivate: [CanActivateUserProfile]
+  // canActivate: [CanActivateUserProfile]
 }, {
   path: 'sign-up',
   loadChildren: './sign-up/sign-up.module#SignUpModule'

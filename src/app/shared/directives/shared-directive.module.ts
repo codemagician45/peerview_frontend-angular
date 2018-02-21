@@ -8,17 +8,22 @@ import {
 import {
   SharedEqualValidatorDirectiveComponent
 } from './equal-validator.directive';
+import {
+  SharedStickyDirective
+} from './sticky.directive';
 
 
 @NgModule({
   imports: [],
   declarations: [
     SharedSlideToggleDirectiveComponent,
-    SharedEqualValidatorDirectiveComponent
+    SharedEqualValidatorDirectiveComponent,
+    SharedStickyDirective
   ],
   exports: [
     SharedSlideToggleDirectiveComponent,
-    SharedEqualValidatorDirectiveComponent
+    SharedEqualValidatorDirectiveComponent,
+    SharedStickyDirective
   ],
   providers: []
 })
