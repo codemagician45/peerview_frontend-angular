@@ -14,14 +14,30 @@ ul, li, ol {
   list-style: none;
 }
 a {
+  color: #631990;
+  text-decoration: none;
   &:hover, &:focus, &:active {
     color: #570e83;
   }
 }
 
+// classes
+.font-family {
+  font-family: Conv_MavenPro-Bold;
+}
+.display-none {
+  display: none !important;
+}
+
 // color specific
 .color-purple {
   color: #631990;
+}
+.color-light-purple {
+  color: #9737d2;
+}
+.color-white {
+  color: #ffffff;
 }
 
 // button
@@ -34,9 +50,11 @@ a {
     background: #570e83;
     border: 1px solid #631990;
     color: #ffffff;
+    outline: none;
     &:focus {
       background: #570e83;
       border: 1px solid #631990;
+      outline: none;
     }
   }
 }

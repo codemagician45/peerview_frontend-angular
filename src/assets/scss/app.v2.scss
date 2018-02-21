@@ -2,18 +2,6 @@ $pageBg: url('https://res.cloudinary.com/peersview-com/image/upload/v1518100226/
 $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v1518100570/iconArrowRight.png');
 
 /*common css*/
-a {
-  color: #631a90;
-}
-
-a:hover, a:focus {
-  text-decoration: none;
-}
-
-:focus {
-  outline: 0 none;
-}
-
 .clear {
   clear: both;
 }
@@ -445,10 +433,6 @@ i.icon-success {
 /*title css*/
 
 /*btn css*/
-.btn {
-  font-family: 'Conv_MavenPro-Bold';
-}
-
 .profile-dropdown li {
   //padding: 10px !important;
   height: auto !important;
@@ -2719,10 +2703,10 @@ i.icon-success {
 /*content css*/
 
 /*post css*/
-.form-control:focus {
-  outline: none;
-  box-shadow: none;
-}
+// .form-control:focus {
+//   outline: none;
+//   box-shadow: none;
+// }
 
 .post-action {
   padding: 0 60px;
@@ -4204,13 +4188,6 @@ i.icon-success {
   padding: 0 0 5px 0;
 }
 
-.top-post {
-  margin: 20px 20px;
-  background-color: #ffffff;
-  padding: 20px;
-  font-family: Georgia;
-}
-
 .link-answer {
   background: url(/src/assets/images/icon-pencil.png) no-repeat 0 0;
   padding: 1px 0 2px 25px;
@@ -4253,12 +4230,6 @@ i.icon-success {
   color: #666666;
 }
 
-.top-user-left .post-time {
-  font-size: 12px;
-  color: #989898;
-  margin: 0;
-}
-
 .top-user-detail {
   margin: 10px 0;
 }
@@ -4270,21 +4241,6 @@ i.icon-success {
   border: solid 1px #631990;
   display: inline-block;
   max-width: 45px;
-}
-
-.post-text {
-  padding-top: 30px;
-  padding-left: 10px;
-  //margin-bottom: 30px;
-}
-
-.post-text p {
-  color: #333333;
-  line-height: 22px;
-}
-
-.post-text > img {
-  margin-bottom: 20px;
 }
 
 .user-info-left {
@@ -4631,43 +4587,43 @@ i.icon-success {
   z-index: 1;
 }
 
-.forum-user-details {
-  padding-right: 20px;
-}
-
-.forum-user-details .forum-user-info {
-  padding-left: 10px;
-  padding-right: 15px;
-  display: inline-block;
-}
-
-.forum-user-details p,
-.forum-user-details p a {
-  text-transform: capitalize;
-  color: #323c47;
-  font-size: 16px;
-  padding-left: 0px;
-  margin-bottom: 5px;
-  font-family: 'Conv_MavenPro-Bold';
-  margin-top: 5px;
-  white-space: nowrap;
-}
-
-.forum-user-details span {
-  color: #989898;
-  line-height: 14px;
-  font-size: 14px;
-}
-.forum-user-details span.un-name {
-  font-family: 'Conv_MavenPro-Regular';
-  display: block !important;
-  margin-left: 0;
-}
-.forum-user-details img {
-  border-radius: 50px;
-  max-width: 55px;
-  vertical-align: top;
-}
+// .forum-user-details {
+//   padding-right: 20px;
+// }
+//
+// .forum-user-details .forum-user-info {
+//   padding-left: 10px;
+//   padding-right: 15px;
+//   display: inline-block;
+// }
+//
+// .forum-user-details p,
+// .forum-user-details p a {
+//   text-transform: capitalize;
+//   color: #323c47;
+//   font-size: 16px;
+//   padding-left: 0px;
+//   margin-bottom: 5px;
+//   font-family: 'Conv_MavenPro-Bold';
+//   margin-top: 5px;
+//   white-space: nowrap;
+// }
+//
+// .forum-user-details span {
+//   color: #989898;
+//   line-height: 14px;
+//   font-size: 14px;
+// }
+// .forum-user-details span.un-name {
+//   font-family: 'Conv_MavenPro-Regular';
+//   display: block !important;
+//   margin-left: 0;
+// }
+// .forum-user-details img {
+//   border-radius: 50px;
+//   max-width: 55px;
+//   vertical-align: top;
+// }
 
 .forum-post {
   background-color: #fff;
@@ -4964,14 +4920,6 @@ i.icon-success {
 }
 
 /*forum page css*/
-
-/*home page css*/
-.home-bg {
-  background: url(/src/assets/images/home-bg.jpg) no-repeat;
-  height: 700px;
-  background-size: cover;
-}
-
 .home-banner-title {
   color: #ffffff;
   text-align: center;
@@ -5994,14 +5942,14 @@ h1.whats-title {
   margin-bottom: 30px;
 }
 
-.form-control {
-  background: #ffffff;
-  border-color: #d29ff1;
-}
+// .form-control {
+//   background: #ffffff;
+//   border-color: #d29ff1;
+// }
 
-.form-control:focus { /*background:#ffffff !important;*/
-  border-color: #d29ff1;
-}
+// .form-control:focus { /*background:#ffffff !important;*/
+//   border-color: #d29ff1;
+// }
 
 .upload-input {
   border-radius: 4px;
@@ -6292,38 +6240,6 @@ h1.whats-title {
   max-width: 100%;
 }
 
-/*profile page css*/
-
-/*home page css*/
-.services-block {
-  background: #320f49;
-  padding: 30px 0;
-}
-
-.service-list-widget {
-  background: #fff;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  padding: 15px;
-  margin: 10px 0 30px 0;
-  min-height: 425px;
-}
-
-.service-list-widget > h4 {
-  margin-bottom: 15px;
-  color: #570e83;
-  font-family: 'Conv_MavenPro-Bold';
-}
-
-.service-list-widget > img {
-  margin-bottom: 15px;
-}
-
-.service-list-widget p {
-  color: #666666;
-  font-size: 17px;
-}
-
 .news-block {
   color: #631990;
   text-align: center;
@@ -6440,50 +6356,19 @@ h1.whats-title {
   background: url(/src/assets/images/icon-watch.png) no-repeat;
 }
 
-.peers-header {
-  background: url(/src/assets/images/peers-header-bg.jpg) no-repeat 0 0;
-  background-size: cover;
-  color: #fff;
-  text-align: center;
-  height: 309px;
-  padding: 60px 0;
-}
+// .peers-header {
+//   background: url(/src/assets/images/peers-header-bg.jpg) no-repeat 0 0;
+//   background-size: cover;
+//   color: #fff;
+//   text-align: center;
+//   height: 309px;
+//   padding: 60px 0;
+// }
 
-.peers-header p {
-  font-size: 20px;
-  padding: 10px 0;
-}
-
-.peers-content {
-  padding-top: 30px;
-  padding-bottom: 60px;
-}
-
-.peers-content h1 {
-  font-family: 'Conv_MavenPro-Bold';
-  font-size: 31px;
-}
-
-.peers-content p {
-  font-size: 18px;
-}
-
-.peers-content-left {
-  width: 90%;
-}
-
-.peers-content-left h1, .peers-content-left p {
-  color: #000000;
-}
-
-.peers-content-right {
-  width: 86%;
-  padding-top: 50px;
-}
-
-.peers-content-right p {
-  margin-bottom: 25px;
-}
+// .peers-header p {
+//   font-size: 20px;
+//   padding: 10px 0;
+// }
 
 .video-player {
   margin-bottom: 30px;
@@ -6509,11 +6394,6 @@ h1.whats-title {
 .header-block {
   margin-bottom: 30px;
   text-align: center;
-}
-
-.center-block {
-  width: 75%;
-  margin: 0 auto;
 }
 
 .header-block h5, .block-sec-heading {
@@ -6575,52 +6455,8 @@ h1.whats-title {
   color: #000000;
 }
 
-.inline-widget.black h4 {
-  color: #333333;
-  font-size: 20px;
-}
-
 .academic-right {
   margin-top: 45px;
-}
-
-.inline-widget {
-  background: #fff;
-  border-radius: 7px;
-  -webkit-border-radius: 7px;
-  border: solid 1px #bababa;
-  margin: 10px 0 20px 0;
-  padding: 20px;
-  box-shadow: 0 0 5px #b7b7b7;
-  -webkit-box-shadow: 0 0 5px #b7b7b7;
-}
-
-.inline-widget h4 {
-  color: #9737d2;
-  margin-top: 0px;
-}
-
-.inline-widget h4.title-toggle {
-  background: url(/src/assets/images/icon-plus.png) no-repeat 0 2px;
-  padding: 0 0 0 30px;
-  cursor: pointer;
-}
-
-.inline-widget h4.title-toggle.open {
-  background: url(/src/assets/images/icon-minus.png) no-repeat 0 2px;
-}
-
-.inline-widget p {
-  color: #666666;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-.inline-widget ul li {
-  color: #666666;
-  font-size: 14px;
-  list-style-type: disc;
-  margin-left: 20px;
 }
 
 .community-header {
@@ -6629,61 +6465,9 @@ h1.whats-title {
   background: #2d153d;
 }
 
-.community-header i.peersview-brand {
-  width: 59px;
-  height: 59px;
-  display: inline-block;
-  background: url(/src/assets/images/peersview-brand.png) no-repeat;
-  position: absolute;
-  left: 48%;
-  top: -30px;
-}
-
-.student-block {
-  padding: 10px 0;
-  background: #2d153d;
-  border-top: solid 1px #503462;
-}
-
-.student-title {
-  text-align: center;
-  color: #fff;
-  font-size: 40px; /* font-family:'ProximaNovaAltLight';*/
-}
-
 .student-block .header-block {
   color: #fff;
   margin-bottom: 30px;
-}
-
-.inline-tabs {
-  text-align: center;
-  margin: 15px 0;
-}
-
-.inline-tabs li {
-  display: inline-block;
-  color: #fff;
-}
-
-.inline-tabs li a {
-  font-size: 14px;
-  text-transform: uppercase;
-  margin: 0 10px;
-  padding: 5px 20px;
-  background: #fff;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-}
-
-.inline-tabs li a.active {
-  background: #d44e1c;
-  color: #fff;
-}
-
-.inline-tabs li.active a {
-  background: #d44e1c;
-  color: #fff;
 }
 
 .page-level-tabs {
@@ -6719,55 +6503,6 @@ h1.whats-title {
 .page-level-tabs ul li a.active {
   background: #631990;
   color: #fff;
-}
-
-.faq-header {
-  background: #585858;
-  text-align: center;
-  color: #ffffff;
-  padding: 50px;
-}
-
-.faq-header h1 {
-  font-size: 65px;
-  font-family: 'Conv_MavenPro-Bold';
-}
-
-.faq-header p {
-  font-size: 18px;
-}
-
-.faq-header a {
-  color: #fff;
-}
-
-.faq-list {
-  padding: 30px 0;
-}
-
-.faq-list li {
-  margin: 50px 0;
-}
-
-.faq-list li h3 {
-  font-size: 18px;
-  background: url(/src/assets/images/icon-plus.png) no-repeat 0 2px;
-  padding: 0 0 0 30px;
-  cursor: pointer;
-}
-
-.faq-list li h3.open {
-  background: url(/src/assets/images/icon-minus.png) no-repeat 0 2px;
-}
-
-.faq-list li .accordion-description {
-  padding: 20px 0 0 30px;
-  font-size: 18px;
-  color: #666;
-}
-
-.accordion-description p {
-  font-size: 16px;
 }
 
 /*home page css*/
@@ -8000,12 +7735,9 @@ footer ul li a:hover, footer ul li a:focus {
   .info-video {
     margin: 50px 0;
   }
-  .peers-header {
-    height: auto;
-  }
-  .faq-header h1 {
-    font-size: 25px;
-  }
+  // .peers-header {
+  //   height: auto;
+  // }
   .social-sign-block {
     min-height: auto;
     padding: 50px 5px 25px 5px;
@@ -8031,13 +7763,6 @@ footer ul li a:hover, footer ul li a:focus {
   }
   .news-block h1 {
     font-size: 45px;
-  }
-  .inline-tabs li {
-    display: block;
-  }
-  .inline-tabs li a {
-    display: block;
-    margin: 5px 10px;
   }
   #backToTop {
     display: none !important;
@@ -8143,9 +7868,6 @@ footer ul li a:hover, footer ul li a:focus {
   }
   .news-block ul li {
     width: 40%;
-  }
-  .center-block {
-    width: auto;
   }
 }
 
