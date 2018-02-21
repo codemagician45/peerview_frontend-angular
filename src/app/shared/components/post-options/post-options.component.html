@@ -9,14 +9,10 @@
       <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; views</span>
     </li>
     <li class='share-section' *ngIf="share">
-      <button (click)="openShare()">
-        <i class="material-icons">share</i> <span class="link-name">Share</span><ng-container *ngIf="share">({{share}})</ng-container>
-      </button>
+      <i class="material-icons">share</i>{{share}} <span class="link-name">Share</span>
     </li>
     <li (click)="onOpenSharedPostDetailModalComponent()" class="reply-section">
-      <!-- <a class="reply-link"> -->
       <i class="material-icons reply">reply</i>{{replies}} <span class="link-name">Replies</span>
-      <!-- </a> -->
     </li>
     <li>
       <div class="d-inline-block" placement="bottom-right">
@@ -27,8 +23,8 @@
               <a class="flat-btn purple" href="#"><i class="material-icons">delete</i>Delete</a>
             </li> -->
              <!-- *ngIf="user.id !== post.author_id" -->
-            <li class="dropdown-item">
-              <a class="flat-btn purple" (click)="report()"><i class="material-icons">flag</i>Report</a>
+            <li class="dropdown-item report-section">
+              <i class="material-icons">flag</i>Report
             </li>
           </ul>
         </div>
