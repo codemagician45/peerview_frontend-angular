@@ -1,0 +1,26 @@
+.shared-navbar-unauth-component {
+  .navbar {
+    padding-top: 20px;
+    .icon-bar {
+      background: #ffffff;
+    }
+    .sign-in, .about-us {
+      a {
+        font-size: 16px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+    }
+    li.about-us a {
+      color: #ffffff;
+      &:hover, &:focus {
+        background-color: unset;
+      }
+    }
+    li.sign-in a {
+      &:hover, &:focus {
+        background-color: #398439;
+      }
+    }
+  }
+}
