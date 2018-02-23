@@ -1,0 +1,106 @@
+@import './variables';
+
+@mixin btn-peersview-primary($bg, $border...) {
+  background: $bg;
+  font-weight: 600;
+  color: #ffffff;
+  border: $border;
+  letter-spacing: 1px;
+  border: 0;
+  outline: none;
+  @include border-radius(0);
+  &:hover {
+    background: darken($bg, 5%);
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  &:active, &:focus {
+    background: darken($bg, 10%);
+    color: #ffffff;
+    outline: none;
+  }
+  &:active {
+    &:focus, &:hover, &:visited {
+      background: darken($bg, 10%);
+      color: #ffffff;
+      outline: none;
+    }
+  }
+}
+
+@mixin btn-peersview-success($bg, $border...) {
+  @include btn-peersview-primary($bg, $border...);
+}
+
+@mixin btn-peersview-transparent() {
+  background: none;
+  border: 0;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+// buttons
+@mixin btn-lg() {
+  padding: 20px 40px;
+  font-size: $f-large;
+}
+@mixin btn-md() {
+  padding: 10px 20px;
+}
+@mixin btn-sm() {
+  padding: 5px 10px;
+  font-size: $font-weight-light
+}
+@mixin btn-xs() {
+  padding: 5px 5px;
+  font-size: $font-weight-light;
+}
+
+// paddings
+@mixin padding-0() {
+  padding: 0;
+}
+@mixin padding-1() {
+  padding: $spacers * .25px;
+}
+@mixin padding-2() {
+  padding: $spacers * .5px;
+}
+@mixin padding-3() {
+  padding: $spacers;
+}
+@mixin padding-4() {
+  padding: $spacers * 1.5px;
+}
+@mixin padding-5() {
+  padding: $spacers * 3px;
+}
+
+@mixin padding-y-0() {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@mixin padding-y-1() {
+  padding-top: $spacers * .25px;
+  padding-bottom: $spacers * .25px;
+}
+@mixin padding-y-2() {
+  padding-top: $spacers * .5px;
+  padding-bottom: $spacers * .5px;
+}
+@mixin padding-y-3() {
+  padding-top: $spacers * 1px;
+  padding-bottom: $spacers * 1px;
+}
+@mixin padding-y-4() {
+  padding-top: $spacers * 1.5px;
+  padding-bottom: $spacers * 1.5px;
+}
+@mixin padding-y-5() {
+  padding-top: $spacers * 3px;
+  padding-bottom: $spacers * 3px;
+}

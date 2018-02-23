@@ -2,11 +2,13 @@
   height: 100%;
   background: url('https://res.cloudinary.com/peersview-com/image/upload/v1518882672/indexFirstPageBg.jpg') no-repeat;
   background-size: cover;
-  * {
-    font-family: 'ProximaNovaAltLight';
-  }
   .container {
     height: 100%;
+  }
+  .btn-peersview-transparent {
+    margin: 0 3px;
+    border: 1px solid #ffffff;
+    border-radius: 0;
   }
   .navbar {
     padding-top: 20px;
@@ -14,29 +16,10 @@
     .icon-bar {
       background: #ffffff;
     }
-    .sign-in, .about-us {
-      a {
-        font-size: 16px;
-        font-weight: 800;
-        letter-spacing: 1px;
-      }
-    }
-    li.about-us a {
-      color: #ffffff;
-      &:hover, &:focus {
-        background-color: unset;
-      }
-    }
-    li.sign-in a {
-      &:hover, &:focus {
-        background-color: #398439;
-      }
-    }
   }
   .sign-up-for-free {
     padding: 20px 40px 20px 40px;
     font-weight: 800;
-    letter-spacing: 1px;
   }
   .banner-title {
     position: absolute;
@@ -63,6 +46,8 @@
       display: inline-block;
       margin-top: 40px;
       padding: 10px 40px;
+      font-weight: 600;
+      letter-spacing: 1px;
       background-color: rgba(15, 13, 13, 0.5);
       border: solid 1px #7b7371;
       border-radius: 30px;

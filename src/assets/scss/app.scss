@@ -1,11 +1,19 @@
+@import './variables';
+@import './mixins';
+
 /**
  * This would be our global css
  */
-
 // general
-body, html {
+html,
+body,
+button,
+input,
+textarea {
+  font-family: $font-family-primary;
+}
+html, body {
   height: 100%;
-  font-family: 'Conv_MavenPro-Regular';
   background: #f4f4f4;
 }
 ul, li, ol {
@@ -13,48 +21,113 @@ ul, li, ol {
   padding: 0;
   list-style: none;
 }
-a {
-  color: #631990;
-  text-decoration: none;
-  &:hover, &:focus, &:active {
-    color: #570e83;
-  }
-}
 
 // classes
-.font-family {
-  font-family: Conv_MavenPro-Bold;
+.font-family-primary {
+  font-family: $font-family-primary
 }
-.display-none {
-  display: none !important;
+.mouse-pointer {
+  cursor: pointer;
 }
 
-// color specific
-.color-purple {
-  color: #631990;
+//colors
+.peersview-primary-color {
+  color: $primary-color;
 }
-.color-light-purple {
-  color: #9737d2;
+.peersview-primary-color-light {
+  color: $primary-color-light;
 }
-.color-white {
-  color: #ffffff;
+.peersview-primary-color-dark {
+  color: $primary-color-dark;
+}
+.peersview-secondary-color {
+  color: $secondary-color;
+}
+.peersview-secondary-light {
+  color: $secondary-color-light;
+}
+.peersview-secondary-color-dark {
+  color: $secondary-color-dark;
 }
 
 // button
-.btn-primary {
-  background: #631990;
-  border: 1px solid #631990;
-  color: #ffffff;
-  border-radius: 0;
-  &:hover, &:focus, &:active {
-    background: #570e83;
-    border: 1px solid #631990;
-    color: #ffffff;
-    outline: none;
-    &:focus {
-      background: #570e83;
-      border: 1px solid #631990;
-      outline: none;
-    }
+.btn-peersview-primary {
+  @include btn-peersview-primary($primary-color, 1px solid #ffffff);
+}
+.btn-peersview-success {
+  @include btn-peersview-success($green);
+}
+.btn-peersview-transparent {
+  @include btn-peersview-transparent();
+}
+.btn-peersview-lg {
+  @include btn-lg;
+}
+.btn-peersview-md {
+  @include btn-md;
+}
+.btn-peersview-sm {
+  @include btn-sm;
+}
+.btn-peersview-xs {
+  @include btn-xs;
+}
+
+// padding
+.p-peersview-0 {
+  @include padding-y-0;
+}
+.p-peersview-y-1 {
+  @include padding-y-1;
+}
+.p-peersview-y-2 {
+  @include padding-y-2;
+}
+.p-peersview-y-3 {
+  @include padding-y-3;
+}
+.p-peersview-y-4 {
+  @include padding-y-4;
+}
+.p-peersview-y-5 {
+  @include padding-y-5;
+}
+
+/**
+ * Animation which includes
+ * Shared directives
+ */
+ // general use of the child components
+.toggled {
+  animation-name: slidedown;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  padding: 5px 10px;
+}
+
+.slideUp {
+  animation-name: slideup;
+  animation-timing-function: ease-out;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes slidedown {
+  0% {max-height: 0;}
+  99% {max-height: 200px;}
+  100% {max-height: 4000px;}
+}
+@keyframes slideup {
+  0% {
+    max-height: 200px;
+    padding: 5px 10px;
+  }
+  99% {
+    max-height: 0;
+    padding: 5px 10px;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
   }
 }

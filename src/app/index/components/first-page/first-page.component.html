@@ -20,9 +20,11 @@
         </div>
         <div class="collapse navbar-collapse" id="index-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="about-us text-center"><a>ABOUT US</a></li>
+            <li class="about-us text-center">
+              <button class="btn-peersview-transparent btn-lg">ABOUT US</button>
+            </li>
             <li class="sign-in">
-              <a class="btn btn-success" [routerLink]="['/sign-in']">SIGN-IN</a>
+              <button class="btn-peersview-transparent btn-lg" [routerLink]="['/sign-in']">SIGN-IN</button>
             </li>
           </ul>
         </div>
@@ -34,7 +36,7 @@
         <h1>The Social Network For Students</h1>
         <h3>Connect.Learn.Play</h3>
       </div>
-      <button class="btn btn-primary sign-up-for-free" [routerLink]="['/sign-up']">SIGN UP FOR FREE</button>
+      <button class="btn-peersview-primary btn-lg sign-up-for-free" [routerLink]="['/sign-up']">SIGN UP FOR FREE</button>
       <div class="clear"></div>
       <a class="learn-more">Learn what you can do with Peersview</a>
       <p class="text-center"><a class="arrow-go-down bounce"></a></p>

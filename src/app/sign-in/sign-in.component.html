@@ -1,74 +1,58 @@
 <div class="sign-in-component">
-  <shared-navbar-unauth-component [signInOrSignUp]="{link: '/sign-up', name: 'SIGN-UP'}"></shared-navbar-unauth-component>
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="text-center color-white">
-        <h1>SIGN IN</h1>
-      </div>
-      <div class="row background">
-        <div class="col-sm-6 left-side">
-          <form #signInForm="ngForm" (ngSubmit)="onSignIn()" class="form-horizontal">
-            <div class="form-group">
-              <div class="col-sm-12">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Email"
-                  name="email"
-                  autocomplete="email"
-                  [(ngModel)]="user.email"
-                  #userEmail="ngModel"
-                  required
-                  email/>
-                <div *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
-                  <div *ngIf="userEmail.errors.required">
-                    Email is required
-                  </div>
-                  <div *ngIf="userEmail.errors.email">
-                    Email is invalid
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-sm-12">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                  name="password"
-                  autocomplete="password"
-                  [(ngModel)]="user.password"
-                  #password="ngModel"
-                  required
-                  minlength="8" />
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                  <div *ngIf="password.errors.required || password.errors.minlength">
-                    Password required at least 8 characters
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="save text-right">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"/>
-                    Remember me
-                </label>
-              </div>
-              <button type="submit" class="btn btn-success btn-lg sign-in-button">
-                Sign In
-              </button>
-            </div>
-          </form>
+  <div class="sign-in-form">
+    <form #signInForm="ngForm" (ngSubmit)="onSignIn()">
+      <h2 class="text-center">
+        <div>
+          <cl-image
+            class="mouse-pointer"
+            public-id="peersviewBrand"
+            [routerLink]="['/']">
+          </cl-image>
         </div>
-
-        <div class="col-sm-6">
+        <div class="p-peersview-y-4">Sign In</div>
+      </h2>
+      <div class="text-center social-btn">
+        <a class="btn btn-block facebook mouse-pointer"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+        <a class="btn btn-block linkedIn mouse-pointer"><i class="fa fa-twitter"></i> Sign in with <b>LinkedIn</b></a>
+        <a class="btn btn-block google mouse-pointer"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+      </div>
+      <div class="or-seperator"><i>or</i></div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon color-light-purple"><i class="material-icons">email</i></span>
+          <input
+            type="text"
+            class="form-control"
+            name="email"
+            placeholder="Email"
+            required="required"
+            [(ngModel)]="user.email">
         </div>
       </div>
-      <!-- <app-sign-social [type]="'sign-up'" (showForm)="showForm($event)"></app-sign-social> -->
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon color-light-purple"><i class="material-icons">lock</i></span>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            required="required"
+            [(ngModel)]="user.password">
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-peersview-primary btn-block btn-peersview-md">Sign in</button>
+      </div>
+      <div class="clearfix">
+        <label class="pull-left checkbox-inline peersview-primary-color-light"><input type="checkbox"> Remember me</label>
+        <a class="pull-right peersview-primary-color-light">Forgot Password?</a>
+      </div>
+    </form>
+    <div class="hint-text small">Don't have an account?
+      <a
+        class="sign-up-now peersview-secondary-color"
+        [routerLink]="['/sign-up']">Sign-up Now!</a>
     </div>
   </div>
 </div>
