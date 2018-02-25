@@ -75,7 +75,25 @@ ul, li, ol {
 
 // padding
 .p-peersview-0 {
-  @include padding-y-0;
+  @include padding-0;
+}
+.p-peersview-1 {
+  @include padding-1;
+}
+.p-peersview-2 {
+  @include padding-2;
+}
+.p-peersview-3 {
+  @include padding-3;
+}
+.p-peersview-4 {
+  @include padding-4;
+}
+.p-peersview-5 {
+  @include padding-5;
+}
+.p-peersview-y-0 {
+  @include padding-y-1;
 }
 .p-peersview-y-1 {
   @include padding-y-1;
@@ -91,6 +109,80 @@ ul, li, ol {
 }
 .p-peersview-y-5 {
   @include padding-y-5;
+}
+.p-peersview-x-0 {
+  @include padding-x-0;
+}
+.p-peersview-x-1 {
+  @include padding-x-1;
+}
+.p-peersview-x-2 {
+  @include padding-x-2;
+}
+.p-peersview-x-3 {
+  @include padding-x-3;
+}
+.p-peersview-x-4 {
+  @include padding-x-4;
+}
+.p-peersview-x-5 {
+  @include padding-x-5;
+}
+
+// margin
+.m-peersview-0 {
+  @include margin-0;
+}
+.m-peersview-1 {
+  @include margin-1;
+}
+.m-peersview-2{
+  @include margin-2;
+}
+.m-peersview-3 {
+  @include margin-3;
+}
+.m-peersview-4 {
+  @include margin-4;
+}
+.m-peersview-5 {
+  @include margin-5;
+}
+.m-peersview-y-0 {
+  @include margin-y-0;
+}
+.m-peersview-y-1 {
+  @include margin-y-1;
+}
+.m-peersview-y-2 {
+  @include margin-y-2;
+}
+.m-peersview-y-3 {
+  @include margin-y-3;
+}
+.m-peersview-y-4 {
+  @include margin-y-4;
+}
+.m-peersview-y-5 {
+  @include margin-y-5;
+}
+.m-peersview-x-0 {
+  @include margin-x-0;
+}
+.m-peersview-x-1 {
+  @include margin-x-1;
+}
+.m-peersview-x-2 {
+  @include margin-x-2;
+}
+.m-peersview-x-3 {
+  @include margin-x-3;
+}
+.m-peersview-x-4 {
+  @include margin-x-4;
+}
+.m-peersview-x-5 {
+  @include margin-x-5;
 }
 
 /**
