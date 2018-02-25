@@ -75,6 +75,9 @@ export const appRoutes: Routes = [{
 }, {
   path: 'sign-in',
   loadChildren: './sign-in/sign-in.module#SignInModule'
+}, {
+  path: 'about-us',
+  loadChildren: './about-us/about-us.module#AboutUsModule'
 }
 ];
 
