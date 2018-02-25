@@ -1,5 +1,6 @@
 import {
   Component,
+  OnInit,
   Input
 } from '@angular/core';
 
@@ -11,5 +12,9 @@ import {
 export class SharedNavbarUnauthComponent {
   constructor () {}
 
-  @Input() protected signInOrSignUp: string;
+  @Input() protected aboutUs: boolean;
+  @Input() protected blog: boolean;
+  @Input() protected press: boolean;
+  @Input() protected signIn: boolean;
+  @Input() protected signUp: boolean;
 }
