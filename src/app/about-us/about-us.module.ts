@@ -12,6 +12,12 @@ import {
   AboutUsHowItIsStartedComponent
 } from './how-it-is-started/how-it-is-started.component';
 import {
+  AboutUsCommunityComponent
+} from './community/community.component';
+import {
+  AboutUsTeamComponent
+} from './team/team.component';
+import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
@@ -26,7 +32,9 @@ import {
   declarations : [
     AboutUsComponent,
     AboutUsIndexPageComponent,
-    AboutUsHowItIsStartedComponent
+    AboutUsHowItIsStartedComponent,
+    AboutUsCommunityComponent,
+    AboutUsTeamComponent
   ],
   exports: []
 })
