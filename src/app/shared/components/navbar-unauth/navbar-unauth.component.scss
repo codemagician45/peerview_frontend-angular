@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variables';
+
 .shared-navbar-unauth-component {
   .navbar {
     padding-top: 20px;
@@ -5,4 +7,44 @@
       background: #ffffff;
     }
   }
+  button {
+    background-color: $primary-color;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+    &:active {
+      background: darken($primary-color, 10%);
+    }
+    &:active {
+      &:focus, &:hover, &:visited {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {}
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {
+    button {
+      background-color: unset;
+      &:hover {
+        background-color: unset;
+      }
+      &:active {
+        background: unset;
+      }
+      &:active {
+        &:focus, &:hover, &:visited {
+          background: unset;
+        }
+      }
+    }
+  }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
 }
