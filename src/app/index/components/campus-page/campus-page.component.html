@@ -25,7 +25,9 @@
           </cl-image>
         </div>
         <p>Peersview creates a vibrant and engaging online campus for students.</p>
-        <p><a routerLink="/contact" class="btn request-a-demo">Request a Demo</a></p>
+        <p class="text-center">
+          <a routerLink="/contact" class="btn-peersview-secondary btn-peersview-lg">Request a Demo</a>
+        </p>
       </div>
     </div>
   </div>
@@ -36,14 +38,26 @@
     </cl-image>
     <h1 class="text-center">Benefits Of The Peersview Campus</h1>
     <ul class="choose-category text-center">
-      <li [ngClass]="{'active': section === 'students'}">
-        <a (click)="section = 'students'">Students</a>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'students'}"
+          (click)="section = 'students'">Students
+        </a>
       </li>
-      <li [ngClass]="{'active': section === 'institutions'}">
-        <a (click)="section = 'institutions'">Academic Institutions</a>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'institutions'}"
+          (click)="section = 'institutions'">Academic Institutions
+        </a>
       </li>
-      <li [ngClass]="{'active': section === 'faq'}">
-        <a (click)="section = 'faq'">FAQ</a>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'faq'}"
+          (click)="section = 'faq'">FAQ
+        </a>
       </li>
     </ul>
   </div>

@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variables';
+
 .index-campus-page-component {
   .header {
     padding: 60px 0;
@@ -25,10 +27,6 @@
     }
     .content-right p {
       margin-top: 20px;
-      a {
-        font-size: 16px;
-        font-weight: 800;
-      }
     }
   }
   .benefits {
@@ -37,11 +35,9 @@
     background: #2d153d;
     .peersview-brand {
       position: absolute;
-      display: inline-block;
-      left: 48%;
-      top: -13px;
-      width: 59px;
-      height: 59px;
+      left: 50%;
+      top: 2px;
+      transform: translate(-50%, -50%);
     }
     h1 {
       color: #ffffff;
@@ -51,31 +47,11 @@
       align-items: center;
       justify-content: center;
       li {
-        margin: 0 10px;
-        padding: 5px 20px;
-        background: #fff;
-        font-size: 14px;
-        border-radius: 5px;
-        text-transform: uppercase;
-        cursor: pointer;
-        a {
-          color: #631a90;
-          text-decoration: none;
-        }
+        padding: 5px 5px;
       }
-      .active {
-        background: #d44e1c;
-        a {
-          color: #fff;
-        }
+      a.active {
+        color: $primary-color-dark;
       }
     }
-  }
-  .request-a-demo {
-    background: #fff;
-    border-color: #631990;
-    font-size: 14px;
-    color: #631990;
-    text-transform: uppercase;
   }
 }
