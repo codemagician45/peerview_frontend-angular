@@ -12,14 +12,23 @@ input,
 textarea {
   font-family: $font-family-primary;
 }
-html, body {
+html,
+body {
   height: 100%;
   background: #f4f4f4;
 }
-ul, li, ol {
+ul,
+li,
+ol {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 // classes
@@ -50,12 +59,23 @@ ul, li, ol {
   color: $secondary-color-dark;
 }
 
+//bg-colors
+.peersview-primary-bg-color {
+  background-color: $primary-color;
+}
+.peersview-primary-bg-color-light {
+  background-color: $primary-color-light;
+}
+.peersview-primary-bg-color-dark {
+  background-color: $primary-color-dark;
+}
+
 // button
 .btn-peersview-primary {
   @include btn-peersview-primary($primary-color, 1px solid #ffffff);
 }
-.btn-peersview-success {
-  @include btn-peersview-success($green);
+.btn-peersview-secondary {
+  @include btn-peersview-secondary($green);
 }
 .btn-peersview-transparent {
   @include btn-peersview-transparent();
@@ -183,6 +203,17 @@ ul, li, ol {
 }
 .m-peersview-x-5 {
   @include margin-x-5;
+}
+
+// font weight
+.peersview-font-weight-light {
+  font-weight: $font-weight-light;
+}
+.peersview-font-weigth-regular {
+  font-weight: $font-weight-regular;
+}
+.peersview-font-weigth-bold {
+  font-weight: $font-weight-bold;
 }
 
 /**
