@@ -24,6 +24,10 @@ import {
   Cloudinary
 } from 'cloudinary-core';
 import {
+  AuthService,
+  Angular2SocialLoginModule
+} from 'angular2-social-login';
+import {
   SharedSidebarFooterComponent
 } from './sidebar-footer/sidebar-footer.component';
 import {
@@ -63,6 +67,9 @@ import {
   SharedPostComponent
 } from './post/post.component';
 import {
+  CONFIG
+} from '../../../config';
+import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
@@ -75,6 +82,7 @@ import {
     RouterModule,
     CommonModule,
     FormsModule,
+    Angular2SocialLoginModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
   ],
   declarations: [
@@ -114,7 +122,12 @@ import {
   ],
   providers: [
     UserService,
+    AuthService,
     {provide: Window, useValue: window}
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+  constructor () {
+    Angular2SocialLoginModule.loadProvidersScripts(CONFIG[CONFIG.environment].socialProviders);
+  }
+}
