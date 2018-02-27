@@ -13,7 +13,8 @@ import {
   User
 } from '../models/models';
 import {
-  UserModel
+  UserModel,
+  SignInViaSocialModel
 } from '../app/shared/models';
 
 @Injectable()
@@ -86,5 +87,13 @@ export class UserService {
 
   public signUp (user: UserModel): Observable<Object> {
     return this.http.post('user/register', user);
+  }
+
+  public signIn (user: UserModel): Observable<Object> {
+    return this.http.post('user/login', user);
+  }
+
+  public signInViaSocial (signInSocial: SignInViaSocialModel): Observable<Object> {
+    return this.http.post('user/social-login', signInSocial);
   }
 }
