@@ -30,6 +30,29 @@ a {
     text-decoration: none;
   }
 }
+input {
+  border-radius: 0;
+  &:focus {
+    border-color: unset;
+    box-shadow: none;
+  }
+}
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: unset;
+}
+.form-control {
+  border-radius: 0;
+  min-height: 38px;
+  &::placeholder {
+    color: $primary-color-light;
+  }
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: none;
+  }
+}
 
 // classes
 .font-family-primary {
