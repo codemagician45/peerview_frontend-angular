@@ -15,6 +15,9 @@ import {
   AccountSettingService
 } from '../services/services';
 import {
+  UserService
+} from '../services';
+import {
   UserResponse
 } from './shared/models';
 import {
@@ -31,6 +34,7 @@ export class AppComponent implements OnInit {
   constructor (
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService,
     private accountSettingService: AccountSettingService,
     private titleService: Title) {
     /**************Loader Function Intialize on change Router***********************/
@@ -59,6 +63,7 @@ export class AppComponent implements OnInit {
   protected loading: boolean;
 
   public ngOnInit (): void {
+    if (!this.userService.getLoggedInUser()) { return; }
     this.accountSettingService.getUserProfile()
     .subscribe((response: UserResponse) => {
 
