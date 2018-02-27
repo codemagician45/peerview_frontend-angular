@@ -1,6 +1,6 @@
 <div class="sign-in-component">
   <div class="sign-in-form">
-    <form #signInForm="ngForm" (ngSubmit)="onSignIn()">
+    <form #signInForm="ngForm" (ngSubmit)="onSignIn(signInForm.valid)">
       <h2 class="text-center">
         <div>
           <cl-image
@@ -12,9 +12,27 @@
         <div class="p-peersview-y-4">Sign In</div>
       </h2>
       <div class="text-center social-btn">
-        <a class="btn btn-block facebook mouse-pointer"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
-        <a class="btn btn-block linkedIn mouse-pointer"><i class="fa fa-twitter"></i> Sign in with <b>LinkedIn</b></a>
-        <a class="btn btn-block google mouse-pointer"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+        <a
+          class="btn btn-block facebook mouse-pointer"
+          (click)="onSignInViaSocial('facebook')">
+          <i class="fa fa-facebook"></i>
+          Sign in with
+          <b>Facebook</b>
+        </a>
+        <a
+          class="btn btn-block linkedIn mouse-pointer"
+          (click)="onSignInViaSocial('linkedin')">
+          <i class="fa fa-twitter"></i>
+          Sign in with
+          <b>LinkedIn</b>
+        </a>
+        <a
+          class="btn btn-block google mouse-pointer"
+          (click)="onSignInViaSocial('google')">
+          <i class="fa fa-google"></i>
+          Sign in with
+          <b>Google</b>
+        </a>
       </div>
       <div class="or-seperator"><i>or</i></div>
       <div class="form-group">
@@ -25,8 +43,10 @@
             class="form-control"
             name="email"
             placeholder="Email"
+            autocomplete="email"
             required="required"
-            [(ngModel)]="user.email">
+            [(ngModel)]="user.email"
+            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         </div>
       </div>
       <div class="form-group">
@@ -37,6 +57,7 @@
             class="form-control"
             name="password"
             placeholder="Password"
+            autocomplete="password"
             required="required"
             [(ngModel)]="user.password">
         </div>

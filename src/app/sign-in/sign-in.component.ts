@@ -2,8 +2,17 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserModel
+  UserModel,
+  SignInViaSocialModel,
+  ISocialResponse,
+  ISignInViaSocialResponse,
 } from '../shared/models';
+import {
+  UserService
+} from '../../services';
+import {
+  AuthService
+} from 'angular2-social-login';
 
 @Component({
   selector: 'sign-in-component',
@@ -11,32 +20,37 @@ import {
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-  constructor () {}
+  constructor (
+    private userService: UserService,
+    private authService: AuthService
+  ) {}
 
   protected user: UserModel = new UserModel();
+  private signInViaSocial: SignInViaSocialModel = new SignInViaSocialModel();
 
-  protected onSignIn (): void {
-    // let isValid = true;
-    // if (this.model.password.length < 8) {
-    //   isValid = false;
-    //   alert('Password required at least 8 characters');
-    // }
-    //
-    // if (isValid && this.model.email.indexOf('@') === -1) {
-    //   isValid = false;
-    //   alert('Invalid Email Specified');
-    // }
-    //
-    // if (isValid && this.model.email && this.model.password) {
-    //   this.authenticationService.authenticateCustomer(this.model)
-    //   .subscribe((response: any) => {
-    //     this.submitted = true;
-    //     const user = response.user;
-    //     this.userService.setLoggedInUser(user);
-    //     this.router.navigate(['/home']);
-    //   }, (error) => {
-    //     this.responceError = error['error'].status_message;
-    //   });
-    // }
+  protected onSignIn (isValid: boolean): void {
+    isValid && this.userService.signIn(this.user)
+    .subscribe((response: any) => {
+      console.log(response);
+    });
+  }
+
+  protected onSignInViaSocial (provider: string): void {
+    this.authService.login(provider)
+    .flatMap((response: ISocialResponse) => {
+      const name = response.name.split(' ');
+      this.signInViaSocial.email = response.email;
+      this.signInViaSocial.firstName = name[0];
+      this.signInViaSocial.lastName = name[1];
+      this.signInViaSocial.image = response.image;
+      this.signInViaSocial.provider = response.provider;
+      this.signInViaSocial.uid = response.uid;
+      return this.userService.signInViaSocial(this.signInViaSocial);
+    })
+    .subscribe((response: ISignInViaSocialResponse) => {
+      console.log(response);
+    }, (error) => {
+
+    });
   }
 }
