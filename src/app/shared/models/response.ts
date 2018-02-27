@@ -44,3 +44,4 @@ export class FolloweeResponse extends Response {
 export class FollowersResponse extends Response {
   public followers: Array<UserModel>;
 }
+
