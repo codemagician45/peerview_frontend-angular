@@ -1,10 +1,9 @@
+import {DEVELOPMENT} from './development';
+import {STAGING} from './staging';
+
 export const CONFIG = {
-  development: {
-    api: 'http://localhost:3000/api/v1/'
-  },
-  staging: {
-    api: 'https://peersview.herokuapp.com/api/v1/'
-  },
+  development: DEVELOPMENT,
+  staging: STAGING,
   production: {
     api: process.env.API_URL
   },
