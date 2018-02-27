@@ -14,7 +14,7 @@
         <span>Company</span>
         <ul>
           <li><a routerLink="/blogs">Blogs</a></li>
-          <li><a routerLink="/about">About Us</a></li>
+          <li><a [routerLink]="['/about-us']">About Us</a></li>
           <li><a routerLink="/about#team-info">Our Team</a></li>
           <li><a routerLink="/careers">Careers</a></li>
           <li><a routerLink="/terms-of-use">Peersview Terms, Policy and Agreement</a></li>
@@ -24,7 +24,7 @@
         <span>SUPPORT</span>
         <ul>
           <li><a routerLink="/support">Help Center</a></li>
-          <li><a routerLink="/contact">Contact</a></li>
+          <li><a [routerLink]="['/contact-us']">Contact</a></li>
         </ul>
       </div>
       <div class="col-xs-12 col-sm-2 col-md-2 campus">
