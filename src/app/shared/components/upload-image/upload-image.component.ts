@@ -13,11 +13,14 @@ import {
   Cloudinary
 } from '@cloudinary/angular-5.x';
 import {
-  AccountSettingService
-} from '../../../../services/services';
-import {
   EmitterService
 } from '../../emitter/emitter.component';
+import {
+  UserClass
+} from '../../classes/user';
+import {
+  UserModel
+} from '../../../shared/models';
 
 @Component({
   selector: 'shared-upload-image-component',
@@ -27,23 +30,19 @@ import {
 export class SharedUploadImageComponent {
   constructor (
     private cloudinary: Cloudinary,
-    private zone: NgZone,
-    private accountSettingService: AccountSettingService
-  ) {
-    this.getUserInfo();
-  }
-  protected postMessage: string;
-  protected imagesToUpload: Array<string> = [];
+    private zone: NgZone
+  ) {}
 
   @Input()
+  protected imagesToUpload: Array<string> = [];
   protected responses: Array<any> = [];
   protected uploadInProgress: boolean = false;
   protected uploadComplete: boolean = false;
-
-  private hasBaseDropZoneOver: boolean = false;
-  private uploader: FileUploader;
-  private userFullName: string;
   protected queuedImageOrientation: Array<string> = [];
+
+  private uploader: FileUploader;
+  private hasBaseDropZoneOver: boolean = false;
+  private user: UserModel = UserClass.getUser();
   private uploadImagesSubscriber = EmitterService.get('uploadImagesEmitter');
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
 
@@ -52,8 +51,8 @@ export class SharedUploadImageComponent {
 
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
+      // cloud_name must be added on the cloudinary configuration in the shared module
       url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
-      // url: `https://api.cloudinary.com/v1_1/renchtolens/upload`,
       autoUpload: false,
       isHTML5: true,
       queueLimit: 4,
@@ -78,11 +77,11 @@ export class SharedUploadImageComponent {
     };
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
-      // upload preset must be declared at the cloudinary configuration
+      // upload_preset must be added on the cloudinary configuration in the shared module
       form.append('upload_preset', this.cloudinary.config().upload_preset);
       /* // upload preset of Lorence's cloudinary account
       form.append('upload_preset', 'lenua7xx'); */
-      form.append('folder', this.userFullName);
+      form.append('folder', this.user.token);
       form.append('file', fileItem);
 
       fileItem.withCredentials = false;
@@ -129,15 +128,6 @@ export class SharedUploadImageComponent {
     };
   }
 
-  private getUserInfo (): void {
-    this.accountSettingService.getUserProfile()
-      .subscribe((response: any) => {
-        this.userFullName = response.user.firstName + '-' + response.user.lastName;
-      }, error => {
-        console.log(error);
-      });
-  }
-
   public uploadImages (): void {
     this.uploadImagesSubscriber.subscribe(response => {
       if (this.imagesToUpload.length !== 0) {
@@ -149,11 +139,11 @@ export class SharedUploadImageComponent {
     });
   }
 
-  protected fileOverBase (e: any): void {
+  protected onFileOverBase (e: any): void {
     this.hasBaseDropZoneOver = e;
   }
 
-  protected removeFromQueue (i): void {
+  protected onRemoveFromQueue (i): void {
     this.imagesToUpload.splice(i, 1);
     this.uploader.queue.splice(i, 1);
     this.queuedImageOrientation.splice(i, 1);
