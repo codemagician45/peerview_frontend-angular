@@ -13,6 +13,7 @@ export class SharedNavbarUnauthComponent {
   constructor () {}
 
   @Input() protected aboutUs: boolean;
+  @Input() protected digitalCampus: boolean;
   @Input() protected blog: boolean;
   @Input() protected press: boolean;
   @Input() protected signIn: boolean;
