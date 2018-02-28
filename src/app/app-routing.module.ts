@@ -81,6 +81,9 @@ export const appRoutes: Routes = [{
 }, {
   path: 'contact-us',
   loadChildren: './contact-us/contact-us.module#ContactUsModule'
+}, {
+  path: 'digital-campus',
+  loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule'
 }
 ];
 
