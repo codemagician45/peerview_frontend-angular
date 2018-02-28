@@ -1,0 +1,106 @@
+@import 'src/assets/scss/variables';
+
+.digital-campus-component {
+  height: 100%;
+  .shared-navbar-unauth-component {
+     position: absolute;
+     width: 100%;
+  }
+  .btn-peersview-transparent {
+    margin: 0 3px;
+    border: 1px solid #ffffff;
+    border-radius: 0;
+  }
+  .header {
+    height: 100%;
+    padding: 60px 0;
+    background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519015034/campusHeaderBg.jpg') no-repeat 0 0;
+    background-size: cover;
+    color: #fff;
+    p {
+      padding: 10px 0;
+      font-size: 20px;
+    }
+    .content-body {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .video-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .content-left, .content-right {
+      p {
+        font-size: 18px;
+      }
+    }
+    .content-right p {
+      margin-top: 20px;
+    }
+  }
+  .benefits {
+    position: relative;
+    padding: 30px 0;
+    background: $primary-color-dark;
+    border-bottom: 1px solid $primary-color-light;
+    .peersview-brand {
+      position: absolute;
+      left: 50%;
+      top: 2px;
+      transform: translate(-50%, -50%);
+    }
+    h1 {
+      color: #ffffff;
+    }
+  }
+
+  .benefits .choose-category {
+    li {
+      padding: 5px 5px;
+    }
+    a {
+      display: block;
+      width: 100%;
+    }
+    a.active {
+      color: $primary-color;
+    }
+  }
+
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {}
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {}
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {
+    .header {
+      p {
+        line-height: 36px;
+        letter-spacing: 1px;
+      }
+    }
+    .benefits {
+      .choose-category {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .choose-category li a {
+        display: unset;
+        width: unset;
+      }
+    }
+  }
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
+}

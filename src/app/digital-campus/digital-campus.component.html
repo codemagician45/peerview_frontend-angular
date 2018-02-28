@@ -1,0 +1,105 @@
+<div class="digital-campus-component">
+  <shared-navbar-unauth-component
+    [aboutUs]=true
+    [signIn]=true
+    [signUp]=true>
+  </shared-navbar-unauth-component>
+  <div class="header">
+    <div class="content-body text-center">
+      <h1>A Digital Campus for University Students</h1>
+      <p>
+          Providing quality student experience is becoming increasingly difficult for academic
+          institutions due to varying factors.Whilst online delievery enables learning flexibilty
+          and reduced costs;it can also result in disconnected and disengaged students.The Peersview
+          Digital Campus is designed to help academic institutions adapt
+          social technology to better connect,and engage students from enrollment to graduation.
+      </p>
+    </div>
+  </div>
+  <div class="content container">
+    <div class="row">
+      <div class="col-md-6 content-left">
+        <div class="image text-center">
+          <cl-image
+            public-id="campusPeersCycle">
+          </cl-image>
+        </div>
+       <p>The Peersview campus is a combination of channels designed to encourage
+        collaboration and networking between across Campuses,Faculities,Modes of study and Years of study</p>
+      </div>
+      <div class="col-md-6 content-right">
+        <h2>How it works</h2>
+        <div class="video-player">
+          <cl-image
+            public-id="videoPlayer" class="img-responsive">
+          </cl-image>
+        </div>
+        <p>Peersview creates a vibrant and engaging online campus for students.</p>
+        <p class="text-center">
+          <a routerLink="/contact" class="btn-peersview-secondary btn-peersview-lg">Request a Demo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="benefits">
+    <cl-image
+      class="peersview-brand"
+      public-id="peersviewBrand">
+    </cl-image>
+    <h1 class="text-center">Benefits Of The Peersview Campus</h1>
+    <ul class="choose-category text-center">
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'institutions'}"
+          (click)="section = 'institutions'">Academic Institutions
+        </a>
+      </li>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'students'}"
+          (click)="section = 'students'">Students
+        </a>
+      </li>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'instructors'}"
+          (click)="section = 'instructors'">Instructors and Teaching Assistants
+        </a>
+      </li>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'networkAdministrators'}"
+          (click)="section = 'networkAdministrators'">Network Administrators
+        </a>
+      </li>
+      <li>
+        <a
+          class="btn-peersview-secondary btn-peersview-md"
+          [ngClass]="{'active': section === 'faq'}"
+          (click)="section = 'faq'">FAQ
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <digital-campus-institutions-component
+      [hidden]="section !== 'institutions'">
+    </digital-campus-institutions-component>
+    <digital-campus-students-component
+      [hidden]="section !== 'students'">
+    </digital-campus-students-component>
+    <digital-campus-instructors-component
+      [hidden]="section !== 'instructors'">
+    </digital-campus-instructors-component>
+    <digital-campus-network-administrators-component
+      [hidden]="section !== 'networkAdministrators'">
+    </digital-campus-network-administrators-component>
+    <digital-campus-faq-component
+      [hidden]="section !== 'faq'">
+    </digital-campus-faq-component>
+  </div>
+</div>
