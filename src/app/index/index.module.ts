@@ -24,18 +24,6 @@ import {
   IndexLeisurePageComponent
 } from './components/leisure-page/leisure-page.component';
 import {
-  IndexCampusPageComponent
-} from './components/campus-page/campus-page.component';
-import {
-  IndexCampusPageStudentsComponent
-} from './components/campus-page/components/students/students.component';
-import {
-  IndexCampusPageInstititutionsComponent
-} from './components/campus-page/components/institutions/institutions.component';
-import {
-  IndexCampusPageFaqComponent
-} from './components/campus-page/components/faq/faq.component';
-import {
   IndexFooterComponent
 } from './components/footer/footer.component';
 import {
@@ -67,10 +55,6 @@ import {
     IndexCommunityPageComponent,
     IndexTrendingNowPageComponent,
     IndexLeisurePageComponent,
-    IndexCampusPageComponent,
-    IndexCampusPageStudentsComponent,
-    IndexCampusPageInstititutionsComponent,
-    IndexCampusPageFaqComponent,
     IndexFooterComponent,
     IndexStickyNavbarComponent,
     IndexOnResizeActiveDirectiveComponent

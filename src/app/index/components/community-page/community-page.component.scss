@@ -24,4 +24,43 @@
   .get-started {
     margin-top: 20px;
   }
+  .discover {
+    display: inline-flex;
+    i {
+      display: inline-table;
+      width: 70px;
+      height: 65px;
+      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519838907/communityIndexList.png') no-repeat 0 0;
+    }
+  }
+  .develop {
+    display: inline-flex;
+    i {
+      display: inline-table;
+      width: 70px;
+      height: 65px;
+      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519838907/communityIndexList.png') no-repeat 0 0;
+      background-position: 0 -231px;
+    }
+  }
+  .community {
+    display: inline-flex;
+    i {
+      display: inline-table;
+      width: 70px;
+      height: 65px;
+      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519838907/communityIndexList.png') no-repeat 0 0;
+      background-position: 0 -116px;
+    }
+  }
+  .collaborate {
+    display: inline-flex;
+    i {
+      display: inline-table;
+      width: 70px;
+      height: 65px;
+      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519838907/communityIndexList.png') no-repeat 0 0;
+      background-position: 0 -347px;
+    }
+  }
 }
