@@ -5,6 +5,9 @@ import {
 import {
   EmitterService
 } from '../../emitter/emitter.component';
+import {
+  PostModel
+} from '../../../shared/models';
 
 @Component({
   selector: 'shared-post-textarea-component',
@@ -15,18 +18,19 @@ import {
 export class SharedPostTextareaComponent {
   constructor () {}
 
+  protected toggleUploadComponent: boolean = false;
+  protected post: PostModel = new PostModel();
+
+  private postAttachments: Array<object> = [];
   private uploadImagesEmitterService = EmitterService.get('uploadImagesEmitter');
   private uploadCompleteSubscriber = EmitterService.get('uploadCompleteEmitter');
-  protected toggleUploadComponent: boolean = false;
-  protected postMessage: string = null;
-  private postAttachments: Array<object> = [];
 
   public ngOnInit (): void {
     this.uploadComplete();
   }
 
-  protected addPost (): void {
-    if (this.postMessage) {
+  protected onAddPost (): void {
+    if (this.post.message) {
       if (this.toggleUploadComponent) {
         this.uploadImagesEmitterService.emit('saveImages');
       } else {
@@ -50,17 +54,17 @@ export class SharedPostTextareaComponent {
   }
 
   private postMessageOnly (): void {
-    console.log('data:', this.postMessage);
+    console.log('data:', this.post.message);
     console.log('run post api for message content only');
   }
 
   private postWithAttachments (): void {
-    console.log('data:', this.postMessage, this.postAttachments);
+    console.log('data:', this.post.message, this.postAttachments);
     console.log('run post api with message and attachments');
     this.toggleUploadComponent = false;
   }
 
-  protected showUploadComponent (): void {
+  protected onShowUploadComponent (): void {
     this.toggleUploadComponent = !this.toggleUploadComponent;
   }
 
