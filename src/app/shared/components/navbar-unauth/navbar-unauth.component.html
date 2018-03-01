@@ -21,20 +21,20 @@
           <ul class="nav navbar-nav navbar-right">
             <li
               class="about-us text-center m-peersview-x-1"
-              *ngIf="aboutUs">
-              <button
-                class="btn-peersview-transparent btn-lg btn-block"
-                [routerLink]="['/about-us']">
-                ABOUT US
-              </button>
-            </li>
-            <li
-              class="about-us text-center m-peersview-x-1"
               *ngIf="digitalCampus">
               <button
                 class="btn-peersview-transparent btn-lg btn-block"
                 [routerLink]="['/digital-campus']">
                 DIGITAL CAMPUS
+              </button>
+            </li>
+            <li
+              class="about-us text-center m-peersview-x-1"
+              *ngIf="aboutUs">
+              <button
+                class="btn-peersview-transparent btn-lg btn-block"
+                [routerLink]="['/about-us']">
+                ABOUT US
               </button>
             </li>
             <li
