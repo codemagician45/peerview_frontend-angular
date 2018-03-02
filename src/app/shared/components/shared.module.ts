@@ -12,7 +12,8 @@ import {
   FormsModule
 } from '@angular/forms';
 import {
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
+  MatProgressBarModule
 } from '@angular/material';
 /*third party*/
 import {
@@ -27,6 +28,9 @@ import {
   AuthService,
   Angular2SocialLoginModule
 } from 'angular2-social-login';
+import {
+  FileUploadModule
+} from 'ng2-file-upload';
 import {
   SharedSidebarFooterComponent
 } from './sidebar-footer/sidebar-footer.component';
@@ -67,6 +71,9 @@ import {
   SharedPostComponent
 } from './post/post.component';
 import {
+  SharedUploadImageComponent
+} from './upload-image/upload-image.component';
+import {
   CONFIG
 } from '../../../config';
 import {
@@ -84,6 +91,8 @@ import {
     FormsModule,
     Angular2SocialLoginModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
+    FileUploadModule,
+    MatProgressBarModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -99,6 +108,7 @@ import {
     SharedSocialComponent,
     SharedFollowersComponent,
     SharedPostComponent,
+    SharedUploadImageComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -118,7 +128,9 @@ import {
     SharedSocialComponent,
     SharedFollowersComponent,
     SharedPostComponent,
-    TimeAgoPipe
+    SharedUploadImageComponent,
+    TimeAgoPipe,
+    MatProgressBarModule
   ],
   providers: [
     UserService,

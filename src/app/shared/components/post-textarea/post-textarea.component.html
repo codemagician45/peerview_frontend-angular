@@ -5,16 +5,13 @@
     <li role="presentation"><a href="#">Share a Story</a></li>
   </div>
   <div class="post">
-    <textarea
-      class="form-control"
-      placeholder="Whats happening?"
-      name="post_title"
-      [(ngModel)]="postMessage">
-    </textarea>
-    <input class="upload-file" id="uploadImage" type="file" style="display:none;"/>
+    <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="post.message"></textarea>
+
+    <shared-upload-image-component *ngIf="toggleUploadComponent"></shared-upload-image-component>
+
     <div class="text-right options">
-      <label for="uploadImage" class="img-upload flat-btn"> <i class="material-icons">link</i> </label>
-      <input type="submit" class="btn btn-blue btn-sm post-btn" value="ADD POST">
+      <label class="img-upload flat-btn" (click)="onShowUploadComponent()"> <i class="material-icons">image</i> </label>
+      <input type="submit" class="btn btn-blue btn-sm post-btn" value="ADD POST" (click)="onAddPost()">
     </div>
   </div>
 </div>
