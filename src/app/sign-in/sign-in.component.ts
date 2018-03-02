@@ -2,7 +2,11 @@ import {
   Component
 } from '@angular/core';
 import {
+  Router
+} from '@angular/router';
+import {
   UserModel,
+  UserResponse,
   SignInViaSocialModel,
   ISocialResponse,
   ISignInViaSocialResponse,
@@ -22,7 +26,8 @@ import {
 export class SignInComponent {
   constructor (
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   protected user: UserModel = new UserModel();
@@ -30,8 +35,13 @@ export class SignInComponent {
 
   protected onSignIn (isValid: boolean): void {
     isValid && this.userService.signIn(this.user)
-    .subscribe((response: any) => {
-      console.log(response);
+    .flatMap((response: UserResponse) => {
+      return this.userService.setLoggedInUser(response.user);
+    })
+    .subscribe(() => {
+      this.router.navigate(['/home']);
+    }, (error) => {
+
     });
   }
 
@@ -47,8 +57,11 @@ export class SignInComponent {
       this.signInViaSocial.uid = response.uid;
       return this.userService.signInViaSocial(this.signInViaSocial);
     })
-    .subscribe((response: ISignInViaSocialResponse) => {
-      console.log(response);
+    .flatMap((response: ISignInViaSocialResponse) => {
+      return this.userService.setLoggedInUser(response.user);
+    })
+    .subscribe(() => {
+      this.router.navigate(['/home']);
     }, (error) => {
 
     });

@@ -76,7 +76,8 @@
   font-size: $f-large;
 }
 @mixin btn-md() {
-  padding: 10px 20px;
+  padding: 15px 20px;
+  font-size: $f-regular;
 }
 @mixin btn-sm() {
   padding: 5px 10px;
