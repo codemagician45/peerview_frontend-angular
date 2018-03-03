@@ -11,6 +11,12 @@ import {
 import {
   UserVerifyEmailComponent
 } from './verify-email/verify-email.component';
+import {
+  UserOnboardingComponent
+} from './on-boarding/on-boarding.component';
+import {
+  UserOnboardingSelectStatusComponent
+} from './on-boarding/select-status/select-status.component';
 
 const userRoutes: Routes = [{
   path: '',
@@ -18,6 +24,13 @@ const userRoutes: Routes = [{
 }, {
   path: 'verify-email',
   component: UserVerifyEmailComponent
+}, {
+  path: 'on-boarding',
+  component: UserOnboardingComponent,
+  children: [{
+    path: 'status',
+    component: UserOnboardingSelectStatusComponent
+  }]
 }];
 
 export const userRouting: ModuleWithProviders = RouterModule.forChild(userRoutes);

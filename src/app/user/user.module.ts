@@ -13,6 +13,12 @@ import {
 import {
   UserVerifyEmailComponent
 } from './verify-email/verify-email.component';
+import {
+  UserOnboardingComponent
+} from './on-boarding/on-boarding.component';
+import {
+  UserOnboardingSelectStatusComponent
+} from './on-boarding/select-status/select-status.component';
 
 @NgModule({
   imports: [
@@ -21,7 +27,9 @@ import {
   ],
   declarations: [
     UserComponent,
-    UserVerifyEmailComponent
+    UserVerifyEmailComponent,
+    UserOnboardingComponent,
+    UserOnboardingSelectStatusComponent
   ],
   exports: []
 })
