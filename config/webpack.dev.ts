@@ -30,6 +30,7 @@ module.exports = webpackMerge(commonConfig, {
       ignored: /node_modules/
     },
     historyApiFallback: true,
-    stats: 'minimal'
+    stats: 'minimal',
+    overlay: true
   }
 });
