@@ -71,12 +71,16 @@
 }
 
 // buttons
-@mixin btn-lg() {
+@mixin btn-xl() {
   padding: 20px 40px;
   font-size: $f-large;
 }
+@mixin btn-lg() {
+  padding: 15px 40px;
+  font-size: $f-regular;
+}
 @mixin btn-md() {
-  padding: 15px 20px;
+  padding: 10px 20px;
   font-size: $f-regular;
 }
 @mixin btn-sm() {
@@ -197,6 +201,42 @@
 }
 @mixin margin-y-5() {
   margin-top: $spacers * 3rem;
+  margin-bottom: $spacers * 3rem;
+}
+@mixin margin-yt-0() {
+  margin-top: 0;
+}
+@mixin margin-yt-1() {
+  margin-top: $spacers * .25rem;
+}
+@mixin margin-yt-2() {
+  margin-top: $spacers * .5rem;
+}
+@mixin margin-yt-3() {
+  margin-top: $spacers * 1px;
+}
+@mixin margin-yt-4() {
+  margin-top: $spacers * 1.5rem;
+}
+@mixin margin-yt-5() {
+  margin-top: $spacers * 3rem;
+}
+@mixin margin-yb-0() {
+  margin-bottom: 0;
+}
+@mixin margin-yb-1() {
+  margin-bottom: $spacers * .25rem;
+}
+@mixin margin-yb-2() {
+  margin-bottom: $spacers * .5rem;
+}
+@mixin margin-yb-3() {
+  margin-bottom: $spacers * 1px;
+}
+@mixin margin-yb-4() {
+  margin-bottom: $spacers * 1.5rem;
+}
+@mixin margin-yb-5() {
   margin-bottom: $spacers * 3rem;
 }
 @mixin margin-x-0() {

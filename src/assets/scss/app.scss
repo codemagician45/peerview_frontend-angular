@@ -12,6 +12,10 @@ input,
 textarea {
   font-family: $font-family-primary;
 }
+p {
+  font-family: $font-family-secondary;
+  font-size: 1.7rem;
+}
 html,
 body {
   height: 100%;
@@ -98,10 +102,13 @@ input[type="checkbox"]:focus {
   @include btn-peersview-primary($primary-color, 1px solid #ffffff);
 }
 .btn-peersview-secondary {
-  @include btn-peersview-secondary($green);
+  @include btn-peersview-secondary($secondary-color);
 }
 .btn-peersview-transparent {
   @include btn-peersview-transparent();
+}
+.btn-peersview-xl {
+  @include btn-xl;
 }
 .btn-peersview-lg {
   @include btn-lg;
@@ -208,6 +215,42 @@ input[type="checkbox"]:focus {
 }
 .m-peersview-y-5 {
   @include margin-y-5;
+}
+.m-peersview-yt-0 {
+  @include margin-yt-0;
+}
+.m-peersview-yt-1 {
+  @include margin-yt-1;
+}
+.m-peersview-yt-2 {
+  @include margin-yt-2;
+}
+.m-peersview-yt-3 {
+  @include margin-yt-3;
+}
+.m-peersview-yt-4 {
+  @include margin-yt-4;
+}
+.m-peersview-yt-5 {
+  @include margin-yt-5;
+}
+.m-peersview-yb-0 {
+  @include margin-yb-0;
+}
+.m-peersview-yb-1 {
+  @include margin-yb-1;
+}
+.m-peersview-yb-2 {
+  @include margin-yb-2;
+}
+.m-peersview-yb-3 {
+  @include margin-yb-3;
+}
+.m-peersview-yb-4 {
+  @include margin-yb-4;
+}
+.m-peersview-yb-5 {
+  @include margin-yb-5;
 }
 .m-peersview-x-0 {
   @include margin-x-0;
