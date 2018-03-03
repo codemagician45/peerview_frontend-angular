@@ -5247,6 +5247,10 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ng-file-upload@^12.2.13:
+  version "12.2.13"
+  resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-12.2.13.tgz#01800f3872e526f95310f8477e99e4f12d0d8d14"
+
 ng2-datepicker@2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/ng2-datepicker/-/ng2-datepicker-2.2.5.tgz#ee3e3f7b3a76a36e41f07d52c0a202135ae2f1a9"
@@ -5254,7 +5258,7 @@ ng2-datepicker@2.2.5:
     date-fns "^1.29.0"
     ngx-slimscroll "^3.6.1"
 
-ng2-file-upload@^1.3.0:
+ng2-file-upload@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/ng2-file-upload/-/ng2-file-upload-1.3.0.tgz#d90f8f568f62383462175f8bdfa0096b131f277a"
 
