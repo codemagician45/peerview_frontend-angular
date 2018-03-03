@@ -1,23 +1,19 @@
 <div class="index-footer-component">
   <div class="container">
     <div class="row">
-      <div class="copyright">
-        <div class="col-xs-12 col-sm-2 col-md-2">
-          <cl-image
-            public-id="logo">
-          </cl-image>
-          <p>Copyright 2017 <br/>
-            All rights reserved.</p>
-        </div>
+      <div class="col-xs-12 col-sm-2 col-md-2">
+        <cl-image
+          public-id="logo">
+        </cl-image>
       </div>
       <div class="col-xs-12 col-sm-2 col-md-2 company">
         <span>Company</span>
         <ul>
-          <li><a routerLink="/blogs">Blogs</a></li>
+          <li><a routerLink="/blogs">Blog</a></li>
           <li><a [routerLink]="['/about-us']">About Us</a></li>
-          <li><a routerLink="/about#team-info">Our Team</a></li>
+          <li><a>Privacy Policy</a></li>
           <li><a routerLink="/careers">Careers</a></li>
-          <li><a routerLink="/terms-of-use">Peersview Terms, Policy and Agreement</a></li>
+          <li><a routerLink="/terms-of-use">Peersview Terms, and Agreement</a></li>
         </ul>
       </div>
       <div class="col-xs-12 col-sm-2 col-md-2 support">
@@ -28,12 +24,11 @@
         </ul>
       </div>
       <div class="col-xs-12 col-sm-2 col-md-2 campus">
-        <span>Online Campus</span>
+        <span>Digital Campus</span>
         <ul>
-          <li><a routerLink="/community/register">Campus Adminstrator</a></li>
+          <li><a [routerLink]="['/digital-campus']">Campus Adminstrator</a></li>
           <li><a routerLink="/container3" class="tab-link3">FAQ</a></li>
           <li><a routerLink="/choose-plan">Pricing</a></li>
-          <li><a routerLink="/terms-of-use">Privacy Policy</a></li>
           <li><a routerLink="/terms-of-use-user">Terms of Use</a></li>
           <li><a routerLink="/terms-of-use-user">Service & Software Licence Agreement</a></li>
         </ul>
@@ -49,6 +44,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="row text-center copyright m-peersview-yt-3">
+      <p>Copyright. All rights reserved.</p>
     </div>
   </div>
 </div>

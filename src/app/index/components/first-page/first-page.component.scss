@@ -1,3 +1,5 @@
+@import 'src/assets/scss/variables';
+
 .index-first-page-component {
   height: 100%;
   background: url('https://res.cloudinary.com/peersview-com/image/upload/v1518882672/indexFirstPageBg.jpg') no-repeat;
@@ -23,13 +25,13 @@
       margin-bottom: 50px;
     }
     h1 {
-      margin-bottom: 0;
       font-size: 65px;
+      font-weight: $font-weight-regular;
     }
     h3 {
       margin-top: 0;
       font-size: 28px;
-      font-weight: 800;
+      font-weight: $font-weight-regular;
       letter-spacing: 3px
     }
     .learn-more {
