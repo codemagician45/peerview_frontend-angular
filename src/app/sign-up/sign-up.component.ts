@@ -5,18 +5,18 @@ import {
   Router
 } from '@angular/router';
 import {
+  AuthService
+} from 'angular2-social-login';
+import {
   UserModel,
-  SignInViaSocialModel,
+  SignUpViaSocialModel,
   ISocialResponse,
-  ISignInViaSocialResponse,
+  ISignUpViaSocialResponse,
   Response
 } from '../shared/models';
 import {
   UserService
 } from  '../../services';
-import {
-  AuthService
-} from 'angular2-social-login';
 
 
 @Component({
@@ -33,52 +33,49 @@ export class SignUpComponent {
 
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
-  private signInViaSocial: SignInViaSocialModel = new SignInViaSocialModel();
+  private signUpViaSocial: SignUpViaSocialModel = new SignUpViaSocialModel();
 
   protected onSignUp (): void {
     const splitNames = this.user.name.split(' ');
     this.user.firstName = splitNames[0];
     this.user.lastName = splitNames[1];
 
-    this.userService.signUp(this.user)
-    .subscribe((response: Response) => {
-      console.log(response);
-    }, (error) => {
-    });
+    if (this.hasAgreed) {
+      this.userService.signUp(this.user)
+      .subscribe((response: Response) => {
+        // console.log(response);
+        /* Local sign up will be redirected to
+            Verify email page
+        */
+      }, (error) => {
+        // console.log(error);
+      });
+    }
   }
 
   protected onSignUpViaSocial (provider: string): void {
     this.authService.login(provider)
     .flatMap((response: ISocialResponse) => {
       const name = response.name.split(' ');
-      this.signInViaSocial.email = response.email;
-      this.signInViaSocial.firstName = name[0];
-      this.signInViaSocial.lastName = name[1];
-      this.signInViaSocial.image = response.image;
-      this.signInViaSocial.provider = response.provider;
-      this.signInViaSocial.uid = response.uid;
-      return this.userService.signInViaSocial(this.signInViaSocial);
+      this.signUpViaSocial.email = response.email;
+      this.signUpViaSocial.firstName = name[0];
+      this.signUpViaSocial.lastName = name[1];
+      this.signUpViaSocial.image = response.image;
+      this.signUpViaSocial.provider = response.provider;
+      this.signUpViaSocial.uid = response.uid;
+      return this.userService.signUpViaSocial(this.signUpViaSocial);
     })
-    .flatMap((response: ISignInViaSocialResponse) => {
+    .flatMap((response: ISignUpViaSocialResponse) => {
       return this.userService.setLoggedInUser(response.user);
     })
     .subscribe(() => {
-      this.router.navigate(['/home']);
+      // console.log('redirect to on boarding.');
+      /* Social sign up will be redirected to
+          on boarding component
+      */
+      // this.router.navigate(['/home']);
     }, (error) => {
-
-    });
-  }
-
-  private registerCustomer (user): void {
-    this.userService.signUp(user).subscribe((resp) => {
-      console.log(resp);
-      if (resp['status'] === 'SUCCESS') {
-        // this.submitted = true;
-        // this.router.navigate(['/onBoard']);
-      }
-    }, (error) => {
-      console.log(error);
-      // this.responceError = error['error'].status_message;
+      // console.log(error);
     });
   }
 }
