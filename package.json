@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "$(npm bin)/webpack-dev-server --inline --progress --port $PORT",
-    "dev": "$(npm bin)/webpack-dev-server --inline --progress --port 4200",
-    "build-prod": "$(npm bin)/rimraf dist && $(npm bin)/webpack --config config/webpack.prod.ts",
-    "prod-lite": "$(npm bin)/lite-server --baseDir='dist'",
-    "tslintcheck": "$(npm bin)/tslint --project tslint.json --exclude 'node_modules/**'"
+    "start": "node_modules/.bin/webpack-dev-server --inline --progress --port $PORT",
+    "dev": "node_modules/.bin/webpack-dev-server --inline --progress --port 4200",
+    "build-prod": "node_modules/.bin/rimraf dist && node_modules/.bin/webpack --config config/webpack.prod.ts",
+    "prod-lite": "node_modules/.bin/lite-server --baseDir='dist'",
+    "tslintcheck": "node_modules/.bin/tslint --project tslint.json --exclude 'node_modules/**'"
   },
   "pre-commit": [
     "tslintcheck"
