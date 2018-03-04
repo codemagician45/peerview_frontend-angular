@@ -1,18 +1,22 @@
 <div class="shared-post-options-component">
   <ul class="body">
     <li class="star-section">
-      <i (click)="likepost()" class="material-icons like">thumb_up</i>
+      <button class="flat-btn" [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'" (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
+        <i class="material-icons like">thumb_up</i>
+      </button>
       <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
-      <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes || likes === 0"><span class="link-name" >Likes</span> ({{likes}})</span>
+      <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes"><span class="link-name" >Likes</span> ({{likes}})</span>
     </li>
-    <li class="eye-section">
-      <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; views</span>
+    <li (click)="openViewModal()" class="eye-section">
+      <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; Views</span>
     </li>
-    <li class='share-section' *ngIf="share">
-      <i class="material-icons">share</i>{{share}} <span class="link-name">Share</span>
+    <li (click)="openReplyContainer()" class="reply-section">
+      <i class="material-icons reply">reply</i> {{post.postReply.length}} <span class="link-name"> {{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
     </li>
-    <li (click)="onOpenSharedPostDetailModalComponent()" class="reply-section">
-      <i class="material-icons reply">reply</i>{{replies}} <span class="link-name">Replies</span>
+    <li class='share-section'>
+      <button class="flat-btn purple" (click)="openShare()">
+        <i class="material-icons share">share</i> <span class="link-name">Share</span><ng-container *ngIf="share">({{share}})</ng-container>
+      </button>
     </li>
     <li>
       <div class="d-inline-block" placement="bottom-right">
@@ -22,13 +26,36 @@
             <!-- <li class="dropdown-item">
               <a class="flat-btn purple" href="#"><i class="material-icons">delete</i>Delete</a>
             </li> -->
-             <!-- *ngIf="user.id !== post.author_id" -->
-            <li class="dropdown-item report-section">
-              <i class="material-icons">flag</i>Report
-            </li>
+            <!-- *ngIf="user.id !== post.author_id" -->
+            <!-- <li class="dropdown-item">
+              <a class="flat-btn purple" (click)="report()"><i class="material-icons">flag</i>Report</a>
+            </li> -->
           </ul>
         </div>
       </div>
     </li>
   </ul>
+  <div class="col-xs-12 reply-container" [hidden]="hideReplySection">
+    <hr>
+    <div class="form-group">
+      <div class="input-group">
+        <input required [(ngModel)]="reply.comment" type="text" class="form-control" required>
+        <span class="input-group-btn">
+          <button class="btn btn-peersview-primary" type="button" (click)="submitPostReply()" [disabled]="commentSubmitting">Reply</button>
+        </span>
+      </div>
+      <div class="replies-container" *ngIf="post.postReply">
+        <ul class="unstyled" *ngFor="let item of post.postReply">
+          <li class="comment-container">
+            <span>
+            <span class="purple">
+              <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
+            </span> {{item.comment}}
+            </span>
+            <div> <small>{{item.createdAt | date : 'short'}}</small></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

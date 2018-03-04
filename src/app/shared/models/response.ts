@@ -45,3 +45,10 @@ export class FollowersResponse extends Response {
   public followers: Array<UserModel>;
 }
 
+export class SharePostResponse extends Response {
+  public postId: number;
+}
+
+export class PostResponse extends Response {
+  public post: PostModel;
+}

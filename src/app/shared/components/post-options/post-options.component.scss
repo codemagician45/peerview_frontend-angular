@@ -15,10 +15,7 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   .dropdown-item a {
     cursor: pointer;
   }
-  .like {
-    margin: 0;
-    color: #631990;
-  }
+
   .star {
     margin: 0;
     font-size: 18px;
@@ -27,15 +24,62 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   .yellow-fill {
     color: orange;
   }
-  .star-section, .reply-section, .eye-section, .share-section, .report-section {
+  .star-section,
+  .reply-section,
+  .eye-section,
+  .share-section,
+  .report-section {
     margin: 0;
     color: #631990;
     cursor: pointer;
     i {
       margin-right: 1px;
     }
+    .like {
+      margin: 0;
+    }
+    button.liked {
+      .like {
+        color: #631990;
+      }
+    }
   }
   .star-section {
     display: inline-flex;
+  }
+
+  .reply-container {
+    margin-top: 20px;
+
+    ul {
+      li.comment-container {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        background-color: #f4f4f4;
+
+        small {
+          color: #777777;
+        }
+      }
+
+      li {
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .form-group {
+      margin-bottom: 0;
+
+      .input-group {
+        margin-bottom: 10px;
+
+        .btn-peersview-primary {
+          height: 38px;
+        }
+      }
+    }
   }
 }

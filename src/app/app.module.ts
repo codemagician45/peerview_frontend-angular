@@ -75,7 +75,10 @@ const MY_DATE_FORMATS = {
 };
 
 import {
-  SharedPostDetailModalComponent
+  SharePostModalComponent,
+  SharedPostDetailModalComponent,
+  SharedViewPostModalComponent,
+  ReportPostModalComponent
 } from './shared/modals';
 import {
   SharedModule
@@ -90,7 +93,11 @@ tinymce.init({});
 @NgModule({
   declarations: [
     AppComponent,
-    SharedPostDetailModalComponent
+    SharedPostDetailModalComponent,
+    SharedViewPostModalComponent,
+    ReportPostModalComponent,
+    SharePostModalComponent,
+    ReportPostModalComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +148,10 @@ tinymce.init({});
   bootstrap: [AppComponent],
   exports: [],
   entryComponents: [
-    SharedPostDetailModalComponent
+    SharePostModalComponent,
+    SharedPostDetailModalComponent,
+    SharedViewPostModalComponent,
+    ReportPostModalComponent
   ]
 })
 export class AppModule {}
