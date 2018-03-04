@@ -5,4 +5,5 @@ export * from './response';
 export * from './community-post';
 export * from './user-study-level';
 export * from './sign-in';
+export * from './sign-up';
 export * from './interface';
