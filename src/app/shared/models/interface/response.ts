@@ -18,3 +18,7 @@ export interface ISocialResponse extends Response {
 export interface ISignInViaSocialResponse extends Response {
   user: UserModel;
 }
+
+export interface ISignUpViaSocialResponse extends Response {
+  user: UserModel;
+}
