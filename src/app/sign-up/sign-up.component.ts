@@ -50,6 +50,8 @@ export class SignUpComponent {
       }, (error) => {
         // console.log(error);
       });
+    } else {
+      this.onSignUpAgreed = false;
     }
   }
 
