@@ -43,15 +43,13 @@ export class SignUpComponent {
     if (this.hasAgreed) {
       this.userService.signUp(this.user)
       .subscribe((response: Response) => {
-        // console.log(response);
+        console.log(response);
         /* Local sign up will be redirected to
             Verify email page
         */
       }, (error) => {
-        // console.log(error);
+        console.log(error);
       });
-    } else {
-      this.onSignUpAgreed = false;
     }
   }
 
@@ -71,13 +69,13 @@ export class SignUpComponent {
       return this.userService.setLoggedInUser(response.user);
     })
     .subscribe(() => {
-      // console.log('redirect to on boarding.');
+      console.log('redirect to on boarding.');
       /* Social sign up will be redirected to
           on boarding component
       */
       // this.router.navigate(['/home']);
     }, (error) => {
-      // console.log(error);
+      console.log(error);
     });
   }
 }
