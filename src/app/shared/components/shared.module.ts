@@ -77,6 +77,9 @@ import {
   SharedUploadImageComponent
 } from './upload-image/upload-image.component';
 import {
+  SharedReportPostComponent
+} from './report-post/report.post.component';
+import {
   CONFIG
 } from '../../../config';
 import {
@@ -114,6 +117,7 @@ import {
     SharedFollowersComponent,
     SharedPostComponent,
     SharedUploadImageComponent,
+    SharedReportPostComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -134,6 +138,7 @@ import {
     SharedFollowersComponent,
     SharedPostComponent,
     SharedUploadImageComponent,
+    SharedReportPostComponent,
     TimeAgoPipe,
     MatProgressBarModule,
     MatDatepickerModule,

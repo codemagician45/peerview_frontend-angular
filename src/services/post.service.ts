@@ -11,12 +11,16 @@ import {
   Story,
   Poll,
   LikePost,
-  ReplyPost,
+  // ReplyPost,
   RatePost,
+  // ReportPost,
+  // SharePost
+} from '../models/models';
+import {
+  ReplyPost,
   ReportPost,
   SharePost
-} from '../models/models';
-
+} from '../app/shared/models';
 @Injectable()
 export class PostService {
   constructor (private http: HttpClient) {}
@@ -52,6 +56,10 @@ export class PostService {
 
   public likepost (postId: number, like: LikePost): Observable<Object> {
     return this.http.post(`post/${postId}/like`, like);
+  }
+
+  public unlikepost (postId: number, like: LikePost): Observable<Object> {
+    return this.http.delete(`post/${postId}/like`, like);
   }
 
   public replypost (postId: number, reply: ReplyPost): Observable<Object> {

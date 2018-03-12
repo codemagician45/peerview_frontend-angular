@@ -75,7 +75,10 @@ const MY_DATE_FORMATS = {
 };
 
 import {
-  SharedPostDetailModalComponent
+  SharePostModalComponent,
+  SharedPostDetailModalComponent,
+  SharedViewPostModalComponent,
+  ReportPostModalComponent
 } from './shared/modals';
 import {
   ProfileLeftSidebarUserInfoMessageDiaglogComponent
@@ -95,6 +98,10 @@ tinymce.init({});
     AppComponent,
     SharedPostDetailModalComponent,
     // ProfileLeftSidebarUserInfoMessageDiaglogComponent
+    SharedViewPostModalComponent,
+    ReportPostModalComponent,
+    SharePostModalComponent,
+    ReportPostModalComponent
   ],
   imports: [
     BrowserModule,
@@ -145,8 +152,11 @@ tinymce.init({});
   bootstrap: [AppComponent],
   exports: [],
   entryComponents: [
-    SharedPostDetailModalComponent,
     // ProfileLeftSidebarUserInfoMessageDiaglogComponent
+    SharePostModalComponent,
+    SharedPostDetailModalComponent,
+    SharedViewPostModalComponent,
+    ReportPostModalComponent
   ]
 })
 export class AppModule {}

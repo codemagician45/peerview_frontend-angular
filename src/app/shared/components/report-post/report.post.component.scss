@@ -1,0 +1,11 @@
+.report-post-component {
+  .dropdown {
+    ul {
+      li {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

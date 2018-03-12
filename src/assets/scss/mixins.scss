@@ -35,7 +35,9 @@
 @mixin btn-peersview-secondary($bg, $border...) {
   @include btn-peersview-primary($bg, $border...);
 }
-
+@mixin btn-peersview-cancel($bg, $border...) {
+  @include btn-peersview-primary($bg, $border...);
+}
 @mixin btn-peersview-transparent() {
   background: none;
   font-weight: 600;
