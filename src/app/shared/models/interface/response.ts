@@ -25,6 +25,10 @@ export interface ISignInViaSocialResponse extends Response {
   user: UserModel;
 }
 
+export interface ISignUpViaSocialResponse extends Response {
+  user: UserModel;
+}
+
 export interface IInterestCategoryResponse extends Response {
   interestCategory: Array<InterestCategoryModel>;
 }

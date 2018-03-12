@@ -16,7 +16,8 @@ import {
 } from '../models/models';
 import {
   UserModel,
-  SignInViaSocialModel
+  SignInViaSocialModel,
+  SignUpViaSocialModel
 } from '../app/shared/models';
 
 @Injectable()
@@ -108,6 +109,10 @@ export class UserService {
 
   public signInViaSocial (signInSocial: SignInViaSocialModel): Observable<Object> {
     return this.http.post('user/social-login', signInSocial);
+  }
+
+  public signUpViaSocial (signUpSocial: SignUpViaSocialModel): Observable<Object> {
+    return this.http.post('user/social-login', signUpSocial);
   }
 
   public update (user: UserModel): Observable<Object> {
