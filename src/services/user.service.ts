@@ -3,7 +3,8 @@ import {
   Inject
 } from '@angular/core';
 import {
-  HttpClient
+  HttpClient,
+  HttpParams
 } from '@angular/common/http';
 import {
   Observable
@@ -69,11 +70,15 @@ export class UserService {
     return this.http.post(`user/verify-email/${jotToken}`, {token: token});
   }
 
-  public getProfile (): Observable<Object> {
-    return this.http.get('user/profile');
+  public getProfile (userId?: string): Observable<Object> {
+    const options = userId ? {
+      params: new HttpParams().set('userId', userId.toString())
+    } : {};
+
+    return this.http.get('user/profile', options);
   }
 
-  public getUserStudyLevels (): Observable<Object> {
+  public getStudyLevels (): Observable<Object> {
     return this.http.get('user/study-levels');
   }
 
@@ -103,5 +108,17 @@ export class UserService {
 
   public signInViaSocial (signInSocial: SignInViaSocialModel): Observable<Object> {
     return this.http.post('user/social-login', signInSocial);
+  }
+
+  public update (user: UserModel): Observable<Object> {
+    return this.http.post('user/onboarding/details', user);
+  }
+
+  public saveSubInterests (interestIds: Array<number>): Observable<Object> {
+    return this.http.post('user/interests', {interestIds});
+  }
+
+  public getTypeId (typeCode: string): Observable<Object> {
+    return this.http.get(`user/type/${typeCode}`);
   }
 }

@@ -33,4 +33,7 @@ export class UserModel {
   public yearOfIncorporation: Date;
   public website: string;
   public course: CourseModel;
+  public userStudyLevelId?: number;
+  public userTypeId?: number;
+  public courseIds?: Array<number> = [];
 }

@@ -17,6 +17,18 @@ import {
 import {
   UserOnboardingSelectStatusComponent
 } from './on-boarding/select-status/select-status.component';
+import {
+  UserOnboardingStudentComponent
+} from './on-boarding/student/student.component';
+import {
+  UserOnboardingStudentInterestComponent
+} from './on-boarding/student/interest/interest.component';
+import {
+  UserOnboardingProfessionalComponent
+} from './on-boarding/professional/professional.component';
+import {
+  UserOnboardingOrganisationComponent
+} from './on-boarding/organisation/organisation.component';
 
 const userRoutes: Routes = [{
   path: '',
@@ -29,7 +41,40 @@ const userRoutes: Routes = [{
   component: UserOnboardingComponent,
   children: [{
     path: 'status',
-    component: UserOnboardingSelectStatusComponent
+    component: UserOnboardingSelectStatusComponent,
+    data: {
+      step: ['active', 'next', 'next']
+    }
+  }, {
+    path: 'status/organisation',
+    component: UserOnboardingOrganisationComponent,
+    data: {
+      step: ['complete', 'active', 'next']
+    }
+  }, {
+    path: 'status/organisation/interest',
+    component: UserOnboardingStudentInterestComponent,
+    data: {
+      step: ['complete', 'complete', 'active']
+    }
+  }, {
+    path: 'status/professional',
+    component: UserOnboardingProfessionalComponent,
+    data: {
+      step: ['complete', 'active', 'next']
+    }
+  }, {
+    path: 'status/student',
+    component: UserOnboardingStudentComponent,
+    data: {
+      step: ['complete', 'active', 'next']
+    }
+  }, {
+    path: 'status/student/interest',
+    component: UserOnboardingStudentInterestComponent,
+    data: {
+      step: ['complete', 'complete', 'active']
+    },
   }]
 }];
 

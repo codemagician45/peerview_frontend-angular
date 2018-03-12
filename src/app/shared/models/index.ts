@@ -6,3 +6,5 @@ export * from './community-post';
 export * from './user-study-level';
 export * from './sign-in';
 export * from './interface';
+export * from './interest-category';
+export * from './sub-interest';

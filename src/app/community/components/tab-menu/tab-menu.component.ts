@@ -25,7 +25,7 @@ export class CommunityTabMenuComponent implements OnInit {
   }
 
   private getUserStudyLevels (): void {
-    this.userService.getUserStudyLevels()
+    this.userService.getStudyLevels()
     .subscribe((response: UserStudyLevelsResponse) => {
       this.useStudyLevels = response.userStudyLevels;
     });

@@ -124,8 +124,8 @@
   padding-bottom: $spacers * .5rem;
 }
 @mixin padding-y-3() {
-  padding-top: $spacers * 1px;
-  padding-bottom: $spacers * 1px;
+  padding-top: $spacers * 1rem;
+  padding-bottom: $spacers * 1rem;
 }
 @mixin padding-y-4() {
   padding-top: $spacers * 1.5rem;
@@ -148,8 +148,8 @@
   padding-left: $spacers * .5rem;
 }
 @mixin padding-x-3() {
-  padding-right: $spacers * 1px;
-  padding-left: $spacers * 1px;
+  padding-right: $spacers * 1rem;
+  padding-left: $spacers * 1rem;
 }
 @mixin padding-x-4() {
   padding-right: $spacers * 1.5rem;
@@ -192,8 +192,8 @@
   margin-bottom: $spacers * .5rem;
 }
 @mixin margin-y-3() {
-  margin-top: $spacers * 1px;
-  margin-bottom: $spacers * 1px;
+  margin-top: $spacers * 1rem;
+  margin-bottom: $spacers * 1rem;
 }
 @mixin margin-y-4() {
   margin-top: $spacers * 1.5rem;
@@ -213,7 +213,7 @@
   margin-top: $spacers * .5rem;
 }
 @mixin margin-yt-3() {
-  margin-top: $spacers * 1px;
+  margin-top: $spacers * 1rem;
 }
 @mixin margin-yt-4() {
   margin-top: $spacers * 1.5rem;
@@ -252,8 +252,8 @@
   margin-left: $spacers * .5rem;
 }
 @mixin margin-x-3() {
-  margin-right: $spacers * 1px;
-  margin-left: $spacers * 1px;
+  margin-right: $spacers * 1rem;
+  margin-left: $spacers * 1rem;
 }
 @mixin margin-x-4() {
   margin-right: $spacers * 1.5rem;

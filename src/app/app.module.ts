@@ -78,6 +78,9 @@ import {
   SharedPostDetailModalComponent
 } from './shared/modals';
 import {
+  ProfileLeftSidebarUserInfoMessageDiaglogComponent
+} from './profile/left-sidebar/user-info/message/message.component';
+import {
   SharedModule
 } from './shared/components/shared.module';
 import {
@@ -90,7 +93,8 @@ tinymce.init({});
 @NgModule({
   declarations: [
     AppComponent,
-    SharedPostDetailModalComponent
+    SharedPostDetailModalComponent,
+    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +145,8 @@ tinymce.init({});
   bootstrap: [AppComponent],
   exports: [],
   entryComponents: [
-    SharedPostDetailModalComponent
+    SharedPostDetailModalComponent,
+    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
   ]
 })
 export class AppModule {}

@@ -10,6 +10,9 @@ import {
 import {
   PostModel
 } from './post';
+import {
+  CourseModel
+} from './course';
 
 export class Response {
   public status: string;
@@ -43,5 +46,13 @@ export class FolloweeResponse extends Response {
 
 export class FollowersResponse extends Response {
   public followers: Array<UserModel>;
+}
+
+export class CoursesResponse extends Response {
+  public courses: Array<CourseModel>;
+}
+
+export class UserTypeReponse extends Response {
+  public userTypeId: number;
 }
 

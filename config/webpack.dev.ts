@@ -6,6 +6,7 @@ let commonConfig = require('./webpack.common.ts');
 let helpers = require('./helper.ts');
 
 module.exports = webpackMerge(commonConfig, {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   output: {
     path: helpers.root('dist'),

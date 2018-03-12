@@ -13,8 +13,11 @@ import {
 } from '@angular/forms';
 import {
   MAT_DIALOG_DATA,
-  MatProgressBarModule
+  MatDatepickerModule,
+  MatProgressBarModule,
+  MatInputModule
 } from '@angular/material';
+// import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 /*third party*/
 import {
   CloudinaryModule,
@@ -92,7 +95,9 @@ import {
     Angular2SocialLoginModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
     FileUploadModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatInputModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -130,7 +135,9 @@ import {
     SharedPostComponent,
     SharedUploadImageComponent,
     TimeAgoPipe,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDatepickerModule,
+    MatInputModule
   ],
   providers: [
     UserService,

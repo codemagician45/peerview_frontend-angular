@@ -3,5 +3,5 @@ export class CourseModel {
   public code: string;
   public description: string;
   public name: string;
-  public id?: string;
+  public id?: number;
 }

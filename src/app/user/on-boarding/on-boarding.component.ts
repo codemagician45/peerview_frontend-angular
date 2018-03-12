@@ -1,6 +1,14 @@
 import {
-  Component
+  Component,
+  ChangeDetectorRef
 } from '@angular/core';
+import {
+  Router,
+  ActivatedRoute
+} from '@angular/router';
+import {
+  OnBoardingEmitter
+} from '../../shared/emitter';
 
 @Component({
   selector: 'user-on-boarding-component',
@@ -8,6 +16,26 @@ import {
   styleUrls: ['./on-boarding.component.scss']
 })
 export class UserOnboardingComponent {
-  constructor () {}
+  constructor (
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
+    this.onBoardingEmitterSubscriber();
+  }
 
+  protected steps: Array<string> = [];
+
+  public ngOnDestroy (): void {
+    OnBoardingEmitter.removeSubscriber(OnBoardingEmitter.getOnboardingName());
+  }
+
+  private onBoardingEmitterSubscriber (): void {
+    OnBoardingEmitter
+    .onBoardingCurrentRoute()
+    .subscribe((data) => {
+      this.steps = data;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
 }
+

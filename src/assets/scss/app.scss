@@ -49,6 +49,7 @@ input[type="checkbox"]:focus {
 .form-control {
   border-radius: 0;
   min-height: 38px;
+  color: $primary-color-light;
   &::placeholder {
     color: $primary-color-light;
   }
@@ -56,6 +57,20 @@ input[type="checkbox"]:focus {
     border-color: $primary-color;
     box-shadow: none;
   }
+}
+
+// override angular material
+.mat-form-field-label,
+.mat-focused .mat-form-field-label,
+.mat-datepicker-toggle-active,
+.mat-form-field-infix  {
+  color: $primary-color-light;
+}
+.mat-form-field-underline {
+  background-color: $primary-color;
+}
+.cdk-overlay-pane.mat-datepicker-popup {
+  bottom: unset !important;
 }
 
 // classes

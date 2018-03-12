@@ -5,6 +5,9 @@ import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
+  SharedPipeModule
+} from '../shared/pipe/pipe.module';
+import {
   userRouting
 } from './user-routing.component';
 import {
@@ -19,17 +22,39 @@ import {
 import {
   UserOnboardingSelectStatusComponent
 } from './on-boarding/select-status/select-status.component';
+import {
+  UserOnboardingStudentComponent
+} from './on-boarding/student/student.component';
+import {
+  UserOnboardingStudentInterestComponent
+} from './on-boarding/student/interest/interest.component';
+import {
+  UserOnboardingProfessionalComponent
+} from './on-boarding/professional/professional.component';
+import {
+  UserOnboardingOrganisationComponent
+} from './on-boarding/organisation/organisation.component';
+import {
+  ServicesModule
+} from '../../services/services.module';
+
 
 @NgModule({
   imports: [
     SharedModule,
+    SharedPipeModule,
+    ServicesModule,
     userRouting
   ],
   declarations: [
     UserComponent,
     UserVerifyEmailComponent,
     UserOnboardingComponent,
-    UserOnboardingSelectStatusComponent
+    UserOnboardingSelectStatusComponent,
+    UserOnboardingStudentComponent,
+    UserOnboardingStudentInterestComponent,
+    UserOnboardingProfessionalComponent,
+    UserOnboardingOrganisationComponent
   ],
   exports: []
 })

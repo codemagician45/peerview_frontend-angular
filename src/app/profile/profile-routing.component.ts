@@ -11,6 +11,9 @@ import {
 
 const profileRoutes: Routes = [{
   path: '',
+  component: ProfileComponent// profile of currently login user,
+}, {
+  path: ':id',
   component: ProfileComponent
 }];
 

@@ -15,6 +15,12 @@ import {
   ProfileLeftSidebarUserOtherInfoComponent
 } from './left-sidebar/user-other-info/user-other-info.component';
 import {
+  ProfileLeftSidebarUserInfoMessageDiaglogComponent
+} from './left-sidebar/user-info/message/message.component';
+import {
+  ProfileLeftSidebarUserInfoPostToDiaglogComponent
+} from './left-sidebar/user-info/post-to/post-to.component';
+import {
   ProfileRightSidebarComponent
 } from './right-sidebar/right-sidebar.component';
 import {
@@ -38,8 +44,14 @@ import {
     ProfileLeftSidebarUserInfoComponent,
     ProfileLeftSidebarUserOtherInfoComponent,
     ProfileRightSidebarComponent,
-    ProfileContentComponent
+    ProfileContentComponent,
+    ProfileLeftSidebarUserInfoMessageDiaglogComponent,
+    ProfileLeftSidebarUserInfoPostToDiaglogComponent
   ],
-  exports: []
+  exports: [ProfileLeftSidebarUserInfoMessageDiaglogComponent, ProfileLeftSidebarUserInfoPostToDiaglogComponent],
+  entryComponents: [
+    ProfileLeftSidebarUserInfoMessageDiaglogComponent,
+    ProfileLeftSidebarUserInfoPostToDiaglogComponent
+  ]
 })
 export class ProfileModule {}

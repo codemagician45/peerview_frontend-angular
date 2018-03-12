@@ -7,17 +7,16 @@ import {
 import {
   Observable
 } from 'rxjs/Observable';
+import {
+  UserModel
+} from '../app/shared/models';
 
 @Injectable()
 export class OnboardingService {
   constructor (private http: HttpClient) { }
 
-  public getUserTypeId (typecode: String): Observable<Object> {
-    return this.http.get(`user/type/${typecode}`);
-  }
-
-  public saveSuggestedInterest (interestCategoryID: Number, interestName: String): Observable<Object> {
-    return this.http.post(`interest/${interestCategoryID}`, { interestName: interestName }, {});
+  public saveSuggestedInterest (interestCategoryId: number, interestName: string): Observable<Object> {
+    return this.http.post(`interest/${interestCategoryId}`, {interestName});
   }
 
   public deleteSuggestedInterest (interestId: Number): Observable<Object> {

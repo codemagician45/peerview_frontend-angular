@@ -17,20 +17,35 @@
         <i class="material-icons color-purple">star</i>
       </li>
     </ul>
-    <div class="edit-profile">
+    <div class="edit-profile" *ngIf="!userId">
       Edit Profile
       <i class="material-icons color-purple">create</i>
+    </div>
+    <div *ngIf="userId">
+      <a
+        class="peersview-primary-color"
+         (click)="onOpenMessageDiaglogComponent()" data-toggle="modal"
+         data-target="#user-message-modal">
+        <i class="material-icons">comment</i>
+        Message
+      </a>
+      <a
+        class="peersview-primary-color"
+        (click)="onOpenPostToDiaglogComponent()">
+        <i class="material-icons">border_color</i>
+        Post To
+      </a>
     </div>
   </div>
   <div class="about-me text-center">
     <div class="col-sm-2">
-      <i class="material-icons purple">info</i>
+      <i class="material-icons peersview-primary-color">info</i>
     </div>
     <div class="col-sm-8">
       {{user?.aboutMe || 'Tell us about yourself'}}
     </div>
     <div class="col-sm-2">
-      <i class="material-icons color-purple">create</i>
+      <i class="material-icons peersview-primary-color">create</i>
       <!-- <a class="flat-btn btn edit float-right" (click)="openAboutMeModal()">
 
       </a> -->
@@ -38,7 +53,7 @@
   </div>
   <div class="company text-center">
     <div class="col-sm-2">
-      <i class="material-icons color-purple">person</i>
+      <i class="material-icons peersview-primary-color">person</i>
     </div>
     <div  class="col-sm-10">
       {{user?.company}}
@@ -46,7 +61,7 @@
   </div>
   <div class="institution text-center">
     <div class="col-sm-2">
-      <i class="material-icons color-purple">account_balance</i>
+      <i class="material-icons peersview-primary-color">account_balance</i>
     </div>
     <div  class="col-sm-10">
       {{user?.institutionName}}
@@ -54,7 +69,7 @@
   </div>
   <div class="course text-center">
     <div class="col-sm-2">
-      <i class="material-icons color-purple">school</i>
+      <i class="material-icons peersview-primary-color">school</i>
     </div>
     <div  class="col-sm-10">
       {{user?.courseId}}
@@ -62,7 +77,7 @@
   </div>
   <div class="birth-date text-center">
     <div class="col-sm-2">
-      <i class="material-icons color-purple">today</i>
+      <i class="material-icons peersview-primary-color">today</i>
     </div>
     <div class="col-sm-10">
       {{user?.birthDate}}
