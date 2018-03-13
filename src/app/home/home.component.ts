@@ -8,11 +8,18 @@ import {
 import {
   PostsResponse,
   PostModel,
-  UserModel
+  UserModel,
+  PostResponse
 } from '../shared/models';
 import {
   UserClass
 } from '../shared/classes';
+import {
+  EmitterService
+} from '../shared/emitter/emitter.component';
+import {
+  PostEmitter
+} from '../shared/emitter';
 
 @Component({
   selector: 'home-component',
@@ -25,9 +32,14 @@ export class HomeComponent implements OnInit {
   protected posts: Array<PostModel>;
   protected emailOfPeerToInvite: string;
   protected user: UserModel = UserClass.getUser();
+  private postSavedSubscriber = EmitterService.get('postSaveEmitter');
+  private limit = 5;
+  private offset = 10;
+  private hasAddedPostCounter = 0;
 
   public ngOnInit (): void {
     this.getPosts();
+    this.postSavedSubcriber();
   }
 
   private getPosts (): void {
@@ -42,5 +54,23 @@ export class HomeComponent implements OnInit {
     }, error => {
       // alert('Error Retrieving All Posts');
     });
+  }
+
+  /*Subscribe on postSaveEmitter in order to refresh post list after posting new*/
+  private postSavedSubcriber (): void {
+    PostEmitter
+    .postSave()
+    .subscribe(response => {
+      this.postService.getPost(response)
+      .subscribe((data: PostResponse) => {
+        this.posts.unshift(data.post);
+        this.hasAddedPostCounter += 1;
+        console.log(this.posts);
+      });
+    });
+  }
+
+  public ngOnDestroy (): void {
+    PostEmitter.removeSubscriber(PostEmitter.postSave());
   }
 }

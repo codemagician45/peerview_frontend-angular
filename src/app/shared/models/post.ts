@@ -40,3 +40,8 @@ export class ReportPost {
   public id: number;
   public reason: string;
 }
+
+export class CreatePost {
+  public message: string;
+  public attachments?: Array<object> = [];
+}

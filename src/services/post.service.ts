@@ -19,14 +19,14 @@ import {
 import {
   ReplyPost,
   ReportPost,
-  SharePost
+  SharePost,
+  CreatePost
 } from '../app/shared/models';
 @Injectable()
 export class PostService {
   constructor (private http: HttpClient) {}
 
-  public createpost (message: string): Observable<Object> {
-    const post = {message};
+  public createpost (post: CreatePost): Observable<Object> {
     return this.http.post('post', post);
   }
 

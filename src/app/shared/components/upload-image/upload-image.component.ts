@@ -16,6 +16,9 @@ import {
   EmitterService
 } from '../../emitter/emitter.component';
 import {
+  PostEmitter
+} from '../../emitter';
+import {
   UserClass
 } from '../../classes/user';
 import {
@@ -53,6 +56,7 @@ export class SharedUploadImageComponent {
     const uploaderOptions: FileUploaderOptions = {
       // cloud_name must be added on the cloudinary configuration in the shared module
       url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/upload`,
+      // url: 'https://api.cloudinary.com/v1_1/renchtolens/upload',
       autoUpload: false,
       isHTML5: true,
       queueLimit: 4,
@@ -79,8 +83,8 @@ export class SharedUploadImageComponent {
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // upload_preset must be added on the cloudinary configuration in the shared module
       form.append('upload_preset', this.cloudinary.config().upload_preset);
-      /* // upload preset of Lorence's cloudinary account
-      form.append('upload_preset', 'lenua7xx'); */
+      /* // upload preset of Lorence's cloudinary account */
+      // form.append('upload_preset', 'lenua7xx');
       form.append('folder', this.user.token);
       form.append('file', fileItem);
 
@@ -122,14 +126,18 @@ export class SharedUploadImageComponent {
         postAttachments.push({cloudinaryPublicId: this.responses[i].data.public_id, usage: 'image'});
       }
 
-      this.uploadCompleteEmitterService.emit(postAttachments);
+      PostEmitter
+      .uploadComplete()
+      .emit(postAttachments);
       // clear image preview after upload complete
       this.imagesToUpload = [];
     };
   }
 
   public uploadImages (): void {
-    this.uploadImagesSubscriber.subscribe(response => {
+    PostEmitter
+    .uploadImages()
+    .subscribe(response => {
       if (this.imagesToUpload.length !== 0) {
         this.uploadInProgress = true;
         this.uploader.uploadAll();
