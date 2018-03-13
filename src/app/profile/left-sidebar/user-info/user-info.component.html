@@ -7,7 +7,7 @@
       *ngIf="user?.profilePicture"
       (click)="onOpenShowImageDialogComponent()">
     </cl-image>
-    <h4>{{user.firstName}} {{user.lastName}}</h4>
+    <h4>{{user?.firstName}} {{user?.lastName}}</h4>
     <ul>
       <li>
         <i class="material-icons color-purple">star</i>
@@ -24,8 +24,7 @@
     <div *ngIf="userId">
       <a
         class="peersview-primary-color"
-         (click)="onOpenMessageDiaglogComponent()" data-toggle="modal"
-         data-target="#user-message-modal">
+         (click)="onOpenMessageDiaglogComponent()">
         <i class="material-icons">comment</i>
         Message
       </a>

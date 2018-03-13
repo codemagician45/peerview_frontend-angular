@@ -41,7 +41,7 @@
               </button>
             </div>
             <div class="clear"></div>
-            <a [routerLink]="['/advanced-search']" class="advance-search-link">Advanced Search</a>
+            <a [routerLink]="['/advance-search']" class="advance-search-link">Advanced Search</a>
           </div>
         </div>
         <div class="dropdown message menu">
@@ -111,7 +111,7 @@
               <span class="user-name"> {{user?.firstName}}</span>
             </span>
             <cl-image
-              public-id="{{user.profilePicture}}"
+              public-id="{{user.socialImage ? user.socialImage: user.profilePicture}}"
               *ngIf="user?.profilePicture"
               width="22"
               [ngStyle]="{'border-radius': '50%'}">
@@ -123,7 +123,7 @@
             <li><a href="/my/profile">My Profile</a></li>
             <li><a href="/account-settings">Account Setting</a></li>
             <li><a href="/support" target="_blank">Peersview Support</a></li>
-            <li><a href="/sign-out">Log-Out</a></li>
+            <li><a (click)="onSignOut();">Log-Out</a></li>
           </ul>
         </div>
       </div>

@@ -64,7 +64,8 @@ export class AppComponent implements OnInit {
 
   public ngOnInit (): void {
     if (!this.userService.getLoggedInUser()) { return; }
-    this.accountSettingService.getUserProfile()
+    console.log('userProfile');
+    this.userService.getProfile()
     .subscribe((response: UserResponse) => {
 
       UserClass.setUser(response.user);

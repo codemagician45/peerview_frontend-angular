@@ -9,6 +9,9 @@ import {
 import {
   UserService
 } from '../../../services/user.service';
+import {
+  Observable
+} from 'rxjs';
 
 @Component({
   selector: 'user-verify-email-component',
@@ -28,10 +31,9 @@ export class UserVerifyEmailComponent implements OnInit {
       .subscribe((response: any) => {
         const user = response.user;
         this.userService.setLoggedInUser(user);
-        this.router.navigate(['/onboard/1'], {
-          queryParams: {
-            type: true
-          }
+        Observable.timer(1000)
+        .subscribe(() => {
+          this.router.navigate(['/user/on-boarding/status']);
         });
       });
     });

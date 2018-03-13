@@ -3,6 +3,8 @@ import {
 } from '@angular/core';
 import {
   CanActivate,
+  Router,
+  ActivatedRoute,
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
@@ -17,19 +19,23 @@ import {
 } from '../classes';
 
 @Injectable()
-export class CanActivateUserProfile implements CanActivate {
+export class IsProtectedCompnent implements CanActivate {
   constructor (
-    private userService: UserService) {}
+    private userService: UserService,
+    private router: Router) {}
 
   private protectedRoutes = ['home'];
 
   public canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.userService.getLoggedInUser() ? this.userService.getProfile()
-      .subscribe((response: UserResponse) => {
-        UserClass.setUser(response.user);
-        resolve(true);
-      }) : resolve(true);
+      console.log(route);
+      if (!this.userService.getLoggedInUser() && route.data.isProtected) {
+        this.router.navigate(['/sign-in']);
+      } else if (this.userService.getLoggedInUser() && !route.data.isProtected) {
+        this.router.navigate(['/home']);
+      }
+
+      return resolve(true);
     });
   }
 }

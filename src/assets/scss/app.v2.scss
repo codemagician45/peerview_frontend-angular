@@ -680,7 +680,7 @@ i.icon-success {
   background-color: #f4f4f4;
 }
 
-.event-detail .create-post, .event-detail .create-poll, events-detail .bottom-block, events-detail .guest-list {
+.event-detail .event-detail .create-poll, events-detail .bottom-block, events-detail .guest-list {
   background-color: transparent;
 }
 
@@ -2698,7 +2698,7 @@ i.icon-success {
   }
 }
 
-.create-poll, .ask-question, .create-post, .share-story, .guest-list {
+.create-poll, .ask-question, .share-story, .guest-list {
 /*  margin: 0px 0 20px;
   position: relative;
   border-radius: 3px;
@@ -7266,14 +7266,6 @@ footer ul li a:hover, footer ul li a:focus {
     top: 12px;
     left: 0px;
     background-position: left 0;
-  }
-}
-.new-message {
-  width: 500px;
-}
-.peers-list {
-  &__container {
-    background: #fff;
   }
 }
 .share-modal {

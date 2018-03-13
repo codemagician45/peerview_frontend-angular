@@ -23,7 +23,7 @@
               </button>
             </div>
             <div class="clear"></div>
-            <a [routerLink]="['/advanced-search']" class="advance-search-link">Advanced Search</a>
+            <a [routerLink]="['/advance-search']" class="advance-search-link">Advanced Search</a>
           </div>
         </span>
         <i class="material-icons notification-icon" [routerLink]="['/notification']">notifications_none</i>
@@ -31,7 +31,7 @@
         <span class="dropdown users-menu">
            <a id="users-menu" data-toggle="dropdown">
              <cl-image
-                public-id="{{user.profilePicture}}"
+                public-id="{{user.socialImage ? user.socialImage: user.profilePicture}}"
                 *ngIf="user?.profilePicture"
                 width="22"
                 [ngStyle]="{'border-radius': '50%'}">

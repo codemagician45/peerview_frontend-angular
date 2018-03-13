@@ -10,6 +10,9 @@ import {
 import {
   SubInterestModel
 } from '../sub-interest';
+import {
+  PostModel
+} from '../post';
 
 // coming from the provider
 export interface ISocialResponse extends Response {
@@ -35,4 +38,8 @@ export interface IInterestCategoryResponse extends Response {
 
 export interface ISubInterestsResponse extends Response {
   interests: Array<SubInterestModel>;
+}
+
+export class IPostToResponse extends Response {
+  public postId: number;
 }

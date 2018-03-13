@@ -38,10 +38,9 @@ export class ProfileLeftSidebarUserInfoComponent {
     private userService: UserService,
     private dialog: MatDialog
   ) {
-    console.log(this.user);
     this.route.params.subscribe(params => {
-      console.log(params);
       this.userId = params.id;
+      if (this.userId) { this.userId = this.cryptoUtilities.decipher(this.userId); }
     });
   }
 
@@ -50,7 +49,6 @@ export class ProfileLeftSidebarUserInfoComponent {
   private cryptoUtilities = new CryptoUtilities();
 
   public ngOnInit (): void {
-    this.userId = this.cryptoUtilities.decipher(this.userId);
     this.userId && this.userService.getProfile(this.userId)
     .subscribe((response: UserResponse) => {
       this.user = response.user;
@@ -64,6 +62,8 @@ export class ProfileLeftSidebarUserInfoComponent {
   }
 
   protected onOpenPostToDiaglogComponent (): void {
-    this.dialog.open(ProfileLeftSidebarUserInfoPostToDiaglogComponent);
+    this.dialog.open(ProfileLeftSidebarUserInfoPostToDiaglogComponent, {
+      data: this.user
+    });
   }
 }

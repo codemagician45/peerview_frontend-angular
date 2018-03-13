@@ -17,6 +17,9 @@ import {
 import {
   AuthService
 } from 'angular2-social-login';
+import {
+  UserClass
+} from '../shared/classes';
 
 @Component({
   selector: 'sign-in-component',
@@ -36,6 +39,7 @@ export class SignInComponent {
   protected onSignIn (isValid: boolean): void {
     isValid && this.userService.signIn(this.user)
     .flatMap((response: UserResponse) => {
+      UserClass.setUser(response.user);
       return this.userService.setLoggedInUser(response.user);
     })
     .subscribe(() => {

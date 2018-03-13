@@ -34,6 +34,8 @@ export class UserOnboardingComponent {
     .onBoardingCurrentRoute()
     .subscribe((data) => {
       this.steps = data;
+      console.log('this.steps');
+      console.log(this.steps);
       this.changeDetectorRef.detectChanges();
     });
   }

@@ -68,13 +68,15 @@ export const appRoutes: Routes = [{
 {
   path: '',
   loadChildren: './index/index.module#IndexModule',
-  // canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile]
 }, {
   path: 'sign-up',
-  loadChildren: './sign-up/sign-up.module#SignUpModule'
+  loadChildren: './sign-up/sign-up.module#SignUpModule',
+  canActivate: [CanActivateUserProfile]
 }, {
   path: 'sign-in',
-  loadChildren: './sign-in/sign-in.module#SignInModule'
+  loadChildren: './sign-in/sign-in.module#SignInModule',
+  canActivate: [CanActivateUserProfile]
 }, {
   path: 'about-us',
   loadChildren: './about-us/about-us.module#AboutUsModule'
@@ -84,6 +86,9 @@ export const appRoutes: Routes = [{
 }, {
   path: 'digital-campus',
   loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule'
+}, {
+  path: 'advance-search',
+  loadChildren: './advance-search/advance-search.module#AdvanceSearchModule'
 }
 ];
 

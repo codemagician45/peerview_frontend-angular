@@ -87,7 +87,8 @@ import {
   SharedModule
 } from './shared/components/shared.module';
 import {
-  CanActivateUserProfile
+  CanActivateUserProfile,
+  IsProtectedCompnent
 } from './shared/can-activate';
 
 declare var tinymce: any;
@@ -147,7 +148,8 @@ tinymce.init({});
     OnboardingService,
     PostService,
     UserService,
-    CanActivateUserProfile
+    CanActivateUserProfile,
+    IsProtectedCompnent
   ],
   bootstrap: [AppComponent],
   exports: [],

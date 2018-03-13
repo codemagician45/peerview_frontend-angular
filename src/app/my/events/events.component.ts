@@ -23,11 +23,11 @@ export class EventsComponent implements OnInit {
   protected events: Event[] = [];
 
   public ngOnInit (): void {
-    this.eventService.getAuthorEvents(this.userService.loggedInUser ? this.userService.loggedInUser.id : 0)
-    .subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.log(error);
-    });
+    // this.eventService.getAuthorEvents(this.userService.loggedInUser ? this.userService.loggedInUser.id : 0)
+    // .subscribe(response => {
+    //   console.log(response);
+    // }, error => {
+    //   console.log(error);
+    // });
   }
 }

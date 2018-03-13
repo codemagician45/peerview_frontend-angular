@@ -1,0 +1,84 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="advance-search-component m-peersview-yt-4">
+  <div class="container">
+    <div class="page-name-title">Advanced Search</div>
+    <ul class="post-action">
+      <li >
+        <a
+          (click)="findPeople = !findPeople"
+          [ngClass]="{'active': findPeople}">
+            Find People
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="findPeople = !findPeople"
+          [ngClass]="{'active': !findPeople}">
+            Find Post
+        </a>
+      </li>
+    </ul>
+    <div class="advance-search-block">
+      <advance-find-people-component
+        *ngIf="findPeople">
+      </advance-find-people-component>
+      <!-- <div class="row" id="search-people">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Institution</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <br/>
+            <input type="button" class="btn btn-blue" value="Search" />
+          </div>
+        </div>
+      </div> -->
+      <advance-find-post-component
+        *ngIf="!findPeople">
+      </advance-find-post-component>
+      <!-- <div class="row" id="search-question" style="display:none;">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label>Question</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <br/>
+            <input type="button" class="btn btn-blue" value="Search" />
+          </div>
+        </div>
+      </div>
+      <div class="row" id="search-keyword" style="display:none;">
+        <div class="col-md-8">
+          <div class="form-group">
+            <label>Keyword</label>
+            <input type="text" class="form-control" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>&nbsp;</label>
+            <br/>
+            <input type="button" class="btn btn-blue" value="Search" />
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div>
+      <div class="sec-heading">Search Results</div>
+    </div>
+  </div>
+</div>

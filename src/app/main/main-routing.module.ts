@@ -32,23 +32,14 @@ import {
   MessagesComponent
 } from './messages/messages.component';
 import {
-  SignUpComponent
-} from './sign-up/sign-up.component';
-import {
   OnBoardEmailComponent
 } from './onBoard/on-Board-email.component';
-import {
-  SignInComponent
-} from './sign-in/sign-in.component';
 import {
   ForgotPasswordComponent
 } from './forgot-password/forgot-password.component';
 import {
   ResetpasswordComponent
 } from './reset-password/reset-password.component';
-import {
-  SignOutComponent
-} from './sign-out/sign-out.component';
 import {
   AdvancedSearchComponent
 } from './advanced-search/advanced-search.component';
@@ -131,15 +122,9 @@ const routes: Routes = [
     path: 'messages',
     component: MessagesComponent
   }, {
-    path: 'sign-up',
-    component: SignUpComponent
-  }, {
     path: 'onBoard',
     component: OnBoardEmailComponent
-  }, {
-    path: 'sign-in',
-    component: SignInComponent
-  },
+  }
 
   // {
   //   path: 'sign-out',

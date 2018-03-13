@@ -1,4 +1,4 @@
-<div class="peers-list-component">
+<div class="peers-list-component m-peersview-yt-4">
   <shared-navbar-component></shared-navbar-component>
   <div class="container fixed-header">
     <div class="row">
@@ -8,7 +8,9 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let peer of peersList; let i = index;">
               <div class="profile-widget peers profile-sm">
-                <div class="top-info">
+                <div
+                  class="top-info"
+                  (click)="onClickUser(peer);">
                   <cl-image
                     public-id="{{peer?.profilePicture}}"
                     *ngIf="peer?.profilePicture">
@@ -17,7 +19,8 @@
                   </cl-image>
                   <span class="user-profile-info">
                     <h2>
-                      <a href="user-profile.html">{{peer.firstName}} {{peer.lastName}}</a>
+                      <a
+                        class="peersview-primary-color">{{peer.firstName}} {{peer.lastName}}</a>
                     </h2>
                     <ul class="peers-info">
                       <li><i class="icon-institute" data-toggle="tooltip" title="" data-original-title="Institution"></i>{{peer.institutionName}}</li>

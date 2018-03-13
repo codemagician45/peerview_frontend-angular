@@ -1,6 +1,9 @@
 import {
   Component
 } from '@angular/core';
+import {
+  MatDialog,
+} from '@angular/material';
 
 @Component({
   selector: 'profile-left-sidebar-user-info-nessage-component',
@@ -8,5 +11,9 @@ import {
   styleUrls: ['./message.component.scss']
 })
 export class ProfileLeftSidebarUserInfoMessageDiaglogComponent {
-  constructor () {}
+  constructor (private dialog: MatDialog) {}
+
+  protected onCancel (): void {
+    this.dialog.closeAll();
+  }
 }

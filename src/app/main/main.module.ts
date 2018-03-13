@@ -38,14 +38,8 @@ import {
   MessagesComponent
 } from './messages/messages.component';
 import {
-  SignUpComponent
-} from './sign-up/sign-up.component';
-import {
   OnBoardEmailComponent
 } from './onBoard/on-Board-email.component';
-import {
-  SignInComponent
-} from './sign-in/sign-in.component';
 import {
   SignSocialComponent
 } from './sign-social/sign-social.component';
@@ -89,9 +83,6 @@ import {
 import {
   RouterModule
 } from '@angular/router';
-import {
-  SignOutComponent
-} from './sign-out/sign-out.component';
 import {
   ScrollSpyModule
 } from 'ngx-scrollspy';
@@ -164,9 +155,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ChoosePlanComponent,
     NotificationComponent,
     MessagesComponent,
-    SignUpComponent,
     OnBoardEmailComponent,
-    SignInComponent,
     SignSocialComponent,
     ForgotPasswordComponent,
     ResetpasswordComponent,
@@ -175,7 +164,6 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HomeComponent,
     // UserProfileComponent,
     DashboardComponent,
-    SignOutComponent,
     BlogsComponent,
     TermsOfUseUserComponent,
     IndexDuplicationComponent,

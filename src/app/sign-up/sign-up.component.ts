@@ -69,11 +69,7 @@ export class SignUpComponent {
       return this.userService.setLoggedInUser(response.user);
     })
     .subscribe(() => {
-      console.log('redirect to on boarding.');
-      /* Social sign up will be redirected to
-          on boarding component
-      */
-      // this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     }, (error) => {
       console.log(error);
     });

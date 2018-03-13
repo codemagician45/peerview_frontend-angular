@@ -80,22 +80,23 @@
         </div>
       </div>
 
-      <div class="checkbox">
+      <div class="row">
         <label>
-            <input
-              type="checkbox"
-              name="hasconsented"
-              [(ngModel)]="hasAgreed"
-              #hasAgreedToTerms="ngModel"
-              required/>
-                I agree to the Terms & Conditions, Privacy Policy and Code of Conduct
-          </label>
-      </div>
-      <div *ngIf="hasAgreedToTerms.invalid && (hasAgreedToTerms.dirty || hasAgreedToTerms.touched)" class="alert alert-danger">
-        <div *ngIf="hasAgreedToTerms.errors.required">
-          This is required field
+          <input
+            type="checkbox"
+            name="hasconsented"
+            [(ngModel)]="hasAgreed"
+            #hasAgreedToTerms="ngModel"
+            required/>
+              I agree to the Terms & Conditions, Privacy Policy and Code of Conduct
+        </label>
+        <div *ngIf="hasAgreedToTerms.invalid && (hasAgreedToTerms.dirty || hasAgreedToTerms.touched)" class="alert alert-danger">
+          <div *ngIf="hasAgreedToTerms.errors.required">
+            This is required field
+          </div>
         </div>
       </div>
+
       <button type="submit" class="btn-peersview-primary btn-block btn-peersview-md">Sign Up</button>
     </form>
     <div class="hint-text small">Already have an account?

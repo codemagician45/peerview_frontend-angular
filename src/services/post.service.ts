@@ -89,4 +89,9 @@ export class PostService {
   public searchpost (searchkeyword: string): Observable<Object> {
     return this.http.get(`advance-search/post?keyword='${searchkeyword}'`);
   }
+
+  public postTo (message: string, postTo: number): Observable<Object> {
+    const post = {message, postTo};
+    return this.http.post('post', post);
+  }
 }
