@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
   protected posts: Array<PostModel>;
   protected emailOfPeerToInvite: string;
   protected user: UserModel = UserClass.getUser();
-  private postSavedSubscriber = EmitterService.get('postSaveEmitter');
   private limit = 5;
   private offset = 10;
   private hasAddedPostCounter = 0;
