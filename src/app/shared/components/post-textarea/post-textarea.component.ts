@@ -99,7 +99,6 @@ export class SharedPostTextareaComponent {
 
   /*Destroy subscriber*/
   public ngOnDestroy (): void {
-    PostEmitter.removeSubscriber(PostEmitter.uploadComplete());
-    PostEmitter.removeSubscriber(PostEmitter.uploadImages());
+    PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
   }
 }
