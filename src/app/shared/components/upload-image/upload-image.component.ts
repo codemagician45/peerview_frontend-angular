@@ -46,7 +46,6 @@ export class SharedUploadImageComponent {
   private uploader: FileUploader;
   private hasBaseDropZoneOver: boolean = false;
   private user: UserModel = UserClass.getUser();
-  private uploadImagesSubscriber = EmitterService.get('uploadImagesEmitter');
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
 
   public ngOnInit (): void {
@@ -175,6 +174,6 @@ export class SharedUploadImageComponent {
 
   /*Destroy subscriber*/
   public ngOnDestroy (): void {
-    EmitterService.clear(['uploadImagesEmitter']);
+    PostEmitter.removeSubscriber(PostEmitter.getUploadImagesName());
   }
 }
