@@ -71,6 +71,6 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnDestroy (): void {
-    PostEmitter.removeSubscriber(PostEmitter.postSave());
+    PostEmitter.removeSubscriber(PostEmitter.getPostSaveName());
   }
 }
