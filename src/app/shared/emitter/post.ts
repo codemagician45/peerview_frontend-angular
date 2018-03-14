@@ -8,8 +8,16 @@ import {
 export class PostEmitter {
   constructor () {}
 
-  public static createPost (): any {
-    return EmitterService.get('getCreatePost');
+  public static getPostSaveName (): string {
+    return 'getPostSave';
+  }
+
+  public static getUploadImagesName (): string {
+    return 'getUploadImages';
+  }
+
+  public static getUploadCompleteName (): string {
+    return 'onUploadComplete';
   }
 
   public static postSave (): any {
