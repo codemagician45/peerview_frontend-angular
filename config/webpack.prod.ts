@@ -33,7 +33,8 @@ module.exports = webpackMerge(commonConfig, {
     new ExtractTextPlugin('[name].[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'PEERSVIEW_API': JSON.stringify(process.env.PEERSVIEW_API)
       }
     }),
     new webpack.LoaderOptionsPlugin({
