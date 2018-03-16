@@ -1,4 +1,4 @@
-export const STAGING = {
+export const PRODUCTION = {
   api: process.env.PEERSVIEW_API,
   socialProviders: {
     'google': {
