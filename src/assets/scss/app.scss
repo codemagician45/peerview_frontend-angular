@@ -9,6 +9,7 @@ html,
 body,
 button,
 input,
+div,
 textarea {
   font-family: $font-family-primary;
 }
@@ -29,10 +30,11 @@ ol {
   list-style: none;
 }
 a {
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
+  @include anchor();
+  // text-decoration: none;
+  // &:hover {
+  //   text-decoration: none;
+  // }
 }
 input {
   border-radius: 0;
@@ -103,13 +105,13 @@ input[type="checkbox"]:focus {
 
 //bg-colors
 .peersview-primary-bg-color {
-  background-color: $primary-color;
+  background: $primary-color;
 }
 .peersview-primary-bg-color-light {
-  background-color: $primary-color-light;
+  background: $primary-color-light;
 }
 .peersview-primary-bg-color-dark {
-  background-color: $primary-color-dark;
+  background: $primary-color-dark;
 }
 
 // button
@@ -378,7 +380,7 @@ input[type="checkbox"]:focus {
       max-height: 80%;
       margin: auto;
       background-color: #fff;
-      // 
+      //
       // button.close {
       //   position: absolute;
       //   top: 0;

@@ -1,6 +1,8 @@
+@import 'src/assets/scss/variables';
+
 .digital-campus-students-component {
   padding: 10px 0;
-  background: #2d153d;
+  background-color: $primary-color-dark;
   border-top: solid 1px #503462;
   h3, h1 {
     color: #ffffff;

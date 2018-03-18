@@ -13,8 +13,8 @@
     background-size: cover;
     color: #fff;
     p {
-      padding: 10px 0;
-      font-size: 20px;
+      font-size: 14px;
+      font-weight: 600;
     }
     .content-body {
       position: absolute;
@@ -22,6 +22,9 @@
       top: 50%;
       width: 100%;
       transform: translate(-50%, -50%);
+    }
+    h1 {
+      font-size: 20px;
     }
   }
   .video-player {
@@ -64,9 +67,10 @@
     a {
       display: block;
       width: 100%;
+      border-radius: 5px;
     }
     a.active {
-      color: $primary-color;
+      background-color: $secondary-color-dark;
     }
   }
 
@@ -75,13 +79,14 @@
   // extra Small Devices, Phones
   @media only screen and (min-width : 480px) {}
   // Small Devices, Tablets
-  @media only screen and (min-width : 768px) {}
-  // Medium Devices, Desktops
-  @media only screen and (min-width : 992px) {
+  @media only screen and (min-width : 768px) {
     .header {
       p {
-        line-height: 36px;
-        letter-spacing: 1px;
+        font-size: 20px;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
       }
     }
     .benefits {
@@ -96,6 +101,8 @@
       }
     }
   }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
   // Large Devices, Wide Screens
   @media only screen and (min-width : 1200px) {}
 }

@@ -1,8 +1,12 @@
 .about-us-team-component {
   background: url('http://res.cloudinary.com/peersview-com/image/upload/v1519654010/teamBg.png') no-repeat;
   background-size: cover;
-  padding: 100px 0;
+  // padding: 100px 0;
+  .container {
+    // padding-top: 350px;
+  }
   .members {
+    padding-bottom: 40px;
     .members-info {
       margin: 0 20px;
     }
@@ -20,7 +24,8 @@
     margin-bottom: 75px;
     color: #ffffff;
     h1 {
-      font-size: 8rem;
+      // font-size: 8rem;
+      font-size: 6rem;
     }
     p {
       font-size: 18px;
@@ -29,7 +34,7 @@
   .members-info {
     display: inline-grid;
     .name, .position {
-      color: #000000;
+      color: #ffffff;
     }
     .name {
       font-size: 1.6rem;
@@ -40,11 +45,11 @@
     }
   }
   .advisory-team {
+    position: relative;
     h1 {
       font-size: 6rem;
       color: #000000;
     }
-    margin-top: 50px;
     .members-info {
       .name {
         color: #000000;
@@ -57,7 +62,19 @@
   // extra Small Devices, Phones
   @media only screen and (min-width : 480px) {}
   // Small Devices, Tablets
-  @media only screen and (min-width : 768px) {}
+  @media only screen and (min-width : 768px) {
+    .header {
+      h1 {
+        font-size: 8rem;
+      }
+    }
+    .container {
+      padding-top: 350px;
+    }
+    .advisory-team {
+      top: 6rem;
+    }
+  }
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {
 

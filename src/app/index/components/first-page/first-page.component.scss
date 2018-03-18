@@ -1,4 +1,5 @@
 @import 'src/assets/scss/variables';
+@import 'src/assets/scss/mixins';
 
 .index-first-page-component {
   height: 100%;
@@ -22,28 +23,31 @@
     transform: translate(-50%, -50%);
     color: #ffffff;
     .tagline {
-      margin-bottom: 50px;
+      // margin-bottom: 50px;
+      margin-bottom: 30px;
     }
     h1 {
-      font-size: 65px;
-      font-weight: $font-weight-regular;
+      font-size: 25px;
     }
     h3 {
       margin-top: 0;
-      font-size: 28px;
+      // font-size: 28px;
+      font-size: 16px;
       font-weight: $font-weight-regular;
       letter-spacing: 3px
     }
     .learn-more {
       display: inline-block;
       margin-top: 40px;
-      padding: 10px 40px;
+      // padding: 10px 40px;
+      padding: 5px 10px;
       font-weight: 600;
       letter-spacing: 1px;
       background-color: rgba(15, 13, 13, 0.5);
       border: solid 1px #7b7371;
       border-radius: 30px;
-      font-size: 16px;
+      // font-size: 16px;
+      font-size: 14px;
       color: #fff;
     }
   }
@@ -51,9 +55,31 @@
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
-  @media only screen and (min-width : 480px) {}
+  @media only screen and (min-width : 480px) {
+
+  }
   // Small Devices, Tablets
-  @media only screen and (min-width : 768px) {}
+  @media only screen and (min-width : 768px) {
+    .btn-peersview-primary {
+      @include btn-lg;
+    }
+    .banner-title {
+      .tagline {
+        margin-bottom: 50px;
+      }
+      h1 {
+        font-size: 55px;
+      }
+      h3 {
+        padding: 10px 40px;
+        font-size: 28px;
+      }
+      .learn-more {
+        padding: 10px 40px;
+        font-size: 16px;
+      }
+    }
+  }
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {}
   // Large Devices, Wide Screens

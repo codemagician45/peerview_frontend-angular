@@ -1,8 +1,10 @@
+@import 'src/assets/scss/variables';
+
 .digial-campus-faq-component {
   .faq-header {
     padding: 50px;
     text-align: center;
-    background: #585858;
+    background-color: $primary-color-dark;
     color: #fff;
     h1 {
       font-size: 65px;

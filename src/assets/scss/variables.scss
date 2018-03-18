@@ -1,13 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 // colors
 // primary
 $purple: #631990;
-$purple-light: #9751C0;
-$purple-dark: #420467;
+$purple-light: lighten($purple, 10%);
+$purple-dark: darken($purple, 10%);
 // secondary
-$green: #00c456;
-$green-light: #00e665;
-$green-dark: #00a247;
+$orange: #ee7600;
+$orange-light: lighten($orange, 10%);
+$orange-dark: darken($orange, 10%);
 $gray: #777777;
 // color configs
 // primary-color
@@ -15,9 +15,9 @@ $primary-color: $purple;
 $primary-color-light: $purple-light;
 $primary-color-dark: $purple-dark;
 // $secondary-color
-$secondary-color: $green;
-$secondary-color-light: $green-light;
-$secondary-color-dark: $green-dark;
+$secondary-color: $orange;
+$secondary-color-light: $orange-light;
+$secondary-color-dark: $orange-dark;
 
 //font size
 $f-small: 12px;
@@ -43,6 +43,6 @@ $font-weight-regular:	400;
 $font-weight-bold: 600;
 
 // other styles
-$font-family-primary: Roboto, sans-serif;
+$font-family-primary: 'Maven Pro', sans-serif;
 $font-family-secondary: Conv_MavenPro-Regular, sans-serif;
 $spacers: 4
