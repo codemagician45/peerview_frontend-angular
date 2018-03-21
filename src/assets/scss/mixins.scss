@@ -149,6 +149,24 @@
   padding-top: $spacers * 3rem;
   padding-bottom: $spacers * 3rem;
 }
+@mixin padding-yb-0() {
+  padding-bottom: 0;
+}
+@mixin padding-yb-1() {
+  padding-bottom: $spacers * .25rem;
+}
+@mixin padding-yb-2() {
+  padding-bottom: $spacers * .5rem;
+}
+@mixin padding-yb-3() {
+  padding-bottom: $spacers * 1rem;
+}
+@mixin padding-yb-4() {
+  padding-bottom: $spacers * 1.5rem;
+}
+@mixin padding-yb-5() {
+  padding-bottom: $spacers * 3rem;
+}
 @mixin padding-x-0() {
   padding-right: 0;
   padding-left: 0;

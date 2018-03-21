@@ -10,7 +10,7 @@
           [routerLink]="['/home']">
         </cl-image>
 
-        <div class="home" [routerLink]="['/home']">
+        <div class="home" [routerLink]="['/home']" [routerLinkActive]="'page-active'">
           <i class="material-icons">home</i>
           Home
         </div>
@@ -116,11 +116,11 @@
               width="22"
               [ngStyle]="{'border-radius': '50%'}">
             </cl-image>
-            <span class="header-caret"></span>
+            <i class="material-icons">keyboard_arrow_down</i>
           </a>
           <ul class="dropdown-menu dropdown-menu-right users-dropdown" aria-labelledby="users-menu">
             <span class="icon-arrow-up"></span>
-            <li><a href="/my/profile">My Profile</a></li>
+            <li><a href="/profile">My Profile</a></li>
             <li><a href="/account-settings">Account Setting</a></li>
             <li><a href="/support" target="_blank">Peersview Support</a></li>
             <li><a (click)="onSignOut();">Log-Out</a></li>

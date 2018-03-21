@@ -6,6 +6,10 @@
      position: absolute;
      width: 100%;
   }
+  .btn-peersview-secondary {
+    background-color: #ffffff;
+    color: $secondary-color;
+  }
   .header {
     height: 100%;
     padding: 60px 0;
@@ -14,7 +18,7 @@
     color: #fff;
     p {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
     }
     .content-body {
       position: absolute;
@@ -70,7 +74,8 @@
       border-radius: 5px;
     }
     a.active {
-      background-color: $secondary-color-dark;
+      background-color: $secondary-color;
+      color: #ffffff;
     }
   }
 

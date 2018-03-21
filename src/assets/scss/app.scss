@@ -180,6 +180,24 @@ input[type="checkbox"]:focus {
 .p-peersview-y-5 {
   @include padding-y-5;
 }
+.p-peersview-yb-0 {
+  @include padding-yb-1;
+}
+.p-peersview-yb-1 {
+  @include padding-yb-1;
+}
+.p-peersview-yb-2 {
+  @include padding-yb-2;
+}
+.p-peersview-yb-3 {
+  @include padding-yb-3;
+}
+.p-peersview-yb-4 {
+  @include padding-yb-4;
+}
+.p-peersview-yb-5 {
+  @include padding-yb-5;
+}
 .p-peersview-x-0 {
   @include padding-x-0;
 }

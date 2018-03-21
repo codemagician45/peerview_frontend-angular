@@ -590,6 +590,10 @@ angular2-template-loader@0.6.2:
   dependencies:
     loader-utils "^0.2.15"
 
+angularx-social-login@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/angularx-social-login/-/angularx-social-login-1.1.8.tgz#169828be47a68bd8a2e84519d57d44bdaf38d866"
+
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
@@ -9486,7 +9490,7 @@ trim-right@^1.0.1:
   dependencies:
     glob "^6.0.4"
 
-ts-loader@^4.0.1:
+ts-loader@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-4.0.1.tgz#3d920b059966efec9637133ab0ca9b04d625d59a"
   dependencies:

@@ -1,4 +1,7 @@
 .navbar-desktop-component {
+  .page-active {
+    border-bottom: 2px solid #ffffff;
+  }
   .navbar-default {
     display: flex;
     align-items: center;
@@ -24,8 +27,9 @@
     display: flex;
     .home, .community, .campus, .leisure {
       display: flex;
-      align-items: center;
       margin-left: 20px;
+      align-items: center;
+      font-weight: 600;
       color: #ffffff;
       cursor: pointer;
       i {
@@ -39,6 +43,13 @@
   .users-menu {
     margin-left: 15px;
     .welcome-user {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    #users-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: #ffffff;
     }
   }

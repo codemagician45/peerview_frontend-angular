@@ -5,9 +5,6 @@ import {
   Router
 } from '@angular/router';
 import {
-  AuthService
-} from 'angular2-social-login';
-import {
   UserModel,
   SignUpViaSocialModel,
   ISocialResponse,
@@ -18,6 +15,13 @@ import {
   UserService
 } from  '../../services';
 
+import {
+  AuthService,
+  SocialUser,
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  LinkedInLoginProvider
+} from 'angularx-social-login';
 
 @Component({
   selector: 'sign-up-component',
@@ -54,16 +58,34 @@ export class SignUpComponent {
   }
 
   protected onSignUpViaSocial (provider: string): void {
-    this.authService.login(provider)
-    .flatMap((response: ISocialResponse) => {
+    this.enableSocialProviderSubscriber();
+    let socialProvider = this.getSocialProviderId(provider);
+    this.authService.signIn(socialProvider);
+  }
+
+  private enableSocialProviderSubscriber (): void {
+    this.authService.authState
+    .flatMap((response: SocialUser) => {
       const name = response.name.split(' ');
       this.signUpViaSocial.email = response.email;
       this.signUpViaSocial.firstName = name[0];
       this.signUpViaSocial.lastName = name[1];
-      this.signUpViaSocial.image = response.image;
-      this.signUpViaSocial.provider = response.provider;
-      this.signUpViaSocial.uid = response.uid;
-      return this.userService.signUpViaSocial(this.signUpViaSocial);
+      this.signUpViaSocial.image = response.photoUrl;
+      this.signUpViaSocial.provider = response.provider.toLowerCase();
+      this.signUpViaSocial.uid = response.id;
+
+      // check if the email is undefined
+      // meaning the email is not yet verified
+      if (!response.email) {
+        let error = {
+          reason: 'Please validate email',
+          error: 401
+        };
+
+        throw new Error(JSON.stringify(error));
+      }
+
+      return this.userService.signInViaSocial(this.signUpViaSocial);
     })
     .flatMap((response: ISignUpViaSocialResponse) => {
       return this.userService.setLoggedInUser(response.user);
@@ -73,5 +95,13 @@ export class SignUpComponent {
     }, (error) => {
       console.log(error);
     });
+  }
+
+  private getSocialProviderId (provider): string {
+    if (provider === 'facebook') {
+      return FacebookLoginProvider.PROVIDER_ID;
+    }
+
+    return null;
   }
 }

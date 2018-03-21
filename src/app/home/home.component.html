@@ -4,7 +4,7 @@
     class="col-lg-3 col-md-3 hidden-xs hidden-sm"
     [user]="user">
   </home-left-sidebar-component>
-  <div class="col-lg-6 col-md-6 row center-section">
+  <div class="col-lg-5 col-md-6 row center-section">
     <div class="col-xs-12">
       <shared-post-textarea-component></shared-post-textarea-component>
     </div>
@@ -24,19 +24,19 @@
 
       <div class="news-post-footer view-more-news text-right">
         <i mdTooltip="Reload News List" (click)="reloadnews()" class="material-icons autorenew-icon">autorenew</i>
-        <a (click)="moreNews($event)"><span class="view_more">View More</span></a>
+        <a (click)="moreNews($event)"><span class="peersview-primary-color">View More</span></a>
       </div>
     </div>
     <div>
       <div class="tab-pill"><span>LATEST</span></div>
-      <a class="see-new-posts"><span class="view_more">See 5 new posts</span></a>
+      <!-- <a class="see-new-posts"><span class="peersview-primary-color">See 5 new posts</span></a> -->
       <div id="posts-container">
         <shared-post-component [posts]="posts"></shared-post-component>
       </div>
     </div>
   </div>
   <home-right-sidebar-component
-    class="col-lg-3 col-md-3 hidden-xs hidden-sm">
+    class="col-lg-4 col-md-3 hidden-xs hidden-sm">
   </home-right-sidebar-component>
 </div>
 <!-- <app-post-poll-map (onEditorKeyup)="refreshPost($event)"></app-post-poll-map> -->

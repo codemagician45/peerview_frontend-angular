@@ -1,0 +1,16 @@
+.shared-peers-you-may-know-component {
+  // margin: 0;
+  // padding: 15px;
+  // color: #333333;
+  padding: 15px;
+  border-radius: 3px;
+  background: #ffffff;
+  border: solid 1px #d8d8d8;
+  font-size: 14px;
+  .peers-you-may-know-header {
+    font-weight: 500;
+    a {
+      float: right;
+    }
+  }
+}

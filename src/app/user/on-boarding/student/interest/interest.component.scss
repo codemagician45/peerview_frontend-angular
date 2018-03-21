@@ -46,7 +46,6 @@
   }
 }
 
-
 .interest-category-image {
   width: 120px;
   height: 120px;
@@ -85,4 +84,8 @@
 
 .interest-select-sub-interest-content {
   border-bottom: 1px solid #8d36c3;
+}
+
+.interest-placeholder::placeholder {
+  color: $secondary-color;
 }

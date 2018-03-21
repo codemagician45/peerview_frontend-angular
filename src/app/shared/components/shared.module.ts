@@ -90,6 +90,15 @@ import {
   UserService
 } from '../../../services/user.service';
 
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
+
+
+let config = new AuthServiceConfig([{
+  id: FacebookLoginProvider.PROVIDER_ID,
+  provider: new FacebookLoginProvider('2018255745088769')
+}]);
+
 @NgModule({
   imports: [
     RouterModule,
@@ -100,7 +109,8 @@ import {
     FileUploadModule,
     MatProgressBarModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+   SocialLoginModule.initialize(config)
   ],
   declarations: [
     SharedSidebarFooterComponent,

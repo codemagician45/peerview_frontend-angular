@@ -17,10 +17,10 @@ import {
 // coming from the provider
 export interface ISocialResponse extends Response {
   email: string;
-  image: string;
+  photoUrl: string;
   name: string;
   provider: string;
-  uid: string
+  id: string
 }
 
 // coming from the api
