@@ -2,7 +2,8 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router
+  Router,
+  ActivatedRoute
 } from '@angular/router';
 import {
   UserModel,
@@ -32,7 +33,8 @@ export class SignUpComponent {
   constructor (
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   protected hasAgreed: boolean = false;
@@ -47,10 +49,7 @@ export class SignUpComponent {
     if (this.hasAgreed) {
       this.userService.signUp(this.user)
       .subscribe((response: Response) => {
-        console.log(response);
-        /* Local sign up will be redirected to
-            Verify email page
-        */
+        this.router.navigate(['thank-you'],  {relativeTo: this.route});
       }, (error) => {
         console.log(error);
       });

@@ -7,6 +7,9 @@ import {
   SignUpComponent
 } from './sign-up.component';
 import {
+  SignUpThankYouComponent
+} from './thank-you/thank-you.component';
+import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
@@ -23,7 +26,8 @@ import {
     signUpRouting
   ],
   declarations : [
-    SignUpComponent
+    SignUpComponent,
+    SignUpThankYouComponent
   ],
   exports: []
 })
