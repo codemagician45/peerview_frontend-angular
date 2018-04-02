@@ -1,12 +1,15 @@
 import {
   Component,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import {
   MatDialog
 } from '@angular/material';
 import {
-  ReportPostModalComponent
+  ReportPostModalComponent,
+  SharedConfirmModalComponent
 } from '../../modals';
 import {
   PostModel,
@@ -18,12 +21,25 @@ import {
 })
 export class SharedReportPostComponent {
   constructor (public dialog: MatDialog) {}
+  @Output() protected onDeletePost = new EventEmitter();
   @Input() protected post: PostModel;
 
   protected openReportModal (): void {
     this.dialog.open(ReportPostModalComponent, {
       data: this.post,
       id: 'SharedReportPostModalComponent'
+    });
+  }
+
+  protected onOpenConfirmModal (): void {
+    console.log(this.post);
+    this.dialog.open(SharedConfirmModalComponent, {
+      data: this.post,
+      id: 'SharedConfirmModalComponent'
+    })
+    .beforeClose()
+    .subscribe(response => {
+      this.onDeletePost.emit(this.post.id);
     });
   }
 }

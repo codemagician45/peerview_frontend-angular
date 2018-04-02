@@ -1,6 +1,6 @@
 <div class="shared-post-component">
   <div id="Post1" class="post" *ngFor="let post of posts">
-    <report-post-component [post]="post"> </report-post-component>
+    <report-post-component [post]="post" (onDeletePost)="onDeletePost($event)"> </report-post-component>
     <div class="row">
       <div class="col-xs-3">
         <cl-image

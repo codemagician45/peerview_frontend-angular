@@ -8,6 +8,7 @@ import {
 import {
   PostModel,
   PostResponse,
+  Response
 } from '../../models';
 import {
   PostService,
@@ -67,5 +68,15 @@ export class SharedPostComponent {
   protected onClickUserProfile (user): void {
     let userId = this.cryptoUtilities.cipher(user.id);
     this.router.navigate([`/profile/${userId}`]);
+  }
+
+  protected onDeletePost (postId: number): void {
+    // delete here the post
+    this.postService.deleteOne(postId)
+    .subscribe((response: Response) => {
+      console.log(response);
+      let index = this.posts.findIndex(filter => filter.id === postId);
+      this.posts.splice(index, 1);
+    });
   }
 }
