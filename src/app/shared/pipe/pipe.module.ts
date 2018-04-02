@@ -5,14 +5,19 @@ import {
 import {
   SharedFilterPipeComponent
 } from './filter.pipe';
+import {
+  SharedLocalDatePipeComponent
+} from './local-date.pipe';
 
 @NgModule({
   imports: [],
   declarations: [
-    SharedFilterPipeComponent
+    SharedFilterPipeComponent,
+    SharedLocalDatePipeComponent
   ],
   exports: [
-    SharedFilterPipeComponent
+    SharedFilterPipeComponent,
+    SharedLocalDatePipeComponent
   ]
 })
 export class SharedPipeModule {}
