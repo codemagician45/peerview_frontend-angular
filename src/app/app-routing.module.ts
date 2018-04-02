@@ -89,6 +89,10 @@ export const appRoutes: Routes = [{
 }, {
   path: 'advance-search',
   loadChildren: './advance-search/advance-search.module#AdvanceSearchModule'
+},
+{
+  path: 'account-settings',
+  loadChildren: './account-settings/account-settings.module#AccountSettingsModule'
 }
 ];
 
