@@ -94,4 +94,8 @@ export class PostService {
     const post = {message, postTo};
     return this.http.post('post', post);
   }
+
+  public deleteOne (postId: number): Observable<Object> {
+    return this.http.delete(`post/${postId}`);
+  }
 }
