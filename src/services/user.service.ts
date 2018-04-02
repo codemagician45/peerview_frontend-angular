@@ -117,6 +117,26 @@ export class UserService {
     return this.http.post('user/onboarding/details', user);
   }
 
+  public updateName (name: {firstName: string, lastName: string}): Observable<Object> {
+    return this.http.put('user/name', name);
+  }
+
+  public updateEmail (email): Observable<Object> {
+    return this.http.put('user/email', {email});
+  }
+
+  public updateLanguage (language): Observable<Object> {
+    return this.http.put('user/language', {language});
+  }
+
+  public updatepassword (user: UserModel): Observable<Object> {
+    return this.http.put(`user/password`, user);
+  }
+
+  public updateSecurity (user: UserModel): Observable<Object> {
+    return this.http.put('user/security', user);
+  }
+
   public saveSubInterests (interestIds: Array<number>): Observable<Object> {
     return this.http.post('user/interests', {interestIds});
   }

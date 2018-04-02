@@ -56,8 +56,6 @@ export class AccountSettingsComponent implements OnInit {
       console.log(error);
     });
 
-    this.languages = this.courseService.getlanguages();
-
     $('.tabChange').click(function (e): void {
       const that = $(this);
       const panel = that.data('tab-name');
