@@ -110,7 +110,7 @@ let config = new AuthServiceConfig([{
     MatProgressBarModule,
     MatDatepickerModule,
     MatInputModule,
-   SocialLoginModule.initialize(config)
+    SocialLoginModule.initialize(config)
   ],
   declarations: [
     SharedSidebarFooterComponent,
