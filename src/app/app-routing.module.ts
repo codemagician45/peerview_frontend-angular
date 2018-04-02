@@ -92,7 +92,8 @@ export const appRoutes: Routes = [{
 },
 {
   path: 'account-settings',
-  loadChildren: './account-settings/account-settings.module#AccountSettingsModule'
+  loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
+  canActivate: [CanActivateUserProfile]
 }
 ];
 
