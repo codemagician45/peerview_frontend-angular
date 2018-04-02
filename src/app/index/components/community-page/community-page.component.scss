@@ -64,3 +64,34 @@
     }
   }
 }
+
+@media screen and (max-width:767px ) {
+
+    .index-community-page-component {
+        .community {
+        padding: 0;
+        margin: 0 0 15px;
+        }
+
+        .color-white {
+            margin-bottom: 15px;
+            padding: 0;
+        }
+        .develop {
+            display: inline-flex;
+            padding: 0;
+        }
+        .discover {
+            margin-bottom: 15px;
+            padding: 0;
+            width: auto;
+            font-size: 18px;
+            i {
+                vertical-align: middle;
+            }
+         span {
+                margin-right: 20px;
+            }
+        }
+}
+}

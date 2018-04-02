@@ -31,3 +31,17 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width:767px ) {
+    .get-details {
+        margin-bottom: 15px;
+        border: 1px solid;
+        padding: 12px;
+    }
+    .btn-peersview-sm {
+        padding: 10px 26px;
+        font-size: 18px;
+        line-height: 1.33333;
+        font-weight: 500;
+    }
+}

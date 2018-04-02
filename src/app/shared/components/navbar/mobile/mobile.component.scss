@@ -60,3 +60,32 @@
     }
   }
 }
+
+
+
+
+@media screen and (max-width:767px ) {
+.navbar-mobile-component {
+    .nav-menu{
+     a i.material-icons, a {
+        color: #222 !important;
+        }
+      }
+
+    i.material-icons.key_arrow {
+        position: relative;
+        top: 10px;
+        color: #fff;
+    }
+    }
+    .navbar-mobile-component .nav-menu>div {
+        border-right: 1px solid #999;
+        &:last-child{
+        border-right: none;
+        }
+    }
+    .shared-post-textarea-component .post textarea {
+        height: auto;
+        resize: none;
+    }
+}
