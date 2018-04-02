@@ -1,0 +1,42 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="account-settings-component container fixed-header">
+  <div class="page-name-title">Account Setting</div>
+  <div class="row">
+    <div class="col-lg-3">
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['general']" [routerLinkActive]="'active-menu'">
+        General
+      </div>
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['password']" [routerLinkActive]="'active-menu'"
+      *ngIf="!user?.facebookId || !user?.linkedinId || !user?.googleId">
+        Password
+      </div>
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['security-privacy']" [routerLinkActive]="'active-menu'">
+        Security and Privacy
+      </div>
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['blocking']" [routerLinkActive]="'active-menu'">
+        Blocking
+      </div>
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['notifications']" [routerLinkActive]="'active-menu'">
+        Notifications
+      </div>
+      <div
+      class="account-settings-component-general-menu p-peersview-1 m-peersview-y-1"
+      [routerLink]="['billing']" [routerLinkActive]="'active-menu'">
+        Billing
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

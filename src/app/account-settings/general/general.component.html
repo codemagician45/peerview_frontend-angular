@@ -1,0 +1,130 @@
+<div class="account-settings-general-component">
+  <h3>General</h3>
+  <div class="row p-peersview-y-1">
+    <div class="col-sm-2">
+      <label class="setting-lbl">Change Image:</label>
+    </div>
+    <div class="col-sm-10">
+      <span class="setting-value"><input type="file"/></span>
+    </div>
+  </div>
+
+  <div class="row p-peersview-y-1">
+    <div class="col-sm-2">
+      <label>Name:</label>
+    </div>
+    <div class="col-sm-8">
+      <span *ngIf="name.status === 'Edit'">{{user.firstName}} {{user.lastName}}</span>
+      <span *ngIf="name.status === 'Save'">
+        <div class="col-sm-6">
+          <input
+            type="text"
+            placeholder="First Name"
+            class="form-control"
+            [(ngModel)]="name.firstName"
+            />
+        </div>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="form-control"
+            [(ngModel)]="name.lastName"/>
+        </div>
+      </span>
+    </div>
+    <div class="col-sm-2 edit-or-save">
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(name)"
+        *ngIf="name.status === 'Save'">Cancel</a>
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(name);name.firstName=user.firstName;name.lastName=user.lastName">{{name.status === 'Save' ? 'Save': 'Edit'}}</a>
+    </div>
+  </div>
+
+  <div class="row p-peersview-y-1">
+    <div class="col-sm-2">
+      <label>Primary Email:</label>
+    </div>
+    <div class="col-sm-8">
+      <span *ngIf="email.status === 'Edit'">{{user?.email}}</span>
+      <span *ngIf="email.status === 'Save'">
+        <input
+          type="text"
+          placeholder="Email"
+          class="form-control"
+          [(ngModel)]="email.value"/>
+      </span>
+    </div>
+    <div class="col-sm-2 edit-or-save">
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(email)"
+        *ngIf="email.status === 'Save'">Cancel</a>
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(email);email.value=user.email">{{email.status === 'Save' ? 'Save': 'Edit'}}</a>
+    </div>
+  </div>
+
+  <div class="row p-peersview-y-1">
+    <div class="col-sm-2">
+      <label>Language:</label>
+    </div>
+    <div class="col-sm-8">
+      <span *ngIf="languages.status === 'Edit'">{{user?.language}}</span>
+      <span *ngIf="languages.status === 'Save'">
+        <select class="form-control" (change)="onChangeLanguage($event.target.value)">
+          <option selected>Select Language</option>
+          <option *ngFor="let language of languagesData" [value]="language.value">{{language.value}}</option>
+        </select>
+      </span>
+    </div>
+    <div class="col-sm-2 edit-or-save">
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(languages)"
+        *ngIf="languages.status === 'Save'">Cancel</a>
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(languages);languages.value=user.language">{{languages.status === 'Save' ? 'Save': 'Edit'}}</a>
+    </div>
+  </div>
+
+  <div class="row p-peersview-y-1">
+    <div class="col-sm-2">
+      <label>Date of Birth:</label>
+    </div>
+    <div class="col-sm-8">
+      <span *ngIf="dateOfBirth.status === 'Edit'">{{user?.birthDate | localDate}}</span>
+      <span *ngIf="dateOfBirth.status === 'Save'">
+        <mat-form-field>
+          <input matInput mdInput [(ngModel)]="user.birthDate" [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+        </mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+      </span>
+    </div>
+    <div class="col-sm-2 edit-or-save">
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(dateOfBirth)"
+        *ngIf="dateOfBirth.status === 'Save'">Cancel</a>
+      <a
+        class="btn-peersview-primary btn-peersview-sm"
+        (click)="onEditOrSave(dateOfBirth)">{{dateOfBirth.status === 'Save' ? 'Save': 'Edit'}}</a>
+    </div>
+  </div>
+
+  <!-- <label class="setting-lbl">Date of Birth</label>
+  <span class="setting-value">{{ user.birthDate | date}}</span>
+  <div class="edit-field" style="display:none;">
+    <mat-form-field>
+      <input matInput mdInput [(ngModel)]="user.dateOfBirth" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle mdSuffix [for]="picker"></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+  </div> -->
+</div>

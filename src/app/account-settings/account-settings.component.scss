@@ -1,0 +1,13 @@
+@import '../../assets/scss/variables';
+
+.account-settings-component {
+  padding-top: 50px;
+  .edit-or-save {
+    padding-left: 0;
+  }
+  .active-menu {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: $secondary-color;
+  }
+}
