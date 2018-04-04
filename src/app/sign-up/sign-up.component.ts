@@ -49,7 +49,7 @@ export class SignUpComponent {
     if (this.hasAgreed) {
       this.userService.signUp(this.user)
       .subscribe((response: Response) => {
-        this.router.navigate(['thank-you'],  {relativeTo: this.route});
+        this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
       }, (error) => {
         console.log(error);
       });
