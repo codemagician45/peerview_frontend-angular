@@ -137,6 +137,11 @@ export class UserService {
     return this.http.put('user/security', user);
   }
 
+  public updateAboutMe (aboutMe: any): Observable<Object> {
+    aboutMe = {aboutMe: aboutMe};
+    return this.http.put(`user/about-me`, aboutMe);
+  }
+
   public saveSubInterests (interestIds: Array<number>): Observable<Object> {
     return this.http.post('user/interests', {interestIds});
   }

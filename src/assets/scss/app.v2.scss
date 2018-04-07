@@ -4346,9 +4346,6 @@ i.icon-success {
   box-shadow: 0px 0px 26px -7px #999;
   -webkit-box-shadow: 0px 0px 26px -7px #999;
 }
-.about-me-modal-modal {
-  width: 500px;
-}
 .fixed-sidebar.not-fixed {
   height: auto;
   padding-bottom: 20px;
@@ -7005,9 +7002,9 @@ footer ul li a:hover, footer ul li a:focus {
   font-family: 'Conv_MavenPro-Bold';
 }
 
-.modal-footer {
-  padding: 10px 15px;
-}
+// .modal-footer {
+//   padding: 10px 15px;
+// }
 
 // .modal-footer .btn {
 //   padding: 2px 10px;
@@ -8224,16 +8221,16 @@ footer ul li a:hover, footer ul li a:focus {
     align-items: center;
     flex-direction: column;
   }
-  .modal-footer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .modal-footer .btn {
-    margin-bottom: 20px;
-  }
+  // .modal-footer {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   flex-direction: column;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
+  // .modal-footer .btn {
+  //   margin-bottom: 20px;
+  // }
   .forum-header .by-user-text .input-group {
     width: 100%;
   }
