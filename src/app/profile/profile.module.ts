@@ -27,6 +27,9 @@ import {
   ProfileContentComponent
 } from './content/content.component';
 import {
+  ProfileLeftSidebarUserInfoAboutMeDialogComponent
+} from './left-sidebar/user-info/modal/about-me-modal.component';
+import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
@@ -46,12 +49,18 @@ import {
     ProfileRightSidebarComponent,
     ProfileContentComponent,
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
-    ProfileLeftSidebarUserInfoPostToDiaglogComponent
+    ProfileLeftSidebarUserInfoPostToDiaglogComponent,
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent
   ],
-  exports: [ProfileLeftSidebarUserInfoMessageDiaglogComponent, ProfileLeftSidebarUserInfoPostToDiaglogComponent],
+  exports: [
+    ProfileLeftSidebarUserInfoMessageDiaglogComponent,
+    ProfileLeftSidebarUserInfoPostToDiaglogComponent,
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent
+  ],
   entryComponents: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
-    ProfileLeftSidebarUserInfoPostToDiaglogComponent
+    ProfileLeftSidebarUserInfoPostToDiaglogComponent,
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent
   ]
 })
 export class ProfileModule {}
