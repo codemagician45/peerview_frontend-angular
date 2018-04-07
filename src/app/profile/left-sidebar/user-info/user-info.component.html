@@ -44,11 +44,10 @@
     <div class="col-sm-8">
       {{user?.aboutMe || 'Tell us about yourself'}}
     </div>
-    <div class="col-sm-2">
+    <div
+    class="col-sm-2"
+    (click)="onOpenAboutMeDialog()">
       <i class="material-icons peersview-primary-color">create</i>
-      <!-- <a class="flat-btn btn edit float-right" (click)="openAboutMeModal()">
-
-      </a> -->
     </div>
   </div>
   <div class="company text-center">

@@ -26,6 +26,9 @@ import {
 import {
   ProfileLeftSidebarUserInfoPostToDiaglogComponent
 } from './post-to/post-to.component';
+import {
+  ProfileLeftSidebarUserInfoAboutMeDialogComponent
+} from './modal/about-me-modal.component';
 
 @Component({
   selector: 'profile-left-sidebar-user-info-component',
@@ -64,6 +67,18 @@ export class ProfileLeftSidebarUserInfoComponent {
   protected onOpenPostToDiaglogComponent (): void {
     this.dialog.open(ProfileLeftSidebarUserInfoPostToDiaglogComponent, {
       data: this.user
+    });
+  }
+
+  protected onOpenAboutMeDialog (): void {
+    this.dialog.open(ProfileLeftSidebarUserInfoAboutMeDialogComponent, {
+      id: 'ProfileLeftSidebarUserInfoAboutMeDialogComponent',
+      data: this.user.aboutMe
+    })
+    .afterClosed()
+    .subscribe(aboutMe => {
+      if (!aboutMe) { return; }
+      this.user.aboutMe = aboutMe;
     });
   }
 }
