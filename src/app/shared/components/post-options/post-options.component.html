@@ -1,25 +1,40 @@
 <div class="shared-post-options-component">
   <ul class="body">
     <li class="star-section">
-      <button
-      class="flat-btn"
-      [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'" 
-      (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
-        <i class="material-icons like">thumb_up</i>
-      </button>
-      <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
-      <span style="vertical-align: sub;margin-left: 5px;" *ngIf="likes"><span class="link-name" >Likes</span> ({{likes}})</span>
+      <div class="star-section-container text-center">
+        <span>{{likes}} Views</span>
+        <button
+        class="btn-peersivew-transparent"
+        [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
+        (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
+          <i class="material-icons like">thumb_up</i>
+          <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
+        </button>
+      </div>
     </li>
     <li (click)="openViewModal()" class="eye-section">
-      <i class="material-icons eye">remove_red_eye</i> {{views}} <span class="link-name">&nbsp; Views</span>
+      <div class="eye-section-container">
+        <span>{{views}} Views</span>
+        <button class="btn-peersivew-transparent">
+          <i class="material-icons share">remove_red_eye</i>
+        </button>
+      </div>
     </li>
     <li (click)="openReplyContainer()" class="reply-section">
-      <i class="material-icons reply">reply</i> {{post.postReply.length}} <span class="link-name"> {{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
+      <div class="reply-section-container">
+        <span>{{post.postReply.length}} {{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
+        <button class="btn-peersivew-transparent">
+          <i class="material-icons share">reply</i>
+        </button>
+      </div>
     </li>
     <li class='share-section'>
-      <button class="flat-btn purple" (click)="openShare()">
-        <i class="material-icons share">share</i> <span class="link-name">Share</span><ng-container *ngIf="share">({{share}})</ng-container>
-      </button>
+      <div class="share-section-container">
+        <span>{{share}} Share</span>
+        <button class="btn-peersivew-transparent" (click)="openShare()">
+          <i class="material-icons share">share</i>
+        </button>
+      </div>
     </li>
     <li>
       <div class="d-inline-block" placement="bottom-right">

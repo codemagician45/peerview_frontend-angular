@@ -142,6 +142,9 @@ input[type="checkbox"]:focus {
 .btn-peersview-xs {
   @include btn-xs;
 }
+.btn-peersivew-transparent {
+  @include btn-transparent;
+}
 
 // padding
 .p-peersview-0 {

@@ -68,6 +68,10 @@
     }
   }
 }
+@mixin btn-transparent() {
+  background: none;
+  border: none;
+}
 
 @mixin anchor() {
   color: $secondary-color;

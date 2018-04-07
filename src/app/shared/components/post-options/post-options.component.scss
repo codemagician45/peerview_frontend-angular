@@ -47,10 +47,21 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   .star-section {
     display: inline-flex;
   }
-
+  .share-section-container,
+  .reply-section-container,
+  .eye-section-container,
+  .star-section-container {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+  }
+  .star-section-container button {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
   .reply-container {
     margin-top: 20px;
-
     ul {
       li.comment-container {
         padding: 10px;
@@ -62,20 +73,16 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
           color: #777777;
         }
       }
-
       li {
         &:focus {
           outline: none;
         }
       }
     }
-
     .form-group {
       margin-bottom: 0;
-
       .input-group {
         margin-bottom: 10px;
-
         .btn-peersview-primary {
           height: 38px;
         }
