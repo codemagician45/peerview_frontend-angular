@@ -1,5 +1,7 @@
+@import '../../../../assets/scss/variables';
+
 .shared-stars-component {
-  color: #631990;
+  color: $secondary-color;
   .star {
     margin: 0;
     font-size: 18px;

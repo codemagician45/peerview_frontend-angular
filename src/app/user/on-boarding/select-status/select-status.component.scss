@@ -1,4 +1,10 @@
 .user-on-boarding-select-status-component {
+  hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+  }
   .select-status-center {
     width: 100%;
     display: flex;
@@ -7,22 +13,28 @@
   }
   .select-status-student {
     position: absolute;
-    left: 34%;
-    top: 40%;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     color: #ffffff;
     font-size: 36px;
   }
   .select-status-ex-student {
     position: absolute;
-    left: 23%;
-    top: 20%;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     color: #ffffff;
     font-size: 36px;
   }
   .select-status-institution {
     position: absolute;
-    top: 22%;
-    left: 4%;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     color: #ffffff;
     font-size: 33px;
   }

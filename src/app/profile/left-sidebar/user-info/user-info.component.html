@@ -39,7 +39,9 @@
   </div>
   <div class="about-me text-center">
     <div class="col-sm-2">
-      <i class="material-icons peersview-primary-color">info</i>
+      <a data-toggle="tooltip" title="Bio">
+        <i class="material-icons peersview-primary-color">info</i>
+      </a>
     </div>
     <div class="col-sm-8">
       {{user?.aboutMe || 'Tell us about yourself'}}
@@ -52,7 +54,9 @@
   </div>
   <div class="company text-center">
     <div class="col-sm-2">
-      <i class="material-icons peersview-primary-color">person</i>
+      <a data-toggle="tooltip" title="Institution">
+        <i class="material-icons peersview-primary-color">person</i>
+      </a>
     </div>
     <div  class="col-sm-10">
       {{user?.company}}
@@ -60,7 +64,9 @@
   </div>
   <div class="institution text-center">
     <div class="col-sm-2">
-      <i class="material-icons peersview-primary-color">account_balance</i>
+      <a data-toggle="tooltip" title="Status & Location">
+        <i class="material-icons peersview-primary-color">account_balance</i>
+      </a>
     </div>
     <div  class="col-sm-10">
       {{user?.institutionName}}
@@ -68,7 +74,9 @@
   </div>
   <div class="course text-center">
     <div class="col-sm-2">
-      <i class="material-icons peersview-primary-color">school</i>
+      <a data-toggle="tooltip" title="Court/Expertise">
+        <i class="material-icons peersview-primary-color">school</i>
+      </a>
     </div>
     <div  class="col-sm-10">
       {{user?.courseId}}

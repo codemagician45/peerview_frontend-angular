@@ -1,6 +1,7 @@
 .shared-post-textarea-component {
   .post-menu {
     display: inline-flex;
+    margin-bottom: 5px;
     li {
       padding: 10px;
       a {
@@ -19,12 +20,15 @@
         color: #323c47;
       }
     }
+    > li {
+      border-right: 2px solid #999;
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
   .post {
     position: relative;
-    textarea {
-      height: 140px;
-    }
   }
   .options {
     padding: 10px;
@@ -50,19 +54,21 @@
       li a {
         font-size: 18px;
       }
+      > li {
+        border-right: unset;
+        &:last-child {
+          border-right: unset;
+        }
+      }
     }
-
+    .post {
+      textarea {
+        height: 140px;
+      }
+    }
   }
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {}
   // Large Devices, Wide Screens
   @media only screen and (min-width : 1200px) {}
-
-}
-@media screen and (max-width:767px ) {
-
-    .shared-post-textarea-component .post textarea {
-        height: auto !important;
-        resize: none;
-    }
 }

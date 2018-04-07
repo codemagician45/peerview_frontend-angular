@@ -27,7 +27,7 @@ import 'rxjs/add/operator/mergeMap';
 @Component({
   selector: 'user-on-boarding-student-component',
   templateUrl: './student.component.html',
-  styles: ['./student.component.scss']
+  styleUrls: ['./student.component.scss']
 })
 export class UserOnboardingStudentComponent implements OnInit {
   constructor (

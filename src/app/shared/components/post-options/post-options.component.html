@@ -1,7 +1,10 @@
 <div class="shared-post-options-component">
   <ul class="body">
     <li class="star-section">
-      <button class="flat-btn" [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'" (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
+      <button
+      class="flat-btn"
+      [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'" 
+      (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
         <i class="material-icons like">thumb_up</i>
       </button>
       <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
