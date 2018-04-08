@@ -2,15 +2,13 @@
   .post {
     margin: 5px 0;
     background-color: #ffffff;
-    padding: 20px;
-    font-family: Georgia;
+    padding: 10px;
   }
   .user {
     color: #323c47;
     font-size: 16px;
     padding-left: 0px;
     margin-bottom: 5px;
-    font-family: 'Conv_MavenPro-Bold';
     margin-top: 5px;
     white-space: nowrap;
   }
@@ -21,7 +19,10 @@
   }
   .profile-stars {
     .user-name {
+      position: relative;
+      top: -11px;
       display: inline-block;
+      font-weight: bold;
     }
     .shared-stars-component {
       margin-top: 5px;
@@ -31,5 +32,9 @@
     position: absolute;
     right: 0;
     z-index: 1;
+  }
+  .user-school-name {
+    font-size: 15px;
+    color: #989898;
   }
 }

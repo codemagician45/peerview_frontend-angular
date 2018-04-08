@@ -299,3 +299,21 @@
   margin-right: $spacers * 3rem;
   margin-left: $spacers * 3rem;
 }
+@mixin margin-xr-0() {
+  margin-right: 0;
+}
+@mixin margin-xr-1() {
+  margin-right: $spacers * .25rem;
+}
+@mixin margin-xr-2() {
+  margin-right: $spacers * .5rem;
+}
+@mixin margin-xr-3() {
+  margin-right: $spacers * 1px;
+}
+@mixin margin-xr-4() {
+  margin-right: $spacers * 1.5rem;
+}
+@mixin margin-xr-5() {
+  margin-right: $spacers * 3rem;
+}

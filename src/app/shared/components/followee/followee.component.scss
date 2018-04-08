@@ -1,5 +1,7 @@
+@import '../../../../assets/scss/variables';
+
 .shared-followee-component {
-  padding: 0 10px;
+  // padding: 0 10px;
   border: 1px solid #dbdbdb;
   background-color: #ffffff;
   font-family: 'Conv_MavenPro-Bold';
@@ -8,5 +10,9 @@
     font-family: 'Conv_MavenPro-Bold';
     text-decoration: none;
     cursor: pointer;
+  }
+  h5 {
+    border-bottom: 1px solid $primary-color;
+    padding-bottom: 5px;
   }
 }

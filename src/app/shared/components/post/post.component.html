@@ -1,5 +1,5 @@
 <div class="shared-post-component">
-  <div id="Post1" class="post" *ngFor="let post of posts">
+  <div class="post" *ngFor="let post of posts">
     <div class="row">
       <report-post-component [post]="post" (onDeletePost)="onDeletePost($event)"> </report-post-component>
       <div class="col-xs-12 profile-stars">
@@ -11,15 +11,20 @@
           (click)="onClickUserProfile(post.user);">
         </cl-image>
         <p class="user-name">
-          {{post.user.firstName}} {{post.user.lastName}}
+          <span [ngStyle]="{'display': 'inline-grid'}">
+            {{post.user.firstName}} {{post.user.lastName}}
+            <span class="user-school-name">{{post.user.schoolName}}</span>
+            <span class="post-time">{{post.createdAt | date :'short'}}</span>
+          </span>
         </p>
-        <p class="post-time">{{post.createdAt | date :'short'}}</p>
         <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
       </div>
       <div class="col-xs-12 post-message">
         <p>
           {{post.message}}
         </p>
+      </div>
+      <div class="col-xs-12">
         <shared-post-options-component
           [post]="post"
           [likes]="post.likeCount"

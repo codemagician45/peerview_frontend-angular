@@ -1,58 +1,40 @@
 <div class="shared-post-options-component">
-  <ul class="body">
-    <li class="star-section">
-      <div class="star-section-container text-center">
-        <span>{{likes}} Views</span>
+  <div class="options-text" [ngStyle]="{'width': '100%'}">
+    <div class="col-xs-6 text-center">
+      <span>{{likes}}</span>
+      <span>Likes</span>
+    </div>
+    <div class="col-xs-3 text-center">
+      <span>{{post.postReply.length}}</span>
+      <span>{{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
+    </div>
+    <div class="col-xs-3 text-center">
+      <span>{{share}}</span>
+      <span>Share</span>
+    </div>
+  </div>
+  <hr style="width: 100%">
+  <div class="options-logo" [ngStyle]="{'width': '100%'}">
+    <div class="col-xs-6 text-center">
         <button
-        class="btn-peersivew-transparent"
+        class="btn-peersivew-transparent like"
         [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
         (click)="likepost()" [disabled]="isLikingOrUnlikingPost">
-          <i class="material-icons like">thumb_up</i>
+          <i class="material-icons" >thumb_up</i>
           <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
         </button>
-      </div>
-    </li>
-    <li (click)="openViewModal()" class="eye-section">
-      <div class="eye-section-container">
-        <span>{{views}} Views</span>
-        <button class="btn-peersivew-transparent">
-          <i class="material-icons share">remove_red_eye</i>
-        </button>
-      </div>
-    </li>
-    <li (click)="openReplyContainer()" class="reply-section">
-      <div class="reply-section-container">
-        <span>{{post.postReply.length}} {{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
-        <button class="btn-peersivew-transparent">
-          <i class="material-icons share">reply</i>
-        </button>
-      </div>
-    </li>
-    <li class='share-section'>
-      <div class="share-section-container">
-        <span>{{share}} Share</span>
-        <button class="btn-peersivew-transparent" (click)="openShare()">
-          <i class="material-icons share">share</i>
-        </button>
-      </div>
-    </li>
-    <li>
-      <div class="d-inline-block" placement="bottom-right">
-        <div aria-labelledby="dropdownBasic1">
-          <ul>
-            <!-- *ngIf="share !== false"  -->
-            <!-- <li class="dropdown-item">
-              <a class="flat-btn purple" href="#"><i class="material-icons">delete</i>Delete</a>
-            </li> -->
-            <!-- *ngIf="user.id !== post.author_id" -->
-            <!-- <li class="dropdown-item">
-              <a class="flat-btn purple" (click)="report()"><i class="material-icons">flag</i>Report</a>
-            </li> -->
-          </ul>
-        </div>
-      </div>
-    </li>
-  </ul>
+    </div>
+    <div class="col-xs-3 text-center">
+      <button class="btn-peersivew-transparent reply">
+        <i class="material-icons">reply</i>
+      </button>
+    </div>
+    <div class="col-xs-3 text-center">
+      <button class="btn-peersivew-transparent share" (click)="openShare()">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+  </div>
   <div class="col-xs-12 reply-container" [hidden]="hideReplySection">
     <hr>
     <div class="form-group">

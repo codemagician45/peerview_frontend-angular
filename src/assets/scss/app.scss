@@ -311,7 +311,24 @@ input[type="checkbox"]:focus {
 .m-peersview-x-5 {
   @include margin-x-5;
 }
-
+.m-peersview-xr-0 {
+  @include margin-xr-0;
+}
+.m-peersview-xr-1 {
+  @include margin-xr-1;
+}
+.m-peersview-xr-2 {
+  @include margin-xr-2;
+}
+.m-peersview-xr-3 {
+  @include margin-xr-3;
+}
+.m-peersview-xr-4 {
+  @include margin-xr-4;
+}
+.m-peersview-xr-5 {
+  @include margin-xr-5;
+}
 // font weight
 .peersview-font-weight-light {
   font-weight: $font-weight-light;
