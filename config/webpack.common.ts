@@ -1,6 +1,8 @@
-let webpack = require('webpack');
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+let webpack = require('webpack');
 let helpers = require('./helper');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
@@ -18,7 +20,6 @@ module.exports = {
       loaders: [
         {
           loader: 'ts-loader',
-          // options: { configFileName: helpers.root('', 'tsconfig.json') }
         }, 'angular2-template-loader'
       ]
     }, {
@@ -29,22 +30,24 @@ module.exports = {
     }, {
       test: /\.html$/,
       use: 'html-loader'
-    },
-    {
+    }, {
       test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
       use: 'file-loader?name=assets/[name].[hash].[ext]'
-    },
-    {
-      test: /\.scss$/,
-      include: helpers.root('src'),
-      loaders: ['to-string-loader', 'style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
-    },
-    {
-      test: /\.css$/,
-      include: [helpers.root('src')],
-      loader: 'raw-loader'
-    }
-    ]
+    }, {
+      test: /\.(sa|sc|c)ss$/,
+      use: [
+        'to-string-loader',
+        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [require('autoprefixer')]
+          }
+        },
+        'sass-loader'
+      ]
+    }]
   },
   optimization: {
     splitChunks: {
@@ -78,13 +81,10 @@ module.exports = {
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /\@angular(\\|\/)core(\\|\/)esm5/,
+      /\@angular(\\|\/)core(\\|\/)fesm5/,
       helpers.root('src'), // location of your src
-      {} // a map of your routes
+      {} // a map of your routes,
     ),
-    // new webpack.optimize.splitChunks({
-    //   name: ['app', 'vendor', 'polyfills']
-    // }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
