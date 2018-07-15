@@ -129,7 +129,6 @@ export class UserOnboardingStudentInterestComponent {
   protected onSubmitSubInterests (): void {
     this.userService.saveSubInterests(this.subInterestIds)
     .subscribe((response: Response) => {
-      console.log(response);
       this.router.navigate(['/home']);
     });
   }
