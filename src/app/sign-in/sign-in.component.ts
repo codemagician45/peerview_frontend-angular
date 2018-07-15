@@ -24,6 +24,7 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'sign-in-component',
@@ -42,7 +43,7 @@ export class SignInComponent {
 
   protected onSignIn (isValid: boolean): void {
     isValid && this.userService.signIn(this.user)
-    .flatMap((response: UserResponse) => {
+    .mergeMap((response: UserResponse) => {
       UserClass.setUser(response.user);
       return this.userService.setLoggedInUser(response.user);
     })
@@ -61,7 +62,7 @@ export class SignInComponent {
 
   private enableSocialProviderSubscriber (): void {
     this.authService.authState
-    .flatMap((response: SocialUser) => {
+    .mergeMap((response: SocialUser) => {
       const name = response.name.split(' ');
       this.signInViaSocial.email = response.email;
       this.signInViaSocial.firstName = name[0];
@@ -83,7 +84,7 @@ export class SignInComponent {
 
       return this.userService.signInViaSocial(this.signInViaSocial);
     })
-    .flatMap((response: ISignInViaSocialResponse) => {
+    .mergeMap((response: ISignInViaSocialResponse) => {
       return this.userService.setLoggedInUser(response.user);
     })
     .subscribe(() => {
