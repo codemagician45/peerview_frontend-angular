@@ -1,6 +1,5 @@
 dist
 .DS_Store
-bower_components
 .idea
 *debug.log
 **/*.js
