@@ -2,15 +2,11 @@
 
 .account-settings-component {
   padding-top: 30px;
-  // .edit-or-save {
-  //   padding-left: 0;
-  // }
   .active-menu {
     color: #ffffff;
     font-weight: bold;
     background-color: $secondary-color;
   }
-
   .account-settings-component-general-menu,
   .account-settings-component-password-menu,
   .account-settings-component-security-menu,
@@ -24,15 +20,4 @@
   .active-menu i.material-icons, .account-settings-component i.material-icons {
     display: none;
   }
-  // @media only screen and (min-width : 991px) {
-  //   padding-top: 100px !important;
-  // }
-  // @media only screen and (min-width : 768px) {
-  //
-  // }
-  // @media only screen and (min-width : 320px) {
-  //   .account-settings-component .active-menu i.material-icons, .account-settings-component i.material-icons {
-  //     float: right;
-  //   }
-  // }
 }
