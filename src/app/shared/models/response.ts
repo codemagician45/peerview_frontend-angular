@@ -14,10 +14,10 @@ import {
   CourseModel
 } from './course';
 
-export class Response {
-  public status: string;
-  public status_code: number;
-  public http_code: number;
+export interface Response {
+  status: string;
+  status_code: number;
+  http_code: number;
 }
 
 export class UserResponse extends Response {
