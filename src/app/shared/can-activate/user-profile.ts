@@ -29,6 +29,9 @@ export class CanActivateUserProfile implements CanActivate {
       .subscribe((response: UserResponse) => {
         UserClass.setUser(response.user);
         resolve(true);
+      }, (error) => {
+        this.userService.clearLocalStorage();
+        window.location.reload();
       }) : resolve(true);
     });
   }
