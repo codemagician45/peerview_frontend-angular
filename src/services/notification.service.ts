@@ -2,7 +2,8 @@ import {
   Injectable
 } from '@angular/core';
 import {
-  HttpClient
+  HttpClient,
+  HttpResponse
 } from '@angular/common/http';
 import {
   Observable
@@ -12,11 +13,11 @@ import {
 export class NotificationService {
   constructor (private http: HttpClient) {}
 
-  public getNotifications (start: number, size: number): Observable<Object> {
-    return this.http.get(`notifications/${start}/${size}`);
+  public getNotifications (start: number, size: number): Observable<any> {
+    return this.http.get<any>(`notifications/${start}/${size}`);
   }
 
-  public getMessages (start: number, size: number): Observable<Object> {
-    return this.http.get(`message/headers/${start}/${size}`);
+  public getMessages (start: number, size: number): Observable<any> {
+    return this.http.get<any>(`message/headers/${start}/${size}`);
   }
 }

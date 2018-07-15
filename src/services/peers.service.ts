@@ -15,8 +15,8 @@ import {
 export class PeersService {
   constructor (private http: HttpClient) {}
 
-  public list (): Observable<Object> {
-    return this.http.get('peers-list');
+  public list (): Observable<any> {
+    return this.http.get<any>('peers-list');
   }
 }
 

@@ -7,16 +7,20 @@ import {
 import {
   Observable
 } from 'rxjs/Observable';
+import {
+  Response,
+  IInterestCategoryResponse,
+} from '../app/shared/models';
 
 @Injectable()
 export class InterestService {
   constructor (private http: HttpClient) {}
 
-  public saveSubInterest (interestCategoryId: number, interestName: string): Observable<Object> {
-    return this.http.post(`interest/${interestCategoryId}`, {interestName});
+  public saveSubInterest (interestCategoryId: number, interestName: string): Observable<Response> {
+    return this.http.post<Response>(`interest/${interestCategoryId}`, {interestName});
   }
 
-  public getInterests (): Observable<Object> {
-    return this.http.get('interests');
+  public getInterests (): Observable<IInterestCategoryResponse> {
+    return this.http.get<IInterestCategoryResponse>('interests');
   }
 }
