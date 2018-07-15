@@ -1,9 +1,12 @@
 import {
+  Model
+} from './model';
+import {
   CourseModel
 } from './course';
 
-export class UserModel {
-  public id: number;
+export class UserModel extends Model  {
+  public id?: number;
   public firstName: string;
   public lastName: string;
   public name?: string;
