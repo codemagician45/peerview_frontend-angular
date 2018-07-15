@@ -61,6 +61,10 @@ export class UserService {
   }
 
   public signOut (): void {
+    this.clearLocalStorage();
+  }
+
+  public clearLocalStorage (): void {
     this.window.localStorage.removeItem('user');
     this.window.localStorage.clear();
   }
