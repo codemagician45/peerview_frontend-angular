@@ -42,24 +42,30 @@ export const appRoutes: Routes = [{
 }, {
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
+  data: { state: 'peers' }
 }, {
   path: 'campus',
-  loadChildren: './campus/campus.module#CampusModule'
+  loadChildren: './campus/campus.module#CampusModule',
+  data: { state: 'campus' }
 }, {
   path: 'community',
   loadChildren: './community/community.module#CommunityModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'community' }
 }, {
   path: 'user',
-  loadChildren: './user/user.module#UserModule'
+  loadChildren: './user/user.module#UserModule',
+  data: { state: 'user' }
 }, {
   path: 'profile',
   loadChildren: './profile/profile.module#ProfileModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'profile' }
 }, {
   path: 'home',
   loadChildren: './home/home.module#HomeModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'home' }
 },
 // {
 //   path: '',
@@ -72,28 +78,35 @@ export const appRoutes: Routes = [{
 }, {
   path: 'sign-up',
   loadChildren: './sign-up/sign-up.module#SignUpModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'sign-up' }
 }, {
   path: 'sign-in',
   loadChildren: './sign-in/sign-in.module#SignInModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'sign-in' }
 }, {
   path: 'about-us',
-  loadChildren: './about-us/about-us.module#AboutUsModule'
+  loadChildren: './about-us/about-us.module#AboutUsModule',
+  data: { state: 'about-us' }
 }, {
   path: 'contact-us',
-  loadChildren: './contact-us/contact-us.module#ContactUsModule'
+  loadChildren: './contact-us/contact-us.module#ContactUsModule',
+  data: { state: 'contact-us' }
 }, {
   path: 'digital-campus',
-  loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule'
+  loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule',
+  data: { state: 'digital-campus' }
 }, {
   path: 'advance-search',
-  loadChildren: './advance-search/advance-search.module#AdvanceSearchModule'
+  loadChildren: './advance-search/advance-search.module#AdvanceSearchModule',
+  data: { state: 'advance-search' }
 },
 {
   path: 'account-settings',
   loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
-  canActivate: [CanActivateUserProfile]
+  canActivate: [CanActivateUserProfile],
+  data: { state: 'account-settings' }
 }
 ];
 
