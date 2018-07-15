@@ -8,7 +8,7 @@ import {
   Input
 } from '@angular/core';
 import {
-  Observable
+  timer
 } from 'rxjs';
 
 @Directive({
@@ -37,7 +37,7 @@ export class SharedSlideToggleDirectiveComponent {
       this.el.nativeElement.innerHTML = 'add';
     }
 
-    Observable.timer(300)
+    timer(300)
     .subscribe(() => {
       this.renderer.setStyle(element, 'animation-duration', '0s');
     });

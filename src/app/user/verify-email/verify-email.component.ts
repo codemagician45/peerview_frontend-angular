@@ -10,7 +10,7 @@ import {
   UserService
 } from '../../../services/user.service';
 import {
-  Observable
+  timer
 } from 'rxjs';
 
 @Component({
@@ -31,7 +31,7 @@ export class UserVerifyEmailComponent implements OnInit {
       .subscribe((response: any) => {
         const user = response.user;
         this.userService.setLoggedInUser(user);
-        Observable.timer(1000)
+        timer(1000)
         .subscribe(() => {
           this.router.navigate(['/user/on-boarding/status']);
         });
