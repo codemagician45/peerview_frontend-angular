@@ -23,12 +23,19 @@ import {
 import {
   UserClass
 } from './shared/classes';
+import {
+  routerTransition
+} from './animations';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <main [@routerTransition]="getState(o)">
+      <router-outlet #o="outlet"></router-outlet>
+    </main>
+  `,
   styleUrls: ['./app.component.scss'],
-
+  animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
   constructor (
@@ -64,12 +71,15 @@ export class AppComponent implements OnInit {
 
   public ngOnInit (): void {
     if (!this.userService.getLoggedInUser()) { return; }
-    console.log('userProfile');
     this.userService.getProfile()
     .subscribe((response: UserResponse) => {
 
       UserClass.setUser(response.user);
     });
+  }
+
+  protected getState (outlet): void {
+    return outlet.activatedRouteData.state;
   }
 
   protected getTitle (state, parent): any {
