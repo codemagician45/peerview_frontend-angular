@@ -32,10 +32,8 @@
   }
   .border {
     margin-bottom: 15px;
-    border: 1px solid;
-    padding: 12px;
   }
-    
+
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
@@ -45,7 +43,6 @@
     .border {
       margin-bottom: unset;
       border: unset;
-      padding: unset;
     }
   }
   // Medium Devices, Desktops
@@ -53,4 +50,3 @@
   // Large Devices, Wide Screens
   @media only screen and (min-width : 1200px) {}
 }
-
