@@ -5,6 +5,7 @@ export const routerTransition = trigger('routerTransition', [
     /* order */
     /* 1 */
     query(':enter, :leave', style({
+      position: 'fixed', width: '100%'
     }), {
       optional: true
     }), /* 2 */
