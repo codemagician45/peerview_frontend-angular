@@ -1,17 +1,17 @@
 import {
-  ModuleWithProviders
+    ModuleWithProviders
 } from '@angular/core';
 import {
-  Routes,
-  RouterModule
+    Routes,
+    RouterModule
 } from '@angular/router';
 import {
-  PrivacyPolicyComponent
+    PrivacyPolicyComponent
 } from './privacy-policy.component';
 
 const privacyPolicyRoutes: Routes = [{
-  path: '',
-  component: PrivacyPolicyComponent
+    path: '',
+    component: PrivacyPolicyComponent
 }];
 
 export const privacyPolicyRouting: ModuleWithProviders = RouterModule.forChild(privacyPolicyRoutes);
