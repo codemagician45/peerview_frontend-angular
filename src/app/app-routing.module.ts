@@ -113,8 +113,12 @@ export const appRoutes: Routes = [{
   path: 'terms-of-use-user',
   loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
   data: { state: 'terms-of-use-user' }
-}
-];
+},
+{
+  path: 'privacy-policy',
+  loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
+  data: { state: 'privacy-policy' }
+}];
 
 @NgModule({
   imports: [
