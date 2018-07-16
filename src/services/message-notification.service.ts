@@ -57,8 +57,8 @@ export class MessageNotificationService {
       if (notification.hasTimeout()) {
         setTimeout(
           () => {
-            // onNotificationChange.next(true);
-            // onNotificationChange.complete();
+            onNotificationChange.next(true);
+            onNotificationChange.complete();
             MessageNotificationService.deleteNotification(notification);
           },
           timeout);
@@ -68,7 +68,7 @@ export class MessageNotificationService {
 
   private static addNotification (notification: Notification): void {
     // remove it if it exists already
-    // MessageNotificationService.deleteNotification(notification);
+    MessageNotificationService.deleteNotification(notification);
     MessageNotificationService.notifications[notification.id] = notification;
 
     MessageNotificationService.onShow.next(MessageNotificationService);
