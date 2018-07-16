@@ -70,12 +70,13 @@ export const appRoutes: Routes = [{
 // {
 //   path: '',
 //   loadChildren: './main/main.module#MainModule'
-// }
+// },
 {
   path: '',
   loadChildren: './index/index.module#IndexModule',
   canActivate: [CanActivateUserProfile]
-}, {
+},
+{
   path: 'sign-up',
   loadChildren: './sign-up/sign-up.module#SignUpModule',
   canActivate: [CanActivateUserProfile],
@@ -107,6 +108,11 @@ export const appRoutes: Routes = [{
   loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
   canActivate: [CanActivateUserProfile],
   data: { state: 'account-settings' }
+},
+{
+  path: 'terms-of-use-user',
+  loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
+  data: { state: 'terms-of-use-user' }
 }
 ];
 
