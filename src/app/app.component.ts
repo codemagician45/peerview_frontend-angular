@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import {
   Router,
@@ -15,7 +16,8 @@ import {
   AccountSettingService
 } from '../services/services';
 import {
-  UserService
+  UserService,
+  MessageNotificationService
 } from '../services';
 import {
   UserResponse
@@ -29,11 +31,7 @@ import {
 
 @Component({
   selector: 'app-root',
-  template: `
-    <main [@routerTransition]="getState(o)">
-      <router-outlet #o="outlet"></router-outlet>
-    </main>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [routerTransition]
 })
@@ -43,6 +41,7 @@ export class AppComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private accountSettingService: AccountSettingService,
+    private changeDetectorRef: ChangeDetectorRef,
     private titleService: Title) {
     /**************Loader Function Intialize on change Router***********************/
     router.events.subscribe((val) => {
@@ -68,8 +67,16 @@ export class AppComponent implements OnInit {
   }
 
   protected loading: boolean;
+  protected messageNotificationService: Array<any> = [];
 
   public ngOnInit (): void {
+    MessageNotificationService.onShow.subscribe((messageNotification) => {
+      this.messageNotificationService = [];
+      for (let id of Object.keys(messageNotification.notifications)) {
+        this.messageNotificationService.push(messageNotification.notifications[id]);
+      }
+    });
+
     if (!this.userService.getLoggedInUser()) { return; }
     this.userService.getProfile()
     .subscribe((response: UserResponse) => {

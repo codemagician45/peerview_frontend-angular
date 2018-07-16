@@ -6,3 +6,28 @@ main > {
   }
 }
 
+#global-notifications .alert .text-container {
+  position: relative;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+#global-notifications {
+  .alert {
+    .text-container {
+      position: relative;
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+    .icon .material-icons {
+      font-size: 2rem;
+      vertical-align: top;
+    }
+    button.close {
+      font-size: 3rem;
+      vertical-align: top;
+      vertical-align: top;
+      line-height: 1rem;
+    }
+  }
+}
