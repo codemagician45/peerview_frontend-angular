@@ -50,6 +50,7 @@
     "ngx-scrollspy": "1.2.0",
     "ngx-zendesk-webwidget": "0.1.3",
     "node-sass": "4.9.2",
+    "postcss-loader": "^2.1.6",
     "query-string": "6.1.0",
     "rxjs": "6.2.2",
     "rxjs-compat": "6.2.2",
