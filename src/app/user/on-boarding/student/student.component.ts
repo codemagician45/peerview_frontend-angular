@@ -62,7 +62,6 @@ export class UserOnboardingStudentComponent implements OnInit {
   private getCourses (): void {
     this.courseService.getCourses()
     .subscribe((response: CoursesResponse) => {
-      console.log(response);
       this.courses = response.courses;
     });
   }
@@ -79,7 +78,6 @@ export class UserOnboardingStudentComponent implements OnInit {
   }
 
   protected onChangeCourse (value: number): void {
-    console.log(typeof value);
     this.user.courseIds.push(value);
   }
 
