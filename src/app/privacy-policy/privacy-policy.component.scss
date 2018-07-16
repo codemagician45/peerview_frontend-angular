@@ -12,6 +12,10 @@
   .body {
     h4, p {
       text-align: justify;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 16px;
     }
     .heading {
       font-family: 'Conv_MavenPro-Bold';
@@ -19,12 +23,20 @@
     }
     .sub-heading {
       font-family: 'Conv_MavenPro-Bold';
+      font-size: 16px;
     }
-    .list-item {
+    .list-item {      
       margin-bottom: 15px;
       padding: 15px;
       background: #fff;
       border: solid 1px #ddd;
+
+      strong {
+        font-size: 16px;
+      }
+      p {
+        font-size: 15px;
+      }
     }
   }
 }
