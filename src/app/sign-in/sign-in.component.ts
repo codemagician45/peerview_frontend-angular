@@ -12,7 +12,9 @@ import {
   ISignInViaSocialResponse,
 } from '../shared/models';
 import {
-  UserService
+  UserService,
+  MessageNotificationService,
+  NotificationTypes
 } from '../../services';
 import {
   UserClass
@@ -42,7 +44,20 @@ export class SignInComponent {
   private signInViaSocial: SignInViaSocialModel = new SignInViaSocialModel();
 
   protected onSignIn (isValid: boolean): void {
-    isValid && this.userService.signIn(this.user)
+    if (!isValid) {
+      return;
+    }
+
+    MessageNotificationService.show({
+      notification: {
+        id: 'sign-in-please-wait',
+        message: 'Logging you in',
+        instruction: 'Please wait...'
+      }
+    },
+    NotificationTypes.Info);
+
+    this.userService.signIn(this.user)
     .mergeMap((response: UserResponse) => {
       UserClass.setUser(response.user);
       return this.userService.setLoggedInUser(response.user);
@@ -50,7 +65,27 @@ export class SignInComponent {
     .subscribe(() => {
       this.router.navigate(['/home']);
     }, (error) => {
-
+      if (error.status === 400) {
+        MessageNotificationService.show({
+          notification: {
+            id: 'sign-in-error',
+            message: 'Unable to Login.',
+            reason: error.error.status_message,
+            instruction: 'Please correct the errors and try again.'
+          }
+        },
+        NotificationTypes.Error);
+      } else {
+        MessageNotificationService.show({
+          notification: {
+            id: 'ssign-in-error',
+            message: 'Unable to Login.',
+            reason: 'Some unexpected happened with the application.',
+            instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+          }
+        },
+        NotificationTypes.Error);
+      }
     });
   }
 
