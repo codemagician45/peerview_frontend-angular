@@ -43,37 +43,43 @@ const userRoutes: Routes = [{
     path: 'status',
     component: UserOnboardingSelectStatusComponent,
     data: {
-      step: ['active', 'next', 'next']
+      step: ['active', 'next', 'next'],
+      state: 'on-boarding-status'
     }
   }, {
     path: 'status/organisation',
     component: UserOnboardingOrganisationComponent,
     data: {
-      step: ['complete', 'active', 'next']
+      step: ['complete', 'active', 'next'],
+      state: 'on-boarding-status-organisation'
     }
   }, {
     path: 'status/organisation/interest',
     component: UserOnboardingStudentInterestComponent,
     data: {
-      step: ['complete', 'complete', 'active']
+      step: ['complete', 'complete', 'active'],
+      state: 'on-boarding-status-organisation-interest'
     }
   }, {
     path: 'status/professional',
     component: UserOnboardingProfessionalComponent,
     data: {
-      step: ['complete', 'active', 'next']
+      step: ['complete', 'active', 'next'],
+      state: 'on-boarding-status-professional'
     }
   }, {
     path: 'status/student',
     component: UserOnboardingStudentComponent,
     data: {
-      step: ['complete', 'active', 'next']
+      step: ['complete', 'active', 'next'],
+      state: 'on-boarding-status-student'
     }
   }, {
     path: 'status/student/interest',
     component: UserOnboardingStudentInterestComponent,
     data: {
-      step: ['complete', 'complete', 'active']
+      step: ['complete', 'complete', 'active'],
+      state: 'on-boarding-status-student-interest'
     },
   }]
 }];

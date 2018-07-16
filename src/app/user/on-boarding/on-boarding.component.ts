@@ -9,11 +9,15 @@ import {
 import {
   OnBoardingEmitter
 } from '../../shared/emitter';
+import {
+  routerTransition
+} from '../../animations';
 
 @Component({
   selector: 'user-on-boarding-component',
   templateUrl: './on-boarding.component.html',
-  styleUrls: ['./on-boarding.component.scss']
+  styleUrls: ['./on-boarding.component.scss'],
+  animations: [routerTransition]
 })
 export class UserOnboardingComponent {
   constructor (
@@ -29,13 +33,15 @@ export class UserOnboardingComponent {
     OnBoardingEmitter.removeSubscriber(OnBoardingEmitter.getOnboardingName());
   }
 
+  protected getState (outlet): void {
+    return outlet.activatedRouteData.state;
+  }
+
   private onBoardingEmitterSubscriber (): void {
     OnBoardingEmitter
     .onBoardingCurrentRoute()
     .subscribe((data) => {
       this.steps = data;
-      console.log('this.steps');
-      console.log(this.steps);
       this.changeDetectorRef.detectChanges();
     });
   }
