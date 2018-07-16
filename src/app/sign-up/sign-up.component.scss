@@ -16,6 +16,7 @@
   }
   .btn {
     min-height: 38px;
+    font-size: 18px;
     border-radius: 2px;
   }
   .sign-up-form {
@@ -25,31 +26,38 @@
     width: 340px;
     transform: translate(-50%, -50%);
     form {
-      padding: 8px;
+      padding: 8px 25px 8px ;
       background: #f7f7f7;
       box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    }
-    h2 {
-      margin: 0 0 15px;
-    }
-    .input-group-addon {
-      padding: 5px;
-    }
-    .social-btn {
-      .facebook {
-        background: #3b5998;
-        border-color: #172d5e;
-        color: #ffffff;
+      h2 {
+        margin: 0 0 15px;
       }
-      .linkedIn {
-        background: #0976b4;
-        border-color: #004269;
-        color: #ffffff;
+      .signup-label {
+        padding: 0;
       }
-      .google {
-        background-color: #d9534f;
-        border-color: #d43f3a;
-        color: #ffffff;
+      .sign-up-input {
+        padding: 0;
+        margin-bottom: 3px;
+      }
+      .social-btn {
+        .facebook {
+          background: #3b5998;
+          border-color: #172d5e;
+          color: #ffffff;
+        }
+        .linkedIn {
+          background: #0976b4;
+          border-color: #004269;
+          color: #ffffff;
+        }
+        .google {
+          background-color: #d9534f;
+          border-color: #d43f3a;
+          color: #ffffff;
+        }
+      }
+      .form-group {
+        margin-bottom: 0;
       }
     }
     .hint-text {
@@ -80,34 +88,28 @@
         z-index: 1;
       }
     }
-    .sign-up-input {
-      padding: 0;
-      margin-bottom: 8px;
-    }
-    .social-btn .btn {
-      margin: 10px 0;
-      font-size: 15px;
-      text-align: left;
-      line-height: 24px;
-      i {
-        float: left;
-        margin: 4px 15px  0 5px;
-        min-width: 15px;
-      }
-    }
-    .form-group {
-      margin-bottom: 0;
-    }
 	}
 
 
     // Custom, iPhone Retina
     @media only screen and (min-width : 320px) {}
     // extra Small Devices, Phones
-    @media only screen and (min-width : 480px) {}
+    @media only screen and (min-width : 480px) {
+      .sign-up-form {
+        form {
+          padding: 8px;
+          .sign-up-input {
+            margin-bottom: 8px;
+          }
+          .signup-label {
+            padding: 2rem 0;
+          }
+        }
+      }
+    }
     // Small Devices, Tablets
     @media only screen and (min-width : 768px) {
-      .sign-in-form {
+      .sign-up-form {
         form {
           padding: 10px;
         }
