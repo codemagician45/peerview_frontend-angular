@@ -80,6 +80,9 @@ import {
   SharedReportPostComponent
 } from './report-post/report.post.component';
 import {
+  IndexFooterComponent
+} from './footer/footer.component';
+import {
   CONFIG
 } from '../../../config';
 import {
@@ -128,6 +131,7 @@ let config = new AuthServiceConfig([{
     SharedPostComponent,
     SharedUploadImageComponent,
     SharedReportPostComponent,
+    IndexFooterComponent,
     TimeAgoPipe
   ],
   exports: [
@@ -152,6 +156,7 @@ let config = new AuthServiceConfig([{
     TimeAgoPipe,
     MatProgressBarModule,
     MatDatepickerModule,
+    IndexFooterComponent,
     MatInputModule
   ],
   providers: [

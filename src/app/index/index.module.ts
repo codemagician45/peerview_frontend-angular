@@ -24,9 +24,6 @@ import {
   IndexLeisurePageComponent
 } from './components/leisure-page/leisure-page.component';
 import {
-  IndexFooterComponent
-} from './components/footer/footer.component';
-import {
   IndexOnResizeActiveDirectiveComponent
 } from './directives/on-resize-active';
 import {
@@ -55,7 +52,6 @@ import {
     IndexCommunityPageComponent,
     IndexTrendingNowPageComponent,
     IndexLeisurePageComponent,
-    IndexFooterComponent,
     IndexStickyNavbarComponent,
     IndexOnResizeActiveDirectiveComponent
   ],
