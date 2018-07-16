@@ -78,7 +78,7 @@ export class SignInComponent {
       } else {
         MessageNotificationService.show({
           notification: {
-            id: 'ssign-in-error',
+            id: 'sign-in-error',
             message: 'Unable to Login.',
             reason: 'Some unexpected happened with the application.',
             instruction: 'Please try again, if the issue persists, please try refreshing your browser.'

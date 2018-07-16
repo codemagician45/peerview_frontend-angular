@@ -13,8 +13,11 @@ import {
   Response
 } from '../shared/models';
 import {
-  UserService
+  UserService,
+  MessageNotificationService,
+  NotificationTypes
 } from  '../../services';
+import 'rxjs/add/operator/mergeMap';
 
 import {
   AuthService,
@@ -47,12 +50,82 @@ export class SignUpComponent {
     this.user.lastName = splitNames[1];
 
     if (this.hasAgreed) {
+      MessageNotificationService.show({
+        notification: {
+          id: 'sign-up-please-wait',
+          message: 'Sign-up',
+          instruction: 'Please wait...'
+        }
+      },
+      NotificationTypes.Info);
+
       this.userService.signUp(this.user)
-      .subscribe((response: Response) => {
-        this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
-      }, (error) => {
-        console.log(error);
+      .mergeMap((response: Response) => {
+        return MessageNotificationService.show({
+          notification: {
+            id: 'sign-up-success',
+            message: 'Sign-up.. Success!!!',
+            instruction: 'Redirecting...'
+          }
+        },
+        NotificationTypes.Success);
+      })
+      .toPromise()
+      .then(notificationState => {
+        if (notificationState) {
+          notificationState.subscribe((data: any) => {
+            this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
+          });
+        }
+      })
+      .catch(error => {
+        if (error.status === 400) {
+          MessageNotificationService.show({
+            notification: {
+              id: 'sign-up-error',
+              message: 'Unable to Sign-up.',
+              reason: error.error.status_message,
+              instruction: 'Please correct the errors and try again.'
+            }
+          },
+          NotificationTypes.Error);
+        } else {
+          MessageNotificationService.show({
+            notification: {
+              id: 'sign-up-error',
+              message: 'Unable to Sign-up.',
+              reason: 'Some unexpected happened with the application.',
+              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+            }
+          },
+          NotificationTypes.Error);
+        }
       });
+      // .subscribe((response: Response) => {
+      //   this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
+      // }, (error) => {
+      //   if (error.status === 400) {
+      //     MessageNotificationService.show({
+      //       notification: {
+      //         id: 'sign-up-error',
+      //         message: 'Unable to Sign-up.',
+      //         reason: error.error.status_message,
+      //         instruction: 'Please correct the errors and try again.'
+      //       }
+      //     },
+      //     NotificationTypes.Error);
+      //   } else {
+      //     MessageNotificationService.show({
+      //       notification: {
+      //         id: 'sign-up-error',
+      //         message: 'Unable to Sign-up.',
+      //         reason: 'Some unexpected happened with the application.',
+      //         instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+      //       }
+      //     },
+      //     NotificationTypes.Error);
+      //   }
+      // });
     }
   }
 
