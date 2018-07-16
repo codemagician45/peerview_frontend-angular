@@ -46,7 +46,7 @@ import {
   NotificationService,
   OnboardingService,
   PostService,
-  UserService,
+  UserService
 } from '../services/services';
 import {
   AuthInterceptor
