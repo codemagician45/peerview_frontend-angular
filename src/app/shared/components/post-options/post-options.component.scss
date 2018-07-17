@@ -22,9 +22,10 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   }
 
   button.liked {
-    .like {
-      color: #631990;
-    }
+    color: #631990;
+  }
+  button.not-yet-liked {
+    color: #bbb;
   }
   .reply-container {
     margin-top: 20px;

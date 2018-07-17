@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     font-family: 'Conv_MavenPro-Bold';
-    font-size: 12px;
+    font-size: 15px;
     background-color: #631a90;
   }
   .notification-icon, .search-icon {
@@ -34,6 +34,9 @@
       cursor: pointer;
       i {
         margin: 0 5px;
+      }
+      &:focus {
+        outline: none;
       }
     }
     .brand-image {

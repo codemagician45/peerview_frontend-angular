@@ -70,6 +70,9 @@
 @mixin btn-transparent() {
   background: none;
   border: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 @mixin anchor() {
