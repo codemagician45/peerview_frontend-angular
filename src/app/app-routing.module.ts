@@ -66,6 +66,10 @@ export const appRoutes: Routes = [{
   loadChildren: './home/home.module#HomeModule',
   canActivate: [CanActivateUserProfile],
   data: { state: 'home' }
+}, {
+  path: 'leisure',
+  loadChildren: './leisure/leisure.module#LeisureModule',
+  data: { state: 'leisure' }
 },
 // {
 //   path: '',

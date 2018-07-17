@@ -17,15 +17,12 @@
       margin: 20px 0;
     }
   }
-  .profile-stars {
-    .user-name {
-      position: relative;
-      top: -11px;
-      display: inline-block;
-      font-weight: bold;
-    }
-    .shared-stars-component {
-      margin-top: 5px;
+  .user-name {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    .post-user-name {
+      margin-right: 5px;
     }
   }
   .report-post-component {
@@ -34,7 +31,15 @@
     z-index: 1;
   }
   .user-school-name {
-    font-size: 15px;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: "Maven Pro", sans-serif;
     color: #989898;
+  }
+  .post-image {
+    margin-right: 3px;
+    margin-top: 3px;
+    width: 50px;
+    height: 50px;
   }
 }

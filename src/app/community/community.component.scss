@@ -1,0 +1,14 @@
+.community-component {
+  height: 100%;
+  background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+  background-size: cover;
+  .coming-soon-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+  }
+}

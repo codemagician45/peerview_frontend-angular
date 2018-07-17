@@ -1,16 +1,16 @@
 <div class="shared-post-options-component">
   <div class="options-text" [ngStyle]="{'width': '100%'}">
     <div class="col-xs-6 text-center">
-      <span>{{likes}}</span>
-      <span>Likes</span>
+      <span *ngIf="likes > 0">{{likes}}</span>
+      <span>{{likes >= 2 ? ' Likes' : ' Like'}}</span>
     </div>
     <div class="col-xs-3 text-center">
-      <span>{{post.postReply.length}}</span>
-      <span>{{post.postReply.length >= 2 ? 'Replies' : 'Reply'}}</span>
+      <span *ngIf="post.postReply.length > 0">{{post.postReply.length}}</span>
+      <span>{{post.postReply.length >= 2 ? ' Comments' : ' Comment'}}</span>
     </div>
     <div class="col-xs-3 text-center">
-      <span>{{share}}</span>
-      <span>Share</span>
+      <span *ngIf="share > 0">{{share}}</span>
+      <span>{{share >= 2 ? ' Shares' : ' Share'}}</span>
     </div>
   </div>
   <hr style="width: 100%">
