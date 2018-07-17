@@ -19,11 +19,15 @@ import {
   SignInViaSocialModel,
   SignUpViaSocialModel
 } from '../app/shared/models';
+import {
+  AuthService
+} from 'angularx-social-login';
 
 @Injectable()
 export class UserService {
   constructor (
     private http: HttpClient,
+    private authService: AuthService,
     @Inject(Window) private window: Window
   ) {}
 
@@ -62,6 +66,7 @@ export class UserService {
 
   public signOut (): void {
     this.clearLocalStorage();
+    this.authService.signOut();
   }
 
   public clearLocalStorage (): void {
