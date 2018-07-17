@@ -73,58 +73,61 @@ const routes: Routes = [
   //   path: '',
   //   component: IndexComponent
   // },
+  // {
+  //   path: 'landing',
+  //   component: IndexDuplicationComponent
+  // }, {
+  //   path: 'about',
+  //   component: AboutUsComponent,
+  //   data: {
+  //     name: 'about-us'
+  //   }
+  // }, {
+  //   path: 'about-index',
+  //   component: AboutUsComponent,
+  //   data: {
+  //     name: 'about-us-index'
+  //   }
+  // }, {
+  //   path: 'contact',
+  //   component: ContactComponent,
+  //   data: {
+  //     name: 'contact'
+  //   }
+  // }, {
+  //   path: 'contact-index',
+  //   component: ContactComponent,
+  //   data: {
+  //     name: 'contact-index'
+  //   }
+  // }, {
+  //   path: 'careers',
+  //   component: CareersComponent
+  // },
+  // {
+  //   path: 'terms-of-use',
+  //   component: TermsOfUseComponent
+  // },
   {
-    path: 'landing',
-    component: IndexDuplicationComponent
-  }, {
-    path: 'about',
-    component: AboutUsComponent,
-    data: {
-      name: 'about-us'
-    }
-  }, {
-    path: 'about-index',
-    component: AboutUsComponent,
-    data: {
-      name: 'about-us-index'
-    }
-  }, {
-    path: 'contact',
-    component: ContactComponent,
-    data: {
-      name: 'contact'
-    }
-  }, {
-    path: 'contact-index',
-    component: ContactComponent,
-    data: {
-      name: 'contact-index'
-    }
-  }, {
-    path: 'careers',
-    component: CareersComponent
-  }, {
-    path: 'terms-of-use',
-    component: TermsOfUseComponent
-  }, {
     path: 'terms-of-use-user',
     component: TermsOfUseUserComponent
-  }, {
-    path: 'account-settings',
-    component: AccountSettingsComponent
-  }, {
-    path: 'choose-plan',
-    component: ChoosePlanComponent
-  }, {
-    path: 'notification',
-    component: NotificationComponent
-  }, {
-    path: 'messages',
-    component: MessagesComponent
-  }, {
-    path: 'onBoard',
-    component: OnBoardEmailComponent
-  }
+  },
+  // {
+  //   path: 'account-settings',
+  //   component: AccountSettingsComponent
+  // }, {
+  //   path: 'choose-plan',
+  //   component: ChoosePlanComponent
+  // }, {
+  //   path: 'notification',
+  //   component: NotificationComponent
+  // }, {
+  //   path: 'messages',
+  //   component: MessagesComponent
+  // }, {
+  //   path: 'onBoard',
+  //   component: OnBoardEmailComponent
+  // }
 
   // {
   //   path: 'sign-out',

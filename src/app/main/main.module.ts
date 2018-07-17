@@ -108,9 +108,6 @@ import {
   ReCaptchaModule
 } from 'angular2-recaptcha';
 import {
-  Angular2SocialLoginModule
-} from 'angular2-social-login';
-import {
   LoadingModule
 } from 'ngx-loading';
 import {
@@ -142,32 +139,32 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ScrollSpyModule.forRoot(),
     ImportModule,
     ReCaptchaModule,
-    Angular2SocialLoginModule,
     LoadingModule,
     PerfectScrollbarModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration)
   ],
   declarations: [
-    IndexComponent, AboutUsComponent,
-    CareersComponent, TermsOfUseComponent,
-    ContactComponent,
-    AccountSettingsComponent,
-    ChoosePlanComponent,
-    NotificationComponent,
-    MessagesComponent,
-    OnBoardEmailComponent,
-    SignSocialComponent,
-    ForgotPasswordComponent,
-    ResetpasswordComponent,
-    AdvancedSearchComponent,
+    // IndexComponent, AboutUsComponent,
+    // CareersComponent,
+    // TermsOfUseComponent,
+    // ContactComponent,
+    // AccountSettingsComponent,
+    // ChoosePlanComponent,
+    // NotificationComponent,
+    // MessagesComponent,
+    // OnBoardEmailComponent,
+    // SignSocialComponent,
+    // ForgotPasswordComponent,
+    // ResetpasswordComponent,
+    // AdvancedSearchComponent,
     // BusinessProfileComponent,
-    HomeComponent,
+    // HomeComponent,
     // UserProfileComponent,
-    DashboardComponent,
-    BlogsComponent,
+    // DashboardComponent,
+    // BlogsComponent,
     TermsOfUseUserComponent,
-    IndexDuplicationComponent,
-    EqualValidator
+    // IndexDuplicationComponent,
+    // EqualValidator
   ]
 })
 export class MainModule {}
@@ -184,5 +181,3 @@ let providers = {
     'apiVersion': 'v2.11'
   }
 };
-
-Angular2SocialLoginModule.loadProvidersScripts(providers);
