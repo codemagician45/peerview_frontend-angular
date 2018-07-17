@@ -10,7 +10,9 @@ import {
 import {
   CourseService,
   InterestService,
-  UserService
+  UserService,
+  MessageNotificationService,
+  NotificationTypes
 } from '../../../../../services';
 import {
   IInterestCategoryResponse,
@@ -19,7 +21,7 @@ import {
   InterestCategoryModel,
   Response
 } from '../../../../shared/models';
-import * as _ from 'lodash';
+import 'rxjs/add/operator/mergeMap';
 
 import {
   OnBoardingEmitter
@@ -126,10 +128,45 @@ export class UserOnboardingStudentInterestComponent {
     subInterest.isSelected = !subInterest.isSelected;
   }
 
-  protected onSubmitSubInterests (): void {
+  protected onSubmitSubInterests (): any {
+    MessageNotificationService.show({
+      notification: {
+        id: 'user-onboarding-interest-finish-pleasewait',
+        message: 'Saving...',
+        instruction: 'Please wait...'
+      }
+    },
+    NotificationTypes.Info);
+
     this.userService.saveSubInterests(this.subInterestIds)
-    .subscribe((response: Response) => {
-      this.router.navigate(['/home']);
+    .mergeMap((response: Response) => {
+      return MessageNotificationService.show({
+        notification: {
+          id: 'user-onboarding-interest-finish-success',
+          message: 'Saved... Success!!!',
+          instruction: 'Redirecting...'
+        }
+      },
+      NotificationTypes.Success);
+    })
+    .toPromise()
+    .then(notificationState => {
+      if (notificationState) {
+        notificationState.subscribe((data: any) => {
+          this.router.navigate(['/home']);
+        });
+      }
+    })
+    .catch(error => {
+      MessageNotificationService.show({
+        notification: {
+          id: 'user-onboarding-interest-finish-error',
+          message: 'Unable to Save.',
+          reason: 'Some unexpected happened with the application.',
+          instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+        }
+      },
+        NotificationTypes.Error);
     });
   }
 }
