@@ -31,7 +31,7 @@ export class UserVerifyEmailComponent implements OnInit {
       .subscribe((response: any) => {
         const user = response.user;
         this.userService.setLoggedInUser(user);
-        timer(1000)
+        timer(3000)
         .subscribe(() => {
           this.router.navigate(['/user/on-boarding/status']);
         });
