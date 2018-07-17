@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 import {
   Router,
@@ -7,6 +8,7 @@ import {
 } from '@angular/router';
 import {
   UserModel,
+  UserResponse,
   SignUpViaSocialModel,
   ISocialResponse,
   ISignUpViaSocialResponse,
@@ -17,8 +19,6 @@ import {
   MessageNotificationService,
   NotificationTypes
 } from  '../../services';
-import 'rxjs/add/operator/mergeMap';
-
 import {
   AuthService,
   SocialUser,
@@ -26,6 +26,10 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
+import {
+  UserClass
+} from '../shared/classes';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'sign-up-component',
@@ -40,9 +44,10 @@ export class SignUpComponent {
     private route: ActivatedRoute
   ) {}
 
+  private signUpViaSocial: SignUpViaSocialModel = new SignUpViaSocialModel();
+  private isSignUpViaSocialIsClick: boolean = false;
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
-  private signUpViaSocial: SignUpViaSocialModel = new SignUpViaSocialModel();
 
   protected onSignUp (): void {
     const splitNames = this.user.name.split(' ');
@@ -101,77 +106,51 @@ export class SignUpComponent {
           NotificationTypes.Error);
         }
       });
-      // .subscribe((response: Response) => {
-      //   this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
-      // }, (error) => {
-      //   if (error.status === 400) {
-      //     MessageNotificationService.show({
-      //       notification: {
-      //         id: 'sign-up-error',
-      //         message: 'Unable to Sign-up.',
-      //         reason: error.error.status_message,
-      //         instruction: 'Please correct the errors and try again.'
-      //       }
-      //     },
-      //     NotificationTypes.Error);
-      //   } else {
-      //     MessageNotificationService.show({
-      //       notification: {
-      //         id: 'sign-up-error',
-      //         message: 'Unable to Sign-up.',
-      //         reason: 'Some unexpected happened with the application.',
-      //         instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-      //       }
-      //     },
-      //     NotificationTypes.Error);
-      //   }
-      // });
     }
   }
 
   protected onSignUpViaSocial (provider: string): void {
-    this.enableSocialProviderSubscriber();
     let socialProvider = this.getSocialProviderId(provider);
-    this.authService.signIn(socialProvider);
-  }
+    this.authService.signIn(socialProvider)
+      .then((response: SocialUser) => {
+        const name = response.name.split(' ');
+        this.signUpViaSocial.email = response.email;
+        this.signUpViaSocial.firstName = name[0];
+        this.signUpViaSocial.lastName = name[1];
+        this.signUpViaSocial.image = response.photoUrl;
+        this.signUpViaSocial.provider = response.provider.toLowerCase();
+        this.signUpViaSocial.uid = response.id;
 
-  private enableSocialProviderSubscriber (): void {
-    this.authService.authState
-    .flatMap((response: SocialUser) => {
-      const name = response.name.split(' ');
-      this.signUpViaSocial.email = response.email;
-      this.signUpViaSocial.firstName = name[0];
-      this.signUpViaSocial.lastName = name[1];
-      this.signUpViaSocial.image = response.photoUrl;
-      this.signUpViaSocial.provider = response.provider.toLowerCase();
-      this.signUpViaSocial.uid = response.id;
+        // check if the email is undefined
+        // meaning the email is not yet verified
+        if (!response.email) {
+          let error = {
+            reason: 'Please validate email',
+            error: 401
+          };
 
-      // check if the email is undefined
-      // meaning the email is not yet verified
-      if (!response.email) {
-        let error = {
-          reason: 'Please validate email',
-          error: 401
-        };
+          throw new Error(JSON.stringify(error));
+        }
 
-        throw new Error(JSON.stringify(error));
-      }
-
-      return this.userService.signInViaSocial(this.signUpViaSocial);
-    })
-    .flatMap((response: ISignUpViaSocialResponse) => {
-      return this.userService.setLoggedInUser(response.user);
-    })
-    .subscribe(() => {
-      this.router.navigate(['/home']);
-    }, (error) => {
-      console.log(error);
-    });
+        return this.userService.signInViaSocial(this.signUpViaSocial).toPromise();
+      })
+      .then((response: UserResponse) => {
+        UserClass.setUser(response.user);
+        this.userService.setLoggedInUser(response.user);
+        this.router.navigate(['/home']);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   private getSocialProviderId (provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
+    } else if (provider === 'google') {
+      return GoogleLoginProvider.PROVIDER_ID;
+    } else if (provider === 'linkedin') {
+      return LinkedInLoginProvider.PROVIDER_ID;
     }
 
     return null;

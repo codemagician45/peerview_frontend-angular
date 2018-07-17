@@ -90,48 +90,47 @@ export class SignInComponent {
   }
 
   protected onSignInViaSocial (provider: string): void {
-    this.enableSocialProviderSubscriber();
     let socialProvider = this.getSocialProviderId(provider);
-    this.authService.signIn(socialProvider);
-  }
+    this.authService.signIn(socialProvider)
+      .then((response: SocialUser) => {
+        const name = response.name.split(' ');
+        this.signInViaSocial.email = response.email;
+        this.signInViaSocial.firstName = name[0];
+        this.signInViaSocial.lastName = name[1];
+        this.signInViaSocial.image = response.photoUrl;
+        this.signInViaSocial.provider = response.provider.toLowerCase();
+        this.signInViaSocial.uid = response.id;
 
-  private enableSocialProviderSubscriber (): void {
-    this.authService.authState
-    .mergeMap((response: SocialUser) => {
-      const name = response.name.split(' ');
-      this.signInViaSocial.email = response.email;
-      this.signInViaSocial.firstName = name[0];
-      this.signInViaSocial.lastName = name[1];
-      this.signInViaSocial.image = response.photoUrl;
-      this.signInViaSocial.provider = response.provider.toLowerCase();
-      this.signInViaSocial.uid = response.id;
+        // check if the email is undefined
+        // meaning the email is not yet verified
+        if (!response.email) {
+          let error = {
+            reason: 'Please validate email',
+            error: 401
+          };
 
-      // check if the email is undefined
-      // meaning the email is not yet verified
-      if (!response.email) {
-        let error = {
-          reason: 'Please validate email',
-          error: 401
-        };
+          throw new Error(JSON.stringify(error));
+        }
 
-        throw new Error(JSON.stringify(error));
-      }
-
-      return this.userService.signInViaSocial(this.signInViaSocial);
-    })
-    .mergeMap((response: ISignInViaSocialResponse) => {
-      return this.userService.setLoggedInUser(response.user);
-    })
-    .subscribe(() => {
-      this.router.navigate(['/home']);
-    }, (error) => {
-      console.log(error);
-    });
+        return this.userService.signInViaSocial(this.signInViaSocial).toPromise();
+      })
+      .then((response: UserResponse) => {
+        UserClass.setUser(response.user);
+        this.userService.setLoggedInUser(response.user);
+        this.router.navigate(['/home']);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   private getSocialProviderId (provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
+    } else if (provider === 'google') {
+      return GoogleLoginProvider.PROVIDER_ID;
+    } else if (provider === 'linkedin') {
+      return LinkedInLoginProvider.PROVIDER_ID;
     }
 
     return null;

@@ -28,10 +28,6 @@ import {
   Cloudinary
 } from 'cloudinary-core';
 import {
-  AuthService,
-  Angular2SocialLoginModule
-} from 'angular2-social-login';
-import {
   FileUploadModule
 } from 'ng2-file-upload';
 import {
@@ -96,24 +92,29 @@ import {
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 
-
 let config = new AuthServiceConfig([{
+  id: GoogleLoginProvider.PROVIDER_ID,
+  provider: new GoogleLoginProvider('728624358526-dvsj7v3t4l7i6s9hbulrl7plintkt7ip.apps.googleusercontent.com')
+}, {
   id: FacebookLoginProvider.PROVIDER_ID,
   provider: new FacebookLoginProvider('2018255745088769')
 }]);
+
+export function provideConfig (): any {
+  return config;
+}
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
     FormsModule,
-    Angular2SocialLoginModule,
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
     FileUploadModule,
     MatProgressBarModule,
     MatDatepickerModule,
     MatInputModule,
-    SocialLoginModule.initialize(config)
+    SocialLoginModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -161,12 +162,13 @@ let config = new AuthServiceConfig([{
   ],
   providers: [
     UserService,
-    AuthService,
-    {provide: Window, useValue: window}
+    {provide: Window, useValue: window},
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ]
 })
 export class SharedModule {
-  constructor () {
-    Angular2SocialLoginModule.loadProvidersScripts(CONFIG[CONFIG.environment].socialProviders);
-  }
+  constructor () {}
 }
