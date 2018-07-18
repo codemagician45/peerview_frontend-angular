@@ -38,34 +38,16 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit (): void {
     this.getPosts();
-    this.postSavedSubcriber();
   }
 
   private getPosts (): void {
     this.postService.getPosts(10, 0)
     .subscribe((response: PostsResponse) => {
       this.posts = response.posts;
-      console.log(this.posts);
       if (this.posts.length <= 0) {
-        // this.isDisabled = true;
-        // this.btnLoadMoreText = 'No More Posts To Show';
       }
     }, error => {
       // alert('Error Retrieving All Posts');
-    });
-  }
-
-  /*Subscribe on postSaveEmitter in order to refresh post list after posting new*/
-  private postSavedSubcriber (): void {
-    PostEmitter
-    .postSave()
-    .subscribe(response => {
-      this.postService.getPost(response)
-      .subscribe((data: PostResponse) => {
-        this.posts.unshift(data.post);
-        this.hasAddedPostCounter += 1;
-        console.log(this.posts);
-      });
     });
   }
 
