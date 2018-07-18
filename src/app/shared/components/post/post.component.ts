@@ -8,6 +8,7 @@ import {
 import {
   PostModel,
   PostResponse,
+  PostsResponse,
   Response
 } from '../../models';
 import {
@@ -16,6 +17,9 @@ import {
 import {
   EmitterService
 } from '../../emitter/emitter.component';
+import {
+  PostEmitter
+} from '../../emitter';
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
@@ -35,15 +39,21 @@ export class SharedPostComponent {
   private sharePostSuccessSubscriber = EmitterService.get('sharePostEmitter');
   private postSavedSubscriber = EmitterService.get('postSaveEmitter');
   private hasAddedPostCounter = 0;
+  private counter = 0;
+  private limit = 5;
+  private offset = 10;
   private cryptoUtilities = new CryptoUtilities();
+  private isDisabled = false;
+  protected btnLoadMoreText = 'Load More';
 
   public ngOnInit (): void {
-    this.postSavedSubcriber();
     this.getSharedPostSubscriber();
+    this.postSavedSubcribers();
   }
 
-  private postSavedSubcriber (): void {
-    this.postSavedSubscriber
+  private postSavedSubcribers (): void {
+    PostEmitter
+    .postSave()
     .subscribe(response => {
       this.postService.getPost(response)
       .subscribe((data: PostResponse) => {
@@ -59,6 +69,7 @@ export class SharedPostComponent {
       this.postService.getPost(data.postId)
       .subscribe((response: PostResponse) => {
         this.posts.unshift(response.post);
+        this.hasAddedPostCounter += 1;
       }, error => {
         console.log(error);
       });
@@ -74,9 +85,28 @@ export class SharedPostComponent {
     // delete here the post
     this.postService.deleteOne(postId)
     .subscribe((response: Response) => {
-      console.log(response);
       let index = this.posts.findIndex(filter => filter.id === postId);
       this.posts.splice(index, 1);
+    });
+  }
+
+  protected onLoadMorePost (): void {
+    /*Disable post button after submit to prevent post duplication*/
+    this.isDisabled = true;
+    this.counter = this.hasAddedPostCounter;
+    this.offset = this.offset + this.counter;
+
+    this.postService.getPosts(this.limit, this.offset)
+    .subscribe((response: PostsResponse) => {
+      this.offset = 5 + this.offset;
+      this.limit = 5;
+      this.posts = this.posts.concat(response.posts);
+      this.hasAddedPostCounter = 0;
+      if (response.posts.length > 0) {
+        this.isDisabled = false;
+      } else {
+        this.btnLoadMoreText = 'No More Posts To Show';
+      }
     });
   }
 }
