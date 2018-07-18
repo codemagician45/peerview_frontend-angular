@@ -42,8 +42,9 @@
     <button
       type="button"
       class="btn-peersview-secondary btn-block btn-peersview-md"
-      (click)="onLoadMorePost()">
-        Load More
+      (click)="onLoadMorePost()"
+      [disabled]="isDisabled">
+        {{btnLoadMoreText ? btnLoadMoreText : 'Load More'}}
     </button>
   </div>
 </div>
