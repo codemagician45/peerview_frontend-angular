@@ -1,4 +1,7 @@
 .shared-post-component {
+  button[disabled] {
+    cursor: default;
+  }
   .post {
     margin: 5px 0;
     background-color: #ffffff;
