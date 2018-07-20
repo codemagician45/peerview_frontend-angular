@@ -720,10 +720,6 @@ angular2-recaptcha@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/angular2-recaptcha/-/angular2-recaptcha-1.1.0.tgz#95a489dbea2cffaaf9e65f82a3ae90a5a9e7e432"
 
-angular2-social-login@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/angular2-social-login/-/angular2-social-login-3.1.1.tgz#2a277312932023669a4f741d19cbe42f4d481c3d"
-
 angular2-template-loader@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/angular2-template-loader/-/angular2-template-loader-0.6.2.tgz#c0d44e90fff0fac95e8b23f043acda7fd1c51d7c"
