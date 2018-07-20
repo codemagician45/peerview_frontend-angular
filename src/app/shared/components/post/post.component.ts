@@ -23,6 +23,9 @@ import {
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
+import {
+  UserClass
+} from '../../classes/user';
 
 @Component({
   selector: 'shared-post-component',
@@ -44,6 +47,7 @@ export class SharedPostComponent {
   private offset = 10;
   private cryptoUtilities = new CryptoUtilities();
   private isDisabled = false;
+  private user = UserClass.getUser();
   protected btnLoadMoreText = 'Load More';
 
   public ngOnInit (): void {
@@ -76,9 +80,13 @@ export class SharedPostComponent {
     });
   }
 
-  protected onClickUserProfile (user): void {
+  protected onClickUserProfile (user): Promise<boolean> {
     let userId = this.cryptoUtilities.cipher(user.id);
-    this.router.navigate([`/profile/${userId}`]);
+    if (user.id === this.user.id) {
+      return this.router.navigate([`/profile`]);
+    }
+
+    return this.router.navigate([`/profile/${userId}`]);
   }
 
   protected onDeletePost (postId: number): void {
