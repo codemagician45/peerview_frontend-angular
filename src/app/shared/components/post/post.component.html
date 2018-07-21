@@ -2,7 +2,7 @@
   <div class="post" *ngFor="let post of posts">
     <div class="row">
       <report-post-component [post]="post" (onDeletePost)="onDeletePost($event)"> </report-post-component>
-      <div class="col-xs-12 profile-stars">
+      <div class="col-xs-12">
         <div class="pull-left">
           <cl-image
             public-id="{{post.user.profilePicture}}"
@@ -17,10 +17,12 @@
           <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
             {{post.user.firstName}} {{post.user.lastName}}
           </span>
-          <span class="post-time">{{post.createdAt | date :'short'}}</span>
           <div class="user-school-name">{{post.user.schoolName}}</div>
-          <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
+          <span class="post-time">{{post.createdAt | date :'short'}}</span>
         </div>
+      </div>
+      <div class="col-xs-12 profile-stars">
+        <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
       </div>
       <div class="col-xs-12 post-message">
         <p>
