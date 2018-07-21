@@ -1,14 +1,14 @@
 <div class="shared-post-options-component">
   <div class="options-text" [ngStyle]="{'width': '100%'}">
-    <div class="col-xs-6 text-center">
+    <div class="col-xs-4 text-center">
       <span *ngIf="likes > 0">{{likes}}</span>
       <span>{{likes >= 2 ? ' Likes' : ' Like'}}</span>
     </div>
-    <div class="col-xs-3 text-center">
+    <div class="col-xs-4 text-center">
       <span *ngIf="post.postReplyCount > 0">{{post.postReplyCount}}</span>
       <span>{{post.postReplyCount >= 2 ? ' Comments' : ' Comment'}}</span>
     </div>
-    <div class="col-xs-3 text-center">
+    <div class="col-xs-4 text-center">
       <span *ngIf="share > 0">{{share}}</span>
       <span>{{share >= 2 ? ' Shares' : ' Share'}}</span>
     </div>
