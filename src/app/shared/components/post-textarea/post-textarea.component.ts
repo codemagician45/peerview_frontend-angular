@@ -10,7 +10,9 @@ import {
 import {
   PostModel,
   SharePostResponse,
-  CreatePost
+  CreatePost,
+  PollModel,
+  Option
 } from '../../../shared/models';
 import {
   PostService
@@ -29,13 +31,20 @@ export class SharedPostTextareaComponent {
   protected post: PostModel = new PostModel();
   protected toggleUploadComponent: boolean = false;
   private createPost: CreatePost = new CreatePost();
-  protected isDisabled = false;
+  protected isButtonDisabledOnSubmit: boolean = false;
+  protected typePost: string = 'post';
+  private newPoll: PollModel = new PollModel();
+  private errorMessage: any;
+  protected newPollOption: Option[] = [];
+
   public ngOnInit (): void {
     this.uploadComplete();
+    this.newPollOption.push({option: ''});
+    this.newPollOption.push({option: ''});
   }
 
   protected onAddPost (): void {
-    this.isDisabled = true;
+    this.isButtonDisabledOnSubmit = true;
     if (this.createPost.message) {
       if (this.toggleUploadComponent) {
         PostEmitter
@@ -70,9 +79,9 @@ export class SharedPostTextareaComponent {
       .postSave()
       .emit(response.postId);
       this.createPost.message = '';
-      this.isDisabled = false;
+      this.isButtonDisabledOnSubmit = false;
     }, error => {
-      this.isDisabled = false;
+      this.isButtonDisabledOnSubmit = false;
       console.log(error);
     });
   }
@@ -86,15 +95,23 @@ export class SharedPostTextareaComponent {
       .emit(response.postId);
       this.createPost.message = '';
       this.createPost.attachments = [];
-      this.isDisabled = false;
+      this.isButtonDisabledOnSubmit = false;
     }, error => {
       console.log(error);
-      this.isDisabled = false;
+      this.isButtonDisabledOnSubmit = false;
     });
   }
 
   protected onShowUploadComponent (): void {
     this.toggleUploadComponent = !this.toggleUploadComponent;
+  }
+
+  protected onClickWhichTypeIsSelected (type): void {
+    this.typePost = type;
+  }
+
+  protected onAddPollOption (): void {
+    this.newPollOption.push({option: ''});
   }
 
   /*Destroy subscriber*/

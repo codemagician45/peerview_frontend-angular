@@ -37,7 +37,24 @@
   .post-btn {
     margin-top: -15px;
   }
-
+  .poll {
+    margin-bottom: 15px;
+    border: solid 1px #631a90;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    // padding: 10px 15px;
+  }
+  .poll-btn {
+    margin-top: -5px;
+    margin-left: 5px;
+  }
+  .poll-option {
+    li {
+      border-top: solid 1px #e9eaed;
+      padding: 3px 10px;
+    }
+  }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
@@ -52,7 +69,7 @@
   @media only screen and (min-width : 768px) {
     .post-menu {
       li a {
-        font-size: 18px;
+        font-size: 17px;
       }
       > li {
         border-right: unset;

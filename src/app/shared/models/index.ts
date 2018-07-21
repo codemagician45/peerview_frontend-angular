@@ -9,3 +9,4 @@ export * from './sign-up';
 export * from './interface';
 export * from './interest-category';
 export * from './sub-interest';
+export * from './poll.ts';

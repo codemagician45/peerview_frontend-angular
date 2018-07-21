@@ -1,17 +1,42 @@
 <div class="shared-post-textarea-component">
   <div class="post-menu">
-    <li role="presentation" class="active"><a href="#">Write a Post</a></li>
-    <li role="presentation"><a href="#">Create Poll</a></li>
-    <li role="presentation"><a href="#">Share a Story</a></li>
+    <li role="presentation" class="active"><a (click)="onClickWhichTypeIsSelected('post')">Write a Post</a></li>
+    <li role="presentation"><a (click)="onClickWhichTypeIsSelected('poll')">Create Poll</a></li>
+    <li role="presentation"><a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
   </div>
-  <div class="post">
+  <div class="post" *ngIf="typePost === 'post'">
     <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="createPost.message"></textarea>
 
     <shared-upload-image-component *ngIf="toggleUploadComponent"></shared-upload-image-component>
 
     <div class="text-right options">
       <label class="img-upload flat-btn" (click)="onShowUploadComponent()"> <i class="material-icons">image</i> </label>
-      <input type="submit" class="btn btn-peersview-primary btn-sm post-btn" value="ADD POST" (click)="onAddPost()" [disabled]="isDisabled">
+      <input type="submit" class="btn btn-peersview-primary btn-sm post-btn" value="ADD POST" (click)="onAddPost()" [disabled]="isButtonDisabledOnSubmit">
     </div>
+  </div>
+  <!-- POLL -->
+  <div class="poll" *ngIf="typePost === 'poll'">
+    <form #addnewpoll="ngForm" (ngSubmit)="createpoll()">
+      <textarea class="form-control" name="newpoll_name" [(ngModel)]="newPoll.name" placeholder="Ask something..."></textarea>
+      <ul class="poll-option">
+        <li *ngFor="let item of newPollOption; let i = index;">
+          <input type="text" name="{{i}}" #name="ngModel" ngModel placeholder="Add an option"/>
+s       </li>
+      </ul>
+      <div>
+        <a class="btn-add-new" id="add-poll-opt" (click)="onAddPollOption()">Add New</a> <br/>
+        <p class="text-danger" style="margin-left:11px;" *ngIf="errorMessage">{{this.errorMessage}}</p>
+      </div>
+      <div class="bottom-block">
+        <span class="duration-poll"> Poll Duration(Days):
+          <input name="new_poll_duration" [(ngModel)]="newPoll.timeLimit" type="number">
+        </span>
+        <button class="btn btn-peersview-primary btn-sm post-btn poll-btn" type="submit">ADD POST</button>
+      </div>
+    </form>
+  </div>
+  <!-- Share a Story -->
+  <div class="share" *ngIf="typePost === 'share'">
+    SHARE
   </div>
 </div>

@@ -2573,13 +2573,13 @@ i.icon-success {
   -webkit-border-radius: 11px;
 }
 
-.poll {
-  border: solid 1px #cca1f3;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  padding: 10px 15px;
-}
+// .poll {
+//   border: solid 1px #cca1f3;
+//   border-radius: 3px;
+//   -moz-border-radius: 3px;
+//   -webkit-border-radius: 3px;
+//   padding: 10px 15px;
+// }
 
 .poll-title {
   color: #6d1f8d;
@@ -2587,7 +2587,7 @@ i.icon-success {
 }
 
 .poll ul {
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .poll ul li {
@@ -2863,16 +2863,19 @@ i.icon-success {
 }
 
 .tab-pill span {
+  margin: 0;
   background: transparent;
   color: #323c47;
   border-bottom: 1px solid #dbdbdb;
   border-radius: 0;
   display: block;
-  font-family: "Conv_MavenPro-Bold";
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bold;
 }
 
 .news-post {
   margin: 0 0 20px 0;
+  padding: 0;
 }
 
 .news-post .news-title {
@@ -5030,8 +5033,8 @@ h1.whats-title {
 }
 .poll-option {
   //height: 80px;
-  height: 53px;
-  overflow: auto;
+  // height: 53px;
+  // overflow: auto;
 }
 /*about page css*/
 

@@ -10,13 +10,19 @@
     padding: 0;
   }
   .center-section {
-    padding: 5px;
+    // padding: 5px;
     .top-post {
       margin: 5px 0;
       background-color: #ffffff;
       padding: 20px;
       font-family: Georgia;
     }
+    .shared-post-textarea {
+      background-color: #fff;
+    }
+  }
+  .post-row {
+    margin: 0;
   }
   home-left-sidebar-component {
     position: sticky;
@@ -25,6 +31,7 @@
   home-right-sidebar-component {
     position: sticky;
     top: 5%;
+    padding-right: 0;
   }
   .shared-peers-you-may-know-component {
     margin-top: 3px;

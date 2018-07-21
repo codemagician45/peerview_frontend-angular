@@ -10,22 +10,31 @@
           [routerLink]="['/home']">
         </cl-image>
 
-        <div class="home" [routerLink]="['/home']" [routerLinkActive]="'page-active'">
-          <i class="material-icons">home</i>
-          Home
-        </div>
-        <div class="community" [routerLink]="['/community']">
-          <i class="material-icons">forum</i>
-          Community
-        </div>
-        <div class="campus" [routerLink]="['/campus']">
-          <i class="material-icons">group</i>
-          Campus
-        </div>
-        <div class="leisure" [routerLink]="['/leisure']">
+        <li class="home" [routerLink]="['/home']" [routerLinkActive]="'page-active'">
+          <div class="nav-link">
+            <i class="material-icons">home</i>
+            <div>Home</div>
+          </div>
+        </li>
+
+        <li class="community" [routerLink]="['/community']">
+          <div class="nav-link">
+            <i class="material-icons">forum</i>
+            <div>Community</div>
+          </div>
+        </li>
+
+        <li class="campus" [routerLink]="['/campus']">
+          <div class="nav-link">
+            <i class="material-icons">group</i>
+            <div>Campus</div>
+          </div>
+        </li>
+
+        <li class="leisure" [routerLink]="['/leisure']">
           <i class="material-icons">card_giftcard</i>
           Leisure
-        </div>
+        </li>
       </div>
 
       <div class="nav-right">
