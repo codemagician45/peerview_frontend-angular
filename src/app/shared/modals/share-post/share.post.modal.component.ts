@@ -16,6 +16,11 @@ import {
 import {
   PostService
 } from '../../../../services/services';
+import {
+  MessageNotificationService,
+  NotificationTypes
+} from '../../../../services';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'app-share-post-modal',
@@ -48,6 +53,17 @@ export class SharePostModalComponent implements OnInit {
       });
     }, error => {
       console.log(error);
+      if (error.status === 400) {
+        MessageNotificationService.show({
+          notification: {
+            id: 'share-post-error',
+            message: 'Cannot Share Post.',
+            reason: 'You have to say something about this post',
+            instruction: 'Retry sharing post, say something about the post before trying to share.'
+          }
+        },
+      NotificationTypes.Error);
+    }
       this.isCurrentlySharing = false;
     });
   }
