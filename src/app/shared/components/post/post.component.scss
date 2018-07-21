@@ -15,6 +15,12 @@
     margin-top: 5px;
     white-space: nowrap;
   }
+  .post-time {
+    font-weight: normal;
+  }
+  .profile-stars {
+    margin-top: 5px;
+  }
   .post-message {
     p {
       margin: 20px 0;
@@ -26,6 +32,7 @@
     font-weight: bold;
     .post-user-name {
       margin-right: 5px;
+      font-family: "Maven Pro", sans-serif;
     }
   }
   .report-post-component {
