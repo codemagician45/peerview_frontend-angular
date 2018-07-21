@@ -15,9 +15,6 @@
     margin-top: 5px;
     white-space: nowrap;
   }
-  .post-time {
-    font-weight: normal;
-  }
   .profile-stars {
     margin-top: 5px;
   }
@@ -40,7 +37,9 @@
     right: 0;
     z-index: 1;
   }
-  .user-school-name {
+  .user-school-name,
+  .post-time {
+    display: block;
     font-size: 12px;
     font-weight: normal;
     font-family: "Maven Pro", sans-serif;
