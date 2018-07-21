@@ -31,8 +31,41 @@
     display: inline-block;
     font-weight: bold;
     .post-user-name {
-      margin-right: 5px;
-      font-family: "Maven Pro", sans-serif;
+      margin-right: 5px; 
+    }
+  }
+  .post-images{
+    display: table;
+    width: 96%;
+    margin-left: 10px;
+    .image-outer {
+      display: inline-grid;
+      .image-inner {
+        margin: 0 0 2px 2px;
+        border: 2px solid #d0d0d0;
+        border-radius: 3px;
+  
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .single-image {
+      width: 100%;
+    }
+    .multiple-image{
+      width: 50%;
+    }
+  }
+  .profile-stars {
+    .user-name {
+      position: relative;
+      top: -11px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    .shared-stars-component {
+      margin-top: 5px;
     }
   }
   .post-images{
