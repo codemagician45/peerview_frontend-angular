@@ -52,11 +52,11 @@ export class SharedImagePreviewComponent {
       let widthIsGreater = imageRef.clientWidth > imageRef.clientHeight;
 
       if (closeToSquare) {
-          this.imageOrientation = 'portrait';
+        this.imageOrientation = 'portrait';
       } else if (widthIsGreater) {
-          this.imageOrientation = 'landscape';
+        this.imageOrientation = 'landscape';
       } else {
-          this.imageOrientation = 'portrait';
+        this.imageOrientation = 'portrait';
       }
     }, 80);
   }
