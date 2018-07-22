@@ -1,9 +1,15 @@
 <div class="shared-post-component">
+  <h2
+    class="no-post-yet text-center"
+    *ngIf="posts.length === 0"
+  >
+    No Post Yet. Be the one to POST
+  </h2>
   <div class="post" *ngFor="let post of posts">
     <div class="row">
-      <report-post-component 
-      [post]="post" 
-      (onDeletePost)="onDeletePost($event)"> 
+      <report-post-component
+      [post]="post"
+      (onDeletePost)="onDeletePost($event)">
       </report-post-component>
       <div class="col-xs-12">
         <div class="pull-left">
@@ -32,24 +38,24 @@
           {{post.message}}
         </p>
       </div>
-      
+
       <div class="col-xs-12 post-images">
-        <div 
-          class="image-outer" 
-          *ngFor="let attachment of post.attachments" 
+        <div
+          class="image-outer"
+          *ngFor="let attachment of post.attachments"
           [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
         >
-          <div 
-            class="image-inner" 
+          <div
+            class="image-inner"
             *ngIf="attachment.cloudinaryPublicId"
             >
-            <cl-image 
+            <cl-image
               public-id="{{attachment.cloudinaryPublicId}}"
             >
-              <cl-transformation 
+              <cl-transformation
                 height="500"
-                width="500" 
-                crop="fill" 
+                width="500"
+                crop="fill"
                 radius="3"
               >
               </cl-transformation>
@@ -65,11 +71,13 @@
           [ratingCount]="post.ratingCount"
           [views]="post.pageviewCount"
           [share]="post.shareCount"
-          [replies]="post.postReplyCount"></shared-post-options-component>
+          [replies]="post.postReplyCount"
+        >
+        </shared-post-options-component>
       </div>
     </div>
   </div>
-  <div class="load-more">
+  <div class="load-more" *ngIf="posts.length !== 0">
     <button
       type="button"
       class="btn-peersview-secondary btn-block btn-peersview-md"
