@@ -1,7 +1,10 @@
 <div class="shared-post-component">
   <div class="post" *ngFor="let post of posts">
     <div class="row">
-      <report-post-component [post]="post" (onDeletePost)="onDeletePost($event)"> </report-post-component>
+      <report-post-component 
+      [post]="post" 
+      (onDeletePost)="onDeletePost($event)"> 
+      </report-post-component>
       <div class="col-xs-12">
         <div class="pull-left">
           <cl-image
@@ -29,6 +32,32 @@
           {{post.message}}
         </p>
       </div>
+      
+      <div class="col-xs-12 post-images">
+        <div 
+          class="image-outer" 
+          *ngFor="let attachment of post.attachments" 
+          [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
+        >
+          <div 
+            class="image-inner" 
+            *ngIf="attachment.cloudinaryPublicId"
+            >
+            <cl-image 
+              public-id="{{attachment.cloudinaryPublicId}}"
+            >
+              <cl-transformation 
+                height="500"
+                width="500" 
+                crop="fill" 
+                radius="3"
+              >
+              </cl-transformation>
+            </cl-image>
+          </div>
+        </div>
+      </div>
+
       <div class="col-xs-12">
         <shared-post-options-component
           [post]="post"
