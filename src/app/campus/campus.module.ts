@@ -11,6 +11,12 @@ import {
 import {
   campusRouting
 } from './campus-routing.component';
+import {
+  CampusLeftSidebarComponent
+} from './components/left-sidebar/left-sidebar.component';
+import {
+  CampusAllStudentsComponent
+} from './all-students/all-students.component';
 
 @NgModule({
   imports : [
@@ -18,7 +24,9 @@ import {
     campusRouting
   ],
   declarations : [
-    CampusComponent
+    CampusComponent,
+    CampusLeftSidebarComponent,
+    CampusAllStudentsComponent
   ],
   exports: [],
   providers: []

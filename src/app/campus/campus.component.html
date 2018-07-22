@@ -1,9 +1,111 @@
-<div class="campus-component">
-  <div class="container">
-    <shared-navbar-unauth-component>
-    </shared-navbar-unauth-component>
+<shared-navbar-component [active]="'campus'"></shared-navbar-component>
+<div id="join-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-brand">
+        <cl-image
+          class="mouse-pointer"
+          public-id="peersviewBrand"
+        >
+        </cl-image>
+      </div>
+      <h4 class="modal-heading">Join Your University</h4>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Select Your Institution</label>
+            <select class="form-control">
+              <option>Select</option>
+              <option>University of Manchester</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1"
+          data-dismiss="modal"
+        > Cancel
+        </button>
+        <button class="btn-peersview-primary btn-peersview-md">
+          Join With Institutions Account
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="coming-soon-label">
-    COMING SOON...
+</div>
+
+<div
+  id="invite-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-brand">
+        <cl-image
+          class="mouse-pointer"
+          public-id="peersviewBrand"
+        >
+        </cl-image>
+      </div>
+      <h4 class="modal-heading">Invite Your University</h4>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Name of institution</label>
+          <input class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Institution Email</label>
+          <input class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1"
+          data-dismiss="modal"
+        > Cancel
+        </button>
+        <button class="btn-peersview-primary btn-peersview-md">
+          Invite
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="campus-component">
+  <div class="col-md-12 text-center contents">
+    <div class="wrapper">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>The Campus is the best way to Connect with Your Classmates and School Mates.</h1>
+        <h3>Begin Networking Through Your University's Online Campus</h3>
+        <p class="text-center">
+          <button
+            class="btn-peersview-secondary btn-peersview-lg"
+            data-toggle="modal"
+            data-target="#join-modal"
+            [style.marginRight.px]="10"
+          > Join your University's Network
+          </button>
+          <button
+            class="btn-peersview-secondary btn-peersview-lg"
+            data-toggle="modal"
+            data-target="#invite-modal"
+            [style.marginLeft.px]="10"
+          > Invite your University
+          </button>
+        </p>
+      </div>
+    </div>
   </div>
 </div>
