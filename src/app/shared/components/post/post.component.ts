@@ -6,6 +6,11 @@ import {
   Router
 } from '@angular/router';
 import {
+  MatDialog,
+  MatDialogRef,
+  MatDialogConfig
+} from '@angular/material';
+import {
   PostModel,
   PostResponse,
   PostsResponse,
@@ -26,6 +31,9 @@ import {
 import {
   UserClass
 } from '../../classes/user';
+import {
+  SharedImagePreviewComponent
+} from '../../modals/image-preview/image-preview.component';
 
 @Component({
   selector: 'shared-post-component',
@@ -35,10 +43,12 @@ import {
 export class SharedPostComponent {
   constructor (
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   @Input() protected posts: Array<PostModel>;
+  private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private sharePostSuccessSubscriber = EmitterService.get('sharePostEmitter');
   private postSavedSubscriber = EmitterService.get('postSaveEmitter');
   private hasAddedPostCounter = 0;
@@ -116,5 +126,13 @@ export class SharedPostComponent {
         this.btnLoadMoreText = 'No More Posts To Show';
       }
     });
+  }
+
+  protected onClickPhoto (postAttachments, imageIndex): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.data = { images: postAttachments, clickIndex: imageIndex };
+    this.dialogRef = this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 }

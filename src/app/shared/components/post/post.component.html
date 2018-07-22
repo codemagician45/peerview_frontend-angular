@@ -42,8 +42,9 @@
       <div class="col-xs-12 post-images">
         <div
           class="image-outer"
-          *ngFor="let attachment of post.attachments"
+          *ngFor="let attachment of post.attachments; let imageIndex = index"
           [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
+          (click)="onClickPhoto(post.attachments, imageIndex)"
         >
           <div
             class="image-inner"
