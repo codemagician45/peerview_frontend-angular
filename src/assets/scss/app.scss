@@ -429,6 +429,15 @@ input[type="checkbox"]:focus {
       // }
     }
   }
+
+  .image-preview-modal {
+    .mat-dialog-container{
+      top: 10px;
+      width: 800px;
+      max-width: 800px;
+      padding: 2px;
+    }
+  }
 }
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {}
@@ -436,9 +445,9 @@ input[type="checkbox"]:focus {
 @media only screen and (min-width : 480px) {}
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  .mat-dialog-container {
-    width: 500px !important;
-  }
+  // .mat-dialog-container {
+  //   width: 500px !important;
+  // }
 }
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {}
