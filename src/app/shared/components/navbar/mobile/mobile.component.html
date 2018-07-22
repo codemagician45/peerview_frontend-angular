@@ -1,5 +1,5 @@
 <div class="navbar-mobile-component">
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top peersiew-navbar">
     <div class="container">
       <div class="nav-left">
         <cl-image
@@ -51,7 +51,9 @@
   </nav>
   <div class="nav-menu">
     <div class="col-xs-3 p-peersview-0 text-center home">
-      <a [routerLink]="['/home']">
+      <a 
+      [routerLink]="['/home']"
+      [routerLinkActive]="'page-active'">
         <i class="material-icons">home</i>
         <span>Home</span>
       </a>

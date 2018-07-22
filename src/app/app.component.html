@@ -1,4 +1,4 @@
-<div id="global-notifications" class="container-fluid" style="position: absolute; z-index: 1; margin: 0 auto 0 auto; width: 100%;">
+<div id="global-notifications" class="container-fluid" style="position: fixed; z-index: 4; margin: 0 auto 0 auto; width: 100%;">
   <div *ngFor="let notification of messageNotificationService">
     <div
       id="{{notification.id}}"

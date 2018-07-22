@@ -1,8 +1,11 @@
 <div class="shared-post-textarea-component">
   <div class="post-menu">
-    <li role="presentation" class="active"><a (click)="onClickWhichTypeIsSelected('post')">Write a Post</a></li>
-    <li role="presentation"><a (click)="onClickWhichTypeIsSelected('poll')">Create Poll</a></li>
-    <li role="presentation"><a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
+    <li role="presentation" [ngClass]="{'active' : typePost === 'post'}">
+      <a (click)="onClickWhichTypeIsSelected('post')">Write a Post</a></li>
+    <li role="presentation" [ngClass]="{'active' : typePost === 'poll'}">
+      <a (click)="onClickWhichTypeIsSelected('poll')">Create Poll</a></li>
+    <li role="presentation" [ngClass]="{'active' : typePost === 'share'}">
+      <a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
   </div>
   <div class="post" *ngIf="typePost === 'post'">
     <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="createPost.message"></textarea>
@@ -17,20 +20,21 @@
   <!-- POLL -->
   <div class="poll" *ngIf="typePost === 'poll'">
     <form #addnewpoll="ngForm" (ngSubmit)="createpoll()">
-      <textarea class="form-control" name="newpoll_name" [(ngModel)]="newPoll.name" placeholder="Ask something..."></textarea>
+      <textarea class="form-control" name="newpoll_name" [(ngModel)]="poll.name" placeholder="Ask something..."></textarea>
       <ul class="poll-option">
-        <li *ngFor="let item of newPollOption; let i = index;">
+        <li *ngFor="let item of poll.options; let i = index;">
           <input type="text" name="{{i}}" #name="ngModel" ngModel placeholder="Add an option"/>
-s       </li>
+        </li>
       </ul>
       <div>
         <a class="btn-add-new" id="add-poll-opt" (click)="onAddPollOption()">Add New</a> <br/>
         <p class="text-danger" style="margin-left:11px;" *ngIf="errorMessage">{{this.errorMessage}}</p>
       </div>
       <div class="bottom-block">
-        <span class="duration-poll"> Poll Duration(Days):
-          <input name="new_poll_duration" [(ngModel)]="newPoll.timeLimit" type="number">
-        </span>
+        <div class="duration-poll"> 
+          <span>Poll Duration(Days):</span>
+          <input name="new_poll_duration" [(ngModel)]="poll.duration" type="number">
+        </div>
         <button class="btn btn-peersview-primary btn-sm post-btn poll-btn" type="submit">ADD POST</button>
       </div>
     </form>

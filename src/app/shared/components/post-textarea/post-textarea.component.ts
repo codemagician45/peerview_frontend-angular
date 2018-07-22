@@ -11,12 +11,15 @@ import {
   PostModel,
   SharePostResponse,
   CreatePost,
-  PollModel,
-  Option
+  PollModel
 } from '../../../shared/models';
 import {
   PostService
 } from '../../../../services/services';
+import {
+  MessageNotificationService,
+  NotificationTypes
+} from '../../../../services';
 declare let swal: any;
 
 @Component({
@@ -33,14 +36,11 @@ export class SharedPostTextareaComponent {
   private createPost: CreatePost = new CreatePost();
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
-  private newPoll: PollModel = new PollModel();
+  private poll: PollModel = new PollModel();
   private errorMessage: any;
-  protected newPollOption: Option[] = [];
 
   public ngOnInit (): void {
     this.uploadComplete();
-    this.newPollOption.push({option: ''});
-    this.newPollOption.push({option: ''});
   }
 
   protected onAddPost (): void {
@@ -111,7 +111,18 @@ export class SharedPostTextareaComponent {
   }
 
   protected onAddPollOption (): void {
-    this.newPollOption.push({option: ''});
+    if (this.poll.options.length === 4) {
+      MessageNotificationService.show({
+        notification: {
+          id: 'cannot-add-more-option',
+          message: 'Cannot add more option',
+          instruction: 'Only four (4) options are allowed.'
+        }
+      },
+      NotificationTypes.Info);
+    } else {
+      this.poll.options.push('');
+    }
   }
 
   /*Destroy subscriber*/

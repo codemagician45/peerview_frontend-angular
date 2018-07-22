@@ -2,7 +2,6 @@
 
 .navbar-mobile-component {
   .navbar-default {
-    padding: 15px 0 0 0;
     font-family: 'Conv_MavenPro-Bold';
     font-size: 12px;
     background-color: #631a90;
@@ -12,15 +11,21 @@
     color: #ffffff;
   }
   .nav-right {
+    margin-top: 13px;
     float: right;
     position: relative;
+    display: inline-flex;
     i {
       padding: 0 5px;
+    }
+    .dropdown {
+      margin-left: 5px;
     }
   }
   .nav-left {
     float: left;
     .brand-image {
+      margin-top: 10px;
       cursor: pointer;
     }
   }
@@ -54,7 +59,7 @@
     width: 100%;
     z-index: 2;
     .home, .community, .campus, .leisure {
-      padding: 10px 0 10px 0;
+      padding: 5px 0;
       background-color: #ccc;
       a {
         display: grid;
@@ -62,7 +67,7 @@
       }
     }
     > div {
-      border-right: 2px solid $primary-color;
+      border-right: 1px solid #999;
       &:last-child {
         border-right: none;
       }
@@ -73,5 +78,10 @@
     top: 10px;
     color: #fff;
     padding: 0;
+  }
+  .home, .community, .campus, .leisure { 
+    .page-active {
+      color: #631990 !important;
+    }
   }
 }

@@ -41,6 +41,16 @@ export class SharePostModalComponent implements OnInit {
 
   protected sharePost (): void  {
     this.isCurrentlySharing = true;
+
+    MessageNotificationService.show({
+      notification: {
+        id: 'share-post-please-wait',
+        message: 'Sharing post',
+        instruction: 'Please wait...'
+      }
+    },
+    NotificationTypes.Info);
+
     this.postservice.sharepost(this.post.id, this.share)
     .subscribe((response: SharePostResponse) => {
 
@@ -57,9 +67,9 @@ export class SharePostModalComponent implements OnInit {
         MessageNotificationService.show({
           notification: {
             id: 'share-post-error',
-            message: 'Cannot Share Post.',
-            reason: 'You have to say something about this post',
-            instruction: 'Retry sharing post, say something about the post before trying to share.'
+            message: 'Unable to Share Post.',
+            reason: 'Share details should be filled in.',
+            instruction: 'Please say something about this post.'
           }
         },
       NotificationTypes.Error);

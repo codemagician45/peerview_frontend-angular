@@ -1,7 +1,4 @@
 .shared-peers-you-may-know-component {
-  // margin: 0;
-  // padding: 15px;
-  // color: #333333;
   padding: 15px;
   border-radius: 3px;
   background: #ffffff;
@@ -12,5 +9,8 @@
     a {
       float: right;
     }
+  }
+  .view-all {
+    margin-bottom: 15px;
   }
 }

@@ -1,7 +1,9 @@
 <div class="shared-peers-you-may-know-component">
   <span class="peers-you-may-know-header">
-    Peers You May Know
-    <a [routerLink]="['/peers/list']" class="peersview-primary-color">VIEW ALL</a>
+    <div>Peers You May Know</div>
+    <div class="view-all">
+      <a [routerLink]="['/peers/list']" class="peersview-primary-color">VIEW ALL</a>
+    </div>
   </span>
   <div class="peer-item" *ngFor="let peer of peers">
     <button class="flat-btn"><i class="material-icons">person_add</i></button>
