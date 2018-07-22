@@ -17,6 +17,9 @@ import {
 import {
   CampusAllStudentsComponent
 } from './all-students/all-students.component';
+import {
+  CampusApiService
+} from '../../services/api/campus.api.service';
 
 @NgModule({
   imports : [
@@ -29,7 +32,7 @@ import {
     CampusAllStudentsComponent
   ],
   exports: [],
-  providers: []
+  providers: [CampusApiService]
 })
 export class CampusModule {}
 
