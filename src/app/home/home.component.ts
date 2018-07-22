@@ -29,7 +29,7 @@ import {
 export class HomeComponent implements OnInit {
   constructor (private postService: PostService) {}
 
-  protected posts: Array<PostModel>;
+  protected posts: Array<PostModel> = [];
   protected emailOfPeerToInvite: string;
   protected user: UserModel = UserClass.getUser();
   private limit = 5;
