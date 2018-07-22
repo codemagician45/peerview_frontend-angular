@@ -4,7 +4,11 @@
       <a (click)="onClickWhichTypeIsSelected('post')">Write a Post</a></li>
     <li role="presentation" [ngClass]="{'active' : typePost === 'poll'}">
       <a (click)="onClickWhichTypeIsSelected('poll')">Create Poll</a></li>
-    <li role="presentation" [ngClass]="{'active' : typePost === 'share'}">
+    <li
+      role="presentation"
+      *ngIf="shareMenu"
+      [ngClass]="{'active' : typePost === 'share'}"
+    >
       <a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
   </div>
   <div class="post" *ngIf="typePost === 'post'">
@@ -31,7 +35,7 @@
         <p class="text-danger" style="margin-left:11px;" *ngIf="errorMessage">{{this.errorMessage}}</p>
       </div>
       <div class="bottom-block">
-        <div class="duration-poll"> 
+        <div class="duration-poll">
           <span>Poll Duration(Days):</span>
           <input name="new_poll_duration" [(ngModel)]="poll.duration" type="number">
         </div>

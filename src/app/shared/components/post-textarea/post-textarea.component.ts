@@ -1,5 +1,6 @@
 import {
   Component,
+  Input
 } from '@angular/core';
 import {
   EmitterService
@@ -31,13 +32,16 @@ declare let swal: any;
 export class SharedPostTextareaComponent {
   constructor (private postService: PostService) {}
 
-  protected post: PostModel = new PostModel();
-  protected toggleUploadComponent: boolean = false;
   private createPost: CreatePost = new CreatePost();
-  protected isButtonDisabledOnSubmit: boolean = false;
-  protected typePost: string = 'post';
   private poll: PollModel = new PollModel();
   private errorMessage: any;
+  protected post: PostModel = new PostModel();
+  protected toggleUploadComponent: boolean = false;
+  protected isButtonDisabledOnSubmit: boolean = false;
+  protected typePost: string = 'post';
+  @Input() protected postMenu: boolean = true;
+  @Input() protected pollMenu: boolean = true;
+  @Input() protected shareMenu: boolean = true;
 
   public ngOnInit (): void {
     this.uploadComplete();
