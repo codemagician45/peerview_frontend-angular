@@ -58,6 +58,6 @@ export class SharedImagePreviewComponent {
       } else {
           this.imageOrientation = 'portrait';
       }
-    }, 50);
+    }, 80);
   }
 }
