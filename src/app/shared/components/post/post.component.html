@@ -8,16 +8,24 @@
   <div class="post" *ngFor="let post of posts">
     <div class="row">
       <report-post-component
+<<<<<<< HEAD
       [post]="post"
       (onDeletePost)="onDeletePost($event)">
       </report-post-component>
       <div class="col-xs-12">
+=======
+        [post]="post" 
+        (onDeletePost)="onDeletePost($event)"
+      > 
+      </report-post-component>
+      <div class="col-xs-12 profile-stars">
+>>>>>>> Fixed and removed conflicts on post.component.html
         <div class="pull-left">
-          <cl-image
-            public-id="{{post.user.profilePicture}}"
-            *ngIf="post?.user?.profilePicture"
-            radius="max"
-            class="post-image"
+          <cl-image 
+            class="post-image" 
+            radius="max" 
+            public-id="{{post.user.profilePicture}}" 
+            *ngIf="post?.user?.profilePicture" 
             (click)="onClickUserProfile(post.user);">
           </cl-image>
         </div>
@@ -26,8 +34,16 @@
           <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
             {{post.user.firstName}} {{post.user.lastName}}
           </span>
-          <span class="user-school-name">{{post.user.schoolName}}</span>
-          <span class="post-time">{{post.createdAt | date :'short'}}</span>
+          <span class="post-time">
+            {{post.createdAt | date :'short'}}
+          </span>
+          <div class="user-school-name">
+            {{post.user.schoolName}}
+          </div>
+          <shared-stars-component 
+            [ratingCount]="post.ratingCount"
+          >
+          </shared-stars-component>
         </div>
       </div>
       <div class="col-xs-12 profile-stars">
@@ -66,25 +82,36 @@
       </div>
 
       <div class="col-xs-12">
-        <shared-post-options-component
-          [post]="post"
-          [likes]="post.likeCount"
-          [ratingCount]="post.ratingCount"
+        <shared-post-options-component 
+          [post]="post" 
+          [likes]="post.likeCount" 
+          [ratingCount]="post.ratingCount" 
           [views]="post.pageviewCount"
+<<<<<<< HEAD
           [share]="post.shareCount"
+=======
+          [share]="post.shareCount" 
+>>>>>>> Fixed and removed conflicts on post.component.html
           [replies]="post.postReplyCount"
         >
         </shared-post-options-component>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
   <div class="load-more" *ngIf="posts.length !== 0">
     <button
       type="button"
       class="btn-peersview-secondary btn-block btn-peersview-md"
+=======
+  <div class="load-more">
+    <button 
+      class="btn-peersview-secondary btn-block btn-peersview-md" 
+      type="button" 
+>>>>>>> Fixed and removed conflicts on post.component.html
       (click)="onLoadMorePost()"
-      [disabled]="isDisabled">
-        {{btnLoadMoreText ? btnLoadMoreText : 'Load More'}}
+    >
+      Load More
     </button>
   </div>
 </div>
