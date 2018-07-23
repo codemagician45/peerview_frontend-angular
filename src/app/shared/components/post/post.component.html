@@ -8,18 +8,10 @@
   <div class="post" *ngFor="let post of posts">
     <div class="row">
       <report-post-component
-<<<<<<< HEAD
       [post]="post"
       (onDeletePost)="onDeletePost($event)">
       </report-post-component>
       <div class="col-xs-12">
-=======
-        [post]="post" 
-        (onDeletePost)="onDeletePost($event)"
-      > 
-      </report-post-component>
-      <div class="col-xs-12 profile-stars">
->>>>>>> Fixed and removed conflicts on post.component.html
         <div class="pull-left">
           <cl-image 
             class="post-image" 
@@ -68,9 +60,9 @@
             >
             <cl-image
               public-id="{{attachment.cloudinaryPublicId}}"
-            >
+              >
               <cl-transformation
-                height="500"
+                [attr.height]="post.attachments.length > 1 ? 500 : 380"
                 width="500"
                 crop="fill"
                 radius="3"
@@ -87,28 +79,17 @@
           [likes]="post.likeCount" 
           [ratingCount]="post.ratingCount" 
           [views]="post.pageviewCount"
-<<<<<<< HEAD
           [share]="post.shareCount"
-=======
-          [share]="post.shareCount" 
->>>>>>> Fixed and removed conflicts on post.component.html
           [replies]="post.postReplyCount"
         >
         </shared-post-options-component>
       </div>
     </div>
   </div>
-<<<<<<< HEAD
   <div class="load-more" *ngIf="posts.length !== 0">
     <button
       type="button"
       class="btn-peersview-secondary btn-block btn-peersview-md"
-=======
-  <div class="load-more">
-    <button 
-      class="btn-peersview-secondary btn-block btn-peersview-md" 
-      type="button" 
->>>>>>> Fixed and removed conflicts on post.component.html
       (click)="onLoadMorePost()"
     >
       Load More
