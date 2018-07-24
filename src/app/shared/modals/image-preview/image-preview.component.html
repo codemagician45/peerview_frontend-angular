@@ -12,29 +12,31 @@
 			<cl-image 
 				#clImageRef
 				class="cl-image-scale {{ imageOrientation }}"
-				public-id="{{imageAttachments.images[imageAttachments.clickIndex].cloudinaryPublicId}}"
-			>
+        public-id="{{imageAttachments.images[imageAttachments.clickIndex].cloudinaryPublicId}}"
+      >
 			</cl-image>
 		</div>
-		<div 
-			class="prev-col" 
-			(click)="onPreviousImage()"
-		>
-			<i class="material-icons">
-				skip_previous
-			</i>
-		</div>
-		<div>
-			{{ imageAttachments.clickIndex + 1 }} of {{ imageAttachments.images.length }}
-		</div>
-		<div
-			class="next-col"
-			(click)="onNextImage()"
-		>
-			<i class="material-icons">
-				skip_next
-			</i>
-		</div>
-	</div>
+  </div>
+	<div class="image-nav-container">
+    <div 
+      class="prev-col" 
+      (click)="onPreviousImage()"
+    >
+      <i class="material-icons">
+        skip_previous
+      </i>
+    </div>
+    <div>
+      {{ imageAttachments.clickIndex + 1 }} of {{ imageAttachments.images.length }}
+    </div>
+    <div
+      class="next-col"
+      (click)="onNextImage()"
+    >
+      <i class="material-icons">
+        skip_next
+      </i>
+    </div>
+  </div>
 </div>
       
