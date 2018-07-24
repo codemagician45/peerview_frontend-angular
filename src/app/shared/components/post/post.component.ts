@@ -11,6 +11,9 @@ import {
   MatDialogConfig
 } from '@angular/material';
 import {
+  Overlay
+} from '@angular/cdk/overlay';
+import {
   PostModel,
   PostResponse,
   PostsResponse,
@@ -44,7 +47,8 @@ export class SharedPostComponent {
   constructor (
     private postService: PostService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private overlay: Overlay
   ) {}
 
   @Input() protected posts: Array<PostModel>;
@@ -132,6 +136,8 @@ export class SharedPostComponent {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = { images: postAttachments, clickIndex: imageIndex };
     this.dialogRef = this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
