@@ -5,6 +5,9 @@ import {
   ElementRef
 } from '@angular/core';
 import {
+  DOCUMENT
+} from '@angular/common';
+import {
   MatDialog,
   MAT_DIALOG_DATA
 } from '@angular/material';
@@ -17,8 +20,11 @@ import {
 export class SharedImagePreviewComponent {
   constructor (
     @Inject(MAT_DIALOG_DATA) public imageAttachments: any,
+    @Inject(DOCUMENT) private document: Document,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.document.body.classList.add('image-preview-mat-dialog-is-open');
+  }
 
   @ViewChild('clImageRef', {read: ElementRef}) private clImageRef: ElementRef;
   private imageOrientation: string = null;
@@ -43,6 +49,7 @@ export class SharedImagePreviewComponent {
 
   protected onCloseModal (): void {
     this.dialog.closeAll();
+    this.document.body.classList.remove('image-preview-mat-dialog-is-open');
   }
 
   private getImageOrientation (): void {
