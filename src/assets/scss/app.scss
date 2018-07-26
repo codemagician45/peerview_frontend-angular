@@ -410,6 +410,7 @@ input[type="checkbox"]:focus {
 
   .cdk-overlay-pane {
     margin: auto;
+    max-width: none !important;
 
     .mat-dialog-container {
       position: relative;
@@ -432,11 +433,15 @@ input[type="checkbox"]:focus {
 
   .image-preview-modal {
     .mat-dialog-container{
-      top: 10px;
-      width: 800px;
-      max-width: 800px;
-      padding: 2px;
+      top: 0px;
+      margin: 0;
+      max-height: 100%;
+      padding: 0px;
     }
+  }
+
+  .image-preview-modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 /* Custom, iPhone Retina */
@@ -448,8 +453,25 @@ input[type="checkbox"]:focus {
   // .mat-dialog-container {
   //   width: 500px !important;
   // }
+  .image-preview-modal {
+    .mat-dialog-container{
+      width: 750px;
+      max-width: 750px;
+      margin: auto !important;
+      padding: 5px !important;
+    }
+  }
 }
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {}
+@media only screen and (min-width : 992px) {
+  .image-preview-modal {
+    .mat-dialog-container{
+      width: 1200px;
+      max-width: 1200px;
+      margin: auto !important;
+      padding: 5px !important;
+    }
+  }
+}
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {}
