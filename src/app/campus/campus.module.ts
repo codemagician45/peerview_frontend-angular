@@ -3,11 +3,14 @@ import {
   NgModule
 } from '@angular/core';
 import {
+  SharedModule
+} from '../shared/components/shared.module';
+import {
   CampusComponent
 } from './campus.component';
 import {
-  SharedModule
-} from '../shared/components/shared.module';
+  CampusLandingPageComponent
+} from './landing-page/landing-page.component';
 import {
   campusRouting
 } from './campus-routing.component';
@@ -16,7 +19,10 @@ import {
 } from './components/left-sidebar/left-sidebar.component';
 import {
   CampusAllStudentsComponent
-} from './all-students/all-students.component';
+} from './main/all-students/all-students.component';
+import {
+  CampusMainComponent
+} from './main/main.component';
 import {
   CampusApiService
 } from '../../services/api/campus.api.service';
@@ -28,8 +34,10 @@ import {
   ],
   declarations : [
     CampusComponent,
+    CampusLandingPageComponent,
     CampusLeftSidebarComponent,
-    CampusAllStudentsComponent
+    CampusAllStudentsComponent,
+    CampusMainComponent
   ],
   exports: [],
   providers: [CampusApiService]

@@ -9,15 +9,28 @@ import {
   CampusComponent
 } from './campus.component';
 import {
+  CampusLandingPageComponent
+} from './landing-page/landing-page.component';
+import {
   CampusAllStudentsComponent
-} from './all-students/all-students.component';
+} from './main/all-students/all-students.component';
+import {
+  CampusMainComponent
+} from './main/main.component';
 
 const campusRoutes: Routes = [{
   path: '',
   component: CampusComponent,
   children: [{
-    path: 'all-students',
-    component: CampusAllStudentsComponent
+    path: '',
+    component: CampusLandingPageComponent
+  }, {
+    path: ':id',
+    component: CampusMainComponent,
+    children: [{
+      path: 'all-students',
+      component: CampusAllStudentsComponent
+    }]
   }]
 }];
 
