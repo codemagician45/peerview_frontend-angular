@@ -13,6 +13,9 @@ import {
 import {
   PostModel
 } from '../post';
+import {
+  CampusModel
+} from '../campus';
 
 // coming from the provider
 export interface ISocialResponse extends Response {
@@ -40,6 +43,10 @@ export interface ISubInterestsResponse extends Response {
   interests: Array<SubInterestModel>;
 }
 
-export class IPostToResponse extends Response {
-  public postId: number;
+export interface IPostToResponse extends Response {
+  postId: number;
+}
+
+export interface ICampusesResponse extends Response {
+  campuses: Array<CampusModel>;
 }

@@ -10,3 +10,10 @@ export * from './interface';
 export * from './interest-category';
 export * from './sub-interest';
 export * from './poll';
+export * from './campus';
+
+export interface IResponse {
+  status: string;
+  status_code: number;
+  http_code: number;
+}
