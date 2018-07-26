@@ -145,7 +145,12 @@ input[type="checkbox"]:focus {
 .btn-peersivew-transparent {
   @include btn-transparent;
 }
-
+.btn-white {
+  @include btn-white;
+}
+.flat-btn {
+  @include flat-btn;
+}
 // padding
 .p-peersview-0 {
   @include padding-0;
@@ -450,9 +455,9 @@ input[type="checkbox"]:focus {
 @media only screen and (min-width : 480px) {}
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  // .mat-dialog-container {
-  //   width: 500px !important;
-  // }
+  .mat-dialog-container {
+    width: 500px !important;
+  }
   .image-preview-modal {
     .mat-dialog-container{
       width: 750px;

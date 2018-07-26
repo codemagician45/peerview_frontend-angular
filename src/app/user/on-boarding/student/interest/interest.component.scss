@@ -19,6 +19,15 @@
 .added-tags-list
 {
     // border-bottom: 1px solid #8d36c3;
+  li {
+    display: inline-block;
+    margin: 0 20px 10px 0;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #8d36c3;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 }
 
 .suggest-sub-interest-input

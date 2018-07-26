@@ -1,6 +1,25 @@
 .share-modal-component {
   .share-message-input {
+    border: 0 none;
+    padding: 0px;
     resize: none;
     box-shadow: none;
+  }
+  .modal-heading {
+    text-align: center;
+    color: #631990;
+    .close {
+      padding: 0;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+  }
+  .modal-divider {
+    border-top: 1px solid #e5e5e5;
+  }
+  .post-share-block {
+    border: solid 1px #d8d8d8;
   }
 }

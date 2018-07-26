@@ -74,7 +74,16 @@
     outline: none;
   }
 }
-
+@mixin btn-white() {
+  color: $primary-color;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  border-color: $primary-color;
+}
+@mixin flat-btn() {
+  background-color: transparent;
+  border: none;
+}
 @mixin anchor() {
   color: $secondary-color;
   text-decoration: none;

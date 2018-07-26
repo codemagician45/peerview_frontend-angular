@@ -23,6 +23,40 @@
   }
   .post-row {
     margin: 0;
+    .news-post {
+      margin: 0 0 20px 0;
+      padding: 0;
+      .tab-pill {
+        margin-bottom: 15px;
+      }
+    }
+  }
+  .tab-pill {
+    span {
+      display: block;
+      margin: 0;
+      padding: 5px 10px;
+      font-family: "Maven Pro", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #323c47;
+      background: transparent;
+      border-bottom: 1px solid #dbdbdb;
+      border-radius: 0;
+    }
+  }
+  .posts-preview {
+    height: 160px;
+    overflow: auto;
+  }
+  .news-post-footer {
+    justify-content: space-between;
+    padding: 15px;
+    display: flex;
+    background-color: #fff;
+    .autorenew-icon {
+      font-weight: bold;
+    }
   }
   home-left-sidebar-component {
     position: sticky;

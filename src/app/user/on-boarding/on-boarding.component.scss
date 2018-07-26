@@ -1,6 +1,12 @@
 .user-on-boarding-component {
   .on-boarding-content-body {
     position: relative;
+    .process-header {
+      margin: 0 0 20px;
+      text-align: center;
+      font-size: 48px;
+      color: #8d36c3;
+    }
   }
   .on-boarding-progress {
     text-align: center;

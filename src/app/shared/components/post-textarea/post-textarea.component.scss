@@ -28,6 +28,9 @@
   }
   .options {
     padding: 10px;
+    .img-upload {
+      color: #631990;
+    }
   }
 
   .post-btn {
@@ -49,7 +52,26 @@
     li {
       border-top: solid 1px #e9eaed;
       padding: 3px 10px;
+      input {
+        width: 100%;
+        padding-left: 15px;
+        display: block;
+        border: none;
+        background: url(/src/assets/images/icon-add-sm.png) no-repeat 0 6px transparent;
+      }
     }
+  }
+  .btn-add-new {
+    display: block;
+    padding: 5px 25px;
+    background: url(/src/assets/images/icon-add-sm.png) no-repeat 10px 10px;
+    border-top: solid 1px #e9eaed;
+    cursor: pointer;
+  }
+  .bottom-block {
+    padding: 5px 10px;
+    background: #ffffff;
+    text-align: right;
   }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
