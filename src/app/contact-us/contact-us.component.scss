@@ -26,6 +26,7 @@
       margin-bottom: 50px;
     }
     .hq-detail {
+      margin-top: 4rem;
       font-size: 18px;
       color: #fff;
     }
@@ -41,4 +42,20 @@
       color: $primary-color
     }
   }
+   // Custom, iPhone Retina
+   @media only screen and (min-width : 320px) {}
+   // extra Small Devices, Phones
+   @media only screen and (min-width : 480px) {
+    .content {
+      .hq-detail {
+        margin-top: 12rem;
+      }
+    }
+   }
+   // Small Devices, Tablets
+   @media only screen and (min-width : 768px) {}
+   // Medium Devices, Desktops
+   @media only screen and (min-width : 992px) {}
+   // Large Devices, Wide Screens
+   @media only screen and (min-width : 1200px) {}
 }
