@@ -26,16 +26,12 @@
           <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
             {{post.user.firstName}} {{post.user.lastName}}
           </span>
-          <span class="post-time">
-            {{post.createdAt | date :'short'}}
-          </span>
           <div class="user-school-name">
             {{post.user.schoolName}}
           </div>
-          <shared-stars-component 
-            [ratingCount]="post.ratingCount"
-          >
-          </shared-stars-component>
+          <span class="post-time">
+            {{post.createdAt | date :'short'}}
+          </span>
         </div>
       </div>
       <div class="col-xs-12 profile-stars">
