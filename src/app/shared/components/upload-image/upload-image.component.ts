@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   Input,
-  NgZone
+  Output,
+  NgZone,
+  EventEmitter
 } from '@angular/core';
 import {
   FileUploader,
@@ -36,20 +38,19 @@ export class SharedUploadImageComponent {
     private zone: NgZone
   ) {}
 
-  @Input()
   protected imagesToUpload: Array<string> = [];
   protected responses: Array<any> = [];
-  protected uploadInProgress: boolean = false;
-  protected uploadComplete: boolean = false;
+  protected isUploadStarted: boolean = false;
+  protected isUploadComplete: boolean = false;
   protected queuedImageOrientation: Array<string> = [];
-
   private uploader: FileUploader;
   private hasBaseDropZoneOver: boolean = false;
   private user: UserModel = UserClass.getUser();
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
+  @Output() private uploadComplete = new EventEmitter();
 
   public ngOnInit (): void {
-    this.uploadImages();
+    this.uploadImagesSubscriber();
 
     // Create the file uploader, wire it to upload to your account
     const uploaderOptions: FileUploaderOptions = {
@@ -120,32 +121,29 @@ export class SharedUploadImageComponent {
       );
 
     this.uploader.onCompleteAll = () => {
-      this.uploadComplete = true;
+      this.isUploadComplete = true;
       let postAttachments = [];
       for (let i = 0; i < this.responses.length; i++) {
         postAttachments.push({cloudinaryPublicId: this.responses[i].data.public_id, usage: 'image'});
       }
 
-      PostEmitter
-      .uploadComplete()
-      .emit(postAttachments);
-      // clear image preview after upload complete
+      this.uploadComplete.emit(postAttachments);
       this.imagesToUpload = [];
     };
   }
 
-  public uploadImages (): void {
+  public uploadImagesSubscriber (): void {
     PostEmitter
-    .uploadImages()
-    .subscribe(response => {
-      if (this.imagesToUpload.length !== 0) {
-        this.uploadInProgress = true;
-        this.uploader.uploadAll();
-      } else {
-        this.uploadCompleteEmitterService.emit([]);
-      }
-    });
-  }
+      .uploadImages()
+      .subscribe(response => {
+        if (this.imagesToUpload.length !== 0) {
+          this.isUploadStarted = true;
+          this.uploader.uploadAll();
+        } else {
+          this.uploadCompleteEmitterService.emit([]);
+        }
+      });
+}
 
   protected onFileOverBase (e: any): void {
     this.hasBaseDropZoneOver = e;

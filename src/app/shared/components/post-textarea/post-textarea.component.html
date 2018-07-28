@@ -14,11 +14,26 @@
   <div class="post" *ngIf="typePost === 'post'">
     <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="createPost.message"></textarea>
 
-    <shared-upload-image-component *ngIf="toggleUploadComponent"></shared-upload-image-component>
+    <shared-upload-image-component
+      *ngIf="isToogleUploadComponentVisible"
+      (uploadComplete)="onUploadComplete($event)"
+    ></shared-upload-image-component>
 
     <div class="text-right options">
-      <label class="img-upload flat-btn" (click)="onShowUploadComponent()"> <i class="material-icons">image</i> </label>
-      <input type="submit" class="btn btn-peersview-primary btn-sm post-btn" value="ADD POST" (click)="onAddPost()" [disabled]="isButtonDisabledOnSubmit">
+      <label
+        class="img-upload flat-btn"
+        (click)="isToogleUploadComponentVisible = !isToogleUploadComponentVisible"
+      >
+        <i class="material-icons">image</i>
+      </label>
+      <button
+        type="submit"
+        class="btn-peersview-primary btn-peersview-sm"
+        [disabled]="isButtonDisabledOnSubmit"
+        (click)="onAddPost();"
+      >
+        Add Post
+      </button>
     </div>
   </div>
   <!-- POLL -->

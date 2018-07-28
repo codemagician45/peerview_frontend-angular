@@ -16,12 +16,13 @@
         <i class="material-icons">add_circle_outline</i>
       </label>
     </div>
-    <div class="file" *ngIf="uploadInProgress">
-      <div class="upload-status" *ngIf="!uploadComplete">
+    <!-- *ngIf="uploadInProgress" -->
+    <div class="file" *ngIf="isUploadStarted">
+      <div class="upload-status" *ngIf="!isUploadComplete">
         <div>Uploading...</div>
         <mat-progress-bar mode="buffer"></mat-progress-bar>
       </div>
-      <div class="upload-complete" *ngIf="uploadComplete">Upload Complete!</div>
+      <div class="upload-complete" *ngIf="isUploadComplete">Upload Complete!</div>
     </div>
   </div>
 </div>
