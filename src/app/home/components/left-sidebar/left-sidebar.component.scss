@@ -15,6 +15,9 @@
         margin: 10px 0;
         border-top: 1px solid #e5e5e5;
         border-bottom: 1px solid #e5e5e5;
+        p {
+          font-family: "Maven Pro", sans-serif;
+        }
       }
     }  
     .top-info {
@@ -59,6 +62,7 @@
           padding: 10px;
           list-style: disc;
           font-family: "Maven Pro", sans-serif; 
+          font-weight: bold;
           border-bottom: solid 1px #d8d8d8;
         }
       }
