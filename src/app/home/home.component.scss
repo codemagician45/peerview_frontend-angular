@@ -5,12 +5,13 @@
  */
 .home-component {
   position: relative;
+  padding-right: 15px;
   .container-fluid {
     margin: 0;
     padding: 0;
   }
   .center-section {
-    // padding: 5px;
+    padding-right: 15px;
     .top-post {
       margin: 5px 0;
       background-color: #ffffff;
@@ -81,6 +82,10 @@
   /* Medium Devices, Desktops */
   @media only screen and (min-width : 992px) {
     padding-top: 50px;
+    padding-right: 0;
+    .center-section { 
+      padding-right: 0;
+    }
   }
   /* Large Devices, Wide Screens */
   @media only screen and (min-width : 1200px) {}

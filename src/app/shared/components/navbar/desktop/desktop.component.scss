@@ -1,6 +1,6 @@
 .navbar-desktop-component {
   .page-active {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
   }
   .navbar-default {
     display: flex;
@@ -54,6 +54,7 @@
     margin: auto;
     padding-left: 5px;
     .welcome-user {
+      font-size: 13px;
       color: #ffffff;
       font-weight: 600;
     }
