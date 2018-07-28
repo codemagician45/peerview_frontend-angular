@@ -11,8 +11,12 @@ import {
   PostService
 } from '../../../services/services';
 import {
-  Story, Poll
+  Story
 } from '../../../models/models';
+import {
+  PostModel,
+  PollModel
+} from '../../shared/models';
 import {
   EmitterService
 } from '../emitter/emitter.component';
@@ -36,9 +40,9 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() private onEditorKeyup = new EventEmitter<any>();
 
   private editor;
-  private newpost = {};
-  private newpoll: Poll = new Poll();
-  private newstory: Story = new Story();
+  private newPost: PostModel = new PostModel();
+  private newPoll: PollModel = new PollModel();
+  private newStory: Story = new Story();
   private errorMessage: any;
   private isDisabled = false;
   private postSaveEmitterService = EmitterService.get('postSaveEmitter');
@@ -159,8 +163,8 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
       options.push($(b).val());
     });
 
-    this.newpoll['options'] = options;
-    this.postservice.createpoll(this.newpoll).subscribe(resp => {
+    this.newPoll['options'] = options;
+    this.postservice.createPoll(this.newPoll).subscribe(resp => {
       if (resp['error'] === false) {
         alert(resp['Message']);
       } else {
@@ -178,7 +182,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
       swal('Oops', 'Empty Content', 'error');
       this.isDisabled = false;
     } else {
-      this.postservice.createpost(this.newpost['message']).subscribe((response: any) => {
+      this.postservice.createPost(this.newPost).subscribe((response: any) => {
         swal('Sucess', 'Post Created Successfully', 'success');
         $('.create-pots-textarea').val('');
         this.isDisabled = false;
@@ -195,7 +199,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   protected addstory (): void {
-    this.postservice.createstory(this.newstory).subscribe((response: any) => {
+    this.postservice.createstory(this.newStory).subscribe((response: any) => {
       console.log(response);
     });
   }

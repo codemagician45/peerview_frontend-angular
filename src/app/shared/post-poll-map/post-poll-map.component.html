@@ -10,7 +10,7 @@
     <div class="" [ngClass]="{'col-md-12': full, 'col-md-8': !full}">
       <form class="create-post" *ngIf="post" #addpost="ngForm"(ngSubmit)="createpost()">
         <div>
-          <textarea [(ngModel)]="newpost.message" class="form-control create-pots-textarea" placeholder="Whats happening?" name="post_title"></textarea>
+          <textarea [(ngModel)]="newPost.message" class="form-control create-pots-textarea" placeholder="Whats happening?" name="post_title"></textarea>
           <input class="upload-file" id="uploadImage" type="file" style="display:none;"/>
           <div class="bottom-block">
             <label for="uploadImage" class="img-upload flat-btn"> <i class="material-icons">link</i> </label>
@@ -21,7 +21,7 @@
 
       <div class="create-poll" *ngIf="poll" style="display:none;">
         <form #addnewpoll="ngForm" (ngSubmit)="createpoll()">
-          <textarea class="form-control" name="newpoll_name" [(ngModel)]="newpoll.name" placeholder="Ask something..."></textarea>
+          <textarea class="form-control" name="newpoll_name" [(ngModel)]="newPoll.name" placeholder="Ask something..."></textarea>
           <ul class="poll-option">
             <li> <input type="text" placeholder="Add an option"/> </li>
             <li> <input type="text" placeholder="Add an option"/> </li>
@@ -32,7 +32,7 @@
           </div>
           <div class="bottom-block">
             <span class="duration-poll"> Poll Duration(Days):
-              <input name="new_poll_duration" [(ngModel)]="newpoll.timeLimit" type="number">
+              <input name="new_poll_duration" [(ngModel)]="newPoll.timeLimit" type="number">
             </span>
             <button class=" btn btn-blue" type="submit">ADD POST</button>
           </div>
@@ -49,8 +49,8 @@
       </div>
 
       <form class="share-story" *ngIf="story" style="display:none;" #addstoryForm="ngForm" (ngSubmit)="addstory()">
-        <input type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="newstory.title"/>
-        <textarea id="share-story-textarea" class="textarea" name="message" (onEditorKeyup)="keyupHandlerFunction($event)" [(ngModel)]="newstory.message"></textarea>
+        <input type="text" class="form-control" placeholder="Title" name="title" [(ngModel)]="newStory.title"/>
+        <textarea id="share-story-textarea" class="textarea" name="message" (onEditorKeyup)="keyupHandlerFunction($event)" [(ngModel)]="newStory.message"></textarea>
         <input type="file" class="fileToUpload" accept=".txt,.pdf,.doc,.docx,.jpg,.png,.jpeg,.gif"/>
         <span id="file_text"></span>
         <button type="button" class="clear_file hidden" (click)="clearFile()"><b>x</b></button>
