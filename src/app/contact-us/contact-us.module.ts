@@ -18,7 +18,7 @@ import {
 } from 'ngx-zendesk-webwidget';
 
 export class ZendeskConfig extends ngxZendeskWebwidgetConfig {
-  public accountUrl = 'peersview.zendesk.com';
+  public accountUrl = 'peersviewhelp.zendesk.com';
   public beforePageLoad (zE): void {
     zE.setLocale('en');
     zE.hide();
