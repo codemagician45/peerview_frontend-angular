@@ -1,6 +1,9 @@
 import {
   UserModel
 } from './user';
+import {
+  Model
+} from './model';
 
 export class PostModel {
   public id?: number;
@@ -41,7 +44,14 @@ export class ReportPost {
   public reason: string;
 }
 
-export class CreatePost {
+export class CreatePost extends Model {
   public message: string;
   public attachments?: Array<object> = [];
+
+  public init (): void {
+    this.setBlankDataStructure({
+      message: '',
+      attachments: []
+    });
+  }
 }

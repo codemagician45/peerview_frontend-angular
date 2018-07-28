@@ -39,4 +39,6 @@ export class UserModel extends Model  {
   public userStudyLevelId?: number;
   public userTypeId?: number;
   public courseIds?: Array<number> = [];
+
+  public init (): void {}
 }

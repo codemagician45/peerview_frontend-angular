@@ -7,4 +7,6 @@ export class CampusModel extends Model {
   public name: string;
   public email: string;
   public password: string;
+
+  public init (): void {}
 }

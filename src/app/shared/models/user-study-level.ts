@@ -6,4 +6,6 @@ export class UserStudyLevelModel extends Model {
   public id: number;
   public code: string;
   public name: string;
+
+  public init (): void {}
 }

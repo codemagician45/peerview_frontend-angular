@@ -4,7 +4,14 @@ export abstract class Model {
     if (data) {
       this.assimilate(data);
     }
+
+    this.init();
   }
+
+  /**
+   * Called after an object has been constructed.
+   */
+   public abstract init (): void;
 
   /**
    * Clones and assimilates the given data, where it's structure matches that
@@ -19,6 +26,12 @@ export abstract class Model {
     for (let propertyName of Object.keys(cloned)) {
       this[propertyName] = cloned[propertyName];
     }
+
+    return this;
+  }
+
+  protected setBlankDataStructure (data: any): Model {
+    Object.assign(this, data);
 
     return this;
   }
