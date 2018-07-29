@@ -51,7 +51,7 @@ export class SharedPostComponent {
     private overlay: Overlay
   ) {}
 
-  @Input() protected posts: Array<PostModel>;
+  @Input() protected posts: Array<PostModel> = [];
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private sharePostSuccessSubscriber = EmitterService.get('sharePostEmitter');
   private postSavedSubscriber = EmitterService.get('postSaveEmitter');

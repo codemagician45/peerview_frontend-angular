@@ -13,11 +13,11 @@
       </report-post-component>
       <div class="col-xs-12">
         <div class="pull-left">
-          <cl-image 
-            class="post-image" 
-            radius="max" 
-            public-id="{{post.user.profilePicture}}" 
-            *ngIf="post?.user?.profilePicture" 
+          <cl-image
+            class="post-image"
+            radius="max"
+            public-id="{{post.user.profilePicture}}"
+            *ngIf="post?.user?.profilePicture"
             (click)="onClickUserProfile(post.user);">
           </cl-image>
         </div>
@@ -42,7 +42,6 @@
           {{post.message ? post.message : 'Poll: ' + post.question}}
         </p>
       </div>
-      
       <div class="col-xs-12 poll-options" *ngIf="!!post.question">
         <ul>
           <li *ngFor="let item of post.postPollOptions; let i = index;">
@@ -78,10 +77,10 @@
       </div>
 
       <div class="col-xs-12">
-        <shared-post-options-component 
-          [post]="post" 
-          [likes]="post.likeCount" 
-          [ratingCount]="post.ratingCount" 
+        <shared-post-options-component
+          [post]="post"
+          [likes]="post.likeCount"
+          [ratingCount]="post.ratingCount"
           [views]="post.pageviewCount"
           [share]="post.shareCount"
           [replies]="post.postReplyCount"
