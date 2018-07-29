@@ -20,13 +20,14 @@ import {
   ReplyPost,
   ReportPost,
   SharePost,
-  CreatePost
+  CreatePost,
+  PollModel
 } from '../app/shared/models';
 @Injectable()
 export class PostService {
   constructor (private http: HttpClient) {}
 
-  public createpost (post: CreatePost): Observable<Object> {
+  public createPost (post: CreatePost): Observable<Object> {
     return this.http.post('post', post);
   }
 
@@ -34,7 +35,7 @@ export class PostService {
     return this.http.post(`post/story`, story);
   }
 
-  public createpoll (poll: Poll): Observable<Object> {
+  public createPoll (poll: PollModel): Observable<Object> {
     return this.http.post('post/poll', poll);
   }
 

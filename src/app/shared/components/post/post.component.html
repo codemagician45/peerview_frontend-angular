@@ -39,8 +39,16 @@
       </div>
       <div class="col-xs-12 post-message">
         <p>
-          {{post.message}}
+          {{post.message ? post.message : 'Poll: ' + post.question}}
         </p>
+      </div>
+      
+      <div class="col-xs-12 poll-options" *ngIf="!!post.question">
+        <ul>
+          <li *ngFor="let item of post.postPollOptions; let i = index;">
+            <input type="radio" [value]="item"/> {{item}}
+          </li>
+        </ul>
       </div>
 
       <div class="col-xs-12 post-images">

@@ -14,7 +14,8 @@ import {
   PostModel,
   SharePostResponse,
   CreatePost,
-  PollModel
+  PollModel,
+  CreatePoll
 } from '../../models';
 import {
   PostService
@@ -37,12 +38,13 @@ export class SharedPostTextareaComponent {
   ) {}
 
   private createPost: CreatePost = new CreatePost();
-  private poll: PollModel = new PollModel();
+  private createPoll: CreatePoll = new CreatePoll();
   private errorMessage: any;
   protected post: PostModel = new PostModel();
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
+  protected pollOptions: Array<string> = ['NewPollOption1', 'NewPollOption2'];
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
@@ -80,7 +82,7 @@ export class SharedPostTextareaComponent {
     switch (this.route.name) {
       case 'home':
         this.isToogleUploadComponentVisible = false;
-        this.postService.createpost(this.createPost)
+        this.postService.createPost(this.createPost)
         .subscribe((response: SharePostResponse) => {
           PostEmitter
           .postSave()
@@ -103,7 +105,7 @@ export class SharedPostTextareaComponent {
   }
 
   protected onAddPollOption (): void {
-    if (this.poll.options.length === 4) {
+    if (this.pollOptions.length === 4) {
       MessageNotificationService.show({
         notification: {
           id: 'cannot-add-more-option',
@@ -113,12 +115,49 @@ export class SharedPostTextareaComponent {
       },
       NotificationTypes.Info);
     } else {
-      this.poll.options.push('');
+      let addNewPollOption = this.pollOptions.length + 1;
+      this.pollOptions.push('NewPollOption' + addNewPollOption);
     }
   }
 
   /*Destroy subscriber*/
   public ngOnDestroy (): void {
     PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
+  }
+
+  protected onAddPoll (): any {
+    if (!this.createPoll.question) {
+      return MessageNotificationService.show({
+        notification: {
+          id: 'shared-post-textarea-message',
+          message: 'Cannot Post Poll',
+          instruction: 'Please fill in the form.'
+        }
+      },
+      NotificationTypes.Error);
+    }
+
+    return this.postPoll();
+  }
+
+  private postPoll (): void {
+    switch (this.route.name) {
+      case 'home':
+        this.postService.createPoll(this.createPoll)
+        .subscribe((response: SharePostResponse) => {
+          console.log('create poll', response);
+          PostEmitter
+          .postSave()
+          .emit(response.postId);
+          this.createPoll.init();
+          this.isButtonDisabledOnSubmit = false;
+        }, error => {
+          this.isButtonDisabledOnSubmit = false;
+          console.log('create poll', error);
+        });
+        break;
+      case 'campus':
+        break;
+    }
   }
 }

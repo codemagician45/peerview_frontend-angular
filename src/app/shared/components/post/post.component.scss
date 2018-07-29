@@ -69,6 +69,57 @@
     .shared-stars-component {
       margin-top: 3px;
       margin-left: 0;
+      // margin-top: 5px;
+    }
+  }
+  .poll-options {
+    ul {
+      width: 93%;
+      margin-left: 12px;
+      background-color: #fcfcfc;
+      li {
+        padding: 3px;
+        border-bottom: 1px solid #ddd;
+        input {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .post-images {
+    display: table;
+    width: 96%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    .image-outer {
+      display: inline-grid;
+      .image-inner {
+        margin: 0 0 2px 2px;
+        border: 2px solid #d0d0d0;
+        border-radius: 3px;
+  
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .single-image {
+      width: 100%;
+    }
+    .multiple-image{
+      width: 50%;
+    }
+  }
+  .profile-stars {
+    .user-name {
+      position: relative;
+      top: -11px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    .shared-stars-component {
+      margin-top: 5px;
+      margin-left: 10px;
     }
   }
   .report-post-component {
