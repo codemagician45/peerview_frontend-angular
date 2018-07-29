@@ -23,7 +23,7 @@ export class SharedImagePreviewComponent {
     @Inject(DOCUMENT) private document: Document,
     private dialog: MatDialog
   ) {
-    this.document.body.classList.add('image-preview-mat-dialog-is-open');
+    this.document.body.classList.add('mat-dialog-is-open');
   }
 
   @ViewChild('clImageRef', {read: ElementRef}) private clImageRef: ElementRef;
@@ -49,7 +49,7 @@ export class SharedImagePreviewComponent {
 
   protected onCloseModal (): void {
     this.dialog.closeAll();
-    this.document.body.classList.remove('image-preview-mat-dialog-is-open');
+    this.document.body.classList.remove('mat-dialog-is-open');
   }
 
   private getImageOrientation (): void {

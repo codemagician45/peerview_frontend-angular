@@ -3,8 +3,13 @@ import {
   Input
 } from '@angular/core';
 import {
-  MatDialog
+  MatDialog,
+  MatDialogRef,
+  MatDialogConfig
 } from '@angular/material';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
 import {
   SharedPostDetailModalComponent,
   SharePostModalComponent,
@@ -36,7 +41,8 @@ import {
 export class SharedPostOptionsComponent {
   constructor (
     public dialog: MatDialog,
-    private postService: PostService
+    private postService: PostService,
+    private overlay: Overlay
   ) {}
   private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
   @Input() protected likes = 0;
@@ -75,10 +81,16 @@ export class SharedPostOptionsComponent {
   }
 
   protected openShare (): void {
-    this.dialog.open(SharePostModalComponent, {
-      data: this.post,
-      id: 'SharePostModalComponent'
-    })
+    /* Added MatDialogConfig for adding a custom setting for this modal */
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'share-post-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = this.post;
+    // dialogConfig.id = 'SharePostModalComponent'
+
+    this.dialog.open(SharePostModalComponent, dialogConfig)
     .afterClosed()
     .subscribe(data => {
       if (data) {

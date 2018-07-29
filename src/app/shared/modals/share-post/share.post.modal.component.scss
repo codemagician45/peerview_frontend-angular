@@ -1,4 +1,8 @@
 .share-modal-component {
+  height: 95%;
+  .create-new-forum {
+    height: 100%;
+  }
   .share-message-input {
     border: 0 none;
     padding: 0px;
@@ -8,18 +12,79 @@
   .modal-heading {
     text-align: center;
     color: #631990;
-    .close {
-      padding: 0;
-      background: transparent;
-      border: 0;
-      -webkit-appearance: none;
-      cursor: pointer;
+    margin: 8px;
+  }
+  .modal-close {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    -webkit-appearance: none;
+    cursor: pointer;
+    i {
+      font-size: 18px;
+      margin: 3px 0px;
     }
   }
   .modal-divider {
     border-top: 1px solid #e5e5e5;
   }
+  .modal-body {
+    height: 78%;
+  }
   .post-share-block {
+    height: 84%;
     border: solid 1px #d8d8d8;
+    overflow-y: scroll;
+  }
+  .post-share-user {
+    margin-top: 10px;
+  }
+  .user-name {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 10px;
+    .post-user-name {
+      margin-right: 5px; 
+    }
+  }
+  .user-school-name,
+  .post-time {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: "Maven Pro", sans-serif;
+    color: #989898;
+  }
+  .post-message {
+    p {
+      margin: 5px;
+      font-size: 1.5rem;
+    }
+  }
+  .post-images{
+    display: table;
+    width: 100%;
+    .image-outer {
+      display: inline-grid;
+      .image-inner {
+        margin: 0 0 2px 2px;
+        border: 2px solid #d0d0d0;
+        border-radius: 3px;
+  
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .single-image {
+      width: 100%;
+    }
+    .multiple-image{
+      width: 50%;
+    }
   }
 }

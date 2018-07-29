@@ -5,6 +5,9 @@ import {
   Output
 } from '@angular/core';
 import {
+  DOCUMENT
+} from '@angular/common';
+import {
   MAT_DIALOG_DATA,
   MatDialog
 } from '@angular/material';
@@ -29,11 +32,13 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class SharePostModalComponent implements OnInit {
   constructor (
-    @Inject (MAT_DIALOG_DATA)
-    private post: PostModel,
+    @Inject (MAT_DIALOG_DATA) private post: PostModel,
+    @Inject(DOCUMENT) private document: Document,
     private postservice: PostService,
     private dialog: MatDialog,
-  ) {}
+  ) {
+    this.document.body.classList.add('mat-dialog-is-open');
+  }
 
   protected share: SharePost = new SharePost();
   protected isCurrentlySharing = false;
@@ -76,5 +81,9 @@ export class SharePostModalComponent implements OnInit {
     }
       this.isCurrentlySharing = false;
     });
+  }
+
+  public ngOnDestroy (): void {
+    this.document.body.classList.remove('mat-dialog-is-open');
   }
 }

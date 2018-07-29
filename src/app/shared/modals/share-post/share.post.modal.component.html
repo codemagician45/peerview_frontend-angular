@@ -1,37 +1,91 @@
 <div class="share-modal-component">
   <div class="create-new-forum">
     <h3 class="modal-heading">Share Post</h3>
-    <button class="close" mat-dialog-close>×</button>
+    <button class="modal-close" mat-dialog-close>
+      <i class="material-icons"> clear </i>
+    </button>
     <div class="modal-divider"></div>
     <div class="modal-body">
       <div class="share-block-form">
         <!-- <span class="share-user"><img src="/assets/images/profile.jpg" alt="" /></span> -->
         <div class="form-group">
           <textarea [(ngModel)]="share.message" placeholder="Say something about this..." class="form-control share-message-input"></textarea>
-          <cl-image
-            public-id="{{post.user.profilePicture}}"
-            *ngIf="post?.user?.profilePicture"
-            radius="max"
-            width="50">
-          </cl-image>
-          <label>{{post.user.firstName | titlecase}} {{post.user.lastName | titlecase}}</label>
-          <div>
-            <small class="post-time">{{post.createdAt | date : 'short'}}</small>
-          </div>
         </div>
       </div>
-
       <div class="post-share-block">
+        <div class="col-xs-12 post-share-user">
+          <div class="pull-left">
+            <cl-image 
+              class="post-image" 
+              radius="max" 
+              width="50"
+              public-id="{{post.user.profilePicture}}" 
+              *ngIf="post?.user?.profilePicture" 
+            >
+            </cl-image>
+          </div>
+          <div class="user-name">
+            <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
+              {{post.user.firstName}} {{post.user.lastName}}
+            </span>
+            <div class="user-school-name">
+                {{post.user.schoolName}}
+              </div>
+            <span class="post-time">
+              {{post.createdAt | date :'short'}}
+            </span>
+          </div>
+        </div>
+        <div class="col-xs-12 post-message">
+          <p>
+            {{post.message}}
+          </p>
+        </div>
+  
+        <div class="col-xs-12 post-images">
+          <div
+            class="image-outer"
+            *ngFor="let attachment of post.attachments; let imageIndex = index"
+            [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
+          >
+            <div
+              class="image-inner"
+              *ngIf="attachment.cloudinaryPublicId"
+              >
+              <cl-image
+                public-id="{{attachment.cloudinaryPublicId}}"
+                >
+                <cl-transformation
+                  [attr.height]="post.attachments.length > 1 ? 500 : 380"
+                  width="500"
+                  crop="fill"
+                  radius="3"
+                >
+                </cl-transformation>
+              </cl-image>
+            </div>
+          </div>
+        </div>
+        <!-- <cl-image
+          public-id="{{post.user.profilePicture}}"
+          *ngIf="post?.user?.profilePicture"
+          radius="max"
+          width="50">
+        </cl-image>
+        <label>{{post.user.firstName | titlecase}} {{post.user.lastName | titlecase}}</label>
+        <div>
+          <small class="post-time">{{post.createdAt | date : 'short'}}</small>
+        </div>
         <div class="row">
-          <!-- <div class="col-md-4"><img src="/assets/images/post-img3.jpg" alt="" class="img-responsive" /></div> -->
+          <div class="col-md-4"><img src="/assets/images/post-img3.jpg" alt="" class="img-responsive" /></div>
           <div class="col-md-12">
             <h4>{{post.title}} </h4>
             <h2>{{post.message}}</h2>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
-    <div class="modal-body text-right">
+    <div class="modal-footer text-right">
       <button class="btn btn-peersview-cancel" mat-dialog-close>Cancel</button>
       <button type="button" class="btn btn-peersview-secondary" (click)="sharePost()" [disabled]="isCurrentlySharing">Share</button>
     </div>
