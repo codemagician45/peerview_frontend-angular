@@ -36,41 +36,40 @@
       </button>
     </div>
   </div>
-  
   <!-- POLL -->
-  <div 
-    class="poll" 
+  <div
+    class="poll"
     *ngIf="typePost === 'poll'"
   >
     <form>
-      <textarea 
-        class="form-control" 
-        name="newPollQuestion" 
-        [(ngModel)]="createPoll.question" 
+      <textarea
+        class="form-control"
+        name="newPollQuestion"
+        [(ngModel)]="createPoll.question"
         placeholder="Ask something..."
       >
       </textarea>
       <ul class="poll-option">
         <li *ngFor="let item of pollOptions; let i = index;">
-          <input 
-            type="text" 
+          <input
+            type="text"
             placeholder="Add an option"
             name="{{item}}"
-            [(ngModel)]="createPoll.options[i]" 
+            [(ngModel)]="createPoll.options[i]"
           />
         </li>
       </ul>
       <div>
-        <a 
-          id="add-poll-opt" 
-          class="btn-add-new" 
+        <a
+          id="add-poll-opt"
+          class="btn-add-new"
           (click)="onAddPollOption()"
         >
           Add New
         </a> <br/>
-        <p 
-          class="text-danger" 
-          style="margin-left:11px;" 
+        <p
+          class="text-danger"
+          style="margin-left:11px;"
           *ngIf="errorMessage"
         >
           {{this.errorMessage}}
@@ -79,15 +78,15 @@
       <div class="bottom-block">
         <div class="duration-poll">
           <span>Poll Duration(Days):</span>
-          <input 
-            name="newPollDuration" 
+          <input
+            name="newPollDuration"
             type="number"
-            [(ngModel)]="createPoll.duration" 
+            [(ngModel)]="createPoll.duration"
           >
         </div>
-        <button 
-          class="btn btn-peersview-primary btn-sm post-btn poll-btn" 
-          type="submit" 
+        <button
+          class="btn btn-peersview-primary btn-sm post-btn poll-btn"
+          type="submit"
           [disabled]="isButtonDisabledOnSubmit"
           (click)="onAddPoll()"
         >
@@ -97,8 +96,8 @@
     </form>
   </div>
   <!-- Share a Story -->
-  <div 
-    class="share" 
+  <div
+    class="share"
     *ngIf="typePost === 'share'"
   >
     SHARE
