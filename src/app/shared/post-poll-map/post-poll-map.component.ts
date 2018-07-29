@@ -14,7 +14,7 @@ import {
   Story
 } from '../../../models/models';
 import {
-  PostModel,
+  CreatePost,
   PollModel
 } from '../../shared/models';
 import {
@@ -40,7 +40,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() private onEditorKeyup = new EventEmitter<any>();
 
   private editor;
-  private newPost: PostModel = new PostModel();
+  private newPost: CreatePost = new CreatePost();
   private newPoll: PollModel = new PollModel();
   private newStory: Story = new Story();
   private errorMessage: any;
