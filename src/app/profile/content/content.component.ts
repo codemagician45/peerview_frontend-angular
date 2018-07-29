@@ -18,7 +18,7 @@ import {
 export class ProfileContentComponent implements OnInit {
   constructor (private userService: UserService) {}
 
-  protected posts: Array<Post>;
+  protected posts: Array<Post> = [];
 
   public ngOnInit (): void {
     this.getUserTimeline();
