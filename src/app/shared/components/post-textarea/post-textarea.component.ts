@@ -37,17 +37,19 @@ export class SharedPostTextareaComponent {
   ) {}
 
   private createPost: CreatePost = new CreatePost();
-  private poll: PollModel = new PollModel();
+  private createPoll: PollModel = new PollModel();
   private errorMessage: any;
   protected post: PostModel = new PostModel();
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
+  protected pollOptions: Array<string> = ['NewPollOption1', 'NewPollOption2'];
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
   @Input() protected route = {name: 'home'};
 
+<<<<<<< HEAD
   protected onAddPost (): any {
     if (!this.createPost.message) {
       return MessageNotificationService.show({
@@ -58,18 +60,69 @@ export class SharedPostTextareaComponent {
         }
       },
       NotificationTypes.Error);
+=======
+  public ngOnInit (): void {
+    this.uploadComplete();
+  }
+
+  protected onAddPost (): void {
+    this.isButtonDisabledOnSubmit = true;
+    if (this.createPost.message) {
+      if (this.toggleUploadComponent) {
+        PostEmitter
+        .uploadImages()
+        .emit('saveImages');
+      } else {
+        this.postMessageOnly();
+      }
+    } else {
+      console.log('Post message is required.');
+      this.isButtonDisabledOnSubmit = false;
+>>>>>>> Adjusted Post Textarea Component for the Post Poll Function
     }
 
     if (this.isToogleUploadComponentVisible) {
       return PostEmitter.uploadImages().emit();
     }
 
+<<<<<<< HEAD
     return this.postMessage();
   }
 
   protected onUploadComplete (attachments): void {
     this.createPost.attachments = attachments;
     this.postMessage(true);
+=======
+  private postMessageOnly (): void {
+    delete this.createPost.attachments;
+    this.postService.createPost(this.createPost)
+    .subscribe((response: SharePostResponse) => {
+      PostEmitter
+      .postSave()
+      .emit(response.postId);
+      this.createPost.message = '';
+      this.isButtonDisabledOnSubmit = false;
+    }, error => {
+      this.isButtonDisabledOnSubmit = false;
+      console.log(error);
+    });
+  }
+
+  private postWithAttachments (): void {
+    this.toggleUploadComponent = false;
+    this.postService.createPost(this.createPost)
+    .subscribe((response: SharePostResponse) => {
+      PostEmitter
+      .postSave()
+      .emit(response.postId);
+      this.createPost.message = '';
+      this.createPost.attachments = [];
+      this.isButtonDisabledOnSubmit = false;
+    }, error => {
+      console.log(error);
+      this.isButtonDisabledOnSubmit = false;
+    });
+>>>>>>> Adjusted Post Textarea Component for the Post Poll Function
   }
 
   protected postMessage (isWithAttachments = false): void {
@@ -103,7 +156,7 @@ export class SharedPostTextareaComponent {
   }
 
   protected onAddPollOption (): void {
-    if (this.poll.options.length === 4) {
+    if (this.pollOptions.length === 4) {
       MessageNotificationService.show({
         notification: {
           id: 'cannot-add-more-option',
@@ -113,12 +166,36 @@ export class SharedPostTextareaComponent {
       },
       NotificationTypes.Info);
     } else {
-      this.poll.options.push('');
+      let addNewPollOption = this.pollOptions.length + 1;
+      this.pollOptions.push('NewPollOption' + addNewPollOption);
     }
   }
 
   /*Destroy subscriber*/
   public ngOnDestroy (): void {
     PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
+  }
+
+  protected onAddPoll (): void {
+    this.isButtonDisabledOnSubmit = true;
+    if (this.createPoll.question) {
+      this.postService.createPoll(this.createPoll)
+      .subscribe((response: SharePostResponse) => {
+        console.log('create poll', response);
+        PostEmitter
+        .postSave()
+        .emit(response.postId);
+        this.isButtonDisabledOnSubmit = false;
+        this.createPoll.question = null;
+        this.createPoll.options = [];
+        this.createPoll.duration = null;
+      }, error => {
+        this.isButtonDisabledOnSubmit = false;
+        console.log('create poll', error);
+      });
+    } else {
+      console.log('Post message is required.');
+      this.isButtonDisabledOnSubmit = false;
+    }
   }
 }
