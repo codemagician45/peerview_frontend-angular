@@ -15,9 +15,12 @@ export class EmitterService {
   }
 
   public static remove (channel: string): any {
-    this.emitters[channel].unsubscribe();
-    delete this.emitters[channel];
-    return this.emitters[channel];
+    if (this.emitters[channel]) {
+      this.emitters[channel].unsubscribe();
+      delete this.emitters[channel];
+
+      return this.emitters[channel];
+    }
   }
 
   public static clear (channel): any {
