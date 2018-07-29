@@ -471,8 +471,8 @@ input[type="checkbox"]:focus {
   }
   
   .cdk-overlay-pane.share-post-modal {
-    min-height: 50vh;
-    max-height: 70vh;
+    min-height: 80vh;
+    max-height: 85vh;
     width: 90%;
   }
 }
@@ -491,6 +491,11 @@ input[type="checkbox"]:focus {
       padding: 5px !important;
     }
   }
+  .cdk-overlay-pane.share-post-modal {
+    min-height: 60vh;
+    max-height: 85vh;
+    width: 90%;
+  }
 }
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
@@ -504,7 +509,7 @@ input[type="checkbox"]:focus {
   }
 
   .cdk-overlay-pane.share-post-modal {
-    min-height: 50vh;
+    min-height: 75vh;
     max-height: 80vh;
     width: 80%;
   }
@@ -521,8 +526,8 @@ input[type="checkbox"]:focus {
   }
 
   .cdk-overlay-pane.share-post-modal {
-    min-height: 50vh;
-    max-height: 90vh;
-    width: 70%;
+    min-height: 85vh;
+    max-height: 95vh;
+    width: 50%;
   }
 }
