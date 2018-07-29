@@ -15,81 +15,14 @@
     margin-top: 5px;
     white-space: nowrap;
   }
-  .profile-stars {
-    margin-top: 0;
-    .star {
-      color: #feac01;
-    }
-  }
-
   .post-message {
     p {
-      margin: 5px 5px 5px 12px;
+      margin: 5px 5px 5px 2px;
       font-size: 1.5rem;
-    }
-  }
-  .user-name {
-    position: relative;
-    display: inline-block;
-    font-weight: bold;
-    .post-user-name {
-      margin-right: 5px; 
-    }
-  }
-  .post-images{
-    display: table;
-    width: 96%;
-    margin-left: 10px;
-    .image-outer {
-      display: inline-grid;
-      .image-inner {
-        margin: 0 0 2px 2px;
-        border: 2px solid #d0d0d0;
-        border-radius: 3px;
-  
-        img {
-          width: 100%;
-        }
-      }
-    }
-    .single-image {
-      width: 100%;
-    }
-    .multiple-image{
-      width: 50%;
-    }
-  }
-  .profile-stars {
-    .user-name {
-      position: relative;
-      top: -11px;
-      display: inline-block;
-      font-weight: bold;
-    }
-    .shared-stars-component {
-      margin-top: 3px;
-      margin-left: 0;
-      // margin-top: 5px;
-    }
-  }
-  .poll-options {
-    ul {
-      width: 93%;
-      margin-left: 12px;
-      background-color: #fcfcfc;
-      li {
-        padding: 3px;
-        border-bottom: 1px solid #ddd;
-        input {
-          margin-left: 10px;
-        }
-      }
     }
   }
   .post-images {
     display: table;
-    width: 96%;
-    margin-left: 10px;
     margin-bottom: 10px;
     .image-outer {
       display: inline-grid;
@@ -105,21 +38,25 @@
     }
     .single-image {
       width: 100%;
+      img {
+        max-height: 150px;
+        object-fit: cover;
+      }
     }
     .multiple-image{
       width: 50%;
     }
   }
   .profile-stars {
+    margin-top: 3px;
+    .star {
+      color: #feac01;
+    }
     .user-name {
       position: relative;
       top: -11px;
       display: inline-block;
       font-weight: bold;
-    }
-    .shared-stars-component {
-      margin-top: 5px;
-      margin-left: 10px;
     }
   }
   .report-post-component {
@@ -141,4 +78,36 @@
     width: 50px;
     height: 50px;
   }
+    .poll-options {
+    ul {
+      width: 93%;
+      margin-left: 12px;
+      background-color: #fcfcfc;
+      li {
+        padding: 3px;
+        border-bottom: 1px solid #ddd;
+        input {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {}
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {
+    .post-images {
+      .single-image {
+        img {
+          max-height: 250px;
+        }
+      }
+    }
+  }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
 }
