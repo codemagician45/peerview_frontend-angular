@@ -38,8 +38,15 @@
         </div>
         <div class="col-xs-12 post-message">
           <p>
-            {{post.message}}
+            {{post.message ? post.message : 'Poll: ' + post.question}}
           </p>
+        </div>
+        <div class="col-xs-12 poll-options" *ngIf="!!post.question">
+          <ul>
+            <li *ngFor="let option of post.postPollOptions; let i = index;">
+              <input type="radio" [value]="option.name"/> {{option.name}}
+            </li>
+          </ul>
         </div>
   
         <div class="col-xs-12 post-images">
@@ -56,10 +63,11 @@
                 public-id="{{attachment.cloudinaryPublicId}}"
                 >
                 <cl-transformation
-                  [attr.height]="post.attachments.length > 1 ? 500 : 380"
-                  width="500"
+                  [attr.height]="post.attachments.length > 1 ? 300 : 250"
+                  width="300"
                   crop="fill"
                   radius="3"
+                  gravity="face"
                 >
                 </cl-transformation>
               </cl-image>
