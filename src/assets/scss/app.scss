@@ -454,14 +454,18 @@ input[type="checkbox"]:focus {
   overflow-y: hidden;
 }
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {}
+@media only screen and (min-width : 320px) {
+  .cdk-overlay-container .cdk-overlay-pane {
+    height: 100vh;
+  }
+}
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {}
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  .mat-dialog-container {
-    width: 500px !important;
-  }
+  // .mat-dialog-container {
+  //   width: 500px !important;
+  // }
   .image-preview-modal {
     .mat-dialog-container{
       width: 750px;
