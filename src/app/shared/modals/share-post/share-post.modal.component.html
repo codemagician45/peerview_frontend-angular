@@ -47,6 +47,10 @@
               <input type="radio" [value]="option.name"/> {{option.name}}
             </li>
           </ul>
+          <div class="col-xs-12 poll-details">
+            <div class="col-xs-3">0 votes</div>
+            <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
+          </div>
         </div>
 
         <div class="col-xs-12 post-images">

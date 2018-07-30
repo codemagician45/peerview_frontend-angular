@@ -93,6 +93,42 @@ export class SharedSharePostModalComponent implements OnInit {
       });
   }
 
+  protected getPollExpiryDuration (createdDate, duration): any {
+    let date = new Date(createdDate);
+    let expiryDate = date.setDate(date.getDate() + duration);
+    let dateNow: any = new Date();
+
+    let seconds = Math.floor((expiryDate - (dateNow)) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
+
+    // hours = hours-(days*24);
+    minutes = minutes - (days * 24 * 60) - ((hours - (days * 24)) * 60);
+    // seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+
+    let hoursLeft = null;
+    let minutesLeft = null;
+
+    if (hours !== 0) {
+      if (hours > 1) {
+        hoursLeft = hours + ' hours and ';
+      } else if (hours === 1) {
+        hoursLeft = hours + ' hour and ';
+      }
+    }
+
+    if (minutes !== 0) {
+      if (minutes > 1) {
+        minutesLeft = minutes + ' minutes left ';
+      } else if (hours === 1) {
+        minutesLeft = minutes + ' minute left ';
+      }
+    }
+
+    return hoursLeft + minutesLeft;
+  }
+
   public ngOnDestroy (): void {
     this.document.body.classList.remove('mat-dialog-is-open');
   }
