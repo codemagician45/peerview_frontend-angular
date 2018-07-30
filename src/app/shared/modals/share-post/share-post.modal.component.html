@@ -1,4 +1,4 @@
-<div class="share-modal-component">
+<div class="shared-share-post-modal-component">
   <div class="create-new-forum">
     <h3 class="modal-heading">Share Post</h3>
     <button class="modal-close" mat-dialog-close>
@@ -15,12 +15,12 @@
       <div class="post-share-block">
         <div class="col-xs-12 post-share-user">
           <div class="pull-left">
-            <cl-image 
-              class="post-image" 
-              radius="max" 
+            <cl-image
+              class="post-image"
+              radius="max"
               width="50"
-              public-id="{{post.user.profilePicture}}" 
-              *ngIf="post?.user?.profilePicture" 
+              public-id="{{post.user.profilePicture}}"
+              *ngIf="post?.user?.profilePicture"
             >
             </cl-image>
           </div>
@@ -48,7 +48,7 @@
             </li>
           </ul>
         </div>
-  
+
         <div class="col-xs-12 post-images">
           <div
             class="image-outer"

@@ -12,7 +12,7 @@ import {
 } from '@angular/cdk/overlay';
 import {
   SharedPostDetailModalComponent,
-  SharePostModalComponent,
+  SharedSharePostModalComponent,
   SharedViewPostModalComponent
 } from '../../modals';
 import {
@@ -90,7 +90,7 @@ export class SharedPostOptionsComponent {
     dialogConfig.data = this.post;
     // dialogConfig.id = 'SharePostModalComponent'
 
-    this.dialog.open(SharePostModalComponent, dialogConfig)
+    this.dialog.open(SharedSharePostModalComponent, dialogConfig)
     .afterClosed()
     .subscribe(data => {
       if (data) {

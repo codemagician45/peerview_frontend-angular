@@ -26,11 +26,11 @@ import {
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
-  selector: 'app-share-post-modal',
-  templateUrl: './share.post.modal.component.html',
-  styleUrls: ['./share.post.modal.component.scss']
+  selector: 'shared-share-post-modal-component',
+  templateUrl: './share-post.modal.component.html',
+  styleUrls: ['./share-post.modal.component.scss']
 })
-export class SharePostModalComponent implements OnInit {
+export class SharedSharePostModalComponent implements OnInit {
   constructor (
     @Inject (MAT_DIALOG_DATA) private post: PostModel,
     @Inject(DOCUMENT) private document: Document,
