@@ -96,6 +96,17 @@
       }
     }
   }
+  .poll-details {
+    width: 98%;
+    padding: 5px 0;
+    border-left: 3px solid #ddd;
+    margin-left: 2px;
+    background-color: #fcfcfc;
+
+    div {
+      padding: 0 3px;
+    }
+  }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones

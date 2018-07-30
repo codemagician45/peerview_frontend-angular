@@ -42,7 +42,7 @@
       </div>
       <div class="col-xs-12 post-message">
         <p>
-          {{post.message ? post.message : 'Poll: ' + post.question}}
+          {{post.message ? post.message : post.question}}
         </p>
       </div>
       <div class="col-xs-12 poll-options" *ngIf="!!post.question">
@@ -51,6 +51,10 @@
             <input type="radio" [value]="option.name"/> {{option.name}}
           </li>
         </ul>
+        <div class="col-xs-12 poll-details">
+          <div class="col-xs-3">0 votes</div>
+          <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
+        </div>
       </div>
 
       <div class="col-xs-12 post-images">

@@ -38,7 +38,7 @@
         </div>
         <div class="col-xs-12 post-message">
           <p>
-            {{post.message ? post.message : 'Poll: ' + post.question}}
+            {{post.message ? post.message : post.question}}
           </p>
         </div>
         <div class="col-xs-12 poll-options" *ngIf="!!post.question">
