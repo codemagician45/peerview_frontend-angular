@@ -6,8 +6,9 @@
     padding-bottom: 5px;
     margin: 7px 0 20px 0;
     font-size: 18px;
-    font-family: 'Conv_MavenPro-Bold';
-    color: #333333;
+    font-family: "Maven Pro", sans-serif;
+		color: #333333;
+		font-weight: bold;
     border-bottom: none;
   }
   .invite-form {
@@ -75,5 +76,8 @@
 				background: #ff6d4a;
 			}
 		}
+  }
+  .shared-peers-you-may-know-component {
+	margin-top: 15px;
   }
 }

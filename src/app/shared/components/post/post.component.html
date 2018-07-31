@@ -23,7 +23,10 @@
         </div>
 
         <div class="user-name">
-          <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
+          <span 
+            [ngStyle]="{'display': 'inline-grid'}" 
+            (click)="onClickUserProfile(post.user);"
+            class="post-user-name">
             {{post.user.firstName}} {{post.user.lastName}}
           </span>
           <div class="user-school-name">
