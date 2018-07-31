@@ -176,4 +176,31 @@ export class SharedPostComponent {
 
     return hoursLeft + minutesLeft;
   }
+
+  protected getPollVoteCount (pollOptions): number {
+    let total = 0;
+    for ( let i = 0; i < pollOptions.length; i++ ) {
+      total += pollOptions[i].count;
+    }
+
+    return total;
+  }
+
+  protected onPollVote (option, pollOptions): void {
+    this.postService.votePoll(option.id).subscribe(response => {
+      console.log('response', response);
+      this.postSavedSubcribers();
+      // this.getPollPercentage(option, pollOptions);
+    }, error => {
+      console.log('error', error);
+    });
+  }
+
+  protected getPollPercentage (option, pollOptions): string {
+    let totalVotes = this.getPollVoteCount(pollOptions);
+    let percentage = option.count === 0 ? 0 : (option.count / totalVotes) * 100;
+    let percent = percentage.toFixed(1);
+
+    return percent;
+  }
 }
