@@ -82,6 +82,9 @@
           margin-left: 10px;
         }
       }
+      .poll-percentage {
+        float: right;
+      }
     }
   }
   .poll-details {
@@ -93,6 +96,7 @@
 
     div {
       padding: 0 3px;
+      text-indent: 8px;
     }
   }
   .post-images{

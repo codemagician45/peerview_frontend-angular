@@ -132,4 +132,21 @@ export class SharedSharePostModalComponent implements OnInit {
   public ngOnDestroy (): void {
     this.document.body.classList.remove('mat-dialog-is-open');
   }
+
+  protected getPollVoteCount (pollOptions): number {
+    let total = 0;
+    for ( let i = 0; i < pollOptions.length; i++ ) {
+      total += pollOptions[i].count;
+    }
+
+    return total;
+  }
+
+  protected getPollPercentage (option, pollOptions): string {
+    let totalVotes = this.getPollVoteCount(pollOptions);
+    let percentage = option.count === 0 ? 0 : (option.count / totalVotes) * 100;
+    let percent = percentage.toFixed(1);
+
+    return percent;
+  }
 }

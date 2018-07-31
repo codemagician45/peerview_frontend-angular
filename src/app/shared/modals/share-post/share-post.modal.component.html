@@ -45,10 +45,13 @@
           <ul>
             <li *ngFor="let option of post.postPollOptions; let i = index;">
               <input type="radio" [value]="option.name"/> {{option.name}}
+              <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
             </li>
           </ul>
           <div class="col-xs-12 poll-details">
-            <div class="col-xs-3">0 votes</div>
+            <div class="col-xs-3">
+              {{ getPollVoteCount(post.postPollOptions) <= 1 ? getPollVoteCount(post.postPollOptions) + ' vote' : getPollVoteCount(post.postPollOptions) + ' votes'}}
+            </div>
             <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
           </div>
         </div>
