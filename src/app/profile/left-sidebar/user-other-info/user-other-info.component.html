@@ -1,17 +1,20 @@
 <div class="profile-left-sidebar-user-other-info-component">
   <div class="interests text-center hidden-xs">
-    <div class="col-sm-2">
-      <i class="material-icons purple">local_offer</i>
-    </div>
-    <div class="col-sm-8">
-      Interests
-    </div>
-    <div class="col-sm-2">
-      <!-- <a class="flat-btn btn edit" (click)="openInterest()"> -->
-      <i
-      class="material-icons purple"
-      *ngIf="!userId">create</i>
-    </div>
+    <div class="row">
+
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <i class="material-icons color-purple">local_offer</i>
+      </div>
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        Interests
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <!-- <a class="flat-btn btn edit" (click)="openInterest()"> -->
+          <i
+          class="material-icons color-purple"
+          *ngIf="!userId">create</i>
+        </div>
+      </div>
     <div class="row">
       <ul class="interests-data">
         <li *ngFor="let interest of user?.userInterests">
@@ -21,16 +24,16 @@
     </div>
   </div>
   <div class="accomplishments text-center hidden-xs">
-    <div class="col-sm-2">
-      <i class="material-icons purple">book</i>
+    <div class="col-sm-2 col-md-2 col-lg-22">
+      <i class="material-icons color-purple">book</i>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-8  col-md-8 col-lg-8">
       Accomplishments
     </div>
     <div class="col-sm-2">
       <!-- <a class="flat-btn btn edit" (click)="openAccomplishments()"> -->
       <i
-      class="material-icons purple"
+      class="material-icons color-purple"
       *ngIf="!userId">create</i>
     </div>
     <div class="row">

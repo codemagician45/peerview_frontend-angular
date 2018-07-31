@@ -7,30 +7,34 @@
   background: #ffffff;
   border: 1px solid #dbdbdb;
   font-family: 'Conv_MavenPro-Bold';
-  .social-list {
+  .email-site {
     a {
-      width: 38px;
-      height: 38px;
       display: inline-block;
-      vertical-align: middle;
-      margin-left: 8px;
-      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1518759667/socialIcons.png') no-repeat 0 0;
+      padding-top: 8px;
+      margin: 0 3px;
+      height: 40px;
+      width: 40px;
+      color: #fff;
+      border-radius: 50px;
     }
-    a.facebook {
-      background-position: 0 0;
+    .email-fb {
+      background: darkblue;
     }
-    a.twitter {
-      background-position: -111px 0;
+    .email-twitter {
+      background: #59e6ff;
     }
-    a.instagram {
-      background-position: -166px 0;
+    .email-gmail {
+      background: #ff6d4a;
     }
   }
   .text {
-    padding: 0 0 10px 0;
+    padding: 5px 0;
   }
   h5 {
     border-bottom: 1px solid $primary-color;
-    padding-bottom: 5px;
+    display: flex;
+  }
+  .social-icon {
+    margin: -5px 5px 0 7px;
   }
 }

@@ -13,6 +13,10 @@
   }
   h5 {
     border-bottom: 1px solid $primary-color;
-    padding-bottom: 5px;
+    padding: 5px 0;
+    display: flex;
+  }
+  .social-icon {
+    margin: -5px 5px 0 7px;
   }
 }

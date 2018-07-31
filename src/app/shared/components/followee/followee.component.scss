@@ -12,7 +12,11 @@
     cursor: pointer;
   }
   h5 {
+    padding: 5px 0;
+    display: flex;
     border-bottom: 1px solid $primary-color;
-    padding-bottom: 5px;
+  }
+  .social-icon {
+    margin: -5px 5px 0 7px;
   }
 }
