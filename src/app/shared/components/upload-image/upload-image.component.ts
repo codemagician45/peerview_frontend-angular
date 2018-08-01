@@ -4,7 +4,8 @@ import {
   Input,
   Output,
   NgZone,
-  EventEmitter
+  EventEmitter,
+  ElementRef
 } from '@angular/core';
 import {
   FileUploader,
@@ -35,7 +36,8 @@ import {
 export class SharedUploadImageComponent {
   constructor (
     private cloudinary: Cloudinary,
-    private zone: NgZone
+    private zone: NgZone,
+    private elRef: ElementRef
   ) {}
 
   protected imagesToUpload: Array<string> = [];
@@ -47,9 +49,12 @@ export class SharedUploadImageComponent {
   private hasBaseDropZoneOver: boolean = false;
   private user: UserModel = UserClass.getUser();
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
+  private sourceId: string = null;
   @Output() private uploadComplete = new EventEmitter();
 
   public ngOnInit (): void {
+    this.sourceId = this.elRef.nativeElement.parentElement.id;
+
     this.uploadImagesSubscriber();
 
     // Create the file uploader, wire it to upload to your account
@@ -59,7 +64,7 @@ export class SharedUploadImageComponent {
       // url: 'https://api.cloudinary.com/v1_1/renchtolens/upload',
       autoUpload: false,
       isHTML5: true,
-      queueLimit: 4,
+      queueLimit: this.sourceId === 'changeProfilePicture' ? 1 : 4,
       headers: [
         {
           name: 'X-Requested-With',
@@ -82,7 +87,7 @@ export class SharedUploadImageComponent {
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // upload_preset must be added on the cloudinary configuration in the shared module
-      form.append('upload_preset', this.cloudinary.config().upload_preset);
+      // form.append('upload_preset', this.cloudinary.config().upload_preset);
       /* // upload preset of Lorence's cloudinary account */
       // form.append('upload_preset', 'lenua7xx');
       form.append('upload_preset', 'peersview');

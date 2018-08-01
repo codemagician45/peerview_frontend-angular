@@ -3,9 +3,18 @@
     <form>
       <input class="upload-file" id="uploadImage" accept="image/*" ng2FileSelect #fileInput type="file" style="display:none;" multiple [uploader]="uploader" (change)="fileInput.value=''" accept="image/gif, image/jpeg, image/png" />
     </form>
-    <div class="file-drop-or-select">
+    <div 
+      class="file-drop-or-select"
+      *ngIf="sourceId !== 'changeProfilePicture'"
+    >
       Add images by dropping them here... <br />
       <em> Maximum of 4 images only. </em>
+    </div>
+    <div 
+      class="file-drop-or-select"
+      *ngIf="sourceId === 'changeProfilePicture'"
+    >
+      Pick photo ...<br />
     </div>
     <div class="img-to-upload-list" *ngIf="imagesToUpload">
       <div class="img-crop" *ngFor="let imageUrl of imagesToUpload; let i = index;">
