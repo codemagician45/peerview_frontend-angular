@@ -6,7 +6,7 @@
       radius="max"
       *ngIf="user?.profilePicture"
       [ngStyle]="{'border-radius': '50%'}"
-      (click)="onOpenShowImageDialogComponent()">
+      (click)="onOpenShowImageDialogComponent(user)">
     </cl-image>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>
     <ul>

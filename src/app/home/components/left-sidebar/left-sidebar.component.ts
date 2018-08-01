@@ -5,6 +5,9 @@ import {
 import {
   UserModel
 } from '../../../shared/models';
+import{
+  UserApiService
+} from '../../../../services/api/user.api.service';
 
 @Component({
   selector: 'home-left-sidebar-component',
@@ -12,7 +15,17 @@ import {
   styleUrls: ['./left-sidebar.component.scss']
 })
 export class HomeLeftSidebarComponent {
-  constructor () {}
+  constructor (
+    private userApiService: UserApiService
+  ) {}
 
   @Input() protected user: UserModel;
+
+  public ngOnInit (): void {
+    this.userApiService
+        .promiseGetUser()
+        .then(response => {
+          this.user = response;
+    });
+  }
 }
