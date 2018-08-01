@@ -11,6 +11,9 @@ import {
   MatDialog,
   MAT_DIALOG_DATA
 } from '@angular/material';
+import {
+  PostEmitter
+} from '../../emitter';
 
 @Component({
   selector: 'shared-image-preview-component',
@@ -28,6 +31,7 @@ export class SharedImagePreviewComponent {
 
   @ViewChild('clImageRef', {read: ElementRef}) private clImageRef: ElementRef;
   private imageOrientation: string = null;
+  protected isToogleUploadComponentVisible: boolean = false;
 
   public ngAfterViewInit (): void {
     this.getImageOrientation();
@@ -66,5 +70,26 @@ export class SharedImagePreviewComponent {
         this.imageOrientation = 'portrait';
       }
     }, 80);
+  }
+
+  protected onChangeProfilePicture (): any {
+    // if (!this.createPost.message) {
+    //   return MessageNotificationService.show({
+    //     notification: {
+    //       id: 'shared-post-textarea-message',
+    //       message: 'Cannot Post',
+    //       instruction: 'Please add a message.'
+    //     }
+    //   },
+    //   NotificationTypes.Error);
+    // }
+
+    if (this.isToogleUploadComponentVisible) {
+      return PostEmitter.uploadImages().emit();
+    }
+  }
+
+  protected onUploadComplete (): void {
+    this.onCloseModal();
   }
 }

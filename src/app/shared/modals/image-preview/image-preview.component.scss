@@ -1,5 +1,5 @@
 .shared-image-preview-component {
-  height: 100%;
+  // height: 100vh;
   text-align: center;
 	.close-col {
 		position: absolute;
@@ -12,7 +12,7 @@
 		}
 	}
 	.image-container-outer {
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
 		div {
@@ -23,7 +23,7 @@
 			width: 100%;
 			.cl-image-scale {
 				img {
-					width: 100%;
+					max-width: 100%;
 				}
 			}
 		}
@@ -48,6 +48,17 @@
       }
     }
   }
+
+  .change-profile-picture-container {
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+
+    button {
+      padding: 5px;
+      border: 1px solid #a0a0a0;
+    }
+  }
 	/* Custom, iPhone Retina */
 	@media only screen and (min-width : 320px) {}
 	/* Extra Small Devices, Phones */
@@ -60,6 +71,7 @@
 			}
 		}
 		.image-container-outer {
+      height: 100%;
 			div {
 				display: inline-block;
 			}
@@ -92,6 +104,7 @@
 	/* Medium Devices, Desktops */
 	@media only screen and (min-width : 992px) {
     .image-container-outer {
+      height: 100%;
       div {
         display: inline-block;
       }
