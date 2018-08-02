@@ -35,9 +35,6 @@ import {
 import {
   indexRouting
 } from './index-routing.component';
-import {
-  PeersService
-} from '../../services/peers.service';
 
 @NgModule({
   imports : [
