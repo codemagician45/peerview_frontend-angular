@@ -22,9 +22,6 @@ import {
 import {
   peersRouting
 } from './peers-routing.component';
-import {
-  PeersService
-} from '../../services/peers.service';
 
 @NgModule({
   imports : [
@@ -36,9 +33,6 @@ import {
     PeersComponent,
     PeersListComponent
   ],
-  exports: [],
-  providers: [
-    PeersService
-  ]
+  exports: []
 })
 export class PeersModule {}
