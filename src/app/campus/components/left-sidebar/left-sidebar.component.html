@@ -5,14 +5,14 @@
       <h4>Peersview Campus</h4>
     </div>
     <ul class="menu-contents">
-      <li class="active">
-        <a href="#communityFeed">
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['all-students']">
           <i class="material-icons">person_pin</i>
           <span class="text">All Students</span>
         </a>
       </li>
-      <li>
-        <a href="#communityFreshersHome">
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="['freshers-feed']">
          <i class="material-icons">school</i>
          <span class="text">Freshers Feed</span>
        </a>

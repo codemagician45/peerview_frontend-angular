@@ -9,7 +9,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import {
-  UserService,
+  TokenStore
 } from '../../../services';
 import {
   UserResponse
@@ -21,17 +21,13 @@ import {
 @Injectable()
 export class IsProtectedCompnent implements CanActivate {
   constructor (
-    private userService: UserService,
     private router: Router) {}
-
-  private protectedRoutes = ['home'];
 
   public canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      console.log(route);
-      if (!this.userService.getLoggedInUser() && route.data.isProtected) {
+      if (!TokenStore.getAccessToken() && route.data.isProtected) {
         this.router.navigate(['/sign-in']);
-      } else if (this.userService.getLoggedInUser() && !route.data.isProtected) {
+      } else if (TokenStore.getAccessToken() && !route.data.isProtected) {
         this.router.navigate(['/home']);
       }
 

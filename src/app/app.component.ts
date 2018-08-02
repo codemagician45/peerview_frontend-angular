@@ -13,12 +13,11 @@ import {
   Title
 } from '@angular/platform-browser';
 import {
-  AccountSettingService
-} from '../services/services';
-import {
-  UserService,
   MessageNotificationService
 } from '../services';
+import {
+  UserApiService,
+} from '../services/api';
 import {
   UserResponse
 } from './shared/models';
@@ -39,8 +38,7 @@ export class AppComponent implements OnInit {
   constructor (
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService,
-    private accountSettingService: AccountSettingService,
+    private userApiService: UserApiService,
     private changeDetectorRef: ChangeDetectorRef,
     private titleService: Title) {
     /**************Loader Function Intialize on change Router***********************/
@@ -54,16 +52,6 @@ export class AppComponent implements OnInit {
         this.loading = false;
       }
     });
-
-    /*************Get Title from route*********************/
-    // router.events.subscribe(event => {
-    //   console.log('event')
-    //   console.log(event);
-    //   if (event instanceof NavigationEnd) {
-    //     let title = this.getTitle(router.routerState, router.routerState.root).join('-');
-    //     titleService.setTitle(title);
-    //   }
-    // });
   }
 
   protected loading: boolean;
@@ -75,13 +63,6 @@ export class AppComponent implements OnInit {
       for (let id of Object.keys(messageNotification.notifications)) {
         this.messageNotificationService.push(messageNotification.notifications[id]);
       }
-    });
-
-    if (!this.userService.getLoggedInUser()) { return; }
-    this.userService.getProfile()
-    .subscribe((response: UserResponse) => {
-
-      UserClass.setUser(response.user);
     });
   }
 

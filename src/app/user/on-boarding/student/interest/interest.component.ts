@@ -8,18 +8,18 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
-  CourseService,
-  InterestService,
-  UserService,
   MessageNotificationService,
   NotificationTypes
 } from '../../../../../services';
 import {
-  IInterestCategoryResponse,
-  ISubInterestsResponse,
+  UserApiService,
+  InterestApiService
+} from '../../../../../services/api';
+import {
   SubInterestModel,
   InterestCategoryModel,
-  Response
+  UserModel,
+  IResponse
 } from '../../../../shared/models';
 import 'rxjs/add/operator/mergeMap';
 
@@ -34,9 +34,8 @@ import {
 })
 export class UserOnboardingStudentInterestComponent {
   constructor (
-    private courseService: CourseService,
-    private interestService: InterestService,
-    private userService: UserService,
+    private interestApiService: InterestApiService,
+    private userApiService: UserApiService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -51,10 +50,9 @@ export class UserOnboardingStudentInterestComponent {
   protected suggestedInterest: any[] = [];
   protected isDisabled: any[] = [];
 
-  protected interestCategory: Array<InterestCategoryModel> = [];
-  protected subInterests: Array<SubInterestModel> = [];
+  protected interestCategory: InterestCategoryModel[] = [];
   protected interestCategoryName: string;
-  protected subInterestIds: Array<number> = [];
+  protected user: UserModel = new UserModel();
 
   public ngOnInit (): void {
     this.onBoardingEmitter();
@@ -62,26 +60,38 @@ export class UserOnboardingStudentInterestComponent {
   }
 
   private getInterests (): void {
-    this.interestService.getInterests()
-    .subscribe((response: IInterestCategoryResponse) => {
+    this.interestApiService.promiseGetAllCategoryInterest()
+      .then((interestCategory: InterestCategoryModel[]) => {
+        this.interestCategory = interestCategory;
+      })
+      .catch(error => {
 
-      this.interestCategory = response.interestCategory;
-    });
+      });
   }
 
   public getSubInterests (interestCategory): void {
-    this.courseService.getSubInterest(interestCategory.id)
-    .subscribe((response: ISubInterestsResponse) => {
-      interestCategory['subInterests'] = response.interests;
-    });
+    this.interestApiService.promiseGetAllSubInterest(interestCategory.id)
+      .then((subInterest: SubInterestModel[]) => {
+        interestCategory['subInterests'] = subInterest;
+      })
+      .catch(error => {
+
+      });
   }
 
-  protected onSaveAdditionalSubInterest (category, subInterest: HTMLInputElement): void {
-    // save there the additional sub-interest
-    this.interestService.saveSubInterest(category.id, subInterest.value)
-    .subscribe((response: any) => {
-      console.log(response);
+  protected onSaveAdditionalSubInterest (category, subInterestData: HTMLInputElement): void {
+    let subInterest = new SubInterestModel();
+    subInterest.assimilate({
+      name: subInterestData.value
     });
+
+    this.interestApiService.promiseCreateSubInterest(category.id, subInterest)
+      .then((interest: SubInterestModel) => {
+
+      })
+      .catch(error => {
+
+      });
   }
 
   public onBoardingEmitter (): void {
@@ -117,14 +127,11 @@ export class UserOnboardingStudentInterestComponent {
 
   protected onSelectSubInterest (subInterest): void {
     if (!subInterest.isSelected) {
-      // save the subInterest here for that authenticated user
-      this.subInterestIds.push(subInterest.id);
-      // this.userService.saveSubInterests(this.subInterestIds)
+      this.user.subInterestIds.push(subInterest.id);
     } else {
-      this.subInterestIds = this.subInterestIds.filter(id => id !== subInterest.id);
+      this.user.subInterestIds = this.user.subInterestIds.filter(id => id !== subInterest.id);
     }
 
-    console.log(this.subInterestIds);
     subInterest.isSelected = !subInterest.isSelected;
   }
 
@@ -138,35 +145,34 @@ export class UserOnboardingStudentInterestComponent {
     },
     NotificationTypes.Info);
 
-    this.userService.saveSubInterests(this.subInterestIds)
-    .mergeMap((response: Response) => {
-      return MessageNotificationService.show({
-        notification: {
-          id: 'user-onboarding-interest-finish-success',
-          message: 'Saved... Success!!!',
-          instruction: 'Redirecting...'
+    this.userApiService.promiseCreateUserSubInterest(this.user)
+      .then(() => {
+        return MessageNotificationService.show({
+          notification: {
+            id: 'user-onboarding-interest-finish-success',
+            message: 'Saved... Success!!!',
+            instruction: 'Redirecting...'
+          }
+        },
+        NotificationTypes.Success);
+      })
+      .then(notificationState => {
+        if (notificationState) {
+          notificationState.subscribe((data: any) => {
+            this.router.navigate(['/home']);
+          });
         }
-      },
-      NotificationTypes.Success);
-    })
-    .toPromise()
-    .then(notificationState => {
-      if (notificationState) {
-        notificationState.subscribe((data: any) => {
-          this.router.navigate(['/home']);
-        });
-      }
-    })
-    .catch(error => {
-      MessageNotificationService.show({
-        notification: {
-          id: 'user-onboarding-interest-finish-error',
-          message: 'Unable to Save.',
-          reason: 'Some unexpected happened with the application.',
-          instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-        }
-      },
-        NotificationTypes.Error);
-    });
+      })
+      .catch(error => {
+        MessageNotificationService.show({
+          notification: {
+            id: 'user-onboarding-interest-finish-error',
+            message: 'Unable to Save.',
+            reason: 'Some unexpected happened with the application.',
+            instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+          }
+        },
+          NotificationTypes.Error);
+      });
   }
 }

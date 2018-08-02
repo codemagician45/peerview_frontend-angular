@@ -3,7 +3,6 @@ import {
   PipeTransform
 } from '@angular/core';
 
-
 @Pipe({ name: 'selectedInterest', pure: false })
 export class SelectedInterestPipe implements PipeTransform {
   public transform (allInterests: any[]): any {

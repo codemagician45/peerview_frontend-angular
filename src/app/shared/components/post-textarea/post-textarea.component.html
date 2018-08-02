@@ -12,7 +12,7 @@
       <a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
   </div>
   <div class="post" *ngIf="typePost === 'post'">
-    <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="createPost.message"></textarea>
+    <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="post.message"></textarea>
 
     <shared-upload-image-component
       *ngIf="isToogleUploadComponentVisible"

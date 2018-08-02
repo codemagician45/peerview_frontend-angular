@@ -5,8 +5,12 @@ import {
   HttpClient
 } from '@angular/common/http';
 import {
-  Response
+  IResponse
 } from '../app/shared/models';
+import {
+  Model
+} from '../app/shared/models/model';
+
 interface IGetUrlPromise {
   [url: string]: Promise<any>;
 }
@@ -15,19 +19,17 @@ interface IGetUrlPromise {
 export abstract class ApiService {
   constructor (
     private http: HttpClient
-  ) {
-    console.log('CAMPUS SERVICES');
-    this.init();
-  }
+  ) {}
 
-  protected abstract options: any;
+  public abstract baseURI: string;
+  public abstract baseURIPlural: string;
+  public abstract options: any;
+
   private getUrlPromises: IGetUrlPromise = {};
 
-
-  protected init (): void {}
-
-  protected promiseGetResponseData (url?: string, refresh = false): Promise<Response> {
+  protected promiseGetResponseData (url?: string, refresh = false): Promise<IResponse> {
     url = url || '';
+    url = `${this.baseURI}/${url}`;
 
     if (!refresh && this.getUrlPromises[url]) {
       return this.getUrlPromises[url];
@@ -43,5 +45,67 @@ export abstract class ApiService {
     });
 
     return this.getUrlPromises[url];
+  }
+
+  protected promiseGetAllResponseData (url?: string, refresh = false): Promise<IResponse> {
+    url = url || '';
+    url = `${this.baseURIPlural}${url}`;
+
+    if (!refresh && this.getUrlPromises[url]) {
+      return this.getUrlPromises[url];
+    }
+
+    this.getUrlPromises[url] = new Promise((resolve, reject) => {
+      this.http.get(url, this.options)
+        .subscribe((response: any) => {
+          resolve(response);
+        }, (error) => {
+          reject(error);
+        });
+    });
+
+    return this.getUrlPromises[url];
+  }
+
+  protected promisePostModelData (url: string, dataModel?: Model): Promise<IResponse> {
+    return new Promise((resolve, reject) => {
+      url = url || '';
+      url = `${this.baseURI}${url}`;
+
+      this.http.post(url, dataModel.toRawData())
+        .subscribe((response: any) => {
+          resolve(response);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  protected promisePutModelData (url: string, dataModel?: Model): Promise<IResponse> {
+    return new Promise((resolve, reject) => {
+      url = url || '';
+      url = `${this.baseURI}${url}`;
+
+      this.http.put(url, dataModel.toRawData())
+        .subscribe((response: any) => {
+          resolve(response);
+        }, (error) => {
+          reject(error);
+        });
+    });
+  }
+
+  protected promiseRemoveData (url: string): Promise<IResponse> {
+    return new Promise((resolve, reject) => {
+      url = url || '';
+      url = `${this.baseURI}${url}`;
+
+      this.http.delete(url, this.options)
+        .subscribe((response: any) => {
+          resolve(response);
+        }, (error) => {
+          reject(error);
+        });
+    });
   }
 }

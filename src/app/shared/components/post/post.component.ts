@@ -15,13 +15,11 @@ import {
 } from '@angular/cdk/overlay';
 import {
   PostModel,
-  PostResponse,
-  PostsResponse,
-  Response
+  IResponse
 } from '../../models';
 import {
-  PostService,
-} from '../../../../services';
+  PostApiService,
+} from '../../../../services/api';
 import {
   EmitterService
 } from '../../emitter/emitter.component';
@@ -45,7 +43,7 @@ import {
 })
 export class SharedPostComponent {
   constructor (
-    private postService: PostService,
+    private postApiService: PostApiService,
     private router: Router,
     private dialog: MatDialog,
     private overlay: Overlay
@@ -59,7 +57,6 @@ export class SharedPostComponent {
   private counter = 0;
   private limit = 5;
   private offset = 10;
-  private cryptoUtilities = new CryptoUtilities();
   private isDisabled = false;
   private user = UserClass.getUser();
   protected btnLoadMoreText = 'Load More';
@@ -72,30 +69,30 @@ export class SharedPostComponent {
   private postSavedSubcribers (): void {
     PostEmitter
     .postSave()
-    .subscribe(response => {
-      this.postService.getPost(response)
-      .subscribe((data: PostResponse) => {
-        this.posts.unshift(data.post);
-        this.hasAddedPostCounter += 1;
-      });
+    .subscribe(postId => {
+      this.postApiService.promiseGetPost(postId)
+        .then((post: PostModel) => {
+          this.posts.unshift(post);
+          this.hasAddedPostCounter += 1;
+        })
+        .catch(() => {});
     });
   }
 
   private getSharedPostSubscriber (): void {
     this.sharePostSuccessSubscriber
     .subscribe(data => {
-      this.postService.getPost(data.postId)
-      .subscribe((response: PostResponse) => {
-        this.posts.unshift(response.post);
-        this.hasAddedPostCounter += 1;
-      }, error => {
-        console.log(error);
-      });
+      this.postApiService.promiseGetPost(data.postId)
+        .then((post: PostModel) => {
+          this.posts.unshift(post);
+          this.hasAddedPostCounter += 1;
+        })
+        .catch(() => {});
     });
   }
 
   protected onClickUserProfile (user): Promise<boolean> {
-    let userId = this.cryptoUtilities.cipher(user.id);
+    let userId = CryptoUtilities.cipher(user.id);
     if (user.id === this.user.id) {
       return this.router.navigate([`/profile`]);
     }
@@ -105,11 +102,12 @@ export class SharedPostComponent {
 
   protected onDeletePost (postId: number): void {
     // delete here the post
-    this.postService.deleteOne(postId)
-    .subscribe((response: Response) => {
-      let index = this.posts.findIndex(filter => filter.id === postId);
-      this.posts.splice(index, 1);
-    });
+    this.postApiService.promiseRemovePost(postId)
+      .then((response: IResponse) => {
+        let index = this.posts.findIndex(filter => filter.id === postId);
+        this.posts.splice(index, 1);
+      })
+      .catch(() => {});
   }
 
   protected onLoadMorePost (): void {
@@ -118,13 +116,14 @@ export class SharedPostComponent {
     this.counter = this.hasAddedPostCounter;
     this.offset = this.offset + this.counter;
 
-    this.postService.getPosts(this.limit, this.offset)
-    .subscribe((response: PostsResponse) => {
+    this.postApiService.promiseGetAllPost(this.limit, this.offset)
+    .then((posts: PostModel[]) => {
       this.offset = 5 + this.offset;
       this.limit = 5;
-      this.posts = this.posts.concat(response.posts);
+      this.posts = this.posts.concat(posts);
       this.hasAddedPostCounter = 0;
-      if (response.posts.length > 0) {
+
+      if (posts.length > 0) {
         this.isDisabled = false;
       } else {
         this.btnLoadMoreText = 'No More Posts To Show';

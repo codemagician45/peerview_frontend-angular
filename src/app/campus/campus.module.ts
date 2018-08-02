@@ -24,6 +24,15 @@ import {
   CampusMainComponent
 } from './main/main.component';
 import {
+  CampusFreshersFeedComponent
+} from './main/freshers-feed/freshers-feed.component';
+import {
+  CampusFreshersFeedLandingComponent
+} from './main/freshers-feed/landing/freshers-feed-landing.component';
+import {
+  CampusFreshersFeedMainComponent
+} from './main/freshers-feed/main/freshers-feed-main.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -37,6 +46,9 @@ import {
     CampusLandingPageComponent,
     CampusLeftSidebarComponent,
     CampusAllStudentsComponent,
+    CampusFreshersFeedComponent,
+    CampusFreshersFeedLandingComponent,
+    CampusFreshersFeedMainComponent,
     CampusMainComponent
   ],
   exports: [],

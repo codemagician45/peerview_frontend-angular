@@ -8,12 +8,11 @@ import {
   MatDialog
 } from '@angular/material';
 import {
-  UserModel,
-  UserResponse
+  UserModel
 } from '../../../shared/models';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
   UserClass
 } from '../../../shared/classes';
@@ -38,27 +37,19 @@ import {
 export class ProfileLeftSidebarUserInfoComponent {
   constructor (
     private route: ActivatedRoute,
-    private userService: UserService,
+    private userApiService: UserApiService,
     private dialog: MatDialog
   ) {
     this.route.params.subscribe(params => {
       this.userId = params.id;
-      if (this.userId) { this.userId = this.cryptoUtilities.decipher(this.userId); }
+      if (this.userId) { this.userId = CryptoUtilities.decipher(this.userId); }
     });
   }
 
   protected userId: string;
-  protected user: UserModel;
-  private cryptoUtilities = new CryptoUtilities();
+  protected user = UserClass.getUser();
 
-  public ngOnInit (): void {
-    this.userId && this.userService.getProfile(this.userId)
-    .subscribe((response: UserResponse) => {
-      this.user = response.user;
-    });
-
-    !this.userId && (this.user = UserClass.getUser());
-  }
+  public ngOnInit (): void {}
 
   protected onOpenMessageDiaglogComponent (): void {
     this.dialog.open(ProfileLeftSidebarUserInfoMessageDiaglogComponent);

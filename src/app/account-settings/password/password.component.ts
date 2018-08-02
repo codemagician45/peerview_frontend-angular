@@ -9,8 +9,8 @@ import {
   Response
 } from '../../shared/models';
 import {
-  UserService
-} from '../../../services';
+  UserApiService
+} from '../../../services/api';
 
 @Component({
   selector: 'account-settings-password-component',
@@ -19,7 +19,7 @@ import {
 })
 export class AccountSettingsPasswordComponent {
   constructor (
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
   protected user: UserModel = new UserModel();
@@ -28,11 +28,9 @@ export class AccountSettingsPasswordComponent {
 
   protected onPasswordUpdate (isValid): void {
     if (isValid) {
-      console.log(this.user);
-      this.userService.updatepassword(this.user)
-      .subscribe((response: Response) => {
-        console.log(response);
-      });
+      this.userApiService.promiseUpdatePassword(this.user)
+      .then(() => {})
+      .catch(error => {});
     }
   }
 }

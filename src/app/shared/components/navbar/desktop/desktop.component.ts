@@ -11,7 +11,7 @@ import {
   UserModel
 } from '../../../models';
 import {
-  UserService
+  TokenStore
 } from '../../../../../services';
 
 @Component({
@@ -21,14 +21,14 @@ import {
 })
 export class NavbarDesktopComponent {
   constructor (
-    private userService: UserService,
     private router: Router
   ) {}
 
   private user: UserModel = UserClass.getUser();
 
   protected onSignOut (): void {
-    this.userService.signOut();
+    TokenStore.expungeData();
     this.router.navigate(['']);
+    window.location.reload();
   }
 }

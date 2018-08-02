@@ -34,16 +34,11 @@ import {
 import {
   UserOnboardingOrganisationComponent
 } from './on-boarding/organisation/organisation.component';
-import {
-  ServicesModule
-} from '../../services/services.module';
-
 
 @NgModule({
   imports: [
     SharedModule,
     SharedPipeModule,
-    ServicesModule,
     userRouting
   ],
   declarations: [

@@ -5,7 +5,7 @@ import {
   Model
 } from './model';
 
-export class PostModel {
+export class PostModel extends Model {
   public id?: number;
   public courseId: number;
   public isUserPostLike: number;
@@ -14,34 +14,65 @@ export class PostModel {
   public message: string;
   public likeCount: number;
   public pageviewCount: number;
-  public postReply: Array<PostReply>;
+  public postReply: Array<PostReplyModel>;
   public ratingCount: number;
   public roundedRating?: number;
   public shareCount: number;
   public title?: string;
+  public attachments: String[];
+  // used as a virtual holder for postTo
+  public postTo?: number;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      id: undefined,
+      courseId: undefined,
+      message: undefined,
+      attachments: []
+    });
+  }
+}
+
+export class PostReplyModel extends Model {
+  public id?: number;
+  public comment: string;
+  public user?: UserModel;
+  public hideComment?: boolean;
+  public postPollOptionId?: number;
+  public createdAt?: Date;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      id: undefined,
+      comment: undefined,
+      user: undefined,
+      hideComment: undefined,
+      postPollOptionId: undefined,
+      createdAt: undefined
+    });
+  }
 }
 
 export class LikePost {}
 
-export class ReplyPost {
-  public comment: string;
-  public postPollOptionId: number;
+
+export class SharePostModel extends Model {
+  public id?: number;
+  public message: string;
+
+  public init (): void {}
 }
 
-export class PostReply {
-  public comment: string;
-  public createdAt: Date;
-  public user: UserModel;
-}
-
-export class SharePost {
-  public postCategoryId: number;
-  public message?: string;
-}
-
-export class ReportPost {
-  public id: number;
+export class ReportPostModel extends Model {
+  public id?: number;
   public reason: string;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      id: undefined,
+      reason: undefined
+    });
+  }
 }
 
 export class CreatePost extends Model {

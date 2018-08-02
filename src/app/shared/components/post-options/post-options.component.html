@@ -19,7 +19,7 @@
         <button
           class="btn-peersivew-transparent like"
           [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
-          (click)="likepost()" [disabled]="isLikingOrUnlikingPost"
+          (click)="onClickPostLike(post.isUserPostLike)" [disabled]="isLikingOrUnlikingPost"
         >
           <i class="material-icons" >thumb_up</i>
           <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
@@ -34,7 +34,7 @@
       </button>
     </div>
     <div class="col-xs-3 text-center">
-      <button class="btn-peersivew-transparent share" (click)="openShare()">
+      <button class="btn-peersivew-transparent share" (click)="onOpenShareModal()">
         <i class="material-icons">share</i>
       </button>
     </div>
@@ -43,13 +43,13 @@
     <hr>
     <div class="form-group">
       <div class="input-group">
-        <input required [(ngModel)]="reply.comment" type="text" class="form-control" required>
+        <input required [(ngModel)]="postReply.comment" type="text" class="form-control" required>
         <span class="input-group-btn">
-          <button class="btn btn-peersview-primary" type="button" (click)="submitPostReply()" [disabled]="commentSubmitting">Reply</button>
+          <button class="btn btn-peersview-primary" type="button" (click)="onPostReply()" [disabled]="isUserCurrentlyCommenting">Reply</button>
         </span>
       </div>
       <div class="replies-container" *ngIf="post.postReply">
-        <ul class="unstyled" *ngFor="let item of post.postReply.slice().reverse()">
+        <ul *ngFor="let item of post.postReply.slice().reverse()">
           <li class="comment-container">
             <span>
             <span class="purple">

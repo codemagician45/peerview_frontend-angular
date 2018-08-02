@@ -17,8 +17,8 @@ import {
   CampusModel
 } from '../../shared/models';
 import {
-  ICampusesResponse
-} from '../../shared/models/interface';
+  IResponse
+} from '../../shared/models';
 import {
   CryptoUtilities
 } from '../../shared/utilities';
@@ -37,12 +37,11 @@ export class CampusLandingPageComponent implements OnInit {
 
   protected campuses: Array<CampusModel> = [];
   private campus: CampusModel;
-  private crypto: CryptoUtilities = new CryptoUtilities();
 
   public ngOnInit (): void {
     this.campusApiService.getCampuses()
-      .then((response: ICampusesResponse) => {
-        this.campuses = CampusFactory.createMany(response.campuses);
+      .then((responseData: CampusModel[]) => {
+        this.campuses = responseData;
       });
   }
 
@@ -52,7 +51,7 @@ export class CampusLandingPageComponent implements OnInit {
   }
 
   protected onJoinWithInstitution (): void {
-    const campusId = this.crypto.cipher(this.campus.id);
-    // this.router.navigate([`${campusId}/all-students`], {relativeTo: this.route});
+    const campusId = CryptoUtilities.cipher(this.campus.id);
+    this.router.navigate([`${campusId}/all-students`], {relativeTo: this.route});
   }
 }

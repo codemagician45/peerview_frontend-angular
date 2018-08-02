@@ -1,0 +1,17 @@
+<div class="campus-freshers-feed-landing-component">
+  <h1 class="text-center main-title">Select Your Year of Enrolment</h1>
+  <div>
+    <div class="col-md-4" *ngFor="let feed of freshersFeed">
+      <div class="enrolmemt-box">
+        <h3>{{feed.schoolYearStart}}/{{feed.schoolYearEnd}}<br>
+                            {{feed.name}}</h3>
+        <p>
+          <a
+            class="btn btn-primary"
+            (click)="onClickNavigate(feed.id);"
+          >Join</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

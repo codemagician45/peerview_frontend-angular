@@ -85,10 +85,6 @@ import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
-import {
-  UserService
-} from '../../../services/user.service';
-
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 
@@ -161,7 +157,6 @@ export function provideConfig (): any {
     MatInputModule
   ],
   providers: [
-    UserService,
     {provide: Window, useValue: window},
     {
       provide: AuthServiceConfig,

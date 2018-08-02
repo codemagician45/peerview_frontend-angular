@@ -8,10 +8,11 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 import {
-  PostService
-} from '../../../../../services';
+  PostApiService
+} from '../../../../../services/api';
 import {
-  IPostToResponse
+  PostModel,
+  IResponse
 } from '../../../../shared/models';
 
 @Component({
@@ -22,9 +23,11 @@ import {
 export class ProfileLeftSidebarUserInfoPostToDiaglogComponent implements OnInit {
   constructor (
     private dialog: MatDialog,
-    private postService: PostService,
+    private postApiService: PostApiService,
     @Inject(MAT_DIALOG_DATA) protected user
   ) { }
+
+  private post: PostModel = new PostModel();
 
   public ngOnInit (): void {}
 
@@ -33,9 +36,12 @@ export class ProfileLeftSidebarUserInfoPostToDiaglogComponent implements OnInit 
   }
 
   protected onSendMessage (postMessage: HTMLTextAreaElement): void {
-    this.postService.postTo(postMessage.value, this.user.id)
-    .subscribe((response: IPostToResponse) => {
-      console.log(response);
+    this.post.assimilate({
+      message: postMessage.value,
+      postTo: this.user.id
     });
+    this.postApiService.promisePostTo(this.post)
+      .then(() => {})
+      .catch(() => {});
   }
 }

@@ -7,11 +7,12 @@ import {
   MatDialog
 } from '@angular/material';
 import {
-  PostService
-} from '../../../../services/services';
+  PostApiService
+} from '../../../../services/api';
 import {
-  ReportPost,
-  PostModel
+  ReportPostModel,
+  PostModel,
+  IResponse
 } from '../../models';
 @Component({
   selector: 'report-post-modal',
@@ -21,12 +22,12 @@ export class ReportPostModalComponent {
   constructor (
     @Inject (MAT_DIALOG_DATA)
     private post: PostModel,
-    private postservice: PostService,
+    private postApiService: PostApiService,
     private dialog: MatDialog
   ) {}
   protected isDisabled = true;
-  private report = new ReportPost();
   protected isVisible = true;
+  private report = new ReportPostModel();
 
   protected selectReason (reason): void {
     this.isDisabled = false;
@@ -52,16 +53,14 @@ export class ReportPostModalComponent {
 
   protected submitReport (): void {
     this.isDisabled = true;
-    this.postservice.reportpost(this.post.id, this.report)
-      .subscribe((response) => {
-        console.log(response);
+    this.postApiService.promiseReportPost(this.post.id, this.report)
+      .then((response: IResponse) => {
         let sharedReportPostModalComponent = this.dialog.getDialogById('SharedReportPostModalComponent');
         sharedReportPostModalComponent.close();
-        this.report.reason = '';
-      }, error => {
-        console.log(error);
+        this.report.init();
       });
   }
+
   protected reportCustomReason (event): void {
     this.isDisabled = false;
   }

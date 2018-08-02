@@ -41,18 +41,9 @@ import {
 import {
   SocialWidgetComponent
 } from './social-widget/social-widget.component';
-import {
-  FollowersComponent
-} from './followers/followers.component';
-import {
-  FollowingComponent
-} from './following/following.component';
-import {
-  PeersMayKnowComponent
-} from './peers-may-know/peers-may-know.component';
-import {
-  ImportModule
-} from '../import.module';
+// import {
+//   ImportModule
+// } from '../import.module';
 import {
   RouterModule
 } from '@angular/router';
@@ -87,9 +78,6 @@ import {
   ShowImageComponent
 } from './show-image/show-image.component';
 import {
-  UnfollowPopupComponent
-} from './unfollow-popup/unfollow-popup.component';
-import {
   ReportModalComponent
 } from './report-modal/report-modal.component';
 import {
@@ -106,7 +94,7 @@ import {
   imports: [
     SharedModule,
     HttpClientModule,
-    ImportModule,
+    // ImportModule,
     RouterModule,
     MatDialogModule,
     MatTooltipModule,
@@ -117,9 +105,6 @@ import {
     SidebarImageComponent, SidebarFooterComponent,
     AppNavBarUnauthComponent,
     SocialWidgetComponent,
-    FollowersComponent,
-    FollowingComponent,
-    PeersMayKnowComponent,
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
@@ -130,7 +115,6 @@ import {
     FullBrainstormingMapComponent,
     PostToComponent,
     ShowImageComponent,
-    UnfollowPopupComponent,
     ReportModalComponent,
     ReportModalUserComponent,
     StickyWidgetDirective
@@ -139,9 +123,6 @@ import {
     SidebarImageComponent, SidebarFooterComponent,
     AppNavBarUnauthComponent,
     SocialWidgetComponent,
-    FollowersComponent,
-    FollowingComponent,
-    PeersMayKnowComponent,
     NewMessageFormComponent,
     NewMessageModalComponent,
     ShareModalComponent,
@@ -162,7 +143,6 @@ import {
     AboutMeModalComponent,
     PostToComponent,
     ShowImageComponent,
-    UnfollowPopupComponent,
     ReportModalComponent,
     ReportModalUserComponent
   ]

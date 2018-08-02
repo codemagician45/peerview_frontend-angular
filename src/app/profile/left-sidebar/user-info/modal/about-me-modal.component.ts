@@ -8,8 +8,11 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 import {
-  UserService
-} from '../../../../../services';
+  UserApiService
+} from '../../../../../services/api';
+import {
+  UserModel
+} from '../../../../shared/models';
 
 @Component({
   selector: 'app-about-me-modal',
@@ -21,9 +24,10 @@ export class ProfileLeftSidebarUserInfoAboutMeDialogComponent implements OnInit 
     @Inject (MAT_DIALOG_DATA)
     private aboutMe: string,
     private dialog: MatDialog,
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
+  private user: UserModel = new UserModel();
   // private aboutMe: string;
 
   public ngOnInit (): void {
@@ -36,11 +40,18 @@ export class ProfileLeftSidebarUserInfoAboutMeDialogComponent implements OnInit 
 
   protected onSave (): void {
     if (this.aboutMe) {
-      this.userService.updateAboutMe(this.aboutMe)
-      .subscribe((user: any) => {
-        let aboutModelComponentRef = this.dialog.getDialogById('ProfileLeftSidebarUserInfoAboutMeDialogComponent');
-        aboutModelComponentRef.close(this.aboutMe);
+      this.user.assimilate({
+        aboutMe: this.aboutMe
       });
+
+      this.userApiService.promiseUpdateAboutMe(this.user)
+        .then(() => {
+          let aboutModelComponentRef = this.dialog.getDialogById('ProfileLeftSidebarUserInfoAboutMeDialogComponent');
+          aboutModelComponentRef.close(this.aboutMe);
+        })
+        .catch(error => {
+
+        });
     }
   }
 }

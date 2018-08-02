@@ -10,9 +10,6 @@ import {
 import {
   PostModel
 } from '../../models';
-import {
-  PostService
-} from '../../../../services/services';
 
 @Component({
   selector: 'shared-confirm-modal-component',

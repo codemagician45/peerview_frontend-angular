@@ -13,8 +13,8 @@ import {
   UserClass
 } from '../../../shared/classes';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
@@ -27,24 +27,16 @@ import {
 export class ProfileLeftSidebarUserOtherInfoComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
-    private userService: UserService
+    private userApiService: UserApiService
   ) {
     this.route.params.subscribe(params => {
       this.userId = params.id;
-      if (this.userId) { this.userId = this.cryptoUtilities.decipher(this.userId); }
+      if (this.userId) { this.userId = CryptoUtilities.decipher(this.userId); }
     });
   }
 
-  protected user: UserModel;
+  protected user: UserModel = UserClass.getUser();
   private userId: string;
-  private cryptoUtilities = new CryptoUtilities();
 
-  public ngOnInit (): void {
-    this.userId && this.userService.getProfile(this.userId)
-    .subscribe((response: UserResponse) => {
-      this.user = response.user;
-    });
-
-    !this.userId && (this.user = UserClass.getUser());
-  }
+  public ngOnInit (): void {}
 }

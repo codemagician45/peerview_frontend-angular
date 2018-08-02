@@ -9,14 +9,13 @@ import {
   OnBoardingEmitter
 } from '../../../shared/emitter';
 import {
-  CourseService,
-  UserService
-} from '../../../../services';
+  UserApiService,
+  CourseApiService
+} from '../../../../services/api';
 import {
-  CoursesResponse,
   CourseModel,
   UserModel,
-  UserTypeReponse
+  UserTypeModel
 } from '../../../shared/models';
 
 @Component({
@@ -27,12 +26,12 @@ import {
 export class UserOnboardingProfessionalComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
-    private courseService: CourseService,
-    private userService: UserService
+    private courseApiService: CourseApiService,
+    private userApiService: UserApiService
   ) {}
 
-  protected courses: Array<CourseModel>;
-  protected courseAdded: Array<CourseModel> = [];
+  protected courses: CourseModel[];
+  protected courseAdded: CourseModel[] = [];
   protected user: UserModel = new UserModel();
 
   public ngOnInit (): void {
@@ -46,17 +45,17 @@ export class UserOnboardingProfessionalComponent implements OnInit {
   }
 
   private getCourses (): void {
-    this.courseService.getCourses()
-    .subscribe((response: CoursesResponse) => {
-      console.log(response);
-      this.courses = response.courses;
-    });
+    this.courseApiService.promiseGetAllCourses()
+      .then((courses: CourseModel[]) => {
+        this.courses = courses;
+      })
+      .catch(error => {
+
+      });
   }
 
   protected onChangeCourse (value: string): void {
-    // check if the value is not yet on the Array
     let count = this.courseAdded.filter(item => item.id === parseInt(value, 10));
-
     if (count.length === 0) {
       let course = this.courses.filter(item => item.id === parseInt(value, 10))[0];
       this.courseAdded.push(course);
@@ -71,14 +70,12 @@ export class UserOnboardingProfessionalComponent implements OnInit {
   }
 
   protected onSubmit (): void {
-    this.userService.getTypeId('professionals')
-    .mergeMap((response: UserTypeReponse) => {
-      this.user.userTypeId = response.userTypeId;
+    this.userApiService.promiseGetType('professionals')
+      .then((userType: UserTypeModel) => {
+        this.user.userTypeId = userType.id;
 
-      return this.userService.update(this.user);
-    })
-    .subscribe((response: Response) => {
-      console.log(response);
-    });
+        return this.userApiService.promiseUpdateOnboardingDetails(this.user);
+      })
+      .catch(error => {});
   }
 }

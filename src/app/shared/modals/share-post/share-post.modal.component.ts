@@ -13,12 +13,12 @@ import {
 } from '@angular/material';
 import {
   PostModel,
-  SharePost,
-  SharePostResponse
+  SharePostModel,
+  IResponse
 } from '../../models';
 import {
-  PostService
-} from '../../../../services/services';
+  PostApiService
+} from '../../../../services/api';
 import {
   MessageNotificationService,
   NotificationTypes
@@ -34,13 +34,13 @@ export class SharedSharePostModalComponent implements OnInit {
   constructor (
     @Inject (MAT_DIALOG_DATA) private post: PostModel,
     @Inject(DOCUMENT) private document: Document,
-    private postservice: PostService,
+    private postApiService: PostApiService,
     private dialog: MatDialog,
   ) {
     this.document.body.classList.add('mat-dialog-is-open');
   }
 
-  protected share: SharePost = new SharePost();
+  protected share: SharePostModel = new SharePostModel();
   protected isCurrentlySharing = false;
   public ngOnInit (): void {}
 
@@ -56,31 +56,41 @@ export class SharedSharePostModalComponent implements OnInit {
     },
     NotificationTypes.Info);
 
-    this.postservice.sharepost(this.post.id, this.share)
-    .subscribe((response: SharePostResponse) => {
+    this.postApiService.promiseSharePost(this.post.id, this.share)
+      .then((sharePost: PostModel) => {
+        this.isCurrentlySharing = false;
 
-      this.isCurrentlySharing = false;
-      let sharePostModalComponent = this.dialog.getDialogById('SharePostModalComponent');
-      sharePostModalComponent.close({
-        postId: response.postId,
-        shareMessage: this.share.message,
-        postedBy: this.post,
-      });
-    }, error => {
-      console.log(error);
-      if (error.status === 400) {
+        let sharePostModalComponent = this.dialog.getDialogById('SharePostModalComponent');
+        sharePostModalComponent.close({
+          postId: sharePost.id,
+          shareMessage: this.share.message,
+          postedBy: this.post,
+        });
+
         MessageNotificationService.show({
           notification: {
-            id: 'share-post-error',
-            message: 'Unable to Share Post.',
-            reason: 'Share details should be filled in.',
-            instruction: 'Please say something about this post.'
+            id: 'share-post-success',
+            message: 'Your post has beed shared.',
+            instruction: ''
           }
         },
-      NotificationTypes.Error);
-    }
-      this.isCurrentlySharing = false;
-    });
+        NotificationTypes.Success);
+      })
+      .catch(error => {
+        if (error.status === 400) {
+          MessageNotificationService.show({
+            notification: {
+              id: 'share-post-error',
+              message: 'Unable to Share Post.',
+              reason: 'Share details should be filled in.',
+              instruction: 'Please say something about this post.'
+            }
+          },
+          NotificationTypes.Error);
+        }
+
+        this.isCurrentlySharing = false;
+      });
   }
 
   public ngOnDestroy (): void {

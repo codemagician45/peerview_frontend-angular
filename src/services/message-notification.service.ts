@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-// import {INotificationMessageData, INotificationMessageSet} from '../notification-messages.interface';
-// import {WebContextService} from './web-context.service';
 import {Logger} from '../app/shared/classes/logger';
 import {Subject} from 'rxjs/Subject';
 

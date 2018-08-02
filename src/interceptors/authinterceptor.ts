@@ -11,25 +11,25 @@ import {
   Observable
 } from 'rxjs/Observable';
 import {
-  UserService
-} from '../services/services';
+  TokenStore
+} from '../services';
 import {
   CONFIG
 } from '../config';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor (private userService: UserService) {}
+  constructor () {}
 
   public intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let authReq = req.clone({
+    let headers = req.clone({
       setHeaders: {
         'content-type': 'application/json',
-        'token': this.userService.isAuthenticated() ? this.userService.getLoggedInUser().token : ''
+        'token': TokenStore.getAccessToken() ? TokenStore.getAccessToken() : ''
       },
       url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
 
-    return next.handle(authReq);
+    return next.handle(headers);
   }
 }

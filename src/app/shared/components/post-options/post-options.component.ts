@@ -16,15 +16,14 @@ import {
   SharedViewPostModalComponent
 } from '../../modals';
 import {
-  UserService,
-  PostService
-} from '../../../../services/services';
+  PostApiService
+} from '../../../../services/api';
 import {
   PostModel,
   LikePost,
-  ReplyPost,
-  PostReply,
+  PostReplyModel,
   UserModel,
+  IResponse
 } from '../../models';
 import {
   UserClass
@@ -41,10 +40,11 @@ import {
 export class SharedPostOptionsComponent {
   constructor (
     public dialog: MatDialog,
-    private postService: PostService,
+    private postApiService: PostApiService,
     private overlay: Overlay
   ) {}
-  private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
+
+  public user: UserModel = UserClass.getUser();
   @Input() protected likes = 0;
   @Input() protected replies = 0;
   @Input() protected views = 0;
@@ -55,12 +55,13 @@ export class SharedPostOptionsComponent {
   @Input() protected disableRepliesLink: boolean;
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
-  public user: UserModel = UserClass.getUser();
   protected isLikingOrUnlikingPost = false;
-  protected reply: ReplyPost = new ReplyPost();
+  protected isUserCurrentlyCommenting = false;
+  protected postReply: PostReplyModel = new PostReplyModel();
   protected hideReplySection = true;
-  protected commentSubmitting = false;
-  protected postReply = [];
+  private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
+
+
   public ngOnInit (): void {}
 
   protected onOpenSharedPostDetailModalComponent (): void {
@@ -80,74 +81,69 @@ export class SharedPostOptionsComponent {
     this.hideReplySection = !this.hideReplySection;
   }
 
-  protected openShare (): void {
+  protected onOpenShareModal (): void {
     /* Added MatDialogConfig for adding a custom setting for this modal */
-    const dialogConfig = new MatDialogConfig();
+    let dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'share-post-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = this.post;
-    // dialogConfig.id = 'SharePostModalComponent'
-
+    dialogConfig.id = 'SharePostModalComponent';
     this.dialog.open(SharedSharePostModalComponent, dialogConfig)
-    .afterClosed()
-    .subscribe(data => {
-      if (data) {
-        this.sharePostSuccessEmitter.emit(data);
-      }
-    }, error => {
-      console.log(error);
-    });
+      .afterClosed()
+      .subscribe(data => {
+        if (data) {
+          this.sharePostSuccessEmitter.emit(data);
+        }
+      }, error => {
+        console.log(error);
+      });
   }
 
-  protected likepost (): void {
+  protected onClickPostLike (isUserPostLike: boolean): void {
     this.isLikingOrUnlikingPost = true;
-    if (this.post.isUserPostLike > 0) {
-      this.postService.unlikepost(this.post.id, new LikePost())
-      .subscribe(response => {
-        this.post.isUserPostLike = 0;
-        this.post.likeCount -= 1;
-        this.isLikingOrUnlikingPost = false;
-
-      }, error => {
-        console.error('Error Liking Post');
-        console.error(error);
-        this.isLikingOrUnlikingPost = false;
-      });
+    if (this.post.isUserPostLike) {
+      this.postApiService.promiseRemovePostLike(this.post.id)
+        .then((response: IResponse) => {
+          this.post.isUserPostLike = 0;
+          this.post.likeCount -= 1;
+          this.isLikingOrUnlikingPost = false;
+        })
+        .catch(error => {
+          this.isLikingOrUnlikingPost = false;
+        });
     } else {
-      this.postService.likepost(this.post.id, new LikePost())
-      .subscribe(response => {
-        this.post.isUserPostLike = 1;
-        this.post.likeCount += 1;
-        this.isLikingOrUnlikingPost = false;
-      }, error => {
-        this.isLikingOrUnlikingPost = false;
-        console.error('Error Liking Post');
-        console.error(error);
-      });
+      this.postApiService.promiseCreatePostLike(this.post.id)
+        .then((response: IResponse) => {
+          this.post.isUserPostLike = 1;
+          this.post.likeCount += 1;
+          this.isLikingOrUnlikingPost = false;
+        })
+        .catch(error => {
+          this.isLikingOrUnlikingPost = false;
+        });
     }
   }
 
-  protected submitPostReply (): void {
-    this.commentSubmitting = true;
-    let currentDateAndTime = new Date();
-    let replyPostUser = new PostReply();
-    this.postService.replypost(this.post.id, this.reply)
-    .subscribe(response => {
-      replyPostUser.user = this.user;
-      replyPostUser.comment = this.reply.comment;
-      replyPostUser.createdAt = currentDateAndTime;
+  protected onPostReply (): void {
+    this.isUserCurrentlyCommenting = true;
+    this.postApiService.promiseCreatePostReply(this.post.id, this.postReply)
+      .then((response: IResponse) => {
+        this.postReply.user = this.user;
+        this.postReply.createdAt = new Date();
+        // clone the postReply
+        let postReply: any = this.postReply.clone();
+        this.post.postReply.unshift(postReply);
+        this.postReply.init(); // this will initialize the data with blank ones
+        this.isUserCurrentlyCommenting = false;
+      })
+      .catch(error => {
 
-      this.post.postReply.unshift(replyPostUser);
-      this.reply.comment = '';
-      this.commentSubmitting = false;
-    }, error => {
-      console.log(error);
-    });
+      });
   }
 
-  protected  openViewModal (): void {
+  protected openViewModal (): void {
     this.dialog.open(SharedViewPostModalComponent, {
       data: this.post,
       id: 'SharedViewPostModalComponent'

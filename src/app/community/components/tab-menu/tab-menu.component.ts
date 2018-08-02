@@ -3,11 +3,10 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
-  UserStudyLevelModel,
-  UserStudyLevelsResponse
+  UserStudyLevelModel
 } from '../../../shared/models';
 
 @Component({
@@ -16,7 +15,7 @@ import {
   styleUrls: ['./tab-menu.component.scss']
 })
 export class CommunityTabMenuComponent implements OnInit {
-  constructor (private userService: UserService) {}
+  constructor (private userApiService: UserApiService) {}
 
   protected useStudyLevels: Array<UserStudyLevelModel>;
 
@@ -25,9 +24,10 @@ export class CommunityTabMenuComponent implements OnInit {
   }
 
   private getUserStudyLevels (): void {
-    this.userService.getStudyLevels()
-    .subscribe((response: UserStudyLevelsResponse) => {
-      this.useStudyLevels = response.userStudyLevels;
-    });
+    this.userApiService.promiseGetStudyLevels()
+      .then((studyLevels: UserStudyLevelModel[]) => {
+        this.useStudyLevels = studyLevels;
+      })
+      .catch(() => {});
   }
 }

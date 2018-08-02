@@ -7,8 +7,8 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
   UserModel,
   FolloweeResponse
@@ -20,7 +20,7 @@ import {
   styleUrls: ['./followee.component.scss']
 })
 export class SharedFolloweeComponent implements OnInit {
-  constructor (private userService: UserService) {}
+  constructor (private userApiService: UserApiService) {}
 
   private followee: Array<UserModel> = [];
 
@@ -29,9 +29,10 @@ export class SharedFolloweeComponent implements OnInit {
   }
 
   private getUserFollowee (): void {
-    this.userService.getFollowee()
-    .subscribe((response: FolloweeResponse) => {
-      this.followee = response.followee;
-    });
+    this.userApiService.promiseGetFollowee()
+      .then((followee: UserModel[]) => {
+        this.followee = followee;
+      })
+      .catch(() => {});
   }
 }

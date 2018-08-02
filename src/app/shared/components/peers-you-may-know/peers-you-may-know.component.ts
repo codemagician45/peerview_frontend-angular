@@ -2,11 +2,11 @@ import {
   Component
 } from '@angular/core';
 import {
-  PeersListResponse
+  UserModel
 } from '../../models';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 
 @Component({
   selector: 'shared-peers-you-may-know-component',
@@ -15,18 +15,17 @@ import {
 })
 export class SharedPeersYouMayKnowComponent {
   constructor (
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
   public peers: any[];
   public user: any;
 
   public ngOnInit (): void {
-    this.userService.getPeerslist()
-    .subscribe((response: PeersListResponse) => {
-      this.peers = response.peersList;
-    }, error => {
-      console.log(error);
-    });
+    this.userApiService.promiseGetPeersList()
+      .then((users: UserModel[]) => {
+        this.peers = users;
+      })
+      .catch(() => {});
   }
 }

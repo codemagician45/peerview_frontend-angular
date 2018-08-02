@@ -9,8 +9,10 @@ import {
   Response
 } from '../../shared/models';
 import {
+  UserApiService
+} from '../../../services/api';
+import {
   UtilitiesService,
-  UserService
 } from '../../../services';
 
 @Component({
@@ -21,7 +23,7 @@ import {
 export class AccountSettingsGeneralComponent {
   constructor (
     private utilitiesService: UtilitiesService,
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
   private user: UserModel = UserClass.getUser();
@@ -43,13 +45,13 @@ export class AccountSettingsGeneralComponent {
       console.log(item.key);
       switch (item.key) {
         case 'name':
-          this.updateUserName(item);
+          // this.updateUserName(item);
           break;
         case 'email':
-          this.updateUserEmail(item);
+          // this.updateUserEmail(item);
           break;
         case 'language':
-          this.updateUserLanguage(item);
+          // this.updateUserLanguage(item);
           break;
       }
 
@@ -61,32 +63,32 @@ export class AccountSettingsGeneralComponent {
     this.languages.value = value;
   }
 
-  private updateUserName (name): void {
-    let nameTemp = Object.assign({}, name);
-
-    this.userService.updateName(name)
-    .subscribe((response: Response) => {
-      this.user.firstName = nameTemp.firstName;
-      this.user.lastName = nameTemp.lastName;
-    });
-  }
-
-  private updateUserEmail (email): void {
-    let emailTemp = Object.assign({}, email);
-
-    this.userService.updateEmail(email.value)
-    .subscribe((response: Response) => {
-      this.user.email = emailTemp.value;
-    });
-  }
-
-
-  private updateUserLanguage (language): void {
-    let languageTemp = Object.assign({}, language);
-
-    this.userService.updateLanguage(language.value)
-    .subscribe((response: Response) => {
-      this.user.language = languageTemp.value;
-    });
-  }
+  // private updateUserName (name): void {
+  //   let nameTemp = Object.assign({}, name);
+  //
+  //   this.userService.updateName(name)
+  //   .subscribe((response: Response) => {
+  //     this.user.firstName = nameTemp.firstName;
+  //     this.user.lastName = nameTemp.lastName;
+  //   });
+  // }
+  //
+  // private updateUserEmail (email): void {
+  //   let emailTemp = Object.assign({}, email);
+  //
+  //   this.userService.updateEmail(email.value)
+  //   .subscribe((response: Response) => {
+  //     this.user.email = emailTemp.value;
+  //   });
+  // }
+  //
+  //
+  // private updateUserLanguage (language): void {
+  //   let languageTemp = Object.assign({}, language);
+  //
+  //   this.userService.updateLanguage(language.value)
+  //   .subscribe((response: Response) => {
+  //     this.user.language = languageTemp.value;
+  //   });
+  // }
 }

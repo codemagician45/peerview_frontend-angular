@@ -7,11 +7,11 @@ import {
 } from '@angular/router';
 import {
   UserModel,
-  UserTypeReponse
+  UserTypeModel
 } from '../../../shared/models';
 import {
-  UserService,
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
   OnBoardingEmitter
 } from '../../../shared/emitter';
@@ -23,7 +23,7 @@ import {
 })
 export class UserOnboardingOrganisationComponent {
   constructor (
-    private userService: UserService,
+    private userApiService: UserApiService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -40,13 +40,14 @@ export class UserOnboardingOrganisationComponent {
   }
 
   protected onSubmit (isValid): void {
-    this.userService.getTypeId('organizationInstitution')
-    .mergeMap((response: UserTypeReponse) => {
-      this.user.userTypeId = response.userTypeId;
-      return this.userService.update(this.user);
-    })
-    .subscribe((response: Response) => {
-      this.router.navigate(['./interest'], {relativeTo: this.route});
-    });
+    this.userApiService.promiseGetType('organizationInstitution')
+      .then((userType: UserTypeModel) => {
+        this.user.userTypeId = userType.id;
+
+        return this.userApiService.promiseUpdateOnboardingDetails(this.user);
+      })
+      .catch(error => {
+
+      });
   }
 }

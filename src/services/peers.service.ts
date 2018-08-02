@@ -7,9 +7,6 @@ import {
 import {
   Observable
 } from 'rxjs/Observable';
-import {
-  UserOnboardingDetails
-} from '../models/models';
 
 @Injectable()
 export class PeersService {

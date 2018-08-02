@@ -30,30 +30,13 @@ import {
   MatInputModule
 } from '@angular/material';
 import {
-  AccountSettingService,
-  AuthenticationService,
-  CampusService,
-  CampusCourseService,
-  CampusCourseClassService,
-  CampusFreshersFeedPostService,
-  CampusSocietyClubService,
-  CampusStudentGroupService,
-  CommunityService,
-  CourseService,
-  EventService,
-  ForumService,
-  MarketPlaceService,
-  NotificationService,
-  OnboardingService,
-  PostService,
-  UserService
-} from '../services/services';
+  CampusApiService,
+  PostApiService,
+  UserApiService
+} from '../services/api';
 import {
   AuthInterceptor
 } from '../interceptors/authinterceptor';
-import {
-  CanActivateViaAuthGuard
-} from '../interceptors/canactivateviaauthguard';
 import {
   RouterModule
 } from '@angular/router';
@@ -133,26 +116,11 @@ tinymce.init({});
     useClass: AuthInterceptor,
     multi: true,
   },
-    CanActivateViaAuthGuard,
-    AccountSettingService,
-    AuthenticationService,
-    CampusService,
-    CampusCourseService,
-    CampusCourseClassService,
-    CampusFreshersFeedPostService,
-    CampusSocietyClubService,
-    CampusStudentGroupService,
-    CommunityService,
-    CourseService,
-    EventService,
-    ForumService,
-    MarketPlaceService,
-    NotificationService,
-    OnboardingService,
-    PostService,
-    UserService,
     CanActivateUserProfile,
-    IsProtectedCompnent
+    IsProtectedCompnent,
+    CampusApiService,
+    PostApiService,
+    UserApiService
   ],
   bootstrap: [AppComponent],
   exports: [],

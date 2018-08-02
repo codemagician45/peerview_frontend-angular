@@ -7,10 +7,13 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import {
-  UserService,
+  UserApiService,
+} from '../../../services/api';
+import {
+  TokenStore
 } from '../../../services';
 import {
-  UserResponse
+  UserModel
 } from '../models';
 import {
   UserClass
@@ -19,20 +22,28 @@ import {
 @Injectable()
 export class CanActivateUserProfile implements CanActivate {
   constructor (
-    private userService: UserService) {}
+    private userApiService: UserApiService) {}
 
   private protectedRoutes = ['home'];
 
   public canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.userService.getLoggedInUser() ? this.userService.getProfile()
-      .subscribe((response: UserResponse) => {
-        UserClass.setUser(response.user);
-        resolve(true);
-      }, (error) => {
-        this.userService.clearLocalStorage();
-        window.location.reload();
-      }) : resolve(true);
+      const token = TokenStore.getAccessToken();
+
+      if (!token) {
+        return resolve(true);
+      }
+
+      return this.userApiService.promiseGetUser()
+        .then((user: UserModel) => {
+          TokenStore.setAccessToken(user.token);
+          UserClass.setUser(user);
+          return resolve(true);
+        })
+        .catch(error => {
+          TokenStore.expungeData();
+          window.location.reload();
+        });
     });
   }
 }

@@ -9,16 +9,16 @@ import {
 import {
   UserModel,
   UserResponse,
-  SignUpViaSocialModel,
-  ISocialResponse,
-  ISignUpViaSocialResponse,
-  Response
+  IResponse
 } from '../shared/models';
 import {
-  UserService,
   MessageNotificationService,
-  NotificationTypes
+  NotificationTypes,
+  TokenStore
 } from  '../../services';
+import {
+  UserApiService
+} from '../../services/api';
 import {
   AuthService,
   SocialUser,
@@ -38,21 +38,22 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class SignUpComponent {
   constructor (
-    private userService: UserService,
+    private userApiService: UserApiService,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
-  private signUpViaSocial: SignUpViaSocialModel = new SignUpViaSocialModel();
-  private isSignUpViaSocialIsClick: boolean = false;
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
+  private isSignUpViaSocialIsClick: boolean = false;
 
   protected onSignUp (): void {
     const splitNames = this.user.name.split(' ');
-    this.user.firstName = splitNames[0];
-    this.user.lastName = splitNames[1];
+    this.user.assimilate({
+      firstName: splitNames[0],
+      lastName: splitNames[1]
+    });
 
     if (this.hasAgreed) {
       MessageNotificationService.show({
@@ -64,48 +65,47 @@ export class SignUpComponent {
       },
       NotificationTypes.Info);
 
-      this.userService.signUp(this.user)
-      .mergeMap((response: Response) => {
-        return MessageNotificationService.show({
-          notification: {
-            id: 'sign-up-success',
-            message: 'Sign-up.. Success!!!',
-            instruction: 'Redirecting...'
+      this.userApiService.promiseRegister(this.user)
+        .then((response: IResponse) => {
+          return MessageNotificationService.show({
+            notification: {
+              id: 'sign-up-success',
+              message: 'Sign-up.. Success!!!',
+              instruction: 'Redirecting...'
+            }
+          },
+          NotificationTypes.Success);
+        })
+        .then(notificationState => {
+          if (notificationState) {
+            notificationState.subscribe((data: any) => {
+              this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
+            });
           }
-        },
-        NotificationTypes.Success);
-      })
-      .toPromise()
-      .then(notificationState => {
-        if (notificationState) {
-          notificationState.subscribe((data: any) => {
-            this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
-          });
-        }
-      })
-      .catch(error => {
-        if (error.status === 400) {
-          MessageNotificationService.show({
-            notification: {
-              id: 'sign-up-error',
-              message: 'Unable to Sign-up.',
-              reason: error.error.status_message,
-              instruction: 'Please correct the errors and try again.'
-            }
-          },
-          NotificationTypes.Error);
-        } else {
-          MessageNotificationService.show({
-            notification: {
-              id: 'sign-up-error',
-              message: 'Unable to Sign-up.',
-              reason: 'Some unexpected happened with the application.',
-              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-            }
-          },
-          NotificationTypes.Error);
-        }
-      });
+        })
+        .catch(error => {
+          if (error.status === 400) {
+            MessageNotificationService.show({
+              notification: {
+                id: 'sign-up-error',
+                message: 'Unable to Sign-up.',
+                reason: error.error.status_message,
+                instruction: 'Please correct the errors and try again.'
+              }
+            },
+            NotificationTypes.Error);
+          } else {
+            MessageNotificationService.show({
+              notification: {
+                id: 'sign-up-error',
+                message: 'Unable to Sign-up.',
+                reason: 'Some unexpected happened with the application.',
+                instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+              }
+            },
+            NotificationTypes.Error);
+          }
+        });
     }
   }
 
@@ -114,12 +114,14 @@ export class SignUpComponent {
     this.authService.signIn(socialProvider)
       .then((response: SocialUser) => {
         const name = response.name.split(' ');
-        this.signUpViaSocial.email = response.email;
-        this.signUpViaSocial.firstName = name[0];
-        this.signUpViaSocial.lastName = name[1];
-        this.signUpViaSocial.image = response.photoUrl;
-        this.signUpViaSocial.provider = response.provider.toLowerCase();
-        this.signUpViaSocial.uid = response.id;
+        this.user.assimilate({
+          email: response.email,
+          firstName: name[0],
+          lastName: name[1],
+          image: response.photoUrl,
+          provider: response.provider.toLowerCase(),
+          uid: response.id
+        });
 
         // check if the email is undefined
         // meaning the email is not yet verified
@@ -132,11 +134,11 @@ export class SignUpComponent {
           throw new Error(JSON.stringify(error));
         }
 
-        return this.userService.signInViaSocial(this.signUpViaSocial).toPromise();
+        return this.userApiService.promiseRegisterViaSocialMedia(this.user);
       })
-      .then((response: UserResponse) => {
-        UserClass.setUser(response.user);
-        this.userService.setLoggedInUser(response.user);
+      .then((user: UserModel) => {
+        UserClass.setUser(user);
+        TokenStore.setAccessToken(user.token);
         this.router.navigate(['/home']);
       })
       .catch(error => {

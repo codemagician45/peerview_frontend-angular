@@ -17,11 +17,5 @@ export class CommunityLeftMenuComponent {
   @Input() protected page: string;
   protected isCollapsed = true;
 
-  public ngOnInit (): void {
-    $(window).scrollTop(0);
-  }
-
-  // protected addNewForum (): void {
-  //   this.dialog.open(CreateNewForumComponent);
-  // }
+  public ngOnInit (): void {}
 }

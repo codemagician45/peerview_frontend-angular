@@ -7,10 +7,10 @@
     "dev": "webpack-dev-server --inline --progress --port 4200",
     "build-prod": "rimraf dist && webpack --config config/webpack.prod.ts",
     "prod-lite": "lite-server --baseDir='dist'",
-    "tslintcheck": "tslint --project tslint.json --exclude 'node_modules/**'"
+    "lint": "tslint --project tslint.json --exclude 'node_modules/**'"
   },
   "pre-commit": [
-    "tslintcheck"
+    "lint"
   ],
   "private": true,
   "dependencies": {

@@ -2,11 +2,10 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserService
-} from '../../../../services';
+  UserApiService
+} from '../../../../services/api';
 import {
-  UserModel,
-  FollowersResponse
+  UserModel
 } from '../../../shared/models';
 
 @Component({
@@ -15,7 +14,7 @@ import {
   styleUrls: ['./followers.component.scss']
 })
 export class SharedFollowersComponent {
-  constructor (private userService: UserService) {}
+  constructor (private userApiService: UserApiService) {}
 
   private followers: Array<UserModel> = [];
 
@@ -24,9 +23,10 @@ export class SharedFollowersComponent {
   }
 
   private getUserFollowers (): void {
-    this.userService.getFollowers()
-    .subscribe((response: FollowersResponse) => {
-      this.followers = response.followers;
-    });
+    this.userApiService.promiseGetFollowers()
+      .then((followers: UserModel[]) => {
+        this.followers = followers;
+      })
+      .catch(() => {});
   }
 }

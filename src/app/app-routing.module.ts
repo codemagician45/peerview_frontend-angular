@@ -5,41 +5,11 @@ import {
   Routes,
   RouterModule
 } from '@angular/router';
-
 import {
   CanActivateUserProfile
 } from './shared/can-activate';
-// {
-//   path: 'community',
-//   loadChildren: './community/community.module#CommunityModule'
-// },
-export const appRoutes: Routes = [{
-  path: 'support',
-  loadChildren: './support/support.module#SupportModule'
-}, {
-  path: 'group',
-  loadChildren: './group/group.module#GroupModule'
-}, {
-  path: 'events',
-  loadChildren: './event/event.module#EventModule'
-}, {
-  path: 'my',
-  loadChildren: './my/my.module#MyModule'
-}, {
-  path: 'onboard',
-  loadChildren: './onboard/onboard.module#OnboardModule'
-}, {
-  path: 'marketplace',
-  loadChildren: './marketplace/marketplace.module#MarketplaceModule'
-},
-//  {
-//   path: 'forum',
-//   loadChildren: './forum/forum.module#ForumModule'
-// },
-{
-  path: 'deals-hub',
-  loadChildren: './deals-hub/deals-hub.module#DealsHubModule',
-}, {
+
+export const appRoutes: Routes = [ {
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
   data: { state: 'peers' }
@@ -65,22 +35,18 @@ export const appRoutes: Routes = [{
   path: 'home',
   loadChildren: './home/home.module#HomeModule',
   canActivate: [CanActivateUserProfile],
-  data: { state: 'home' }
+  data: {
+    state: 'home'
+  }
 }, {
   path: 'leisure',
   loadChildren: './leisure/leisure.module#LeisureModule',
   data: { state: 'leisure' }
-},
-// {
-//   path: '',
-//   loadChildren: './main/main.module#MainModule'
-// },
-{
+}, {
   path: '',
   loadChildren: './index/index.module#IndexModule',
   canActivate: [CanActivateUserProfile]
-},
-{
+}, {
   path: 'sign-up',
   loadChildren: './sign-up/sign-up.module#SignUpModule',
   canActivate: [CanActivateUserProfile],
@@ -106,19 +72,16 @@ export const appRoutes: Routes = [{
   path: 'advance-search',
   loadChildren: './advance-search/advance-search.module#AdvanceSearchModule',
   data: { state: 'advance-search' }
-},
-{
+}, {
   path: 'account-settings',
   loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
   canActivate: [CanActivateUserProfile],
   data: { state: 'account-settings' }
-},
-{
+}, {
   path: 'terms-of-use-user',
   loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
   data: { state: 'terms-of-use-user' }
-},
-{
+}, {
   path: 'privacy-policy',
   loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
   data: { state: 'privacy-policy' }

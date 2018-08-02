@@ -7,11 +7,12 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 import {
-  PostModel
+  PostModel,
+  IResponse
 } from '../../models';
 import {
-  PostService
-} from '../../../../services/services';
+  PostApiService
+} from '../../../../services/api';
 
 @Component({
   selector: 'app-view-post-modal-component',
@@ -21,13 +22,12 @@ import {
 export class SharedViewPostModalComponent implements OnInit {
   constructor (@Inject (MAT_DIALOG_DATA)
   private post: PostModel,
-  private postService: PostService
+  private postApiService: PostApiService
 ) {}
 
   public ngOnInit (): void {
-    this.postService.viewpost(this.post.id)
-    .subscribe(response => {
-      console.log(response);
-    });
+    this.postApiService.promisePageView(this.post.id)
+      .then((response: IResponse) => {})
+      .catch(error => {});
   }
 }

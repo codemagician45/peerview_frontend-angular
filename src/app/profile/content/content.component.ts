@@ -3,12 +3,11 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  UserService
-} from '../../../services';
+  UserApiService
+} from '../../../services/api';
 import {
-  PostsReponse,
-  Post
-} from '../../../models/models';
+  PostModel
+} from '../../shared/models';
 
 @Component({
   selector: 'profile-content-component',
@@ -16,9 +15,9 @@ import {
   styleUrls: ['./content.component.scss']
 })
 export class ProfileContentComponent implements OnInit {
-  constructor (private userService: UserService) {}
+  constructor (private userApiService: UserApiService) {}
 
-  protected posts: Array<Post> = [];
+  protected posts: PostModel[] = [];
 
   public ngOnInit (): void {
     this.getUserTimeline();
@@ -27,10 +26,11 @@ export class ProfileContentComponent implements OnInit {
   protected onShowPostDetailDialogComponent (): void {}
 
   private getUserTimeline (): void {
-    this.userService.getTimeline()
-    .subscribe((response: PostsReponse) => {
-      this.posts = response.posts;
-    });
+    this.userApiService.promiseGetTimeline()
+      .then((posts: PostModel[]) => {
+        this.posts = posts;
+      })
+      .catch(error => {});
   }
 }
 

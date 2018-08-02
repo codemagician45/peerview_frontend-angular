@@ -8,12 +8,6 @@ import {
   Output
 } from '@angular/core';
 import {
-  PostService
-} from '../../../services/services';
-import {
-  Story
-} from '../../../models/models';
-import {
   CreatePost,
   PollModel
 } from '../../shared/models';
@@ -29,7 +23,7 @@ declare let swal: any;
   styleUrls: ['./post-poll-map.component.scss']
 })
 export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor (private postservice: PostService) {}
+  constructor () {}
 
   @Input() private post = false;
   @Input() private poll = false;
@@ -42,7 +36,6 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   private editor;
   private newPost: CreatePost = new CreatePost();
   private newPoll: PollModel = new PollModel();
-  private newStory: Story = new Story();
   private errorMessage: any;
   private isDisabled = false;
   private postSaveEmitterService = EmitterService.get('postSaveEmitter');
@@ -164,15 +157,15 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     this.newPoll['options'] = options;
-    this.postservice.createPoll(this.newPoll).subscribe(resp => {
-      if (resp['error'] === false) {
-        alert(resp['Message']);
-      } else {
-        console.log(resp);
-      }
-    }, error => {
-      console.log(error);
-    });
+    // this.postservice.createPoll(this.newPoll).subscribe(resp => {
+    //   if (resp['error'] === false) {
+    //     alert(resp['Message']);
+    //   } else {
+    //     console.log(resp);
+    //   }
+    // }, error => {
+    //   console.log(error);
+    // });
   }
 
   protected createpost (): void {
@@ -182,26 +175,26 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
       swal('Oops', 'Empty Content', 'error');
       this.isDisabled = false;
     } else {
-      this.postservice.createPost(this.newPost).subscribe((response: any) => {
-        swal('Sucess', 'Post Created Successfully', 'success');
-        $('.create-pots-textarea').val('');
-        this.isDisabled = false;
-        this.postSaveEmitterService.emit(response.postId);
-      }, error => {
-        this.isDisabled = false;
-        if (error['error'].body) {
-          swal('Oops', error['error'].body.status_message, 'error');
-        } else {
-          swal('Oops', error['error'].status_message, 'error');
-        }
-      });
+      // this.postservice.createPost(this.newPost).subscribe((response: any) => {
+      //   swal('Sucess', 'Post Created Successfully', 'success');
+      //   $('.create-pots-textarea').val('');
+      //   this.isDisabled = false;
+      //   this.postSaveEmitterService.emit(response.postId);
+      // }, error => {
+      //   this.isDisabled = false;
+      //   if (error['error'].body) {
+      //     swal('Oops', error['error'].body.status_message, 'error');
+      //   } else {
+      //     swal('Oops', error['error'].status_message, 'error');
+      //   }
+      // });
     }
   }
 
   protected addstory (): void {
-    this.postservice.createstory(this.newStory).subscribe((response: any) => {
-      console.log(response);
-    });
+    // this.postservice.createstory(this.newStory).subscribe((response: any) => {
+    //   console.log(response);
+    // });
   }
 
   protected clearFile (): void {

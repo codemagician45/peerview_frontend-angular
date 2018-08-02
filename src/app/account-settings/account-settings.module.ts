@@ -31,9 +31,6 @@ import {
   SharedPipeModule
 } from '../shared/pipe/pipe.module';
 import {
-  ServicesModule
-} from '../../services/services.module';
-import {
   SharedDirectiveModule
 } from '../shared/directives/shared-directive.module';
 import {
@@ -45,7 +42,6 @@ import {
     SharedModule,
     SharedPipeModule,
     SharedDirectiveModule,
-    ServicesModule,
     accountSettingsRouting
   ],
   declarations : [

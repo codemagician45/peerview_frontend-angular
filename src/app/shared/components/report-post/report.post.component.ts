@@ -32,7 +32,6 @@ export class SharedReportPostComponent {
   }
 
   protected onOpenConfirmModal (): void {
-    console.log(this.post);
     this.dialog.open(SharedConfirmModalComponent, {
       data: this.post,
       id: 'SharedConfirmModalComponent'

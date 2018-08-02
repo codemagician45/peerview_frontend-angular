@@ -8,8 +8,8 @@ import {
   UserModel
 } from '../../shared/models';
 import {
-  UserService
-} from '../../../services';
+  UserApiService
+} from '../../../services/api';
 
 @Component({
   selector: 'account-settings-security-privacy-component',
@@ -18,7 +18,7 @@ import {
 })
 export class AccountSettingsSecurityPrivacyComponent {
   constructor (
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
   private user: UserModel = UserClass.getUser();
@@ -26,9 +26,8 @@ export class AccountSettingsSecurityPrivacyComponent {
   public ngOnInit (): void {}
 
   protected onUpdateSecurity (): void {
-    this.userService.updateSecurity(this.user)
-    .subscribe((response: Response) => {
-      console.log(response);
-    });
+    this.userApiService.promiseUpdateSecurity(this.user)
+      .then(() => {})
+      .catch(() => {});
   }
 }

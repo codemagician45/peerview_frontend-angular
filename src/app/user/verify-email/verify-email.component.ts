@@ -7,11 +7,17 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
-  UserService
-} from '../../../services/user.service';
-import {
   timer
 } from 'rxjs';
+import {
+  UserApiService
+} from '../../../services/api';
+import {
+  UserModel
+} from '../../shared/models';
+import {
+  TokenStore
+} from '../../../services';
 
 @Component({
   selector: 'user-verify-email-component',
@@ -22,20 +28,27 @@ export class UserVerifyEmailComponent implements OnInit {
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService
+    private userApiService: UserApiService
   ) {}
 
+  private user: UserModel = new UserModel();
+
   public ngOnInit (): void {
+
     this.route.queryParams.subscribe((queryParams: {jotToken: string, token: string}) => {
-      this.userService.verifyEmail(queryParams.jotToken, queryParams.token)
-      .subscribe((response: any) => {
-        const user = response.user;
-        this.userService.setLoggedInUser(user);
-        timer(3000)
-        .subscribe(() => {
-          this.router.navigate(['/user/on-boarding/status']);
-        });
+      this.user.assimilate({
+        token: queryParams.token
       });
+
+      this.userApiService.promiseVerifyEmail(queryParams.jotToken, this.user)
+        .then((user: UserModel) => {
+          TokenStore.setAccessToken(user.token);
+          timer(3000)
+          .subscribe(() => {
+            this.router.navigate(['/user/on-boarding/status']);
+          });
+        })
+        .catch(error => {});
     });
   }
 }

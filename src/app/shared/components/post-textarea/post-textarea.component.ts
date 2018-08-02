@@ -5,25 +5,35 @@ import {
   EventEmitter
 } from '@angular/core';
 import {
+  ActivatedRoute
+} from '@angular/router';
+import {
   EmitterService
 } from '../../emitter/emitter.component';
 import {
   PostEmitter
 } from '../../emitter';
 import {
+  IResponse,
   PostModel,
-  SharePostResponse,
   CreatePost,
   PollModel,
-  CreatePoll
+  CreatePoll,
+  CampusPostModel
 } from '../../models';
 import {
-  PostService
-} from '../../../../services/services';
+  PostApiService
+} from '../../../../services/api';
+import {
+  CampusApiService
+} from '../../../../services/api';
 import {
   MessageNotificationService,
   NotificationTypes
 } from '../../../../services';
+import {
+  CryptoUtilities
+} from '../../../shared/utilities';
 declare let swal: any;
 
 @Component({
@@ -34,13 +44,16 @@ declare let swal: any;
 
 export class SharedPostTextareaComponent {
   constructor (
-    private postService: PostService
+    private postApiService: PostApiService,
+    private campusApiService: CampusApiService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  private createPost: CreatePost = new CreatePost();
+  private post: PostModel = new PostModel();
+  private campusPost: CampusPostModel = new CampusPostModel();
   private createPoll: CreatePoll = new CreatePoll();
   private errorMessage: any;
-  protected post: PostModel = new PostModel();
+  private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
@@ -50,8 +63,14 @@ export class SharedPostTextareaComponent {
   @Input() protected shareMenu: boolean = true;
   @Input() protected route = {name: 'home'};
 
+  public ngOnInit (): void {
+    this.activatedRoute.parent.params.subscribe(param => {
+      this.campusId = param.id;
+    });
+  }
+
   protected onAddPost (): any {
-    if (!this.createPost.message) {
+    if (!this.post.message) {
       return MessageNotificationService.show({
         notification: {
           id: 'shared-post-textarea-message',
@@ -70,7 +89,7 @@ export class SharedPostTextareaComponent {
   }
 
   protected onUploadComplete (attachments): void {
-    this.createPost.attachments = attachments;
+    this.post.attachments = attachments;
     this.postMessage(true);
   }
 
@@ -82,20 +101,23 @@ export class SharedPostTextareaComponent {
     switch (this.route.name) {
       case 'home':
         this.isToogleUploadComponentVisible = false;
-        this.postService.createPost(this.createPost)
-        .subscribe((response: SharePostResponse) => {
-          PostEmitter
-          .postSave()
-          .emit(response.postId);
-          // this will set the createPost call the setBlankDataStructure
-          this.createPost.init();
-          this.isButtonDisabledOnSubmit = false;
-        }, error => {
-          console.log(error);
-          this.isButtonDisabledOnSubmit = false;
-        });
+        this.postApiService.promiseCreatePost(this.post)
+          .then((postModel: PostModel) => {
+            PostEmitter
+              .postSave()
+              .emit(postModel.id);
+            // this will set the createPost call the setBlankDataStructure
+            this.post.init();
+            this.isButtonDisabledOnSubmit = false;
+          })
+          .catch(error => {
+            this.isButtonDisabledOnSubmit = false;
+          });
         break;
       case 'campus':
+        this.campusPost.assimilate({message: this.post.message});
+        this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+        this.campusApiService.createPost(this.campusId, this.campusPost);
         break;
     }
   }
@@ -141,23 +163,23 @@ export class SharedPostTextareaComponent {
   }
 
   private postPoll (): void {
-    switch (this.route.name) {
-      case 'home':
-        this.postService.createPoll(this.createPoll)
-        .subscribe((response: SharePostResponse) => {
-          console.log('create poll', response);
-          PostEmitter
-          .postSave()
-          .emit(response.postId);
-          this.createPoll.init();
-          this.isButtonDisabledOnSubmit = false;
-        }, error => {
-          this.isButtonDisabledOnSubmit = false;
-          console.log('create poll', error);
-        });
-        break;
-      case 'campus':
-        break;
-    }
+    // switch (this.route.name) {
+    //   case 'home':
+    //     this.postService.createPoll(this.createPoll)
+    //     .subscribe((response: IResponse) => {
+    //       console.log('create poll', response);
+    //       PostEmitter
+    //       .postSave()
+    //       .emit(response.data);
+    //       this.createPoll.init();
+    //       this.isButtonDisabledOnSubmit = false;
+    //     }, error => {
+    //       this.isButtonDisabledOnSubmit = false;
+    //       console.log('create poll', error);
+    //     });
+    //     break;
+    //   case 'campus':
+    //     break;
+    // }
   }
 }

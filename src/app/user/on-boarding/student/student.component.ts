@@ -8,17 +8,18 @@ import {
 } from '@angular/router';
 import {
   UserModel,
-  CourseModel,
+  UserTypeModel,
   UserStudyLevelModel,
+  CourseModel,
   UserStudyLevelsResponse,
   CoursesResponse,
   UserTypeReponse,
   Response
 } from '../../../shared/models';
 import {
-  UserService,
-  CourseService
-} from '../../../../services';
+  UserApiService,
+  CourseApiService
+} from '../../../../services/api';
 import {
   OnBoardingEmitter
 } from '../../../shared/emitter';
@@ -31,15 +32,15 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class UserOnboardingStudentComponent implements OnInit {
   constructor (
-    private userService: UserService,
-    private courseService: CourseService,
+    private userApiService: UserApiService,
+    private courseApiService: CourseApiService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   protected user: UserModel = new UserModel();
-  protected userStudyLevels: Array<UserStudyLevelModel>;
-  protected courses: Array<CourseModel>;
+  protected userStudyLevels: UserStudyLevelModel[] = [];
+  protected courses: UserStudyLevelModel[] = [];
 
   public ngOnInit (): void {
     this.getUserStudyLevels();
@@ -53,28 +54,37 @@ export class UserOnboardingStudentComponent implements OnInit {
   }
 
   private getUserStudyLevels (): void {
-    this.userService.getStudyLevels()
-    .subscribe((response: UserStudyLevelsResponse) => {
-      this.userStudyLevels = response.userStudyLevels;
-    });
+    this.userApiService.promiseGetStudyLevels()
+      .then((userStudyLevels: UserStudyLevelModel[]) => {
+        this.userStudyLevels = userStudyLevels;
+      })
+      .catch(() => {
+
+      });
   }
 
   private getCourses (): void {
-    this.courseService.getCourses()
-    .subscribe((response: CoursesResponse) => {
-      this.courses = response.courses;
-    });
+    this.courseApiService.promiseGetAllCourses()
+      .then((courses: CourseModel[]) => {
+        this.courses = courses;
+      })
+      .catch(error => {
+
+      });
   }
 
   protected onSubmit (isValid): void {
-    this.userService.getTypeId('student')
-    .mergeMap((response: UserTypeReponse) => {
-      this.user.userTypeId = response.userTypeId;
-      return this.userService.update(this.user);
-    })
-    .subscribe((response: Response) => {
-      this.router.navigate(['/user/on-boarding/status/student/interest']);
-    });
+    this.userApiService.promiseGetType('student')
+      .then((userType: UserTypeModel) => {
+        this.user.userTypeId = userType.id;
+        return this.userApiService.promiseUpdateOnboardingDetails(this.user);
+      })
+      .then(() => {
+        this.router.navigate(['/user/on-boarding/status/student/interest']);
+      })
+      .catch(error => {
+
+      });
   }
 
   protected onChangeCourse (value: number): void {

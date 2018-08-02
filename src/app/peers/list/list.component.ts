@@ -5,12 +5,11 @@ import {
   Router
 } from '@angular/router';
 import {
-  PeersService
-} from '../../../services/peers.service';
+  UserApiService
+} from '../../../services/api';
 import {
-  PeersListResponse,
   UserModel
-} from  '../../../models/models';
+} from  '../../shared/models';
 import {
   CryptoUtilities
 } from '../../shared/utilities';
@@ -22,27 +21,22 @@ import {
 })
 export class PeersListComponent implements OnInit {
   constructor (
-    private peersService: PeersService,
+    private userApiService: UserApiService,
     private router: Router
   ) {}
 
   protected peersList: Array<UserModel>;
-  private cryptoUtilities = new CryptoUtilities();
 
   public ngOnInit (): void {
-    this.peersService.list()
-    .subscribe((response: PeersListResponse) => {
-      console.log('response');
-      console.log(response);
-      this.peersList = response.peersList;
-    }, error => {
-      console.log('Error Retrieving People You may Know');
-      console.error(error);
-    });
+    this.userApiService.promiseGetPeersList()
+      .then((peersList: UserModel[]) => {
+        this.peersList = peersList;
+      })
+      .catch(error => {});
   }
 
   protected onClickUser (user): void {
-    let userId = this.cryptoUtilities.cipher(user.id);
+    let userId = CryptoUtilities.cipher(user.id);
     this.router.navigate([`/profile/${userId}`]);
   }
 }
