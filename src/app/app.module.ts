@@ -31,6 +31,8 @@ import {
 } from '@angular/material';
 import {
   CampusApiService,
+  CourseApiService,
+  InterestApiService,
   PostApiService,
   UserApiService
 } from '../services/api';
@@ -119,6 +121,8 @@ tinymce.init({});
     CanActivateUserProfile,
     IsProtectedComponent,
     CampusApiService,
+    CourseApiService,
+    InterestApiService,
     PostApiService,
     UserApiService
   ],
