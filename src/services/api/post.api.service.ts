@@ -40,7 +40,7 @@ export class PostApiService extends ApiService {
   }
 
   public promiseGetPost (postId: number): Promise<PostModel> {
-    return this.promiseGetResponseData(`/${postId}`)
+    return this.promiseGetResponseData(`${postId}`)
       .then((response: IResponse) => {
         return PostFactory.createPost(response.data);
       });
@@ -54,7 +54,7 @@ export class PostApiService extends ApiService {
   }
 
   public promiseCreatePostReply (postId: number, postReply: PostReplyModel): Promise<IResponse> {
-    return this.promisePostModelData(`/${postId}/reply`, postReply)
+    return this.promisePostModelData(`${postId}/reply`, postReply)
       .then((response: IResponse) => {
         console.log(response);
         return response.data;
@@ -62,7 +62,7 @@ export class PostApiService extends ApiService {
   }
 
   public promiseCreatePostLike (postId: number): Promise<IResponse> {
-    return this.promisePostModelData(`/${postId}/like`)
+    return this.promisePostModelData(`${postId}/like`)
       .then((response: IResponse) => {
         console.log(response);
         return response.data;
@@ -70,21 +70,21 @@ export class PostApiService extends ApiService {
   }
 
   public promisePageView (postId: number): Promise<IResponse> {
-    return this.promisePostModelData(`/${postId}/like`)
+    return this.promisePostModelData(`${postId}/like`)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
-    return this.promisePostModelData(`/${postId}/report`, reportPost)
+    return this.promisePostModelData(`${postId}/report`, reportPost)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseSharePost (postId: number, sharePost: SharePostModel): Promise<PostModel> {
-    return this.promisePostModelData(`/share/${postId}`, sharePost)
+    return this.promisePostModelData(`share/${postId}`, sharePost)
       .then((response: IResponse) => {
         return PostFactory.createPost(response.data);
       });
@@ -98,14 +98,14 @@ export class PostApiService extends ApiService {
   }
 
   public promiseRemovePostLike (postId: number): Promise<IResponse> {
-    return this.promiseRemoveData(`/${postId}/like`)
+    return this.promiseRemoveData(`${postId}/like`)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseRemovePost (postId: number): Promise<IResponse> {
-    return this.promiseRemoveData(`/${postId}`)
+    return this.promiseRemoveData(`${postId}`)
       .then((response: IResponse) => {
         return response.data;
       });

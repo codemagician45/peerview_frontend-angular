@@ -24,12 +24,26 @@ export abstract class ApiService {
   public abstract baseURI: string;
   public abstract baseURIPlural: string;
   public abstract options: any;
+  private cloneURIs: {baseURI: string, baseURIPlural: string};
 
   private getUrlPromises: IGetUrlPromise = {};
 
+  private cloneAbstractURIs (): void {
+    this.cloneURIs = Object.assign({}, {
+      baseURI: this.baseURI,
+      baseURIPlural: this.baseURIPlural
+    });
+  }
+
+  private resetAbstractURIs (): void {
+    this.baseURI = this.cloneURIs.baseURI;
+    this.baseURIPlural = this.cloneURIs.baseURIPlural;
+  }
+
   protected promiseGetResponseData (url?: string, refresh = false): Promise<IResponse> {
-    url = url || '';
-    url = `${this.baseURI}/${url}`;
+    this.cloneAbstractURIs();
+    url = url ? `/${url}` : '';
+    url = `${this.baseURI}${url}`;
 
     if (!refresh && this.getUrlPromises[url]) {
       return this.getUrlPromises[url];
@@ -39,8 +53,10 @@ export abstract class ApiService {
       this.http.get(url, this.options)
         .subscribe((response: any) => {
           resolve(response);
+          this.resetAbstractURIs();
         }, (error) => {
           reject(error);
+          this.resetAbstractURIs();
         });
     });
 
@@ -48,7 +64,8 @@ export abstract class ApiService {
   }
 
   protected promiseGetAllResponseData (url?: string, refresh = false): Promise<IResponse> {
-    url = url || '';
+    this.cloneAbstractURIs();
+    url = url ? `/${url}` : '';
     url = `${this.baseURIPlural}${url}`;
 
     if (!refresh && this.getUrlPromises[url]) {
@@ -59,8 +76,10 @@ export abstract class ApiService {
       this.http.get(url, this.options)
         .subscribe((response: any) => {
           resolve(response);
+          this.resetAbstractURIs();
         }, (error) => {
           reject(error);
+          this.resetAbstractURIs();
         });
     });
 
@@ -69,42 +88,51 @@ export abstract class ApiService {
 
   protected promisePostModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      url = url || '';
+      this.cloneAbstractURIs();
+      url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
       this.http.post(url, dataModel.toRawData())
         .subscribe((response: any) => {
           resolve(response);
+          this.resetAbstractURIs();
         }, (error) => {
           reject(error);
+          this.resetAbstractURIs();
         });
     });
   }
 
   protected promisePutModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      url = url || '';
+      this.cloneAbstractURIs();
+      url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
       this.http.put(url, dataModel.toRawData())
         .subscribe((response: any) => {
           resolve(response);
+          this.resetAbstractURIs();
         }, (error) => {
           reject(error);
+          this.resetAbstractURIs();
         });
     });
   }
 
   protected promiseRemoveData (url: string): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      url = url || '';
+      this.cloneAbstractURIs();
+      url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
       this.http.delete(url, this.options)
         .subscribe((response: any) => {
           resolve(response);
+          this.resetAbstractURIs();
         }, (error) => {
           reject(error);
+          this.resetAbstractURIs();
         });
     });
   }

@@ -20,7 +20,7 @@ export class CampusApiService extends ApiService {
   public baseURIPlural = 'campus';
 
   /**
-   * Basicallyh get the all the campuses
+   * Basically get the all the campuses
    */
   public getCampuses (): Promise<CampusModel[]> {
     this.baseURIPlural = 'campuses';
@@ -32,14 +32,14 @@ export class CampusApiService extends ApiService {
 
   public promiseGetAllPost (id: number): any {
     this.baseURIPlural = 'campus';
-    return this.promiseGetAllResponseData(`/${id}/posts`)
+    return this.promiseGetAllResponseData(`${id}/posts`)
       .then((responseData: IResponse) => {
         return CampusFactory.createManyCampusPost(responseData.data);
       });
   }
 
   public createPost (campusId: number, post: CampusPostModel): Promise<IResponse> {
-    return this.promisePostModelData(`/${campusId}/post`, post)
+    return this.promisePostModelData(`${campusId}/post`, post)
       .then((response: IResponse) => {
         return response.data;
       });

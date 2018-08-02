@@ -17,11 +17,11 @@ import {
 export class InterestApiService extends ApiService {
   public options = {};
   public baseURI = 'interest';
-  public baseURIPlural = 'interest';
-
+  public baseURIPlural = 'interests';
 
   public promiseGetAllSubInterest (interestCategoryId: number): Promise<SubInterestModel[]> {
-    return this.promiseGetAllResponseData(`/${interestCategoryId}`)
+    this.baseURIPlural = 'interest';
+    return this.promiseGetAllResponseData(`${interestCategoryId}`)
       .then((response: IResponse) => {
         return InterestFactory.createManySubInterest(response.data);
       });
@@ -35,7 +35,7 @@ export class InterestApiService extends ApiService {
   }
 
   public promiseCreateSubInterest (interestCategoryId, interest: SubInterestModel): Promise<SubInterestModel> {
-    return this.promisePostModelData(`/${interestCategoryId}`, interest)
+    return this.promisePostModelData(`${interestCategoryId}`, interest)
       .then((response: IResponse) => {
         return InterestFactory.createSubInterest(response.data);
       });

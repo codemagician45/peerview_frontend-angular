@@ -42,112 +42,112 @@ export class UserApiService extends ApiService {
   }
 
   public promiseGetType (typeCode: string): Promise<UserTypeModel> {
-    return this.promiseGetResponseData(`/type/${typeCode}`)
+    return this.promiseGetResponseData(`type/${typeCode}`)
       .then((responseData: IResponse) => {
         return UserFactory.createType(responseData.data);
       });
   }
 
   public promiseGetTimeline (): Promise<PostModel[]> {
-    return this.promiseGetResponseData('/timeline')
+    return this.promiseGetResponseData('timeline')
       .then((response: IResponse) => {
         return PostFactory.createManyPost(response.data);
       });
   }
 
   public promiseGetStudyLevels (): Promise<UserStudyLevelModel[]> {
-    return this.promiseGetAllResponseData('/study-levels')
+    return this.promiseGetAllResponseData('study-levels')
       .then((responseData: IResponse) => {
         return UserFactory.createManyStudyLevel(responseData.data);
       });
   }
 
   public promiseGetPeersList (): Promise<UserModel[]> {
-    return this.promiseGetAllResponseData('/peers-list')
+    return this.promiseGetAllResponseData('peers-list')
       .then((response: IResponse) => {
         return UserFactory.createMany(response.data);
       });
   }
 
   public promiseGetFollowers (): Promise<UserModel[]> {
-    return this.promiseGetAllResponseData('/followers')
+    return this.promiseGetAllResponseData('followers')
       .then((response: IResponse) => {
         return UserFactory.createMany(response.data);
       });
   }
 
   public promiseGetFollowee (): Promise<UserModel[]> {
-    return this.promiseGetAllResponseData('/followee')
+    return this.promiseGetAllResponseData('followee')
       .then((response: IResponse) => {
         return UserFactory.createMany(response.data);
       });
   }
 
   public promiseUpdateOnboardingDetails (user: UserModel): Promise<IResponse> {
-    return this.promisePostModelData('/onboarding/details', user)
+    return this.promisePostModelData('onboarding/details', user)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseVerifyEmail (jotToken: string, user: UserModel): Promise<UserModel> {
-    return this.promisePostModelData(`/verify-email/${jotToken}`, user)
+    return this.promisePostModelData(`verify-email/${jotToken}`, user)
       .then((responseData: IResponse) => {
         return UserFactory.create(responseData.data);
       });
   }
 
   public promiseCreateUserSubInterest (user: UserModel): Promise<IResponse> {
-    return this.promisePostModelData('/interests', user)
+    return this.promisePostModelData('interests', user)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseRegister (user: UserModel): Promise<IResponse> {
-    return this.promisePostModelData('/register', user)
+    return this.promisePostModelData('register', user)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseRegisterViaSocialMedia (user: UserModel): Promise<UserModel> {
-    return this.promisePostModelData('/social-login', user)
+    return this.promisePostModelData('social-login', user)
       .then((responseData: IResponse) => {
         return UserFactory.create(responseData.data);
       });
   }
 
   public promiseSignIn (user: UserModel): Promise<UserModel> {
-    return this.promisePostModelData('/login', user)
+    return this.promisePostModelData('login', user)
       .then((responseData: IResponse) => {
         return UserFactory.create(responseData.data);
       });
   }
 
   public promiseUpdateAboutMe (user: UserModel): Promise<UserModel> {
-    return this.promisePutModelData('/about-me', user)
+    return this.promisePutModelData('about-me', user)
       .then((responseData: IResponse) => {
         return UserFactory.create(responseData.data);
       });
   }
 
   public promiseUpdateSecurity (user: UserModel): Promise<IResponse> {
-    return this.promisePutModelData('/security', user)
+    return this.promisePutModelData('security', user)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseUpdatePassword (user: UserModel): Promise<IResponse> {
-    return this.promisePutModelData('/password', user)
+    return this.promisePutModelData('password', user)
       .then((response: IResponse) => {
         return response.data;
       });
   }
 
   public promiseUpdateProfilePicture (user: UserModel): Promise<IResponse> {
-    return this.promisePutModelData('/profile-picture', user)
+    return this.promisePutModelData('profile-picture', user)
       .then((response: IResponse) => {
         return response.data;
       });
