@@ -10,11 +10,7 @@ import {
   UserModel,
   UserTypeModel,
   UserStudyLevelModel,
-  CourseModel,
-  UserStudyLevelsResponse,
-  CoursesResponse,
-  UserTypeReponse,
-  Response
+  CourseModel
 } from '../../../shared/models';
 import {
   UserApiService,

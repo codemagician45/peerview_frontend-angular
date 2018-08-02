@@ -7,7 +7,6 @@ import {
 import {
   UserModel,
   IResponse,
-  SignInViaSocialModel,
 } from '../shared/models';
 import {
   MessageNotificationService,

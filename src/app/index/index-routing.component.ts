@@ -9,7 +9,7 @@ import {
   IndexComponent
 } from './index.component';
 import {
-  IsProtectedCompnent
+  IsProtectedComponent
 } from '../shared/can-activate';
 
 const indexRoutes: Routes = [{
@@ -18,7 +18,7 @@ const indexRoutes: Routes = [{
   data: {
     isProtected: false
   },
-  canActivate: [IsProtectedCompnent]
+  canActivate: [IsProtectedComponent]
 }];
 
 export const indexRouting: ModuleWithProviders = RouterModule.forChild(indexRoutes);

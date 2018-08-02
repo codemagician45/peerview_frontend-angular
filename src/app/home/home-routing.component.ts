@@ -6,7 +6,7 @@ import {
   RouterModule
 } from '@angular/router';
 import {
-  IsProtectedCompnent
+  IsProtectedComponent
 } from '../shared/can-activate';
 
 import {
@@ -19,7 +19,7 @@ const homeRoutes: Routes = [{
   data: {
     isProtected: true
   },
-  canActivate: [IsProtectedCompnent]
+  canActivate: [IsProtectedComponent]
 }];
 
 export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);

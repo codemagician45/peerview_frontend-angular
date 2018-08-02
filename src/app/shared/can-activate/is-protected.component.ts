@@ -12,14 +12,13 @@ import {
   TokenStore
 } from '../../../services';
 import {
-  UserResponse
 } from '../models';
 import {
   UserClass
 } from '../classes';
 
 @Injectable()
-export class IsProtectedCompnent implements CanActivate {
+export class IsProtectedComponent implements CanActivate {
   constructor (
     private router: Router) {}
 

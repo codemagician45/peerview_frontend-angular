@@ -6,8 +6,7 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
-  UserModel,
-  UserResponse
+  UserModel
 } from '../../../shared/models';
 import {
   UserClass

@@ -1,5 +1,5 @@
-export class SubInterestModel {
-  public id: number;
-  public interestCategoryId: number;
-  public name: string;
-}
+// export class SubInterestModel {
+//   public id: number;
+//   public interestCategoryId: number;
+//   public name: string;
+// }

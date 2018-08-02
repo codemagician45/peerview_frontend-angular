@@ -8,7 +8,6 @@ import {
 } from '@angular/router';
 import {
   UserModel,
-  UserResponse,
   IResponse
 } from '../shared/models';
 import {

@@ -10,8 +10,7 @@ import {
   UserApiService
 } from '../../../../services/api';
 import {
-  UserModel,
-  FolloweeResponse
+  UserModel
 } from '../../../shared/models';
 
 @Component({

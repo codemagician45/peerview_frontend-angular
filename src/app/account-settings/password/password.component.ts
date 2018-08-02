@@ -5,8 +5,7 @@ import {
   UserClass
 } from '../../shared/classes';
 import {
-  UserModel,
-  Response
+  UserModel
 } from '../../shared/models';
 import {
   UserApiService

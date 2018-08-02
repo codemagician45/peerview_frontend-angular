@@ -73,7 +73,7 @@ import {
 } from './shared/components/shared.module';
 import {
   CanActivateUserProfile,
-  IsProtectedCompnent
+  IsProtectedComponent
 } from './shared/can-activate';
 
 declare var tinymce: any;
@@ -117,7 +117,7 @@ tinymce.init({});
     multi: true,
   },
     CanActivateUserProfile,
-    IsProtectedCompnent,
+    IsProtectedComponent,
     CampusApiService,
     PostApiService,
     UserApiService

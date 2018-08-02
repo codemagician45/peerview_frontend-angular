@@ -3,9 +3,6 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import {
-  NewMessageModalComponent
-} from '../../new-message-modal/new-message-modal.component';
 import * as $ from 'jquery';
 
 @Component({

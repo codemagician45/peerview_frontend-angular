@@ -19,9 +19,6 @@ import {
   UserApiService,
 } from '../services/api';
 import {
-  UserResponse
-} from './shared/models';
-import {
   UserClass
 } from './shared/classes';
 import {
