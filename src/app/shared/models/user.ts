@@ -40,7 +40,7 @@ export class UserModel extends Model  {
   public userTypeId?: number;
   public courseIds?: Array<number> = [];
   // use as an holder for saving user subInterest
-  public subInterestIds: number[];
+  public subInterestIds: number[] = [];
 
   public init (): void {}
 }
