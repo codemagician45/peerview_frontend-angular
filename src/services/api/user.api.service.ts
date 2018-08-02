@@ -145,4 +145,11 @@ export class UserApiService extends ApiService {
         return response.data;
       });
   }
+
+  public promiseUpdateProfilePicture (user: UserModel): Promise<IResponse> {
+    return this.promisePutModelData('/profile-picture', user)
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
 }
