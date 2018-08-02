@@ -53,9 +53,6 @@ export class PostReplyModel extends Model {
   }
 }
 
-export class LikePost {}
-
-
 export class SharePostModel extends Model {
   public id?: number;
   public message: string;
@@ -71,18 +68,6 @@ export class ReportPostModel extends Model {
     this.setBlankDataStructure({
       id: undefined,
       reason: undefined
-    });
-  }
-}
-
-export class CreatePost extends Model {
-  public message: string;
-  public attachments?: Array<object> = [];
-
-  public init (): void {
-    this.setBlankDataStructure({
-      message: '',
-      attachments: []
     });
   }
 }

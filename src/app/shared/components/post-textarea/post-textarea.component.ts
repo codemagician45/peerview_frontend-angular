@@ -16,7 +16,6 @@ import {
 import {
   IResponse,
   PostModel,
-  CreatePost,
   PollModel,
   CreatePoll,
   CampusPostModel
@@ -52,7 +51,6 @@ export class SharedPostTextareaComponent {
   private post: PostModel = new PostModel();
   private campusPost: CampusPostModel = new CampusPostModel();
   private createPoll: CreatePoll = new CreatePoll();
-  private errorMessage: any;
   private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;

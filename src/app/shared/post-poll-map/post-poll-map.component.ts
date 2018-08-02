@@ -8,7 +8,6 @@ import {
   Output
 } from '@angular/core';
 import {
-  CreatePost,
   PollModel
 } from '../../shared/models';
 import {
@@ -34,7 +33,6 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() private onEditorKeyup = new EventEmitter<any>();
 
   private editor;
-  private newPost: CreatePost = new CreatePost();
   private newPoll: PollModel = new PollModel();
   private errorMessage: any;
   private isDisabled = false;

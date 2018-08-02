@@ -20,7 +20,6 @@ import {
 } from '../../../../services/api';
 import {
   PostModel,
-  LikePost,
   PostReplyModel,
   UserModel,
   IResponse
