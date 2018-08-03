@@ -40,8 +40,6 @@ export abstract class ApiService {
       baseURI: this.baseURI,
       baseURIPlural: this.baseURIPlural
     });
-
-    console.log(this.cloneURIs);
   }
 
   protected promiseGetResponseData (url?: string): Promise<IResponse> {
@@ -71,7 +69,6 @@ export abstract class ApiService {
         .subscribe((response: any) => {
           resolve(response);
           this.resetAbstractURIs();
-          console.log(this.baseURIPlural);
         }, (error) => {
           reject(error);
           this.resetAbstractURIs();

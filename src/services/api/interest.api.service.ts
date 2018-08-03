@@ -20,6 +20,7 @@ export class InterestApiService extends ApiService {
   public baseURIPlural = 'interests';
 
   public promiseGetAllSubInterest (interestCategoryId: number): Promise<SubInterestModel[]> {
+    this.cloneAbstractURIs();
     this.baseURIPlural = 'interest';
     return this.promiseGetAllResponseData(`${interestCategoryId}`)
       .then((response: IResponse) => {
