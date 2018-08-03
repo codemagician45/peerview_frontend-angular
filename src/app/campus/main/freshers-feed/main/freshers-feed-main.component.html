@@ -1,13 +1,14 @@
 <div class="campus-freshers-feed-main-component">
   <div class="header-title">
-    <p>All Students</p>
+    <p>Freshers Feed</p>
   </div>
 
   <shared-post-textarea-component
     [shareMenu]=false
     [route]="{
-      'name': 'campus',
-      'id': idParams
+      'name': 'campusFreshersFeed',
+      'campusId': campusId,
+      'freshersFeedId': freshersFeedId
     }"
   ></shared-post-textarea-component>
   <shared-post-component [posts]="freshersFeed"></shared-post-component>

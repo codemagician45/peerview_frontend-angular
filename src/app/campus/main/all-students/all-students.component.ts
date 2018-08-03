@@ -28,18 +28,18 @@ export class CampusAllStudentsComponent {
   ) {}
 
   protected posts: Array<CampusPostModel> = [];
-  protected idParams: number;
+  protected campusId: number;
 
   public ngOnInit (): void {
     this.route.parent.params.subscribe((params: Params) => {
-      this.idParams = params.id;
+      this.campusId = params.id;
       this.getCampusPosts();
     });
   }
 
   private getCampusPosts (): void {
-    this.idParams = parseInt(CryptoUtilities.decipher(this.idParams), 10);
-    this.campusApiService.promiseGetAllPost(this.idParams)
+    this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    this.campusApiService.promiseGetAllPost(this.campusId)
       .then((campusPost: CampusPostModel[]) => {
         this.posts = campusPost;
       })

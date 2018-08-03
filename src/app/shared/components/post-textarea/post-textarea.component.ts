@@ -59,13 +59,9 @@ export class SharedPostTextareaComponent {
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
-  @Input() protected route = {name: 'home'};
+  @Input() protected route: {name: string, campusId?: number, freshersFeedId?: number} = {name: 'home'};
 
-  public ngOnInit (): void {
-    this.activatedRoute.parent.params.subscribe(param => {
-      this.campusId = param.id;
-    });
-  }
+  public ngOnInit (): void {}
 
   protected onAddPost (): any {
     if (!this.post.message) {
@@ -114,7 +110,16 @@ export class SharedPostTextareaComponent {
         break;
       case 'campus':
         this.campusPost.assimilate({message: this.post.message});
-        this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.createPost(this.campusId, this.campusPost);
+        break;
+      case 'campusFreshersFeed':
+        let freshersFeedId = parseInt(CryptoUtilities.decipher(this.route.freshersFeedId), 10);
+        this.campusPost.assimilate({
+          message: this.post.message,
+          freshersFeedId: freshersFeedId
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
         this.campusApiService.createPost(this.campusId, this.campusPost);
         break;
     }

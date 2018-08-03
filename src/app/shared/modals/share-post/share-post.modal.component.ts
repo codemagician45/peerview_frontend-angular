@@ -129,10 +129,6 @@ export class SharedSharePostModalComponent implements OnInit {
     return hoursLeft + minutesLeft;
   }
 
-  public ngOnDestroy (): void {
-    this.document.body.classList.remove('mat-dialog-is-open');
-  }
-
   protected getPollVoteCount (pollOptions): number {
     let total = 0;
     for ( let i = 0; i < pollOptions.length; i++ ) {

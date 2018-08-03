@@ -10,6 +10,9 @@ import {
   CampusApiService
 } from '../../../../../services/api';
 import {
+  CampusFreshersFeedModel
+} from '../../../../shared/models';
+import {
   CryptoUtilities
 } from '../../../../shared/utilities';
 
@@ -25,23 +28,23 @@ export class CampusFreshersFeedLandingComponent {
     private campusApiService: CampusApiService
   ) {}
 
-  protected idParams: number;
+  protected campusId: number;
   protected freshersFeed: Array<any> = [];
 
   public ngOnInit (): void {
     console.log(this.route);
     this.route.parent.parent.params.subscribe((params: Params) => {
-      this.idParams = params.id;
+      this.campusId = params.id;
 
       this.getAllFreshersFeed();
     });
   }
 
   private getAllFreshersFeed (): void {
-    this.idParams = parseInt(CryptoUtilities.decipher(this.idParams), 10);
-    this.campusApiService.getAllFreshersFeed(this.idParams)
-      .then((response: any) => {
-        this.freshersFeed = response.campusFreshersFeed;
+    this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    this.campusApiService.getAllFreshersFeed(this.campusId)
+      .then((campusFreshersFeed: CampusFreshersFeedModel[]) => {
+        this.freshersFeed = campusFreshersFeed;
       })
       .catch((error) => {
 
@@ -49,7 +52,6 @@ export class CampusFreshersFeedLandingComponent {
   }
 
   protected onClickNavigate (freshersFeedId): void {
-    // this.campusApiService
     const encryptedFreshersFeedId = CryptoUtilities.cipher(freshersFeedId);
     this.router.navigate([`../${encryptedFreshersFeedId}`], {relativeTo: this.route});
   }

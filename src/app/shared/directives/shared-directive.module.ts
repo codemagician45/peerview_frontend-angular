@@ -11,19 +11,23 @@ import {
 import {
   SharedStickyDirective
 } from './sticky.directive';
-
+import {
+  SharedRemoveCssDirective
+} from './remove-css';
 
 @NgModule({
   imports: [],
   declarations: [
     SharedSlideToggleDirectiveComponent,
     SharedEqualValidatorDirectiveComponent,
-    SharedStickyDirective
+    SharedStickyDirective,
+    SharedRemoveCssDirective
   ],
   exports: [
     SharedSlideToggleDirectiveComponent,
     SharedEqualValidatorDirectiveComponent,
-    SharedStickyDirective
+    SharedStickyDirective,
+    SharedRemoveCssDirective
   ],
   providers: []
 })

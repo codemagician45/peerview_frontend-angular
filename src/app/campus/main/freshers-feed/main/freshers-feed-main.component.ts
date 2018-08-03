@@ -24,7 +24,7 @@ export class CampusFreshersFeedMainComponent {
   ) {}
 
   protected campusId: number;
-  protected freshersId: number;
+  protected freshersFeedId: number;
   protected freshersFeed: Array<any> = [];
 
   public ngOnInit (): void {
@@ -33,7 +33,7 @@ export class CampusFreshersFeedMainComponent {
     });
 
     this.route.params.subscribe((params: Params) => {
-      this.freshersId = params.id;
+      this.freshersFeedId = params.id;
     });
   }
 }

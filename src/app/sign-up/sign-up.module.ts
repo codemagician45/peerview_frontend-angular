@@ -13,16 +13,12 @@ import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
-  SharedDirectiveModule
-} from '../shared/directives/shared-directive.module';
-import {
   signUpRouting
 } from './sign-up-routing.component';
 
 @NgModule({
   imports : [
     SharedModule,
-    SharedDirectiveModule,
     signUpRouting
   ],
   declarations : [

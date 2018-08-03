@@ -15,6 +15,9 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import {
+  SharedDirectiveModule
+} from './shared/directives/shared-directive.module';
+import {
   BrowserAnimationsModule
 } from '@angular/platform-browser/animations';
 import {
@@ -82,16 +85,6 @@ declare var tinymce: any;
 tinymce.init({});
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SharedPostDetailModalComponent,
-    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
-    SharedViewPostModalComponent,
-    ReportPostModalComponent,
-    SharedSharePostModalComponent,
-    SharedConfirmModalComponent,
-    SharedImagePreviewComponent
-  ],
   imports: [
     BrowserModule,
     MatDialogModule,
@@ -102,7 +95,8 @@ tinymce.init({});
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    SharedDirectiveModule
   ],
   providers: [{
     provide: MAT_DIALOG_DATA,
@@ -126,7 +120,16 @@ tinymce.init({});
     PostApiService,
     UserApiService
   ],
-  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    SharedPostDetailModalComponent,
+    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
+    SharedViewPostModalComponent,
+    ReportPostModalComponent,
+    SharedSharePostModalComponent,
+    SharedConfirmModalComponent,
+    SharedImagePreviewComponent
+  ],
   exports: [],
   entryComponents: [
     // ProfileLeftSidebarUserInfoMessageDiaglogComponent
@@ -136,6 +139,7 @@ tinymce.init({});
     ReportPostModalComponent,
     SharedConfirmModalComponent,
     SharedImagePreviewComponent
-  ]
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

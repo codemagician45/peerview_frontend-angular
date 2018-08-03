@@ -16,9 +16,6 @@ import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
-  SharedDirectiveModule
-} from '../shared/directives/shared-directive.module';
-import {
   advanceSearchRouting
 } from './advance-search-routing.component';
 
