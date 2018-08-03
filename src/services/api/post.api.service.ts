@@ -55,31 +55,29 @@ export class PostApiService extends ApiService {
 
   public promiseCreatePostReply (postId: number, postReply: PostReplyModel): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/reply`, postReply)
-      .then((response: IResponse) => {
-        console.log(response);
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseCreatePostLike (postId: number): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/like`)
-      .then((response: IResponse) => {
-        console.log(response);
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promisePageView (postId: number): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/like`)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/report`, reportPost)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
@@ -99,22 +97,22 @@ export class PostApiService extends ApiService {
 
   public promiseRemovePostLike (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}/like`)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseRemovePost (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}`)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseVotePoll (postPollOptionId: number): Promise<IResponse> {
     return this.promisePostModelData(`post/poll/${postPollOptionId}`)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 }

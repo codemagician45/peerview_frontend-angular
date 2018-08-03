@@ -34,22 +34,22 @@ export class CampusApiService extends ApiService {
 
   public promiseGetAllPost (campusId: number): any {
     return this.promiseGetAllResponseData(`${campusId}/posts`)
-      .then((responseData: IResponse) => {
-        return CampusFactory.createManyCampusPost(responseData.data);
+      .then((response: IResponse) => {
+        return CampusFactory.createManyCampusPost(response.data);
       });
   }
 
   public getAllFreshersFeed (id: number): Promise<CampusFreshersFeedModel[]> {
     return this.promiseGetResponseData(`${id}/freshers-feed`)
-      .then((responseData: IResponse) => {
-          return CampusFactory.createManyCampusFreshersFeed(responseData.data);
+      .then((response: IResponse) => {
+          return CampusFactory.createManyCampusFreshersFeed(response.data);
       });
   }
 
   public createPost (campusId: number, post: CampusPostModel): Promise<IResponse> {
     return this.promisePostModelData(`${campusId}/post`, post)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 }

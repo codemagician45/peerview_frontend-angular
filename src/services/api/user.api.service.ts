@@ -57,8 +57,8 @@ export class UserApiService extends ApiService {
 
   public promiseGetStudyLevels (): Promise<UserStudyLevelModel[]> {
     return this.promiseGetAllResponseData('study-levels')
-      .then((responseData: IResponse) => {
-        return UserFactory.createManyStudyLevel(responseData.data);
+      .then((response: IResponse) => {
+        return UserFactory.createManyStudyLevel(response.data);
       });
   }
 
@@ -85,71 +85,71 @@ export class UserApiService extends ApiService {
 
   public promiseUpdateOnboardingDetails (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData('onboarding/details', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseVerifyEmail (jotToken: string, user: UserModel): Promise<UserModel> {
     return this.promisePostModelData(`verify-email/${jotToken}`, user)
-      .then((responseData: IResponse) => {
-        return UserFactory.create(responseData.data);
+      .then((response: IResponse) => {
+        return UserFactory.create(response.data);
       });
   }
 
   public promiseCreateUserSubInterest (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData('interests', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseRegister (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData('register', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseRegisterViaSocialMedia (user: UserModel): Promise<UserModel> {
     return this.promisePostModelData('social-login', user)
-      .then((responseData: IResponse) => {
-        return UserFactory.create(responseData.data);
+      .then((response: IResponse) => {
+        return UserFactory.create(response.data);
       });
   }
 
   public promiseSignIn (user: UserModel): Promise<UserModel> {
     return this.promisePostModelData('login', user)
-      .then((responseData: IResponse) => {
-        return UserFactory.create(responseData.data);
+      .then((response: IResponse) => {
+        return UserFactory.create(response.data);
       });
   }
 
   public promiseUpdateAboutMe (user: UserModel): Promise<UserModel> {
     return this.promisePutModelData('about-me', user)
-      .then((responseData: IResponse) => {
-        return UserFactory.create(responseData.data);
+      .then((response: IResponse) => {
+        return UserFactory.create(response.data);
       });
   }
 
   public promiseUpdateSecurity (user: UserModel): Promise<IResponse> {
     return this.promisePutModelData('security', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseUpdatePassword (user: UserModel): Promise<IResponse> {
     return this.promisePutModelData('password', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 
   public promiseUpdateProfilePicture (user: UserModel): Promise<IResponse> {
     return this.promisePutModelData('profile-picture', user)
-      .then((response: IResponse) => {
-        return response.data;
+      .then((responseData: IResponse) => {
+        return responseData;
       });
   }
 }
