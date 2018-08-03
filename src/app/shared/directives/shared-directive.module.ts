@@ -14,20 +14,24 @@ import {
 import {
   SharedRemoveCssDirective
 } from './remove-css';
-
+import {
+  SharedAddCssDirective
+} from './add-css';
 @NgModule({
   imports: [],
   declarations: [
     SharedSlideToggleDirectiveComponent,
     SharedEqualValidatorDirectiveComponent,
     SharedStickyDirective,
-    SharedRemoveCssDirective
+    SharedRemoveCssDirective,
+    SharedAddCssDirective
   ],
   exports: [
     SharedSlideToggleDirectiveComponent,
     SharedEqualValidatorDirectiveComponent,
     SharedStickyDirective,
-    SharedRemoveCssDirective
+    SharedRemoveCssDirective,
+    SharedAddCssDirective
   ],
   providers: []
 })
