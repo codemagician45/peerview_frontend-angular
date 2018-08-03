@@ -7,6 +7,7 @@ import {
 import {
   CampusPostModel,
   CampusModel,
+  CampusFreshersFeedModel,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -16,13 +17,14 @@ import {
 @Injectable()
 export class CampusApiService extends ApiService {
   public options = {};
-  public baseURI = '';
+  public baseURI = 'campus';
   public baseURIPlural = 'campus';
 
   /**
    * Basically get the all the campuses
    */
   public getCampuses (): Promise<CampusModel[]> {
+    this.cloneAbstractURIs();
     this.baseURIPlural = 'campuses';
     return this.promiseGetAllResponseData('')
       .then((response: IResponse) => {
@@ -30,11 +32,17 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseGetAllPost (id: number): any {
-    this.baseURIPlural = 'campus';
-    return this.promiseGetAllResponseData(`${id}/posts`)
+  public promiseGetAllPost (campusId: number): any {
+    return this.promiseGetAllResponseData(`${campusId}/posts`)
       .then((responseData: IResponse) => {
         return CampusFactory.createManyCampusPost(responseData.data);
+      });
+  }
+
+  public getAllFreshersFeed (id: number): Promise<CampusFreshersFeedModel[]> {
+    return this.promiseGetResponseData(`${id}/freshers-feed`)
+      .then((responseData: IResponse) => {
+          return CampusFactory.createManyCampusFreshersFeed(responseData.data);
       });
   }
 
@@ -43,9 +51,5 @@ export class CampusApiService extends ApiService {
       .then((response: IResponse) => {
         return response.data;
       });
-  }
-
-  public getAllFreshersFeed (id: number): Promise<IResponse> {
-    return this.promiseGetResponseData(`${id}/freshers-feed`);
   }
 }
