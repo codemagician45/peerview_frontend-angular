@@ -28,26 +28,25 @@ export abstract class ApiService {
 
   private getUrlPromises: IGetUrlPromise = {};
 
-  private cloneAbstractURIs (): void {
+  private resetAbstractURIs (): void {
+    if (this.cloneURIs) {
+      this.baseURI = this.cloneURIs.baseURI;
+      this.baseURIPlural = this.cloneURIs.baseURIPlural;
+    }
+  }
+
+  protected cloneAbstractURIs (): void {
     this.cloneURIs = Object.assign({}, {
       baseURI: this.baseURI,
       baseURIPlural: this.baseURIPlural
     });
+
+    console.log(this.cloneURIs);
   }
 
-  private resetAbstractURIs (): void {
-    this.baseURI = this.cloneURIs.baseURI;
-    this.baseURIPlural = this.cloneURIs.baseURIPlural;
-  }
-
-  protected promiseGetResponseData (url?: string, refresh = false): Promise<IResponse> {
-    this.cloneAbstractURIs();
+  protected promiseGetResponseData (url?: string): Promise<IResponse> {
     url = url ? `/${url}` : '';
     url = `${this.baseURI}${url}`;
-
-    if (!refresh && this.getUrlPromises[url]) {
-      return this.getUrlPromises[url];
-    }
 
     this.getUrlPromises[url] = new Promise((resolve, reject) => {
       this.http.get(url, this.options)
@@ -63,20 +62,16 @@ export abstract class ApiService {
     return this.getUrlPromises[url];
   }
 
-  protected promiseGetAllResponseData (url?: string, refresh = false): Promise<IResponse> {
-    this.cloneAbstractURIs();
+  protected promiseGetAllResponseData (url?: string): Promise<IResponse> {
     url = url ? `/${url}` : '';
     url = `${this.baseURIPlural}${url}`;
-
-    if (!refresh && this.getUrlPromises[url]) {
-      return this.getUrlPromises[url];
-    }
 
     this.getUrlPromises[url] = new Promise((resolve, reject) => {
       this.http.get(url, this.options)
         .subscribe((response: any) => {
           resolve(response);
           this.resetAbstractURIs();
+          console.log(this.baseURIPlural);
         }, (error) => {
           reject(error);
           this.resetAbstractURIs();
@@ -88,7 +83,6 @@ export abstract class ApiService {
 
   protected promisePostModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      this.cloneAbstractURIs();
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
@@ -105,7 +99,6 @@ export abstract class ApiService {
 
   protected promisePutModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      this.cloneAbstractURIs();
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
@@ -122,7 +115,6 @@ export abstract class ApiService {
 
   protected promiseRemoveData (url: string): Promise<IResponse> {
     return new Promise((resolve, reject) => {
-      this.cloneAbstractURIs();
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
