@@ -136,21 +136,4 @@ export abstract class ApiService {
         });
     });
   }
-
-  protected promiseVotePollData (url: string): Promise<IResponse> {
-    return new Promise((resolve, reject) => {
-      this.cloneAbstractURIs();
-      url = url ? `/${url}` : '';
-      url = `${this.baseURI}${url}`;
-
-      this.http.post(url, {})
-        .subscribe((response: any) => {
-          resolve(response);
-          this.resetAbstractURIs();
-        }, (error) => {
-          reject(error);
-          this.resetAbstractURIs();
-        });
-    });
-  }
 }

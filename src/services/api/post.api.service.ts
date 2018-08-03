@@ -112,7 +112,7 @@ export class PostApiService extends ApiService {
   }
 
   public promiseVotePoll (postPollOptionId: number): Promise<IResponse> {
-    return this.promiseVotePollData(`post/poll/${postPollOptionId}`)
+    return this.promisePostModelData(`post/poll/${postPollOptionId}`)
       .then((response: IResponse) => {
         return response.data;
       });
