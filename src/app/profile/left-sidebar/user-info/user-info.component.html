@@ -1,7 +1,7 @@
 <div class="profile-left-sidebar-user-info-component">
   <div class="user text-center">
     <cl-image
-      public-id="{{user.socialImage ? user.socialImage: user.profilePicture}}"
+      public-id="{{user.profilePicture ? user.profilePicture: user.socialImage}}"
       width="120"
       radius="max"
       *ngIf="user?.profilePicture"

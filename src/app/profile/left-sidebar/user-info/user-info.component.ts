@@ -89,7 +89,7 @@ export class ProfileLeftSidebarUserInfoComponent {
     dialogConfig.panelClass = 'image-preview-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = { image: user.socialImage, source: 'profile-picture' };
+    dialogConfig.data = { image: user.profilePicture ? user.profilePicture : user.socialImage, source: 'profile-picture' };
     this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 }
