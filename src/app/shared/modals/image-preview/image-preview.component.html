@@ -1,4 +1,4 @@
-<div class="shared-image-preview-component">
+<div class="shared-image-preview-component" add-css [cssToAdd]="'mat-dialog-is-open'" remove-css [cssToRemove]="'mat-dialog-is-open'">
 	<div 
 		class="close-col" 
 		(click)="onCloseModal()"
@@ -55,6 +55,7 @@
     </button>
     <shared-upload-image-component
       *ngIf="isToogleUploadComponentVisible"
+      [uploadOptions]="{'queueLimit': 1, 'event': 'change_profile_pic'}"
       (uploadComplete)="onUploadComplete($event)"
     ></shared-upload-image-component>
     <button 

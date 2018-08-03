@@ -53,10 +53,13 @@
     position: fixed;
     bottom: 5px;
     width: 100%;
+    background-color: #fff;
 
     button {
       padding: 5px;
       border: 1px solid #a0a0a0;
+      background-color: #631a90;
+      color: #fff;
     }
   }
 	/* Custom, iPhone Retina */
@@ -99,6 +102,12 @@
           font-size: 3rem;
         }
       }
+    }
+
+    .change-profile-picture-container {
+      position: absolute;
+      // bottom: 5px;
+      width: 99%;
     }
   }
 	/* Medium Devices, Desktops */
