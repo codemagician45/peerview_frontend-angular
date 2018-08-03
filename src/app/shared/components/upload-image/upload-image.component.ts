@@ -49,12 +49,10 @@ export class SharedUploadImageComponent {
   private hasBaseDropZoneOver: boolean = false;
   private user: UserModel = UserClass.getUser();
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
-  private sourceId: string = null;
   @Output() private uploadComplete = new EventEmitter();
+  @Input() private uploadOptions: any;
 
   public ngOnInit (): void {
-    this.sourceId = this.elRef.nativeElement.parentElement.id;
-
     this.uploadImagesSubscriber();
 
     // Create the file uploader, wire it to upload to your account
@@ -64,7 +62,7 @@ export class SharedUploadImageComponent {
       // url: 'https://api.cloudinary.com/v1_1/renchtolens/upload',
       autoUpload: false,
       isHTML5: true,
-      queueLimit: this.sourceId === 'changeProfilePicture' ? 1 : 4,
+      queueLimit: this.uploadOptions.queueLimit,
       headers: [
         {
           name: 'X-Requested-With',

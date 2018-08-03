@@ -5,23 +5,26 @@
     </form>
     <div 
       class="file-drop-or-select"
-      *ngIf="sourceId !== 'changeProfilePicture'"
+      *ngIf="uploadOptions.event === 'post_post'"
     >
       Add images by dropping them here... <br />
       <em> Maximum of 4 images only. </em>
     </div>
     <div 
       class="file-drop-or-select"
-      *ngIf="sourceId === 'changeProfilePicture'"
+      *ngIf="uploadOptions.event === 'change_profile_pic'"
     >
-      Pick photo ...<br />
+      {{imagesToUpload.length === 1 ? 'Remove the attached photo first by tapping it, before selecting again if you wish to replace it.' : 'Pick photo ...' }}<br />
     </div>
     <div class="img-to-upload-list" *ngIf="imagesToUpload">
       <div class="img-crop" *ngFor="let imageUrl of imagesToUpload; let i = index;">
         <div class="remove-img" (click)="onRemoveFromQueue(i)"><i class="material-icons">close</i></div>
         <img class="{{'img-' + queuedImageOrientation[i]}}" [src]="imageUrl">
       </div>
-      <label for="uploadImage" class="img-crop img-crop-add-photo">
+      <label 
+        for="uploadImage" 
+        class="img-crop img-crop-add-photo"
+      >
         <i class="material-icons">add_circle_outline</i>
       </label>
     </div>
