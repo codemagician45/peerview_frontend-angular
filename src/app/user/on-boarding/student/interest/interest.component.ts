@@ -21,11 +21,10 @@ import {
   UserModel,
   IResponse
 } from '../../../../shared/models';
-import 'rxjs/add/operator/mergeMap';
-
 import {
   OnBoardingEmitter
 } from '../../../../shared/emitter';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'user-on-boarding-student-interest-component',
@@ -49,7 +48,6 @@ export class UserOnboardingStudentInterestComponent {
   protected maxSelectedSubInterestsCount = 4;
   protected suggestedInterest: any[] = [];
   protected isDisabled: any[] = [];
-
   protected interestCategory: InterestCategoryModel[] = [];
   protected interestCategoryName: string;
   protected user: UserModel = new UserModel();
@@ -85,12 +83,50 @@ export class UserOnboardingStudentInterestComponent {
       name: subInterestData.value
     });
 
+    MessageNotificationService.show({
+      notification: {
+        id: 'user-onboarding-add-sub-interest',
+        message: 'Saving...',
+        instruction: 'Please wait...'
+      }
+    },
+    NotificationTypes.Info);
+
     this.interestApiService.promiseCreateSubInterest(category.id, subInterest)
       .then((interest: SubInterestModel) => {
-
+        subInterest.init();
+        subInterestData.value = '';
+        return MessageNotificationService.show({
+          notification: {
+            id: 'user-onboarding-add-sub-interest-success',
+            message: 'All done, thanks for waiting!',
+            instruction: 'Saved! Success...'
+          }
+        },
+        NotificationTypes.Success);
       })
       .catch(error => {
-
+        if (error.status === 400) {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-add-sub-interest-error',
+              message: 'Unable to Save Sub-Interest.',
+              reason: error.error.status_message,
+              instruction: 'Please correct the errors and try again.'
+            }
+          },
+          NotificationTypes.Error);
+        } else {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-add-sub-interest-error',
+              message: 'Unable to Save Sub-Interest.',
+              reason: 'Some unexpected happened with the application.',
+              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+            }
+          },
+          NotificationTypes.Error);
+        }
       });
   }
 
@@ -104,7 +140,6 @@ export class UserOnboardingStudentInterestComponent {
   }
 
   protected onClickInterestCategory (isChecked: boolean, interestCategory): void {
-    console.log(interestCategory);
     if (isChecked) {
       interestCategory.isCheck = true;
       this.getSubInterests(interestCategory);
@@ -164,15 +199,27 @@ export class UserOnboardingStudentInterestComponent {
         }
       })
       .catch(error => {
-        MessageNotificationService.show({
-          notification: {
-            id: 'user-onboarding-interest-finish-error',
-            message: 'Unable to Save.',
-            reason: 'Some unexpected happened with the application.',
-            instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-          }
-        },
+        if (error.status === 400) {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-interest-finish-error',
+              message: 'Unable to Save Interest.',
+              reason: error.error.status_message,
+              instruction: 'Please correct the errors and try again.'
+            }
+          },
           NotificationTypes.Error);
+        } else {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-interest-finish-error',
+              message: 'Unable to Save.',
+              reason: 'Some unexpected happened with the application.',
+              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+            }
+          },
+          NotificationTypes.Error);
+        }
       });
   }
 }
