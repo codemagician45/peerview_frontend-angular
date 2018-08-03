@@ -187,7 +187,7 @@ export class SharedPostComponent {
   }
 
   protected onPollVote (option, pollOptions): void {
-    this.postService.votePoll(option.id).subscribe(response => {
+    this.postApiService.promiseVotePoll(option.id).then(response => {
       console.log('response', response);
       this.postSavedSubcribers();
       // this.getPollPercentage(option, pollOptions);

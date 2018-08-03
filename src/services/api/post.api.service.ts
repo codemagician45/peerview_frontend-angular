@@ -110,4 +110,11 @@ export class PostApiService extends ApiService {
         return response.data;
       });
   }
+
+  public promiseVotePoll (postPollOptionId: number): Promise<IResponse> {
+    return this.promiseVotePollData(`post/poll/${postPollOptionId}`)
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
 }
