@@ -6,16 +6,23 @@
     </div>
   </span>
   <div class="peer-item" *ngFor="let peer of peers">
-    <button class="flat-btn"><i class="material-icons">person_add</i></button>
-    <cl-image public-id="{{peer?.profilePicture}}">
+    <cl-image 
+      public-id="{{peer?.profilePicture}}"
+      height="45px"
+      radius="max"
+      class="pull-left"
+      >
     </cl-image>
-    <p class="peer-name">{{peer.firstName}} {{peer.lastName}}</p>
-    <span><i class="material-icons">account_balance</i>{{peer.institutionName}}</span>
-    <span>
-      <i class="material-icons">school</i>{{peer.schoolName}}
-      <span class="pull-right peers-widget-close" (click)="removepeer(peer)">
-        <i mdTooltip="Dismiss" class="material-icons">clear</i>
+    <span class="peer-name">{{peer.firstName}} {{peer.lastName}}</span>
+    <div>
+      <button class="flat-btn"><i class="material-icons">person_add</i></button>
+      <span><i class="material-icons">account_balance</i>{{peer.institutionName}}</span>
+      <span>
+        <i class="material-icons">school</i>{{peer.schoolName}}
+        <span class="pull-right peers-widget-close" (click)="removepeer(peer)">
+          <i mdTooltip="Dismiss" class="material-icons">clear</i>
+        </span>
       </span>
-    </span>
+    </div>
   </div>
 </div>
