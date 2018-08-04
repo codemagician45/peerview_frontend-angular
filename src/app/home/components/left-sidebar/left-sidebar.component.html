@@ -6,7 +6,7 @@
         <div class="top-info">
           <a class="user-img">
             <cl-image
-              public-id="{{user.socialImage ? user.socialImage: user?.profilePicture}}"
+              public-id="{{user.profilePicture ? user.profilePicture: user?.socialImage}}"
               *ngIf="user?.profilePicture" (click)="openAvatar()">
             </cl-image>
           </a>

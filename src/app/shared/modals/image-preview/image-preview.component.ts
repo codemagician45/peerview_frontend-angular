@@ -5,12 +5,19 @@ import {
   ElementRef
 } from '@angular/core';
 import {
-  DOCUMENT
-} from '@angular/common';
-import {
   MatDialog,
   MAT_DIALOG_DATA
 } from '@angular/material';
+import {
+  PostEmitter
+} from '../../emitter';
+import {
+  UserModel,
+  IResponse
+} from '../../models';
+import {
+  UserApiService
+} from '../../../../services/api';
 
 @Component({
   selector: 'shared-image-preview-component',
@@ -20,14 +27,14 @@ import {
 export class SharedImagePreviewComponent {
   constructor (
     @Inject(MAT_DIALOG_DATA) public imageAttachments: any,
-    @Inject(DOCUMENT) private document: Document,
-    private dialog: MatDialog
-  ) {
-    this.document.body.classList.add('mat-dialog-is-open');
-  }
+    private dialog: MatDialog,
+    private userApiService: UserApiService
+  ) {}
 
   @ViewChild('clImageRef', {read: ElementRef}) private clImageRef: ElementRef;
   private imageOrientation: string = null;
+  protected isToogleUploadComponentVisible: boolean = false;
+  private user: UserModel = new UserModel();
 
   public ngAfterViewInit (): void {
     this.getImageOrientation();
@@ -49,7 +56,6 @@ export class SharedImagePreviewComponent {
 
   protected onCloseModal (): void {
     this.dialog.closeAll();
-    this.document.body.classList.remove('mat-dialog-is-open');
   }
 
   private getImageOrientation (): void {
@@ -66,5 +72,22 @@ export class SharedImagePreviewComponent {
         this.imageOrientation = 'portrait';
       }
     }, 80);
+  }
+
+  protected onChangeProfilePicture (): any {
+    if (this.isToogleUploadComponentVisible) {
+      return PostEmitter.uploadImages().emit();
+    }
+  }
+
+  protected onUploadComplete (attachments): void {
+    this.user.profilePicture = attachments[0].cloudinaryPublicId;
+    this.userApiService.promiseUpdateProfilePicture(this.user)
+      .then((response: IResponse) => {
+        console.log('change photo success', response);
+        this.onCloseModal();
+      }).catch(error => {
+        console.log('change photo success', error);
+      });
   }
 }

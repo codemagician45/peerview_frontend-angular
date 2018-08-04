@@ -5,8 +5,13 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
-  MatDialog
+  MatDialog,
+  MatDialogRef,
+  MatDialogConfig
 } from '@angular/material';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
 import {
   UserModel
 } from '../../../shared/models';
@@ -28,6 +33,9 @@ import {
 import {
   ProfileLeftSidebarUserInfoAboutMeDialogComponent
 } from './modal/about-me-modal.component';
+import {
+  SharedImagePreviewComponent
+} from '../../../shared/modals/image-preview/image-preview.component';
 
 @Component({
   selector: 'profile-left-sidebar-user-info-component',
@@ -37,8 +45,8 @@ import {
 export class ProfileLeftSidebarUserInfoComponent {
   constructor (
     private route: ActivatedRoute,
-    private userApiService: UserApiService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private overlay: Overlay
   ) {
     this.route.params.subscribe(params => {
       this.userId = params.id;
@@ -71,5 +79,15 @@ export class ProfileLeftSidebarUserInfoComponent {
       if (!aboutMe) { return; }
       this.user.aboutMe = aboutMe;
     });
+  }
+
+  protected onOpenShowImageDialogComponent (user): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = { image: user.profilePicture ? user.profilePicture : user.socialImage, source: 'profile-picture' };
+    this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 }

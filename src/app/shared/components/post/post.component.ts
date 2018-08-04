@@ -137,7 +137,7 @@ export class SharedPostComponent {
     dialogConfig.panelClass = 'image-preview-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = { images: postAttachments, clickIndex: imageIndex };
+    dialogConfig.data = { images: postAttachments, clickIndex: imageIndex, source: 'post' };
     this.dialogRef = this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 
