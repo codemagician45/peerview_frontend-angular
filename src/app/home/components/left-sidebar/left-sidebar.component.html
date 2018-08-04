@@ -15,6 +15,7 @@
               <span class="user-name"> {{user.firstName}} {{user.lastName}}</span>
             </a>
           </h3>
+          <shared-user-rating [user]="user"></shared-user-rating>
           <div class="post-share ">
             <span class="stars" *ngIf="starsPercentage">
               <span [style.width]="starsPercentage"></span>
