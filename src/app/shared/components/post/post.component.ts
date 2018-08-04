@@ -50,6 +50,7 @@ export class SharedPostComponent {
   ) {}
 
   @Input() protected posts: Array<PostModel> = [];
+  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private sharePostSuccessSubscriber = EmitterService.get('sharePostEmitter');
   private postSavedSubscriber = EmitterService.get('postSaveEmitter');

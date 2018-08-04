@@ -23,8 +23,8 @@
         </div>
 
         <div class="user-name">
-          <span 
-            [ngStyle]="{'display': 'inline-grid'}" 
+          <span
+            [ngStyle]="{'display': 'inline-grid'}"
             (click)="onClickUserProfile(post.user);"
             class="post-user-name">
             {{post.user.firstName}} {{post.user.lastName}}
@@ -95,6 +95,7 @@
           [views]="post.pageviewCount"
           [share]="post.shareCount"
           [replies]="post.postReplyCount"
+          [route]="route"
         >
         </shared-post-options-component>
       </div>

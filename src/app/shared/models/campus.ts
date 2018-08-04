@@ -4,6 +4,9 @@ import {
 import {
   PostReplyModel
 } from './post';
+import {
+  UserModel
+} from './user';
 
 export class CampusModel extends Model {
   public id?: number;
@@ -30,6 +33,26 @@ export class CampusPostModel extends Model {
       id: undefined,
       message: undefined,
       attachments: []
+    });
+  }
+}
+
+export class CampusPostReplyModel extends Model {
+  public id?: number;
+  public comment: string;
+  public user?: UserModel;
+  public hideComment?: boolean;
+  public postPollOptionId?: number;
+  public createdAt?: Date;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      id: undefined,
+      comment: undefined,
+      user: undefined,
+      hideComment: undefined,
+      postPollOptionId: undefined,
+      createdAt: undefined
     });
   }
 }
@@ -63,6 +86,14 @@ export class CampusFreshersFeedModel extends Model {
   public campusId: number;
   public schoolYearStart: Date;
   public schoolYearEnd: Date;
+
+  public init (): void {}
+}
+
+export class CampusCourseModel extends Model {
+  public id?: number;
+  public courseId: number;
+  public campusId: number;
 
   public init (): void {}
 }

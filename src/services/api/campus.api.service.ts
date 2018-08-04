@@ -5,10 +5,12 @@ import {
   ApiService
 } from '../api.service';
 import {
-  CampusPostModel,
   CampusModel,
+  CampusPostModel,
+  CampusPostReplyModel,
   CampusFreshersFeedModel,
   CampusFreshersFeedPostModel,
+  CampusCourseModel,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -47,6 +49,13 @@ export class CampusApiService extends ApiService {
       });
   }
 
+  public promiseGetAllCampusCourse (campusId: number): Promise<CampusCourseModel[]> {
+    return this.promiseGetAllResponseData(`${campusId}/course-list`)
+      .then((response: IResponse) => {
+        return CampusFactory.createCourseList(response.data);
+      });
+  }
+
   public getAllFreshersFeed (id: number): Promise<CampusFreshersFeedModel[]> {
     return this.promiseGetResponseData(`${id}/freshers-feed`)
       .then((response: IResponse) => {
@@ -57,6 +66,14 @@ export class CampusApiService extends ApiService {
   public createPost (campusId: number, post: CampusPostModel): Promise<IResponse> {
     return this.promisePostModelData(`${campusId}/post`, post)
       .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseCreatePostReply (campustPostId: number, campusPostReply: CampusPostReplyModel): Promise<IResponse> {
+    return this.promisePostModelData(`post/${campustPostId}/reply`, campusPostReply)
+      .then((responseData: IResponse) => {
+        console.log(responseData);
         return responseData;
       });
   }

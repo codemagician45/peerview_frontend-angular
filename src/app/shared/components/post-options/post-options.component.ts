@@ -16,11 +16,13 @@ import {
   SharedViewPostModalComponent
 } from '../../modals';
 import {
-  PostApiService
+  PostApiService,
+  CampusApiService
 } from '../../../../services/api';
 import {
   PostModel,
   PostReplyModel,
+  CampusPostReplyModel,
   UserModel,
   IResponse
 } from '../../models';
@@ -38,8 +40,9 @@ import {
 })
 export class SharedPostOptionsComponent {
   constructor (
-    public dialog: MatDialog,
     private postApiService: PostApiService,
+    private campusApiService: CampusApiService,
+    private dialog: MatDialog,
     private overlay: Overlay
   ) {}
 
@@ -52,11 +55,13 @@ export class SharedPostOptionsComponent {
   @Input() protected post: PostModel;
   @Input() protected ratingCount: number = 0;
   @Input() protected disableRepliesLink: boolean;
+  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
+  protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
   protected hideReplySection = true;
   private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
 
@@ -127,19 +132,37 @@ export class SharedPostOptionsComponent {
 
   protected onPostReply (): void {
     this.isUserCurrentlyCommenting = true;
-    this.postApiService.promiseCreatePostReply(this.post.id, this.postReply)
-      .then((response: IResponse) => {
-        this.postReply.user = this.user;
-        this.postReply.createdAt = new Date();
-        // clone the postReply
-        let postReply: any = this.postReply.clone();
-        this.post.postReply.unshift(postReply);
-        this.postReply.init(); // this will initialize the data with blank ones
-        this.isUserCurrentlyCommenting = false;
-      })
-      .catch(error => {
 
-      });
+    switch (this.route.name) {
+      case 'home':
+        this.postApiService.promiseCreatePostReply(this.post.id, this.postReply)
+          .then((response: IResponse) => {
+            this.postReply.user = this.user;
+            this.postReply.createdAt = new Date();
+            // clone the postReply
+            let postReply: any = this.postReply.clone();
+            this.post.postReply.unshift(postReply);
+            this.postReply.init(); // this will initialize the data with blank ones
+            this.isUserCurrentlyCommenting = false;
+          })
+          .catch(error => {
+
+          });
+        break;
+      case 'campus':
+        this.campusPostReply.assimilate({comment: this.postReply.comment});
+        this.campusApiService.promiseCreatePostReply(this.post.id, this.campusPostReply)
+          .then((response: IResponse) => {
+            this.campusPostReply.user = this.user;
+            this.campusPostReply.createdAt = new Date();
+            let campusPostReply: any = this.campusPostReply.clone();
+            this.post.postReply.unshift(campusPostReply);
+            this.postReply.init();
+            this.isUserCurrentlyCommenting = false;
+          })
+          .catch(error => {});
+        break;
+    }
   }
 
   protected openViewModal (): void {
