@@ -1,3 +1,24 @@
-<div class="post-like-detail-modal-component">
+<div class="shared-post-like-detail-modal-component" add-css [cssToAdd]="'mat-dialog-is-open'" remove-css [cssToRemove]="'mat-dialog-is-open'">
+  <button class="modal-close" mat-dialog-close>
+    <i class="material-icons"> clear </i>
+  </button>
+  <div class="post-like-detail-container">
+    <div class="col-xs-12 post-like-list">
+      <div class="pull-left">
+        <cl-image class="post-image" radius="max" public-id="{{post.user.profilePicture}}" *ngIf="post?.user?.profilePicture" (click)="onClickUserProfile(post.user);">
+        </cl-image>
+      </div>
 
+      <div class="user-name">
+        <span [ngStyle]="{'display': 'inline-grid'}" (click)="onClickUserProfile(post.user);" class="post-user-name">
+          {{post.user.firstName}} {{post.user.lastName}}
+        </span>
+        <div class="user-school-name">
+          {{post.user.schoolName}}
+        </div>
+      </div>
+
+      <input type="button" value="Follow" class="btn btn-white follow-btn follow-btn"/>
+    </div>
+  </div>
 </div>
