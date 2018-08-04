@@ -118,7 +118,6 @@ tinymce.init({});
     CourseApiService,
     InterestApiService,
     PostApiService,
-    CourseApiService,
     UserApiService
   ],
   declarations: [
