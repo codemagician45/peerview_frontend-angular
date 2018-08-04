@@ -8,6 +8,7 @@ import {
   CampusPostModel,
   CampusModel,
   CampusFreshersFeedModel,
+  CampusFreshersFeedPostModel,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -36,6 +37,13 @@ export class CampusApiService extends ApiService {
     return this.promiseGetAllResponseData(`${campusId}/posts`)
       .then((response: IResponse) => {
         return CampusFactory.createManyCampusPost(response.data);
+      });
+  }
+
+  public promiseGetAllFreshersFeedPost (campusId: number, freshersFeedId: number): Promise<CampusFreshersFeedPostModel[]> {
+    return this.promiseGetAllResponseData(`${campusId}/freshers-feed/${freshersFeedId}/posts`)
+      .then((response: IResponse) => {
+        return CampusFactory.createManyCampusFreshersFeedPost(response.data);
       });
   }
 
