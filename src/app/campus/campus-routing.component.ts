@@ -32,10 +32,17 @@ import {
 import {
   CampusCourseFeedLandingComponent
 } from './main/course-feed/landing/course-feed-landing.component';
+import {
+  IsProtectedComponent
+} from '../shared/can-activate';
 
 const campusRoutes: Routes = [{
   path: '',
   component: CampusComponent,
+  data: {
+    isProtected: true
+  },
+  canActivate: [IsProtectedComponent],
   children: [{
     path: '',
     component: CampusLandingPageComponent
