@@ -25,14 +25,35 @@ export class CampusPostModel extends Model {
   public roundedRating?: number;
   public attachments: String[];
 
-  // use as a virtual field for freshersFeed
-  public campusFreshersFeedId: number;
-
   public init (): void {
     this.setBlankDataStructure({
       id: undefined,
       message: undefined,
       attachments: []
+    });
+  }
+}
+
+export class CampusFreshersFeedPostModel extends CampusPostModel {
+  // use as a virtual field for freshersFeed
+  public campusFreshersFeedId: number;
+
+  public init (): void {
+    super.init();
+    this.setBlankDataStructure({
+      campusFreshersFeedId: undefined
+    });
+  }
+}
+
+export class CampusCourseFeedPostModel extends CampusPostModel {
+  // use as a virtual field for courseFeed
+  public courseId: number;
+
+  public init (): void {
+    super.init();
+    this.setBlankDataStructure({
+      courseId: undefined
     });
   }
 }

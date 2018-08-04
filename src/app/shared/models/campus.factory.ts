@@ -1,7 +1,8 @@
 import {
   CampusModel,
   CampusPostModel,
-  CampusFreshersFeedModel
+  CampusFreshersFeedModel,
+  CampusFreshersFeedPostModel
 } from './campus';
 
 export class CampusFactory {
@@ -24,6 +25,17 @@ export class CampusFactory {
   public static createManyCampusPost (data: Array<CampusPostModel>): Array<CampusPostModel> {
     return data.map(
       instanceData => CampusFactory.createCampusPost(instanceData),
+    );
+  }
+
+  public static createCampusFreshersFeedPost (data: any): CampusFreshersFeedPostModel {
+    return <CampusFreshersFeedPostModel> (new CampusFreshersFeedPostModel ())
+      .assimilate(data);
+  }
+
+  public static createManyCampusFreshersFeedPost (data: Array<CampusFreshersFeedPostModel>): Array<CampusFreshersFeedPostModel> {
+    return data.map(
+      instanceData => CampusFactory.createCampusFreshersFeedPost(instanceData),
     );
   }
 

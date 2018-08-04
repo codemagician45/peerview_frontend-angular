@@ -18,7 +18,8 @@ import {
   PostModel,
   PollModel,
   CreatePoll,
-  CampusPostModel
+  CampusPostModel,
+  CampusFreshersFeedPostModel
 } from '../../models';
 import {
   PostApiService
@@ -50,6 +51,7 @@ export class SharedPostTextareaComponent {
 
   private post: PostModel = new PostModel();
   private campusPost: CampusPostModel = new CampusPostModel();
+  private campusFreshersFeedPost: CampusFreshersFeedPostModel = new CampusFreshersFeedPostModel();
   private createPoll: CreatePoll = new CreatePoll();
   private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
@@ -59,7 +61,7 @@ export class SharedPostTextareaComponent {
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
-  @Input() protected route: {name: string, campusId?: number, freshersFeedId?: number} = {name: 'home'};
+  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
 
   public ngOnInit (): void {}
 
@@ -111,16 +113,26 @@ export class SharedPostTextareaComponent {
       case 'campus':
         this.campusPost.assimilate({message: this.post.message});
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
-        this.campusApiService.createPost(this.campusId, this.campusPost);
+        this.campusApiService.createPost(this.campusId, this.campusPost)
+          .then((response: IResponse) => {
+            this.campusPost.init();
+            this.post.init();
+          })
+          .catch(error => {});
         break;
       case 'campusFreshersFeed':
-        let freshersFeedId = parseInt(CryptoUtilities.decipher(this.route.freshersFeedId), 10);
-        this.campusPost.assimilate({
+        let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
+        this.campusFreshersFeedPost.assimilate({
           message: this.post.message,
-          freshersFeedId: freshersFeedId
+          campusFreshersFeedId: campusFreshersFeedId
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
-        this.campusApiService.createPost(this.campusId, this.campusPost);
+        this.campusApiService.createPost(this.campusId, this.campusFreshersFeedPost)
+          .then((response: IResponse) => {
+            this.campusFreshersFeedPost.init();
+            this.post.init();
+          })
+          .catch(error => {});
         break;
     }
   }
