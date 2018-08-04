@@ -1,6 +1,5 @@
-.campus-left-sidebar-component {
-  position: fixed;
-  top: 50px;
+campus-left-sidebar-component {
+  position: sticky !important;
   height: 100%;
   .wrapper {
     background: #fff;
