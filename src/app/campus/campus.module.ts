@@ -33,6 +33,9 @@ import {
   CampusFreshersFeedMainComponent
 } from './main/freshers-feed/main/freshers-feed-main.component';
 import {
+  CampusCourseFeedComponent
+} from './main/course-feed/course-feed.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -49,6 +52,7 @@ import {
     CampusFreshersFeedComponent,
     CampusFreshersFeedLandingComponent,
     CampusFreshersFeedMainComponent,
+    CampusCourseFeedComponent,
     CampusMainComponent
   ],
   exports: [],

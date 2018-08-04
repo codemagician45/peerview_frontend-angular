@@ -26,6 +26,9 @@ import {
 import {
   CampusFreshersFeedMainComponent
 } from './main/freshers-feed/main/freshers-feed-main.component';
+import {
+  CampusCourseFeedComponent
+} from './main/course-feed/course-feed.component';
 
 const campusRoutes: Routes = [{
   path: '',
@@ -53,6 +56,9 @@ const campusRoutes: Routes = [{
         path: ':id',
         component: CampusFreshersFeedMainComponent
       }]
+    }, {
+      path: 'course-feed',
+      component: CampusCourseFeedComponent
     }]
   }]
 }];
