@@ -87,10 +87,6 @@ export class UserOnboardingStudentComponent implements OnInit {
     this.user.courseIds.push(value);
   }
 
-  protected onChangeStudyLevel (value: number): void {
-    this.user.userStudyLevelId = value;
-  }
-
   protected onChangeGender (value: string): void {
     this.user.gender = value;
   }
