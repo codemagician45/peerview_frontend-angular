@@ -16,6 +16,7 @@ export const appRoutes: Routes = [ {
 }, {
   path: 'campus',
   loadChildren: './campus/campus.module#CampusModule',
+  canActivate: [CanActivateUserProfile],
   data: { state: 'campus' }
 }, {
   path: 'community',
