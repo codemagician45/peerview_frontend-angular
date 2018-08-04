@@ -13,4 +13,12 @@
   .view-all {
     margin-bottom: 15px;
   }
+  .peer-item {
+    margin: 5px 0;
+    border-bottom: solid 1px #d8d8d8;
+    .peer-name {
+      margin-left: 5px;
+      font-weight: bold;
+    }
+  }
 }

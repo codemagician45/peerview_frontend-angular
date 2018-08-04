@@ -11,6 +11,9 @@ import {
 import {
   PostEmitter
 } from '../shared/emitter';
+import {
+  UserClass
+} from '../shared/classes';
 
 @Component({
   selector: 'home-component',
@@ -21,6 +24,7 @@ export class HomeComponent implements OnInit {
   constructor (private postApiService: PostApiService) {}
 
   protected posts: PostModel[] = [];
+  protected user = UserClass.getUser();
   private limit = 5;
   private offset = 10;
 
