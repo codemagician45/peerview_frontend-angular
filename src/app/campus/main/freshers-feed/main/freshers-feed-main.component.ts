@@ -6,6 +6,9 @@ import {
   Params
 } from '@angular/router';
 import {
+  CampusFreshersFeedPostModel
+} from '../../../../shared/models';
+import {
   CampusApiService
 } from '../../../../../services/api/campus.api.service';
 import {
@@ -24,8 +27,8 @@ export class CampusFreshersFeedMainComponent {
   ) {}
 
   protected campusId: number;
-  protected freshersFeedId: number;
-  protected freshersFeed: Array<any> = [];
+  protected campusFreshersFeedId: number;
+  protected campusFreshersFeed: Array<CampusFreshersFeedPostModel> = [];
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -33,7 +36,21 @@ export class CampusFreshersFeedMainComponent {
     });
 
     this.route.params.subscribe((params: Params) => {
-      this.freshersFeedId = params.id;
+      this.campusFreshersFeedId = params.id;
     });
+  }
+
+  public ngAfterViewInit (): void {
+    this.getCampusFresheresFeedPosts();
+  }
+
+  private getCampusFresheresFeedPosts (): void {
+    let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.campusFreshersFeedId), 10);
+    this.campusApiService.promiseGetAllFreshersFeedPost(campusId, campusFreshersFeedId)
+      .then((campusFreshersFeed: CampusFreshersFeedPostModel[]) => {
+        this.campusFreshersFeed = campusFreshersFeed;
+      })
+      .catch((error) => {});
   }
 }

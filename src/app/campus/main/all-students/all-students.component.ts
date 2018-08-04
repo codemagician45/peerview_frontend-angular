@@ -38,8 +38,8 @@ export class CampusAllStudentsComponent {
   }
 
   private getCampusPosts (): void {
-    this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-    this.campusApiService.promiseGetAllPost(this.campusId)
+    let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    this.campusApiService.promiseGetAllPost(campusId)
       .then((campusPost: CampusPostModel[]) => {
         this.posts = campusPost;
       })
