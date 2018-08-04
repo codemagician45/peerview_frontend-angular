@@ -5,14 +5,14 @@
     </form>
     <div 
       class="file-drop-or-select"
-      *ngIf="uploadOptions.event === 'post_post'"
+      *ngIf="uploadOptions.event === 'postPost'"
     >
       Add images by dropping them here... <br />
       <em> Maximum of 4 images only. </em>
     </div>
     <div 
       class="file-drop-or-select"
-      *ngIf="uploadOptions.event === 'change_profile_pic'"
+      *ngIf="uploadOptions.event === 'changeProfilePic'"
     >
       {{imagesToUpload.length === 1 ? 'Remove the attached photo first by tapping it, before selecting again if you wish to replace it.' : 'Pick photo ...' }}<br />
     </div>
@@ -24,7 +24,7 @@
       <label 
         for="uploadImage" 
         class="img-crop img-crop-add-photo"
-        [ngClass]="{'change-profile-pic': uploadOptions.event === 'change_profile_pic'}"
+        [ngClass]="{'change-profile-pic': uploadOptions.event === 'changeProfilePic'}"
       >
         <i class="material-icons">add_circle_outline</i>
       </label>

@@ -55,7 +55,7 @@
     </button>
     <shared-upload-image-component
       *ngIf="isToogleUploadComponentVisible"
-      [uploadOptions]="{'queueLimit': 1, 'event': 'change_profile_pic'}"
+      [uploadOptions]="{'queueLimit': 1, 'event': 'changeProfilePic'}"
       (uploadComplete)="onUploadComplete($event)"
     ></shared-upload-image-component>
     <button 

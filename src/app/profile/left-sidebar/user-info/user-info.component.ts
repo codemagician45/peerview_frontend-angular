@@ -13,8 +13,7 @@ import {
   Overlay
 } from '@angular/cdk/overlay';
 import {
-  UserModel,
-  // UserResponse
+  UserModel
 } from '../../../shared/models';
 import {
   UserApiService
@@ -46,7 +45,6 @@ import {
 export class ProfileLeftSidebarUserInfoComponent {
   constructor (
     private route: ActivatedRoute,
-    // private userService: UserService,
     private dialog: MatDialog,
     private overlay: Overlay
   ) {

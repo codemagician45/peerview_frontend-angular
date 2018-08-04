@@ -75,17 +75,6 @@ export class SharedImagePreviewComponent {
   }
 
   protected onChangeProfilePicture (): any {
-    // if (!this.createPost.message) {
-    //   return MessageNotificationService.show({
-    //     notification: {
-    //       id: 'shared-post-textarea-message',
-    //       message: 'Cannot Post',
-    //       instruction: 'Please add a message.'
-    //     }
-    //   },
-    //   NotificationTypes.Error);
-    // }
-
     if (this.isToogleUploadComponentVisible) {
       return PostEmitter.uploadImages().emit();
     }

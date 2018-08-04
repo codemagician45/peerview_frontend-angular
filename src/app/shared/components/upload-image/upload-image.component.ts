@@ -86,8 +86,6 @@ export class SharedUploadImageComponent {
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
       // upload_preset must be added on the cloudinary configuration in the shared module
       // form.append('upload_preset', this.cloudinary.config().upload_preset);
-      /* // upload preset of Lorence's cloudinary account */
-      // form.append('upload_preset', 'lenua7xx');
       form.append('upload_preset', 'peersview');
       form.append('folder', this.user.token);
       form.append('file', fileItem);
