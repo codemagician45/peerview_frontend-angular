@@ -36,6 +36,9 @@ import {
   CampusCourseFeedComponent
 } from './main/course-feed/course-feed.component';
 import {
+  CampusCourseFeedLandingComponent
+} from './main/course-feed/landing/course-feed-landing.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -53,6 +56,7 @@ import {
     CampusFreshersFeedLandingComponent,
     CampusFreshersFeedMainComponent,
     CampusCourseFeedComponent,
+    CampusCourseFeedLandingComponent,
     CampusMainComponent
   ],
   exports: [],

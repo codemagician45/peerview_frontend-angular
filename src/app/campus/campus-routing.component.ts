@@ -29,6 +29,9 @@ import {
 import {
   CampusCourseFeedComponent
 } from './main/course-feed/course-feed.component';
+import {
+  CampusCourseFeedLandingComponent
+} from './main/course-feed/landing/course-feed-landing.component';
 
 const campusRoutes: Routes = [{
   path: '',
@@ -58,7 +61,15 @@ const campusRoutes: Routes = [{
       }]
     }, {
       path: 'course-feed',
-      component: CampusCourseFeedComponent
+      component: CampusCourseFeedComponent,
+      children: [{
+        path: '',
+        redirectTo: 'landing',
+        pathMatch: 'full',
+      }, {
+        path: 'landing',
+        component: CampusCourseFeedLandingComponent
+      }]
     }]
   }]
 }];

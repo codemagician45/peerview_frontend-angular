@@ -10,5 +10,11 @@
       'campusId': campusId
     }"
   ></shared-post-textarea-component>
-  <shared-post-component [posts]="posts"></shared-post-component>
+  <shared-post-component
+    [posts]="posts"
+    [route]="{
+      'name': 'campus',
+      'campusId': campusId
+    }"
+    ></shared-post-component>
 </div>

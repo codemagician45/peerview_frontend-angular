@@ -32,7 +32,6 @@ export class CampusFreshersFeedLandingComponent {
   protected freshersFeed: Array<any> = [];
 
   public ngOnInit (): void {
-    console.log(this.route);
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
 
