@@ -27,7 +27,13 @@
         </cl-image>
     </li>
   </ul>
-  <div class="view-all text-right color-purple">
+  <div 
+    *ngIf="followers.length > 0" 
+    class="view-all text-right color-purple"
+    >
     View All
   </div>
+  <h4 *ngIf="followers.length === 0" class="text-center">
+    No Followers available.
+  </h4>
 </div>

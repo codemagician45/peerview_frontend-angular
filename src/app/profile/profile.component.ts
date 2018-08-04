@@ -9,4 +9,10 @@ import {
 })
 export class ProfileComponent {
   constructor () {}
+
+  protected mobileLinkSelected: string = 'timeline';
+
+  public onClickSelectMobileLink (type): void {
+    this.mobileLinkSelected = type;
+  }
 }

@@ -27,7 +27,13 @@
         <img src="/assets/images/user1.jpg" alt="" ng-click="vm.openUsersProfile('sm')"/>
     </li>
   </ul>
-  <div class="view-all text-right color-purple">
+  <div 
+    *ngIf="followee.length > 0" 
+    class="view-all text-right color-purple"
+    >
     View All
   </div>
+  <h4 *ngIf="followee.length === 0" class="text-center">
+    No Followed Person available.
+  </h4>
 </div>

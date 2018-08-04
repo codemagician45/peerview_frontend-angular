@@ -8,6 +8,7 @@
       [ngStyle]="{'border-radius': '50%'}"
       (click)="onOpenShowImageDialogComponent(user)">
     </cl-image>
+    <input type="button" value="Follow" class="hidden-md hidden-lg btn btn-white follow-btn"/>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>
     <ul>
       <li>
@@ -44,7 +45,12 @@
       </a>
     </div>
     <div class="col-xs-8">
-      {{user?.aboutMe || 'Tell us about yourself'}}
+      <span *ngIf="!userId">
+        {{user?.aboutMe || 'Tell us about yourself'}}
+      </span>
+      <span *ngIf="userId">
+        {{user?.aboutMe || 'No Details to Show'}}
+      </span>
     </div>
     <div
     class="col-xs-2"
@@ -60,7 +66,7 @@
       </a>
     </div>
     <div  class="col-xs-10">
-      {{user?.company}}
+      {{user?.userType.name}} | {{user?.company || user?.schoolName}}
     </div>
   </div>
   <div class="institution text-center">
@@ -70,7 +76,7 @@
       </a>
     </div>
     <div  class="col-xs-10">
-      {{user?.institutionName}}
+      {{user?.city}}
     </div>
   </div>
   <div class="course text-center">
@@ -80,7 +86,9 @@
       </a>
     </div>
     <div  class="col-xs-10">
-      {{user?.courseId}}
+      <span *ngFor="let item of user?.userCourses">
+        {{item.course.name}}
+      </span>
     </div>
   </div>
   <div class="birth-date text-center">
@@ -88,7 +96,7 @@
       <i class="material-icons peersview-primary-color">today</i>
     </div>
     <div class="col-xs-10">
-      {{user?.birthDate}}
+      {{user?.birthDate | date :'longDate'}}
     </div>
   </div>
 </div>
