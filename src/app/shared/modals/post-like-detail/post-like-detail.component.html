@@ -4,7 +4,7 @@
   </button>
   <div class="post-like-detail-container">
     <div 
-      class="col-xs-12 post-like-list"
+      class="col-xs-12 post-like-item"
       *ngFor="let liker of post.postLike;"
     >
       <div class="pull-left">
@@ -26,7 +26,12 @@
         </div>
       </div>
 
-      <input type="button" value="Follow" class="btn btn-white follow-btn follow-btn"/>
+      <input 
+        type="button" 
+        class="btn btn-white follow-btn follow-btn"
+        value="Follow" 
+        *ngIf="liker.userId !== user.id"
+      />
     </div>
   </div>
 </div>

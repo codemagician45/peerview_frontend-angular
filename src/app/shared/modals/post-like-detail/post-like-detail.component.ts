@@ -7,8 +7,12 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material';
 import {
-  PostModel
+  PostModel,
+  UserModel
 } from '../../models';
+import {
+  UserClass
+} from '../../classes/user';
 
 @Component({
   selector: 'shared-post-like-detail-modal-component',
@@ -17,8 +21,10 @@ import {
 })
 export class SharedPostLikeDetailModalComponent implements OnInit {
   constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {
-    console.log(this.post);
+    console.log(this.post, this.user);
   }
+
+  protected user: UserModel = UserClass.getUser();
 
   public ngOnInit (): void {}
 }
