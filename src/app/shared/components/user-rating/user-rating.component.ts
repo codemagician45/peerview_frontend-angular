@@ -20,42 +20,35 @@ import {
 })
 export class SharedUserRatingComponent implements OnInit {
 	constructor (private userApiService: UserApiService) {}
-  @Input() protected user: UserModel;
+  @Input() protected userCredits: {totalCredits: number};
 	protected userCreditsRatingPercentage: string = '20%';
 
 	public ngOnInit (): void {
-		this.userApiService.promiseGetUserCredits(this.user)
-		.then((response => {
-			let totalCredits = response.data.totalCredits;
-			switch (true) {
-				case (totalCredits < 500) :
-					this.userCreditsRatingPercentage = '20%';
-				break;
-				case (totalCredits >= 500 && totalCredits <= 1199) :
-					this.userCreditsRatingPercentage = '40%';
-				break;
-				case (totalCredits >= 1200 && totalCredits <= 1999) :
-					this.userCreditsRatingPercentage = '50%';
-				break;
-				case (totalCredits >= 2000 && totalCredits <= 2999) :
-					this.userCreditsRatingPercentage = '60%';
-				break;
-				case (totalCredits >= 3000 && totalCredits <= 3999) :
-					this.userCreditsRatingPercentage = '70%';
-				break;
-				case (totalCredits >= 4000 && totalCredits <= 5999) :
-					this.userCreditsRatingPercentage = '80%';
-				break;
-				case (totalCredits >= 6000 && totalCredits <= 7999) :
-					this.userCreditsRatingPercentage = '90%';
-				break;
-				case (totalCredits >= 8000) :
-					this.userCreditsRatingPercentage = '100%';
-				break;
-			}
-		}))
-		.catch(error => {
-			console.log(error);
-		});
+		switch (true) {
+			case (this.userCredits.totalCredits < 500) :
+				this.userCreditsRatingPercentage = '20%';
+			break;
+			case (this.userCredits.totalCredits >= 500 && this.userCredits.totalCredits <= 1199) :
+				this.userCreditsRatingPercentage = '40%';
+			break;
+			case (this.userCredits.totalCredits >= 1200 && this.userCredits.totalCredits <= 1999) :
+				this.userCreditsRatingPercentage = '50%';
+			break;
+			case (this.userCredits.totalCredits >= 2000 && this.userCredits.totalCredits <= 2999) :
+				this.userCreditsRatingPercentage = '60%';
+			break;
+			case (this.userCredits.totalCredits >= 3000 && this.userCredits.totalCredits <= 3999) :
+				this.userCreditsRatingPercentage = '70%';
+			break;
+			case (this.userCredits.totalCredits >= 4000 && this.userCredits.totalCredits <= 5999) :
+				this.userCreditsRatingPercentage = '80%';
+			break;
+			case (this.userCredits.totalCredits >= 6000 && this.userCredits.totalCredits <= 7999) :
+				this.userCreditsRatingPercentage = '90%';
+			break;
+			case (this.userCredits.totalCredits >= 8000) :
+				this.userCreditsRatingPercentage = '100%';
+			break;
+		}
 	}
 }
