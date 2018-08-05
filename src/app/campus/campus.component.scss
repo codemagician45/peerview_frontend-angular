@@ -9,6 +9,7 @@ campus-component {
 		h3 {
 			font-size: 18px;
 		}
+	}
 		.btn-peersview-secondary {
 			&:nth-child(2) {
 				margin-top: 10px;
@@ -76,5 +77,4 @@ campus-component {
 		}
 		// Large Devices, Wide Screens
 		@media only screen and (min-width : 1200px) {}
-	}
 }
