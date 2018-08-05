@@ -29,6 +29,7 @@ export class CampusFreshersFeedMainComponent {
   protected campusId: number;
   protected campusFreshersFeedId: number;
   protected campusFreshersFeed: Array<CampusFreshersFeedPostModel> = [];
+  protected contentTypeOnMobile: string = 'timeline';
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -52,5 +53,9 @@ export class CampusFreshersFeedMainComponent {
         this.campusFreshersFeed = campusFreshersFeed;
       })
       .catch((error) => {});
+  }
+
+  protected onMobileContentSelect (type): void {
+    this.contentTypeOnMobile = type;
   }
 }

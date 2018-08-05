@@ -29,6 +29,7 @@ export class CampusAllStudentsComponent {
 
   protected posts: Array<CampusPostModel> = [];
   protected campusId: number;
+  protected contentTypeOnMobile: string = 'timeline';
 
   public ngOnInit (): void {
     this.route.parent.params.subscribe((params: Params) => {
@@ -44,5 +45,9 @@ export class CampusAllStudentsComponent {
         this.posts = campusPost;
       })
       .catch((error) => {});
+  }
+
+  protected onMobileContentSelect (type): void {
+    this.contentTypeOnMobile = type;
   }
 }

@@ -79,6 +79,9 @@ import {
   IndexFooterComponent
 } from './footer/footer.component';
 import {
+  SharedAnnouncementComponent
+} from './announcement/announcement.component';
+import {
   CONFIG
 } from '../../../config';
 import {
@@ -128,6 +131,7 @@ export function provideConfig (): any {
     SharedPostComponent,
     SharedUploadImageComponent,
     SharedReportPostComponent,
+    SharedAnnouncementComponent,
     IndexFooterComponent,
     TimeAgoPipe
   ],
@@ -153,6 +157,7 @@ export function provideConfig (): any {
     TimeAgoPipe,
     MatProgressBarModule,
     MatDatepickerModule,
+    SharedAnnouncementComponent,
     IndexFooterComponent,
     MatInputModule
   ],

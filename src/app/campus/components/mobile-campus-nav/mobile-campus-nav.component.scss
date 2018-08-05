@@ -1,5 +1,13 @@
-mobile-campus-nav-component {
-  .mobile-nav-links {
+.mobile-campus-nav-component {
+	.campus-details {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+		h3 {
+			margin: auto;
+		}
+	}
+	.mobile-nav-links {
 		ul {
 			display: flex;
 			flex-flow: row wrap;
@@ -10,6 +18,7 @@ mobile-campus-nav-component {
 				a {
 					font-weight: 500;
 					font-size: 14px;
+					text-transform: uppercase;
 					color: #9a9a9a;
 				}
 			}

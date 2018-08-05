@@ -14,6 +14,51 @@ campus-component {
 				margin-top: 10px;
 			}
 		}
+		.post-text-area-wrapper {
+			padding: 10px 0;
+			background-color: #fff;
+			.post-menu {
+				li {
+					border: 2px solid #323c47;
+					&:last-child {
+						margin-left: 20px;
+						border-right: 2px solid #323c47;
+					}
+				}
+			}
+		}
+		.timeline-text {
+			margin: 10px 0;
+			padding-left: 0;
+			font-weight: bold;
+			border-bottom: 1px solid #dbdbdb;
+			background: transparent;
+			color: #323c47;
+		}
+		.timeline-text-link-mobile {
+			display: flex;
+			padding: 10px 0;
+			flex-flow: row wrap;
+			justify-content: space-around;
+			font-size: 14px;
+			font-weight: 500;
+			a {
+				color: #9a9a9a;
+			}
+			a.active {
+				border-bottom: 1px solid #9a9a9a;
+			}
+		}
+		.mobile-contents {
+			announcement-component {
+				.label-heading {
+					display: none;
+				}
+			}
+			shared-peers-you-may-know-component {
+				padding: 0;
+			}
+		}
 		// Custom, iPhone Retina
 		@media only screen and (min-width : 320px) {}
 		// extra Small Devices, Phones
