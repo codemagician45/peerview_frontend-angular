@@ -111,7 +111,10 @@ export class SharedPostTextareaComponent {
           });
         break;
       case 'campus':
-        this.campusPost.assimilate({message: this.post.message});
+        this.campusPost.assimilate({
+          message: this.post.message,
+          campusPostPoll: this.post.postPoll
+        });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
         this.campusApiService.promiseCreatePost(this.campusId, this.campusPost)
           .then((campusPost: CampusPostModel) => {
@@ -129,12 +132,14 @@ export class SharedPostTextareaComponent {
           campusFreshersFeedId: campusFreshersFeedId
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
-        // this.campusApiService.promiseCreatePost(this.campusId, this.campusFreshersFeedPost)
-        //   .then((response: IResponse) => {
-        //     this.campusFreshersFeedPost.init();
-        //     this.post.init();
-        //   })
-          // .catch(error => {});
+        this.campusApiService.promiseCreatePost(this.campusId, this.campusFreshersFeedPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.campusFreshersFeedPost.init();
+            this.post.init();
+          })
+          .catch(error => {});
         break;
     }
   }
@@ -174,9 +179,9 @@ export class SharedPostTextareaComponent {
   }
 
   private createPostPoll (): void {
+    this.post.postPoll.options = this.post.postPoll.options.filter(option => option.trim() !== '');
     switch (this.route.name) {
       case 'home':
-        this.post.postPoll.options = this.post.postPoll.options.filter(option => option.trim() !== '');
         this.postApiService.promiseCreatePostPoll(this.post)
           .then((post: PostModel) => {
             PostEmitter.postSave()
@@ -187,6 +192,18 @@ export class SharedPostTextareaComponent {
           .catch(error => {});
         break;
       case 'campus':
+        this.campusPost.assimilate({
+          campusPostPoll: this.post.postPoll
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePostPoll(this.campusId, this.campusPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.postPoll.init();
+            this.post.postPoll.init();
+          })
+          .catch(error => {});
         break;
     }
   }
