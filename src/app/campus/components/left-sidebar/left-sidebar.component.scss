@@ -13,13 +13,14 @@ campus-left-sidebar-component {
   }
   .menu-contents {
     li {
-      padding: 10px 0;
+      padding: 12px 0;
     }
     li a {
       display: flex;
       padding: 0 15px 0 15px;
       font-size: 16px;
       color: #000000;
+      text-transform: uppercase;
     }
     li a .text {
       width: 100%;
