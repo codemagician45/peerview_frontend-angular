@@ -74,8 +74,29 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseCreatePost (campusId: number, post: CampusPostModel): Promise<CampusPostModel> {
-    return this.promisePostModelData(`${campusId}/post`, post)
+  public promiseCreatePost (campusId: number, campusPost: CampusPostModel): Promise<CampusPostModel> {
+    return this.promisePostModelData(`${campusId}/post`, campusPost)
+      .then((response: IResponse) => {
+        return CampusFactory.createCampusPost(response.data);
+      });
+  }
+
+  public promiseCreatePostLike (postId: number): Promise<IResponse> {
+    return this.promisePostModelData(`post/${postId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseRemovePostLike (postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`post/${postId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseCreatePostPoll (campusId: number, campusPost: CampusPostModel): Promise<CampusPostModel> {
+    return this.promisePostModelData(`${campusId}/post/poll`, campusPost)
       .then((response: IResponse) => {
         return CampusFactory.createCampusPost(response.data);
       });
@@ -84,7 +105,6 @@ export class CampusApiService extends ApiService {
   public promiseCreatePostReply (campustPostId: number, campusPostReply: CampusPostReplyModel): Promise<IResponse> {
     return this.promisePostModelData(`post/${campustPostId}/reply`, campusPostReply)
       .then((responseData: IResponse) => {
-        console.log(responseData);
         return responseData;
       });
   }

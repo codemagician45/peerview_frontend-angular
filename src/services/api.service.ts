@@ -83,7 +83,7 @@ export abstract class ApiService {
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
 
-      this.http.post(url, dataModel.toRawData())
+      this.http.post(url, dataModel ? dataModel.toRawData() : {})
         .subscribe((response: any) => {
           resolve(response);
           this.resetAbstractURIs();

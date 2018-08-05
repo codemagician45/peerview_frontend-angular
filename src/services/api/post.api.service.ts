@@ -76,7 +76,7 @@ export class PostApiService extends ApiService {
   }
 
   public promisePageView (postId: number): Promise<IResponse> {
-    return this.promisePostModelData(`${postId}/like`)
+    return this.promisePostModelData(`${postId}/pageview`)
       .then((responseData: IResponse) => {
         return responseData;
       });
