@@ -64,7 +64,9 @@ export class SharedPostTextareaComponent {
   @Input() protected shareMenu: boolean = true;
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
 
-  public ngOnInit (): void {}
+  public ngOnInit (): void {
+    this.post.postPoll.duration = 1;
+  }
 
   protected onAddPost (): any {
     if (!this.post.message) {
@@ -222,6 +224,16 @@ export class SharedPostTextareaComponent {
           })
           .catch(error => {});
         break;
+    }
+  }
+
+  protected onClickDuration (action): void {
+    if (action === 'add') {
+      this.post.postPoll.duration += 1;
+    } else {
+      if (this.post.postPoll.duration !== 1) {
+        this.post.postPoll.duration -= 1;
+      }
     }
   }
 

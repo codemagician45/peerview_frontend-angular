@@ -79,12 +79,33 @@
       </div>
       <div class="bottom-block">
         <div class="duration-poll">
-          <span>Poll Duration(Days):</span>
-          <input
-            name="newPollDuration"
-            type="number"
-            [(ngModel)]="post.postPoll.duration"
-          >
+          <div class="duration-label">
+            <span>Poll Duration(Days):</span>
+          </div>
+          <div class="duration-form">
+            <button 
+              class="col-xs-2"
+              (click)="onClickDuration('deduct')"
+            >
+              <i class="material-icons">
+                remove
+              </i>
+            </button>
+            <input
+              name="newPollDuration"
+              type="number"
+              class="col-xs-8 poll-duration-input"
+              [(ngModel)]="post.postPoll.duration"
+            />
+            <button 
+              class="col-xs-2" 
+              (click)="onClickDuration('add')"
+            >
+              <i class="material-icons">
+                add
+              </i>
+            </button>
+          </div>
         </div>
         <button
           class="btn btn-peersview-primary btn-sm post-btn poll-btn"
