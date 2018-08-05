@@ -451,11 +451,12 @@ input[type="checkbox"]:focus {
   }
 
   /* Share Post Modal */
-  .share-post-modal {
+  .share-post-modal,
+  .post-comment-detail-modal {
     .mat-dialog-container{
       top: 20px;
       margin: 0;
-      max-height: 100%;
+      max-height: 94%;
       padding: 0px;
     }
   }
@@ -479,7 +480,8 @@ input[type="checkbox"]:focus {
     max-width: 100vw;
   }
   
-  .cdk-overlay-pane.share-post-modal {
+  .cdk-overlay-pane.share-post-modal,
+  .cdk-overlay-pane.post-comment-detail-modal {
     min-height: 80vh;
     max-height: 85vh;
     width: 90%;
@@ -500,7 +502,8 @@ input[type="checkbox"]:focus {
       padding: 5px !important;
     }
   }
-  .cdk-overlay-pane.share-post-modal {
+  .cdk-overlay-pane.share-post-modal,
+  .cdk-overlay-pane.post-comment-detail-modal {
     min-height: 60vh;
     max-height: 85vh;
     width: 90%;
@@ -521,7 +524,8 @@ input[type="checkbox"]:focus {
     }
   }
 
-  .cdk-overlay-pane.share-post-modal {
+  .cdk-overlay-pane.share-post-modal,
+  .cdk-overlay-pane.post-comment-detail-modal {
     min-height: 75vh;
     max-height: 80vh;
     width: 80%;
@@ -538,7 +542,8 @@ input[type="checkbox"]:focus {
     }
   }
 
-  .cdk-overlay-pane.share-post-modal {
+  .cdk-overlay-pane.share-post-modal,
+  .cdk-overlay-pane.post-comment-detail-modal {
     min-height: 85vh;
     max-height: 95vh;
     width: 50%;

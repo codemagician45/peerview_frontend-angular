@@ -1,9 +1,10 @@
-.shared-post-like-detail-modal-component {
+.shared-post-comment-detail-modal-component {
   align-items: center;
   width: 100%;
 
   .modal-close {
     position: absolute;
+    top: 0px;
     right: 0;
     z-index: 1;
     background: transparent;
@@ -17,6 +18,12 @@
     }
   }
 
+  .reply-outer-container {
+    height: 75vh;
+    margin-top: 23px;
+    overflow: auto;
+  }
+
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {
   }
@@ -26,7 +33,15 @@
   @media only screen and (min-width : 768px) {
   }
   // Medium Devices, Desktops
-  @media only screen and (min-width : 992px) {}
+  @media only screen and (min-width : 992px) {
+    .reply-outer-container {
+      height: 73vh;
+    }
+  }
   // Large Devices, Wide Screens
-  @media only screen and (min-width : 1200px) {}
+  @media only screen and (min-width : 1200px) {
+    .reply-outer-container {
+      height: 85vh;
+    }
+  }
 }
