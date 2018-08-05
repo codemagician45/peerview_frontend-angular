@@ -14,7 +14,8 @@ import {
   SharedPostDetailModalComponent,
   SharedSharePostModalComponent,
   SharedViewPostModalComponent,
-  SharedPostCommentDetailModalComponent
+  SharedPostCommentDetailModalComponent,
+  SharedPostLikeDetailModalComponent
 } from '../../modals';
 import {
   PostApiService,
@@ -103,6 +104,16 @@ export class SharedPostOptionsComponent {
       }, error => {
         console.log(error);
       });
+  }
+
+  protected onLikesLabelClick (post): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'post-like-detail-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = post;
+    this.dialog.open(SharedPostLikeDetailModalComponent, dialogConfig);
   }
 
   protected onClickPostLike (isUserPostLike: boolean): void {
