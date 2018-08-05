@@ -33,5 +33,9 @@
         *ngIf="liker.userId !== user.id"
       />
     </div>
+
+    <div class="mt-10" *ngIf="post.postLike.length === 0">
+      <h5 class="text-center">No likes yet.</h5>
+    </div>
   </div>
 </div>

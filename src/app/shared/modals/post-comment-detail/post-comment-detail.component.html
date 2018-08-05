@@ -3,10 +3,95 @@
     <i class="material-icons"> clear </i>
   </button>
 
-  <div class="reply-outer-container">
+  <div class="post-outer-container">
+    <div class="post">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="pull-left">
+            <cl-image
+              class="post-image"
+              radius="max"
+              public-id="{{commentOptions.post.user.profilePicture}}"
+              *ngIf="commentOptions.post?.user?.profilePicture"
+            >
+            </cl-image>
+          </div>
+  
+          <div class="user-name">
+            <span
+              [ngStyle]="{'display': 'inline-grid'}"
+              (click)="onClickUserProfile(commentOptions.post.user);"
+              class="post-user-name">
+              {{commentOptions.post.user.firstName}} {{commentOptions.post.user.lastName}}
+            </span>
+            <div class="user-school-name">
+              {{commentOptions.post.user.schoolName}}
+            </div>
+            <span class="post-time">
+              {{commentOptions.post.createdAt | date :'short'}}
+            </span>
+          </div>
+        </div>
+        <!-- Commented user rating in case client would want to add this in the future -->
+        <!-- <div class="col-xs-12 profile-stars">
+          <shared-stars-component [ratingCount]="commentOptions.post.ratingCount"></shared-stars-component>
+        </div> -->
+        <div class="col-xs-12 post-message">
+          <p>
+            {{commentOptions.post.message ? commentOptions.post.message : commentOptions.post.question}}
+          </p>
+        </div>
+        <div class="col-xs-12 poll-options" *ngIf="!!commentOptions.post.question">
+          <ul>
+            <li *ngFor="let option of commentOptions.post.postPollOptions; let i = index;">
+              <input type="radio" [value]="option.name" (click)="onPollVote(option, commentOptions.post.postPollOptions)"/> {{option.name}}
+              <div class="poll-percentage">{{ getPollPercentage(option, commentOptions.post.postPollOptions) }}%</div>
+            </li>
+          </ul>
+          <div class="col-xs-12 poll-details">
+            <div class="col-xs-3">
+              {{ getPollVoteCount(commentOptions.post.postPollOptions) <= 1 ? getPollVoteCount(commentOptions.post.postPollOptions) + ' vote' : getPollVoteCount(commentOptions.post.postPollOptions) + ' votes'}}
+            </div>
+            <div class="col-xs-9">{{ getPollExpiryDuration(commentOptions.post.createdAt, commentOptions.post.duration) }}</div>
+          </div>
+        </div>
+  
+        <div class="col-xs-12 post-images">
+          <div
+            class="image-outer"
+            *ngFor="let attachment of commentOptions.post.attachments; let imageIndex = index"
+            [ngClass]="{'single-image': commentOptions.post.attachments.length === 1, 'multiple-image': commentOptions.post.attachments.length > 1}"
+            (click)="onClickPhoto(commentOptions.post.attachments, imageIndex)"
+          >
+            <div
+              class="image-inner"
+              *ngIf="attachment.cloudinaryPublicId"
+              >
+              <cl-image
+                public-id="{{attachment.cloudinaryPublicId}}"
+                >
+                <cl-transformation
+                  [attr.height]="commentOptions.post.attachments.length > 1 ? 500 : 250"
+                  width="500"
+                  crop="fill"
+                  radius="3"
+                  gravity="face"
+                >
+                </cl-transformation>
+              </cl-image>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <shared-post-reply-component 
       [post]="commentOptions.post"
       [route]="commentOptions.route"
       ></shared-post-reply-component>
+
+      <div *ngIf="commentOptions.post.postReply.length === 0">
+        <h5 class="text-center">No comments yet.</h5>
+      </div>
   </div>
 </div>
