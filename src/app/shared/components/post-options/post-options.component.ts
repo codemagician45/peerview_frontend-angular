@@ -21,7 +21,6 @@ import {
 } from '../../../../services/api';
 import {
   PostModel,
-  PostReplyModel,
   UserModel,
   IResponse
 } from '../../models';
@@ -53,11 +52,11 @@ export class SharedPostOptionsComponent {
   @Input() protected post: PostModel;
   @Input() protected ratingCount: number = 0;
   @Input() protected disableRepliesLink: boolean;
+  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
   protected isUserCurrentlyCommenting = false;
-  protected postReply: PostReplyModel = new PostReplyModel();
   protected hideReplySection = true;
   private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
 
@@ -129,23 +128,6 @@ export class SharedPostOptionsComponent {
     }
   }
 
-  protected onPostReply (): void {
-    this.isUserCurrentlyCommenting = true;
-    this.postApiService.promiseCreatePostReply(this.post.id, this.postReply)
-      .then((response: IResponse) => {
-        this.postReply.user = this.user;
-        this.postReply.createdAt = new Date();
-        // clone the postReply
-        let postReply: any = this.postReply.clone();
-        this.post.postReply.unshift(postReply);
-        this.postReply.init(); // this will initialize the data with blank ones
-        this.isUserCurrentlyCommenting = false;
-      })
-      .catch(error => {
-
-      });
-  }
-
   protected openViewModal (): void {
     this.dialog.open(SharedViewPostModalComponent, {
       data: this.post,
@@ -159,7 +141,7 @@ export class SharedPostOptionsComponent {
     dialogConfig.panelClass = 'post-comment-detail-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    // dialogConfig.data = this.post;
+    dialogConfig.data = this.post;
     this.dialog.open(SharedPostCommentDetailModalComponent, dialogConfig);
   }
 }

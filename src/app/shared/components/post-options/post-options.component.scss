@@ -27,35 +27,6 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   button.not-yet-liked {
     color: #bbb;
   }
-  .reply-container {
-    margin-top: 20px;
-    ul {
-      li.comment-container {
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 10px;
-        background-color: #f4f4f4;
-
-        small {
-          color: #777777;
-        }
-      }
-      li {
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-    .form-group {
-      margin-bottom: 0;
-      .input-group {
-        margin-bottom: 10px;
-        .btn-peersview-primary {
-          height: 38px;
-        }
-      }
-    }
-  }
   .options-text {
     div {
       padding: 0;
@@ -66,6 +37,10 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
       display: inline-flex;
       padding: 0;
     }
+  }
+
+  .comments-label {
+    cursor: pointer;
   }
 
   // Custom, iPhone Retina

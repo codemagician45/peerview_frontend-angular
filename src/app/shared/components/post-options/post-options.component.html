@@ -4,7 +4,7 @@
       <span *ngIf="likes > 0">{{likes}}</span>
       <span>{{likes >= 2 ? ' Likes' : ' Like'}}</span>
     </div>
-    <div class="col-xs-4 text-center" (click)="onClickCommentDetail()">
+    <div class="col-xs-4 text-center comments-label" (click)="onClickCommentDetail()">
       <span *ngIf="post.postReplyCount > 0">{{post.postReplyCount}}</span>
       <span>{{post.postReplyCount >= 2 ? ' Comments' : ' Comment'}}</span>
     </div>
@@ -39,27 +39,8 @@
       </button>
     </div>
   </div>
-  <div class="col-xs-12 reply-container" [hidden]="hideReplySection">
-    <hr>
-    <div class="form-group">
-      <div class="input-group">
-        <input required [(ngModel)]="postReply.comment" type="text" class="form-control" required>
-        <span class="input-group-btn">
-          <button class="btn btn-peersview-primary" type="button" (click)="onPostReply()" [disabled]="isUserCurrentlyCommenting">Reply</button>
-        </span>
-      </div>
-      <div class="replies-container" *ngIf="post.postReply">
-        <ul *ngFor="let item of post.postReply.slice().reverse()">
-          <li class="comment-container">
-            <span>
-            <span class="purple">
-              <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
-            </span> {{item.comment}}
-            </span>
-            <div> <small>{{item.createdAt | date : 'short'}}</small></div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <shared-post-reply-component 
+    [hidden]="hideReplySection"
+    [post]="post"
+  ></shared-post-reply-component>
 </div>
