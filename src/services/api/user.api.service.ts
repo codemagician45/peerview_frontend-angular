@@ -152,4 +152,12 @@ export class UserApiService extends ApiService {
         return responseData;
       });
   }
+
+  public promiseGetUserCredits (user: UserModel): Promise<IResponse> {
+    return this.promiseGetAllResponseData('credits')
+    .then((responseData: IResponse) => {
+      return responseData;
+    });
+  }
+
 }

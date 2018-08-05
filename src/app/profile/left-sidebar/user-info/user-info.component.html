@@ -10,15 +10,7 @@
     </cl-image>
     <input type="button" value="Follow" class="hidden-md hidden-lg btn btn-white follow-btn"/>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>
-    <ul>
-      <li>
-        <i class="material-icons color-purple">star</i>
-        <i class="material-icons color-purple">star</i>
-        <i class="material-icons color-purple">star</i>
-        <i class="material-icons color-purple">star</i>
-        <i class="material-icons color-purple">star</i>
-      </li>
-    </ul>
+    <shared-user-rating [user]="user"></shared-user-rating>
     <div class="edit-profile" *ngIf="!userId">
       Edit Profile
       <i class="material-icons color-purple">create</i>
