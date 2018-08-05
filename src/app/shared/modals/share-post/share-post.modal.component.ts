@@ -13,6 +13,7 @@ import {
 } from '@angular/material';
 import {
   PostModel,
+  CampusPostModel,
   SharePostModel,
   IResponse
 } from '../../models';
@@ -32,7 +33,7 @@ import 'rxjs/add/operator/mergeMap';
 })
 export class SharedSharePostModalComponent implements OnInit {
   constructor (
-    @Inject (MAT_DIALOG_DATA) private post: PostModel,
+    @Inject (MAT_DIALOG_DATA) private post: PostModel|CampusPostModel,
     @Inject(DOCUMENT) private document: Document,
     private postApiService: PostApiService,
     private dialog: MatDialog,
@@ -57,15 +58,12 @@ export class SharedSharePostModalComponent implements OnInit {
     NotificationTypes.Info);
 
     this.postApiService.promiseSharePost(this.post.id, this.share)
-      .then((sharePost: PostModel) => {
+      .then((sharePost: PostModel|CampusPostModel) => {
         this.isCurrentlySharing = false;
+        sharePost.postShare = this.post;
 
         let sharePostModalComponent = this.dialog.getDialogById('SharePostModalComponent');
-        sharePostModalComponent.close({
-          postId: sharePost.id,
-          shareMessage: this.share.message,
-          postedBy: this.post,
-        });
+        sharePostModalComponent.close(sharePost);
 
         MessageNotificationService.show({
           notification: {
