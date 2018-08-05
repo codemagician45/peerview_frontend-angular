@@ -7,7 +7,7 @@
       <span *ngIf="likes > 0">{{likes}}</span>
       <span>{{likes >= 2 ? ' Likes' : ' Like'}}</span>
     </div>
-    <div class="col-xs-4 text-center" 
+    <div class="col-xs-4 text-center post-comments" 
       (click)="onClickCommentDetail(route)"
     >
       <span *ngIf="post.postReplyCount > 0">{{post.postReplyCount}}</span>
