@@ -16,8 +16,7 @@ import {
 import {
   IResponse,
   PostModel,
-  PollModel,
-  CreatePoll,
+  PostPollModel,
   CampusPostModel,
   CampusFreshersFeedPostModel
 } from '../../models';
@@ -47,17 +46,19 @@ export class SharedPostTextareaComponent {
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.post.postPoll = new PostPollModel();
+  }
 
   private post: PostModel = new PostModel();
+  private postPoll: PostPollModel = new PostPollModel();
   private campusPost: CampusPostModel = new CampusPostModel();
   private campusFreshersFeedPost: CampusFreshersFeedPostModel = new CampusFreshersFeedPostModel();
-  private createPoll: CreatePoll = new CreatePoll();
   private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
-  protected pollOptions: Array<string> = ['NewPollOption1', 'NewPollOption2'];
+  // protected pollOptions: Array<string> = ['NewPollOption1', 'NewPollOption2'];
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
@@ -99,9 +100,8 @@ export class SharedPostTextareaComponent {
         this.isToogleUploadComponentVisible = false;
         this.postApiService.promiseCreatePost(this.post)
           .then((postModel: PostModel) => {
-            PostEmitter
-              .postSave()
-              .emit(postModel.id);
+            PostEmitter.postSave()
+              .emit(postModel);
             // this will set the createPost call the setBlankDataStructure
             this.post.init();
             this.isButtonDisabledOnSubmit = false;
@@ -113,8 +113,10 @@ export class SharedPostTextareaComponent {
       case 'campus':
         this.campusPost.assimilate({message: this.post.message});
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
-        this.campusApiService.createPost(this.campusId, this.campusPost)
-          .then((response: IResponse) => {
+        this.campusApiService.promiseCreatePost(this.campusId, this.campusPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
             this.campusPost.init();
             this.post.init();
           })
@@ -127,12 +129,12 @@ export class SharedPostTextareaComponent {
           campusFreshersFeedId: campusFreshersFeedId
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
-        this.campusApiService.createPost(this.campusId, this.campusFreshersFeedPost)
-          .then((response: IResponse) => {
-            this.campusFreshersFeedPost.init();
-            this.post.init();
-          })
-          .catch(error => {});
+        // this.campusApiService.promiseCreatePost(this.campusId, this.campusFreshersFeedPost)
+        //   .then((response: IResponse) => {
+        //     this.campusFreshersFeedPost.init();
+        //     this.post.init();
+        //   })
+          // .catch(error => {});
         break;
     }
   }
@@ -142,7 +144,7 @@ export class SharedPostTextareaComponent {
   }
 
   protected onAddPollOption (): void {
-    if (this.pollOptions.length === 4) {
+    if (this.postPoll.options.length === 4) {
       MessageNotificationService.show({
         notification: {
           id: 'cannot-add-more-option',
@@ -150,20 +152,14 @@ export class SharedPostTextareaComponent {
           instruction: 'Only four (4) options are allowed.'
         }
       },
-      NotificationTypes.Info);
+      NotificationTypes.Warning);
     } else {
-      let addNewPollOption = this.pollOptions.length + 1;
-      this.pollOptions.push('NewPollOption' + addNewPollOption);
+      this.postPoll.options.push('');
     }
   }
 
-  /*Destroy subscriber*/
-  public ngOnDestroy (): void {
-    PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
-  }
-
   protected onAddPoll (): any {
-    if (!this.createPoll.question) {
+    if (!this.post.postPoll.question) {
       return MessageNotificationService.show({
         notification: {
           id: 'shared-post-textarea-message',
@@ -174,27 +170,28 @@ export class SharedPostTextareaComponent {
       NotificationTypes.Error);
     }
 
-    return this.postPoll();
+    return this.createPostPoll();
   }
 
-  private postPoll (): void {
-    // switch (this.route.name) {
-    //   case 'home':
-    //     this.postService.createPoll(this.createPoll)
-    //     .subscribe((response: IResponse) => {
-    //       console.log('create poll', response);
-    //       PostEmitter
-    //       .postSave()
-    //       .emit(response.data);
-    //       this.createPoll.init();
-    //       this.isButtonDisabledOnSubmit = false;
-    //     }, error => {
-    //       this.isButtonDisabledOnSubmit = false;
-    //       console.log('create poll', error);
-    //     });
-    //     break;
-    //   case 'campus':
-    //     break;
-    // }
+  private createPostPoll (): void {
+    switch (this.route.name) {
+      case 'home':
+        this.post.postPoll.options = this.post.postPoll.options.filter(option => option.trim() !== '');
+        this.postApiService.promiseCreatePostPoll(this.post)
+          .then((post: PostModel) => {
+            PostEmitter.postSave()
+              .emit(post);
+            this.postPoll.init();
+            this.post.postPoll.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campus':
+        break;
+    }
+  }
+
+  public ngOnDestroy (): void {
+    PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
   }
 }

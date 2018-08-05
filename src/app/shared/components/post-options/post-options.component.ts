@@ -21,6 +21,7 @@ import {
 } from '../../../../services/api';
 import {
   PostModel,
+  CampusPostModel,
   PostReplyModel,
   CampusPostReplyModel,
   UserModel,
@@ -30,8 +31,8 @@ import {
   UserClass
 } from '../../classes';
 import {
-  EmitterService
-} from '../../emitter/emitter.component';
+  PostEmitter
+} from '../../emitter';
 
 @Component({
   selector: 'shared-post-options-component',
@@ -52,7 +53,7 @@ export class SharedPostOptionsComponent {
   @Input() protected views = 0;
   @Input() protected share = 0;
   @Input() protected isShareable: boolean = false;
-  @Input() protected post: PostModel;
+  @Input() protected post: PostModel|CampusPostModel;
   @Input() protected ratingCount: number = 0;
   @Input() protected disableRepliesLink: boolean;
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
@@ -63,8 +64,6 @@ export class SharedPostOptionsComponent {
   protected postReply: PostReplyModel = new PostReplyModel();
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
   protected hideReplySection = true;
-  private sharePostSuccessEmitter = EmitterService.get('sharePostEmitter');
-
 
   public ngOnInit (): void {}
 
@@ -96,9 +95,9 @@ export class SharedPostOptionsComponent {
     dialogConfig.id = 'SharePostModalComponent';
     this.dialog.open(SharedSharePostModalComponent, dialogConfig)
       .afterClosed()
-      .subscribe(data => {
-        if (data) {
-          this.sharePostSuccessEmitter.emit(data);
+      .subscribe((post: PostModel|CampusPostModel) => {
+        if (post) {
+          PostEmitter.postShare().emit(post);
         }
       }, error => {
         console.log(error);
@@ -150,6 +149,7 @@ export class SharedPostOptionsComponent {
           });
         break;
       case 'campus':
+      case 'campusFreshersFeed':
         this.campusPostReply.assimilate({comment: this.postReply.comment});
         this.campusApiService.promiseCreatePostReply(this.post.id, this.campusPostReply)
           .then((response: IResponse) => {

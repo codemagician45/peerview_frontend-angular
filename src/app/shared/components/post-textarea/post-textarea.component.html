@@ -45,18 +45,19 @@
     <form>
       <textarea
         class="form-control"
-        name="newPollQuestion"
-        [(ngModel)]="createPoll.question"
+        name="post-poll-question"
+        [(ngModel)]="post.postPoll.question"
         placeholder="Ask something..."
       >
       </textarea>
       <ul class="poll-option">
-        <li *ngFor="let item of pollOptions; let i = index;">
+        <li *ngFor="let item of postPoll.options; let i = index;">
           <input
+            class="form-control"
             type="text"
             placeholder="Add an option"
-            name="{{item}}"
-            [(ngModel)]="createPoll.options[i]"
+            [name]="'option-' + i"
+            [(ngModel)]="post.postPoll.options[i]"
           />
         </li>
       </ul>
@@ -82,7 +83,7 @@
           <input
             name="newPollDuration"
             type="number"
-            [(ngModel)]="createPoll.duration"
+            [(ngModel)]="post.postPoll.duration"
           >
         </div>
         <button

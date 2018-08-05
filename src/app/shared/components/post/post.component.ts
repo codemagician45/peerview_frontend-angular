@@ -1,6 +1,7 @@
 import {
   Component,
-  Input
+  Input,
+  EventEmitter
 } from '@angular/core';
 import {
   Router
@@ -15,10 +16,12 @@ import {
 } from '@angular/cdk/overlay';
 import {
   PostModel,
+  CampusPostModel,
   IResponse
 } from '../../models';
 import {
   PostApiService,
+  CampusApiService
 } from '../../../../services/api';
 import {
   EmitterService
@@ -44,21 +47,18 @@ import {
 export class SharedPostComponent {
   constructor (
     private postApiService: PostApiService,
+    private campusApiService: CampusApiService,
     private router: Router,
     private dialog: MatDialog,
     private overlay: Overlay
   ) {}
 
-  @Input() protected posts: Array<PostModel> = [];
+  @Input() protected posts: Array<any> = [];
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
-  private sharePostSuccessSubscriber = EmitterService.get('sharePostEmitter');
-  private postSavedSubscriber = EmitterService.get('postSaveEmitter');
   private hasAddedPostCounter = 0;
-  private counter = 0;
   private limit = 5;
-  private offset = 10;
-  private isDisabled = false;
+  private offset = 0;
   private user = UserClass.getUser();
   protected btnLoadMoreText = 'Load More';
 
@@ -68,28 +68,17 @@ export class SharedPostComponent {
   }
 
   private postSavedSubcribers (): void {
-    PostEmitter
-    .postSave()
-    .subscribe(postId => {
-      this.postApiService.promiseGetPost(postId)
-        .then((post: PostModel) => {
-          this.posts.unshift(post);
-          this.hasAddedPostCounter += 1;
-        })
-        .catch(() => {});
-    });
+    PostEmitter.postSave()
+      .subscribe((post: PostModel|CampusPostModel) => {
+        this.posts.unshift(post);
+      });
   }
 
   private getSharedPostSubscriber (): void {
-    this.sharePostSuccessSubscriber
-    .subscribe(data => {
-      this.postApiService.promiseGetPost(data.postId)
-        .then((post: PostModel) => {
-          this.posts.unshift(post);
-          this.hasAddedPostCounter += 1;
-        })
-        .catch(() => {});
-    });
+    PostEmitter.postShare()
+      .subscribe((post: PostModel|CampusPostModel) => {
+        this.posts.unshift(post);
+      });
   }
 
   protected onClickUserProfile (user): Promise<boolean> {
@@ -112,24 +101,30 @@ export class SharedPostComponent {
   }
 
   protected onLoadMorePost (): void {
-    /*Disable post button after submit to prevent post duplication*/
-    this.isDisabled = true;
-    this.counter = this.hasAddedPostCounter;
-    this.offset = this.offset + this.counter;
+    this.offset = this.posts.length;
 
-    this.postApiService.promiseGetAllPost(this.limit, this.offset)
-    .then((posts: PostModel[]) => {
-      this.offset = 5 + this.offset;
-      this.limit = 5;
-      this.posts = this.posts.concat(posts);
-      this.hasAddedPostCounter = 0;
+    switch (this.route.name) {
+      case 'home':
+        this.postApiService.promiseGetAllPost(this.limit, this.offset)
+          .then((posts: PostModel[]) => {
+            this.offset = 5 + this.offset;
+            this.limit = 5;
+            this.posts = this.posts.concat(posts);
+            this.hasAddedPostCounter = 0;
 
-      if (posts.length > 0) {
-        this.isDisabled = false;
-      } else {
-        this.btnLoadMoreText = 'No More Posts To Show';
-      }
-    });
+            if (posts.length === 0) {
+              this.btnLoadMoreText = 'No More Posts To Show';
+            }
+          });
+        break;
+      case 'campus':
+        let campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseGetAllPost(campusId, this.limit, this.offset)
+          .then((campusPost: CampusPostModel[]) => {
+            this.posts = this.posts.concat(campusPost);
+          });
+        break;
+    }
   }
 
   protected onClickPhoto (postAttachments, imageIndex): void {
@@ -152,9 +147,7 @@ export class SharedPostComponent {
     let hours = Math.floor(minutes / 60);
     let days = Math.floor(hours / 24);
 
-    // hours = hours-(days*24);
     minutes = minutes - (days * 24 * 60) - ((hours - (days * 24)) * 60);
-    // seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
 
     let hoursLeft = null;
     let minutesLeft = null;
@@ -191,17 +184,24 @@ export class SharedPostComponent {
     this.postApiService.promiseVotePoll(option.id).then(response => {
       console.log('response', response);
       this.postSavedSubcribers();
-      // this.getPollPercentage(option, pollOptions);
     }, error => {
       console.log('error', error);
     });
   }
 
   protected getPollPercentage (option, pollOptions): string {
+    // assign a default value for count if there is non
+    // meaning this object comes upon clicking add post
+    if (!option.count) { option.count = 0; }
     let totalVotes = this.getPollVoteCount(pollOptions);
     let percentage = option.count === 0 ? 0 : (option.count / totalVotes) * 100;
     let percent = percentage.toFixed(1);
 
     return percent;
+  }
+
+  public ngOnDestroy (): void {
+    PostEmitter.removeSubscriber(PostEmitter.getPostSaveName());
+    PostEmitter.removeSubscriber(PostEmitter.getPostSaveName());
   }
 }
