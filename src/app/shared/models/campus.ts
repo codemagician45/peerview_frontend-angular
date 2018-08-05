@@ -2,7 +2,8 @@ import {
   Model
 } from './model';
 import {
-  PostReplyModel
+  PostReplyModel,
+  PostPollModel
 } from './post';
 import {
   UserModel
@@ -31,6 +32,8 @@ export class CampusPostModel extends Model {
   public ratingCount: number;
   public roundedRating?: number;
   public attachments: String[];
+  // use as a virtual holder for postPoll
+  public campusPostPoll: PostPollModel;
 
   public init (): void {
     this.setBlankDataStructure({
