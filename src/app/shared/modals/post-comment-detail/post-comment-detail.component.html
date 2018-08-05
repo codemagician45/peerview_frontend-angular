@@ -4,6 +4,9 @@
   </button>
 
   <div class="reply-outer-container">
-    <shared-post-reply-component [post]="post"></shared-post-reply-component>
+    <shared-post-reply-component 
+      [post]="commentOptions.post"
+      [route]="commentOptions.route"
+      ></shared-post-reply-component>
   </div>
 </div>

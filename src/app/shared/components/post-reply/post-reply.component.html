@@ -5,7 +5,10 @@
       <div class="input-group">
         <input required [(ngModel)]="postReply.comment" type="text" class="form-control" required>
         <span class="input-group-btn">
-          <button class="btn btn-peersview-primary" type="button" (click)="onPostReply()" [disabled]="isUserCurrentlyCommenting">Reply</button>
+          <button 
+            class="btn btn-peersview-primary" 
+            type="button" (click)="onPostReply()" 
+            [disabled]="isUserCurrentlyCommenting">Reply</button>
         </span>
       </div>
       <div class="replies-container" *ngIf="post.postReply">

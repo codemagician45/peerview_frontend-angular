@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  Inject
+  Inject,
+  Input
 } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
@@ -16,9 +17,7 @@ import {
   styleUrls: ['./post-comment-detail.component.scss']
 })
 export class SharedPostCommentDetailModalComponent implements OnInit {
-  constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {
-    console.log(this.post);
-  }
+  constructor (@Inject(MAT_DIALOG_DATA) protected commentOptions: PostModel) {}
 
   public ngOnInit (): void {}
 }
