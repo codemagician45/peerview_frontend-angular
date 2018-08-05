@@ -11,6 +11,12 @@
     </div>
     <ul class="menu-contents">
       <li [routerLinkActive]="'active'">
+        <a [routerLink]="['/home']">
+          <i class="material-icons">home</i>
+          <span class="text">Home</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="'active'">
         <a [routerLink]="['all-students']">
           <i class="material-icons">person_pin</i>
           <span class="text">All Students</span>

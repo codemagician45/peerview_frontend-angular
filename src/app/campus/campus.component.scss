@@ -16,17 +16,7 @@ campus-component {
 			}
 		}
 		.post-text-area-wrapper {
-			padding: 10px 0;
 			background-color: #fff;
-			.post-menu {
-				li {
-					border: 2px solid #323c47;
-					&:last-child {
-						margin-left: 20px;
-						border-right: 2px solid #323c47;
-					}
-				}
-			}
 		}
 		.timeline-text {
 			margin: 10px 0;
@@ -44,10 +34,10 @@ campus-component {
 			font-size: 14px;
 			font-weight: 500;
 			a {
-				color: #9a9a9a;
+				color: #631990;
 			}
 			a.active {
-				border-bottom: 1px solid #9a9a9a;
+				border-bottom: 1px solid #631990;
 			}
 		}
 		.mobile-contents {
