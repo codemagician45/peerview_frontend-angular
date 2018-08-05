@@ -76,6 +76,9 @@ import {
   SharedReportPostComponent
 } from './report-post/report.post.component';
 import {
+  SharedPostReplyComponent
+} from './post-reply/post-reply.component';
+import {
   IndexFooterComponent
 } from './footer/footer.component';
 import {
@@ -119,6 +122,7 @@ export function provideConfig (): any {
     NavbarMobileComponent,
     NavbarDesktopComponent,
     SharedPostOptionsComponent,
+    SharedPostReplyComponent,
     SharedStarsComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,
@@ -141,6 +145,7 @@ export function provideConfig (): any {
     NavbarMobileComponent,
     NavbarDesktopComponent,
     SharedPostOptionsComponent,
+    SharedPostReplyComponent,
     SharedStarsComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,

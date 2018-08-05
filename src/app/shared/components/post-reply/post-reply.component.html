@@ -1,0 +1,25 @@
+<div class="shared-post-reply-component">
+  <div class="col-xs-12 reply-container" >
+    <hr>
+    <div class="form-group">
+      <div class="input-group">
+        <input required [(ngModel)]="postReply.comment" type="text" class="form-control" required>
+        <span class="input-group-btn">
+          <button class="btn btn-peersview-primary" type="button" (click)="onPostReply()" [disabled]="isUserCurrentlyCommenting">Reply</button>
+        </span>
+      </div>
+      <div class="replies-container" *ngIf="post.postReply">
+        <ul *ngFor="let item of post.postReply.slice().reverse()">
+          <li class="comment-container">
+            <span>
+            <span class="purple">
+              <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
+            </span> {{item.comment}}
+            </span>
+            <div> <small>{{item.createdAt | date : 'short'}}</small></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
