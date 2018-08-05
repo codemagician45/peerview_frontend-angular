@@ -3,18 +3,26 @@
     <i class="material-icons"> clear </i>
   </button>
   <div class="post-like-detail-container">
-    <div class="col-xs-12 post-like-list">
+    <div 
+      class="col-xs-12 post-like-list"
+      *ngFor="let liker of post.postLike;"
+    >
       <div class="pull-left">
-        <cl-image class="post-image" radius="max" public-id="{{post.user.profilePicture}}" *ngIf="post?.user?.profilePicture" (click)="onClickUserProfile(post.user);">
+        <cl-image 
+          class="post-image" 
+          radius="max"
+          public-id="{{liker.user.profilePicture}}" 
+          *ngIf="liker?.user?.profilePicture" 
+          (click)="onClickUserProfile(liker.user);">
         </cl-image>
       </div>
 
       <div class="user-name">
-        <span [ngStyle]="{'display': 'inline-grid'}" (click)="onClickUserProfile(post.user);" class="post-user-name">
-          {{post.user.firstName}} {{post.user.lastName}}
+        <span [ngStyle]="{'display': 'inline-grid'}" (click)="onClickUserProfile(liker.user);" class="post-user-name">
+          {{liker.user.firstName}} {{liker.user.lastName}}
         </span>
         <div class="user-school-name">
-          {{post.user.schoolName}}
+          {{liker.user.schoolName}}
         </div>
       </div>
 
