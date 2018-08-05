@@ -13,7 +13,7 @@ import {
 import {
   SharedSharePostModalComponent,
   SharedViewPostModalComponent,
-  SharedPostCommentDetailModalComponent,
+  SharedPostDetailModalComponent,
   SharedPostLikeDetailModalComponent
 } from '../../modals';
 import {
@@ -144,6 +144,6 @@ export class SharedPostOptionsComponent {
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {'post': this.post, route: this.route};
-    this.dialog.open(SharedPostCommentDetailModalComponent, dialogConfig);
+    this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
   }
 }

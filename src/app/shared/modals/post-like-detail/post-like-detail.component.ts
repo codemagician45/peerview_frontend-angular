@@ -21,7 +21,6 @@ import {
 })
 export class SharedPostLikeDetailModalComponent implements OnInit {
   constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {
-    console.log(this.post, this.user);
   }
 
   protected user: UserModel = UserClass.getUser();

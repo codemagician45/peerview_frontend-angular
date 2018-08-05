@@ -12,11 +12,11 @@ import {
 } from '../../models';
 
 @Component({
-  selector: 'shared-post-comment-detail-modal-component',
-  templateUrl: './post-comment-detail.component.html',
-  styleUrls: ['./post-comment-detail.component.scss']
+  selector: 'shared-post-detail-modal-component',
+  templateUrl: './post-detail.component.html',
+  styleUrls: ['./post-detail.component.scss']
 })
-export class SharedPostCommentDetailModalComponent implements OnInit {
+export class SharedPostDetailModalComponent implements OnInit {
   constructor (@Inject(MAT_DIALOG_DATA) protected commentOptions: PostModel) {}
 
   public ngOnInit (): void {}
