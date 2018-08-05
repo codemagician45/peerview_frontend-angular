@@ -55,12 +55,11 @@ export class SharedPostComponent {
 
   @Input() protected posts: Array<any> = [];
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
+  protected btnLoadMoreText = 'Load More';
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
-  private hasAddedPostCounter = 0;
   private limit = 5;
   private offset = 0;
   private user = UserClass.getUser();
-  protected btnLoadMoreText = 'Load More';
 
   public ngOnInit (): void {
     this.getSharedPostSubscriber();
@@ -107,14 +106,8 @@ export class SharedPostComponent {
       case 'home':
         this.postApiService.promiseGetAllPost(this.limit, this.offset)
           .then((posts: PostModel[]) => {
-            this.offset = 5 + this.offset;
-            this.limit = 5;
             this.posts = this.posts.concat(posts);
-            this.hasAddedPostCounter = 0;
-
-            if (posts.length === 0) {
-              this.btnLoadMoreText = 'No More Posts To Show';
-            }
+            this.checkIfThereAreStillPostAvailable(posts);
           });
         break;
       case 'campus':
@@ -122,6 +115,7 @@ export class SharedPostComponent {
         this.campusApiService.promiseGetAllPost(campusId, this.limit, this.offset)
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
+            this.checkIfThereAreStillPostAvailable(campusPost);
           });
         break;
     }
@@ -198,6 +192,12 @@ export class SharedPostComponent {
     let percent = percentage.toFixed(1);
 
     return percent;
+  }
+
+  private checkIfThereAreStillPostAvailable (posts: PostModel[]|CampusPostModel[]): void {
+    if (posts.length === 0) {
+      this.btnLoadMoreText = 'No More Posts To Show';
+    }
   }
 
   public ngOnDestroy (): void {
