@@ -33,6 +33,8 @@ export abstract class ApiService {
       this.baseURI = this.cloneURIs.baseURI;
       this.baseURIPlural = this.cloneURIs.baseURIPlural;
     }
+
+    this.options = undefined;
   }
 
   protected cloneAbstractURIs (): void {
