@@ -20,8 +20,12 @@ export class PostModel extends Model {
   public shareCount: number;
   public title?: string;
   public attachments: String[];
+  public user: UserModel;
+  public postShare: PostModel;
   // used as a virtual holder for postTo
   public postTo?: number;
+  // use as a virtual holder for postPoll
+  public postPoll: PostPollModel;
 
   public init (): void {
     this.setBlankDataStructure({
@@ -71,3 +75,29 @@ export class ReportPostModel extends Model {
     });
   }
 }
+
+export class PostPollModel extends Model {
+  public question: string;
+  public options: Array<string> = ['', ''];
+  public duration: number;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      question: '',
+      options: ['', ''],
+      duration: ''
+    });
+  }
+}
+//
+// export class Polls {
+//   public polls: Array<PollModel>;
+// }
+//
+// export class CreatePoll extends Model {
+//   public question: string;
+//   public options: Array<string> = [];
+//   public duration: number;
+//
+//
+// }

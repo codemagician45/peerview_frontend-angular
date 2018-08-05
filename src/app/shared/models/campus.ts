@@ -22,8 +22,12 @@ export class CampusPostModel extends Model {
   public createdAt: Date;
   public message: string;
   public likeCount: number;
+  public isUserLike: number;
+  public isUserPostLike: number;
   public pageviewCount: number;
   public campusPostReply: Array<PostReplyModel>;
+  public postShare: CampusPostModel;
+  public postReply: Array<PostReplyModel>;
   public ratingCount: number;
   public roundedRating?: number;
   public attachments: String[];
