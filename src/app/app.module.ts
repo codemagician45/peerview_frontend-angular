@@ -69,7 +69,11 @@ import {
   ReportPostModalComponent,
   SharedConfirmModalComponent,
   SharedImagePreviewComponent,
+<<<<<<< HEAD
   SharedPostCommentDetailModalComponent
+=======
+  SharedPostLikeDetailModalComponent
+>>>>>>> Fixed conflict on rebase
 } from './shared/modals';
 import {
   ProfileLeftSidebarUserInfoMessageDiaglogComponent

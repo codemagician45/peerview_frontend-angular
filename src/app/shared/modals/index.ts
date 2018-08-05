@@ -5,5 +5,6 @@ export * from './report-post/report.post.modal.component';
 export * from './confirm/confirm-modal.component';
 export * from './image-preview/image-preview.component';
 export * from './post-comment-detail/post-comment-detail.component';
+export * from './post-like-detail/post-like-detail.component';
 
 
