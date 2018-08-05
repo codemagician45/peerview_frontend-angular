@@ -11,5 +11,12 @@
       'campusFreshersFeedId': campusFreshersFeedId
     }"
   ></shared-post-textarea-component>
-  <shared-post-component [posts]="campusFreshersFeed"></shared-post-component>
+  <shared-post-component
+    [posts]="campusFreshersFeed"
+    [route]="{
+      'name': 'campusFreshersFeed',
+      'campusId': campusId,
+      'campusFreshersFeedId': campusFreshersFeedId
+    }"
+  ></shared-post-component>
 </div>
