@@ -18,6 +18,12 @@ import {
   CampusLeftSidebarComponent
 } from './components/left-sidebar/left-sidebar.component';
 import {
+  CampusRightSidebarComponent
+} from './components/right-sidebar/right-sidebar.component';
+import {
+  MobileCampusNavComponent
+} from './components/mobile-campus-nav/mobile-campus-nav.component';
+import {
   CampusAllStudentsComponent
 } from './main/all-students/all-students.component';
 import {
@@ -51,6 +57,8 @@ import {
     CampusComponent,
     CampusLandingPageComponent,
     CampusLeftSidebarComponent,
+    CampusRightSidebarComponent,
+    MobileCampusNavComponent,
     CampusAllStudentsComponent,
     CampusFreshersFeedComponent,
     CampusFreshersFeedLandingComponent,
