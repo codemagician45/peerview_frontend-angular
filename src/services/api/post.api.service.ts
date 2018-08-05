@@ -9,6 +9,7 @@ import {
 } from '../api.service';
 import {
   PostModel,
+  PostPollModel,
   PostReplyModel,
   ReportPostModel,
   SharePostModel,
@@ -48,6 +49,13 @@ export class PostApiService extends ApiService {
 
   public promiseCreatePost (post: PostModel): Promise<PostModel> {
     return this.promisePostModelData('', post)
+      .then((response: IResponse) => {
+        return PostFactory.createPost(response.data);
+      });
+  }
+
+  public promiseCreatePostPoll (post: PostModel): Promise<PostModel> {
+    return this.promisePostModelData('poll', post)
       .then((response: IResponse) => {
         return PostFactory.createPost(response.data);
       });

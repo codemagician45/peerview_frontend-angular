@@ -2,6 +2,9 @@ import {
   Injectable
 } from '@angular/core';
 import {
+  HttpParams
+} from '@angular/common/http';
+import {
   ApiService
 } from '../api.service';
 import {
@@ -35,7 +38,15 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseGetAllPost (campusId: number): any {
+  public promiseGetAllPost (campusId: number, limit: number = 10, offset: number = 0): Promise<CampusPostModel[]> {
+    let params = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
+
+      this.options = {
+        params: params
+      };
+
     return this.promiseGetAllResponseData(`${campusId}/posts`)
       .then((response: IResponse) => {
         return CampusFactory.createManyCampusPost(response.data);
@@ -63,10 +74,10 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public createPost (campusId: number, post: CampusPostModel): Promise<IResponse> {
+  public promiseCreatePost (campusId: number, post: CampusPostModel): Promise<CampusPostModel> {
     return this.promisePostModelData(`${campusId}/post`, post)
-      .then((responseData: IResponse) => {
-        return responseData;
+      .then((response: IResponse) => {
+        return CampusFactory.createCampusPost(response.data);
       });
   }
 
