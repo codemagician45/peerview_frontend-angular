@@ -8,9 +8,6 @@ import {
   Output
 } from '@angular/core';
 import {
-  PollModel
-} from '../../shared/models';
-import {
   EmitterService
 } from '../emitter/emitter.component';
 
@@ -33,7 +30,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() private onEditorKeyup = new EventEmitter<any>();
 
   private editor;
-  private newPoll: PollModel = new PollModel();
+  // private newPoll: PollModel = new PollModel();
   private errorMessage: any;
   private isDisabled = false;
   private postSaveEmitterService = EmitterService.get('postSaveEmitter');
@@ -154,7 +151,7 @@ export class PostPollMapComponent implements OnInit, AfterViewInit, OnDestroy {
       options.push($(b).val());
     });
 
-    this.newPoll['options'] = options;
+    // this.newPoll['options'] = options;
     // this.postservice.createPoll(this.newPoll).subscribe(resp => {
     //   if (resp['error'] === false) {
     //     alert(resp['Message']);
