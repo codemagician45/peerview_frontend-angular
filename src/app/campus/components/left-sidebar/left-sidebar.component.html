@@ -1,7 +1,12 @@
 <div class="campus-left-sidebar-component">
   <div class="wrapper">
     <div class="header">
-      <img src="" alt="">
+      <cl-image
+        class="mouse-pointer"
+        public-id="peersviewBrand"
+        height="60px"
+      >
+      </cl-image>
       <h4>Peersview Campus</h4>
     </div>
     <ul class="menu-contents">
@@ -14,7 +19,7 @@
       <li [routerLinkActive]="'active'">
         <a [routerLink]="['freshers-feed']">
          <i class="material-icons">school</i>
-         <span class="text">Freshers Feed</span>
+         <span class="text">Freshers Channel</span>
        </a>
       </li>
       <li [routerLinkActive]="'active'">
@@ -50,7 +55,7 @@
       <li>
         <a href="#communityJobCenter">
           <i class="material-icons">work</i>
-          <span class="text">Job Center</span>
+          <span class="text">Mentoring</span>
         </a>
       </li>
     </ul>

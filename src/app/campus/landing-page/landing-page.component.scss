@@ -11,10 +11,15 @@
       top: 50%;
       width: 100%;
       color: #ffffff;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -40%);
     }
     .wrapper div {
       font-family: 'Conv_MavenPro-Regular';
     }
+  }
+}
+.modal-footer {
+  .btn-cancel-select-institution {
+    margin-bottom: 10px;
   }
 }

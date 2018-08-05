@@ -11,4 +11,12 @@
       text-transform: none;
     }
   }
+  shared-post-component {
+    padding: 0;
+  }
+  campus-right-sidebar-component {
+    position: sticky;
+    top: 5%;
+    padding-right: 0;
+  }
 }
