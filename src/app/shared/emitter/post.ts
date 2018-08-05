@@ -20,6 +20,19 @@ export class PostEmitter {
     return 'onUploadComplete';
   }
 
+  /**
+   * Sharing between SharedPostComponent
+   * and SharedPostOptionsComponent
+   * @summary It will call upon success in the sharing of post
+   */
+  public static getPostShareName (): string {
+    return 'getPostShare';
+  }
+
+  public static postShare (): EventEmitter<any> {
+    return EmitterService.get(PostEmitter.getPostShareName());
+  }
+
   public static postSave (): any {
     return EmitterService.get('getPostSave');
   }
@@ -35,5 +48,4 @@ export class PostEmitter {
   public static removeSubscriber (channel): void {
     EmitterService.remove(channel);
   }
-
 }
