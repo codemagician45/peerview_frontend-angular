@@ -20,12 +20,4 @@ export class HomeLeftSidebarComponent {
   ) {}
 
   @Input() protected user: UserModel;
-
-  public ngOnInit (): void {
-    this.userApiService
-        .promiseGetUser()
-        .then(response => {
-          this.user = response;
-    });
-  }
 }

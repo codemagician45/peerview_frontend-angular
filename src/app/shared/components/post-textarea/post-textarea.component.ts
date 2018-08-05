@@ -129,6 +129,7 @@ export class SharedPostTextareaComponent {
         let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
         this.campusFreshersFeedPost.assimilate({
           message: this.post.message,
+          campusPostPoll: this.post.postPoll,
           campusFreshersFeedId: campusFreshersFeedId
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
@@ -193,6 +194,22 @@ export class SharedPostTextareaComponent {
         break;
       case 'campus':
         this.campusPost.assimilate({
+          campusPostPoll: this.post.postPoll
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePostPoll(this.campusId, this.campusPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.postPoll.init();
+            this.post.postPoll.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campusFreshersFeed':
+        let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
+        this.campusPost.assimilate({
+          campusFreshersFeedId: campusFreshersFeedId,
           campusPostPoll: this.post.postPoll
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
