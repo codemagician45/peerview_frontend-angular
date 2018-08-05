@@ -32,7 +32,7 @@ import {
 } from '../../../../services';
 import {
   CryptoUtilities
-} from '../../../shared/utilities';
+} from '../../utilities';
 declare let swal: any;
 
 @Component({

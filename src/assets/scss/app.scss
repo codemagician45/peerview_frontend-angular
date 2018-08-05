@@ -451,8 +451,11 @@ input[type="checkbox"]:focus {
   }
 
   /* Share Post Modal */
+  /* Post Like Detail Modal */
+  /* Post Comment Detail Modal */
   .share-post-modal,
-  .post-comment-detail-modal {
+  .post-comment-detail-modal, 
+  .post-like-detail-modal {
     .mat-dialog-container{
       top: 20px;
       margin: 0;
@@ -481,7 +484,8 @@ input[type="checkbox"]:focus {
   }
   
   .cdk-overlay-pane.share-post-modal,
-  .cdk-overlay-pane.post-comment-detail-modal {
+  .cdk-overlay-pane.post-comment-detail-modal,
+  .cdk-overlay-pane.post-like-detail-modal {
     min-height: 80vh;
     max-height: 85vh;
     width: 90%;
@@ -503,7 +507,8 @@ input[type="checkbox"]:focus {
     }
   }
   .cdk-overlay-pane.share-post-modal,
-  .cdk-overlay-pane.post-comment-detail-modal {
+  .cdk-overlay-pane.post-comment-detail-modal,
+  .cdk-overlay-pane.post-like-detail-modal {
     min-height: 60vh;
     max-height: 85vh;
     width: 90%;
@@ -525,7 +530,8 @@ input[type="checkbox"]:focus {
   }
 
   .cdk-overlay-pane.share-post-modal,
-  .cdk-overlay-pane.post-comment-detail-modal {
+  .cdk-overlay-pane.post-comment-detail-modal,
+  .cdk-overlay-pane.post-like-detail-modal {
     min-height: 75vh;
     max-height: 80vh;
     width: 80%;
@@ -543,7 +549,8 @@ input[type="checkbox"]:focus {
   }
 
   .cdk-overlay-pane.share-post-modal,
-  .cdk-overlay-pane.post-comment-detail-modal {
+  .cdk-overlay-pane.post-comment-detail-modal,
+  .cdk-overlay-pane.post-like-detail-modal {
     min-height: 85vh;
     max-height: 95vh;
     width: 50%;

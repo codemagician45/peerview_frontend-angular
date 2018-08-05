@@ -11,10 +11,10 @@ import {
   Overlay
 } from '@angular/cdk/overlay';
 import {
-  SharedPostDetailModalComponent,
   SharedSharePostModalComponent,
   SharedViewPostModalComponent,
-  SharedPostCommentDetailModalComponent
+  SharedPostDetailModalComponent,
+  SharedPostLikeDetailModalComponent
 } from '../../modals';
 import {
   PostApiService,
@@ -68,19 +68,6 @@ export class SharedPostOptionsComponent {
 
   public ngOnInit (): void {}
 
-  protected onOpenSharedPostDetailModalComponent (): void {
-    /**
-     * Because we do have reusable component
-     * We will be having infinite onOpenPostDetailDialogComponent
-     * for this one to be disble we have to check if
-     * disableRepliesLink = true which is set inside
-     * under PostDetailComponent
-     */
-    !this.disableRepliesLink && this.dialog.open(SharedPostDetailModalComponent, {
-      data: this.post
-    });
-  }
-
   protected openReplyContainer (): void {
     this.hideReplySection = !this.hideReplySection;
   }
@@ -103,6 +90,16 @@ export class SharedPostOptionsComponent {
       }, error => {
         console.log(error);
       });
+  }
+
+  protected onLikesLabelClick (post): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'post-like-detail-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = post;
+    this.dialog.open(SharedPostLikeDetailModalComponent, dialogConfig);
   }
 
   protected onClickPostLike (isUserPostLike: boolean): void {
@@ -147,6 +144,6 @@ export class SharedPostOptionsComponent {
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {'post': this.post, route: this.route};
-    this.dialog.open(SharedPostCommentDetailModalComponent, dialogConfig);
+    this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
   }
 }

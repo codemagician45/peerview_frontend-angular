@@ -1,18 +1,15 @@
 import {
   Component,
   OnInit,
-  Inject
+  Inject,
+  Input
 } from '@angular/core';
 import {
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
 } from '@angular/material';
 import {
-  UserModel,
   PostModel
 } from '../../models';
-import {
-  UserClass
-} from '../../classes';
 
 @Component({
   selector: 'shared-post-detail-modal-component',
@@ -20,11 +17,7 @@ import {
   styleUrls: ['./post-detail.component.scss']
 })
 export class SharedPostDetailModalComponent implements OnInit {
-  constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {}
-
-  protected user: UserModel = UserClass.getUser();
-  protected stars: Array<string> = [];
-  protected disableRepliesLink: boolean = true;
+  constructor (@Inject(MAT_DIALOG_DATA) protected commentOptions: PostModel) {}
 
   public ngOnInit (): void {}
 }

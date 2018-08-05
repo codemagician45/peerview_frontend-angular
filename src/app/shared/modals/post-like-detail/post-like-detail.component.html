@@ -1,0 +1,41 @@
+<div class="shared-post-like-detail-modal-component" add-css [cssToAdd]="'mat-dialog-is-open'" remove-css [cssToRemove]="'mat-dialog-is-open'">
+  <button class="modal-close" mat-dialog-close>
+    <i class="material-icons"> clear </i>
+  </button>
+  <div class="post-like-detail-container">
+    <div 
+      class="col-xs-12 post-like-item"
+      *ngFor="let liker of post.postLike;"
+    >
+      <div class="pull-left">
+        <cl-image 
+          class="post-image" 
+          radius="max"
+          public-id="{{liker.user.profilePicture}}" 
+          *ngIf="liker?.user?.profilePicture" 
+          (click)="onClickUserProfile(liker.user);">
+        </cl-image>
+      </div>
+
+      <div class="user-name">
+        <span [ngStyle]="{'display': 'inline-grid'}" (click)="onClickUserProfile(liker.user);" class="post-user-name">
+          {{liker.user.firstName}} {{liker.user.lastName}}
+        </span>
+        <div class="user-school-name">
+          {{liker.user.schoolName}}
+        </div>
+      </div>
+
+      <input 
+        type="button" 
+        class="btn btn-white follow-btn follow-btn"
+        value="Follow" 
+        *ngIf="liker.userId !== user.id"
+      />
+    </div>
+
+    <div class="mt-10" *ngIf="post.postLike.length === 0">
+      <h5 class="text-center">No likes yet.</h5>
+    </div>
+  </div>
+</div>
