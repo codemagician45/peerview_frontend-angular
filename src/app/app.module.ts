@@ -68,7 +68,8 @@ import {
   SharedViewPostModalComponent,
   ReportPostModalComponent,
   SharedConfirmModalComponent,
-  SharedImagePreviewComponent
+  SharedImagePreviewComponent,
+  SharedPostCommentDetailModalComponent
 } from './shared/modals';
 import {
   ProfileLeftSidebarUserInfoMessageDiaglogComponent
@@ -128,7 +129,8 @@ tinymce.init({});
     ReportPostModalComponent,
     SharedSharePostModalComponent,
     SharedConfirmModalComponent,
-    SharedImagePreviewComponent
+    SharedImagePreviewComponent,
+    SharedPostCommentDetailModalComponent
   ],
   exports: [],
   entryComponents: [
@@ -138,7 +140,8 @@ tinymce.init({});
     SharedViewPostModalComponent,
     ReportPostModalComponent,
     SharedConfirmModalComponent,
-    SharedImagePreviewComponent
+    SharedImagePreviewComponent,
+    SharedPostCommentDetailModalComponent
   ],
   bootstrap: [AppComponent],
 })

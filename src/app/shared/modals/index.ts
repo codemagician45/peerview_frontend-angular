@@ -4,4 +4,6 @@ export * from './view-post/view.post.modal.component';
 export * from './report-post/report.post.modal.component';
 export * from './confirm/confirm-modal.component';
 export * from './image-preview/image-preview.component';
+export * from './post-comment-detail/post-comment-detail.component';
+
 
