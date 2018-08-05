@@ -19,7 +19,7 @@
         <button
           class="btn-peersivew-transparent like"
           [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
-          (click)="onClickPostLike(post.isUserPostLike)" [disabled]="isLikingOrUnlikingPost"
+          (click)="onClickPostLike(post.isUserPostLike)"
         >
           <i class="material-icons" >thumb_up</i>
           <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>

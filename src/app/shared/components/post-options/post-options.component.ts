@@ -105,27 +105,30 @@ export class SharedPostOptionsComponent {
   }
 
   protected onClickPostLike (isUserPostLike: boolean): void {
-    this.isLikingOrUnlikingPost = true;
-    if (this.post.isUserPostLike) {
-      this.postApiService.promiseRemovePostLike(this.post.id)
+    let service: any;
+    switch (this.route.name) {
+      case 'home':
+        service = 'postApiService';
+        break;
+      case 'campus':
+        service = 'campusApiService';
+        break;
+    }
+
+    if (this.post.isUserPostLike !== 0) {
+      this[service].promiseRemovePostLike(this.post.id)
         .then((response: IResponse) => {
           this.post.isUserPostLike = 0;
           this.post.likeCount -= 1;
-          this.isLikingOrUnlikingPost = false;
         })
-        .catch(error => {
-          this.isLikingOrUnlikingPost = false;
-        });
+        .catch(error => {});
     } else {
-      this.postApiService.promiseCreatePostLike(this.post.id)
+      this[service].promiseCreatePostLike(this.post.id)
         .then((response: IResponse) => {
           this.post.isUserPostLike = 1;
           this.post.likeCount += 1;
-          this.isLikingOrUnlikingPost = false;
         })
-        .catch(error => {
-          this.isLikingOrUnlikingPost = false;
-        });
+        .catch(error => {});
     }
   }
 
