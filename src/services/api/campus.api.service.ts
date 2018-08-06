@@ -102,6 +102,13 @@ export class CampusApiService extends ApiService {
       });
   }
 
+  public promiseVotePoll (campusPostPollOptionId: number): Promise<IResponse> {
+    return this.promisePostModelData(`post/poll/${campusPostPollOptionId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
   public promiseCreatePostReply (campustPostId: number, campusPostReply: CampusPostReplyModel): Promise<IResponse> {
     return this.promisePostModelData(`post/${campustPostId}/reply`, campusPostReply)
       .then((responseData: IResponse) => {
