@@ -54,6 +54,7 @@ export class SharedPostOptionsComponent {
   @Input() protected ratingCount: number = 0;
   @Input() protected disableRepliesLink: boolean;
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
+  @Input() protected user: UserModel;
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
@@ -88,13 +89,13 @@ export class SharedPostOptionsComponent {
       });
   }
 
-  protected onLikesLabelClick (post): void {
+  protected onLikesLabelClick (): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'post-like-detail-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = post;
+    dialogConfig.data = {post: this.post, user: this.user};
     this.dialog.open(SharedPostLikeDetailModalComponent, dialogConfig);
   }
 
@@ -139,7 +140,7 @@ export class SharedPostOptionsComponent {
     dialogConfig.panelClass = 'post-comment-detail-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = {'post': this.post, route: this.route};
+    dialogConfig.data = {post: this.post, route: this.route, user: this.user};
     this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
   }
 }

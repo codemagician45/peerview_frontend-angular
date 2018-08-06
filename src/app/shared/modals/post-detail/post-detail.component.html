@@ -11,8 +11,8 @@
             <cl-image
               class="post-image"
               radius="max"
-              public-id="{{commentOptions.post.user.profilePicture}}"
-              *ngIf="commentOptions.post?.user?.profilePicture"
+              public-id="{{post.user.profilePicture}}"
+              *ngIf="post?.user?.profilePicture"
             >
             </cl-image>
           </div>
@@ -20,48 +20,48 @@
           <div class="user-name">
             <span
               [ngStyle]="{'display': 'inline-grid'}"
-              (click)="onClickUserProfile(commentOptions.post.user);"
+              (click)="onClickUserProfile(post.user);"
               class="post-user-name">
-              {{commentOptions.post.user.firstName}} {{commentOptions.post.user.lastName}}
+              {{post.user.firstName}} {{post.user.lastName}}
             </span>
             <div class="user-school-name">
-              {{commentOptions.post.user.schoolName}}
+              {{post.user.schoolName}}
             </div>
             <span class="post-time">
-              {{commentOptions.post.createdAt | date :'short'}}
+              {{post.createdAt | date :'short'}}
             </span>
           </div>
         </div>
         <!-- Commented user rating in case client would want to add this in the future -->
         <!-- <div class="col-xs-12 profile-stars">
-          <shared-stars-component [ratingCount]="commentOptions.post.ratingCount"></shared-stars-component>
+          <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
         </div> -->
         <div class="col-xs-12 post-message">
           <p>
-            {{commentOptions.post.message ? commentOptions.post.message : commentOptions.post.question}}
+            {{post.message ? post.message : post.question}}
           </p>
         </div>
-        <div class="col-xs-12 poll-options" *ngIf="!!commentOptions.post.question">
+        <div class="col-xs-12 poll-options" *ngIf="!!post.question">
           <ul>
-            <li *ngFor="let option of commentOptions.post.postPollOptions; let i = index;">
-              <input type="radio" [value]="option.name" (click)="onPollVote(option, commentOptions.post.postPollOptions)"/> {{option.name}}
-              <div class="poll-percentage">{{ getPollPercentage(option, commentOptions.post.postPollOptions) }}%</div>
+            <li *ngFor="let option of post.postPollOptions; let i = index;">
+              <input type="radio" [value]="option.name" (click)="onPollVote(option, post.postPollOptions)"/> {{option.name}}
+              <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
             </li>
           </ul>
           <div class="col-xs-12 poll-details">
             <div class="col-xs-3">
-              {{ getPollVoteCount(commentOptions.post.postPollOptions) <= 1 ? getPollVoteCount(commentOptions.post.postPollOptions) + ' vote' : getPollVoteCount(commentOptions.post.postPollOptions) + ' votes'}}
+              {{ getPollVoteCount(post.postPollOptions) <= 1 ? getPollVoteCount(post.postPollOptions) + ' vote' : getPollVoteCount(post.postPollOptions) + ' votes'}}
             </div>
-            <div class="col-xs-9">{{ getPollExpiryDuration(commentOptions.post.createdAt, commentOptions.post.duration) }}</div>
+            <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
           </div>
         </div>
   
         <div class="col-xs-12 post-images">
           <div
             class="image-outer"
-            *ngFor="let attachment of commentOptions.post.attachments; let imageIndex = index"
-            [ngClass]="{'single-image': commentOptions.post.attachments.length === 1, 'multiple-image': commentOptions.post.attachments.length > 1}"
-            (click)="onClickPhoto(commentOptions.post.attachments, imageIndex)"
+            *ngFor="let attachment of post.attachments; let imageIndex = index"
+            [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
+            (click)="onClickPhoto(post.attachments, imageIndex)"
           >
             <div
               class="image-inner"
@@ -71,7 +71,7 @@
                 public-id="{{attachment.cloudinaryPublicId}}"
                 >
                 <cl-transformation
-                  [attr.height]="commentOptions.post.attachments.length > 1 ? 500 : 250"
+                  [attr.height]="post.attachments.length > 1 ? 500 : 250"
                   width="500"
                   crop="fill"
                   radius="3"
@@ -86,12 +86,12 @@
     </div>
 
     <shared-post-reply-component 
-      [post]="commentOptions.post"
-      [route]="commentOptions.route"
-      ></shared-post-reply-component>
+      [post]="post"
+      [route]="route"
+    ></shared-post-reply-component>
 
-      <div *ngIf="commentOptions.post.postReply.length === 0">
-        <h5 class="text-center">No comments yet.</h5>
-      </div>
+    <div *ngIf="post.postReply.length === 0">
+      <h5 class="text-center">No comments yet.</h5>
+    </div>
   </div>
 </div>
