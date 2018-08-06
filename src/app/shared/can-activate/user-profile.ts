@@ -10,14 +10,12 @@ import {
   UserApiService,
 } from '../../../services/api';
 import {
-  TokenStore
+  TokenStore,
+  UserService
 } from '../../../services';
 import {
   UserModel
 } from '../models';
-import {
-  UserClass
-} from '../classes';
 
 @Injectable()
 export class CanActivateUserProfile implements CanActivate {
@@ -37,7 +35,7 @@ export class CanActivateUserProfile implements CanActivate {
       return this.userApiService.promiseGetUser()
         .then((user: UserModel) => {
           TokenStore.setAccessToken(user.token);
-          UserClass.setUser(user);
+          UserService.setUser(user);
           return resolve(true);
         })
         .catch(error => {

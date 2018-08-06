@@ -1,7 +1,7 @@
 <div class="profile-left-sidebar-user-info-component">
   <div class="user text-center">
     <cl-image
-      public-id="{{user.profilePicture ? user.profilePicture: user.socialImage}}"
+      public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
       width="120"
       radius="max"
       *ngIf="user?.profilePicture"
@@ -58,7 +58,7 @@
       </a>
     </div>
     <div  class="col-xs-10">
-      {{user?.userType.name}} | {{user?.company || user?.schoolName}}
+      {{user?.userType?.name}} | {{user?.company || user?.schoolName}}
     </div>
   </div>
   <div class="institution text-center">

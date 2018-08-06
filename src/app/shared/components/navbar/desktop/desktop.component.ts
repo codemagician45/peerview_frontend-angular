@@ -5,13 +5,11 @@ import {
   Router
 } from '@angular/router';
 import {
-  UserClass
-} from '../../../classes';
-import {
   UserModel
 } from '../../../models';
 import {
-  TokenStore
+  TokenStore,
+  UserService
 } from '../../../../../services';
 
 @Component({
@@ -24,7 +22,7 @@ export class NavbarDesktopComponent {
     private router: Router
   ) {}
 
-  private user: UserModel = UserClass.getUser();
+  private user: UserModel = UserService.getUser();
 
   protected onSignOut (): void {
     TokenStore.expungeData();

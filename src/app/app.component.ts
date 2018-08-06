@@ -19,9 +19,6 @@ import {
   UserApiService,
 } from '../services/api';
 import {
-  UserClass
-} from './shared/classes';
-import {
   routerTransition
 } from './animations';
 

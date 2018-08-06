@@ -1,6 +1,6 @@
 <div class="campus-all-students-component row">
   <h2 class="text-center">All Students</h2>
-  <div class="col-xs-12 post-text-area-wrapper"> 
+  <div class="col-xs-12 post-text-area-wrapper">
     <shared-post-textarea-component
       class="col-md-8 col-lg-8 col-xs-12"
       [shareMenu]=false
@@ -13,24 +13,24 @@
   </div>
   <div class="timeline-text col-xs-12 hidden-xs hiden-sm"><span>TIMELINE</span></div>
   <div class="timeline-text timeline-text-link-mobile hidden-md hidden-lg col-xs-12">
-    <span> 
-      <a 
-        (click)="onMobileContentSelect('timeline')" 
+    <span>
+      <a
+        (click)="onMobileContentSelect('timeline')"
         [ngClass]="{active: contentTypeOnMobile === 'timeline'}"
         >
         Timeline
       </a>
     </span>
-    <span> 
-      <a 
-       (click)="onMobileContentSelect('announcement')" 
+    <span>
+      <a
+       (click)="onMobileContentSelect('announcement')"
         [ngClass]="{active: contentTypeOnMobile === 'announcement'}"
         >
         Announcements &nbsp;
       </a>
     </span>
-    <span> 
-      <a 
+    <span>
+      <a
         (click)="onMobileContentSelect('peers-you-may-know')"
         [ngClass]="{active: contentTypeOnMobile === 'peers-you-may-know'}"
         >
@@ -39,10 +39,11 @@
     </span>
   </div>
 
-  <shared-post-component 
+  <shared-post-component
     *ngIf="contentTypeOnMobile === 'timeline'"
     class="col-md-7 col-lg-7 col-xs-12"
     [posts]="posts"
+    [user]="user"
     [route]="{
     'name': 'campus',
     'campusId': campusId
@@ -53,12 +54,12 @@
   <campus-right-sidebar-component class="col-md-5 col-lg-5 hidden-xs hidden-sm"></campus-right-sidebar-component>
   <!-- Dislay component on mobile -->
   <div class="mobile-contents">
-    <announcement-component 
+    <announcement-component
       class="col-xs-12 hidden-md hidden-lg"
       *ngIf="contentTypeOnMobile === 'announcement'"
      >
     </announcement-component>
-    <shared-peers-you-may-know-component 
+    <shared-peers-you-may-know-component
       class="col-xs-12 peers-you-may-know hidden-md hidden-lg"
       *ngIf="contentTypeOnMobile === 'peers-you-may-know'"
       >

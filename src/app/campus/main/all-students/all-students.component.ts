@@ -7,11 +7,15 @@ import {
   Params
 } from '@angular/router';
 import {
-  CampusPostModel
+  CampusPostModel,
+  UserModel
 } from '../../../shared/models';
 import {
   CampusApiService
 } from '../../../../services/api';
+import {
+  UserService
+} from '../../../../services';
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
@@ -28,6 +32,7 @@ export class CampusAllStudentsComponent {
   ) {}
 
   protected posts: Array<CampusPostModel> = [];
+  protected user: UserModel = UserService.getUser();
   protected campusId: number;
   protected contentTypeOnMobile: string = 'timeline';
 

@@ -1,12 +1,17 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import {
   UserApiService
 } from '../../../services/api';
 import {
-  PostModel
+  UserService
+} from '../../../services';
+import {
+  PostModel,
+  UserModel
 } from '../../shared/models';
 
 @Component({
@@ -17,6 +22,7 @@ import {
 export class ProfileContentComponent implements OnInit {
   constructor (private userApiService: UserApiService) {}
 
+  @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
 
   public ngOnInit (): void {
@@ -26,7 +32,7 @@ export class ProfileContentComponent implements OnInit {
   protected onShowPostDetailDialogComponent (): void {}
 
   private getUserTimeline (): void {
-    this.userApiService.promiseGetTimeline()
+    this.userApiService.promiseGetTimeline(this.user.id)
       .then((posts: PostModel[]) => {
         this.posts = posts;
       })

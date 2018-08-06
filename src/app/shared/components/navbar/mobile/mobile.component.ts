@@ -3,8 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  UserClass
-} from '../../../classes';
+  UserService
+} from '../../../../../services';
 import {
   UserModel
 } from '../../../models';
@@ -17,7 +17,7 @@ import {
 export class NavbarMobileComponent implements OnInit {
   constructor () {}
 
-  private user: UserModel = UserClass.getUser();
+  private user: UserModel = UserService.getUser();
 
   public ngOnInit (): void {}
 }

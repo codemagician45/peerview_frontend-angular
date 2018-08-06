@@ -48,8 +48,17 @@ export class UserApiService extends ApiService {
       });
   }
 
-  public promiseGetTimeline (): Promise<PostModel[]> {
-    return this.promiseGetResponseData('timeline')
+  public promiseGetTimeline (userId?: number): Promise<PostModel[]> {
+    if (userId) {
+      let params = new HttpParams()
+        .set('userId', userId.toString());
+
+        this.options = {
+          params: params
+        };
+    }
+
+    return this.promiseGetAllResponseData('timeline')
       .then((response: IResponse) => {
         return PostFactory.createManyPost(response.data);
       });

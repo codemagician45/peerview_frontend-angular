@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import {
   ActivatedRoute
@@ -27,14 +28,9 @@ export class ProfileLeftSidebarUserOtherInfoComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
     private userApiService: UserApiService
-  ) {
-    this.route.params.subscribe(params => {
-      this.userId = params.id;
-      if (this.userId) { this.userId = CryptoUtilities.decipher(this.userId); }
-    });
-  }
+  ) {}
 
-  protected user: UserModel = UserClass.getUser();
+  @Input() protected user: UserModel;
   private userId: string;
 
   public ngOnInit (): void {}

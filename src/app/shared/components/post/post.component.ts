@@ -16,6 +16,7 @@ import {
 } from '@angular/cdk/overlay';
 import {
   PostModel,
+  UserModel,
   CampusPostModel,
   IResponse
 } from '../../models';
@@ -33,8 +34,8 @@ import {
   CryptoUtilities
 } from '../../../shared/utilities';
 import {
-  UserClass
-} from '../../classes/user';
+  UserService,
+} from '../../../../services';
 import {
   SharedImagePreviewComponent
 } from '../../modals/image-preview/image-preview.component';
@@ -53,15 +54,17 @@ export class SharedPostComponent {
     private overlay: Overlay
   ) {}
 
-  @Input() protected posts: Array<any> = [];
+  @Input() protected posts: Array<PostModel|CampusPostModel> = [];
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
+  @Input() protected user: UserModel;
   protected btnLoadMoreText = 'Load More';
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private limit = 5;
   private offset = 0;
-  private user = UserClass.getUser();
 
   public ngOnInit (): void {
+    console.log('this.posts');
+    console.log(this.posts);
     this.getSharedPostSubscriber();
     this.postSavedSubcribers();
   }
@@ -82,6 +85,7 @@ export class SharedPostComponent {
 
   protected onClickUserProfile (user): Promise<boolean> {
     let userId = CryptoUtilities.cipher(user.id);
+
     if (user.id === this.user.id) {
       return this.router.navigate([`/profile`]);
     }

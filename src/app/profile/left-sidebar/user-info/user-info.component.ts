@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  Input
 } from '@angular/core';
 import {
   ActivatedRoute
@@ -18,9 +19,6 @@ import {
 import {
   UserApiService
 } from '../../../../services/api';
-import {
-  UserClass
-} from '../../../shared/classes';
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
@@ -47,15 +45,9 @@ export class ProfileLeftSidebarUserInfoComponent {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private overlay: Overlay
-  ) {
-    this.route.params.subscribe(params => {
-      this.userId = params.id;
-      if (this.userId) { this.userId = CryptoUtilities.decipher(this.userId); }
-    });
-  }
+  ) {}
 
-  protected userId: string;
-  protected user = UserClass.getUser();
+  @Input() protected user: UserModel;
 
   public ngOnInit (): void {}
 

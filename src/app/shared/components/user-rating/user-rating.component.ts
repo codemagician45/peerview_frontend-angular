@@ -24,6 +24,7 @@ export class SharedUserRatingComponent implements OnInit {
 	protected userCreditsRatingPercentage: string = '20%';
 
 	public ngOnInit (): void {
+		if (!this.userCredits) { return; }
 		switch (true) {
 			case (this.userCredits.totalCredits < 500) :
 				this.userCreditsRatingPercentage = '20%';

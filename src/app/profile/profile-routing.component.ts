@@ -8,13 +8,18 @@ import {
 import {
   ProfileComponent
 } from './profile.component';
+import {
+  CanActivateOtherProfile
+} from './check-if-other-profile';
 
 const profileRoutes: Routes = [{
   path: '',
-  component: ProfileComponent// profile of currently login user,
+  component: ProfileComponent, // profile of currently login user,
+  canActivate: [CanActivateOtherProfile]
 }, {
   path: ':id',
-  component: ProfileComponent
+  component: ProfileComponent,
+  canActivate: [CanActivateOtherProfile]
 }];
 
 export const profileRouting: ModuleWithProviders = RouterModule.forChild(profileRoutes);

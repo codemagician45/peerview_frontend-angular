@@ -1,6 +1,22 @@
 import {
   Component
 } from '@angular/core';
+import {
+  ActivatedRoute,
+  Router
+} from '@angular/router';
+import {
+  CryptoUtilities
+} from '../shared/utilities';
+import {
+  UserModel
+} from '../shared/models';
+import {
+  UserService
+} from '../../services';
+import {
+  UserApiService
+} from '../../services/api';
 
 @Component({
   selector: 'profile-component',
@@ -8,11 +24,27 @@ import {
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  constructor () {}
+  constructor (
+    private route: ActivatedRoute,
+    private router: Router,
+    private userApiService: UserApiService
+  ) {
+    this.getUser();
+  }
 
   protected mobileLinkSelected: string = 'timeline';
+  protected userId: number;
+  private user: UserModel;
 
   public onClickSelectMobileLink (type): void {
     this.mobileLinkSelected = type;
+  }
+
+  private getUser (): void {
+    if (UserService.getOtherUser()) {
+      this.user = UserService.getOtherUser();
+    } else {
+      this.user = UserService.getUser();
+    }
   }
 }

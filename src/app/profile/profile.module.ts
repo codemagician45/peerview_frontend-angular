@@ -30,6 +30,9 @@ import {
   ProfileLeftSidebarUserInfoAboutMeDialogComponent
 } from './left-sidebar/user-info/modal/about-me-modal.component';
 import {
+  CanActivateOtherProfile
+} from './check-if-other-profile';
+import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
@@ -61,6 +64,9 @@ import {
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
     ProfileLeftSidebarUserInfoAboutMeDialogComponent
+  ],
+  providers: [
+    CanActivateOtherProfile
   ]
 })
 export class ProfileModule {}

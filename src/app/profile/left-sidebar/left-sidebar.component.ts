@@ -1,6 +1,10 @@
 import {
-  Component
+  Component,
+  Input
 } from '@angular/core';
+import {
+  UserModel
+} from '../../shared/models';
 
 @Component({
   selector: 'profile-left-sidebar-component',
@@ -9,4 +13,6 @@ import {
 })
 export class ProfileLeftSidebarComponent {
   constructor () {}
+
+  @Input() protected user: UserModel;
 }
