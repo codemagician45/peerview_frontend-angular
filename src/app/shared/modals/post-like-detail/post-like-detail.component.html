@@ -11,7 +11,7 @@
         <cl-image 
           class="post-image" 
           radius="max"
-          public-id="{{liker.user.profilePicture}}" 
+          public-id="{{liker.user.socialImage ? (liker.user.profilePicture === 'avatar' ? liker.user.socialImage: liker.user.profilePicture): liker.user.profilePicture}}"
           *ngIf="liker?.user?.profilePicture" 
           (click)="onClickUserProfile(liker.user);">
         </cl-image>

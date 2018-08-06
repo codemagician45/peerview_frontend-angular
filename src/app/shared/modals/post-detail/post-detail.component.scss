@@ -25,6 +25,14 @@
     overflow-x: hidden;
   }
 
+  .post-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 3px;
+    margin-top: 3px;
+    border-radius: 50%;
+  }
+  
   /* POST */
   .post {
     margin: 5px 0;
