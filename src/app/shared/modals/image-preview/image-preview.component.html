@@ -1,6 +1,6 @@
 <div class="shared-image-preview-component" add-css [cssToAdd]="'mat-dialog-is-open'" remove-css [cssToRemove]="'mat-dialog-is-open'">
-	<div 
-		class="close-col" 
+	<div
+		class="close-col"
 		(click)="onCloseModal()"
 	>
 		<i class="material-icons">
@@ -9,7 +9,7 @@
 	</div>
 	<div class="image-container-outer">
 		<div class="image-container-inner">
-			<cl-image 
+			<cl-image
 				#clImageRef
 				class="cl-image-scale {{ imageOrientation }}"
         public-id="{{imageAttachments.images ? imageAttachments.images[imageAttachments.clickIndex].cloudinaryPublicId: imageAttachments.image}}"
@@ -20,8 +20,8 @@
 
   <!-- Post Image Navigation -->
 	<div class="image-nav-container" *ngIf="imageAttachments.source === 'post'">
-    <div 
-      class="prev-col" 
+    <div
+      class="prev-col"
       (click)="onPreviousImage()"
     >
       <i class="material-icons">
@@ -42,13 +42,13 @@
   </div>
 
   <!-- Profile (Upload Profile Picture) Navigation -->
-  <div 
+  <div
     id="changeProfilePicture"
-    class="change-profile-picture-container" 
+    class="change-profile-picture-container"
     *ngIf="imageAttachments.source === 'profile-picture'"
   >
-    <button 
-      class="col-xs-12" 
+    <button
+      class="col-xs-12"
       (click)="isToogleUploadComponentVisible = !isToogleUploadComponentVisible"
     >
       {{ !isToogleUploadComponentVisible ? 'Change Photo' : 'Cancel' }}
@@ -58,7 +58,7 @@
       [uploadOptions]="{'queueLimit': 1, 'event': 'changeProfilePic'}"
       (uploadComplete)="onUploadComplete($event)"
     ></shared-upload-image-component>
-    <button 
+    <button
       class="col-xs-12"
       *ngIf="isToogleUploadComponentVisible"
       (click)="onChangeProfilePicture()"
@@ -67,4 +67,3 @@
     </button>
   </div>
 </div>
-      
