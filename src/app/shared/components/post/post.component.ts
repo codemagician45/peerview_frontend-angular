@@ -1,7 +1,8 @@
 import {
   Component,
   Input,
-  EventEmitter
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 import {
   Router
@@ -68,8 +69,8 @@ export class SharedPostComponent {
     this.postSavedSubcribers();
   }
 
-  public ngOnChanges (): void {
-    if (this.posts.length === 0) {
+  public ngOnChanges (changes: SimpleChanges): void {
+    if (this.posts.length === 0 && changes.posts.previousValue) {
       this.notPostMessage = 'No Post Yet. Be the one to POST';
     }
   }
