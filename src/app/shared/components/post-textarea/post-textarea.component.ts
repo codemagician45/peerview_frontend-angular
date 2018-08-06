@@ -168,17 +168,28 @@ export class SharedPostTextareaComponent {
 
   protected onAddPoll (): any {
     if (!this.post.postPoll.question) {
-      return MessageNotificationService.show({
-        notification: {
-          id: 'shared-post-textarea-message',
-          message: 'Cannot Post Poll',
-          instruction: 'Please fill in the form.'
-        }
-      },
-      NotificationTypes.Error);
+      this.addPollErrorNotification('Please fill in the form.');
+      return;
+    }
+
+    if (this.post.postPoll.duration <= 0) {
+      this.addPollErrorNotification('Poll duration must be at least 1 (one) day.');
+      this.post.postPoll.duration = 1;
+      return;
     }
 
     return this.createPostPoll();
+  }
+
+  private addPollErrorNotification (instruction): MessageNotificationService {
+    return MessageNotificationService.show({
+      notification: {
+        id: 'shared-post-textarea-message',
+        message: 'Cannot Post Poll',
+        instruction: instruction
+      }
+    },
+    NotificationTypes.Error);
   }
 
   private createPostPoll (): void {
@@ -192,7 +203,10 @@ export class SharedPostTextareaComponent {
             this.postPoll.init();
             this.post.postPoll.init();
           })
-          .catch(error => {});
+          .catch(error => {
+            console.log('poll error', error);
+            this.addPollErrorNotification(error.error.status_message);
+          });
         break;
       case 'campus':
         this.campusPost.assimilate({

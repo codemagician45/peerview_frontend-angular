@@ -38,6 +38,8 @@ export class SharedPostReplyComponent {
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
 
+  public ngOnInit (): void {}
+
   protected onPostReply (): void {
     this.isUserCurrentlyCommenting = true;
 

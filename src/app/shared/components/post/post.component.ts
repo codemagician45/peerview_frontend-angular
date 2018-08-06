@@ -158,9 +158,9 @@ export class SharedPostComponent {
 
     if (hours !== 0) {
       if (hours > 1) {
-        hoursLeft = hours + ' hours and ';
+        hoursLeft = hours + ' hours ';
       } else if (hours === 1) {
-        hoursLeft = hours + ' hour and ';
+        hoursLeft = hours + ' hour ';
       }
     }
 
@@ -172,7 +172,7 @@ export class SharedPostComponent {
       }
     }
 
-    return hoursLeft + minutesLeft;
+    return hoursLeft + (minutesLeft ? 'and ' + minutesLeft : 'left');
   }
 
   protected getPollVoteCount (pollOptions): number {
