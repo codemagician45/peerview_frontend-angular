@@ -90,8 +90,9 @@ export class SharedPostComponent {
 
   protected onClickUserProfile (user): Promise<boolean> {
     let userId = CryptoUtilities.cipher(user.id);
+    let currentLoginUser = UserService.getUser();
 
-    if (user.id === this.user.id) {
+    if (user.id === currentLoginUser.id) {
       return this.router.navigate([`/profile`]);
     }
 
@@ -184,12 +185,19 @@ export class SharedPostComponent {
   }
 
   protected onPollVote (option, pollOptions): void {
-    this.postApiService.promiseVotePoll(option.id).then(response => {
-      console.log('response', response);
-      this.postSavedSubcribers();
-    }, error => {
-      console.log('error', error);
-    });
+
+    switch (this.route.name) {
+      case 'home':
+        this.postApiService.promiseVotePoll(option.id)
+          .then(response => {})
+          .catch(error => {});
+        break;
+      case 'campus':
+        this.campusApiService.promiseVotePoll(option.id)
+          .then(response => {})
+          .catch(error => {});
+        break;
+    }
   }
 
   protected getPollPercentage (option, pollOptions): string {
