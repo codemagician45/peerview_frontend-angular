@@ -11,11 +11,11 @@
     <input type="button" value="Follow" class="hidden-md hidden-lg btn btn-white follow-btn"/>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>
     <shared-user-rating [userCredits]="user.userCredits[0]"></shared-user-rating>
-    <div class="edit-profile" *ngIf="!userId">
+    <div class="edit-profile" *ngIf="isUserProfile">
       Edit Profile
       <i class="material-icons color-purple">create</i>
     </div>
-    <div *ngIf="userId">
+    <div *ngIf="!isUserProfile">
       <a
         class="peersview-primary-color m-peersview-xr-2"
          (click)="onOpenMessageDiaglogComponent()">
@@ -37,17 +37,17 @@
       </a>
     </div>
     <div class="col-xs-8">
-      <span *ngIf="!userId">
+      <span *ngIf="isUserProfile">
         {{user?.aboutMe || 'Tell us about yourself'}}
       </span>
-      <span *ngIf="userId">
+      <span *ngIf="!isUserProfile">
         {{user?.aboutMe || 'No Details to Show'}}
       </span>
     </div>
     <div
     class="col-xs-2"
     (click)="onOpenAboutMeDialog()"
-    *ngIf="!userId">
+    *ngIf="isUserProfile">
       <i class="material-icons peersview-primary-color">create</i>
     </div>
   </div>

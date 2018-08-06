@@ -28,6 +28,8 @@ export class ProfileLeftSidebarUserOtherInfoComponent implements OnInit {
   ) {}
 
   @Input() protected user: UserModel;
+  @Input() protected isUserProfile;
+
   private userId: string;
 
   public ngOnInit (): void {}

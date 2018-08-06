@@ -48,6 +48,7 @@ export class ProfileLeftSidebarUserInfoComponent {
   ) {}
 
   @Input() protected user: UserModel;
+  @Input() protected isUserProfile;
 
   public ngOnInit (): void {}
 
