@@ -61,6 +61,13 @@ export class PostApiService extends ApiService {
       });
   }
 
+  public promiseVotePoll (postPollOptionId: number): Promise<IResponse> {
+    return this.promisePostModelData(`poll/${postPollOptionId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
   public promiseCreatePostReply (postId: number, postReply: PostReplyModel): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/reply`, postReply)
       .then((responseData: IResponse) => {
@@ -112,13 +119,6 @@ export class PostApiService extends ApiService {
 
   public promiseRemovePost (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}`)
-      .then((responseData: IResponse) => {
-        return responseData;
-      });
-  }
-
-  public promiseVotePoll (postPollOptionId: number): Promise<IResponse> {
-    return this.promisePostModelData(`post/poll/${postPollOptionId}`)
       .then((responseData: IResponse) => {
         return responseData;
       });
