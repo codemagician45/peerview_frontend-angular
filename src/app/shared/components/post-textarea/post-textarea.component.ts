@@ -227,16 +227,6 @@ export class SharedPostTextareaComponent {
     }
   }
 
-  protected onClickDuration (action): void {
-    if (action === 'add') {
-      this.post.postPoll.duration += 1;
-    } else {
-      if (this.post.postPoll.duration !== 1) {
-        this.post.postPoll.duration -= 1;
-      }
-    }
-  }
-
   public ngOnDestroy (): void {
     PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
   }

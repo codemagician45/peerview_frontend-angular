@@ -85,7 +85,7 @@
           <div class="duration-form">
             <button 
               class="col-xs-2"
-              (click)="onClickDuration('deduct')"
+              (click)="post.postPoll.duration !== 1 ? post.postPoll.duration = post.postPoll.duration - 1 : 1"
             >
               <i class="material-icons">
                 remove
@@ -99,7 +99,7 @@
             />
             <button 
               class="col-xs-2" 
-              (click)="onClickDuration('add')"
+              (click)="post.postPoll.duration = post.postPoll.duration + 1"
             >
               <i class="material-icons">
                 add
