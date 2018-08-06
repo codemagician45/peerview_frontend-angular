@@ -3,7 +3,7 @@
     class="no-post-yet text-center"
     *ngIf="posts.length === 0"
   >
-    No Post Yet. Be the one to POST
+    {{notPostMessage}}
   </h2>
   <div class="post" *ngFor="let post of posts">
     <div class="row">

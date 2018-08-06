@@ -58,15 +58,20 @@ export class SharedPostComponent {
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
   @Input() protected user: UserModel;
   protected btnLoadMoreText = 'Load More';
+  protected notPostMessage: string;
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private limit = 5;
   private offset = 0;
 
   public ngOnInit (): void {
-    console.log('this.posts');
-    console.log(this.posts);
     this.getSharedPostSubscriber();
     this.postSavedSubcribers();
+  }
+
+  public ngOnChanges (): void {
+    if (this.posts.length === 0) {
+      this.notPostMessage = 'No Post Yet. Be the one to POST';
+    }
   }
 
   private postSavedSubcribers (): void {
