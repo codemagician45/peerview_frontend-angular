@@ -2,9 +2,6 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserClass
-} from '../../shared/classes';
-import {
   UserModel
 } from '../../shared/models';
 import {
@@ -25,16 +22,13 @@ export class AccountSettingsGeneralComponent {
     private userApiService: UserApiService
   ) {}
 
-  private user: UserModel = UserClass.getUser();
   private name: {status: string, key: string, firstName?: string, lastName?: string} = {status: 'Edit', key: 'name'};
   private email: {status: string, key: string, value?: string} = {status: 'Edit', key: 'email'};
   private languages: {status: string, key: string, value?: string} = {status: 'Edit', key: 'language'};
   private dateOfBirth: {status: string} = {status: 'Edit'};
   private languagesData = this.utilitiesService.getlanguages();
 
-  public ngOnInit (): void {
-    console.log(this.user.birthDate);
-  }
+  public ngOnInit (): void {}
 
   protected onEditOrSave (item): void {
     if (item.status === 'Edit') {

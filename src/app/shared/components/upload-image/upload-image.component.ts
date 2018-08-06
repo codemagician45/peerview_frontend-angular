@@ -16,14 +16,14 @@ import {
   Cloudinary
 } from '@cloudinary/angular-5.x';
 import {
+  UserService,
+} from '../../../../services';
+import {
   EmitterService
 } from '../../emitter/emitter.component';
 import {
   PostEmitter
 } from '../../emitter';
-import {
-  UserClass
-} from '../../classes/user';
 import {
   UserModel
 } from '../../../shared/models';
@@ -47,7 +47,7 @@ export class SharedUploadImageComponent {
   protected queuedImageOrientation: Array<string> = [];
   private uploader: FileUploader;
   private hasBaseDropZoneOver: boolean = false;
-  private user: UserModel = UserClass.getUser();
+  private user: UserModel = UserService.getUser();
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
   @Output() private uploadComplete = new EventEmitter();
   @Input() private uploadOptions: any;

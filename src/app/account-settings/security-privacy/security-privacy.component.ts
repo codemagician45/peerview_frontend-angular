@@ -2,9 +2,6 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserClass
-} from '../../shared/classes';
-import {
   UserModel
 } from '../../shared/models';
 import {
@@ -21,13 +18,7 @@ export class AccountSettingsSecurityPrivacyComponent {
     private userApiService: UserApiService
   ) {}
 
-  private user: UserModel = UserClass.getUser();
-
   public ngOnInit (): void {}
 
-  protected onUpdateSecurity (): void {
-    this.userApiService.promiseUpdateSecurity(this.user)
-      .then(() => {})
-      .catch(() => {});
-  }
+  protected onUpdateSecurity (): void {}
 }

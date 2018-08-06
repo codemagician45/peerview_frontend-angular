@@ -13,9 +13,6 @@ import {
 } from '../../../services';
 import {
 } from '../models';
-import {
-  UserClass
-} from '../classes';
 
 @Injectable()
 export class IsProtectedComponent implements CanActivate {

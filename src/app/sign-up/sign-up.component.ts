@@ -13,7 +13,8 @@ import {
 import {
   MessageNotificationService,
   NotificationTypes,
-  TokenStore
+  TokenStore,
+  UserService
 } from  '../../services';
 import {
   UserApiService
@@ -25,9 +26,6 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
-import {
-  UserClass
-} from '../shared/classes';
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
@@ -136,7 +134,7 @@ export class SignUpComponent {
         return this.userApiService.promiseRegisterViaSocialMedia(this.user);
       })
       .then((user: UserModel) => {
-        UserClass.setUser(user);
+        UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
         this.router.navigate(['/home']);
       })

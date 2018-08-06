@@ -2,9 +2,6 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserClass
-} from '../../shared/classes';
-import {
   UserModel
 } from '../../shared/models';
 
@@ -15,8 +12,6 @@ import {
 })
 export class AccountSettingsBlockingComponent {
   constructor () {}
-
-  private user: UserModel = UserClass.getUser();
 
   public ngOnInit (): void {}
 }

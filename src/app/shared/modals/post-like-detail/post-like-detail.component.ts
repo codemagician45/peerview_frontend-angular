@@ -10,9 +10,6 @@ import {
   PostModel,
   UserModel
 } from '../../models';
-import {
-  UserClass
-} from '../../classes/user';
 
 @Component({
   selector: 'shared-post-like-detail-modal-component',
@@ -20,10 +17,7 @@ import {
   styleUrls: ['./post-like-detail.component.scss']
 })
 export class SharedPostLikeDetailModalComponent implements OnInit {
-  constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {
-  }
-
-  protected user: UserModel = UserClass.getUser();
+  constructor (@Inject(MAT_DIALOG_DATA) protected post: PostModel) {}
 
   public ngOnInit (): void {}
 }

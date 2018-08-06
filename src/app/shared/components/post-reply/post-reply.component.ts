@@ -7,15 +7,15 @@ import {
   CampusApiService
 } from '../../../../services/api';
 import {
+  UserService,
+} from '../../../../services';
+import {
   PostModel,
   PostReplyModel,
   CampusPostReplyModel,
   UserModel,
   IResponse
 } from '../../models';
-import {
-  UserClass
-} from '../../classes';
 import {
   EmitterService
 } from '../../emitter/emitter.component';
@@ -31,7 +31,7 @@ export class SharedPostReplyComponent {
     private campusApiService: CampusApiService
   ) {}
 
-  public user: UserModel = UserClass.getUser();
+  private user: UserModel = UserService.getUser();
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
   @Input() private post: PostModel = new PostModel();

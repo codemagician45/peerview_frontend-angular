@@ -10,9 +10,6 @@ import {
   UserModel
 } from '../../../shared/models';
 import {
-  UserClass
-} from '../../../shared/classes';
-import {
   UserApiService
 } from '../../../../services/api';
 import {

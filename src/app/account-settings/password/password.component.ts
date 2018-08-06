@@ -2,9 +2,6 @@ import {
   Component
 } from '@angular/core';
 import {
-  UserClass
-} from '../../shared/classes';
-import {
   UserModel
 } from '../../shared/models';
 import {

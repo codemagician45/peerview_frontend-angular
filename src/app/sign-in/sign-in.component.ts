@@ -11,14 +11,12 @@ import {
 import {
   MessageNotificationService,
   NotificationTypes,
-  TokenStore
+  TokenStore,
+  UserService
 } from '../../services';
 import {
   UserApiService
 } from '../../services/api';
-import {
-  UserClass
-} from '../shared/classes';
 import {
   AuthService,
   SocialUser,
@@ -58,7 +56,7 @@ export class SignInComponent {
 
     this.userApiService.promiseSignIn(this.user)
       .then((user: UserModel) => {
-        UserClass.setUser(user);
+        UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
 
         return this.router.navigate(['/home']);
@@ -116,7 +114,7 @@ export class SignInComponent {
         return this.userApiService.promiseRegisterViaSocialMedia(this.user);
       })
       .then((user: UserModel) => {
-        UserClass.setUser(user);
+        UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
         this.router.navigate(['/home']);
       })

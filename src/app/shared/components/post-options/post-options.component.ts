@@ -29,9 +29,6 @@ import {
   IResponse
 } from '../../models';
 import {
-  UserClass
-} from '../../classes';
-import {
   PostEmitter
 } from '../../emitter';
 
@@ -48,7 +45,6 @@ export class SharedPostOptionsComponent {
     private overlay: Overlay
   ) {}
 
-  public user: UserModel = UserClass.getUser();
   @Input() protected likes = 0;
   @Input() protected replies = 0;
   @Input() protected views = 0;
