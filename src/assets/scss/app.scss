@@ -72,6 +72,14 @@ input[type="checkbox"]:focus {
   background-color: $primary-color;
 }
 .cdk-overlay-pane.mat-datepicker-popup {
+  position: absolute;
+  top: 50%;
+  right: auto !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 100%;
   bottom: unset !important;
 }
 
