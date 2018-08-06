@@ -39,7 +39,6 @@ export class UserOnboardingStudentComponent implements OnInit {
   protected courses: UserStudyLevelModel[] = [];
 
   public ngOnInit (): void {
-    this.getUserStudyLevels();
     this.getCourses();
     this.route.data
     .subscribe((data: any) => {
@@ -47,16 +46,6 @@ export class UserOnboardingStudentComponent implements OnInit {
       .onBoardingCurrentRoute()
       .emit(data.step);
     });
-  }
-
-  private getUserStudyLevels (): void {
-    this.userApiService.promiseGetStudyLevels()
-      .then((userStudyLevels: UserStudyLevelModel[]) => {
-        this.userStudyLevels = userStudyLevels;
-      })
-      .catch(() => {
-
-      });
   }
 
   private getCourses (): void {
