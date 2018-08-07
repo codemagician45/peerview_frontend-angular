@@ -1,7 +1,7 @@
 campus-left-sidebar-component {
-  position: sticky !important;
   top: 5%;
   .wrapper {
+    position: fixed;
     background: #fff;
     height: 100vh;
     box-shadow: 0px 0px 26px -7px #999;
