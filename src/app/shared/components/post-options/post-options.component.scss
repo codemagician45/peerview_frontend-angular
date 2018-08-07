@@ -43,7 +43,13 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   .post-likes {
     cursor: pointer;
   }
-
+  .post-options-hr {
+    margin: 5px 0;
+    width: 100%;
+  }
+  .like-icon-container {
+    padding: 0;
+  }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
