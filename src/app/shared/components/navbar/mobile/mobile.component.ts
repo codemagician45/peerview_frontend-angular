@@ -3,7 +3,11 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  UserService
+  Router
+} from '@angular/router';
+import {
+  UserService,
+  TokenStore,
 } from '../../../../../services';
 import {
   UserModel
@@ -15,9 +19,17 @@ import {
   styleUrls: ['./mobile.component.scss']
 })
 export class NavbarMobileComponent implements OnInit {
-  constructor () {}
+  constructor (
+    private router: Router
+  ) {}
 
   private user: UserModel = UserService.getUser();
 
   public ngOnInit (): void {}
+
+  protected onSignOut (): void {
+    TokenStore.expungeData();
+    this.router.navigate(['']);
+    window.location.reload();
+  }
 }
