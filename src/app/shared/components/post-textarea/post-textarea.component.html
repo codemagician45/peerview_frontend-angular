@@ -83,7 +83,7 @@
             <span>Poll Duration(Days):</span>
           </div>
           <div class="duration-form">
-            <button 
+            <button
               class="col-xs-2"
               (click)="post.postPoll.duration !== 1 ? post.postPoll.duration = post.postPoll.duration - 1 : 1"
             >
@@ -97,8 +97,8 @@
               class="col-xs-8 poll-duration-input"
               [(ngModel)]="post.postPoll.duration"
             />
-            <button 
-              class="col-xs-2" 
+            <button
+              class="col-xs-2"
               (click)="post.postPoll.duration = post.postPoll.duration + 1"
             >
               <i class="material-icons">

@@ -18,7 +18,9 @@ import {
   PostModel,
   PostPollModel,
   CampusPostModel,
-  CampusFreshersFeedPostModel
+  CampusFreshersFeedPostModel,
+  CampusCourseFeedPostModel,
+  CampusClassPostModel
 } from '../../models';
 import {
   PostApiService
@@ -54,15 +56,22 @@ export class SharedPostTextareaComponent {
   private postPoll: PostPollModel = new PostPollModel();
   private campusPost: CampusPostModel = new CampusPostModel();
   private campusFreshersFeedPost: CampusFreshersFeedPostModel = new CampusFreshersFeedPostModel();
+  private campusCourseFeedPost: CampusCourseFeedPostModel = new CampusCourseFeedPostModel();
+  private campusClassPost: CampusClassPostModel = new CampusClassPostModel();
   private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
   protected typePost: string = 'post';
-  // protected pollOptions: Array<string> = ['NewPollOption1', 'NewPollOption2'];
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
-  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
+  @Input() protected route: {
+    name: string,
+    campusId?: number,
+    campusFreshersFeedId?: number,
+    campusCourseFeedId?: number,
+    campusClassId?: number
+  } = {name: 'home'};
 
   public ngOnInit (): void {
     this.post.postPoll.duration = 1;
@@ -136,6 +145,40 @@ export class SharedPostTextareaComponent {
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
         this.campusApiService.promiseCreatePost(this.campusId, this.campusFreshersFeedPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.campusFreshersFeedPost.init();
+            this.post.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campusCourseFeed':
+        let courseId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
+        this.campusCourseFeedPost.assimilate({
+          message: this.post.message,
+          campusPostPoll: this.post.postPoll,
+          courseId: courseId
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePost(this.campusId, this.campusCourseFeedPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.campusFreshersFeedPost.init();
+            this.post.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campusClasses':
+        let classId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
+        this.campusClassPost.assimilate({
+          message: this.post.message,
+          campusPostPoll: this.post.postPoll,
+          classId: classId
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePost(this.campusId, this.campusClassPost)
           .then((campusPost: CampusPostModel) => {
             PostEmitter.postSave()
               .emit(campusPost);
@@ -226,6 +269,38 @@ export class SharedPostTextareaComponent {
         let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
         this.campusPost.assimilate({
           campusFreshersFeedId: campusFreshersFeedId,
+          campusPostPoll: this.post.postPoll
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePostPoll(this.campusId, this.campusPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.postPoll.init();
+            this.post.postPoll.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campusCourseFeed':
+        let courseId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
+        this.campusPost.assimilate({
+          courseId: courseId,
+          campusPostPoll: this.post.postPoll
+        });
+        this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        this.campusApiService.promiseCreatePostPoll(this.campusId, this.campusPost)
+          .then((campusPost: CampusPostModel) => {
+            PostEmitter.postSave()
+              .emit(campusPost);
+            this.postPoll.init();
+            this.post.postPoll.init();
+          })
+          .catch(error => {});
+        break;
+      case 'campusClasses':
+        let classId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
+        this.campusPost.assimilate({
+          classId: classId,
           campusPostPoll: this.post.postPoll
         });
         this.campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
