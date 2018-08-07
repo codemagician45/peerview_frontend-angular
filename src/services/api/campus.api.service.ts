@@ -13,7 +13,10 @@ import {
   CampusPostReplyModel,
   CampusFreshersFeedModel,
   CampusFreshersFeedPostModel,
+  CampusCourseFeedPostModel,
+  CampusClassPostModel,
   CampusCourseModel,
+  CampusClassModel,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -53,10 +56,63 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseGetAllFreshersFeedPost (campusId: number, freshersFeedId: number): Promise<CampusFreshersFeedPostModel[]> {
+  public promiseGetAllFreshersFeedPost (
+    campusId: number,
+    freshersFeedId: number,
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<CampusFreshersFeedPostModel[]> {
+    let params = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
+
+      this.options = {
+        params: params
+      };
+
     return this.promiseGetAllResponseData(`${campusId}/freshers-feed/${freshersFeedId}/posts`)
       .then((response: IResponse) => {
         return CampusFactory.createManyCampusFreshersFeedPost(response.data);
+      });
+  }
+
+  public promiseGetAllCoursePost (
+    campusId: number,
+    freshersFeedId: number,
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<CampusCourseFeedPostModel[]> {
+    let params = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
+
+      this.options = {
+        params: params
+      };
+
+    return this.promiseGetAllResponseData(`${campusId}/course-feed/${freshersFeedId}/posts`)
+      .then((response: IResponse) => {
+        return CampusFactory.createManyCampusCourseFeedPost(response.data);
+      });
+  }
+
+  public promiseGetAllClassPost (
+    campusId: number,
+    classId: number,
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<CampusClassPostModel[]> {
+    let params = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
+
+      this.options = {
+        params: params
+      };
+
+    return this.promiseGetAllResponseData(`${campusId}/class/${classId}/posts`)
+      .then((response: IResponse) => {
+        return CampusFactory.createManyCampusClassPost(response.data);
       });
   }
 
@@ -64,6 +120,13 @@ export class CampusApiService extends ApiService {
     return this.promiseGetAllResponseData(`${campusId}/course-list`)
       .then((response: IResponse) => {
         return CampusFactory.createCourseList(response.data);
+      });
+  }
+
+  public promiseGetAllClassList (campusId: number): Promise<CampusClassModel[]> {
+    return this.promiseGetAllResponseData(`${campusId}/class-list`)
+      .then((response: IResponse) => {
+        return CampusFactory.createClassList(response.data);
       });
   }
 
