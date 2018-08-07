@@ -18,9 +18,9 @@
       <span>{{share >= 2 ? ' Shares' : ' Share'}}</span>
     </div>
   </div>
-  <hr style="width: 100%">
+  <hr class="post-options-hr">
   <div class="options-logo" [ngStyle]="{'width': '100%'}">
-    <div class="col-xs-6 text-center">
+    <div class="col-xs-6 text-center like-icon-container">
         <button
           class="btn-peersivew-transparent like"
           [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
