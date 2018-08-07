@@ -15,8 +15,16 @@ import {
 } from '../../../shared/utilities';
 import {
   PostModel,
-  UserModel
+  UserModel,
+  IResponse
 } from '../../models';
+import {
+  UserApiService
+} from '../../../../services/api/user.api.service';
+import {
+  MessageNotificationService,
+  NotificationTypes
+} from '../../../../services';
 
 @Component({
   selector: 'shared-post-like-detail-modal-component',
@@ -27,11 +35,13 @@ export class SharedPostLikeDetailModalComponent implements OnInit {
   constructor (
     @Inject(MAT_DIALOG_DATA) protected postLikeDetailData: any,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private userApiService: UserApiService
   ) {}
 
   protected post: PostModel = this.postLikeDetailData.post;
   protected user: UserModel = this.postLikeDetailData.user;
+  protected followed: boolean = false;
 
   public ngOnInit (): void {}
 
@@ -46,5 +56,28 @@ export class SharedPostLikeDetailModalComponent implements OnInit {
     }
 
     return this.router.navigate([`/profile/${userId}`]);
+  }
+
+  protected onClickFollowButton (user): void {
+    this.userApiService.promisePostFollowUser(user.id)
+      .then((response: IResponse) => {
+        console.log('follow user', response);
+        this.followed = true;
+      })
+      .catch(error => {
+        console.log('follow user', error);
+        this.followErrorNotification();
+      });
+  }
+
+  private followErrorNotification (): MessageNotificationService {
+    return MessageNotificationService.show({
+      notification: {
+        id: 'right-sidebar-follow-message',
+        message: 'Follow Error',
+        instruction: 'Something went wrong! Please try again.'
+      }
+    },
+    NotificationTypes.Error);
   }
 }

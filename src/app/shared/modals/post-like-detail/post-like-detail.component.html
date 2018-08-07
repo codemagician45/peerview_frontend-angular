@@ -29,8 +29,10 @@
       <input 
         type="button" 
         class="btn btn-white follow-btn follow-btn"
-        value="Follow" 
+        [value]="followed? 'Followed': 'Follow'" 
         *ngIf="liker.userId !== user.id"
+        [ngClass]="{'followed-btn' : followed}"
+        (click)="onClickFollowButton(liker)"
       />
     </div>
 
