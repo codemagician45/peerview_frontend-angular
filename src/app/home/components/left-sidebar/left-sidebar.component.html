@@ -11,7 +11,7 @@
             </cl-image>
           </a>
           <h3 class="user-name" *ngIf="user">
-            <a href="/my/profile">
+            <a (click)="onClickUserProfile()">
               <span class="user-name"> {{user.firstName}} {{user.lastName}}</span>
             </a>
           </h3>
