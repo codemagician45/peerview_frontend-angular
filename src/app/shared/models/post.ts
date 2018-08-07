@@ -85,19 +85,7 @@ export class PostPollModel extends Model {
     this.setBlankDataStructure({
       question: '',
       options: ['', ''],
-      duration: ''
+      duration: 1
     });
   }
 }
-//
-// export class Polls {
-//   public polls: Array<PollModel>;
-// }
-//
-// export class CreatePoll extends Model {
-//   public question: string;
-//   public options: Array<string> = [];
-//   public duration: number;
-//
-//
-// }

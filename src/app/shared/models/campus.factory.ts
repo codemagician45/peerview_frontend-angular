@@ -3,7 +3,10 @@ import {
   CampusPostModel,
   CampusFreshersFeedModel,
   CampusFreshersFeedPostModel,
-  CampusCourseModel
+  CampusCourseFeedPostModel,
+  CampusClassPostModel,
+  CampusCourseModel,
+  CampusClassModel
 } from './campus';
 
 export class CampusFactory {
@@ -40,6 +43,28 @@ export class CampusFactory {
     );
   }
 
+  public static createCampusCourseFeedPost (data: any): CampusCourseFeedPostModel {
+    return <CampusCourseFeedPostModel> (new CampusCourseFeedPostModel ())
+      .assimilate(data);
+  }
+
+  public static createManyCampusCourseFeedPost (data: Array<CampusCourseFeedPostModel>): Array<CampusCourseFeedPostModel> {
+    return data.map(
+      instanceData => CampusFactory.createCampusCourseFeedPost(instanceData),
+    );
+  }
+
+  public static createCampusClassPost (data: any): CampusClassPostModel {
+    return <CampusClassPostModel> (new CampusClassPostModel ())
+      .assimilate(data);
+  }
+
+  public static createManyCampusClassPost (data: Array<CampusClassPostModel>): Array<CampusClassPostModel> {
+    return data.map(
+      instanceData => CampusFactory.createCampusClassPost(instanceData),
+    );
+  }
+
   public static createCampusFreshersFeed (data: any): CampusFreshersFeedModel {
     return <CampusFreshersFeedModel> (new CampusFreshersFeedModel ())
       .assimilate(data);
@@ -59,6 +84,17 @@ export class CampusFactory {
   public static createCourseList (data: Array<CampusCourseModel>): Array<CampusCourseModel> {
     return data.map(
       instanceData => CampusFactory.createCourse(instanceData),
+    );
+  }
+
+  public static createClass (data: any): CampusClassModel {
+    return <CampusClassModel> (new CampusClassModel ())
+      .assimilate(data);
+  }
+
+  public static createClassList (data: Array<CampusClassModel>): Array<CampusClassModel> {
+    return data.map(
+      instanceData => CampusFactory.createClass(instanceData),
     );
   }
 }

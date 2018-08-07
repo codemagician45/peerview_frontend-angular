@@ -88,6 +88,18 @@ export class CampusCourseFeedPostModel extends CampusPostModel {
   }
 }
 
+export class CampusClassPostModel extends CampusPostModel {
+  // use as a virtual field for courseFeed
+  public classId: number;
+
+  public init (): void {
+    super.init();
+    this.setBlankDataStructure({
+      classId: undefined
+    });
+  }
+}
+
 export class CampusFreshersFeedModel extends Model {
   public id?: number;
   public campusId: number;
@@ -101,6 +113,14 @@ export class CampusCourseModel extends Model {
   public id?: number;
   public courseId: number;
   public campusId: number;
+
+  public init (): void {}
+}
+
+export class CampusClassModel extends Model {
+  public id?: number;
+  public name: number;
+  public campusCourseId: number;
 
   public init (): void {}
 }
