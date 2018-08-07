@@ -33,6 +33,18 @@ import {
   CampusCourseFeedLandingComponent
 } from './main/course-feed/landing/course-feed-landing.component';
 import {
+  CampusCourseFeedMainComponent
+} from './main/course-feed/main/course-feed-main.component';
+import {
+  CampusClassesComponent
+} from './main/classes/classes.component';
+import {
+  CampusClassesLandingComponent
+} from './main/classes/landing/classes-landing.component';
+import {
+  CampusClassesMainComponent
+} from './main/classes/main/classes-main.component';
+import {
   IsProtectedComponent
 } from '../shared/can-activate';
 
@@ -76,6 +88,23 @@ const campusRoutes: Routes = [{
       }, {
         path: 'landing',
         component: CampusCourseFeedLandingComponent
+      }, {
+        path: ':id',
+        component: CampusCourseFeedMainComponent
+      }]
+    }, {
+      path: 'classes',
+      component: CampusClassesComponent,
+      children: [{
+        path: '',
+        redirectTo: 'landing',
+        pathMatch: 'full',
+      }, {
+        path: 'landing',
+        component: CampusClassesLandingComponent
+      }, {
+        path: ':id',
+        component: CampusClassesMainComponent
       }]
     }]
   }]
