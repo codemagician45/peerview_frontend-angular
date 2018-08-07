@@ -169,4 +169,11 @@ export class UserApiService extends ApiService {
     });
   }
 
+  public promisePostFollowUser (userId: number): Promise<IResponse> {
+    return this.promisePostModelData(`${userId}/follow`)
+    .then((responseData: IResponse) => {
+      return responseData;
+    });
+  }
+
 }
