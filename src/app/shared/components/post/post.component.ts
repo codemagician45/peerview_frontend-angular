@@ -19,6 +19,8 @@ import {
   PostModel,
   UserModel,
   CampusPostModel,
+  CampusCourseFeedPostModel,
+  CampusClassPostModel,
   IResponse
 } from '../../models';
 import {
@@ -55,8 +57,14 @@ export class SharedPostComponent {
     private overlay: Overlay
   ) {}
 
-  @Input() protected posts: Array<PostModel|CampusPostModel> = [];
-  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number} = {name: 'home'};
+  @Input() protected posts: Array<PostModel|CampusPostModel|CampusCourseFeedPostModel|CampusClassPostModel> = [];
+  @Input() protected route: {
+    name: string,
+    campusId?: number,
+    campusFreshersFeedId?: number,
+    campusCourseFeedId?: number,
+    campusClassId?: number
+  } = {name: 'home'};
   @Input() protected user: UserModel;
   protected btnLoadMoreText = 'Load More';
   protected notPostMessage: string;
@@ -112,6 +120,7 @@ export class SharedPostComponent {
 
   protected onLoadMorePost (): void {
     this.offset = this.posts.length;
+    let campusId: any;
 
     switch (this.route.name) {
       case 'home':
@@ -122,8 +131,35 @@ export class SharedPostComponent {
           });
         break;
       case 'campus':
-        let campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
         this.campusApiService.promiseGetAllPost(campusId, this.limit, this.offset)
+          .then((campusPost: CampusPostModel[]) => {
+            this.posts = this.posts.concat(campusPost);
+            this.checkIfThereAreStillPostAvailable(campusPost);
+          });
+        break;
+      case 'campusFreshersFeed':
+        campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
+        this.campusApiService.promiseGetAllFreshersFeedPost(campusId, campusFreshersFeedId, this.limit, this.offset)
+          .then((campusPost: CampusPostModel[]) => {
+            this.posts = this.posts.concat(campusPost);
+            this.checkIfThereAreStillPostAvailable(campusPost);
+          });
+        break;
+      case 'campusCourseFeed':
+        campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        let campusCourseFeedId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
+        this.campusApiService.promiseGetAllCoursePost(campusId, campusCourseFeedId)
+          .then((campusPost: CampusPostModel[]) => {
+            this.posts = this.posts.concat(campusPost);
+            this.checkIfThereAreStillPostAvailable(campusPost);
+          });
+        break;
+      case 'campusClasses':
+        campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
+        let campusClassId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
+        this.campusApiService.promiseGetAllClassPost(campusId, campusClassId, this.limit, this.offset)
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
@@ -186,7 +222,7 @@ export class SharedPostComponent {
   }
 
   protected onPollVote (option, pollOptions): void {
-
+    console.log(this.route);
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseVotePoll(option.id)
@@ -194,6 +230,9 @@ export class SharedPostComponent {
           .catch(error => {});
         break;
       case 'campus':
+      case 'campusFreshersFeed':
+      case 'campusCourseFeed':
+      case 'campusClasses':
         this.campusApiService.promiseVotePoll(option.id)
           .then(response => {})
           .catch(error => {});
