@@ -1,0 +1,15 @@
+<div class="campus-course-feed-landing-component">
+  <div
+    class="col-md-4 col-xs-12 col-sm-6"
+    *ngFor="let campusCourse of campusCourseList; let i = index;"
+  >
+    <div class="card-container">
+      <div>
+        <a (click)="onClickNavigate(campusCourse.course.id)">{{campusCourse.course.name}}</a>
+        <span class="active-user"></span>
+      </div>
+      <img src="" class="img-responsive" alt="">
+      <p>{{campusCourse.course.description}}</p>
+    </div>
+  </div>
+</div>

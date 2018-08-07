@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {
   ActivatedRoute,
+  Router,
   Params
 } from '@angular/router';
 import {
@@ -24,6 +25,7 @@ import {
 export class CampusCourseFeedLandingComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
+    private router: Router,
     private campusApiService: CampusApiService
   ) {}
 
@@ -44,5 +46,10 @@ export class CampusCourseFeedLandingComponent implements OnInit {
       .then((campusCourseList: CampusCourseModel[]) => {
         this.campusCourseList = campusCourseList;
       });
+  }
+
+  protected onClickNavigate (courseFeedId): void {
+    const encryptedCourseFeedId = CryptoUtilities.cipher(courseFeedId);
+    this.router.navigate([`../${encryptedCourseFeedId}`], {relativeTo: this.route});
   }
 }
