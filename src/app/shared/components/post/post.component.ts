@@ -209,7 +209,9 @@ export class SharedPostComponent {
       }
     }
 
-    return hoursLeft + (minutesLeft ? 'and ' + minutesLeft : 'left');
+    let separator = (hoursLeft && minutesLeft ? 'and' : '');
+
+    return (hoursLeft ? hoursLeft : '') + separator + (minutesLeft ? minutesLeft : 'left');
   }
 
   protected getPollVoteCount (pollOptions): number {
