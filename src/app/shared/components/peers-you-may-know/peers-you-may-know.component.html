@@ -1,28 +1,34 @@
 <div class="shared-peers-you-may-know-component">
-  <span class="peers-you-may-know-header">
-    <div>Peers You May Know</div>
-    <div class="view-all">
-      <a [routerLink]="['/peers/list']" class="peersview-primary-color">VIEW ALL</a>
-    </div>
-  </span>
-  <div class="peer-item" *ngFor="let peer of peers">
+  <div class="peers-you-may-know-header">
+      <span>
+        Peers You May Know
+      </span>
+      <span class="view-all">
+        <a [routerLink]="['/peers/list']" class="peersview-primary-color">VIEW ALL</a>
+      </span>
+  </div>
+  <div class="peer-item row" *ngFor="let peer of peers">
     <cl-image 
       public-id="{{peer?.profilePicture}}"
-      height="45px"
+      height="40px"
       radius="max"
-      class="pull-left"
+      class="peer-list-img"
       >
     </cl-image>
-    <span class="peer-name">{{peer.firstName}} {{peer.lastName}}</span>
-    <div>
-      <button class="flat-btn"><i class="material-icons">person_add</i></button>
-      <span><i class="material-icons">account_balance</i>{{peer.institutionName}}</span>
+    
+    <p class="peer-name">{{peer.firstName}} {{peer.lastName}}</p>
+      <span>
+        <i class="material-icons">account_balance</i>
+        {{peer.institutionName}}Sample institution Name
+      </span>
       <span>
         <i class="material-icons">school</i>{{peer.schoolName}}
-        <span class="pull-right peers-widget-close" (click)="removepeer(peer)">
-          <i mdTooltip="Dismiss" class="material-icons">clear</i>
-        </span>
       </span>
-    </div>
+        <button class="flat-btn add-peer-btn">
+          <i class="material-icons">person_add</i>
+        </button>
+        <button class="flat-btn delete-peer-btn" (click)="removepeer(peer)">
+          <i mdTooltip="Dismiss" class="material-icons">clear</i>
+      </button>
   </div>
 </div>
