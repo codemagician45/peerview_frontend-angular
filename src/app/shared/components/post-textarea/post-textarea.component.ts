@@ -17,7 +17,6 @@ import {
   IResponse,
   PostModel,
   PostPollModel,
-  PostStoryModel,
   CampusPostModel,
   CampusFreshersFeedPostModel,
   CampusCourseFeedPostModel,
@@ -51,12 +50,10 @@ export class SharedPostTextareaComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.post.postPoll = new PostPollModel();
-    this.post.postStory = new PostStoryModel();
   }
 
   private post: PostModel = new PostModel();
   private postPoll: PostPollModel = new PostPollModel();
-  private postStory: PostStoryModel = new PostStoryModel();
   private campusPost: CampusPostModel = new CampusPostModel();
   private campusFreshersFeedPost: CampusFreshersFeedPostModel = new CampusFreshersFeedPostModel();
   private campusCourseFeedPost: CampusCourseFeedPostModel = new CampusCourseFeedPostModel();
@@ -336,13 +333,13 @@ export class SharedPostTextareaComponent {
   }
 
   protected onAddStory (): void {
-    console.log('Story', this.post.postStory);
-    if (!this.post.postStory.title) {
+    console.log('Story', this.post);
+    if (!this.post.title) {
       this.onAddPostErrorNotification('Please fill in the form.');
       return;
     }
 
-    if (!this.post.postStory.message) {
+    if (!this.post.message) {
       this.onAddPostErrorNotification('Story must not be empty.');
       this.post.postPoll.duration = 1;
       return;
@@ -358,8 +355,7 @@ export class SharedPostTextareaComponent {
           .then((post: PostModel) => {
             PostEmitter.postSave()
               .emit(post);
-            this.postStory.init();
-            this.post.postStory.init();
+            this.post.init();
           })
           .catch(error => {
             console.log('story error', error);

@@ -41,6 +41,7 @@
         <shared-user-rating [userCredits]="post.user.userCredits[0]"></shared-user-rating>
       </div>
       <div class="col-xs-12 post-message">
+        <h4 *ngIf="post.title">{{post.title}}</h4>
         <p>
           {{post.message ? post.message : post.question}}
         </p>

@@ -26,8 +26,6 @@ export class PostModel extends Model {
   public postTo?: number;
   // use as a virtual holder for postPoll
   public postPoll: PostPollModel;
-  // use as a virtual holder for postStory
-  public postStory: PostStoryModel;
 
   public init (): void {
     this.setBlankDataStructure({
@@ -88,18 +86,6 @@ export class PostPollModel extends Model {
       question: '',
       options: ['', ''],
       duration: 1
-    });
-  }
-}
-
-export class PostStoryModel extends Model {
-  public title: string;
-  public message: string;
-
-  public init (): void {
-    this.setBlankDataStructure({
-      title: '',
-      message: ''
     });
   }
 }

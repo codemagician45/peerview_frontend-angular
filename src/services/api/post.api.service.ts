@@ -10,7 +10,6 @@ import {
 import {
   PostModel,
   PostPollModel,
-  PostStoryModel,
   PostReplyModel,
   ReportPostModel,
   SharePostModel,
