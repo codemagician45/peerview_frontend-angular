@@ -17,6 +17,7 @@ import {
   IResponse,
   PostModel,
   PostPollModel,
+  PostStoryModel,
   CampusPostModel,
   CampusFreshersFeedPostModel,
   CampusCourseFeedPostModel,
@@ -50,10 +51,12 @@ export class SharedPostTextareaComponent {
     private activatedRoute: ActivatedRoute
   ) {
     this.post.postPoll = new PostPollModel();
+    this.post.postStory = new PostStoryModel();
   }
 
   private post: PostModel = new PostModel();
   private postPoll: PostPollModel = new PostPollModel();
+  private postStory: PostStoryModel = new PostStoryModel();
   private campusPost: CampusPostModel = new CampusPostModel();
   private campusFreshersFeedPost: CampusFreshersFeedPostModel = new CampusFreshersFeedPostModel();
   private campusCourseFeedPost: CampusCourseFeedPostModel = new CampusCourseFeedPostModel();
@@ -61,7 +64,7 @@ export class SharedPostTextareaComponent {
   private campusId: number;
   protected isToogleUploadComponentVisible: boolean = false;
   protected isButtonDisabledOnSubmit: boolean = false;
-  protected typePost: string = 'post';
+  protected typePost: string = 'Post';
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
@@ -227,12 +230,12 @@ export class SharedPostTextareaComponent {
 
   protected onAddPoll (): any {
     if (!this.post.postPoll.question) {
-      this.addPollErrorNotification('Please fill in the form.');
+      this.onAddPostErrorNotification('Please fill in the form.');
       return;
     }
 
     if (this.post.postPoll.duration <= 0) {
-      this.addPollErrorNotification('Poll duration must be at least 1 (one) day.');
+      this.onAddPostErrorNotification('Poll duration must be at least 1 (one) day.');
       this.post.postPoll.duration = 1;
       return;
     }
@@ -240,11 +243,11 @@ export class SharedPostTextareaComponent {
     return this.createPostPoll();
   }
 
-  private addPollErrorNotification (instruction): MessageNotificationService {
+  private onAddPostErrorNotification (instruction): MessageNotificationService {
     return MessageNotificationService.show({
       notification: {
         id: 'shared-post-textarea-message',
-        message: 'Cannot Post Poll',
+        message: 'Cannot Post ' + this.typePost,
         instruction: instruction
       }
     },
@@ -264,7 +267,7 @@ export class SharedPostTextareaComponent {
           })
           .catch(error => {
             console.log('poll error', error);
-            this.addPollErrorNotification(error.error.status_message);
+            this.onAddPostErrorNotification(error.error.status_message);
           });
         break;
       case 'campus':
@@ -328,6 +331,48 @@ export class SharedPostTextareaComponent {
             this.post.postPoll.init();
           })
           .catch(error => {});
+        break;
+    }
+  }
+
+  protected onAddStory (): void {
+    console.log('Story', this.post.postStory);
+    if (!this.post.postStory.title) {
+      this.onAddPostErrorNotification('Please fill in the form.');
+      return;
+    }
+
+    if (!this.post.postStory.message) {
+      this.onAddPostErrorNotification('Story must not be empty.');
+      this.post.postPoll.duration = 1;
+      return;
+    }
+
+    return this.createPostStory();
+  }
+
+  private createPostStory (): void {
+    switch (this.route.name) {
+      case 'home':
+        this.postApiService.promiseCreatePostStory(this.post)
+          .then((post: PostModel) => {
+            PostEmitter.postSave()
+              .emit(post);
+            this.postStory.init();
+            this.post.postStory.init();
+          })
+          .catch(error => {
+            console.log('story error', error);
+            this.onAddPostErrorNotification(error.error.status_message);
+          });
+        break;
+      case 'campus':
+        break;
+      case 'campusFreshersFeed':
+        break;
+      case 'campusCourseFeed':
+        break;
+      case 'campusClasses':
         break;
     }
   }

@@ -25,9 +25,13 @@
   }
   .post {
     position: relative;
+    border: 1px solid #631a90;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    text-align: right;
   }
   .options {
-    padding: 10px;
+    padding: 5px;
     .img-upload {
       color: #631990;
     }
@@ -104,6 +108,22 @@
     padding: 5px 10px;
     background: #ffffff;
     text-align: right;
+  }
+
+  /* Story */
+  .story {
+    border: 1px solid #631a90;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    text-align: right;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      margin: 5px;
+    }
   }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
