@@ -34,11 +34,13 @@
   .mobile-view-for-timeline-and-right-component {
     ul.mobile-options {
       display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
-      margin-top: 5px;
+      margin-top: 15px;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
       li {
         padding-bottom: 5px;
+        margin: 0 3px;
         a {
           font-weight: 500;
           font-size: 14px;
@@ -51,19 +53,24 @@
     }
     .mobile-social-media-container {
       margin-top: 5px;
+      background-color: #ffffff;
       .shared-social-component {
         padding-bottom: 0;
-        border: 3px solid #fff;
         background-color: transparent;
         h5 {
           position: absolute;
           border-bottom: none;
           width: auto;
-      
+          display: block;
+          padding: 0;
+          padding-left: 10px;
+          .social-icon {
+            margin: -5px 5px 0 14px;
+          }
         }
       }
       .email-site {
-        margin-left: 90px;
+        margin-left: 65px;
         display: flex;
         padding: 5px 0;
         flex-flow: row wrap;
@@ -107,7 +114,12 @@
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
-  @media only screen and (min-width : 480px) {}
+  @media only screen and (min-width : 480px) {
+    ul.mobile-options {
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
+  }
   // Small Devices, Tablets
   @media only screen and (min-width : 768px) {}
   // Medium Devices, Desktops
