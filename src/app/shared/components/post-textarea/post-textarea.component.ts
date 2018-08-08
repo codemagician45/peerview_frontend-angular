@@ -97,7 +97,23 @@ export class SharedPostTextareaComponent {
   }
 
   protected onUploadComplete (attachments): void {
-    this.post.attachments = attachments;
+    switch (this.route.name) {
+      case 'home':
+        this.post.attachments = attachments;
+        break;
+      case 'campus':
+        this.campusPost.attachments = attachments;
+        break;
+      case 'campusFreshersFeed':
+        this.campusFreshersFeedPost.attachments = attachments;
+        break;
+      case 'campusCourseFeed':
+        this.campusCourseFeedPost.attachments = attachments;
+        break;
+      case 'campusClasses':
+        this.campusClassPost.attachments = attachments;
+        break;
+    }
     this.postMessage(true);
   }
 
