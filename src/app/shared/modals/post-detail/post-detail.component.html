@@ -37,6 +37,7 @@
           <shared-stars-component [ratingCount]="post.ratingCount"></shared-stars-component>
         </div> -->
         <div class="col-xs-12 post-message">
+          <h4 *ngIf="post.title">{{post.title}}</h4>
           <p>
             {{post.message ? post.message : post.question}}
           </p>

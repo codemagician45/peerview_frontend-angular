@@ -43,7 +43,14 @@
       <div class="col-xs-12 post-message">
         <h4 *ngIf="post.title">{{post.title}}</h4>
         <p>
-          {{post.message ? post.message : post.question}}
+          {{post.message ? post.title ? trimStory(post.message, 280): post.message : post.question}}
+          <button
+            class="story-read-more-btn btn-peersview-sm"
+            *ngIf="post.title"
+            (click)="onClickCommentDetail(post)"
+          >
+            <em>Read more</em>
+          </button>
         </p>
       </div>
       <div class="col-xs-12 poll-options" *ngIf="!!post.question">
