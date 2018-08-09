@@ -25,6 +25,7 @@ export class SharedPeersYouMayKnowComponent {
     this.userApiService.promiseGetPeersList()
       .then((users: UserModel[]) => {
         this.peers = users;
+        console.log(this.peers)
       })
       .catch(() => {});
   }

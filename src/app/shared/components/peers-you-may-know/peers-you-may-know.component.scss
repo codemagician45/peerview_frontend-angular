@@ -7,6 +7,7 @@
   .peers-you-may-know-header {
     span {
       &:first-child {
+        font-weight: bold;
         color: #949494;
       }
     }
@@ -34,7 +35,7 @@
       font-size: 14px;
       margin-bottom: 0;
       color: #323c47;
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
     span {
       display: flex;
@@ -45,13 +46,17 @@
       i {
         margin-right: 2px;
         font-size: 20px;
-        color: #949494;
+        color: #631990;
       }
+    }
+    .user-course-container {
+      padding-left: 0;
+      margin: 0;
     }
   }
   .add-peer-btn {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 0;
     color: #631990;
     i {

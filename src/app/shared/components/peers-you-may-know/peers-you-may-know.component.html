@@ -17,12 +17,15 @@
     </cl-image>
     
     <p class="peer-name">{{peer.firstName}} {{peer.lastName}}</p>
-      <span>
+      <span *ngIf="peer.schoolName">
         <i class="material-icons">account_balance</i>
-        {{peer.institutionName}}Sample institution Name
+        {{peer.schoolName}}
       </span>
       <span>
-        <i class="material-icons">school</i>{{peer.schoolName}}
+        <i class="material-icons">school</i>
+        <span class="user-course-container" *ngFor="let item of peer.userCourses">
+          {{item.course.name}}
+        </span>
       </span>
         <button class="flat-btn add-peer-btn">
           <i class="material-icons">person_add</i>
