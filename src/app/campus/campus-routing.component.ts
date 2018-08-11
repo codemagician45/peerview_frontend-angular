@@ -54,6 +54,12 @@ import {
   CampusStudentGroupCreateGroupComponent
 } from './main/student-group/create-group/student-group-create-group.component';
 import {
+  CampusMarketplaceComponent
+} from './main/marketplace/marketplace.component';
+import {
+  CampusMarketplaceLandingComponent
+} from './main/marketplace/landing/marketplace-landing.component';
+import {
   IsProtectedComponent
 } from '../shared/can-activate';
 
@@ -128,6 +134,17 @@ const campusRoutes: Routes = [{
       }, {
         path: 'create',
         component: CampusStudentGroupCreateGroupComponent
+      }]
+    }, {
+      path: 'marketplace',
+      component: CampusMarketplaceComponent,
+      children: [{
+        path: '',
+        redirectTo: 'landing',
+        pathMatch: 'full',
+      }, {
+        path: 'landing',
+        component: CampusMarketplaceLandingComponent
       }]
     }]
   }]

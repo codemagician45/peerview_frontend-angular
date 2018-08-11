@@ -66,6 +66,12 @@ import {
   CampusStudentGroupCreateGroupComponent
 } from './main/student-group/create-group/student-group-create-group.component';
 import {
+  CampusMarketplaceComponent
+} from './main/marketplace/marketplace.component';
+import {
+  CampusMarketplaceLandingComponent
+} from './main/marketplace/landing/marketplace-landing.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -93,7 +99,9 @@ import {
     CampusMainComponent,
     CampusStudentGroupComponent,
     CampusStudentGroupLandingComponent,
-    CampusStudentGroupCreateGroupComponent
+    CampusStudentGroupCreateGroupComponent,
+    CampusMarketplaceComponent,
+    CampusMarketplaceLandingComponent
   ],
   exports: [],
   providers: [CampusApiService]
