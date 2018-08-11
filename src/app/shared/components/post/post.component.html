@@ -95,6 +95,14 @@
         </div>
       </div>
 
+      <div *ngIf="post.postShare" class="col-xs-12 shared-post-container">
+        <div class="col-xs-12 post-message">
+          {{post.postShare.message}}
+        </div>
+        {{post.postShare.user.firstName}} {{post.postShare.user.lastName}}
+        <br>
+          {{post.postShare.createdAt| date :'short'}}
+      </div>
       <div class="col-xs-12">
         <shared-post-options-component
           [post]="post"
