@@ -124,3 +124,15 @@ export class CampusClassModel extends Model {
 
   public init (): void {}
 }
+
+export class CampusStudentGroup extends Model {
+  public id?: number;
+  public name: string;
+  public description: string;
+  public adminEmail: string;
+  public isConfirm?: boolean;
+  public campusId?: number;
+  public campusPrivacyId?: number = 1;
+
+  public init (): void {}
+}
