@@ -45,6 +45,15 @@ import {
   CampusClassesMainComponent
 } from './main/classes/main/classes-main.component';
 import {
+  CampusStudentGroupComponent
+} from './main/student-group/student-group.component';
+import {
+  CampusStudentGroupLandingComponent
+} from './main/student-group/landing/student-group-landing.component';
+import {
+  CampusStudentGroupCreateGroupComponent
+} from './main/student-group/create-group/student-group-create-group.component';
+import {
   IsProtectedComponent
 } from '../shared/can-activate';
 
@@ -105,6 +114,20 @@ const campusRoutes: Routes = [{
       }, {
         path: ':id',
         component: CampusClassesMainComponent
+      }]
+    }, {
+      path: 'student-group',
+      component: CampusStudentGroupComponent,
+      children: [{
+        path: '',
+        redirectTo: 'landing',
+        pathMatch: 'full',
+      }, {
+        path: 'landing',
+        component: CampusStudentGroupLandingComponent
+      }, {
+        path: 'create',
+        component: CampusStudentGroupCreateGroupComponent
       }]
     }]
   }]

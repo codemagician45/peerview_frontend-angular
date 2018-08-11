@@ -57,6 +57,15 @@ import {
   CampusClassesMainComponent
 } from './main/classes/main/classes-main.component';
 import {
+  CampusStudentGroupComponent
+} from './main/student-group/student-group.component';
+import {
+  CampusStudentGroupLandingComponent
+} from './main/student-group/landing/student-group-landing.component';
+import {
+  CampusStudentGroupCreateGroupComponent
+} from './main/student-group/create-group/student-group-create-group.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -81,7 +90,10 @@ import {
     CampusClassesComponent,
     CampusClassesLandingComponent,
     CampusClassesMainComponent,
-    CampusMainComponent
+    CampusMainComponent,
+    CampusStudentGroupComponent,
+    CampusStudentGroupLandingComponent,
+    CampusStudentGroupCreateGroupComponent
   ],
   exports: [],
   providers: [CampusApiService]
