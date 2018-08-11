@@ -51,6 +51,6 @@ export class CampusClassesMainComponent {
       .then((campusClass: CampusClassPostModel[]) => {
         this.campusClass = campusClass;
       })
-      .catch((error) => {});
+      .catch(() => {});
   }
 }
