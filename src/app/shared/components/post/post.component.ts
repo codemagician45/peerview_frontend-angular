@@ -40,8 +40,9 @@ import {
   UserService,
 } from '../../../../services';
 import {
-  SharedImagePreviewComponent
-} from '../../modals/image-preview/image-preview.component';
+  SharedImagePreviewComponent,
+  SharedPostDetailModalComponent
+} from '../../modals';
 
 @Component({
   selector: 'shared-post-component',
@@ -257,6 +258,21 @@ export class SharedPostComponent {
     if (posts.length === 0) {
       this.btnLoadMoreText = 'No More Posts To Show';
     }
+  }
+
+  protected trimStory (message, maxCharacters): string {
+    let trimmedString = message.substr(0, maxCharacters);
+    return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
+  }
+
+  protected onClickCommentDetail (post): void {
+    let dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'post-comment-detail-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {post: post, route: this.route, user: this.user};
+    this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
   }
 
   public ngOnDestroy (): void {

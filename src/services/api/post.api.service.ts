@@ -13,7 +13,7 @@ import {
   PostReplyModel,
   ReportPostModel,
   SharePostModel,
-  IResponse,
+  IResponse
 } from '../../app/shared/models';
 import {
   PostFactory
@@ -65,6 +65,13 @@ export class PostApiService extends ApiService {
     return this.promisePostModelData(`poll/${postPollOptionId}`)
       .then((responseData: IResponse) => {
         return responseData;
+      });
+  }
+
+  public promiseCreatePostStory (story: PostModel): Promise<PostModel> {
+    return this.promisePostModelData('story', story)
+      .then((response: IResponse) => {
+        return PostFactory.createPost(response.data);
       });
   }
 

@@ -43,6 +43,7 @@ export class SharedSharePostModalComponent implements OnInit {
 
   protected share: SharePostModel = new SharePostModel();
   protected isCurrentlySharing = false;
+  protected fullPostIsShown: boolean = false;
   public ngOnInit (): void {}
 
   protected sharePost (): void  {
@@ -142,5 +143,10 @@ export class SharedSharePostModalComponent implements OnInit {
     let percent = percentage.toFixed(1);
 
     return percent;
+  }
+
+  protected trimStory (message, maxCharacters): string {
+    let trimmedString = message.substr(0, maxCharacters);
+    return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
   }
 }

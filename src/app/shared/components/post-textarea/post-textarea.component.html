@@ -1,17 +1,18 @@
 <div class="shared-post-textarea-component">
   <div class="post-menu">
-    <li role="presentation" [ngClass]="{'active' : typePost === 'post'}">
-      <a (click)="onClickWhichTypeIsSelected('post')">Write a Post</a></li>
-    <li role="presentation" [ngClass]="{'active' : typePost === 'poll'}">
-      <a (click)="onClickWhichTypeIsSelected('poll')">Create Poll</a></li>
+    <li role="presentation" [ngClass]="{'active' : typePost === 'Post'}">
+      <a (click)="onClickWhichTypeIsSelected('Post')">Write a Post</a></li>
+    <li role="presentation" [ngClass]="{'active' : typePost === 'Poll'}">
+      <a (click)="onClickWhichTypeIsSelected('Poll')">Create Poll</a></li>
     <li
       role="presentation"
       *ngIf="shareMenu"
-      [ngClass]="{'active' : typePost === 'share'}"
+      [ngClass]="{'active' : typePost === 'Story'}"
     >
-      <a (click)="onClickWhichTypeIsSelected('share')">Share a Story</a></li>
+      <a (click)="onClickWhichTypeIsSelected('Story')">Share a Story</a></li>
   </div>
-  <div class="post" *ngIf="typePost === 'post'">
+  <!-- POST -->
+  <div class="post" *ngIf="typePost === 'Post'">
     <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="post.message"></textarea>
 
     <shared-upload-image-component
@@ -33,14 +34,14 @@
         [disabled]="isButtonDisabledOnSubmit"
         (click)="onAddPost();"
       >
-        Add Post
+        ADD POST
       </button>
     </div>
   </div>
   <!-- POLL -->
   <div
     class="poll"
-    *ngIf="typePost === 'poll'"
+    *ngIf="typePost === 'Poll'"
   >
     <form>
       <textarea
@@ -113,16 +114,25 @@
           [disabled]="isButtonDisabledOnSubmit"
           (click)="onAddPoll()"
         >
-          ADD POST
+          ADD POLL
         </button>
       </div>
     </form>
   </div>
   <!-- Share a Story -->
   <div
-    class="share"
-    *ngIf="typePost === 'share'"
+    class="story"
+    *ngIf="typePost === 'Story'"
   >
-    SHARE
+    <input type="text" class="form-control" name="story_title" placeholder="Title" [(ngModel)]="post.title"/>
+    <textarea class="form-control" placeholder="Tell us your story..." name="story_body" [(ngModel)]="post.message"></textarea>
+    <button
+      class="btn btn-peersview-primary btn-sm mx-5 my-5"
+      type="submit"
+      [disabled]="isButtonDisabledOnSubmit"
+      (click)="onAddStory()"
+    >
+      SHARE STORY
+    </button>
   </div>
 </div>
