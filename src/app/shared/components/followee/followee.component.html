@@ -2,17 +2,6 @@
   <h5>
     <i class="material-icons social-icon color-purple">reply</i>
     <div class="following-label">Following (<strong>{{followee.length}}</strong>)</div>
-    <div class="dropdown" style="margin-left: auto">
-      <button
-        class="flat-btn purple pull-right dropdown-toggle"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="material-icons">more_vert</i>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-right">
-        <li><a>Block User</a></li>
-        <li><a>Report User</a></li>
-      </ul>
-    </div>
   </h5>
   <ul class="users-list">
     <li
@@ -34,6 +23,6 @@
     View All
   </div>
   <h4 *ngIf="followee.length === 0" class="text-center">
-    No Followed Person available.
+    No Followings
   </h4>
 </div>
