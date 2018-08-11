@@ -45,9 +45,7 @@ export class CampusFreshersFeedLandingComponent {
       .then((campusFreshersFeed: CampusFreshersFeedModel[]) => {
         this.freshersFeed = campusFreshersFeed;
       })
-      .catch((error) => {
-
-      });
+      .catch(() => {});
   }
 
   protected onClickNavigate (freshersFeedId): void {
