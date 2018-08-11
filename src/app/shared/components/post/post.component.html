@@ -103,6 +103,13 @@
         <br>
           {{post.postShare.createdAt| date :'short'}}
       </div>
+      <cl-image
+      class="post-image"
+      public-id="{{post.postShare.user.socialImage ? (post.postShare.user.profilePicture === 'avatar' ? post.postShare.user.socialImage: post.postShare.user.profilePicture): post.postShare.user.profilePicture}}"
+      *ngIf="post.postShare?.user?.profilePicture"
+      (click)="onClickUserProfile(post.user);"
+    >
+    </cl-image>
       <div class="col-xs-12">
         <shared-post-options-component
           [post]="post"
