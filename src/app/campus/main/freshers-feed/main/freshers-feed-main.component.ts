@@ -52,7 +52,7 @@ export class CampusFreshersFeedMainComponent {
       .then((campusFreshersFeed: CampusFreshersFeedPostModel[]) => {
         this.campusFreshersFeed = campusFreshersFeed;
       })
-      .catch((error) => {});
+      .catch(() => {});
   }
 
   protected onMobileContentSelect (type): void {
