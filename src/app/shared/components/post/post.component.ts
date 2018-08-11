@@ -72,7 +72,6 @@ export class SharedPostComponent {
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private limit = 5;
   private offset = 0;
-  private newVote: number = 0;
 
   public ngOnInit (): void {
     this.getSharedPostSubscriber();
@@ -225,12 +224,13 @@ export class SharedPostComponent {
     return total;
   }
 
-  protected onPollVote (option, pollOptions): void {
+  protected onPollVote (pollIndex, option, pollOptions): void {
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseVotePoll(option.id)
           .then(response => {
-            this.newVote += 1;
+            pollOptions[pollIndex].count += 1;
+            this.getPollVoteCount(pollOptions);
             this.getPollPercentage(option, pollOptions);
           })
           .catch(error => {});
@@ -250,7 +250,7 @@ export class SharedPostComponent {
     // assign a default value for count if there is non
     // meaning this object comes upon clicking add post
     if (!option.count) { option.count = 0; }
-    let totalVotes = this.getPollVoteCount(pollOptions) + this.newVote;
+    let totalVotes = this.getPollVoteCount(pollOptions);
     let percentage = option.count === 0 ? 0 : ((option.count) / totalVotes) * 100;
     let percent = percentage.toFixed(1);
 
