@@ -2,9 +2,7 @@ import {
   Injectable
 } from '@angular/core';
 import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  CanActivate
 } from '@angular/router';
 import {
   UserApiService,
@@ -22,9 +20,7 @@ export class CanActivateUserProfile implements CanActivate {
   constructor (
     private userApiService: UserApiService) {}
 
-  private protectedRoutes = ['home'];
-
-  public canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+  public canActivate (/*route: ActivatedRouteSnapshot, state: RouterStateSnapshot*/): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const token = TokenStore.getAccessToken();
 
@@ -38,9 +34,10 @@ export class CanActivateUserProfile implements CanActivate {
           UserService.setUser(user);
           return resolve(true);
         })
-        .catch(error => {
+        .catch((error) => {
           TokenStore.expungeData();
           window.location.reload();
+          reject(error);
         });
     });
   }
