@@ -17,6 +17,7 @@ import {
   CampusClassPostModel,
   CampusCourseModel,
   CampusClassModel,
+  CampusStudentGroup,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -123,6 +124,27 @@ export class CampusApiService extends ApiService {
       });
   }
 
+  public promiseGetAllStudentGroup (
+    campusId: number,
+    isMyGroup = false,
+    limit: number = 10,
+    offset: number = 0
+  ): Promise<CampusStudentGroup[]> {
+    let params = new HttpParams()
+      .set('isMyGroup', isMyGroup.toString())
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
+
+      this.options = {
+        params: params
+      };
+
+    return this.promiseGetAllResponseData(`${campusId}/student-groups`)
+      .then((response: IResponse) => {
+        return CampusFactory.createStudentGroupList(response.data);
+      });
+  }
+
   public promiseGetAllClassList (campusId: number): Promise<CampusClassModel[]> {
     return this.promiseGetAllResponseData(`${campusId}/class-list`)
       .then((response: IResponse) => {
@@ -151,13 +173,6 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseRemovePostLike (postId: number): Promise<IResponse> {
-    return this.promiseRemoveData(`post/${postId}/like`)
-      .then((responseData: IResponse) => {
-        return responseData;
-      });
-  }
-
   public promiseCreatePostPoll (campusId: number, campusPost: CampusPostModel): Promise<CampusPostModel> {
     return this.promisePostModelData(`${campusId}/post/poll`, campusPost)
       .then((response: IResponse) => {
@@ -174,6 +189,20 @@ export class CampusApiService extends ApiService {
 
   public promiseCreatePostReply (campustPostId: number, campusPostReply: CampusPostReplyModel): Promise<IResponse> {
     return this.promisePostModelData(`post/${campustPostId}/reply`, campusPostReply)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseCreateStudentGroup (campusId: number, campusStudentGroup: CampusStudentGroup): Promise<IResponse> {
+    return this.promisePostModelData(`${campusId}/student-group`, campusStudentGroup)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseRemovePostLike (postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`post/${postId}/like`)
       .then((responseData: IResponse) => {
         return responseData;
       });
