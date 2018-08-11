@@ -19,8 +19,7 @@
               class="post-image"
               radius="max"
               width="50"
-              public-id="{{post.user.profilePicture}}"
-              *ngIf="post?.user?.profilePicture"
+              public-id="{{post.user.socialImage ? (post.user.profilePicture === 'avatar' ? post.user.socialImage: post.user.profilePicture): post.user.profilePicture}}"
             >
             </cl-image>
           </div>
