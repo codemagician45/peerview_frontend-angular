@@ -176,4 +176,10 @@ export class UserApiService extends ApiService {
     });
   }
 
+  public promisePostInviteUser (user: UserModel): Promise<IResponse> {
+    return this.promisePostModelData(`invite-user`, user)
+    .then((responseData: IResponse) => {
+      return responseData;
+    });
+  }
 }
