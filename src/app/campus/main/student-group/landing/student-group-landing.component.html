@@ -1,10 +1,44 @@
 <div class="campus-student-group-landing-component">
-  <div class="page-title">
+  <div class="page-title text-center">
     <p>
-      Student Groups
+      <b> Student Groups</b>
       <button
-        class="btn-peersview-primary btn-peersview-md"
+        class="btn-peersview-primary btn-peersview-md pull-right"
         [routerLink]="['../create']">Create A Group</button>
     </p>
   </div>
+  <div class="group-container">
+    <ul class="nav nav-tabs">
+      <li [ngClass]="{active: selectedGroupType === 'public'}"><a (click)="onSelectGrouptype('public')">Public Groups</a></li>
+      <li [ngClass]="{active: selectedGroupType === 'myGroups'}"><a (click)="onSelectGrouptype('myGroups')">My Groups</a></li>
+    </ul>
+
+    <div class="deals-wrapper">
+      <div class="public-groups-container" *ngIf="selectedGroupType === 'public'">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="deals-item"></div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="deals-item"></div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div class="deals-item"></div>
+
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="deals-item"></div>
+  
+              </div>
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                  <div class="deals-item"></div>
+    
+                </div>
+      </div>
+      <div class="my-groups-container" *ngIf="selectedGroupType === 'myGroups'">
+        my group
+      </div>
+    </div>
+  </div>
+
 </div>

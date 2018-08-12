@@ -28,8 +28,11 @@ export class CampusStudentGroupLandingComponent implements OnInit {
   ) {}
 
   protected campusId: number;
+
   protected myCampusStudentGroup: CampusStudentGroupModel[] = [];
   protected publicCampusStudentGroup: CampusStudentGroupModel[] = [];
+  protected selectedGroupType : string = 'public';
+
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -54,5 +57,9 @@ export class CampusStudentGroupLandingComponent implements OnInit {
       .then((campusStudentGroup: CampusStudentGroupModel[]) => {
         this.publicCampusStudentGroup = campusStudentGroup;
       });
+  }
+
+  protected onSelectGrouptype (type): void {
+    this.selectedGroupType = type;
   }
 }
