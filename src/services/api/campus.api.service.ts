@@ -17,7 +17,8 @@ import {
   CampusClassPostModel,
   CampusCourseModel,
   CampusClassModel,
-  CampusStudentGroup,
+  CampusStudentGroupModel,
+  CampusMarketplaceModel,
   IResponse
 } from '../../app/shared/models';
 import {
@@ -129,7 +130,7 @@ export class CampusApiService extends ApiService {
     isMyGroup = false,
     limit: number = 10,
     offset: number = 0
-  ): Promise<CampusStudentGroup[]> {
+  ): Promise<CampusStudentGroupModel[]> {
     let params = new HttpParams()
       .set('isMyGroup', isMyGroup.toString())
       .set('limit', limit.toString())
@@ -194,8 +195,15 @@ export class CampusApiService extends ApiService {
       });
   }
 
-  public promiseCreateStudentGroup (campusId: number, campusStudentGroup: CampusStudentGroup): Promise<IResponse> {
+  public promiseCreateStudentGroup (campusId: number, campusStudentGroup: CampusStudentGroupModel): Promise<IResponse> {
     return this.promisePostModelData(`${campusId}/student-group`, campusStudentGroup)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseCreateMarketplace (campusId: number, campusMarketPlace: CampusMarketplaceModel): Promise<IResponse> {
+    return this.promisePostModelData(`${campusId}/marketplace`, campusMarketPlace)
       .then((responseData: IResponse) => {
         return responseData;
       });
