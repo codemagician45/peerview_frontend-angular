@@ -1,8 +1,15 @@
 .profile-right-sidebar-component {
-  .follow-btn {
-    width: 120px;
-    margin: 10px 0;
+  .follow-btn-and-options {
+    display: inline-flex;
+    .follow-btn {
+      width: 120px;
+      margin: 10px 0;
+    }
+    i {
+      margin-top: 13px;
+    }
   }
+
   .shared-social-component {
     margin-top: 20px;
   }
