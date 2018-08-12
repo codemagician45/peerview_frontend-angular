@@ -7,7 +7,8 @@ import {
   CampusClassPostModel,
   CampusCourseModel,
   CampusClassModel,
-  CampusStudentGroup
+  CampusStudentGroupModel,
+  CampusMarketplaceModel,
 } from './campus';
 
 export class CampusFactory {
@@ -88,14 +89,26 @@ export class CampusFactory {
     );
   }
 
-  public static createStudentGroup (data: any): CampusStudentGroup {
-    return <CampusStudentGroup> (new CampusStudentGroup ())
+  public static createStudentGroup (data: any): CampusStudentGroupModel {
+    return <CampusStudentGroupModel> (new CampusStudentGroupModel ())
       .assimilate(data);
   }
 
-  public static createStudentGroupList (data: Array<CampusStudentGroup>): Array<CampusStudentGroup> {
+  public static createStudentGroupList (data: CampusStudentGroupModel[]): CampusStudentGroupModel[] {
     return data.map(
       instanceData => CampusFactory.createStudentGroup(instanceData),
+    );
+  }
+
+  public static createMarketplace (data: any): CampusMarketplaceModel {
+    return <CampusMarketplaceModel> (new CampusMarketplaceModel ())
+      .assimilate(data);
+  }
+
+
+  public static createMarketplaceList (data: CampusMarketplaceModel[]): CampusMarketplaceModel[] {
+    return data.map(
+      instanceData => CampusFactory.createMarketplace(instanceData),
     );
   }
 

@@ -13,3 +13,14 @@ export interface ISocialResponse extends Response {
   provider: string;
   id: string
 }
+
+export enum EAttachmentUsage {
+  image = 'image',
+  poster = 'poster',
+  video = 'video'
+}
+
+export interface IAttachment {
+  cloudinaryPublicId: string;
+  usage: EAttachmentUsage;
+}

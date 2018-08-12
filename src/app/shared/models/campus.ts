@@ -8,6 +8,9 @@ import {
 import {
   UserModel
 } from './user';
+import {
+  IAttachment
+} from './interface';
 
 export class CampusModel extends Model {
   public id?: number;
@@ -125,7 +128,7 @@ export class CampusClassModel extends Model {
   public init (): void {}
 }
 
-export class CampusStudentGroup extends Model {
+export class CampusStudentGroupModel extends Model {
   public id?: number;
   public name: string;
   public description: string;
@@ -133,6 +136,22 @@ export class CampusStudentGroup extends Model {
   public isConfirm?: boolean;
   public campusId?: number;
   public campusPrivacyId?: number = 1;
+
+  public init (): void {}
+}
+
+export class CampusMarketplaceModel extends Model {
+  public id?: number;
+  public title: string;
+  public email: string;
+  public description: string;
+  public phone: string;
+  public location: string;
+  public author: string;
+  public edition: string;
+  public price: number; // float
+  public isConfirm: boolean;
+  public attachments?: IAttachment[];
 
   public init (): void {}
 }
