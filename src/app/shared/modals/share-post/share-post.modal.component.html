@@ -1,9 +1,9 @@
 <div class="shared-share-post-modal-component" remove-css [cssToRemove]="'mat-dialog-is-open'">
+  <button class="modal-close" mat-dialog-close>
+    <i class="material-icons"> clear </i>
+  </button>
   <div class="create-new-forum" remove-css>
     <h3 class="modal-heading">Share Post</h3>
-    <button class="modal-close" mat-dialog-close>
-      <i class="material-icons"> clear </i>
-    </button>
     <div class="modal-divider"></div>
     <div class="modal-body">
       <div class="share-block-form">
@@ -19,55 +19,55 @@
               class="post-image"
               radius="max"
               width="50"
-              public-id="{{post.user.socialImage ? (post.user.profilePicture === 'avatar' ? post.user.socialImage: post.user.profilePicture): post.user.profilePicture}}"
+              public-id="{{sharedPostDetail.user.socialImage ? (sharedPostDetail.user.profilePicture === 'avatar' ? sharedPostDetail.user.socialImage: sharedPostDetail.user.profilePicture): sharedPostDetail.user.profilePicture}}"
             >
             </cl-image>
           </div>
           <div class="user-name">
             <span [ngStyle]="{'display': 'inline-grid'}" class="post-user-name">
-              {{post.user.firstName}} {{post.user.lastName}}
+              {{sharedPostDetail.user.firstName}} {{sharedPostDetail.user.lastName}}
             </span>
             <div class="user-school-name">
-                {{post.user.schoolName}}
+                {{sharedPostDetail.user.schoolName}}
               </div>
             <span class="post-time">
-              {{post.createdAt | date :'short'}}
+              {{sharedPostDetail.createdAt | date :'short'}}
             </span>
           </div>
         </div>
         <div class="col-xs-12 post-message">
           <h4 *ngIf="post.title">{{post.title}}</h4>
           <p>
-            {{post.message ? post.title && !fullPostIsShown ? trimStory(post.message, 280): post.message : post.question}}
+            {{sharedPostDetail.message ? sharedPostDetail.title && !fullPostIsShown ? trimStory(sharedPostDetail.message, 280): sharedPostDetail.message : sharedPostDetail.question}}
             <button
               class="story-read-more-btn btn-peersview-sm"
-              *ngIf="post.title || !fullPostIsShown"
+              *ngIf="sharedPostDetail.title || !fullPostIsShown"
               (click)="fullPostIsShown = !fullPostIsShown;"
             >
               <em>{{ !fullPostIsShown ? 'Read more' : 'Show less' }}</em>
             </button>
           </p>
         </div>
-        <div class="col-xs-12 poll-options" *ngIf="!!post.question">
+        <div class="col-xs-12 poll-options" *ngIf="!!sharedPostDetail.question">
           <ul>
-            <li *ngFor="let option of post.postPollOptions; let i = index;">
+            <li *ngFor="let option of sharedPostDetail.postPollOptions; let i = index;">
               <input type="radio" [value]="option.name"/> {{option.name}}
-              <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
+              <div class="poll-percentage">{{ getPollPercentage(option, sharedPostDetail.postPollOptions) }}%</div>
             </li>
           </ul>
           <div class="col-xs-12 poll-details">
             <div class="col-xs-3">
-              {{ getPollVoteCount(post.postPollOptions) <= 1 ? getPollVoteCount(post.postPollOptions) + ' vote' : getPollVoteCount(post.postPollOptions) + ' votes'}}
+              {{ getPollVoteCount(sharedPostDetail.postPollOptions) <= 1 ? getPollVoteCount(sharedPostDetail.postPollOptions) + ' vote' : getPollVoteCount(sharedPostDetail.postPollOptions) + ' votes'}}
             </div>
-            <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
+            <div class="col-xs-9">{{ getPollExpiryDuration(sharedPostDetail.createdAt, post.duration) }}</div>
           </div>
         </div>
 
         <div class="col-xs-12 post-images">
           <div
             class="image-outer"
-            *ngFor="let attachment of post.attachments; let imageIndex = index"
-            [ngClass]="{'single-image': post.attachments.length === 1, 'multiple-image': post.attachments.length > 1}"
+            *ngFor="let attachment of sharedPostDetail.attachments; let imageIndex = index"
+            [ngClass]="{'single-image': sharedPostDetail.attachments.length === 1, 'multiple-image': sharedPostDetail.attachments.length > 1}"
           >
             <div
               class="image-inner"
@@ -77,7 +77,7 @@
                 public-id="{{attachment.cloudinaryPublicId}}"
                 >
                 <cl-transformation
-                  [attr.height]="post.attachments.length > 1 ? 300 : 250"
+                  [attr.height]="sharedPostDetail.attachments.length > 1 ? 300 : 250"
                   width="300"
                   crop="fill"
                   radius="3"
