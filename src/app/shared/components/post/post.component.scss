@@ -121,6 +121,25 @@
       text-indent: 8px;
     }
   }
+  .shared-post-container {
+    .shared-post {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 5px;
+    }
+    .post-share-user-image {
+      margin-right: 3px;
+      margin-top: 3px;
+      border-radius: 50%;
+    }
+    .post-images {width: 100%;}
+    .post-message {
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones

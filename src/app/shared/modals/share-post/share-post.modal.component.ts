@@ -39,11 +39,14 @@ export class SharedSharePostModalComponent implements OnInit {
     private dialog: MatDialog,
   ) {
     this.document.body.classList.add('mat-dialog-is-open');
+    this.sharedPostDetail = this.post.postShare ? this.post.postShare : this.post;
   }
 
   protected share: SharePostModel = new SharePostModel();
   protected isCurrentlySharing = false;
   protected fullPostIsShown: boolean = false;
+  protected sharedPostDetail: any = [];
+
   public ngOnInit (): void {}
 
   protected sharePost (): void  {
@@ -58,10 +61,10 @@ export class SharedSharePostModalComponent implements OnInit {
     },
     NotificationTypes.Info);
 
-    this.postApiService.promiseSharePost(this.post.id, this.share)
+    this.postApiService.promiseSharePost(this.sharedPostDetail.id, this.share)
       .then((sharePost: PostModel|CampusPostModel) => {
         this.isCurrentlySharing = false;
-        sharePost.postShare = this.post;
+        sharePost.postShare = this.sharedPostDetail;
 
         let sharePostModalComponent = this.dialog.getDialogById('SharePostModalComponent');
         sharePostModalComponent.close(sharePost);

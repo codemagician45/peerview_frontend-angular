@@ -95,6 +95,59 @@
         </div>
       </div>
 
+      <div *ngIf="post.postShare" class="col-xs-12 p-peersview-x-2 shared-post-container">
+        <div class="shared-post">
+          <div class="pull-left">
+            <cl-image
+              width="40px"
+              class="post-share-user-image"
+              public-id="{{post.postShare.user.socialImage ? (post.postShare.user.profilePicture === 'avatar' ? post.postShare.user.socialImage: post.postShare.user.profilePicture): post.postShare.user.profilePicture}}"
+              *ngIf="post.postShare?.user?.profilePicture"
+              (click)="onClickUserProfile(post.user);"
+              >
+            </cl-image>
+          </div>
+          
+          <span class="post-user-name">
+            {{post.postShare.user.firstName}} {{post.postShare.user.lastName}}
+          </span>
+          <div class="user-school-name">
+            {{post.postShare.user.schoolName}}
+          </div>
+          <span class="post-time">
+            {{post.postShare.createdAt| date :'short'}}
+          </span>
+          <div class="post-message">
+            <p>{{post.postShare.message}}</p>
+          </div>
+          
+          <div class="post-images">
+            <div 
+              class="image-outer"
+              *ngFor="let attachment of post.postShare.attachments; let imageIndex = index"
+              [ngClass]="{'single-image': post.postShare.attachments.length === 1, 'multiple-image': post.postShare.attachments.length > 1}"
+              (click)="onClickPhoto(post.postShare.attachments, imageIndex)"
+              >
+              <div
+                class="image-inner"
+                *ngIf="attachment.cloudinaryPublicId"
+                >
+                <cl-image public-id="{{attachment.cloudinaryPublicId}}">
+                  <cl-transformation
+                    [attr.height]="post.postShare.attachments.length > 1 ? 500 : 250"
+                    width="500"
+                    crop="fill"
+                    radius="3"
+                    gravity="face"
+                    >
+                  </cl-transformation>
+                </cl-image>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="col-xs-12">
         <shared-post-options-component
           [post]="post"
