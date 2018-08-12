@@ -32,7 +32,7 @@
     <div class="col-md-6 interest-sub-category">
       <h3 class="peersview-primary-color-light text-center">Select Sub-Interests</h3>
       <div class="board-tab-content">
-        <div class="interest-select-sub-interest-content" *ngFor="let category of interestCategory | filter: 'isCheck': true; let i = index">
+        <div class="interest-select-sub-interest-content" *ngFor="let category of interestCategory.slice(0).reverse() | filter: 'isCheck': true; let i = index">
           <h4 class="peersview-primary-color">{{category.name}}</h4>
           <ul class="added-tags-list text-center">
             <li
@@ -43,7 +43,7 @@
           <div class="suggest-interest-container m-peersview-yb-3">
             <input
               type="text"
-              placeholder="Suggest a Sub-interest"
+              placeholder="Suggest a sub-interest in {{category.name}}"
               class="form-control interest-placeholder"
               #subInterest
               />
