@@ -85,7 +85,9 @@ export class SharedPostDetailModalComponent implements OnInit {
       }
     }
 
-    return hoursLeft + minutesLeft;
+    let separator = (hoursLeft && minutesLeft ? 'and ' : '');
+
+    return (hoursLeft ? hoursLeft : '') + separator + (minutesLeft ? minutesLeft : 'left');
   }
 
   protected getPollVoteCount (pollOptions): number {
@@ -97,10 +99,13 @@ export class SharedPostDetailModalComponent implements OnInit {
     return total;
   }
 
-  protected onPollVote (option, pollOptions): void {
+  protected onPollVote (pollIndex, option, pollOptions): void {
     this.postApiService.promiseVotePoll(option.id).then(response => {
       console.log('response', response);
       // this.postSavedSubcribers();
+      pollOptions[pollIndex].count += 1;
+      this.getPollVoteCount(pollOptions);
+      this.getPollPercentage(option, pollOptions);
     }, error => {
       console.log('error', error);
     });

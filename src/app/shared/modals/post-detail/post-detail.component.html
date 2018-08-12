@@ -44,10 +44,12 @@
         </div>
         <div class="col-xs-12 poll-options" *ngIf="!!post.question">
           <ul>
-            <li *ngFor="let option of post.postPollOptions; let i = index;">
-              <input type="radio" [value]="option.name" (click)="onPollVote(option, post.postPollOptions)"/> {{option.name}}
-              <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
-            </li>
+            <form>
+              <li *ngFor="let option of post.postPollOptions; let i = index;">
+                <input type="radio" name="pollOption" [value]="option.name" (click)="onPollVote(i, option, post.postPollOptions)"/> {{option.name}}
+                <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
+              </li>
+            </form>
           </ul>
           <div class="col-xs-12 poll-details">
             <div class="col-xs-3">
