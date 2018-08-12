@@ -10,7 +10,7 @@ import {
   CampusApiService
 } from '../../../../../services/api';
 import {
-  CampusStudentGroup
+  CampusStudentGroupModel
 } from '../../../../shared/models';
 import {
   CryptoUtilities
@@ -28,8 +28,8 @@ export class CampusStudentGroupLandingComponent implements OnInit {
   ) {}
 
   protected campusId: number;
-  protected myCampusStudentGroup: Array<CampusStudentGroup> = [];
-  protected publicCampusStudentGroup: Array<CampusStudentGroup> = [];
+  protected myCampusStudentGroup: CampusStudentGroupModel[] = [];
+  protected publicCampusStudentGroup: CampusStudentGroupModel[] = [];
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -43,7 +43,7 @@ export class CampusStudentGroupLandingComponent implements OnInit {
   private getMyPrivateGroup (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
     this.campusApiService.promiseGetAllStudentGroup(campusId, true)
-      .then((campusStudentGroup: CampusStudentGroup[]) => {
+      .then((campusStudentGroup: CampusStudentGroupModel[]) => {
         this.myCampusStudentGroup = campusStudentGroup;
       });
   }
@@ -51,7 +51,7 @@ export class CampusStudentGroupLandingComponent implements OnInit {
   private getPublicGroup (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
     this.campusApiService.promiseGetAllStudentGroup(campusId)
-      .then((campusStudentGroup: CampusStudentGroup[]) => {
+      .then((campusStudentGroup: CampusStudentGroupModel[]) => {
         this.publicCampusStudentGroup = campusStudentGroup;
       });
   }

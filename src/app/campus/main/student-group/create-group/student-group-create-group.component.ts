@@ -7,7 +7,7 @@ import {
   Params
 } from '@angular/router';
 import {
-  CampusStudentGroup
+  CampusStudentGroupModel
 } from '../../../../shared/models';
 import {
   CampusApiService
@@ -27,7 +27,7 @@ export class CampusStudentGroupCreateGroupComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  protected campusStudentGroup: CampusStudentGroup = new CampusStudentGroup();
+  protected campusStudentGroup: CampusStudentGroupModel = new CampusStudentGroupModel();
   protected campusId: number;
 
   public ngOnInit (): void {
