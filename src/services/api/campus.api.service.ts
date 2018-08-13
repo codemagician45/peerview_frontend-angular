@@ -101,10 +101,12 @@ export class CampusApiService extends ApiService {
   public promiseGetAllClassPost (
     campusId: number,
     classId: number,
+    isTimeline: boolean = true,
     limit: number = 10,
     offset: number = 0
   ): Promise<CampusClassPostModel[]> {
     let params = new HttpParams()
+      .set('isTimeline', isTimeline.toString())
       .set('limit', limit.toString())
       .set('offset', offset.toString());
 
