@@ -12,6 +12,9 @@ import {
 import {
   digitalCampusRouting
 } from './digital-campus-routing.component';
+import {
+  SharedDirectiveModule
+} from '../shared/directives/shared-directive.module';
 /*components*/
 import {
   DigitalCampusFaqComponent
@@ -32,6 +35,7 @@ import {
 @NgModule({
   imports : [
     SharedModule,
+    SharedDirectiveModule,
     digitalCampusRouting
   ],
   declarations : [
