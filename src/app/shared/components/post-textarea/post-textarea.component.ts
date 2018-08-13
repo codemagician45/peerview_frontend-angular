@@ -65,6 +65,7 @@ export class SharedPostTextareaComponent {
   @Input() protected postMenu: boolean = true;
   @Input() protected pollMenu: boolean = true;
   @Input() protected shareMenu: boolean = true;
+  @Input() protected askAQuestionMenu: boolean = true;
   @Input() protected route: {
     name: string,
     campusId?: number,
