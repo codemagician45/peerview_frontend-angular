@@ -1,7 +1,6 @@
 import {
   Component,
   Input,
-  EventEmitter,
   SimpleChanges
 } from '@angular/core';
 import {
@@ -20,16 +19,12 @@ import {
   UserModel,
   CampusPostModel,
   CampusCourseFeedPostModel,
-  CampusClassPostModel,
-  IResponse
+  CampusClassPostModel
 } from '../../models';
 import {
   PostApiService,
   CampusApiService
 } from '../../../../services/api';
-import {
-  EmitterService
-} from '../../emitter/emitter.component';
 import {
   PostEmitter
 } from '../../emitter';
@@ -112,7 +107,7 @@ export class SharedPostComponent {
   protected onDeletePost (postId: number): void {
     // delete here the post
     this.postApiService.promiseRemovePost(postId)
-      .then((response: IResponse) => {
+      .then(() => {
         let index = this.posts.findIndex(filter => filter.id === postId);
         this.posts.splice(index, 1);
       })
@@ -160,7 +155,7 @@ export class SharedPostComponent {
       case 'campusClasses':
         campusId = parseInt(CryptoUtilities.decipher(this.route.campusId), 10);
         let campusClassId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
-        this.campusApiService.promiseGetAllClassPost(campusId, campusClassId, this.limit, this.offset)
+        this.campusApiService.promiseGetAllClassPost(campusId, campusClassId, true, this.limit, this.offset)
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
@@ -228,20 +223,20 @@ export class SharedPostComponent {
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseVotePoll(option.id)
-          .then(response => {
+          .then(() => {
             pollOptions[pollIndex].count += 1;
             this.getPollVoteCount(pollOptions);
             this.getPollPercentage(option, pollOptions);
           })
-          .catch(error => {});
+          .catch(() => {});
         break;
       case 'campus':
       case 'campusFreshersFeed':
       case 'campusCourseFeed':
       case 'campusClasses':
         this.campusApiService.promiseVotePoll(option.id)
-          .then(response => {})
-          .catch(error => {});
+          .then(() => {})
+          .catch(() => {});
         break;
     }
   }
