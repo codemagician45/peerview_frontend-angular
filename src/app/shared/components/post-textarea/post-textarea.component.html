@@ -13,7 +13,18 @@
   </div>
   <!-- POST -->
   <div class="post" *ngIf="typePost === 'Post'">
-    <textarea class="form-control" placeholder="Whats happening?" name="post_title" [(ngModel)]="post.message"></textarea>
+    <textarea 
+      class="form-control" 
+      placeholder="Whats happening?" 
+      name="post_title" 
+      [(ngModel)]="post.message"
+      [ngClass]="{'text-area-expanded' : textAreaIsExpanded}"
+    ></textarea>
+    <button class="text-area-size-toggle" (click)="textAreaIsExpanded = !textAreaIsExpanded;">
+        <i class="material-icons">
+          {{ !textAreaIsExpanded ? 'expand_more': 'expand_less'}}
+        </i>
+    </button>
 
     <shared-upload-image-component
       *ngIf="isToogleUploadComponentVisible"
@@ -49,8 +60,13 @@
         name="post-poll-question"
         [(ngModel)]="post.postPoll.question"
         placeholder="Ask something..."
-      >
-      </textarea>
+        [ngClass]="{'text-area-expanded' : textAreaIsExpanded}"
+      ></textarea>
+      <button class="text-area-size-toggle story-textarea" (click)="textAreaIsExpanded = !textAreaIsExpanded;">
+        <i class="material-icons">
+          {{ !textAreaIsExpanded ? 'expand_more': 'expand_less'}}
+        </i>
+      </button>
       <ul class="poll-option">
         <li *ngFor="let item of postPoll.options; let i = index;">
           <input
@@ -125,9 +141,20 @@
     *ngIf="typePost === 'Story'"
   >
     <input type="text" class="form-control" name="story_title" placeholder="Title" [(ngModel)]="post.title"/>
-    <textarea class="form-control" placeholder="Tell us your story..." name="story_body" [(ngModel)]="post.message"></textarea>
+    <textarea 
+      class="form-control" 
+      placeholder="Tell us your story..." 
+      name="story_body" 
+      [(ngModel)]="post.message"
+      [ngClass]="{'text-area-expanded' : textAreaIsExpanded}"
+      ></textarea>
+      <button class="text-area-size-toggle" (click)="textAreaIsExpanded = !textAreaIsExpanded;">
+        <i class="material-icons">
+          {{ !textAreaIsExpanded ? 'expand_more': 'expand_less'}}
+        </i>
+      </button>
     <button
-      class="btn btn-peersview-primary btn-sm mx-5 my-5"
+      class="share_button btn btn-peersview-primary btn-sm mx-5 my-5"
       type="submit"
       [disabled]="isButtonDisabledOnSubmit"
       (click)="onAddStory()"

@@ -28,8 +28,24 @@
     border: 1px solid #631a90;
     border-radius: 3px;
     margin-bottom: 15px;
-    text-align: right;
+    // text-align: right;
   }
+
+  .text-area-size-toggle {
+    float: right;
+    padding: 0;
+    margin-top: -20px;
+    border: none;
+
+    i {
+      font-size: 15px;
+    }
+  }
+
+  .text-area-expanded {
+    height: 220px;
+  }
+
   .options {
     padding: 5px;
     .img-upload {
@@ -121,12 +137,19 @@
       width: 100%;
     }
 
-    button {
+    // button {
+    //   margin: 5px;
+    // }
+    .share_button {
       margin: 5px;
     }
   }
   // Custom, iPhone Retina
-  @media only screen and (min-width : 320px) {}
+  @media only screen and (min-width : 320px) {
+    textarea {
+      resize: none;
+    }
+  }
   // extra Small Devices, Phones
   @media only screen and (min-width : 480px) {
     .post-menu {
@@ -165,6 +188,14 @@
   @media only screen and (min-width : 992px) {}
   // Large Devices, Wide Screens
   @media only screen and (min-width : 1200px) {
+    .text-area-size-toggle {
+      display: none;
+    }
+    textarea {
+      resize: vertical;
+      max-height: 220px;
+
+    }
     .duration-form {
       display: inline-flex;
 
