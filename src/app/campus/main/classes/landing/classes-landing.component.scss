@@ -6,5 +6,18 @@
     border: solid 1px #631a90;
     box-shadow: 3px 2px 3px #ccc;
     background: #fff;
+    .box-title {
+      margin-bottom: 10px;
+      overflow: hidden;
+      min-height: 46px;
+      a {
+        float: left;
+        color: #631a90;
+        font-size: 16px;
+        &:hover {
+          color: #d44e1c;
+        }
+      }
+    }
   }
 }

@@ -29,6 +29,7 @@ export class CampusClassesMainComponent {
   protected campusId: number;
   protected campusClassId: number;
   protected campusClass: CampusClassPostModel[] = [];
+  protected selectedPostType: string = 'timeline';
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -52,5 +53,9 @@ export class CampusClassesMainComponent {
         this.campusClass = campusClass;
       })
       .catch(() => {});
+  }
+
+  protected onSelectPostType (type): void {
+    this.selectedPostType = type;
   }
 }

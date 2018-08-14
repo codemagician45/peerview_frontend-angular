@@ -4,11 +4,10 @@
     *ngFor="let campusClass of campusClassList; let i = index;"
   >
     <div class="card-container">
-      <div>
+      <div class="box-title">
         <a (click)="onClickNavigate(campusClass.id)">{{campusClass.name}}</a>
         <span class="active-user"></span>
       </div>
-      <img src="" class="img-responsive" alt="">
     </div>
   </div>
 </div>

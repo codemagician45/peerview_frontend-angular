@@ -2,7 +2,10 @@
   <div class="post-menu">
     <li role="presentation" [ngClass]="{'active' : typePost === 'Post'}">
       <a (click)="onClickWhichTypeIsSelected('Post')">Write a Post</a></li>
-    <li role="presentation" [ngClass]="{'active' : typePost === 'Poll'}">
+    <li 
+      role="presentation"
+      *ngIf="pollMenu" 
+      [ngClass]="{'active' : typePost === 'Poll'}">
       <a (click)="onClickWhichTypeIsSelected('Poll')">Create Poll</a></li>
     <li
       role="presentation"
@@ -10,6 +13,12 @@
       [ngClass]="{'active' : typePost === 'Story'}"
     >
       <a (click)="onClickWhichTypeIsSelected('Story')">Share a Story</a></li>
+      <li 
+        role="presentation" 
+        *ngIf="askAQuestionMenu"
+        [ngClass]="{'active' : typePost === 'Question'}">
+        <a (click)="onClickWhichTypeIsSelected('Question')">Ask a Question</a>
+      </li>
   </div>
   <!-- POST -->
   <div class="post" *ngIf="typePost === 'Post'">
@@ -52,7 +61,7 @@
   <!-- POLL -->
   <div
     class="poll"
-    *ngIf="typePost === 'Poll'"
+    *ngIf="typePost === 'Poll' || typePost === 'Question'"
   >
     <form>
       <textarea
@@ -97,7 +106,7 @@
       <div class="bottom-block">
         <div class="duration-poll">
           <div class="duration-label">
-            <span>Poll Duration(Days):</span>
+            <span> {{typePost === 'Question' ? 'Question ' : 'Poll '}} Duration(Days):</span>
           </div>
           <div class="duration-form">
             <button
@@ -130,7 +139,7 @@
           [disabled]="isButtonDisabledOnSubmit"
           (click)="onAddPoll()"
         >
-          ADD POLL
+          ADD {{typePost === 'Question' ? 'QUESTION ' : 'POLL '}}
         </button>
       </div>
     </form>
