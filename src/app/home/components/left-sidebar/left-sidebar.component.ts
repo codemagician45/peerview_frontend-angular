@@ -3,6 +3,9 @@ import {
   Input
 } from '@angular/core';
 import {
+  Router
+} from '@angular/router';
+import {
   UserModel
 } from '../../../shared/models';
 import{
@@ -16,8 +19,13 @@ import{
 })
 export class HomeLeftSidebarComponent {
   constructor (
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private router: Router,
   ) {}
 
   @Input() protected user: UserModel;
+
+  protected onClickUserProfile (): Promise<boolean> {
+    return this.router.navigate([`/profile`]);
+  }
 }
