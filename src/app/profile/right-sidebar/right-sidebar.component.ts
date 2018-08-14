@@ -23,12 +23,11 @@ import {
 })
 export class ProfileRightSidebarComponent {
   constructor (private userApiService: UserApiService) {
-    this.followed = this.user.isAlreadyFollowed;
+    this.followed = this.user ? this.user.isAlreadyFollowed : false;
   }
 
   protected user: UserModel = UserService.getOtherUser();
   protected followed: boolean = false;
-  protected profileViewer: UserModel = UserService.getUser();
 
   protected onClickFollowButton (): void {
     if (this.followed) {
