@@ -62,6 +62,9 @@ import {
 import {
   CampusMentoringComponent
 } from './main/mentoring/mentoring.component';
+import {
+  ClassPostComponent
+} from './main/class-posts/class-posts.component';
 
 const campusRoutes: Routes = [{
   path: '',
@@ -73,6 +76,9 @@ const campusRoutes: Routes = [{
     path: ':id',
     component: CampusMainComponent,
     children: [{
+      path: 'class-posts',
+      component: ClassPostComponent,
+    }, {
       path: 'all-students',
       component: CampusAllStudentsComponent
     }, {

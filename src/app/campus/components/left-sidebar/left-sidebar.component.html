@@ -35,10 +35,23 @@
         </a>
       </li>
       <li [routerLinkActive]="'active'">
-        <a [routerLink]="['classes']">
+        <a>
           <i class="material-icons">book</i>
-          <span class="text">Classes</span>
+          <span class="text"> <span [routerLink]="['classes']"> Classes</span>
+            <i 
+              class="material-icons pull-right" 
+              style="color: #808080;"
+              (click)="isDropdowmClassesIsOpen = !isDropdowmClassesIsOpen"
+              >keyboard_arrow_down</i>
+          </span>
         </a>
+        <div class="dropdown-list-item" *ngIf="isDropdowmClassesIsOpen">
+          <a 
+            *ngFor="let item of campusClassList"
+            (click)="onSelectClass(item.id)"
+            [ngClass]="{active: selectedClassId === item.id}"
+            >{{item.name}}</a>
+        </div>
       </li>
       <li [routerLinkActive]="'active'">
         <a [routerLink]="['student-group']">

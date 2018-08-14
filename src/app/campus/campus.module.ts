@@ -77,6 +77,9 @@ import {
 import {
   CampusApiService
 } from '../../services/api/campus.api.service';
+import {
+  ClassPostComponent
+} from './main/class-posts/class-posts.component';
 
 @NgModule({
   imports : [
@@ -105,7 +108,8 @@ import {
     CampusStudentGroupCreateGroupComponent,
     CampusMarketplaceComponent,
     CampusMarketplaceLandingComponent,
-    CampusMentoringComponent
+    CampusMentoringComponent,
+    ClassPostComponent
   ],
   exports: [],
   providers: [CampusApiService]

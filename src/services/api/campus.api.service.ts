@@ -217,4 +217,11 @@ export class CampusApiService extends ApiService {
         return responseData;
       });
   }
+
+  public promiseCreateCampusCourseClassIds (campusCourseClassIds: Array<number>): Promise<IResponse> {
+    return this.promisePostModelData(`user/classes`)
+    .then((responseData: IResponse) => {
+      return responseData;
+    });
+  }
 }

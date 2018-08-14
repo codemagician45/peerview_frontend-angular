@@ -11,7 +11,7 @@ import {
   CampusApiService
 } from '../../../../../services/api';
 import {
-  CampusClassModel
+  CampusCourseModel
 } from '../../../../shared/models';
 import {
   CryptoUtilities
@@ -30,9 +30,17 @@ export class CampusClassesLandingComponent implements OnInit {
   ) {}
 
   protected campusId: number;
-  protected campusClassList: Array<any> = [];
+  protected campusCourseList: Array<any> = [];
+  protected alphabets = [];
+  protected selectedLetter: string = 'All';
+  protected filterResults = [];
+  protected onFilter: boolean = false;
 
   public ngOnInit (): void {
+    for (let i = 65; i <= 90; i++) {
+        this.alphabets.push(String.fromCharCode(i));
+    }
+
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
 
@@ -42,14 +50,31 @@ export class CampusClassesLandingComponent implements OnInit {
 
   private getCourseList (): void {
     this.campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-    this.campusApiService.promiseGetAllClassList(this.campusId)
-      .then((campusClassList: CampusClassModel[]) => {
-        this.campusClassList = campusClassList;
+    this.campusApiService.promiseGetAllCampusCourse(this.campusId)
+      .then((campusCourseList: CampusCourseModel[]) => {
+        this.campusCourseList = campusCourseList;
       });
   }
 
-  protected onClickNavigate (classId): void {
-    const encrypteClassId = CryptoUtilities.cipher(classId);
-    this.router.navigate([`../${encrypteClassId}`], {relativeTo: this.route});
+  protected onClickNavigate (courseId): void {
+    const encrypteCourseId = CryptoUtilities.cipher(courseId);
+    this.router.navigate([`../${encrypteCourseId}`], {relativeTo: this.route});
+  }
+
+  protected onSelectedLetter (letter): void {
+    this.selectedLetter = letter;
+
+    if (this.selectedLetter === 'All') {
+      this.onFilter = false;
+    } else {
+      this.onFilter = true;
+
+      this.filterResults = [];
+      for (let i = 0; i < this.campusCourseList.length; i++) {
+        if (this.campusCourseList[i].course.name.indexOf(this.selectedLetter) === 0) {
+          this.filterResults.push(this.campusCourseList[i]);
+        }
+      }
+    }
   }
 }
