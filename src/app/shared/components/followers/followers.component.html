@@ -21,9 +21,12 @@
       title="{{follows.follower.firstName}} {{follows.follower.lastName}}"
       *ngFor="let follows of followers">
         <cl-image
-          public-id="{{follows.follower.profilePicture}}"
+          public-id="{{follows.follower.socialImage ? (follows.follower.profilePicture === 'avatar' ? follows.follower.socialImage: follows.follower.profilePicture): follows.follower.profilePicture}}"
+          width="50"
           radius="max"
-          width="50">
+          *ngIf="follows.follower?.profilePicture"
+          [ngStyle]="{'border-radius': '50%'}"
+          >
         </cl-image>
     </li>
   </ul>

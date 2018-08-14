@@ -1,9 +1,12 @@
 <div class="profile-right-sidebar-component">
-  <div class="follow-btn-and-options">
+  <div 
+    class="follow-btn-and-options" 
+    *ngIf="user.id !== profileViewer.id"
+  >
     <input 
       type="button" 
       class="hidden-xs hidden-sm btn btn-white follow-btn"
-      [value]="followed? 'Followed': 'Follow'" 
+      [value]="followed ? 'Followed': 'Follow'" 
       [ngClass]="{'followed-btn' : followed}"
       (click)="onClickFollowButton()"
     />

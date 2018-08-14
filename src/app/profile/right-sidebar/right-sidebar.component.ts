@@ -22,28 +22,49 @@ import {
   styleUrls: ['./right-sidebar.component.scss']
 })
 export class ProfileRightSidebarComponent {
-  constructor (private userApiService: UserApiService) {}
+  constructor (private userApiService: UserApiService) {
+    this.followed = this.user.isAlreadyFollowed;
+  }
 
   protected user: UserModel = UserService.getOtherUser();
   protected followed: boolean = false;
+  protected profileViewer: UserModel = UserService.getUser();
 
   protected onClickFollowButton (): void {
-    this.userApiService.promisePostFollowUser(this.user.id)
-      .then((response: IResponse) => {
-        console.log('follow user', response);
-        this.followed = true;
-      })
-      .catch(error => {
-        console.log('follow user', error);
-        this.followErrorNotification();
-      });
+    if (this.followed) {
+      return this.onUnFollowUser();
+    }
+
+    return this.onFollowUser();
   }
 
-  private followErrorNotification (): MessageNotificationService {
+  private onFollowUser (): void {
+    this.userApiService.promisePostFollowUser(this.user.id)
+    .then((response: IResponse) => {
+      this.followed = true;
+    })
+    .catch(error => {
+      console.log('follow user', error);
+      this.followErrorNotification('Follow');
+    });
+  }
+
+  private onUnFollowUser (): void {
+    this.userApiService.promisePostUnfollowUser(this.user.id)
+    .then((response: IResponse) => {
+      this.followed = false;
+    })
+    .catch(error => {
+      console.log('follow user', error);
+      this.followErrorNotification('Unfollow');
+    });
+  }
+
+  private followErrorNotification (action): MessageNotificationService {
     return MessageNotificationService.show({
       notification: {
         id: 'right-sidebar-follow-message',
-        message: 'Follow Error',
+        message: action + ' Error',
         instruction: 'Something went wrong! Please try again.'
       }
     },

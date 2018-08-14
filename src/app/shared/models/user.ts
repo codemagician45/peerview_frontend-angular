@@ -41,6 +41,7 @@ export class UserModel extends Model  {
   public courseIds?: Array<number> = [];
   // use as an holder for saving user subInterest
   public subInterestIds: number[] = [];
+  public isAlreadyFollowed: boolean;
 
   public init (): void {}
 }

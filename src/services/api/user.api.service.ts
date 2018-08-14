@@ -176,6 +176,13 @@ export class UserApiService extends ApiService {
     });
   }
 
+  public promisePostUnfollowUser (userId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`${userId}/follow`)
+    .then((responseData: IResponse) => {
+      return responseData;
+    });
+  }
+
   public promisePostInviteUser (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData(`invite-user`, user)
     .then((responseData: IResponse) => {
