@@ -40,7 +40,7 @@
       white-space: nowrap;
       li {
         padding-bottom: 5px;
-        margin: 0 3px;
+        margin: 0 15px 0 0px;
         a {
           font-weight: 500;
           font-size: 14px;
@@ -48,7 +48,10 @@
         }
       }
       .active {
-        border-bottom: 2px solid #9a9a9a;
+        border-bottom: 2px solid #631990;
+        a {
+          color: #631990;
+        }
       }
     }
     .mobile-social-media-container {
@@ -63,9 +66,11 @@
           width: auto;
           display: block;
           padding: 0;
-          padding-left: 10px;
+          padding-left: 5px;
+          margin-top: 5px;
+          font-size: 17px;
           .social-icon {
-            margin: -5px 5px 0 14px;
+            margin: -5px 5px 0px 19px;
           }
         }
       }
@@ -79,7 +84,7 @@
     }
 
     .mobile-layout-content {
-      margin-top: 15px;
+      margin-top: 0;
       margin-bottom: 15px;
       profile-content-component {
         padding: 0;
