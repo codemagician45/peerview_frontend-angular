@@ -2,7 +2,7 @@ import {
   Component,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import {
   ActivatedRoute
@@ -72,6 +72,7 @@ export class SharedPostTextareaComponent {
     campusCourseFeedId?: number,
     campusClassId?: number
   } = {name: 'home'};
+  protected textAreaIsExpanded: boolean = false;
 
   public ngOnInit (): void {
     this.post.postPoll.duration = 1;
