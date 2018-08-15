@@ -12,7 +12,6 @@ import {
   FormsModule
 } from '@angular/forms';
 import {
-  MAT_DIALOG_DATA,
   MatDatepickerModule,
   MatProgressBarModule,
   MatInputModule
@@ -21,8 +20,7 @@ import {
 /*third party*/
 import {
   CloudinaryModule,
-  CloudinaryConfiguration,
-  provideCloudinary
+  CloudinaryConfiguration
 } from '@cloudinary/angular-5.x';
 import {
   Cloudinary
@@ -88,14 +86,15 @@ import {
   SharedAnnouncementComponent
 } from './announcement/announcement.component';
 import {
-  CONFIG
-} from '../../../config';
-import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
