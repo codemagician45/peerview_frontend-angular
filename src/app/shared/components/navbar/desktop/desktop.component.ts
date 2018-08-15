@@ -2,9 +2,6 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router
-} from '@angular/router';
-import {
   UserModel
 } from '../../../models';
 import {
@@ -18,15 +15,12 @@ import {
   styleUrls: ['./desktop.component.scss']
 })
 export class NavbarDesktopComponent {
-  constructor (
-    private router: Router
-  ) {}
+  constructor () {}
 
-  private user: UserModel = UserService.getUser();
+  protected user: UserModel = UserService.getUser();
 
   protected onSignOut (): void {
     TokenStore.expungeData();
-    this.router.navigate(['']);
     window.location.reload();
   }
 }
