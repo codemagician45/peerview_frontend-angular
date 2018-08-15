@@ -9,7 +9,7 @@ import {
   CanActivateUserProfile
 } from './shared/can-activate';
 
-export const appRoutes: Routes = [ {
+export const appRoutes: Routes = [{
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
   data: { state: 'peers' }
