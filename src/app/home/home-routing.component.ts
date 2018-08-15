@@ -6,20 +6,12 @@ import {
   RouterModule
 } from '@angular/router';
 import {
-  IsProtectedComponent
-} from '../shared/can-activate';
-
-import {
   HomeComponent
 } from './home.component';
 
 const homeRoutes: Routes = [{
   path: '',
-  component: HomeComponent,
-  data: {
-    isProtected: true
-  },
-  canActivate: [IsProtectedComponent]
+  component: HomeComponent
 }];
 
 export const homeRouting: ModuleWithProviders = RouterModule.forChild(homeRoutes);
