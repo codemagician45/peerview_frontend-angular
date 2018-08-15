@@ -72,6 +72,9 @@ import {
   CampusMarketplaceLandingComponent
 } from './main/marketplace/landing/marketplace-landing.component';
 import {
+  CampusMentoringComponent
+} from './main/mentoring/mentoring.component';
+import {
   CampusApiService
 } from '../../services/api/campus.api.service';
 
@@ -101,7 +104,8 @@ import {
     CampusStudentGroupLandingComponent,
     CampusStudentGroupCreateGroupComponent,
     CampusMarketplaceComponent,
-    CampusMarketplaceLandingComponent
+    CampusMarketplaceLandingComponent,
+    CampusMentoringComponent
   ],
   exports: [],
   providers: [CampusApiService]
