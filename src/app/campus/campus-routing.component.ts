@@ -59,17 +59,10 @@ import {
 import {
   CampusMarketplaceLandingComponent
 } from './main/marketplace/landing/marketplace-landing.component';
-import {
-  IsProtectedComponent
-} from '../shared/can-activate';
 
 const campusRoutes: Routes = [{
   path: '',
   component: CampusComponent,
-  data: {
-    isProtected: true
-  },
-  canActivate: [IsProtectedComponent],
   children: [{
     path: '',
     component: CampusLandingPageComponent
