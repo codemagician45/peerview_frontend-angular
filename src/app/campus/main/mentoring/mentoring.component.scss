@@ -1,0 +1,20 @@
+campus-mentoring-component {
+  .mentors-label {
+		margin-top: 6px;
+	}
+	.mentor-item {
+    margin-bottom: 10px;
+    height: 80px;
+    width: 100%;
+		background-color: #fff;
+    border-radius: 3px;
+		text-align: center;
+		cursor: pointer;
+		p {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+	}
+}
