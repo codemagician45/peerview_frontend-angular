@@ -2,8 +2,7 @@ import {
   Injectable
 } from '@angular/core';
 import {
-  CanActivate,
-  Router
+  CanActivate
 } from '@angular/router';
 import {
   UserApiService,
@@ -19,40 +18,30 @@ import {
 @Injectable()
 export class CanActivateUserProfile implements CanActivate {
   constructor (
-    private userApiService: UserApiService,
-    private router: Router
+    private userApiService: UserApiService
   ) {}
 
   public canActivate (/*route: ActivatedRouteSnapshot, state: RouterStateSnapshot*/): Promise<boolean> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const token = TokenStore.getAccessToken();
-      const user = UserService.getUser();
 
       if ((token && UserService.getUser()) || !token) {
-        console.log('user');
-        user && this.checkIfUserIsAlreadyFinishInOnBoarding(user);
         return resolve(true);
       }
 
-
-      return this.userApiService.promiseGetUser()
+      this.userApiService.promiseGetUser()
         .then((userData: UserModel) => {
+          console.log('UserService');
           TokenStore.setAccessToken(userData.token);
           UserService.setUser(userData);
-          this.checkIfUserIsAlreadyFinishInOnBoarding(userData);
-          return resolve(true);
+
+          resolve(true);
         })
-        .catch((error) => {
+        .catch(() => {
           TokenStore.expungeData();
           window.location.reload();
-          reject(error);
+          resolve(false);
         });
     });
-  }
-
-  private checkIfUserIsAlreadyFinishInOnBoarding (user: UserModel): any {
-    if (!user.userTypeId) {
-      return this.router.navigate(['/user/on-boarding/status']);
-    }
   }
 }
