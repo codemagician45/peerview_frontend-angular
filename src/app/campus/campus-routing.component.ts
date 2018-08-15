@@ -139,6 +139,9 @@ const campusRoutes: Routes = [{
         path: 'landing',
         component: CampusMarketplaceLandingComponent
       }]
+    }, {
+      path: 'mentoring',
+      component: CampusMentoringComponent
     }]
   }]
 }];
