@@ -3,7 +3,8 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  ActivatedRoute
+  ActivatedRoute,
+  Router
 } from '@angular/router';
 import {
   OnBoardingEmitter
@@ -17,6 +18,9 @@ import {
   UserModel,
   UserTypeModel
 } from '../../../shared/models';
+import {
+ UserService
+} from '../../../../services';
 
 @Component({
   selector: 'user-on-boarding-professional-component',
@@ -27,12 +31,14 @@ export class UserOnboardingProfessionalComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
     private courseApiService: CourseApiService,
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private router: Router
   ) {}
 
   protected courses: CourseModel[];
   protected courseAdded: CourseModel[] = [];
   protected user: UserModel = new UserModel();
+  private currentUser: UserModel = UserService.getUser();
 
   public ngOnInit (): void {
     this.getCourses();
@@ -49,9 +55,7 @@ export class UserOnboardingProfessionalComponent implements OnInit {
       .then((courses: CourseModel[]) => {
         this.courses = courses;
       })
-      .catch(error => {
-
-      });
+      .catch(() => {});
   }
 
   protected onChangeCourse (value: string): void {
@@ -70,12 +74,17 @@ export class UserOnboardingProfessionalComponent implements OnInit {
   }
 
   protected onSubmit (): void {
+    console.log(this.user);
     this.userApiService.promiseGetType('professionals')
       .then((userType: UserTypeModel) => {
         this.user.userTypeId = userType.id;
-
+        this.currentUser.userTypeId = userType.id;
+        this.currentUser.assimilate(this.user);
         return this.userApiService.promiseUpdateOnboardingDetails(this.user);
       })
-      .catch(error => {});
+      .then(() => {
+        this.router.navigate(['/user/on-boarding/status/student/interest']);
+      })
+      .catch(() => {});
   }
 }

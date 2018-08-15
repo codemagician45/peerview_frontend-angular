@@ -2,8 +2,8 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router,
-  ActivatedRoute
+  ActivatedRoute,
+  Router
 } from '@angular/router';
 import {
   UserModel,
@@ -15,6 +15,9 @@ import {
 import {
   OnBoardingEmitter
 } from '../../../shared/emitter';
+import {
+ UserService
+} from '../../../../services';
 
 @Component({
   selector: './organisation-component',
@@ -24,11 +27,12 @@ import {
 export class UserOnboardingOrganisationComponent {
   constructor (
     private userApiService: UserApiService,
-    private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   protected user: UserModel = new UserModel();
+  private currentUser: UserModel = UserService.getUser();
 
   public ngOnInit (): void {
     this.route.data
@@ -39,15 +43,17 @@ export class UserOnboardingOrganisationComponent {
     });
   }
 
-  protected onSubmit (isValid): void {
+  protected onSubmit (): void {
     this.userApiService.promiseGetType('organizationInstitution')
       .then((userType: UserTypeModel) => {
         this.user.userTypeId = userType.id;
-
+        this.currentUser.userTypeId = userType.id;
+        this.currentUser.assimilate(this.user);
         return this.userApiService.promiseUpdateOnboardingDetails(this.user);
       })
-      .catch(error => {
-
-      });
+      .then(() => {
+        this.router.navigate(['/user/on-boarding/status/student/interest']);
+      })
+      .catch(() => {});
   }
 }
