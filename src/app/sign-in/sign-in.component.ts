@@ -5,8 +5,7 @@ import {
   Router
 } from '@angular/router';
 import {
-  UserModel,
-  IResponse,
+  UserModel
 } from '../shared/models';
 import {
   MessageNotificationService,
@@ -114,8 +113,16 @@ export class SignInComponent {
         return this.userApiService.promiseRegisterViaSocialMedia(this.user);
       })
       .then((user: UserModel) => {
+        console.log(user);
         UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
+        // check if we have userTypeId
+        // meaning this user must on the onboarding
+        if (!user.userTypeId) {
+          this.router.navigate(['/user/on-boarding/status']);
+          return;
+        }
+
         this.router.navigate(['/home']);
       })
       .catch(error => {

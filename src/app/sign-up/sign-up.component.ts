@@ -1,14 +1,12 @@
 import {
-  Component,
-  OnInit
+  Component
 } from '@angular/core';
 import {
   Router,
   ActivatedRoute
 } from '@angular/router';
 import {
-  UserModel,
-  IResponse
+  UserModel
 } from '../shared/models';
 import {
   MessageNotificationService,
@@ -43,7 +41,6 @@ export class SignUpComponent {
 
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
-  private isSignUpViaSocialIsClick: boolean = false;
 
   protected onSignUp (): void {
     const splitNames = this.user.name.split(' ');
@@ -63,7 +60,7 @@ export class SignUpComponent {
       NotificationTypes.Info);
 
       this.userApiService.promiseRegister(this.user)
-        .then((response: IResponse) => {
+        .then(() => {
           return MessageNotificationService.show({
             notification: {
               id: 'sign-up-success',
@@ -75,7 +72,7 @@ export class SignUpComponent {
         })
         .then(notificationState => {
           if (notificationState) {
-            notificationState.subscribe((data: any) => {
+            notificationState.subscribe(() => {
               this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
             });
           }
@@ -136,6 +133,13 @@ export class SignUpComponent {
       .then((user: UserModel) => {
         UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
+        // check if we have userTypeId
+        // meaning this user must on the onboarding
+        if (!user.userTypeId) {
+          this.router.navigate(['/user/on-boarding/status']);
+          return;
+        }
+
         this.router.navigate(['/home']);
       })
       .catch(error => {
