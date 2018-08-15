@@ -72,14 +72,13 @@ import {
   SharedPostLikeDetailModalComponent
 } from './shared/modals';
 import {
-  ProfileLeftSidebarUserInfoMessageDiaglogComponent
-} from './profile/left-sidebar/user-info/message/message.component';
-import {
   SharedModule
 } from './shared/components/shared.module';
 import {
   CanActivateUserProfile,
-  IsProtectedComponent
+  RedirectToOnboardingComponent,
+  RedirectToHomeComponent,
+  RedirectToIndexComponent
 } from './shared/can-activate';
 
 declare var tinymce: any;
@@ -114,7 +113,9 @@ tinymce.init({});
     multi: true,
   },
     CanActivateUserProfile,
-    IsProtectedComponent,
+    RedirectToOnboardingComponent,
+    RedirectToHomeComponent,
+    RedirectToIndexComponent,
     CampusApiService,
     CourseApiService,
     InterestApiService,
@@ -124,7 +125,6 @@ tinymce.init({});
   declarations: [
     AppComponent,
     SharedPostDetailModalComponent,
-    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
     SharedViewPostModalComponent,
     ReportPostModalComponent,
     SharedSharePostModalComponent,
@@ -134,7 +134,6 @@ tinymce.init({});
   ],
   exports: [],
   entryComponents: [
-    // ProfileLeftSidebarUserInfoMessageDiaglogComponent
     SharedSharePostModalComponent,
     SharedPostDetailModalComponent,
     SharedViewPostModalComponent,

@@ -1,23 +1,13 @@
 import {
   Component,
-  OnInit,
-  ChangeDetectorRef
+  OnInit
 } from '@angular/core';
-import {
-  Router,
-  NavigationStart,
-  NavigationEnd,
-  ActivatedRoute
-} from '@angular/router';
 import {
   Title
 } from '@angular/platform-browser';
 import {
   MessageNotificationService
 } from '../services';
-import {
-  UserApiService,
-} from '../services/api';
 import {
   routerTransition
 } from './animations';
@@ -29,24 +19,7 @@ import {
   animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
-  constructor (
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private userApiService: UserApiService,
-    private changeDetectorRef: ChangeDetectorRef,
-    private titleService: Title) {
-    /**************Loader Function Intialize on change Router***********************/
-    router.events.subscribe((val) => {
-      if (val instanceof NavigationStart) {
-        this.loading = true;
-        console.log('start');
-      } else if (val instanceof NavigationEnd) {
-        console.log('end');
-        console.log(this.getTitle(router.routerState, router.routerState.root).join('-'));
-        this.loading = false;
-      }
-    });
-  }
+  constructor (private titleService: Title) {}
 
   protected loading: boolean;
   protected messageNotificationService: Array<any> = [];
@@ -73,6 +46,7 @@ export class AppComponent implements OnInit {
     if (state && parent) {
       data.push(... this.getTitle(state, state.firstChild(parent)));
     }
+
     return data;
   }
 }

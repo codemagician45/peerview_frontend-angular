@@ -6,7 +6,10 @@ import {
   RouterModule
 } from '@angular/router';
 import {
-  CanActivateUserProfile
+  CanActivateUserProfile,
+  RedirectToOnboardingComponent,
+  RedirectToHomeComponent,
+  RedirectToIndexComponent
 } from './shared/can-activate';
 
 export const appRoutes: Routes = [{
@@ -16,25 +19,30 @@ export const appRoutes: Routes = [{
 }, {
   path: 'campus',
   loadChildren: './campus/campus.module#CampusModule',
+  resolve: [RedirectToOnboardingComponent, RedirectToIndexComponent],
   canActivate: [CanActivateUserProfile],
-  data: { state: 'campus' }
+  data: {state: 'campus'}
 }, {
   path: 'community',
   loadChildren: './community/community.module#CommunityModule',
+  resolve: [RedirectToOnboardingComponent],
   canActivate: [CanActivateUserProfile],
-  data: { state: 'community' }
+  data: {state: 'community'}
 }, {
   path: 'user',
   loadChildren: './user/user.module#UserModule',
-  data: { state: 'user' }
+  canActivate: [CanActivateUserProfile],
+  data: {state: 'user'}
 }, {
   path: 'profile',
   loadChildren: './profile/profile.module#ProfileModule',
+  resolve: [RedirectToOnboardingComponent],
   canActivate: [CanActivateUserProfile],
-  data: { state: 'profile' }
+  data: {state: 'profile'}
 }, {
   path: 'home',
   loadChildren: './home/home.module#HomeModule',
+  resolve: [RedirectToOnboardingComponent, RedirectToIndexComponent],
   canActivate: [CanActivateUserProfile],
   data: {
     state: 'home'
@@ -42,50 +50,52 @@ export const appRoutes: Routes = [{
 }, {
   path: 'leisure',
   loadChildren: './leisure/leisure.module#LeisureModule',
-  data: { state: 'leisure' }
+  data: {state: 'leisure'}
 }, {
   path: '',
   loadChildren: './index/index.module#IndexModule',
-  canActivate: [CanActivateUserProfile]
+  resolve: [RedirectToOnboardingComponent, RedirectToHomeComponent],
+  canActivate: [CanActivateUserProfile],
 }, {
   path: 'sign-up',
   loadChildren: './sign-up/sign-up.module#SignUpModule',
+  resolve: [RedirectToHomeComponent],
   canActivate: [CanActivateUserProfile],
-  data: { state: 'sign-up' }
+  data: {state: 'sign-up'}
 }, {
   path: 'sign-in',
   loadChildren: './sign-in/sign-in.module#SignInModule',
+  resolve: [RedirectToHomeComponent],
   canActivate: [CanActivateUserProfile],
-  data: { state: 'sign-in' }
+  data: {state: 'sign-in'}
 }, {
   path: 'about-us',
   loadChildren: './about-us/about-us.module#AboutUsModule',
-  data: { state: 'about-us' }
+  data: {state: 'about-us'}
 }, {
   path: 'contact-us',
   loadChildren: './contact-us/contact-us.module#ContactUsModule',
-  data: { state: 'contact-us' }
+  data: {state: 'contact-us'}
 }, {
   path: 'digital-campus',
   loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule',
-  data: { state: 'digital-campus' }
+  data: {state: 'digital-campus'}
 }, {
   path: 'advance-search',
   loadChildren: './advance-search/advance-search.module#AdvanceSearchModule',
-  data: { state: 'advance-search' }
+  data: {state: 'advance-search'}
 }, {
   path: 'account-settings',
   loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
-  canActivate: [CanActivateUserProfile],
-  data: { state: 'account-settings' }
+  data: {state: 'account-settings'}
 }, {
   path: 'terms-of-use-user',
   loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
-  data: { state: 'terms-of-use-user' }
+  data: {state: 'terms-of-use-user'}
 }, {
   path: 'privacy-policy',
   loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
-  data: { state: 'privacy-policy' }
+  data: {state: 'privacy-policy'}
 }];
 
 @NgModule({
