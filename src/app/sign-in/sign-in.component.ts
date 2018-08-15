@@ -113,7 +113,6 @@ export class SignInComponent {
         return this.userApiService.promiseRegisterViaSocialMedia(this.user);
       })
       .then((user: UserModel) => {
-        console.log(user);
         UserService.setUser(user);
         TokenStore.setAccessToken(user.token);
         // check if we have userTypeId
