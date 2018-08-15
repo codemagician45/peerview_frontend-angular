@@ -36,7 +36,7 @@ export const appRoutes: Routes = [{
 }, {
   path: 'profile',
   loadChildren: './profile/profile.module#ProfileModule',
-  resolve: [RedirectToOnboardingComponent],
+  resolve: [RedirectToOnboardingComponent, RedirectToIndexComponent],
   canActivate: [CanActivateUserProfile],
   data: {state: 'profile'}
 }, {
