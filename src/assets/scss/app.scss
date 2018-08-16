@@ -465,6 +465,13 @@ input[type="checkbox"]:focus {
       top: 12% !important;
     }
   } 
+  .mentor-details-modal {
+    width: 450px;
+    .mat-dialog-container {
+      top: auto;
+      height: fit-content;
+    }
+  }
   /* Share Post Modal */
   /* Post Like Detail Modal */
   /* Post Comment Detail Modal */
