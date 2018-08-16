@@ -7,11 +7,20 @@ import {
   OnInit
 } from '@angular/core';
 import {
+  Router
+} from '@angular/router';
+import {
   UserApiService
 } from '../../../../services/api';
 import {
   UserModel
 } from '../../../shared/models';
+import {
+  CryptoUtilities
+} from '../../../shared/utilities';
+import {
+  UserService,
+} from '../../../../services';
 
 @Component({
   selector: 'shared-followee-component',
@@ -19,7 +28,10 @@ import {
   styleUrls: ['./followee.component.scss']
 })
 export class SharedFolloweeComponent implements OnInit {
-  constructor (private userApiService: UserApiService) {}
+  constructor (
+    private userApiService: UserApiService,
+    private router: Router
+  ) {}
 
   private followee: Array<UserModel> = [];
 
@@ -33,5 +45,16 @@ export class SharedFolloweeComponent implements OnInit {
         this.followee = followee;
       })
       .catch(() => {});
+  }
+
+  protected onClickUserProfile (user): Promise<boolean> {
+    let userId = CryptoUtilities.cipher(user.id);
+    let currentLoginUser = UserService.getUser();
+
+    if (user.id === currentLoginUser.id) {
+      return this.router.navigate([`/profile`]);
+    }
+
+    return this.router.navigate([`/profile/${userId}`]);
   }
 }

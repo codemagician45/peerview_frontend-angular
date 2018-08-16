@@ -33,12 +33,12 @@
       <li
         [ngClass]="{'active' : mobileLinkSelected === 'following'}"
         >
-        <a (click)="onClickSelectMobileLink('following')">Following (0)</a>
+        <a (click)="onClickSelectMobileLink('following')">Following ({{followee.length}})</a>
       </li>
       <li
         [ngClass]="{'active' : mobileLinkSelected === 'followers'}"
         >
-        <a (click)="onClickSelectMobileLink('followers')">Followers (0)</a>
+        <a (click)="onClickSelectMobileLink('followers')">Followers ({{followers.length}})</a>
       </li>
       <li
         [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
