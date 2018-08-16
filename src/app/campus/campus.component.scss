@@ -3,6 +3,7 @@ campus-component {
 		border-bottom: none;
 	} 
 	.campus-landing-page-component {
+		font-family: "Maven Pro", sans-serif;
 		h1 {
 			font-size: 24px;
 		}
@@ -58,11 +59,13 @@ campus-component {
 		@media only screen and (min-width : 768px) {}
 		// Medium Devices, Desktops
 		@media only screen and (min-width : 992px) {
-			h1 {
-				font-size: 36px;
-			}
-			h3 {
-				font-size: 24px;
+			.campus-landing-page-component {
+				h1 {
+					font-size: 36px;
+				}
+				h3 {
+					font-size: 24px;
+				}
 			}
 		}
 		// Large Devices, Wide Screens
