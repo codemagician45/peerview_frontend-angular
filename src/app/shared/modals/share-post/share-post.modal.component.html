@@ -53,6 +53,7 @@
             <li *ngFor="let option of sharedPostDetail.postPollOptions; let i = index;">
               <input type="radio" [value]="option.name"/> {{option.name}}
               <div class="poll-percentage">{{ getPollPercentage(option, sharedPostDetail.postPollOptions) }}%</div>
+              <div class="vote-shade-percentage" [ngStyle]="{'width': getPollPercentage(option, post.postPollOptions) + '%'}"></div>
             </li>
           </ul>
           <div class="col-xs-12 poll-details">
