@@ -26,8 +26,17 @@
           radius="max"
           *ngIf="follows.follower?.profilePicture"
           [ngStyle]="{'border-radius': '50%'}"
+          (click)="onClickUserProfile(follows.follower);"
           >
         </cl-image>
+        <div class="follow-user-name">
+          <span
+            [ngStyle]="{'display': 'inline-grid'}"
+            (click)="onClickUserProfile(follows.follower);"
+            class="user-name">
+            {{follows.follower.firstName}} {{follows.follower.lastName}}
+          </span>
+        </div>
     </li>
   </ul>
   <div 

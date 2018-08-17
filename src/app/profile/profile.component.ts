@@ -30,7 +30,12 @@ export class ProfileComponent {
     private userApiService: UserApiService
   ) {
     this.getUser();
+    this.getUserFollowers();
+    this.getUserFollowees();
   }
+
+  protected followers: Array<UserModel> = [];
+  protected followee: Array<UserModel> = [];
 
   protected mobileLinkSelected: string = 'timeline';
   protected userId: number;
@@ -46,5 +51,21 @@ export class ProfileComponent {
     } else {
       this.user = UserService.getUser();
     }
+  }
+
+  private getUserFollowers (): void {
+    this.userApiService.promiseGetFollowers()
+      .then((followers: UserModel[]) => {
+        this.followers = followers;
+      })
+      .catch(() => {});
+  }
+
+  private getUserFollowees (): void {
+    this.userApiService.promiseGetFollowee()
+      .then((followee: UserModel[]) => {
+        this.followee = followee;
+      })
+      .catch(() => {});
   }
 }
