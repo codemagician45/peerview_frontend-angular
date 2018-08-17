@@ -457,13 +457,28 @@ input[type="checkbox"]:focus {
   .image-preview-modal-backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }
-
+  /*Become a Mentor Modal*/
+  .become-a-mentor-modal {
+    width: 450px;
+    .mat-dialog-container {
+      height: 70%;
+      top: 12% !important;
+    }
+  } 
+  .mentor-details-modal {
+    width: 450px;
+    .mat-dialog-container {
+      top: auto;
+      height: fit-content;
+    }
+  }
   /* Share Post Modal */
   /* Post Like Detail Modal */
   /* Post Comment Detail Modal */
   .share-post-modal,
   .post-comment-detail-modal, 
-  .post-like-detail-modal {
+  .post-like-detail-modal,
+  .become-a-mentor-modal {
     .mat-dialog-container{
       top: 20px;
       margin: 0;

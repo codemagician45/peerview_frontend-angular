@@ -59,6 +59,9 @@ import {
 import {
   CampusMarketplaceLandingComponent
 } from './main/marketplace/landing/marketplace-landing.component';
+import {
+  CampusMentoringComponent
+} from './main/mentoring/mentoring.component';
 
 const campusRoutes: Routes = [{
   path: '',
@@ -139,6 +142,9 @@ const campusRoutes: Routes = [{
         path: 'landing',
         component: CampusMarketplaceLandingComponent
       }]
+    }, {
+      path: 'mentoring',
+      component: CampusMentoringComponent
     }]
   }]
 }];
