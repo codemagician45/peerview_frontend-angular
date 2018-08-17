@@ -65,7 +65,9 @@
       </a>
     </div>
     <div class="col-xs-3 p-peersview-0 text-center campus">
-      <a [routerLink]="['/campus']">
+      <a 
+        [routerLinkActive]="'page-active'"
+        [routerLink]="['/campus']">
         <i class="material-icons">group</i>
         <span>Campus</span>
       </a>
