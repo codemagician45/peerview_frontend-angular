@@ -140,7 +140,7 @@
               <span class="user-name"> {{user?.firstName}}</span>
             </span>
             <cl-image
-              public-id="{{user.socialImage ? user.socialImage: user.profilePicture}}"
+              public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
               *ngIf="user?.profilePicture"
               width="22"
               [ngStyle]="{'border-radius': '50%'}">
