@@ -1,0 +1,93 @@
+.notification-component {
+  padding-top: 110px;
+
+  .users-notification {
+    padding: 0;
+    
+    .flyout-title {
+      padding-left: 8px;
+      font-weight: 700;
+    }
+
+    hr {
+      margin: 5px 0px;
+    }
+
+    .flyout-view {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 5px 0px;
+      text-align: center;
+      background-color: #e2e2e2;
+      border-bottom: 2px solid #631a90;
+
+      a {
+        color: #631a90;
+      }
+    }
+
+    .no-notifications {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .conversation-list {
+    padding: 3px 5px;
+    .co-row {
+      padding: 5px 0;
+      border-bottom: 1px solid #e2e2e2;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #e2e2e2;
+      }
+    }
+    .co-img {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+      margin-left: 5px;
+      
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+    .co-info {
+      display: inline-block;
+      vertical-align: middle;
+      width: 78%;
+      margin-left: 10px;
+
+      .co-name {
+        color: #333;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .co-time {
+        // float: right;
+        font-size: 12px;
+        color: #999;
+      }
+    }
+  }
+
+  /* Custom, iPhone Retina */
+  @media only screen and (min-width : 320px) {}
+  /* Extra Small Devices, Phones */
+  @media only screen and (min-width : 480px) {}
+  /* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {}
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width : 992px) {
+    padding-top: 60px;
+    padding-right: 0;
+  }
+  /* Large Devices, Wide Screens */
+  @media only screen and (min-width : 1200px) {}
+}
