@@ -185,8 +185,6 @@ export class SharedPostComponent {
   }
 
   protected onPollVote (index, option, pollOptions): void {
-    console.log('onPollVote');
-    console.log(this.route.name);
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseVotePoll(option.id)
@@ -201,7 +199,10 @@ export class SharedPostComponent {
       case 'campusCourseFeed':
       case 'campusClasses':
         this.campusApiService.promiseVotePoll(option.id)
-          .then(() => {})
+          .then(() => {
+            pollOptions[index].count += 1;
+            this.getPollPercentage(pollOptions);
+          })
           .catch(() => {});
         break;
     }
