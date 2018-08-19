@@ -101,15 +101,35 @@
             <i class="material-icons notification-icon">notifications_none</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right users-notification" aria-labelledby="users-notification">
-            <div class="flyout-title">Notifications</div>
+            <div class="flyout-title">NOTIFICATIONS</div>
+            <hr>
             <ul class="conversation-list">
-              <li class="co-row" *ngFor="let notification of notifications">
-                <a href="javascript:void(0);">
-                  <div class="co-img"><img src="/assets/images/user1.jpg" alt=""></div>
-                  <div class="co-info"><span class="co-name">{{notification.notification}}</span> <span class="co-time">{{notification.created_at | timeAgo}}</span></div>
-                </a>
+              <li class="co-row">
+                <div class="co-img"><img src="https://lh5.googleusercontent.com/-MUoRMJwmCEc/AAAAAAAAAAI/AAAAAAAAAAA/AAnnY7oeEoFO5rXLQURJkIM-4pYNT7rQDQ/s96-c/photo.jpg"></div>
+                <div class="co-info">
+                  <span class="co-name">Notification message here.</span>
+                  <br/>
+                  <span class="co-time">Some time ago</span>
+                </div>
+              </li>
+              <li class="co-row">
+                <div class="co-img"><img src="http://res.cloudinary.com/peersview-com/image/upload/r_max/avatar"></div>
+                <div class="co-info">
+                  <span class="co-name">Notification message here. This is a sample notification.</span>
+                  <br/>
+                  <span class="co-time">Some time ago</span>
+                </div>
+              </li>
+              <li class="co-row">
+                <div class="co-img"><img src="http://res.cloudinary.com/peersview-com/image/upload/r_max/avatar"></div>
+                <div class="co-info">
+                  <span class="co-name">Notification message here. This is a sample notification with long text.</span> 
+                  <br/>
+                  <span class="co-time">Some time ago</span>
+                </div>
               </li>
             </ul>
+            <!-- <div class="no-notifications">No notifications yet.</div> -->
             <div class="flyout-view"><a [routerLink]="['/notification']">View All</a></div>
           </div>
         </div>
