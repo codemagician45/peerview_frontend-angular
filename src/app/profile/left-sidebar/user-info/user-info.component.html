@@ -3,6 +3,7 @@
     <cl-image
       public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
       width="120"
+      height="120"
       radius="max"
       *ngIf="user?.profilePicture"
       [ngStyle]="{'border-radius': '50%'}"
