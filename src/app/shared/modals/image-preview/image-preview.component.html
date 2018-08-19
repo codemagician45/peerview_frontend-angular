@@ -48,6 +48,12 @@
     *ngIf="imageAttachments.source === 'profile-picture'"
   >
     <button
+      class="col-xs-12 remove-photo-button"
+      *ngIf="!isToogleUploadComponentVisible"
+    >
+      Remove Photo
+    </button>
+    <button
       class="col-xs-12"
       (click)="isToogleUploadComponentVisible = !isToogleUploadComponentVisible"
     >

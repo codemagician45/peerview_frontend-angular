@@ -25,6 +25,7 @@
         for="uploadImage" 
         class="img-crop img-crop-add-photo"
         [ngClass]="{'change-profile-pic': uploadOptions.event === 'changeProfilePic'}"
+        *ngIf="uploadOptions.queueLimit !== imagesToUpload.length"
       >
         <i class="material-icons">add_circle_outline</i>
       </label>
