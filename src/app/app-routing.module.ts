@@ -96,6 +96,11 @@ export const appRoutes: Routes = [{
   path: 'privacy-policy',
   loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
   data: {state: 'privacy-policy'}
+}, {
+  path: 'notification',
+  loadChildren: './notification/notification.module#NotificationModule',
+  canActivate: [CanActivateUserProfile],
+  data: {state: 'notification'}
 }];
 
 @NgModule({
