@@ -56,18 +56,18 @@
       <div class="col-xs-12 poll-options" *ngIf="!!post.question">
         <ul>
           <form>
-            <li *ngFor="let option of post.postPollOptions; let i = index;">
-              <input type="radio" name="pollOption" [value]="option.name" (click)="onPollVote(i, option, post.postPollOptions)"/> {{option.name}}
-              <div class="poll-percentage">{{ getPollPercentage(option, post.postPollOptions) }}%</div>
-              <div class="vote-shade-percentage" [ngStyle]="{'width': getPollPercentage(option, post.postPollOptions) + '%'}"></div>
+            <li *ngFor="let option of post.postPollOptions?.fulfillmentValue; let i = index;">
+              <input type="radio" name="pollOption" [value]="option.name" (click)="onPollVote(i, option, post.postPollOptions.fulfillmentValue)"/> {{option.name}}
+              <div class="poll-percentage">{{option.average}}%</div>
+              <div class="vote-shade-percentage" [ngStyle]="{'width': option.average + '%'}"></div>
             </li>
           </form>
         </ul>
         <div class="col-xs-12 poll-details">
           <div class="col-xs-3">
-            {{ getPollVoteCount(post.postPollOptions) <= 1 ? getPollVoteCount(post.postPollOptions) + ' vote' : getPollVoteCount(post.postPollOptions) + ' votes'}}
+            {{post.postPollOptions?.fulfillmentValue[0]?.sum}} {{post.postPollOptions?.fulfillmentValue[0]?.sum > 1 ? ' votes': ' vote'}}
           </div>
-          <div class="col-xs-9">{{ getPollExpiryDuration(post.createdAt, post.duration) }}</div>
+          <div class="col-xs-9">{{post.pollDurationDisplay}}</div>
         </div>
       </div>
 
@@ -110,7 +110,7 @@
               >
             </cl-image>
           </div>
-          
+
           <span class="post-user-name">
             {{post.postShare.user.firstName}} {{post.postShare.user.lastName}}
           </span>
@@ -123,9 +123,9 @@
           <div class="post-message">
             <p>{{post.postShare.message}}</p>
           </div>
-          
+
           <div class="post-images">
-            <div 
+            <div
               class="image-outer"
               *ngFor="let attachment of post.postShare.attachments; let imageIndex = index"
               [ngClass]="{'single-image': post.postShare.attachments.length === 1, 'multiple-image': post.postShare.attachments.length > 1}"

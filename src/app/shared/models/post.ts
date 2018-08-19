@@ -10,6 +10,7 @@ export class PostModel extends Model {
   public courseId: number;
   public isUserPostLike: number;
   public createdAt: Date;
+  public pollExpiration?: Date;
   public isUserLike: number;
   public message: string;
   public likeCount: number;

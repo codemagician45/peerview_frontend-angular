@@ -67,7 +67,6 @@ export class SharedPostComponent {
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private limit = 5;
   private offset = 0;
-  private votePercentages: Array<string> = [];
 
   public ngOnInit (): void {
     this.getSharedPostSubscriber();
@@ -175,59 +174,25 @@ export class SharedPostComponent {
     this.dialogRef = this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 
-  protected getPollExpiryDuration (createdDate, duration): any {
-    let date = new Date(createdDate);
-    let expiryDate = date.setDate(date.getDate() + duration);
-    let dateNow: any = new Date();
+  protected getPollPercentage (pollOptions): any {
+    pollOptions.map(optionData => {
+      optionData.sum = parseFloat(optionData.sum) + 1;
+      optionData.average = (optionData.count / optionData.sum) * 100;
+      optionData.average = optionData.average.toFixed(2);
 
-    let seconds = Math.floor((expiryDate - (dateNow)) / 1000);
-    let minutes = Math.floor(seconds / 60);
-    let hours = Math.floor(minutes / 60);
-    let days = Math.floor(hours / 24);
-
-    minutes = minutes - (days * 24 * 60) - ((hours - (days * 24)) * 60);
-
-    let hoursLeft = null;
-    let minutesLeft = null;
-
-    if (hours !== 0) {
-      if (hours > 1) {
-        hoursLeft = hours + ' hours ';
-      } else if (hours === 1) {
-        hoursLeft = hours + ' hour ';
-      }
-    }
-
-    if (minutes !== 0) {
-      if (minutes > 1) {
-        minutesLeft = minutes + ' minutes left ';
-      } else if (hours === 1) {
-        minutesLeft = minutes + ' minute left ';
-      }
-    }
-
-    let separator = (hoursLeft && minutesLeft ? 'and ' : '');
-
-    return (hoursLeft ? hoursLeft : '') + separator + (minutesLeft ? minutesLeft : 'left');
+      return optionData;
+    });
   }
 
-  protected getPollVoteCount (pollOptions): number {
-    let total = 0;
-    for ( let i = 0; i < pollOptions.length; i++ ) {
-     total += pollOptions[i].count;
-    }
-
-    return total;
-  }
-
-  protected onPollVote (pollIndex, option, pollOptions): void {
+  protected onPollVote (index, option, pollOptions): void {
+    console.log('onPollVote');
+    console.log(this.route.name);
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseVotePoll(option.id)
           .then(() => {
-            pollOptions[pollIndex].count += 1;
-            this.getPollVoteCount(pollOptions);
-            this.getPollPercentage(option, pollOptions);
+            pollOptions[index].count += 1;
+            this.getPollPercentage(pollOptions);
           })
           .catch(() => {});
         break;
@@ -240,21 +205,6 @@ export class SharedPostComponent {
           .catch(() => {});
         break;
     }
-  }
-
-  protected getPollPercentage (option, pollOptions): string {
-    // assign a default value for count if there is non
-    // meaning this object comes upon clicking add post
-    if (!option.count) { option.count = 0; }
-    let totalVotes = this.getPollVoteCount(pollOptions);
-    let percentage = option.count === 0 ? 0 : ((option.count) / totalVotes) * 100;
-    let percent = percentage.toFixed(1);
-
-    this.votePercentages.push(percent);
-
-    console.log(this.votePercentages);
-
-    return percent;
   }
 
   private checkIfThereAreStillPostAvailable (posts: PostModel[]|CampusPostModel[]): void {

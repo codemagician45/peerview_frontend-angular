@@ -30,6 +30,12 @@ export abstract class Model {
     return this;
   }
 
+  public injectRelatedData (callback): Model {
+    callback.call(this, this);
+
+    return this;
+  }
+
   protected setBlankDataStructure (data: any): Model {
     Object.assign(this, data);
 
