@@ -90,4 +90,16 @@ export class SharedImagePreviewComponent {
         console.log('change photo success', error);
       });
   }
+
+  protected onRemoveProfilePicture (): void {
+    let attachment: any = { cloudinaryPublicId: 'avatar', usage: 'image' };
+    this.user.profilePicture = attachment.cloudinaryPublicId;
+    this.userApiService.promiseUpdateProfilePicture(this.user)
+      .then((response: IResponse) => {
+        console.log('remove photo success', response);
+        this.onCloseModal();
+      }).catch(error => {
+        console.log('remove photo success', error);
+      });
+  }
 }

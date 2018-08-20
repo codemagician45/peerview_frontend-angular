@@ -19,6 +19,8 @@
             *ngIf="post?.user?.profilePicture"
             (click)="onClickUserProfile(post.user);"
           >
+          <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+          </cl-transformation>
           </cl-image>
         </div>
 

@@ -15,9 +15,7 @@ import {
   styleUrls: ['./desktop.component.scss']
 })
 export class NavbarDesktopComponent {
-  constructor () {
-    console.log('nav bar', this.user);
-  }
+  constructor () {}
 
   protected user: UserModel = UserService.getUser();
 

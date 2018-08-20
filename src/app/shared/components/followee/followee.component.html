@@ -16,12 +16,12 @@
         <img src="/assets/images/user1.jpg" alt="" ng-click="vm.openUsersProfile('sm')"/> -->
         <cl-image
           public-id="{{follows.followee.socialImage ? (follows.followee.profilePicture === 'avatar' ? follows.followee.socialImage: follows.followee.profilePicture): follows.followee.profilePicture}}"
-          width="50"
-          radius="max"
           *ngIf="follows.followee?.profilePicture"
           [ngStyle]="{'border-radius': '50%'}"
           (click)="onClickUserProfile(follows.followee);"
-          >
+        >
+          <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+          </cl-transformation>
         </cl-image>
         <div class="follow-user-name">
           <span

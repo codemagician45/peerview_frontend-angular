@@ -17,10 +17,10 @@
           <div class="pull-left">
             <cl-image
               class="post-image"
-              radius="max"
-              width="50"
               public-id="{{sharedPostDetail.user.socialImage ? (sharedPostDetail.user.profilePicture === 'avatar' ? sharedPostDetail.user.socialImage: sharedPostDetail.user.profilePicture): sharedPostDetail.user.profilePicture}}"
             >
+              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+              </cl-transformation>
             </cl-image>
           </div>
           <div class="user-name">

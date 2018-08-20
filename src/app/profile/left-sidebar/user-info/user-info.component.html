@@ -2,12 +2,11 @@
   <div class="user text-center">
     <cl-image
       public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
-      width="120"
-      height="120"
-      radius="max"
       *ngIf="user?.profilePicture"
       [ngStyle]="{'border-radius': '50%'}"
       (click)="onOpenShowImageDialogComponent(user)">
+      <cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
+      </cl-transformation>
     </cl-image>
     <input type="button" value="Follow" class="hidden-md hidden-lg btn btn-white follow-btn"/>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>

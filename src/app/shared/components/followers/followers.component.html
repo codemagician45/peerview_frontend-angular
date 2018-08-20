@@ -22,12 +22,12 @@
       *ngFor="let follows of followers">
         <cl-image
           public-id="{{follows.follower.socialImage ? (follows.follower.profilePicture === 'avatar' ? follows.follower.socialImage: follows.follower.profilePicture): follows.follower.profilePicture}}"
-          width="50"
-          radius="max"
           *ngIf="follows.follower?.profilePicture"
           [ngStyle]="{'border-radius': '50%'}"
           (click)="onClickUserProfile(follows.follower);"
-          >
+        >
+          <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+          </cl-transformation>
         </cl-image>
         <div class="follow-user-name">
           <span

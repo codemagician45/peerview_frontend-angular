@@ -142,8 +142,10 @@
             <cl-image
               public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
               *ngIf="user?.profilePicture"
-              width="22"
-              [ngStyle]="{'border-radius': '50%'}">
+              [ngStyle]="{'border-radius': '50%'}"
+            >
+              <cl-transformation width="22" height="22" radius="max" gravity="custom" crop="thumb">
+              </cl-transformation>
             </cl-image>
             <i class="material-icons">keyboard_arrow_down</i>
           </a>

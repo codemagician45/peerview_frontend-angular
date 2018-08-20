@@ -10,10 +10,11 @@
           <div class="pull-left">
             <cl-image
               class="post-image"
-              radius="max"
               public-id="{{post.user.socialImage ? (post.user.profilePicture === 'avatar' ? post.user.socialImage: post.user.profilePicture): post.user.profilePicture}}"
               *ngIf="post?.user?.profilePicture"
             >
+              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+              </cl-transformation>
             </cl-image>
           </div>
   
