@@ -31,6 +31,8 @@
         <span class="dropdown users-menu">
            <a id="users-menu" data-toggle="dropdown">
             <cl-image
+              width="22" 
+              height="22"
               public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
               *ngIf="user?.profilePicture"
               [ngStyle]="{'border-radius': '50%'}"
