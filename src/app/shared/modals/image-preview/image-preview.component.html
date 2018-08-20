@@ -49,7 +49,7 @@
   >
     <button
       class="col-xs-12 remove-photo-button"
-      *ngIf="!isToogleUploadComponentVisible"
+      *ngIf="!isToogleUploadComponentVisible && profileUser.profilePicture !== 'avatar'"
       (click)="onRemoveProfilePicture()"
     >
       Remove Photo

@@ -18,6 +18,9 @@ import {
 import {
   UserApiService
 } from '../../../../services/api';
+import {
+  UserService
+} from '../../../../services';
 
 @Component({
   selector: 'shared-image-preview-component',
@@ -35,6 +38,7 @@ export class SharedImagePreviewComponent {
   private imageOrientation: string = null;
   protected isToogleUploadComponentVisible: boolean = false;
   private user: UserModel = new UserModel();
+  protected profileUser: UserModel = UserService.getUser();
 
   public ngAfterViewInit (): void {
     this.getImageOrientation();
