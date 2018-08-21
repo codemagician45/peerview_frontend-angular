@@ -101,6 +101,11 @@ export const appRoutes: Routes = [{
   loadChildren: './notification/notification.module#NotificationModule',
   canActivate: [CanActivateUserProfile],
   data: {state: 'notification'}
+}, {
+  path: 'campus-admin',
+  loadChildren: './campus-admin/campus-admin.module#CampusAdminModule',
+  canActivate: [CanActivateUserProfile],
+  data: {state: 'campus-admin'}
 }];
 
 @NgModule({
