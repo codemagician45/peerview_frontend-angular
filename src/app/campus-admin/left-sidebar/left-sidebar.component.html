@@ -86,4 +86,88 @@
   </div>
 
   <hr>
+
+  <div class="course-section engineering">
+    <div class="sidebar-label">
+      <div class="checkbox">
+        <label><input type="checkbox" value="" (change)="toggle('engineering')">Engineering</label>
+      </div>
+      <i class="material-icons">
+        {{ courseToggle.engineering ? 'keyboard_arrow_down': 'keyboard_arrow_up' }}
+      </i>
+    </div>
+    <div class="sub-course" *ngIf="courseToggle.engineering">
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Mechanical Engineering</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Electric Engineering</label>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="course-section finance">
+    <div class="sidebar-label">
+      <div class="checkbox">
+        <label><input type="checkbox" value="" (change)="toggle('finance')">Finance</label>
+      </div>
+      <i class="material-icons">
+        {{ courseToggle.finance ? 'keyboard_arrow_down': 'keyboard_arrow_up' }}
+      </i>
+    </div>
+    <div class="sub-course" *ngIf="courseToggle.finance">
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Accounting</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Commercial</label>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="course-section math">
+    <div class="sidebar-label">
+      <div class="checkbox">
+        <label><input type="checkbox" value="" (change)="toggle('math')">Math</label>
+      </div>
+      <i class="material-icons">
+        {{ courseToggle.math ? 'keyboard_arrow_down': 'keyboard_arrow_up' }}
+      </i>
+    </div>
+    <div class="sub-course" *ngIf="courseToggle.math">
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Algebra</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Geometry</label>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="course-section geography">
+    <div class="sidebar-label">
+      <div class="checkbox">
+        <label><input type="checkbox" value="" (change)="toggle('geography')">Geography</label>
+      </div>
+      <i class="material-icons">
+        {{ courseToggle.geography ? 'keyboard_arrow_down': 'keyboard_arrow_up' }}
+      </i>
+    </div>
+    <div class="sub-course" *ngIf="courseToggle.geography">
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Human Geography</label>
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" value="">Physical Geography</label>
+      </div>
+    </div>
+  </div>
+
+  <hr>
 </div>

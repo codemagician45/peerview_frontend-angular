@@ -12,4 +12,15 @@ export class LeftSidebarComponent {
   constructor () {}
 
   protected groupManagementToggle: boolean = false;
+  protected courseToggle: Object = {
+    engineering: false,
+    finance: false,
+    math: false,
+    geography: false
+  };
+
+  protected toggle (course): void {
+    this.courseToggle[course] = !this.courseToggle[course];
+  }
+
 }
