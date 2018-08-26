@@ -7,10 +7,13 @@ import {
 } from './campus-admin.component';
 import {
   LeftSidebarComponent
-} from './left-sidebar/left-sidebar.component';
+} from './components/left-sidebar/left-sidebar.component';
 import {
   CampusAdminContentsComponent
-} from './contents/contents.component';
+} from './components/contents/contents.component';
+import {
+  CampusAdminDashBoard
+} from './components/dashboard/dashboard.component';
 
 import {
   SharedModule
@@ -27,7 +30,8 @@ import {
   declarations : [
     CampusAdminComponent,
     LeftSidebarComponent,
-    CampusAdminContentsComponent
+    CampusAdminContentsComponent,
+    CampusAdminDashBoard
   ],
   exports: [
   ],

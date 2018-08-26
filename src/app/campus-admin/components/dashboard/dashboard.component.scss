@@ -1,0 +1,119 @@
+.campus-admin-dasboard {
+  margin-top: 20px;
+  padding: 0;
+
+  .dashboard-search-title {
+    div {
+      display: inline-flex;
+      padding: 0;
+      font-weight: 500;
+    }
+  }
+
+  .dashboard-search-bar {
+    padding-top: 5px;
+
+    .search-bar {
+      border: 0;
+      border-bottom: 2px solid #631990;
+      box-shadow: none;
+      font-size: 24px;
+      color: #000000;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    .search-btn{
+      height: 38px;
+      border-radius: 5px;
+      background: #631990;
+      border-color: #631990;
+      color: #ffffff;
+      font-weight: 500;
+
+      &:hover {
+        background: #570e83;
+        border-color: #570e83;
+      }
+    }
+  }
+
+  .dashboard-overview-bar {
+    padding-top: 10px;
+    h3 {
+      margin: 10px 0;
+      color: #5a6068;
+      font-weight: 100;
+
+      span {
+        color: #ff5b79;
+        font-weight: 500;
+      }
+    }
+
+    .view-post-btn {
+      display: inline-flex;
+      margin-top: 5px;
+      color: #5a6068;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  .dashboard-keyword-container {
+    padding-left: 15px;
+
+    .keyword-box {
+      color: #5a6068;
+      border-radius: 5px; 
+      background-color: #fff;
+      padding: 0;
+
+      .title {
+        padding: 10px;
+        font-weight: 700;
+        font-size: 13px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px; 
+        text-indent: 15px;
+      }
+
+      .keyword-grid {
+        border: 1px solid #e9eff4;
+        border-collapse:collapse;
+        padding: 10px;
+      }
+
+      .keywords,
+      .used-in-posts {
+        h2 {
+          margin-top: 10px;
+          margin-bottom: 0;
+          color: #323c47;
+          font-weight: 600;
+        }
+
+        label {
+          font-weight: 500;
+          color: #989898;
+        }
+      }
+
+      .keyword-percentage {
+        padding: 0;
+        div:nth-child(3){
+          border-bottom-left-radius: 5px;
+        }
+        div:nth-child(4){
+          border-bottom-right-radius: 5px;
+        }
+      }
+    }
+  }
+
+}
