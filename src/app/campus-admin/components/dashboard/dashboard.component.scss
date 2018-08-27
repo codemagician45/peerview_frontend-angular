@@ -114,6 +114,22 @@
         }
       }
     }
-  }
+    
+    .keyword-content {
+      .nav {
+        padding: 10px;
 
+        .nav-link {
+          padding: 10px 0;
+          margin-right: 10px;
+          font-weight: 400;
+          // border-bottom: 3px solid #ee7600;
+
+          &.active {
+            border-bottom: 3px solid #ee7600;
+          }
+        }
+      }
+    }
+  }
 }
