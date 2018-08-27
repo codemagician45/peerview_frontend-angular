@@ -40,6 +40,9 @@ import {
   UserApiService
 } from '../services/api';
 import {
+  UtilitiesService
+} from '../services';
+import {
   AuthInterceptor
 } from '../interceptors/authinterceptor';
 import {
@@ -122,7 +125,8 @@ tinymce.init({});
     CourseApiService,
     InterestApiService,
     PostApiService,
-    UserApiService
+    UserApiService,
+    UtilitiesService
   ],
   declarations: [
     AppComponent,
