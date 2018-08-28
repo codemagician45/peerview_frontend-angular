@@ -14,6 +14,13 @@ import {
 import {
   CryptoUtilities
 } from '../../../../shared/utilities';
+import {
+	CampusClassModel
+} from '../../../../shared/models';
+import {
+  MessageNotificationService,
+  NotificationTypes
+} from '../../../../../services';
 
 @Component({
   selector: 'campus-classes-main-component',
@@ -26,36 +33,77 @@ export class CampusClassesMainComponent {
     private campusApiService: CampusApiService
   ) {}
 
-  protected campusId: number;
-  protected campusClassId: number;
-  protected campusClass: CampusClassPostModel[] = [];
-  protected selectedPostType: string = 'timeline';
+  protected courseId: number;
+  protected campusClassList: Array<any> = [];
+  private campusCourseClassIds: Array<any> = [];
+  protected onProceedButtonIsEnabled: boolean = true;
 
   public ngOnInit (): void {
-    this.route.parent.parent.params.subscribe((params: Params) => {
-      this.campusId = params.id;
-    });
-
     this.route.params.subscribe((params: Params) => {
-      this.campusClassId = params.id;
+      this.courseId = params.id;
+      this.getClassList();
     });
   }
 
-  public ngAfterViewInit (): void {
-    this.getCampusClassesPosts();
+  private getClassList (): void {
+    this.courseId = parseInt(CryptoUtilities.decipher(this.courseId), 10);
+    this.campusApiService.promiseGetAllClassList(this.courseId)
+      .then((campusClassList: CampusClassModel[]) => {
+        this.campusClassList = campusClassList;
+      });
   }
 
-  private getCampusClassesPosts (): void {
-    let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-    let campusClassId = parseInt(CryptoUtilities.decipher(this.campusClassId), 10);
-    this.campusApiService.promiseGetAllClassPost(campusId, campusClassId)
-      .then((campusClass: CampusClassPostModel[]) => {
-        this.campusClass = campusClass;
+  protected onClickAddClass (event): void {
+    let classId = parseInt(event.target.id, 10);
+
+    if (event.target.checked === true) {
+       this.campusCourseClassIds.push(classId);
+    } else {
+      // Remove class if unclicked
+      const index: number = this.campusCourseClassIds.indexOf(classId);
+      if (index !== -1) {
+        this.campusCourseClassIds.splice(index, 1);
+      }
+    }
+    // Cannot Select more than 7 classes
+    if (this.campusCourseClassIds.length > 7) {
+      MessageNotificationService.show({
+        notification: {
+          id: 'cannot-add-classes',
+          message: 'Cannot add more than Seven(7) classes',
+          instruction: 'Please select seven or less...'
+        }
+      },
+      NotificationTypes.Warning);
+    }
+  }
+
+  protected onClickProceed (): void {
+    MessageNotificationService.show({
+      notification: {
+        id: 'save-classes-please-wait',
+        message: 'Saving...',
+        instruction: 'Please wait...'
+      }
+    },
+    NotificationTypes.Info);
+    this.onProceedButtonIsEnabled = false;
+
+    this.campusApiService.promiseCreateCampusCourseClassIds(this.campusCourseClassIds)
+      .then(_ => {
+        this.onProceedButtonIsEnabled = true;
       })
-      .catch(() => {});
-  }
-
-  protected onSelectPostType (type): void {
-    this.selectedPostType = type;
+      .catch((error) => {
+        this.onProceedButtonIsEnabled = true;
+        console.log('Error', error);
+        MessageNotificationService.show({
+          notification: {
+            id: 'save-classes-error',
+            message: 'Unable to Save Class/es.',
+            instruction: 'Please try again.'
+          }
+        },
+        NotificationTypes.Error);
+      });
   }
 }

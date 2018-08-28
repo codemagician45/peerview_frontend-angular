@@ -31,8 +31,16 @@ export class CampusCourseFeedLandingComponent implements OnInit {
 
   protected campusId: number;
   protected campusCourseList: Array<any> = [];
+  protected alphabets = [];
+  protected selectedLetter: string = 'All';
+  protected filterResults = [];
+  protected onFilter: boolean = false;
 
   public ngOnInit (): void {
+    for (let i = 65; i <= 90; i++) {
+      this.alphabets.push(String.fromCharCode(i));
+    }
+
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
 
@@ -51,5 +59,22 @@ export class CampusCourseFeedLandingComponent implements OnInit {
   protected onClickNavigate (courseFeedId): void {
     const encryptedCourseFeedId = CryptoUtilities.cipher(courseFeedId);
     this.router.navigate([`../${encryptedCourseFeedId}`], {relativeTo: this.route});
+  }
+
+  protected onSelectedLetter (letter): void {
+    this.selectedLetter = letter;
+
+    if (this.selectedLetter === 'All') {
+      this.onFilter = false;
+    } else {
+      this.onFilter = true;
+
+      this.filterResults = [];
+      for (let i = 0; i < this.campusCourseList.length; i++) {
+        if (this.campusCourseList[i].course.name.indexOf(this.selectedLetter) === 0) {
+          this.filterResults.push(this.campusCourseList[i]);
+        }
+      }
+    }
   }
 }

@@ -2,6 +2,9 @@ import {
   Component
 } from '@angular/core';
 import {
+  Location
+} from '@angular/common';
+import {
   ActivatedRoute,
   Params
 } from '@angular/router';
@@ -23,7 +26,8 @@ import {
 export class CampusCourseFeedMainComponent {
   constructor (
     private route: ActivatedRoute,
-    private campusApiService: CampusApiService
+    private campusApiService: CampusApiService,
+    private location: Location
   ) {}
 
   protected campusId: number;
@@ -52,5 +56,10 @@ export class CampusCourseFeedMainComponent {
         this.campusCourseFeed = campusCourseFeed;
       })
       .catch((error) => {});
+  }
+
+  protected onClickGoBackToCoureseList (): void {
+    // window.history.back();
+    this.location.back();
   }
 }
