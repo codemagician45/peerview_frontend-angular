@@ -65,20 +65,60 @@
       </div>
 
       <div class="col-xs-8 keyword-content">
-        <nav class="nav ">
-          <a class="nav-link active">REPORTED CONTENT</a>
-          <a class="nav-link">SPAM</a>
+        <nav class="nav">
+          <a class="nav-link active" data-toggle="tab">REPORTED CONTENT</a>
+          <a class="nav-link" data-toggle="tab">SPAM</a>
         </nav>
         
-        <div class="tab-content ">
-          <div class="tab-pane active" id="oni">
-            <h6>The are <b>56</b> reported posts.</h6>
+        <div class="tab-content">
+          <div class="col-xs-12 reported-tab-content tab-pane active" id="oni">
+            <span>The are <b>56</b> reported posts.</span>
+            <div class="col-xs-offset-9 col-xs-3 sorting-report input-group-append">
+              <button class="btn flat-btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                Date Ascending <i class="material-icons">keyboard_arrow_down</i>
+              </button>
+              <div class="sorting-dropdown dropdown-menu">
+                <a class="dropdown-item">Date Ascending</a>
+                <a class="dropdown-item">Date Descending</a>
+              </div>
+            </div>
+
+            <div class="posts-wrapper">
+              <div class="top-post post-reply">
+                <div class="row">
+                  <div class="col-md-2 forum-user-details text-right">
+                    <cl-image
+                      class="post-image"
+                      public-id="avatar"
+                    >
+                    <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+                    </cl-transformation>
+                    </cl-image>
+                  </div>
+                  <div class="col-md-10 top-user-left">
+                    <div class="top-user">
+                      <div class="forum-post">
+                        <i class="input-caret grey-caret"></i>
+                        <h4>Bredley One <span>10 minutes ago</span></h4>
+                        <p>I loved watching this video.  I am a visual learner and seeing such good teaching in practice was very helpful for me.  I do like the idea of getting students to challenge each others thinking.  I am going...</p>
+                      </div>
+                      <div class="post-share">
+                        <ul>
+                          <li class="pull-right"><i class="material-icons">bookmark_border</i>46</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="tab-pane" id="twi">
-            <h6>Notice the gap between the content and tab after applying a background color</h6>
+            <span>Notice the gap between the content and tab after applying a background color</span>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
