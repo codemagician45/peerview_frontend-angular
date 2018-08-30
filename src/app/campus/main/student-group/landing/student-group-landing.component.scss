@@ -39,15 +39,31 @@ campus-student-group-landing-component {
     	padding-left: 25px;
     	padding-top: 30px;
     	padding-bottom: 30px;
-			background-color: #f4f4f4;
 			.deals-item {
 				position: relative;
 				padding: 35px;
 				margin-top: 10px;
+				min-height: 152px;
 				width: 100%;
 				display: inline-block;
 				background-color: #fff;
 				border-radius: 3px;
+				h4 {
+					margin-top: 0;
+					white-space: nowrap;
+					font-weight: bold;
+					font-size: 17px;
+					color: #585e66;
+				}
+				p {
+					max-height: 45px;
+					font-size: 16px;
+					color: #989898;
+					overflow: hidden;
+				}
+				&:hover {
+					background-color: darken($color: #fff, $amount: 2%);
+				}
 			}
 		}
 	}
