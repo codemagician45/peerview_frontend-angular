@@ -31,7 +31,7 @@ export class CampusStudentGroupLandingComponent implements OnInit {
 
   protected myCampusStudentGroup: CampusStudentGroupModel[] = [];
   protected publicCampusStudentGroup: CampusStudentGroupModel[] = [];
-  protected selectedGroupType : string = 'public';
+  protected selectedGroupType: string = 'public';
 
 
   public ngOnInit (): void {
