@@ -15,25 +15,17 @@
 
     <div class="deals-wrapper">
       <div class="public-groups-container" *ngIf="selectedGroupType === 'public'">
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <div class="deals-item"></div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            <div class="deals-item"></div>
-
+        <div
+          *ngFor="let item of publicCampusStudentGroup" 
+          class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="deals-item mouse-pointer">
+            <h4 class="text-center">{{item.name}}</h4>
+            <p>{{item.description}}</p>
           </div>
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <div class="deals-item"></div>
-
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                <div class="deals-item"></div>
-  
-              </div>
-              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                  <div class="deals-item"></div>
-    
-                </div>
+        </div>
+        <h4
+          *ngIf="publicCampusStudentGroup.length == 0" 
+          class="text-center">No Public Groups Available.</h4>
       </div>
       <div class="my-groups-container" *ngIf="selectedGroupType === 'myGroups'">
         my group
