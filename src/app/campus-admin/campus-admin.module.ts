@@ -3,6 +3,9 @@ import {
   NgModule
 } from '@angular/core';
 import {
+  CampusAdminLandingPageComponent
+} from './landing-page/landing-page.component';
+import {
   CampusAdminComponent
 } from './campus-admin.component';
 import {
@@ -28,6 +31,7 @@ import {
     campusAdminRouting
   ],
   declarations : [
+    CampusAdminLandingPageComponent,
     CampusAdminComponent,
     LeftSidebarComponent,
     CampusAdminContentsComponent,
