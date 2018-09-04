@@ -22,6 +22,6 @@ export class CampusAdminLandingPageComponent implements OnInit {
 
   protected onSelectInstitution (): void {
     // const campusId = CryptoUtilities.cipher(this.campus.id);
-    this.router.navigate([`/dashboard`], {relativeTo: this.route});
+    this.router.navigate([`97/dashboard`], {relativeTo: this.route});
   }
 }

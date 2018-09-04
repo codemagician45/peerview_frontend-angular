@@ -3,12 +3,12 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'left-sidebar-component',
+  selector: 'campus-admin-left-sidebar-component',
   templateUrl: './left-sidebar.component.html',
   styleUrls: ['./left-sidebar.component.scss']
 })
 
-export class LeftSidebarComponent {
+export class CampusAdminLeftSidebarComponent {
   constructor () {}
 
   protected groupManagementToggle: boolean = false;

@@ -6,7 +6,7 @@
       <i class="material-icons">
         dashboard
       </i>
-      <h5>DASHBOARD</h5>
+      <h5><a [routerLink]="['dashboard']"> DASHBOARD </a> </h5>
     </div>
   </div>
 
@@ -27,10 +27,10 @@
       </i>
     </div>
     <ul class="group-management-options" *ngIf="groupManagementToggle">
-      <li><a href="#">Registry</a></li>
-      <li><a href="#">Suspend User</a></li>
-      <li><a href="#">Post Announcement</a></li>
-      <li><a href="#">Course & Classes</a></li>
+      <li><a [routerLink]="['registry']">Registry</a></li>
+      <li><a [routerLink]="['suspend-user']">Suspend User</a></li>
+      <li><a [routerLink]="['post-announcement']">Post Announcement</a></li>
+      <li><a [routerLink]="['courses-and-classes']">Course & Classes</a></li>
     </ul>
   </div>
 

@@ -9,14 +9,31 @@ import {
   CampusAdminComponent
 } from './campus-admin.component';
 import {
-  LeftSidebarComponent
+  CampusAdminMainComponent
+} from './main/main.component';
+import {
+  CampusAdminLeftSidebarComponent
 } from './components/left-sidebar/left-sidebar.component';
 import {
   CampusAdminContentsComponent
 } from './components/contents/contents.component';
 import {
   CampusAdminDashBoard
-} from './components/dashboard/dashboard.component';
+} from './main/dashboard/dashboard.component';
+
+// Group Management Components
+import {
+  CampusAdminRegistryComponent
+} from './main/registry/registry.component';
+import {
+  CampusAdminSuspendUserComponent
+} from './main/suspend-user/suspend-user.component';
+import {
+  CampusAdminPostAnnouncementComponent
+} from './main/post-announcement/post-announcement.component';
+import {
+  CampusAdminCoursesAndClassesComponent
+} from './main/courses-and-classes/courses-and-classes.component';
 
 import {
   SharedModule
@@ -33,9 +50,14 @@ import {
   declarations : [
     CampusAdminLandingPageComponent,
     CampusAdminComponent,
-    LeftSidebarComponent,
+    CampusAdminMainComponent,
+    CampusAdminLeftSidebarComponent,
     CampusAdminContentsComponent,
-    CampusAdminDashBoard
+    CampusAdminDashBoard,
+    CampusAdminRegistryComponent,
+    CampusAdminSuspendUserComponent,
+    CampusAdminPostAnnouncementComponent,
+    CampusAdminCoursesAndClassesComponent
   ],
   exports: [
   ],
