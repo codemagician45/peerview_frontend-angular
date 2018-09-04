@@ -11,6 +11,7 @@
     <ul class="nav nav-tabs">
       <li [ngClass]="{active: selectedGroupType === 'public'}"><a (click)="onSelectGrouptype('public')">Public Groups</a></li>
       <li [ngClass]="{active: selectedGroupType === 'myGroups'}"><a (click)="onSelectGrouptype('myGroups')">My Groups</a></li>
+      <li [ngClass]="{active: selectedGroupType === 'secretGroups'}"><a (click)="onSelectGrouptype('secretGroups')">Secret Groups</a></li>
     </ul>
 
     <div class="deals-wrapper">
@@ -28,7 +29,30 @@
           class="text-center">No Public Groups Available.</h4>
       </div>
       <div class="my-groups-container" *ngIf="selectedGroupType === 'myGroups'">
-        my group
+        <div
+          *ngFor="let item of myCampusStudentGroup" 
+          class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="deals-item mouse-pointer">
+            <h4 class="text-center">{{item.name}}</h4>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+        <h4
+          *ngIf="myCampusStudentGroup.length == 0" 
+          class="text-center">No My Groups Available.</h4>
+      </div>
+      <div class="my-groups-container" *ngIf="selectedGroupType === 'secretGroups'">
+        <div
+          *ngFor="let item of secretCampusStudentGroup" 
+          class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="deals-item mouse-pointer">
+            <h4 class="text-center">{{item.name}}</h4>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+        <h4
+          *ngIf="secretCampusStudentGroup.length == 0" 
+          class="text-center">No My Groups Available.</h4>
       </div>
     </div>
   </div>
