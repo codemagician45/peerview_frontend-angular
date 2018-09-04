@@ -10,6 +10,9 @@ import {
   CampusApiService
 } from '../../../../../services/api';
 import {
+  CampusMarketplaceModel
+} from '../../../../shared/models';
+import {
   CryptoUtilities
 } from '../../../../shared/utilities';
 
@@ -25,10 +28,21 @@ export class CampusMarketplaceLandingComponent implements OnInit {
   ) {}
 
   protected campusId: number;
+  protected myCampusMarketPlace: CampusMarketplaceModel[] = [];
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
+      this.getMarketPlace();
+    });
+  }
+
+  private getMarketPlace (): void {
+    let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    this.campusApiService.promiseGetMarketplace(campusId)
+    .then((campusMarketPlace: CampusMarketplaceModel[]) => {
+      this.myCampusMarketPlace = campusMarketPlace;
+      console.log(this.myCampusMarketPlace);
     });
   }
 }
