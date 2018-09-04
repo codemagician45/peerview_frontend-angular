@@ -1,0 +1,89 @@
+<div class="campus-student-item-to-sell">
+	<h2 class="text-center m-peersview-y-3">SUBMIT YOUR AD</h2>
+	
+	<div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Ad Title</label>
+				<input 
+					[(ngModel)]="campusMarketPlace.title"
+					type="text" 
+					class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label>Ad Price</label>
+				<input
+					[(ngModel)]="campusMarketPlace.price"
+					type="number" 
+					class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label>Ad Author</label>
+				<input 
+					[(ngModel)]="campusMarketPlace.author"
+					type="text" 
+					class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label>Ad Edition</label>
+				<input 
+					[(ngModel)]="campusMarketPlace.edition"
+					type="text" 
+					class="form-control">
+			</div>
+			
+			<div class="form-group">
+				<label>Ad Description</label>
+				<textarea 
+					[(ngModel)]="campusMarketPlace.description"
+					class="form-control" 
+					rows="8"
+					></textarea>
+				<span class="terms">4000 characters left</span> </div>
+			</div>
+			
+			<div class="col-md-6">
+
+				<div class="form-group">
+					<label>Ad Location</label>
+					<input 
+						[(ngModel)]="campusMarketPlace.location"
+						type="text" 
+						class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label>Upload Photos</label>
+					<shared-upload-image-component
+						[uploadOptions]="{'queueLimit': 4, 'event': 'postAdMarketPlace'}"
+						(uploadComplete)="onUploadComplete($event)"
+						>
+					</shared-upload-image-component>
+				</div>
+
+				<div class="form-group">
+					<label>Email Address</label>
+					<input 
+						[(ngModel)]="campusMarketPlace.email"
+						type="text" 
+						class="form-control">
+				</div>
+				
+				<div class="form-group">
+					<label>Phone Number</label>
+					<input 
+						[(ngModel)]="campusMarketPlace.phone"
+						type="number" 
+						class="form-control">
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-12 bottom-button">
+			<input type="button" class="btn btn-grey" value="Cancel">
+			<input type="button" class="btn btn-primary" value="Post my Ad" (click)="onCreateItemToSell()">
+		</div>
+	</div>
