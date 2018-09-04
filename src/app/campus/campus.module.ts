@@ -72,6 +72,9 @@ import {
   CampusMarketplaceLandingComponent
 } from './main/marketplace/landing/marketplace-landing.component';
 import {
+  CampusMarketplaceItemToSellComponent
+} from './main/marketplace/item-to-sell/marketplace-item-to-sell.component';
+import {
   CampusMentoringComponent
 } from './main/mentoring/mentoring.component';
 import {
@@ -108,6 +111,7 @@ import {
     CampusStudentGroupCreateGroupComponent,
     CampusMarketplaceComponent,
     CampusMarketplaceLandingComponent,
+    CampusMarketplaceItemToSellComponent,
     CampusMentoringComponent,
     ClassPostComponent
   ],
