@@ -15,6 +15,12 @@ import {
 import {
   CryptoUtilities
 } from '../../../../shared/utilities';
+import {
+  PostEmitter
+} from '../../../../shared/emitter';
+import {
+  Location
+} from '@angular/common';
 
 @Component({
   selector: 'campus-marketplace-item-to-sell-component',
@@ -24,7 +30,8 @@ import {
 export class CampusMarketplaceItemToSellComponent {
   constructor (
     private campusApiService: CampusApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   protected campusMarketPlace: CampusMarketplaceModel = new CampusMarketplaceModel();
@@ -37,11 +44,19 @@ export class CampusMarketplaceItemToSellComponent {
   }
 
   protected onCreateItemToSell (): void {
+    PostEmitter.uploadImages().emit();
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+
     this.campusApiService.promiseCreateMarketplace(campusId, this.campusMarketPlace)
-      .then(() => {
+      .then((_) => {
         // navigate to landing
+        this.location.back();
       })
-      .catch(() => {});
+      .catch((error) => {});
   }
+
+  protected onUploadComplete (attachments): void {
+    this.campusMarketPlace.attachments = attachments;
+  }
+
 }
