@@ -8,9 +8,9 @@
     </h2>
   </div>
   <div>
-    <div class="col-md-4">
+    <div class="col-md-4" *ngFor="let item of myCampusMarketPlace">
       <div class="box-list">
-        <div class="box-title"><a href="#marketPlaceAds">Economics Text Book</a><span class="pull-right price">$100</span></div>
+        <div class="box-title"><a href="#marketPlaceAds">{{item.title}}</a><span class="pull-right price"> ${{item.price | number}}</span></div>
         <img src="/src/assets/images/courses/course-biology.jpg" class="img-responsive" alt="">
       </div>
     </div>
