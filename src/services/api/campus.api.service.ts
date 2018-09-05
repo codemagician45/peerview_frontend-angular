@@ -171,6 +171,13 @@ export class CampusApiService extends ApiService {
       });
   }
 
+  public promiseGetMarketplaceItem (itemId: number): Promise<CampusMarketplaceModel> {
+    return this.promiseGetAllResponseData(`marketplace/${itemId}`)
+      .then((response: IResponse) => {
+        return CampusFactory.createMarketplaceItem(response.data);
+      });
+  }
+
   public promiseCreatePost (campusId: number, campusPost: CampusPostModel): Promise<CampusPostModel> {
     return this.promisePostModelData(`${campusId}/post`, campusPost)
       .then((response: IResponse) => {
