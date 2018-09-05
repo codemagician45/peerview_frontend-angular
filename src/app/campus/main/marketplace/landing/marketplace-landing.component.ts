@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {
   ActivatedRoute,
+  Router,
   Params
 } from '@angular/router';
 import {
@@ -24,7 +25,8 @@ import {
 export class CampusMarketplaceLandingComponent implements OnInit {
   constructor (
     private route: ActivatedRoute,
-    private campusApiService: CampusApiService
+    private campusApiService: CampusApiService,
+    private router: Router
   ) {}
 
   protected campusId: number;
@@ -44,5 +46,10 @@ export class CampusMarketplaceLandingComponent implements OnInit {
       this.myCampusMarketPlace = campusMarketPlace;
       console.log(this.myCampusMarketPlace);
     });
+  }
+
+  protected onGetItemDetails (itemId): void {
+    const encryptedItemId = CryptoUtilities.cipher(itemId);
+    this.router.navigate([`../${encryptedItemId}`], {relativeTo: this.route});
   }
 }
