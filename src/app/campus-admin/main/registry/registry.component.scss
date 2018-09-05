@@ -1,3 +1,43 @@
 .campus-admin-registry-component {
+  margin-top: 50px;
 
+  .registry-graphs {    
+    .students, .academics {
+      background-color: #fff;
+      border: 1px solid #ebebeb;
+      border-radius: 3px;
+    }
+    .students-graph, .academics-graph {
+      height: 280px;
+    }
+  }
+
+  .registry-list {
+    margin-top: 15%;
+    .students-list, 
+    .academics-list {
+      padding: 0;
+    }
+
+    .students-list {
+
+      .student-image {
+        img {
+          border-radius: 50%;
+        }
+      }
+
+      .user-name {
+        margin: 5px;
+
+        .student-name {
+          font-weight: 500;
+        }
+      }
+    }
+    
+    .students-list-label, .academics-list-label {
+      margin-top: 20px;
+    }
+  }
 }

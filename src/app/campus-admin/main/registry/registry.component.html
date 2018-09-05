@@ -1,3 +1,86 @@
-<div class="campus-admin-registry-component'">
-  Registry content here
+<div class="campus-admin-registry-component">
+  <h3 class="text-center">Registry</h3>
+  <div class="registry-graphs text-center">
+    <div class="col-xs-6 students">
+      <h5>Students</h5>
+      <hr>
+      <div class="col-xs-12 students-graph">
+        
+      </div>
+    </div>
+    <div class="col-xs-6 academics">
+      <h5>Academics</h5>
+      <hr>
+      <div class="col-xs-12 academics-graph">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="registry-list">
+    <div class="col-xs-6 students-list-label">
+      <div class="col-xs-12">
+        <h5>List of Students</h5>
+        <hr>
+      </div>
+      <div class="col-xs-12 students-list">
+        <div class="col-xs-12 item">
+          <div class="pull-left">
+            <cl-image
+              class="student-image"
+              public-id="avatar"
+            >
+            <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+            </cl-transformation>
+            </cl-image>
+          </div>
+  
+          <div class="user-name">
+            <span
+              [ngStyle]="{'display': 'inline-grid'}"
+              class="student-name">
+              Lorence Tolentino
+            </span>
+            <div class="student-location">
+              Student | Los Angeles, L.A.
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="col-xs-6 academics-list-label">
+      <div class="col-xs-12">
+        <h5>List of Academics</h5>
+        <hr>
+      </div>
+      <div class="col-xs-12 academics-list">
+        <div class="col-xs-12 students-list">
+          <div class="col-xs-12 item">
+            <div class="pull-left">
+              <cl-image
+                class="student-image"
+                public-id="avatar"
+              >
+              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+              </cl-transformation>
+              </cl-image>
+            </div>
+    
+            <div class="user-name">
+              <span
+                [ngStyle]="{'display': 'inline-grid'}"
+                class="student-name">
+                Lorence Tolentino
+              </span>
+              <div class="student-location">
+                Student | Los Angeles, L.A.
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
