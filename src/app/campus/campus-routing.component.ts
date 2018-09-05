@@ -63,6 +63,9 @@ import {
   CampusMarketplaceItemToSellComponent
 } from './main/marketplace/item-to-sell/marketplace-item-to-sell.component';
 import {
+  CampusMarketPlaceItemDetails
+} from './main/marketplace/item-details/marketplace-item-details.component';
+import {
   CampusMentoringComponent
 } from './main/mentoring/mentoring.component';
 import {
@@ -153,6 +156,9 @@ const campusRoutes: Routes = [{
       }, {
         path: 'item-to-sell',
         component: CampusMarketplaceItemToSellComponent
+      }, {
+        path: ':id',
+        component: CampusMarketPlaceItemDetails
       }]
     }, {
       path: 'mentoring',
