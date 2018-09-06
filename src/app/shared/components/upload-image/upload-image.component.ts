@@ -50,6 +50,8 @@ export class SharedUploadImageComponent {
   private user: UserModel = UserService.getUser();
   private uploadCompleteEmitterService = EmitterService.get('uploadCompleteEmitter');
   @Output() private uploadComplete = new EventEmitter();
+  @Output() private imageIsSelected = new EventEmitter();
+
   @Input() private uploadOptions: any;
 
   public ngOnInit (): void {
@@ -74,6 +76,7 @@ export class SharedUploadImageComponent {
     this.uploader = new FileUploader(uploaderOptions);
 
     this.uploader.onAfterAddingFile = (item: any) => {
+      this.imageIsSelected.emit(true);
       let reader = new FileReader();
       reader.readAsDataURL(item.file.rawFile);
       reader.onload = (ev) => {
@@ -81,6 +84,7 @@ export class SharedUploadImageComponent {
         this.getImageOrientation(ev.target['result']);
       };
       return item;
+
     };
 
     this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
@@ -154,6 +158,9 @@ export class SharedUploadImageComponent {
     this.imagesToUpload.splice(i, 1);
     this.uploader.queue.splice(i, 1);
     this.queuedImageOrientation.splice(i, 1);
+    if (this.imagesToUpload.length === 0) {
+      this.imageIsSelected.emit(false);
+    }
   }
 
   private getImageOrientation (img): void {
