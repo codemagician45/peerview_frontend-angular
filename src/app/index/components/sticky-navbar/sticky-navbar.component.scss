@@ -1,12 +1,8 @@
 .index-sticky-navbar-component {
   position: relative;
-  border-bottom: 1px solid #65298a;
   .sticky-navbar {
     background-color: #ffffff;
-  }
-  .sticky-navbar-fixed {
-    position: fixed;
-    width: 100%;
+    border-bottom: 1px solid #65298a;
   }
   .nav-left {
     .sticky-menu {
