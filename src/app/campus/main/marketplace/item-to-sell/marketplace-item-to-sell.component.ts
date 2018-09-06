@@ -31,11 +31,12 @@ export class CampusMarketplaceItemToSellComponent {
   constructor (
     private campusApiService: CampusApiService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
   ) {}
 
   protected campusMarketPlace: CampusMarketplaceModel = new CampusMarketplaceModel();
   protected campusId: number;
+  private hasImageSelected: boolean = false;
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
@@ -43,8 +44,26 @@ export class CampusMarketplaceItemToSellComponent {
     });
   }
 
-  protected onCreateItemToSell (): void {
-    PostEmitter.uploadImages().emit();
+  protected onSubmit (formIsValid): void {
+    if (formIsValid) {
+      if (this.hasImageSelected) {
+        PostEmitter.uploadImages().emit();
+      } else {
+        this.createMarketPlaceItemToSell();
+      }
+    }
+  }
+
+  protected onUploadComplete (attachments): void {
+    this.campusMarketPlace.attachments = attachments;
+    this.createMarketPlaceItemToSell();
+  }
+
+  protected onImageIsSelected (value): void {
+    this.hasImageSelected = value;
+  }
+
+  private createMarketPlaceItemToSell (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
 
     this.campusApiService.promiseCreateMarketplace(campusId, this.campusMarketPlace)
@@ -54,9 +73,4 @@ export class CampusMarketplaceItemToSellComponent {
       })
       .catch((error) => {});
   }
-
-  protected onUploadComplete (attachments): void {
-    this.campusMarketPlace.attachments = attachments;
-  }
-
 }
