@@ -1,13 +1,53 @@
-<div class="campus-marketplace-item-details-component">
-	<h2 class="text-center m-peersview-y-3 peersview-primary-color">ECONOMICS: THE ORIGINAL 1948</h2>
+<div class="campus-marketplace-item-details-component" *ngIf="myCampusMarketPlaceItem">
+	<h2 class="text-center m-peersview-y-3 peersview-primary-color">{{myCampusMarketPlaceItem.title}}</h2>
 	<p style="padding-left: 10px;">
 		<span>
 			<i class="material-icons">location_on</i>
-			The YMCA of Greater Toronto
+			{{myCampusMarketPlaceItem.location}}
 		</span>
 		<span>
 			<i class="material-icons">access_time</i>
-			Added on 31-Mar-2017 at 9:10 PM
+			Added on {{myCampusMarketPlaceItem.createdAt | date:'medium'}}
 		</span>
 	</p>
+	<div class="col-md-8">
+		<div class="m-peersview-y-1 p-peersview-yb-2">
+			<ul class="item-details-list">
+				<li>
+					<label>Author</label>
+					{{myCampusMarketPlaceItem.author}}
+				</li>
+				<li>
+					<label>Edition</label>
+					{{myCampusMarketPlaceItem.edition}}
+				</li>
+			</ul>
+			<div class="clear"></div>
+			<p>
+				<label>Description</label>
+				{{myCampusMarketPlaceItem.description}}
+			</p>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="user-details">
+			<div class="item-price">$ {{myCampusMarketPlaceItem.price}}</div>
+			<div class="user-info">
+				<ul>
+					<li>
+						<label>Seller Info</label>
+						<span>{{myCampusMarketPlaceItem.user.firstName | titlecase}} {{myCampusMarketPlaceItem.user.lastName | titlecase}} </span>
+					</li>
+					<li>
+						<label>Phone Number</label>
+						<span>{{myCampusMarketPlaceItem.phone}}</span>
+					</li>
+					<li>
+						<label>Email Address</label>
+						<span>{{myCampusMarketPlaceItem.email}}</span></li>
+					</ul>
+				</div>
+			</div>
+	</div>
+
 </div>
