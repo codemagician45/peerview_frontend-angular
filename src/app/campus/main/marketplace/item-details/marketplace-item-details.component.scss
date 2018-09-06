@@ -1,11 +1,55 @@
 .campus-marketplace-item-details-component {
-	span {
-		&:last-child {
-			margin-left: 20px;
+	p {
+		span {
+			&:last-child {
+				margin-left: 20px;
+			}
+			i {
+				font-size: 15px;
+				color: #631990;
+			}
 		}
-		i {
-			font-size: 15px;
-			color: #631990;
+	}
+	.item-details-list {
+		margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #eaeaea;
+    overflow: hidden;
+		li {
+			margin: 0 10px 10px 0;
+			width: 30%;
+			display: inline-block;
+			label {
+				display: block;
+				font-size: 16px;
+				text-transform: uppercase;
+			}
+		}
+	}
+	p {
+		label {
+			display: block;
+			font-size: 16px;
+			text-transform: uppercase;
+		}
+	}
+	.item-price {
+    padding: 10px;
+    font-size: 30px;
+		text-align: center;
+    background: #ff5a00;
+    color: #fff;
+	}
+	.user-info {
+		padding: 20px;
+		background-color: #fff;
+		li {
+			margin-bottom: 20px;
+			label {
+				display: block;
+    		font-size: 16px;
+    		text-transform: uppercase;
+			}
 		}
 	}
 }
