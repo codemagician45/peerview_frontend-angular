@@ -5,11 +5,16 @@ campus-marketplace-item-to-sell-component {
 	.form-group {
 		.form-control {
 			border-color: #d29ff1;
+
 		}
+		.ng-invalid:not(form)  {
+			border: 1px solid #a94442; /* red */
+		  }
 		.terms {
 			color: #666;
 			font-size: 11px;
 			margin-top: 10px;
 		}
 	}
+	
 }
