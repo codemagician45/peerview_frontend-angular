@@ -30,7 +30,7 @@ export class CampusMarketPlaceItemDetails {
 	protected myCampusMarketPlaceItem: CampusMarketplaceModel;
 
 	public ngOnInit (): void {
-		this.route.parent.parent.params.subscribe((params: Params) => {
+		this.route.params.subscribe((params: Params) => {
 			this.itemId = params.id;
 			this.getItemDetails();
     });
