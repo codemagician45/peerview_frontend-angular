@@ -39,5 +39,5 @@ export class CampusAdminRegistryComponent implements OnInit {
   }];
 
   public ngOnInit (): void {}
-  
+
 }
