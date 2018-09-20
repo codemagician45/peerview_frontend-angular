@@ -3,9 +3,9 @@
 	
 	<div>
 		<form 
-					#marketPlaceItemToSellDetails="ngForm"
-					(ngSubmit)="onSubmit(marketPlaceItemToSellDetails.valid);"
-					>
+			#marketPlaceItemToSellDetails="ngForm"
+			(ngSubmit)="onSubmit(marketPlaceItemToSellDetails.valid);"
+			>
 
 		<div class="col-md-6">
 			<div class="form-group">
@@ -54,6 +54,7 @@
 				name="description"
 					[(ngModel)]="campusMarketPlace.description"
 					class="form-control" 
+					required
 					rows="8"
 					></textarea>
 				<span class="terms">4000 characters left</span> </div>
@@ -103,6 +104,7 @@
 				</div>
 				<div class="form-group">
 					<button
+						[disabled]="!marketPlaceItemToSellDetails.valid"
 					  type="submit"
 					  class="btn btn-peersview-secondary"
 						>Create
