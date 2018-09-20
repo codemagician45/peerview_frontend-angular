@@ -11,9 +11,8 @@
 		}
 	}
 	.item-details-list {
-		margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: solid 1px #eaeaea;
+		margin: 10px 0;
+    border-bottom: solid 1px #cfcece;
     overflow: hidden;
 		li {
 			margin: 0 10px 10px 0;
@@ -45,11 +44,120 @@
 		background-color: #fff;
 		li {
 			margin-bottom: 20px;
-			label {
-				display: block;
-    		font-size: 16px;
-    		text-transform: uppercase;
-			}
 		}
 	}
+	label {
+		display: block;
+		font-size: 16px;
+		text-transform: uppercase;
+	}
+	span {
+		word-break: break-word;
+	}
+	/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  div {
+
+    &:first-child {
+      display: block;
+    } 
+  }
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: #ff5a00;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+ /* Custom, iPhone Retina */
+ @media only screen and (min-width : 320px) {
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {}
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {}
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .campus-main-component {
+    padding-top: 50px;
+  }
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {}
+
+.mySlides {display: none}
+img {vertical-align: middle;}
 }
