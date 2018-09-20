@@ -1,5 +1,8 @@
 import {
-	Component
+	Component,
+	ElementRef,
+	Inject,
+	ViewChild
 } from '@angular/core';
 import {
 	ActivatedRoute,
@@ -24,10 +27,12 @@ export class CampusMarketPlaceItemDetails {
 	constructor (
 		private campusApiService: CampusApiService,
     private route: ActivatedRoute,
+		private el: ElementRef,
+		@Inject(Window) private window: Window
 	) {}
-
 	protected itemId: number;
 	protected myCampusMarketPlaceItem: CampusMarketplaceModel;
+	private slideIndex = 1;
 
 	public ngOnInit (): void {
 		this.route.params.subscribe((params: Params) => {
@@ -41,7 +46,21 @@ export class CampusMarketPlaceItemDetails {
 		this.campusApiService.promiseGetMarketplaceItem(itemId)
 		.then((campusMarketPlaceItem: CampusMarketplaceModel) => {
 			this.myCampusMarketPlaceItem = campusMarketPlaceItem;
-			console.log(this.myCampusMarketPlaceItem);
 		});
 	}
+
+	protected plusSlides (n): void {
+		this.showSlides(this.slideIndex += n);
+	}
+
+	private showSlides (n): void {
+		let slides = this.el.nativeElement.querySelectorAll('.mySlides');
+
+		if (n > slides.length) { this.slideIndex = 1; }
+		if (n < 1) { this.slideIndex = slides.length; }
+			for (let i = 0; i < slides.length; i++) {
+				slides[i].style.display = 'none';
+			}
+			slides[this.slideIndex - 1].style.display = 'block';
+		}
 }
