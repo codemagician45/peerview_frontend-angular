@@ -1,6 +1,6 @@
 <div class="campus-marketplace-item-details-component" *ngIf="myCampusMarketPlaceItem">
 	<h2 class="text-center m-peersview-y-3 peersview-primary-color">{{myCampusMarketPlaceItem.title}}</h2>
-	<p style="padding-left: 10px;">
+	<p style="padding-left: 10px;" class="m-peersview-y-0">
 		<span>
 			<i class="material-icons">location_on</i>
 			{{myCampusMarketPlaceItem.location}}
@@ -11,7 +11,20 @@
 		</span>
 	</p>
 	<div class="col-md-8">
-		<div class="m-peersview-y-1 p-peersview-yb-2">
+		<div class="p-peersview-yb-2">
+			<div class="slideshow-container">
+				<div class="mySlides">
+					<img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%">
+				</div>						
+				<div class="mySlides">
+					<img src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%">
+				</div>
+				<div class="mySlides">
+					<img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%">
+				</div>
+				<a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+				<a class="next" (click)="plusSlides(1)">&#10095;</a>
+			</div>
 			<ul class="item-details-list">
 				<li>
 					<label>Author</label>
@@ -27,8 +40,9 @@
 				<label>Description</label>
 				{{myCampusMarketPlaceItem.description}}
 			</p>
-		</div>
 	</div>
+</div>
+
 	<div class="col-md-4">
 		<div class="user-details">
 			<div class="item-price">$ {{myCampusMarketPlaceItem.price}}</div>
