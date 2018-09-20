@@ -10,6 +10,9 @@ campus-marketplace-item-to-sell-component {
 		.ng-invalid:not(form)  {
 			border: 1px solid #a94442; /* red */
 		  }
+		  .btn[disabled] {
+			  cursor: not-allowed;
+		  }
 		.terms {
 			color: #666;
 			font-size: 11px;
