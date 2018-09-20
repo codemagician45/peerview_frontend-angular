@@ -1,14 +1,15 @@
 import {
-  Component
+  Component,
+  OnInit,
+  Input
 } from '@angular/core';
 
 @Component({
-  selector: 'campus-admin-dasboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'registry-academics-chart',
+  templateUrl: './academics.chart.html',
+  styleUrls: ['./academics.chart.scss']
 })
-
-export class CampusAdminDashBoard {
+export class RegistryAcademicsChart {
   constructor () {}
 
   public donutChartData = [{
@@ -37,4 +38,7 @@ export class CampusAdminDashBoard {
     value: 10,
     color: 'pink',
   }];
+
+  public ngOnInit (): void {}
+
 }

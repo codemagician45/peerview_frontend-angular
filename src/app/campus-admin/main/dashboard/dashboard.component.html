@@ -46,7 +46,7 @@
           <label>Used in Posts</label>
         </div>
         <div class="col-xs-12 keyword-grid">
-          Graph goes here
+          <angular-d3-donut [id]="'keywordsChart'" [data]="donutChartData" [width]="'100%'" [height]="'100%'" [outerRadius]=90></angular-d3-donut>
         </div>
         <div class="col-xs-12 keyword-percentage">
           <div class="col-xs-6 keyword-grid">

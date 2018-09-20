@@ -42,6 +42,18 @@ import {
   campusAdminRouting
 } from './campus-admin-routing.component';
 
+import {
+  DoughnutChartComponent
+} from 'angular-d3-charts';
+
+// Charts
+import {
+  RegistryStudentsChart
+} from './main/registry/charts/student/students.chart';
+import {
+  RegistryAcademicsChart
+} from './main/registry/charts/academics/academics.chart';
+
 @NgModule({
   imports : [
     SharedModule,
@@ -57,7 +69,10 @@ import {
     CampusAdminRegistryComponent,
     CampusAdminSuspendUserComponent,
     CampusAdminPostAnnouncementComponent,
-    CampusAdminCoursesAndClassesComponent
+    CampusAdminCoursesAndClassesComponent,
+    DoughnutChartComponent,
+    RegistryStudentsChart,
+    RegistryAcademicsChart
   ],
   exports: [
   ],

@@ -677,6 +677,10 @@ amqplib@^0.5.2:
     readable-stream "1.x >=1.1.9"
     safe-buffer "^5.0.1"
 
+angular-d3-charts@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/angular-d3-charts/-/angular-d3-charts-5.0.0.tgz#f8b53b06cea78cdc9bb761543172b65e09595863"
+
 angular-io-datepicker@1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/angular-io-datepicker/-/angular-io-datepicker-1.3.1.tgz#63bbeba8cb7e6845597cb82327be606d25793465"
