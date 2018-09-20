@@ -55,7 +55,7 @@ export class CampusMarketplaceItemToSellComponent {
   }
 
   protected onUploadComplete (attachments): void {
-    this.campusMarketPlace.attachments = attachments;
+    this.campusMarketPlace.attachments =  attachments;
     this.createMarketPlaceItemToSell();
   }
 
@@ -65,12 +65,13 @@ export class CampusMarketplaceItemToSellComponent {
 
   private createMarketPlaceItemToSell (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-
     this.campusApiService.promiseCreateMarketplace(campusId, this.campusMarketPlace)
       .then((_) => {
         // navigate to landing
         this.location.back();
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
