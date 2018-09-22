@@ -19,10 +19,10 @@ import {
 export class SharedConfirmModalComponent {
   constructor (
     private dialog: MatDialog,
-  ) {}
+  ) { }
 
   protected isOk (): void {
-    let shareConfirmModalComponent = this.dialog.getDialogById('SharedConfirmModalComponent');
+    let shareConfirmModalComponent = this.dialog.getDialogById('CancelSavingAdModal');
     shareConfirmModalComponent.close(true);
   }
 }
