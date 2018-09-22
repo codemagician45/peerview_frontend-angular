@@ -44,7 +44,6 @@ export class CampusMarketplaceLandingComponent implements OnInit {
     this.campusApiService.promiseGetMarketplace(campusId)
     .then((campusMarketPlace: CampusMarketplaceModel[]) => {
       this.myCampusMarketPlace = campusMarketPlace;
-      console.log(this.myCampusMarketPlace);
     });
   }
 
