@@ -1,6 +1,12 @@
-.campus-admin-dasboard {
-  margin-top: 20px;
-  padding: 0;
+.campus-admin-dashboard {
+  .dashboard-inner-container {
+    position: absolute;
+    background-color: #fff;
+    margin-top: 25px;
+    padding: 10px 5px;
+  }
+  // margin-top: 20px;
+  // padding: 0;
 
   .dashboard-search-title {
     div {
@@ -89,13 +95,18 @@
         padding: 10px;
       }
 
+      .keywords {
+        border-right: none; 
+      }
+
       .keywords,
       .used-in-posts {
+        border-top: none; 
         h2 {
           margin-top: 10px;
           margin-bottom: 0;
           color: #323c47;
-          font-weight: 600;
+          font-weight: 500;
         }
 
         label {
@@ -104,13 +115,24 @@
         }
       }
 
+      .graph-container {
+        border-top: none;
+        border-bottom: none;
+      }
+
       .keyword-percentage {
         padding: 0;
+        div:nth-child(1){
+          border-right: none;
+        }
         div:nth-child(3){
           border-bottom-left-radius: 5px;
+          border-top: none;
+          border-right: none;
         }
         div:nth-child(4){
           border-bottom-right-radius: 5px;
+          border-top: none;
         }
       }
     }
@@ -209,7 +231,7 @@
               font-size: 11px;
               font-weight: bold;
               list-style: none;
-              display: inline-block;
+              display: inline-flex;
               margin: 0 10px 0 0;
             }
           }

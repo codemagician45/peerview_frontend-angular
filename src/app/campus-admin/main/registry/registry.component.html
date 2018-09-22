@@ -1,92 +1,129 @@
 <div class="campus-admin-registry-component">
-  <h3 class="text-center">Registry</h3>
-  <div class="registry-graphs text-center">
-    <div class="col-xs-6 students">
-      <h5>Students</h5>
-      <hr>
-      <div class="col-xs-12 students-graph">
-        <registry-students-chart></registry-students-chart>
-      </div>
-    </div>
-    <div class="col-xs-6 academics">
-      <h5>Academics</h5>
-      <hr>
-      <div class="col-xs-12 academics-graph">
-        <registry-academics-chart></registry-academics-chart>
-      </div>
-    </div>
-  </div>
-
-  <div class="registry-list">
-    <div class="col-xs-6 students-list-label">
-      <div class="col-xs-12">
-        <h5>List of Students</h5>
-        <hr>
-      </div>
-      <div class="col-xs-12 students-list">
-        <div class="col-xs-12 item">
-          <div class="pull-left">
-            <cl-image
-              class="student-image"
-              public-id="avatar"
-            >
-            <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
-            </cl-transformation>
-            </cl-image>
-          </div>
-  
-          <div class="user-name">
-            <span
-              [ngStyle]="{'display': 'inline-grid'}"
-              class="student-name">
-              Lorence Tolentino
-            </span>
-            <div class="student-location">
-              Student | Los Angeles, L.A.
-            </div>
+  <div class="registry-inner-container col-xs-12">
+    <h4 class="text-center registry-title">Registry</h4>
+    <div class="registry-graphs text-center">
+      <div class="col-xs-6">
+        <div class="students col-xs-12 padding-0">
+          <h5>STUDENTS</h5>
+          <hr>
+          <div class="col-xs-12 students-graph">
+            <registry-students-chart></registry-students-chart>
           </div>
         </div>
-        <hr>
       </div>
-      <div class="col-xs-12 padding-top-10 registry-button-student">
-        <button class="">RESEND INVITE TO UNREGISTERED STUDENT</button>
+      <div class="col-xs-6">
+        <div class="academics col-xs-12 padding-0">
+          <h5>ACADEMICS</h5>
+          <hr>
+          <div class="col-xs-12 academics-graph">
+            <registry-academics-chart></registry-academics-chart>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-xs-6 academics-list-label">
-      <div class="col-xs-12">
-        <h5>List of Academics</h5>
-        <hr>
-      </div>
-      <div class="col-xs-12 academics-list">
-        <div class="col-xs-12 students-list">
-          <div class="col-xs-12 item">
-            <div class="pull-left">
-              <cl-image
-                class="student-image"
-                public-id="avatar"
-              >
-              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
-              </cl-transformation>
-              </cl-image>
-            </div>
-    
-            <div class="user-name">
-              <span
-                [ngStyle]="{'display': 'inline-grid'}"
-                class="student-name">
-                Lorence Tolentino
-              </span>
-              <div class="student-location">
-                Student | Los Angeles, L.A.
-              </div>
-            </div>
-          </div>
+
+    <div class="registry-list">
+      <div class="col-xs-6 students-list-label">
+        <div class="col-xs-12 list-title">
+          <h5>List of Students</h5>
           <hr>
         </div>
+        <div class="col-xs-12 students-list">
+          <div class="items-container">
+            <div class="col-xs-12 item">
+              <div class="pull-left">
+                <cl-image class="student-image" public-id="avatar">
+                  <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+                  </cl-transformation>
+                </cl-image>
+              </div>
+
+              <div class="user-name">
+                <span class="student-name">
+                  Lorence Tolentino
+                </span>
+                <br>
+                <span class="student-location">
+                  Student | Los Angeles, L.A.
+                </span>
+              </div>
+              <hr>
+            </div>
+            <div class="col-xs-12 item">
+              <div class="pull-left">
+                <cl-image class="student-image" public-id="avatar">
+                  <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+                  </cl-transformation>
+                </cl-image>
+              </div>
+
+              <div class="user-name">
+                <span class="student-name">
+                  Lorence Tolentino
+                </span>
+                <br>
+                <span class="student-location">
+                  Student | Los Angeles, L.A.
+                </span>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 padding-top-10 registry-button-student">
+          <button class="btn btn-block btn-peersview-secondary">RESEND INVITE TO UNREGISTERED STUDENT</button>
+        </div>
       </div>
-      <div class="col-xs-12 padding-top-10 registry-button-academic">
-        <button class="">RESEND INVITE TO UNREGISTERED ACADEMIC</button>
+      <div class="col-xs-6 academics-list-label">
+        <div class="col-xs-12 list-title">
+          <h5>List of Academics</h5>
+          <hr>
+        </div>
+        <div class="col-xs-12 academics-list">
+          <div class="col-xs-12 items-container">
+            <div class="col-xs-12 item">
+              <div class="pull-left">
+                <cl-image class="student-image" public-id="avatar">
+                  <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+                  </cl-transformation>
+                </cl-image>
+              </div>
+
+              <div class="user-name">
+                <span class="student-name">
+                  Lorence Tolentino
+                </span>
+                <br>
+                <span class="student-location">
+                  Student | Los Angeles, L.A.
+                </span>
+              </div>
+              <hr>
+            </div>
+            <div class="col-xs-12 item">
+              <div class="pull-left">
+                <cl-image class="student-image" public-id="avatar">
+                  <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+                  </cl-transformation>
+                </cl-image>
+              </div>
+
+              <div class="user-name">
+                <span class="student-name">
+                  Lorence Tolentino
+                </span>
+                <br>
+                <span class="student-location">
+                  Student | Los Angeles, L.A.
+                </span>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="col-xs-12 padding-top-10 registry-button-academic">
+            <button class="btn btn-block btn-peersview-secondary">RESEND INVITE TO UNREGISTERED ACADEMIC</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>

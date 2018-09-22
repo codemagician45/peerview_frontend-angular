@@ -1,5 +1,58 @@
 .campus-admin-courses-and-classes-component {
-  .courses-and-classes-container {
-    background-color: #ffffff;
+  .course-classes-inner-container {
+    position: absolute;
+    // background-color: #fff;
+    margin-top: 25px;
+    padding: 10px 5px;
+
+    .courses-and-classes-container {
+      background-color: #ffffff;
+
+      .row {
+        margin: 0;
+      }
+    }
+
+    .courses-classes-title {
+      font-weight: 600;
+    }
+
+    .dropdown-group {
+      background-color: #fff;
+      padding-bottom: 10px;
+
+      .courses-classes-dropdown {
+        padding: 0px; 
+
+        button {
+          background-color: #fff;
+          border: 1px solid rgb(231, 231, 231);
+        }
+
+        .dropdown-menu {
+          a {
+            display: block;
+            padding-left: 5px;
+          }
+        }
+      }
+      
+      .faculty-dd {
+        padding-left: 25px;
+      }
+
+      .btn-label {
+        width: 65%;
+        text-align: left;
+      }
+
+      .add-course-btn {
+        padding: 0;
+
+        button {
+          border-radius: 3px;
+        }
+      }
+    }
   }
 }

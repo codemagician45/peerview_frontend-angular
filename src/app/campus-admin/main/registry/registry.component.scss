@@ -1,11 +1,24 @@
 .campus-admin-registry-component {
-  margin-top: 50px;
+  .registry-inner-container {
+    position: absolute;
+    margin-top: 25px;
+    padding: 10px 5px;
+
+    .registry-title {
+      margin: 0 0 20px 0;
+      font-weight: 600;
+    }
+  }
 
   .registry-graphs {    
     .students, .academics {
       background-color: #fff;
-      border: 1px solid #ebebeb;
       border-radius: 3px;
+
+      h5 {
+        margin-top: 20px;
+        font-weight: 600;
+      }
     }
     .students-graph, .academics-graph {
       height: 280px;
@@ -17,9 +30,6 @@
     .students-list, 
     .academics-list {
       padding: 0;
-    }
-
-    .students-list {
 
       .student-image {
         img {
@@ -31,17 +41,32 @@
         margin: 5px;
 
         .student-name {
+          display: inline-grid;
           font-weight: 500;
+        }
+
+        .student-name,
+        .student-location {
+          margin-left: 10px;
         }
       }
     }
     
     .students-list-label, .academics-list-label {
       margin-top: 20px;
+
+      .list-title h5 {
+        font-weight: 600;
+      }
     }
 
     .registry-button-student, .registry-button-academic {
       margin-top: 15px;
+      padding: 0;
+
+      button {
+        border-radius: 3px;
+      }
     }
   }
 }
