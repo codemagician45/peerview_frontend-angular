@@ -53,14 +53,13 @@ export class CampusMarketPlaceItemDetails {
 		this.showSlides(this.slideIndex += n);
 	}
 
-	private showSlides (n): void {
-		let slides = this.el.nativeElement.querySelectorAll('.mySlides');
-
-		if (n > slides.length) { this.slideIndex = 1; }
-		if (n < 1) { this.slideIndex = slides.length; }
-			for (let i = 0; i < slides.length; i++) {
-				slides[i].style.display = 'none';
-			}
-			slides[this.slideIndex - 1].style.display = 'block';
+	private showSlides (item): void {
+		let slides = this.el.nativeElement.querySelectorAll('.item-slide');
+		if (item > slides.length) { this.slideIndex = 1; }
+		if (item < 1) { this.slideIndex = slides.length; }
+		for (let i = 0; i < slides.length; i++) {
+			slides[i].style.display = 'none';
 		}
+		slides[this.slideIndex - 1].style.display = 'block';
+	}
 }
