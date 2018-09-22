@@ -7,7 +7,7 @@
 			(ngSubmit)="onSubmit(marketPlaceItemToSellDetails.valid);"
 			>
 
-		<div class="col-md-6">
+		<div class="col-md-6 form-group-container">
 			<div class="form-group">
 				<label>Ad Title</label>
 				<input 
@@ -53,15 +53,14 @@
 				<textarea 
 				name="description"
 					[(ngModel)]="campusMarketPlace.description"
-					class="form-control" 
+					class="form-control description" 
 					required
-					rows="8"
+					rows="7"
 					></textarea>
 				<span class="terms">4000 characters left</span> </div>
 			</div>
 			
-			<div class="col-md-6">
-
+			<div class="col-md-6 form-group-container">
 				<div class="form-group">
 					<label>Ad Location</label>
 					<input 
@@ -85,7 +84,7 @@
 				<div class="form-group">
 					<label>Email Address</label>
 					<input 
-					name="email"
+						name="email"
 						[(ngModel)]="campusMarketPlace.email"
 						type="email" 
 						required
@@ -96,7 +95,7 @@
 				<div class="form-group">
 					<label>Phone Number</label>
 					<input 
-					name="phone"
+						name="phone"
 						[(ngModel)]="campusMarketPlace.phone"
 						type="number" 
 						required
@@ -104,14 +103,15 @@
 				</div>
 				<div class="form-group">
 					<button
-						[disabled]="!marketPlaceItemToSellDetails.valid"
+						[disabled]="!marketPlaceItemToSellDetails.valid || !isBtnCreateAdDisabled"
 					  type="submit"
 					  class="btn btn-peersview-secondary"
 						>Create
 					</button>&nbsp;
 					<button
 					  type="button"
-						class="btn btn-peersview-cancel">Cancel
+						class="btn btn-peersview-cancel"
+						(click)="onShowCancelMessage()">Cancel
 					</button>
 				</div>
 			</div>
