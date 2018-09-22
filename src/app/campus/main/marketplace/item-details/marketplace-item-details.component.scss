@@ -1,9 +1,7 @@
 .campus-marketplace-item-details-component {
 	p {
-		span {
-			&:last-child {
-				margin-left: 20px;
-			}
+    span {
+      display: block;
 			i {
 				font-size: 15px;
 				color: #631990;
@@ -18,18 +16,6 @@
 			margin: 0 10px 10px 0;
 			width: 30%;
 			display: inline-block;
-			label {
-				display: block;
-				font-size: 16px;
-				text-transform: uppercase;
-			}
-		}
-	}
-	p {
-		label {
-			display: block;
-			font-size: 16px;
-			text-transform: uppercase;
 		}
 	}
 	.item-price {
@@ -53,33 +39,49 @@
 	}
 	span {
 		word-break: break-word;
-	}
+  }
+  .item-detail,
+  .seller-detail {
+    padding-right: 0;
+    padding-left: 0;
+  } 
 	/* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
   position: relative;
-  margin: auto;
-  div {
-
+  background-color: #0000002a;
+  
+  .item-slide {
+    img { 
+      margin: auto;
+      height: 250px;
+      // height: 320px;
+      width: auto;
+      vertical-align: middle;
+    }
     &:first-child {
       display: block;
     } 
+    &:not(:first-child) {
+      display: none;
+    }
   }
 }
 
 /* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
+.prev, 
+.next {
   position: absolute;
   top: 50%;
   width: auto;
   padding: 16px;
-  margin-top: -22px;
+  margin-top: -40px;
   color: #ff5a00;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 36px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
+  cursor: pointer;
 }
 
 /* Position the "next button" to the right */
@@ -110,36 +112,17 @@
 
 /* The dots/bullets/indicators */
 .dot {
-  cursor: pointer;
   height: 15px;
   width: 15px;
   margin: 0 2px;
   background-color: #bbb;
-  border-radius: 50%;
   display: inline-block;
-  transition: background-color 0.6s ease;
+  cursor: pointer;
 }
 
-.active, .dot:hover {
+.active, 
+.dot:hover {
   background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
 }
 
  /* Custom, iPhone Retina */
@@ -148,7 +131,28 @@
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {}
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {}
+@media only screen and (min-width : 768px) {
+  p {
+    span {
+      display: inline;
+			&:last-child {
+				margin-left: 20px;
+			}
+		}
+  }
+  .slideshow-container {
+    .item-slide {
+      img { 
+        height: 320px;
+      }
+    }
+  } 
+  .item-detail,
+  .seller-detail {
+    padding-right: 15px;
+    padding-left: 15px;
+  } 
+}
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
   .campus-main-component {
@@ -157,7 +161,4 @@
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {}
-
-.mySlides {display: none}
-img {vertical-align: middle;}
 }
