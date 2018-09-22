@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {
   ActivatedRoute,
+  Router,
   Params
 } from '@angular/router';
 import {
@@ -19,8 +20,16 @@ import {
   PostEmitter
 } from '../../../../shared/emitter';
 import {
-  Location
-} from '@angular/common';
+  MatDialog,
+  MatDialogRef,
+  MatDialogConfig
+} from '@angular/material';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
+import {
+  SharedConfirmModalComponent
+} from '../../../../shared/modals/confirm/confirm-modal.component';
 
 @Component({
   selector: 'campus-marketplace-item-to-sell-component',
@@ -31,14 +40,18 @@ export class CampusMarketplaceItemToSellComponent {
   constructor (
     private campusApiService: CampusApiService,
     private route: ActivatedRoute,
-    private location: Location,
-  ) {}
+    private router: Router,
+    private dialog: MatDialog,
+    private overlay: Overlay
+  ) { }
 
   protected campusMarketPlace: CampusMarketplaceModel = new CampusMarketplaceModel();
   protected campusId: number;
   private hasImageSelected: boolean = false;
+  protected isBtnCreateAdDisabled: boolean;
 
   public ngOnInit (): void {
+    this.isBtnCreateAdDisabled = true;
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
     });
@@ -46,6 +59,7 @@ export class CampusMarketplaceItemToSellComponent {
 
   protected onSubmit (formIsValid): void {
     if (formIsValid) {
+      this.isBtnCreateAdDisabled = false;
       if (this.hasImageSelected) {
         PostEmitter.uploadImages().emit();
       } else {
@@ -67,11 +81,28 @@ export class CampusMarketplaceItemToSellComponent {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
     this.campusApiService.promiseCreateMarketplace(campusId, this.campusMarketPlace)
       .then((_) => {
-        // navigate to landing
-        this.location.back();
+        this.isBtnCreateAdDisabled = true;
+        this.router.navigate(['../landing'], { relativeTo: this.route});
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  protected onShowCancelMessage (): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.id = 'CancelSavingAdModal';
+    dialogConfig.data = {
+     description : 'Are you sure you want to cancel?'
+    };
+    this.dialog.open(SharedConfirmModalComponent, dialogConfig)
+    .beforeClose()
+    .subscribe(_ => {
+      console.log(_);
+    });
   }
 }
