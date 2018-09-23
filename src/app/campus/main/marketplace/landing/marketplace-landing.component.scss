@@ -1,6 +1,15 @@
 campus-marketplace-landing-component {
   h2 {
+		padding-bottom: 20px;
 		color: #631a90;
+	}
+	button {
+		width: 100%;
+		margin-top: 10px;
+	}
+	.market-place-item {
+		padding-right: 0;
+		padding-left: 0;
 	}
 	.box-list {
     margin: 10px 0;
@@ -29,4 +38,26 @@ campus-marketplace-landing-component {
 			margin: auto;
 		}
 	}
+	 /* Custom, iPhone Retina */
+	 @media only screen and (min-width : 320px) {}
+	/* Extra Small Devices, Phones */
+	@media only screen and (min-width : 480px) {
+		h2 {
+			padding-bottom: 0;
+		}
+		button {
+			width: auto;
+			margin-top: 0;
+		}
+		.market-place-item {
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+	}
+	/* Small Devices, Tablets */
+	@media only screen and (min-width : 768px) {}
+	/* Medium Devices, Desktops */
+	@media only screen and (min-width : 992px) {}
+	/* Large Devices, Wide Screens */
+	@media only screen and (min-width : 1200px) {}
 }
