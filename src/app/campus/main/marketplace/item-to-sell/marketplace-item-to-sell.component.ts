@@ -92,17 +92,19 @@ export class CampusMarketplaceItemToSellComponent {
   protected onShowCancelMessage (): void {
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.panelClass = 'cancel-saving-ad-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.id = 'CancelSavingAdModal';
+    dialogConfig.id = 'SharedConfirmModalComponent';
     dialogConfig.data = {
      description : 'Are you sure you want to cancel?'
     };
     this.dialog.open(SharedConfirmModalComponent, dialogConfig)
     .beforeClose()
-    .subscribe(_ => {
-      console.log(_);
+    .subscribe(response => {
+      if (response) {
+        this.router.navigate(['../landing'], { relativeTo: this.route});
+      }
     });
   }
 }
