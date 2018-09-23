@@ -3,11 +3,11 @@
     <i class="material-icons social-icon color-purple">reply</i>
     <div class="following-label">Following (<strong>{{followee.length}}</strong>)</div>
   </h5>
-  <ul class="users-list">
+  <ul class="users-list" *ngIf="followee">
     <li
       data-toggle="tooltip"
       title="{{follows.followee.firstName}} {{follows.followee.lastName}}"
-      *ngFor="let follows of followee">
+      *ngFor="let follows of followee;">
         <!-- <cl-image
           public-id="{{follows.followee.profilePicture}}"
           radius="max"

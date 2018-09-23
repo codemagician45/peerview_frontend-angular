@@ -10,7 +10,11 @@
     }
   }
 
-  .registry-graphs {    
+  .registry-graphs {
+    .graph-container {
+      padding: 0;
+    }
+
     .students, .academics {
       background-color: #fff;
       border-radius: 3px;
@@ -63,9 +67,10 @@
     .registry-button-student, .registry-button-academic {
       margin-top: 15px;
       padding: 0;
-
+      
       button {
         border-radius: 3px;
+        white-space: inherit;
       }
     }
   }

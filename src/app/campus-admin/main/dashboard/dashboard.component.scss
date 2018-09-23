@@ -1,6 +1,6 @@
 .campus-admin-dashboard {
   .dashboard-inner-container {
-    position: absolute;
+    // position: absolute;
     background-color: #fff;
     margin-top: 25px;
     padding: 10px 5px;
@@ -169,11 +169,13 @@
 
       .reported-tab-content {
         margin-top: 10px;
+        padding: 0;
 
         .posts-wrapper {
-          padding: 0 20px;
+          padding: 0 10px;
           width: 100%;
           overflow-y: auto;
+          overflow-x: hidden;
           max-height: 460px;
         }
                   

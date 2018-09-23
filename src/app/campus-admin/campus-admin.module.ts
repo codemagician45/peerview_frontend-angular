@@ -42,10 +42,6 @@ import {
   campusAdminRouting
 } from './campus-admin-routing.component';
 
-import {
-  DoughnutChartComponent
-} from 'angular-d3-charts';
-
 // Charts
 import {
   RegistryStudentsChart
@@ -70,7 +66,6 @@ import {
     CampusAdminSuspendUserComponent,
     CampusAdminPostAnnouncementComponent,
     CampusAdminCoursesAndClassesComponent,
-    DoughnutChartComponent,
     RegistryStudentsChart,
     RegistryAcademicsChart
   ],

@@ -15,7 +15,7 @@
     <i class="material-icons social-icon color-purple">person</i>
     <div>Followers (<strong>{{followers.length}}</strong>)</div>
   </h5>
-  <ul class="users-list">
+  <ul class="users-list" *ngIf="followers">
     <li
       data-toggle="tooltip"
       title="{{follows.follower.firstName}} {{follows.follower.lastName}}"

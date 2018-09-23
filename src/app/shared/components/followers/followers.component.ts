@@ -38,6 +38,8 @@ export class SharedFollowersComponent {
     this.userApiService.promiseGetFollowers()
       .then((followers: UserModel[]) => {
         this.followers = followers;
+        console.log('followers', this.followers);
+
       })
       .catch(() => {});
   }

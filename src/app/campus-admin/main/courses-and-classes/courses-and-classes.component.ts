@@ -11,5 +11,8 @@ import {
 export class CampusAdminCoursesAndClassesComponent implements OnInit {
   constructor () {}
 
+  protected toggleClass: boolean = true;
+
   public ngOnInit (): void {}
+
 }

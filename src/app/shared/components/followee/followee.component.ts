@@ -43,6 +43,7 @@ export class SharedFolloweeComponent implements OnInit {
     this.userApiService.promiseGetFollowee()
       .then((followee: UserModel[]) => {
         this.followee = followee;
+        console.log('followees', this.followee);
       })
       .catch(() => {});
   }

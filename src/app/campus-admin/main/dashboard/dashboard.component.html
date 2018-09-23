@@ -10,18 +10,18 @@
         </div>
       </div>
       <div class="dashboard-search-bar">
-        <div class="col-xs-9">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
           <input class="search-bar form-control" placeholder="Search for..." type="text" ng-reflect-class-base="form-control">
         </div>
-        <div class="col-xs-3 text-right">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-right">
           <button class="btn btn-default search-btn" type="button">SEARCH KEYWORD</button>
         </div>
       </div>
       <div class="dashboard-overview-bar">
-        <div class="col-xs-9">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
           <h3><span>54</span> posts are using this keyword</h3>
         </div>
-        <div class="col-xs-3 text-right">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-right">
           <button class="btn btn-default flat-btn view-post-btn" type="button">
             <i class="material-icons">
               voicemail
@@ -34,7 +34,7 @@
       <hr>
 
       <div class="dashboard-keyword-container">
-        <div class="col-xs-4 keyword-box">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 keyword-box">
           <div class="col-xs-12 title keyword-grid">
             KEYWORDS
           </div>
@@ -47,26 +47,16 @@
             <label>Used in Posts</label>
           </div>
           <div class="col-xs-12 keyword-grid graph-container">
-            <angular-d3-donut [id]="'keywordsChart'" [data]="donutChartData" [width]="'100%'" [height]="'100%'"
-              [outerRadius]=80></angular-d3-donut>
+            <canvas #doughnutChart>{{ doughnutData }}</canvas>
           </div>
           <div class="col-xs-12 keyword-percentage">
-            <div class="col-xs-6 keyword-grid">
-              <span class="badge">40%</span> a
-            </div>
-            <div class="col-xs-6 keyword-grid">
-              <span class="badge">40%</span> b
-            </div>
-            <div class="col-xs-6 keyword-grid">
-              <span class="badge">40%</span> c
-            </div>
-            <div class="col-xs-6 keyword-grid">
-              <span class="badge">40%</span> d
+            <div class="col-xs-6 keyword-grid" *ngFor="let item of chartData;">
+              <span class="badge" [ngStyle]="{'background-color': item.background}">{{ item.percentage }}%</span> {{ item.label }}
             </div>
           </div>
         </div>
 
-        <div class="col-xs-8 keyword-content">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 keyword-content">
           <nav class="nav">
             <a class="nav-link active" data-toggle="tab">REPORTED CONTENT</a>
             <a class="nav-link" data-toggle="tab">SPAM</a>
@@ -75,7 +65,7 @@
           <div class="tab-content">
             <div class="col-xs-12 reported-tab-content tab-pane active" id="oni">
               <span>The are <b>56</b> reported posts.</span>
-              <div class="col-xs-offset-9 col-xs-3 sorting-report input-group-append">
+              <div class="col-xs-12 text-right sorting-report input-group-append">
                 <button class="btn flat-btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">
                   Date Ascending <i class="material-icons">keyboard_arrow_down</i>

@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
     this.postApiService.promiseGetAllPost(10, 0)
     .then((responseData: PostModel[]) => {
       this.posts = responseData;
+      console.log('posts', this.posts);
     })
     .catch(error => {
 

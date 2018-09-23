@@ -4,24 +4,87 @@
     <hr>
     <div class="courses-and-classes-container">
       <div class="row">
-        <div class="col-xs-4">
-          <h4>Course Name <i class="material-icons">create</i></h4>
+        <div class="col-xs-4 title">
+          <h4>Course Name</h4>
+          <i class="material-icons create-icon">create</i>
         </div>
-        <div class="col-xs-4">
-          <h4>Course ID <i class="material-icons">create</i></h4>
+        <div class="col-xs-4 title">
+          <h4>Course ID</h4>
+          <i class="material-icons create-icon">create</i>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 text-right">
+          <h5>
+            <i class="material-icons create-icon">create</i>
+            <i class="material-icons delete-icon">delete</i>
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="dropdown-menu classes-dropdown">
+          <h6 class="dropdown-header" (click)="toggleClasses = !toggleClasses">
+            <i class="material-icons">class</i>
+            Classes (2)
+            <i class="material-icons" *ngIf="toggleClasses">keyboard_arrow_up</i>
+            <i class="material-icons" *ngIf="!toggleClasses">keyboard_arrow_down</i>
+          </h6>
+          <div class="dropdown-item row" *ngIf="toggleClasses">
+            <div class="col-xs-3 title">
+              Class Name 1
+              <i class="material-icons create-icon">create</i>
+            </div>
+            <div class="col-xs-3 title">
+              <i class="material-icons create-icon">group</i>
+              <small>23 People</small>
+            </div>
+            <div class="col-xs-6 text-right title">
+              <i class="material-icons create-icon">trash</i>
+            </div>
+            <hr>
+          </div>
+          <div class="dropdown-item row" *ngIf="toggleClasses">
+            <div class="col-xs-3 title">
+              Class Name 1 <i class="material-icons create-icon">create</i>
+            </div>
+            <div class="col-xs-3 title">
+              <i class="material-icons create-icon">group</i>
+              <small>23 People</small>
+            </div>
+            <div class="col-xs-6 text-right title">
+              <i class="material-icons create-icon">trash</i>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="dropdown-menu classes-dropdown">
+          <div class="col-xs-3">
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-3">
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-xs-6">
+            <button class="btn btn-lg pull-right">Add Class</button>
+          </div>
         </div>
       </div>
       <div class="row">
         <hr>
-        <div class="col-xs-4">
-          <h4>Course Name <i class="material-icons">create</i></h4>
+        <div class="col-xs-4 title">
+          <h4>Course Name </h4>
+          <i class="material-icons create-icon">create</i>
         </div>
-        <div class="col-xs-4">
-          <h4>Course ID <i class="material-icons">create</i></h4>
+        <div class="col-xs-4 title">
+          <h4>Course ID </h4>
+          <i class="material-icons create-icon">create</i>
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-4 text-right">
+          <h5>
+            <i class="material-icons create-icon">create</i>
+            <i class="material-icons delete-icon">delete</i>
+          </h5>
         </div>
       </div>
       <div class="col-xs-12 dropdown-group">
@@ -78,7 +141,7 @@
           </div>
         </div>
         <div class="col-xs-3 add-course-btn">
-          <button class="btn btn-block btn-peersview-primary">Add Course(s)</button>
+          <button class="btn btn-block btn-lg btn-peersview-primary">Add Course(s)</button>
         </div>
       </div>
     </div>
