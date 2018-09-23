@@ -8,12 +8,15 @@
       </button>
     </h2>
   </div>
-  <div>
+  <div *ngIf="myCampusMarketPlace.length > 0">
     <div class="col-md-4 col-sm-6 col-xs-12 market-place-item" *ngFor="let item of myCampusMarketPlace">
       <div class="box-list">
         <div class="box-title"><a (click)="onGetItemDetails(item.id)">{{item.title}}</a><span class="pull-right price"> ${{item.price | number}}</span></div>
         <img src="/src/assets/images/courses/course-biology.jpg" class="img-responsive" alt="">
       </div>
     </div>
+  </div>
+  <div *ngIf="myCampusMarketPlace.length === 0">
+    <h3 class="text-center">No Items to show</h3>
   </div>
 </div>
