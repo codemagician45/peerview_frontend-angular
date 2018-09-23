@@ -31,6 +31,13 @@ export class IndexOnResizeActiveDirectiveComponent {
     let addActiveClassInTrendingNow = this.el.nativeElement.querySelector('.index-sticky-navbar-component .trending-now');
     let addActiveClassInLeisure = this.el.nativeElement.querySelector('.index-sticky-navbar-component .leisure');
     let removeActiveClass = this.el.nativeElement.querySelectorAll('.index-sticky-navbar-component .sticky-menu li');
+    let addStickyClassiInCommunity = this.el.nativeElement.querySelector('.index-community-page-component index-sticky-navbar-component');
+
+    if (windowTop >= community.offsetTop) {
+      this.renderer.addClass(addStickyClassiInCommunity, 'sticky-navbar-fixed');
+    } else {
+      this.renderer.removeClass(addStickyClassiInCommunity, 'sticky-navbar-fixed');
+    }
 
     if (((windowTop) >= community.offsetTop)
     && (windowTop <= (community.offsetTop + (community.clientHeight - communityStickyNavbar.clientHeight)))) {
