@@ -28,21 +28,33 @@ export class CampusStudentGroupLandingComponent implements OnInit {
   ) {}
 
   protected campusId: number;
+
   protected myCampusStudentGroup: CampusStudentGroupModel[] = [];
   protected publicCampusStudentGroup: CampusStudentGroupModel[] = [];
+  protected secretCampusStudentGroup: CampusStudentGroupModel[] = [];
+  protected selectedGroupType: string = 'public';
 
   public ngOnInit (): void {
     this.route.parent.parent.params.subscribe((params: Params) => {
       this.campusId = params.id;
 
+      this.getSecretGroup();
       this.getMyPrivateGroup();
       this.getPublicGroup();
     });
   }
 
+  private getSecretGroup (): void {
+    let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
+    this.campusApiService.promiseGetAllStudentGroup(campusId, false, 10, 0, 3)
+      .then((campusStudentGroup: CampusStudentGroupModel[]) => {
+        this.secretCampusStudentGroup = campusStudentGroup;
+      });
+  }
+
   private getMyPrivateGroup (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-    this.campusApiService.promiseGetAllStudentGroup(campusId, true)
+    this.campusApiService.promiseGetAllStudentGroup(campusId, true, 10, 0, 2)
       .then((campusStudentGroup: CampusStudentGroupModel[]) => {
         this.myCampusStudentGroup = campusStudentGroup;
       });
@@ -50,9 +62,13 @@ export class CampusStudentGroupLandingComponent implements OnInit {
 
   private getPublicGroup (): void {
     let campusId = parseInt(CryptoUtilities.decipher(this.campusId), 10);
-    this.campusApiService.promiseGetAllStudentGroup(campusId)
+    this.campusApiService.promiseGetAllStudentGroup(campusId, false, 10, 0, 1)
       .then((campusStudentGroup: CampusStudentGroupModel[]) => {
         this.publicCampusStudentGroup = campusStudentGroup;
       });
+  }
+
+  protected onSelectGrouptype (type): void {
+    this.selectedGroupType = type;
   }
 }

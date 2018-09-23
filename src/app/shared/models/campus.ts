@@ -136,7 +136,7 @@ export class CampusStudentGroupModel extends Model {
   public isConfirm?: boolean;
   public campusId?: number;
   public campusPrivacyId?: number = 1;
-
+  public logo: string;
   public init (): void {}
 }
 

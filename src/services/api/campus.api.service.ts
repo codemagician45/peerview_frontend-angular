@@ -129,14 +129,16 @@ export class CampusApiService extends ApiService {
 
   public promiseGetAllStudentGroup (
     campusId: number,
-    isMyGroup = false,
+    isMyGroup = true,
     limit: number = 10,
-    offset: number = 0
+    offset: number = 0,
+    campusPrivacyId: number
   ): Promise<CampusStudentGroupModel[]> {
     let params = new HttpParams()
       .set('isMyGroup', isMyGroup.toString())
       .set('limit', limit.toString())
-      .set('offset', offset.toString());
+      .set('offset', offset.toString())
+      .set('campusPrivacyId', campusPrivacyId.toString());
 
       this.options = {
         params: params
