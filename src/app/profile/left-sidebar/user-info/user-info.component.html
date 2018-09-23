@@ -8,7 +8,10 @@
       <cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
       </cl-transformation>
     </cl-image>
-    <input type="button" value="Follow" class="hidden-md hidden-lg btn btn-white follow-btn"/>
+    <input type="button" 
+      *ngIf="!isUserProfile" 
+      value="Follow" 
+      class="hidden-md hidden-lg btn btn-white follow-btn"/>
     <h4>{{user?.firstName}} {{user?.lastName}}</h4>
     <shared-user-rating [userCredits]="user.userCredits[0]"></shared-user-rating>
     <div class="edit-profile" *ngIf="isUserProfile">
