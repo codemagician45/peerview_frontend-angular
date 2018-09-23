@@ -41,17 +41,19 @@ export class SharedReportPostComponent {
 
   protected onOpenConfirmModal (): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.panelClass = 'report-post-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.id = 'SharedConfirmModalComponent';
     dialogConfig.data = {
-     description : 'Are you sure you want to cancel?'
+     description : 'Do you want to proceed?'
     };
     this.dialog.open(SharedConfirmModalComponent, dialogConfig)
     .beforeClose()
     .subscribe(response => {
-      this.onDeletePost.emit(this.post.id);
+      if (response) {
+        this.onDeletePost.emit(this.post.id);
+      }
     });
   }
 }
