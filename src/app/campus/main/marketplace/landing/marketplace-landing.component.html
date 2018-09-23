@@ -1,6 +1,7 @@
 <div class="campus-student-group-landing-component">
   <div class="page-title">
-    <h2 class="text-center m-peersview-y-3">MARKETPLACE
+    <h2 class="text-center m-peersview-y-3">
+      <span>MARKETPLACE</span> 
       <button
         class="pull-right btn-peersview-primary btn-peersview-md"
         [routerLink]="['../item-to-sell']">SELL YOUR ITEM
@@ -8,7 +9,7 @@
     </h2>
   </div>
   <div>
-    <div class="col-md-4" *ngFor="let item of myCampusMarketPlace">
+    <div class="col-md-4 col-sm-6 col-xs-12 market-place-item" *ngFor="let item of myCampusMarketPlace">
       <div class="box-list">
         <div class="box-title"><a (click)="onGetItemDetails(item.id)">{{item.title}}</a><span class="pull-right price"> ${{item.price | number}}</span></div>
         <img src="/src/assets/images/courses/course-biology.jpg" class="img-responsive" alt="">
