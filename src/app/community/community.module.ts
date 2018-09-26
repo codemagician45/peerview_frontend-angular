@@ -9,6 +9,9 @@ import {
   CommunityLeftMenuComponent
 } from './components/left-menu/left-menu.component';
 import {
+  CommunityRightMenuComponent
+} from './components/right-menu/right-component';
+import {
   CommunityTabMenuComponent
 } from './components/tab-menu/tab-menu.component';
 import {
@@ -20,6 +23,15 @@ import {
 import {
   communityRouting
 } from './community-routing.component';
+import {
+  StudentCommunityComponent
+} from './student-community/student-community.component';
+import {
+  PrivateCommunityComponent
+} from './private-community/private-community.component';
+import {
+  CommunityMobileHeader
+} from './components/mobile-header-menu/mobile-header.component';
 
 @NgModule({
   imports : [
@@ -29,8 +41,12 @@ import {
   declarations : [
     CommunityComponent,
     CommunityLeftMenuComponent,
+    CommunityRightMenuComponent,
     CommunityTabMenuComponent,
-    CLImageHoverDirectiveComponent
+    CLImageHoverDirectiveComponent,
+    StudentCommunityComponent,
+    PrivateCommunityComponent,
+    CommunityMobileHeader
   ],
   exports: [],
   providers: [],
