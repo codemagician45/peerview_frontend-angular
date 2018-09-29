@@ -26,15 +26,19 @@ export class SharedSlideToggleDirectiveComponent {
   @HostListener('click', ['$event'])
   private onClick (): void {
     let element = this.window.document.querySelector(`.${this.class}`);
+    let icon = this.el.nativeElement.querySelector('.inline-widget .inline-widget-header .material-icons');
+
     this.renderer.setStyle(element, 'animation-duration', '.3s');
+
     if (!element.classList.contains('toggled')) {
       this.renderer.removeClass(element, 'slideUp');
       this.renderer.addClass(element, 'toggled');
-      this.el.nativeElement.innerHTML = 'remove';
+      icon.innerHTML = 'remove';
+
     } else {
       this.renderer.removeClass(element, 'toggled');
       this.renderer.addClass(element, 'slideUp');
-      this.el.nativeElement.innerHTML = 'add';
+      icon.innerHTML = 'add';
     }
 
     timer(300)
