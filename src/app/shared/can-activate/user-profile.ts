@@ -31,7 +31,6 @@ export class CanActivateUserProfile implements CanActivate {
 
       this.userApiService.promiseGetUser()
         .then((userData: UserModel) => {
-          console.log('UserService');
           TokenStore.setAccessToken(userData.token);
           UserService.setUser(userData);
 
