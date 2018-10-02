@@ -49,16 +49,13 @@ export class UserApiService extends ApiService {
   }
 
   public promiseGetTimeline (userId?: number): Promise<PostModel[]> {
+    let params: HttpParams;
     if (userId) {
-      let params = new HttpParams()
+      params = new HttpParams()
         .set('userId', userId.toString());
-
-        this.options = {
-          params: params
-        };
     }
 
-    return this.promiseGetAllResponseData('timeline')
+    return this.promiseGetAllResponseData('timeline', {params: params})
       .then((response: IResponse) => {
         return PostFactory.createManyPost(response.data);
       });
@@ -162,7 +159,7 @@ export class UserApiService extends ApiService {
       });
   }
 
-  public promiseGetUserCredits (user: UserModel): Promise<IResponse> {
+  public promiseGetUserCredits (): Promise<IResponse> {
     return this.promiseGetAllResponseData('credits')
     .then((responseData: IResponse) => {
       return responseData;
