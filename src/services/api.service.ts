@@ -62,12 +62,12 @@ export abstract class ApiService {
     return this.getUrlPromises[url];
   }
 
-  protected promiseGetAllResponseData (url?: string): Promise<IResponse> {
+  protected promiseGetAllResponseData (url?: string, options?: any): Promise<IResponse> {
     url = url ? `/${url}` : '';
     url = `${this.baseURIPlural}${url}`;
 
     this.getUrlPromises[url] = new Promise((resolve, reject) => {
-      this.http.get(url, this.options)
+      this.http.get(url, this.options || options)
         .subscribe((response: any) => {
           resolve(response);
           this.resetAbstractURIs();
