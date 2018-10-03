@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [{
+    "name": "peersview-front",
+    "image": "caninojories/peersview-front:v0.0.2",
+    "portMappings": [{
+      "hostPort": 80,
+      "containerPort": 80
+    }]
+  }]
+}
