@@ -1,6 +1,6 @@
 {
-  "name": "peer-up",
-  "version": "0.0.0",
+  "name": "peersview-front",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port $PORT",
