@@ -103,7 +103,7 @@
           <div class="dropdown-menu dropdown-menu-right users-notification" aria-labelledby="users-notification">
             <div class="flyout-title">NOTIFICATIONS</div>
             <hr>
-            <ul class="conversation-list">
+            <!-- <ul class="notification-list">
               <li class="co-row">
                 <div class="co-img"><img src="https://lh5.googleusercontent.com/-MUoRMJwmCEc/AAAAAAAAAAI/AAAAAAAAAAA/AAnnY7oeEoFO5rXLQURJkIM-4pYNT7rQDQ/s96-c/photo.jpg"></div>
                 <div class="co-info">
@@ -128,7 +128,9 @@
                   <span class="co-time">Some time ago</span>
                 </div>
               </li>
-            </ul>
+            </ul> -->
+            <notification-list-component></notification-list-component>
+
             <!-- <div class="no-notifications">No notifications yet.</div> -->
             <div class="flyout-view"><a [routerLink]="['/notification']">View All</a></div>
           </div>

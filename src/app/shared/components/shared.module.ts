@@ -86,6 +86,9 @@ import {
   SharedAnnouncementComponent
 } from './announcement/announcement.component';
 import {
+  SharedNotificationListComponent
+} from './notifcation-list/notification-list.component';
+import {
   TimeAgoPipe
 } from 'time-ago-pipe';
 /*providers*/
@@ -139,6 +142,7 @@ export function provideConfig (): any {
     SharedUploadImageComponent,
     SharedReportPostComponent,
     SharedAnnouncementComponent,
+    SharedNotificationListComponent,
     IndexFooterComponent,
     TimeAgoPipe
   ],
@@ -167,6 +171,7 @@ export function provideConfig (): any {
     MatProgressBarModule,
     MatDatepickerModule,
     SharedAnnouncementComponent,
+    SharedNotificationListComponent,
     IndexFooterComponent,
     MatInputModule
   ],
