@@ -3,9 +3,12 @@
 # We label our stage as ‘builder’
 FROM node:9-alpine as builder
 
-ENV NPM_CONFIG_PRODUCTION=false
-ENV NODE_ENV=production
-ENV PEERSVIEW_API=http://peersview.us-east-2.elasticbeanstalk.com/api/v1/
+ARG npmConfigProduction
+ARG nodeEnv
+ARG peersviewApi
+ENV NPM_CONFIG_PRODUCTION=${npmConfigProduction}
+ENV NODE_ENV=${nodeEnv}
+ENV PEERSVIEW_API=${peersviewApi}
 
 COPY package*.json ./
 
@@ -28,6 +31,9 @@ FROM nginx:1.15-alpine
 ## Copy our default nginx config
 COPY nginx /etc/nginx/conf.d
 
+## Copy our default ssl
+COPY ssl ~/ssl
+
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
@@ -35,5 +41,6 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
