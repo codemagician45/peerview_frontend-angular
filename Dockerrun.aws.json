@@ -3,13 +3,6 @@
   "containerDefinitions": [{
     "name": "peersview-front",
     "image": "caninojories/peersview-front:v0.0.3",
-    "environment": [{
-      "name": "NODE_ENV",
-      "value": "production"
-    }, {
-      "name": "PEERSVIEW_API",
-      "value": "http://peersview.us-east-2.elasticbeanstalk.com/api/v1/"
-    }],
     "memory": 20,
     "portMappings": [{
       "hostPort": 80,
