@@ -3,6 +3,10 @@
 # We label our stage as ‘builder’
 FROM node:9-alpine as builder
 
+ENV NPM_CONFIG_PRODUCTION=false
+ENV NODE_ENV=production
+ENV PEERSVIEW_API=http://peersview.us-east-2.elasticbeanstalk.com/api/v1/
+
 COPY package*.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
