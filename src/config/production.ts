@@ -8,8 +8,8 @@ export const PRODUCTION = {
       'clientId': '77y99ina3fva1b'
     },
     'facebook': {
-      'clientId': '2014589065490082',
-      'apiVersion': 'v2.11'
+      'clientId': '2018255745088769',
+      'apiVersion': 'v2.12'
     }
   }
 };
