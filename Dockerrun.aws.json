@@ -3,7 +3,7 @@
   "containerDefinitions": [{
     "name": "peersview-front",
     "image": "caninojories/peersview-front:v0.0.4",
-    "memory": 20,
+    "memory": 128,
     "portMappings": [{
       "hostPort": 80,
       "containerPort": 80
