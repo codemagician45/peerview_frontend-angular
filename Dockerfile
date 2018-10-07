@@ -3,13 +3,6 @@
 # We label our stage as ‘builder’
 FROM node:9-alpine as builder
 
-ARG npmConfigProduction
-ARG nodeEnv
-ARG peersviewApi
-ENV NPM_CONFIG_PRODUCTION=${npmConfigProduction}
-ENV NODE_ENV=${nodeEnv}
-ENV PEERSVIEW_API=${peersviewApi}
-
 COPY package*.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
@@ -31,9 +24,6 @@ FROM nginx:1.15-alpine
 ## Copy our default nginx config
 COPY nginx /etc/nginx/conf.d
 
-## Copy our default ssl
-COPY ssl ~/ssl
-
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
 
@@ -41,6 +31,5 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
-EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
