@@ -3,6 +3,13 @@
 # We label our stage as ‘builder’
 FROM node:9-alpine as builder
 
+ARG npmConfigProduction
+ARG nodeEnv
+ARG peersviewApi
+ENV NPM_CONFIG_PRODUCTION=${npmConfigProduction}
+ENV NODE_ENV=${nodeEnv}
+ENV PEERSVIEW_API=${peersviewApi}
+
 COPY package*.json ./
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
@@ -21,8 +28,26 @@ RUN npm run build-prod
 
 FROM nginx:1.15-alpine
 
-## Copy our default nginx config
-COPY nginx /etc/nginx/conf.d
+ARG nodeEnv
+ENV NODE_ENV=${nodeEnv}
+
+## Remove default nginx config
+RUN rm -rf /etc/nginx/conf.d/*
+
+## Copy nginx
+COPY --from=builder /app/nginx /nginx
+
+## Copy the nginx mimeTypes
+COPY --from=builder /app/nginx/mime.types /etc/nginx/conf.d/mime.types
+
+## Copy ssl
+COPY --from=builder /app/ssl /ssl
+
+RUN \
+if [ "$nodeEnv" == "production" ]; then cp /nginx/production.conf /etc/nginx/conf.d/production.conf; else cp /nginx/development.conf /etc/nginx/conf.d/default.conf; fi
+
+RUN \
+if [ "$nodeEnv" == "production" ]; then cp -R /ssl /sslPeersview; fi
 
 ## Remove default nginx website
 RUN rm -rf /usr/share/nginx/html/*
@@ -30,6 +55,8 @@ RUN rm -rf /usr/share/nginx/html/*
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+EXPOSE 8080
 EXPOSE 80
+EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx-debug", "-g", "daemon off;"]
