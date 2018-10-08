@@ -53,7 +53,7 @@ productionBuild()
     --tag ${IMAGE_NAME}:v${IMAGE_VERSION} \
     --build-arg npmConfigProduction=false \
     --build-arg nodeEnv=production \
-    --build-arg peersviewApi=http://peersview.us-east-2.elasticbeanstalk.com/api/v1/ \
+    --build-arg peersviewApi=https://peersview.com/api/v1/ \
     --file Dockerfile \
     .
 }
