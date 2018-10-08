@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as ‘builder’
-FROM node:9-alpine as builder
+FROM node:8.12.0-alpine as builder
 
 ARG npmConfigProduction
 ARG nodeEnv
@@ -44,7 +44,7 @@ COPY --from=builder /app/nginx/mime.types /etc/nginx/conf.d/mime.types
 COPY --from=builder /app/ssl /ssl
 
 RUN \
-if [ "$nodeEnv" == "production" ]; then cp /nginx/production.conf /etc/nginx/conf.d/production.conf; else cp /nginx/development.conf /etc/nginx/conf.d/default.conf; fi
+if [ "$nodeEnv" == "production" ]; then cp /nginx/production.conf /etc/nginx/conf.d/default.conf; else cp /nginx/development.conf /etc/nginx/conf.d/default.conf; fi
 
 RUN \
 if [ "$nodeEnv" == "production" ]; then cp -R /ssl /sslPeersview; fi
@@ -59,4 +59,4 @@ EXPOSE 8080
 EXPOSE 80
 EXPOSE 443
 
-CMD ["nginx-debug", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
