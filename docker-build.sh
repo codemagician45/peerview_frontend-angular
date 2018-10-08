@@ -47,13 +47,21 @@ setNodePackageFileContents()
   fi
 }
 
-buildImage()
+productionBuild()
 {
   docker build \
     --tag ${IMAGE_NAME}:v${IMAGE_VERSION} \
     --build-arg npmConfigProduction=false \
     --build-arg nodeEnv=production \
     --build-arg peersviewApi=http://peersview.us-east-2.elasticbeanstalk.com/api/v1/ \
+    --file Dockerfile \
+    .
+}
+
+developmentBuild()
+{
+  docker build \
+    --tag ${IMAGE_NAME}:v${IMAGE_VERSION} \
     --file Dockerfile \
     .
 }
@@ -66,37 +74,17 @@ pushImage()
 
 runDevContainer()
 {
-echo -n "
-INTRIBE_API_LISTEN_TCP_PORT=${INTRIBE_API_LISTEN_TCP_PORT}
-INTRIBE_API_LISTEN_DOMAIN_NAME=${INTRIBE_API_LISTEN_DOMAIN_NAME}
-INTRIBE_MONGO_DB_ADMIN_URL="mongodb://intribe-db:27017/admin?authSource=admin"
-INTRIBE_MONGO_DB_URL="mongodb://intribe-db:27017/intribe-api?authSource=admin"
-INTRIBE_MONGO_DB_ADMIN_PW=${INTRIBE_MONGO_DB_ADMIN_PW}
-INTRIBE_MONGO_DB_API_USER=${INTRIBE_MONGO_DB_API_USER}
-INTRIBE_MONGO_DB_API_USER_PW=${INTRIBE_MONGO_DB_API_USER}
-INTRIBE_AUTH0_API_CLIENT_ID=${INTRIBE_AUTH0_API_CLIENT_ID}
-INTRIBE_AUTH0_API_CLIENT_SECRET=${INTRIBE_AUTH0_API_CLIENT_SECRET}
-INTRIBE_AUTH0_API_PASSWORD=${INTRIBE_AUTH0_API_PASSWORD}
-INTRIBE_HASH_SECRET=${INTRIBE_HASH_SECRET}
-INTRIBE_SENDGRID_API_KEY=${INTRIBE_SENDGRID_API_KEY}
-INTRIBE_DB_INIT_CREATE_ADMIN_USER=${INTRIBE_DB_INIT_CREATE_ADMIN_USER}
-INTRIBE_DB_INIT_CREATE_API_USER=${INTRIBE_DB_INIT_CREATE_API_USER}
-INTRIBE_DB_INIT_INSERT_DEFAULT_CONFIG=${INTRIBE_DB_INIT_INSERT_DEFAULT_CONFIG}
-INTRIBE_INIT_DONT_RUN_APP=${INTRIBE_INIT_DONT_RUN_APP}
-INTRIBE_DEBUG_LEVEL=${INTRIBE_DEBUG_LEVEL}" > docker-run-env.list
 
   docker run --rm --name ${CONTAINER_NAME} \
-    --publish ${INTRIBE_API_LISTEN_TCP_PORT}:${INTRIBE_API_LISTEN_TCP_PORT}  \
-    --network intribe-dev \
-    --rm \
-    --detach \
-    --env-file docker-run-env.list \
-    \
+    --publish 80:8080 \
     ${IMAGE_NAME}:v${IMAGE_VERSION}
 }
 
-runMongoDbContainer() {
-  docker run --name intribe-db --publish 27017:27017 --network intribe-dev -d mongo:3.6
+runProductionContainer()
+{
+  docker run --rm --name ${CONTAINER_NAME} \
+    --publish 443:443 \
+    ${IMAGE_NAME}:v${IMAGE_VERSION}
 }
 
 killContainer()
@@ -120,16 +108,18 @@ rebuildImage()
 }
 
 enterContainer() {
-  docker exec-it ${CONTAINER_NAME} /bin/bash
+  docker exec -it ${CONTAINER_NAME} /bin/bash
 }
-
 
 run() {
   local COMMAND=$1
 
   case ${COMMAND} in
-    build)
-      buildImage
+    productionBuild)
+      productionBuild
+      ;;
+    developmentBuild)
+      developmentBuild
       ;;
     push)
       pushImage
@@ -140,8 +130,8 @@ run() {
     runDev)
       runDevContainer
       ;;
-    runMongo)
-      runMongoDbContainer
+    runProduction)
+      runProductionContainer
       ;;
     kill)
       killContainer
@@ -153,7 +143,7 @@ run() {
       enterContainer
       ;;
     *)
-      echo "Usage: $0 [ build | rebuild | runDev | runMongo | kill | remove | ssh ]"
+      echo "Usage: $0 [ productionBuild | developmentBuild | rebuild | runDev | runProduction | kill | remove | ssh ]"
       ;;
   esac
 }
