@@ -68,7 +68,7 @@
         padding: 0 15px;
       }
     }
-  .benefits {
+  .benefits-heading {
     position: relative;
     padding: 30px 0;
     background: $primary-color-dark;
@@ -84,7 +84,7 @@
     }
   }
 
-  .benefits .choose-category {
+  .benefits-heading .choose-category {
     li {
       padding: 5px 5px;
     }
@@ -123,7 +123,7 @@
         margin-bottom: 20px;
       }
     }
-    .benefits {
+    .benefits-heading {
       .choose-category {
         display: flex;
         align-items: center;

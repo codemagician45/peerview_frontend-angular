@@ -106,6 +106,10 @@ export const appRoutes: Routes = [{
   loadChildren: './campus-admin/campus-admin.module#CampusAdminModule',
   canActivate: [CanActivateUserProfile],
   data: {state: 'campus-admin'}
+}, {
+  path: 'terms-of-use',
+  loadChildren: './terms-of-use/terms-of-use.module#TermsOfUseModule',
+  data: {state: 'terms-of-use'}
 }];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  Inject
 } from '@angular/core';
 
 @Component({
@@ -8,5 +9,12 @@ import {
   styleUrls: ['./service-page.component.scss']
 })
 export class IndexServicePageComponent {
-  constructor () {}
+  constructor (
+    @Inject(Window) private window: Window
+  ) {}
+
+  protected gotoSection (section): void {
+    let container = this.window.document.querySelector(`#${section}`);
+    container.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+  }
 }

@@ -11,7 +11,7 @@
           The community connects you with peers from various academic institutions, to share academic and
           social knowledge.
           <br/>
-          <a (click)="gotoSection('forum')" class="link-und">Learn More</a>
+          <a (click)="gotoSection('community')" class="link-und">Learn More</a>
         </p>
       </div>
     </div>
@@ -41,7 +41,7 @@
           Discover and Create social events. Save money as you find student discounts on local restaurants
           and stores.
           <br/>
-          <a (click)="gotoSection('events')" class="link-und">Learn More</a>
+          <a (click)="gotoSection('leisure')" class="link-und">Learn More</a>
         </p>
       </div>
     </div>
@@ -55,12 +55,12 @@
         <p>
           The Digital Campus gives you online access to the entire student community in your University or College.
           <br/>
-          <a (click)="gotoSection('community')" class="link-und">Learn More</a>
+          <a [routerLink]="['/digital-campus']" fragment="benefits" class="link-und">Learn More</a>
         </p>
       </div>
     </div>
     <div class="sign-up-here">
-      <button class="btn-peersview-primary btn-peersview-lg">SIGN UP HERE</button>
+      <button [routerLink]="['/sign-up']" class="btn-peersview-primary btn-peersview-lg">SIGN UP HERE</button>
     </div>
   </div>
 </div>

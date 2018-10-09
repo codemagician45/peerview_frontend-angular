@@ -1,6 +1,6 @@
-.terms-of-use-user-component {
-  .user-service-agreement {
-    background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+terms-of-use-component {
+  .terms-of-use {
+		background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
     background-size: cover;
     padding: 0 0 20px 0;
     margin: 0 0 30px 0;
@@ -8,16 +8,16 @@
     h1 {
       color: #ffffff;
     }
-  }
-  .body {
+	}
+	.body {
     .heading {
       font-family: 'Conv_MavenPro-Bold';
       font-size: 18px;
     }
     .sub-heading {
       font-family: 'Conv_MavenPro-Bold';
-    }
-    p {
+		}
+		p {
 			font-size: 14px;
 		}
     .list-item {
