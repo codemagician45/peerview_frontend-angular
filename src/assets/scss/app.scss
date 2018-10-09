@@ -479,6 +479,14 @@ input[type="checkbox"]:focus {
       height: fit-content;
     }
   }
+  /* Cancel Saving Ad*/
+  .cancel-saving-ad-modal,
+  .report-post-modal {
+    .mat-dialog-container {
+      top: 0;
+      width: auto;
+    }
+  } 
   /* Share Post Modal */
   /* Post Like Detail Modal */
   /* Post Comment Detail Modal */
@@ -486,7 +494,7 @@ input[type="checkbox"]:focus {
   .post-comment-detail-modal, 
   .post-like-detail-modal,
   .become-a-mentor-modal {
-    .mat-dialog-container{
+    .mat-dialog-container {
       top: 20px;
       margin: 0;
       max-height: 94%;

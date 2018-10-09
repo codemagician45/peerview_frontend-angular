@@ -18,8 +18,9 @@ import {
 })
 export class SharedConfirmModalComponent {
   constructor (
+    @Inject(MAT_DIALOG_DATA) protected confirmActionData: any,
     private dialog: MatDialog,
-  ) {}
+  ) { }
 
   protected isOk (): void {
     let shareConfirmModalComponent = this.dialog.getDialogById('SharedConfirmModalComponent');

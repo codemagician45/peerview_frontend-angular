@@ -112,6 +112,11 @@ export class CampusFactory {
     );
   }
 
+  public static createMarketplaceItem (data: any): CampusMarketplaceModel {
+    return <CampusMarketplaceModel> (new CampusMarketplaceModel ())
+      .assimilate(data);
+  }
+
   public static createClass (data: any): CampusClassModel {
     return <CampusClassModel> (new CampusClassModel ())
       .assimilate(data);
