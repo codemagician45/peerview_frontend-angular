@@ -59,7 +59,13 @@
         <ul>
           <form>
             <li *ngFor="let option of post.postPollOptions?.fulfillmentValue; let i = index;">
-              <input type="radio" name="pollOption" [value]="option.name" (click)="onPollVote(i, option, post.postPollOptions.fulfillmentValue)"/> {{option.name}}
+              <input 
+                type="radio" 
+                name="pollOption" 
+                [value]="option.name" 
+                (click)="onPollVote(i, option, post.postPollOptions.fulfillmentValue)"
+                [disabled]="post.isUserAlreadyVoted === 1 || userJustVoted"
+              /> {{option.name}}
               <div class="poll-percentage">{{option.average}}%</div>
               <div class="vote-shade-percentage" [ngStyle]="{'width': option.average + '%'}"></div>
             </li>
@@ -71,6 +77,7 @@
           </div>
           <div class="col-xs-9">{{post.pollDurationDisplay}}</div>
         </div>
+        <em *ngIf="post.isUserAlreadyVoted === 1" [ngStyle]="{'opacity': '0.5'}">You have already voted in this poll.</em>
       </div>
 
       <div class="col-xs-12 post-images">

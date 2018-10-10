@@ -67,6 +67,7 @@ export class SharedPostComponent {
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
   private limit = 5;
   private offset = 0;
+  protected userJustVoted: boolean = false;
 
   public ngOnInit (): void {
     this.getSharedPostSubscriber();
@@ -191,6 +192,7 @@ export class SharedPostComponent {
           .then(() => {
             pollOptions[index].count += 1;
             this.getPollPercentage(pollOptions);
+            this.userJustVoted = true;
           })
           .catch(() => {});
         break;

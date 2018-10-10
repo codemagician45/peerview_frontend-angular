@@ -22,8 +22,8 @@ export class PostFactory {
       const expiration = moment(postModel.pollExpiration);
       const diff = expiration.diff(now);
       const diffDuration = moment.duration(diff);
-      const hours = diffDuration.hours();
-      const minutes = diffDuration.minutes();
+      const hours = parseFloat(diffDuration.asHours().toString().split('.')[0]);
+      const minutes = Math.round(parseFloat('0.' + diffDuration.asHours().toString().split('.')[1]) * 60);
 
       let durationDisplay: string = '';
       let hoursDisplay: string = '';
