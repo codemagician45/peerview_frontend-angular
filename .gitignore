@@ -9,3 +9,5 @@ node_modules
 *.error
 *.log.*
 package-lock.json
+# Elastic Beanstalk Files
+.elasticbeanstalk
