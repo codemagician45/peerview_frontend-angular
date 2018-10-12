@@ -34,6 +34,9 @@ import {
 import {
   UserOnboardingOrganisationComponent
 } from './on-boarding/organisation/organisation.component';
+import {
+  CheckIfUserIsAlreadyVerifiedComponent
+} from './verify-email/check-if-user-is-already-verified.component';
 
 @NgModule({
   imports: [
@@ -50,6 +53,9 @@ import {
     UserOnboardingStudentInterestComponent,
     UserOnboardingProfessionalComponent,
     UserOnboardingOrganisationComponent
+  ],
+  providers: [
+    CheckIfUserIsAlreadyVerifiedComponent
   ],
   exports: []
 })
