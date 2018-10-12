@@ -5,7 +5,6 @@ import {
   CanActivate,
   Router,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
 } from '@angular/router';
 import {
   UserApiService
@@ -30,6 +29,9 @@ export class CheckIfUserIsAlreadyVerifiedComponent implements CanActivate {
           }
 
           resolve(true);
+        })
+        .catch(() => {
+          resolve(false);
         });
     });
   }
