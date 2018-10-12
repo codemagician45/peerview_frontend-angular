@@ -35,11 +35,11 @@ export class ProfileComponent {
   }
 
   protected followers: Array<UserModel> = [];
-  protected followee: Array<UserModel> = [];
+  protected followees: Array<UserModel> = [];
 
   protected mobileLinkSelected: string = 'timeline';
   protected userId: number;
-  private user: UserModel;
+  private user: UserModel = UserService.getOtherUser() || UserService.getUser();
 
   public onClickSelectMobileLink (type): void {
     this.mobileLinkSelected = type;
@@ -54,7 +54,7 @@ export class ProfileComponent {
   }
 
   private getUserFollowers (): void {
-    this.userApiService.promiseGetFollowers()
+    this.userApiService.promiseGetFollowers(this.user.id)
       .then((followers: UserModel[]) => {
         this.followers = followers;
       })
@@ -62,9 +62,9 @@ export class ProfileComponent {
   }
 
   private getUserFollowees (): void {
-    this.userApiService.promiseGetFollowee()
-      .then((followee: UserModel[]) => {
-        this.followee = followee;
+    this.userApiService.promiseGetFollowees(this.user.id)
+      .then((followees: UserModel[]) => {
+        this.followees = followees;
       })
       .catch(() => {});
   }

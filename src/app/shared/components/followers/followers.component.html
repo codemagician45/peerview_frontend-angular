@@ -13,9 +13,9 @@
 <div class="shared-followers-component">
   <h5>
     <i class="material-icons social-icon color-purple">person</i>
-    <div>Followers (<strong>{{followers.length}}</strong>)</div>
+    <div class="following-label">Followers (<strong>{{followers.length}}</strong>)</div>
   </h5>
-  <ul class="users-list" *ngIf="followers">
+  <ul class="users-list" *ngIf="followers.length !== 0">
     <li
       data-toggle="tooltip"
       title="{{follows.follower.firstName}} {{follows.follower.lastName}}"

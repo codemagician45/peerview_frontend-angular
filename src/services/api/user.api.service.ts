@@ -89,15 +89,15 @@ export class UserApiService extends ApiService {
       });
   }
 
-  public promiseGetFollowers (): Promise<UserModel[]> {
-    return this.promiseGetAllResponseData('followers')
+  public promiseGetFollowers (userId: number): Promise<UserModel[]> {
+    return this.promiseGetAllResponseData(`followers/${userId}`)
       .then((response: IResponse) => {
         return UserFactory.createMany(response.data);
       });
   }
 
-  public promiseGetFollowee (): Promise<UserModel[]> {
-    return this.promiseGetAllResponseData('followee')
+  public promiseGetFollowees (userId: number): Promise<UserModel[]> {
+    return this.promiseGetAllResponseData(`followee/${userId}`)
       .then((response: IResponse) => {
         return UserFactory.createMany(response.data);
       });

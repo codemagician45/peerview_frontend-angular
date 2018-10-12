@@ -17,7 +17,7 @@
     display: flex;
     border-bottom: 1px solid #eee;
   }
-  .following-label {
+  .followee-label {
     margin: auto 0;
   }
   .social-icon {
@@ -25,7 +25,11 @@
   }
   .users-list {
     li {
+      height: 50px;
       cursor: pointer;
+      img {
+        height: 100%;
+      }
       cl-image {
         width: 50px;
         height: 50px;
@@ -41,6 +45,9 @@
     .users-list {
       // display: inline-flex;
       padding: 10px;
+      li {
+        margin-top: 5px;
+      }
     }
 
     .follow-user-name {

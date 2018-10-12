@@ -33,17 +33,17 @@ export class SharedFolloweeComponent implements OnInit {
     private router: Router
   ) {}
 
-  private followee: Array<UserModel> = [];
+  protected followees: Array<UserModel> = [];
+  private user: UserModel = UserService.getOtherUser() || UserService.getUser();
 
   public ngOnInit (): void {
     this.getUserFollowee();
   }
 
   private getUserFollowee (): void {
-    this.userApiService.promiseGetFollowee()
-      .then((followee: UserModel[]) => {
-        this.followee = followee;
-        console.log('followees', this.followee);
+    this.userApiService.promiseGetFollowees(this.user.id)
+      .then((followees: UserModel[]) => {
+        this.followees = followees;
       })
       .catch(() => {});
   }

@@ -28,14 +28,15 @@ export class SharedFollowersComponent {
     private router: Router
   ) {}
 
-  private followers: Array<UserModel> = [];
+  protected followers: Array<UserModel> = [];
+  private user: UserModel = UserService.getOtherUser() || UserService.getUser();
 
   public ngOnInit (): void {
     this.getUserFollowers();
   }
 
   private getUserFollowers (): void {
-    this.userApiService.promiseGetFollowers()
+    this.userApiService.promiseGetFollowers(this.user.id)
       .then((followers: UserModel[]) => {
         this.followers = followers;
         console.log('followers', this.followers);
