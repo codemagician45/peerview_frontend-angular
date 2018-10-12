@@ -29,13 +29,17 @@ import {
 import {
   UserOnboardingOrganisationComponent
 } from './on-boarding/organisation/organisation.component';
+import {
+  CheckIfUserIsAlreadyVerifiedComponent
+} from './verify-email/check-if-user-is-already-verified.component';
 
 const userRoutes: Routes = [{
   path: '',
   component: UserComponent
 }, {
   path: 'verify-email',
-  component: UserVerifyEmailComponent
+  component: UserVerifyEmailComponent,
+  canActivate: [CheckIfUserIsAlreadyVerifiedComponent],
 }, {
   path: 'on-boarding',
   component: UserOnboardingComponent,
