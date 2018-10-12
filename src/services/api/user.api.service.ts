@@ -48,6 +48,20 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseGetUserByJotToken (jotToken: string, token: string): Promise<UserModel> {
+    let params = new HttpParams()
+      .set('token', token.toString());
+
+      this.options = {
+        params: params
+      };
+
+    return this.promiseGetResponseData(`${jotToken}`)
+      .then((response: IResponse) => {
+        return UserFactory.create(response.data);
+      });
+  }
+
   public promiseGetTimeline (userId?: number): Promise<PostModel[]> {
     let params: HttpParams;
     if (userId) {
