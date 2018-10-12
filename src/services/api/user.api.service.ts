@@ -56,7 +56,7 @@ export class UserApiService extends ApiService {
         params: params
       };
 
-    return this.promiseGetResponseData(`${jotToken}`)
+    return this.promiseGetResponseData(`by-jot-token/${jotToken}`)
       .then((response: IResponse) => {
         return UserFactory.create(response.data);
       });
