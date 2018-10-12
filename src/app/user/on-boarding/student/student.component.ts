@@ -40,7 +40,6 @@ export class UserOnboardingStudentComponent implements OnInit {
   protected user: UserModel = new UserModel();
   protected userStudyLevels: UserStudyLevelModel[] = [];
   protected courses: UserStudyLevelModel[] = [];
-  private currentUser: UserModel = UserService.getUser();
 
   public ngOnInit (): void {
     this.getCourses();
@@ -64,14 +63,13 @@ export class UserOnboardingStudentComponent implements OnInit {
     this.userApiService.promiseGetType('student')
       .then((userType: UserTypeModel) => {
         this.user.userTypeId = userType.id;
-        this.currentUser.userTypeId = userType.id;
-        this.currentUser.assimilate(this.user);
+
         return this.userApiService.promiseUpdateOnboardingDetails(this.user);
       })
       .then(() => {
         this.router.navigate(['/user/on-boarding/status/student/interest']);
       })
-      .catch(() => {});
+      .catch((error) => { console.log(error); });
   }
 
   protected onChangeCourse (value: number): void {
