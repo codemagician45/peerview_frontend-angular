@@ -1,5 +1,6 @@
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 let webpack = require('webpack');
 let helpers = require('./helper');
 const devMode = process.env.NODE_ENV !== 'production';
@@ -92,6 +93,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: './src/sitemap.xml',
+      to: 'sitemap.xml',
+      toType: 'file'
+    }])
   ]
 };
