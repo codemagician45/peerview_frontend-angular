@@ -17,7 +17,7 @@ import {
   CourseApiService
 } from '../../../../services/api';
 import {
- UserService
+ UserService, MessageNotificationService, NotificationTypes
 } from '../../../../services';
 import {
   OnBoardingEmitter
@@ -40,6 +40,7 @@ export class UserOnboardingStudentComponent implements OnInit {
   protected user: UserModel = new UserModel();
   protected userStudyLevels: UserStudyLevelModel[] = [];
   protected courses: UserStudyLevelModel[] = [];
+  protected btnClicked: boolean = false;
 
   public ngOnInit (): void {
     this.getCourses();
@@ -60,16 +61,33 @@ export class UserOnboardingStudentComponent implements OnInit {
   }
 
   protected onSubmit (): void {
+    this.btnClicked = true;
     this.userApiService.promiseGetType('student')
       .then((userType: UserTypeModel) => {
         this.user.userTypeId = userType.id;
+        this.btnClicked = false;
 
         return this.userApiService.promiseUpdateOnboardingDetails(this.user);
       })
       .then(() => {
         this.router.navigate(['/user/on-boarding/status/student/interest']);
       })
-      .catch((error) => { console.log(error); });
+      .catch((error) => {
+        console.log(error);
+        this.errorMessage(error);
+        this.btnClicked = false;
+      });
+  }
+
+  private errorMessage (error): void {
+    MessageNotificationService.show({
+      notification: {
+        id: 'on-boarding-status',
+        message: 'Cannot continue',
+        instruction: this.user.courseIds.length === 0 ? 'Please fill out the fields.' : error.error.status_message
+      }
+    },
+    NotificationTypes.Warning);
   }
 
   protected onChangeCourse (value: number): void {
