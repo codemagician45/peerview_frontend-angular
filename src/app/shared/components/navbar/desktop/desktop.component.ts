@@ -18,6 +18,7 @@ export class NavbarDesktopComponent {
   constructor () {}
 
   protected user: UserModel = UserService.getUser();
+  protected keyword: string = null;
 
   protected onSignOut (): void {
     TokenStore.expungeData();

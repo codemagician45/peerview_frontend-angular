@@ -5,3 +5,5 @@ export * from './interest';
 export * from './campus';
 export * from './post';
 export * from './mentor';
+export * from './advance-search';
+

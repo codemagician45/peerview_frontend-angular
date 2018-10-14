@@ -1,6 +1,14 @@
 import {
-  Component
+  Component,
+  EventEmitter,
+  Output
 } from '@angular/core';
+import {
+  AdvanceSearchService
+} from '../../../services/api';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
   selector: 'advance-find-post-component',
@@ -8,5 +16,35 @@ import {
   styleUrls: ['./find-post.component.scss']
 })
 export class AdvanceSearchFindPostComponent {
-  constructor () {}
+  constructor (
+    private advanceSeachService: AdvanceSearchService,
+    private route: ActivatedRoute
+  ) {}
+
+  @Output() private postSearchEvent: EventEmitter<any> = new EventEmitter<any>();
+  protected keyword: string;
+  private routeSubscriber: any;
+
+  public ngOnInit (): void {
+    this.routeSubscriber = this.route
+    .queryParams
+    .subscribe(params => {
+      this.keyword = params.k;
+      this.keyword && this.onSearchPosts();
+    });
+  }
+
+  protected onSearchPosts (): void {
+    this.advanceSeachService.promiseGetAllSearchedPosts(this.keyword)
+      .then(response => {
+        this.postSearchEvent.emit(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  public ngOnDestroy (): void {
+    this.routeSubscriber.unsubscribe();
+  }
 }

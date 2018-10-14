@@ -1,7 +1,7 @@
 <shared-navbar-component></shared-navbar-component>
 <div class="advance-search-component m-peersview-yt-4">
   <div class="container">
-    <div class="page-name-title">Advanced Search</div>
+    <div class="page-name-title"><h4>Advanced Search</h4></div>
     <ul class="post-action">
       <li >
         <a
@@ -9,7 +9,8 @@
           [ngClass]="{'active': findPeople}">
             Find People
         </a>
-      </li>
+      </li> 
+      &nbsp;
       <li>
         <a
           (click)="findPeople = !findPeople"
@@ -18,9 +19,15 @@
         </a>
       </li>
     </ul>
+    <hr>
     <div class="advance-search-block">
+      <advance-find-post-component
+        *ngIf="!findPeople"
+        (postSearchEvent)="receivedResults($event)">
+      </advance-find-post-component>
       <advance-find-people-component
-        *ngIf="findPeople">
+        *ngIf="findPeople" 
+        (userSearchEvent)="receivedResults($event)">
       </advance-find-people-component>
       <!-- <div class="row" id="search-people">
         <div class="col-md-4">
@@ -43,9 +50,6 @@
           </div>
         </div>
       </div> -->
-      <advance-find-post-component
-        *ngIf="!findPeople">
-      </advance-find-post-component>
       <!-- <div class="row" id="search-question" style="display:none;">
         <div class="col-md-8">
           <div class="form-group">
@@ -78,7 +82,41 @@
       </div> -->
     </div>
     <div>
-      <div class="sec-heading">Search Results</div>
+      <div class="sec-heading" *ngIf="results">
+        <div><h4>Search Results</h4></div>
+        <div class="col-xs-12 item-container" *ngFor="let item of results;">
+          <div *ngIf="!item.message">
+            <cl-image
+              class="item-image"
+              public-id="{{item.socialImage ? (item.profilePicture === 'avatar' ? item.socialImage: item.profilePicture): item.profilePicture}}"
+              *ngIf="item?.profilePicture"
+              (click)="onClickUserProfile(item);"
+            >
+              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+              </cl-transformation>
+            </cl-image>
+            <div class="user-name">
+              <span
+                [ngStyle]="{'display': 'inline-grid'}"
+                (click)="onClickUserProfile(item);"
+                class="item-user-name">
+                {{item.firstName}} {{item.lastName}}
+              </span>
+              <div class="item-school-name">
+                {{item.institutionName}}
+              </div>
+            </div>
+          </div>
+
+          <div class="item-post" *ngIf="item.message">
+              <h5>{{item.message}}</h5>
+          </div>
+        </div>
+        <div *ngIf="results.length === 0">
+          Nothing found.
+        </div>
+      </div>
+      <!-- <div class="sec-heading" *ngIf="results.length === 0">Nothing found.</div> -->
     </div>
   </div>
 </div>

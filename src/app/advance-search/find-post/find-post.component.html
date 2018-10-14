@@ -1,5 +1,5 @@
 <div class="advance-find-post-component">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-8">
       <div class="form-group">
         <label>Question</label>
@@ -15,19 +15,20 @@
         </button>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-md-8">
       <div class="form-group">
         <label>Keyword</label>
-        <input type="text" class="form-control" />
+        <input type="text" class="form-control" [(ngModel)]="keyword"/>
       </div>
     </div>
     <div class="col-md-3">
       <div class="form-group">
         <label></label>
         <button
-          class="btn-peersview-secondary btn-peersview-md">
+          class="btn-peersview-secondary btn-peersview-md"
+          (click)="onSearchPosts()">
             Search
         </button>
       </div>
