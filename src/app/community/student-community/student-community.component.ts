@@ -3,7 +3,8 @@ import {
 } from '@angular/core';
 import {
 	CourseModel,
-	UserModel
+	UserModel,
+	CommunityPostModel
 } from '../../shared/models';
 import {
 	CourseApiService,
@@ -25,6 +26,7 @@ export class StudentCommunityComponent {
 
 	private courses = [];
 	private user: UserModel;
+	protected communityPosts: CommunityPostModel = new CommunityPostModel();
 
 	public ngOnInit (): void {
 		this.getCourse();
@@ -37,5 +39,19 @@ export class StudentCommunityComponent {
 			this.courses = courses;
 		})
 		.catch(() => {});
+	}
+
+	protected onAskQuestion (): void {
+		console.log(this.communityPosts);
+		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPosts)
+		.then(() => {})
+		.catch((error) => {
+			console.log(error);
+		});
+	}
+
+	protected onChangeCourse (item): void {
+		this.communityPosts.courseId = item;
+		console.log(item);
 	}
 }
