@@ -5,7 +5,10 @@
 			<li>
 				<a data-toggle="tab">
 					<span>Course</span>
-					<select class="form-control course" placeholder = "Select Course">
+					<select 
+						class="form-control course" 
+						placeholder = "Select Course" 
+						(change)="onChangeCourse($event.target.value)">
 						<option value="0" disabled>Course</option>
 						<option *ngFor="let course of courses" [value]="course.id">
 							{{course.name}}
@@ -34,10 +37,12 @@
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>
 					<div class="question-input-container">
-						<textarea type="text" class="form-control" placeholder="What’s your question?"></textarea>
+						<textarea [(ngModel)]="communityPosts.question" type="text" class="form-control" placeholder="What’s your question?"></textarea>
 						<i class="material-icons">link</i>
 					</div>
-					<a class="btn-peersview-primary">Post</a>
+					<a 
+						(click)="onAskQuestion()"
+						class="btn-peersview-primary">Post</a>
 				</div>
 			</div>
 		</div>
