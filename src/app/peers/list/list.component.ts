@@ -30,7 +30,8 @@ export class PeersListComponent implements OnInit {
   public ngOnInit (): void {
     this.userApiService.promiseGetPeersList()
       .then((peersList: UserModel[]) => {
-        this.peersList = peersList;
+        const usersThatAreNotYetFollowed = peersList.filter(item => item.isUserAlreadyFollowed === false);
+        this.peersList = usersThatAreNotYetFollowed;
       })
       .catch(error => {});
   }

@@ -5,10 +5,11 @@
   border: solid 1px #d8d8d8;
   font-size: 14px;
   .peers-you-may-know-header {
+    margin-bottom: 10px;
+    border-bottom: solid 1px #d8d8d8;
     span {
       &:first-child {
         font-weight: bold;
-        color: #949494;
       }
     }
     font-weight: 500;

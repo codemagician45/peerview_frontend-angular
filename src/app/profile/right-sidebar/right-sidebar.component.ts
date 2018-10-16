@@ -9,7 +9,8 @@ import {
 } from '../../../services/user.service';
 import {
   UserModel,
-  IResponse
+  IResponse,
+  FollowUser
 } from '../../shared/models';
 import {
   MessageNotificationService,
@@ -28,6 +29,7 @@ export class ProfileRightSidebarComponent {
 
   protected user: UserModel = UserService.getOtherUser();
   protected followed: boolean = false;
+  private followUser: FollowUser = new FollowUser();
 
   protected onClickFollowButton (): void {
     if (this.followed) {
@@ -38,7 +40,8 @@ export class ProfileRightSidebarComponent {
   }
 
   private onFollowUser (): void {
-    this.userApiService.promisePostFollowUser(this.user.id)
+    this.followUser.recipientId = this.user.id;
+    this.userApiService.promisePostFollowUser(this.followUser)
     .then((response: IResponse) => {
       this.followed = true;
     })

@@ -12,7 +12,8 @@ import {
   UserStudyLevelModel,
   UserTypeModel,
   PostModel,
-  IResponse
+  IResponse,
+  FollowUser
 } from '../../app/shared/models';
 import {
   UserFactory,
@@ -180,8 +181,8 @@ export class UserApiService extends ApiService {
     });
   }
 
-  public promisePostFollowUser (userId: number): Promise<IResponse> {
-    return this.promisePostModelData(`${userId}/follow`)
+  public promisePostFollowUser (followUser: FollowUser): Promise<IResponse> {
+    return this.promisePostModelData(`${followUser.recipientId}/follow`, followUser)
     .then((responseData: IResponse) => {
       return responseData;
     });
