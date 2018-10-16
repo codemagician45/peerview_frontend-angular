@@ -4,8 +4,7 @@ private-community-component {
 			width: 100%;
 		}
 		.group-container {
-			// margin: 15px 0;
-			margin: 15px -30px;
+			margin: 15px 0;
 			li {
 				padding: 10px;
 			}
@@ -66,4 +65,20 @@ private-community-component {
 			}
 		}
 	}
+	/* Custom, iPhone Retina */
+	@media only screen and (min-width : 320px) {}
+	/* Extra Small Devices, Phones */
+	@media only screen and (min-width : 480px) {}
+	/* Small Devices, Tablets */
+	@media only screen and (min-width : 768px) {}
+	/* Medium Devices, Desktops */
+	@media only screen and (min-width : 992px) {
+		.community-private-component {
+			.btn-create {
+				width: auto;
+			}
+		}
+	}
+	/* Large Devices, Wide Screens */
+	@media only screen and (min-width : 1200px) {}
 }
