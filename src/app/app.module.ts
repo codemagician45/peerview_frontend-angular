@@ -1,5 +1,6 @@
 import {
-  BrowserModule
+  BrowserModule,
+  Title
 } from '@angular/platform-browser';
 import {
   NgModule
@@ -40,7 +41,9 @@ import {
   UserApiService
 } from '../services/api';
 import {
-  UtilitiesService
+  UtilitiesService,
+  TitleService,
+  MetaService
 } from '../services';
 import {
   AuthInterceptor
@@ -127,7 +130,10 @@ tinymce.init({});
     InterestApiService,
     PostApiService,
     UserApiService,
-    UtilitiesService
+    UtilitiesService,
+    TitleService,
+    MetaService,
+    Title
   ],
   declarations: [
     AppComponent,
@@ -158,4 +164,12 @@ tinymce.init({});
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor (
+    private titleService: TitleService,
+    private metaService: MetaService
+  ) {
+    this.titleService.init();
+    this.metaService.init();
+  }
+}
