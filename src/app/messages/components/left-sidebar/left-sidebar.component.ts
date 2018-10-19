@@ -2,38 +2,22 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router
-} from '@angular/router';
-import {
-  UserModel
-} from '../../../models';
-import {
-  TokenStore,
-  UserService
-} from '../../../../../services';
-import { MatDialogConfig, MatDialog } from '@angular/material';
-import { Overlay } from '@angular/cdk/overlay';
-import { SharedCreateMessageComponent } from '../../../modals';
+  MatDialogConfig,
+  MatDialog
+} from '@angular/material';
+import {SharedCreateMessageComponent
+} from '../../../shared/modals';
 
 @Component({
-  selector: 'navbar-desktop-component',
-  templateUrl: './desktop.component.html',
-  styleUrls: ['./desktop.component.scss']
+  selector: 'messages-left-sidebar-component',
+  templateUrl: './left-sidebar.component.html',
+  styleUrls: ['./left-sidebar.component.scss']
 })
-export class NavbarDesktopComponent {
+
+export class MessagesLeftSideBarComponent {
   constructor (
-    private router: Router,
-    private dialog: MatDialog,
-    private overlay: Overlay
+    private dialog: MatDialog
   ) {}
-
-  protected user: UserModel = UserService.getUser();
-  protected keyword: string = null;
-
-  protected onSignOut (): void {
-    TokenStore.expungeData();
-    window.location.reload();
-  }
 
   protected onNewMessageClick (): void {
     // let queryParams = {
@@ -59,4 +43,5 @@ export class NavbarDesktopComponent {
       //   console.log(error);
       // });
   }
+
 }

@@ -6,4 +6,4 @@ export * from './campus';
 export * from './post';
 export * from './mentor';
 export * from './advance-search';
-
+export * from './messages';

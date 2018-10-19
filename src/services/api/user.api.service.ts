@@ -201,4 +201,14 @@ export class UserApiService extends ApiService {
       return responseData;
     });
   }
+
+  public promiseGetSearchViaTag (keyword: string): Promise<UserModel[]> {
+    let params: HttpParams = new HttpParams()
+        .set('keyword', keyword.toString());
+
+    return this.promiseGetAllResponseData(`search/via-tag`, {params: params})
+      .then((response: IResponse) => {
+        return UserFactory.createMany(response.data);
+      });
+  }
 }

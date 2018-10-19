@@ -162,6 +162,11 @@ export const appRoutes: Routes = [{
       name: 'description', content: 'By using our products and services, you are agreeing to our terms and condition'
     }]
   }
+}, {
+  path: 'messages',
+  loadChildren: './messages/messages.module#MessagesModule',
+  canActivate: [CanActivateUserProfile],
+  data: {state: 'messages'}
 }];
 
 @NgModule({

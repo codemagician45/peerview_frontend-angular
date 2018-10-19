@@ -39,7 +39,8 @@ import {
   InterestApiService,
   PostApiService,
   UserApiService,
-  AdvanceSearchService
+  AdvanceSearchService,
+  MessagesApiService
 } from '../services/api';
 import {
   UtilitiesService,
@@ -75,6 +76,7 @@ import {
   ReportPostModalComponent,
   SharedConfirmModalComponent,
   SharedImagePreviewComponent,
+  SharedCreateMessageComponent,
   SharedPostDetailModalComponent,
   BecomeMentorModalComponent,
   SharedPostLikeDetailModalComponent,
@@ -131,6 +133,7 @@ tinymce.init({});
     InterestApiService,
     PostApiService,
     UserApiService,
+    MessagesApiService,
     UtilitiesService,
     TitleService,
     MetaService,
@@ -147,6 +150,7 @@ tinymce.init({});
     ReportPostModalComponent,
     SharedSharePostModalComponent,
     SharedConfirmModalComponent,
+    SharedCreateMessageComponent,
     SharedImagePreviewComponent,
     SharedPostLikeDetailModalComponent,
     MentorModalComponent,
@@ -161,6 +165,7 @@ tinymce.init({});
     ReportPostModalComponent,
     SharedConfirmModalComponent,
     SharedImagePreviewComponent,
+    SharedCreateMessageComponent,
     SharedPostLikeDetailModalComponent,
     MentorModalComponent,
     CreateCommunityComponent
