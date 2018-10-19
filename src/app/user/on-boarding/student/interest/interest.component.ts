@@ -194,7 +194,7 @@ export class UserOnboardingStudentInterestComponent {
       .then(notificationState => {
         if (notificationState) {
           notificationState.subscribe((data: any) => {
-            this.router.navigate(['/home']);
+            window.location.href = '/home';
           });
         }
       })
