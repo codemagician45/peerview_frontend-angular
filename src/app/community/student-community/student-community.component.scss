@@ -16,11 +16,21 @@ student-community-component {
 						border-radius: 0;
 						line-height: 55px;
 					}
-					.course {
-						max-width: 100%;
-						width: 100%;
-						font-size: 13px;
-						background: #fff;
+					.course-container {
+						display: flex;
+						.course {
+							max-width: 100%;
+							width: calc(100% - 85px);
+							font-size: 13px;
+							background: #fff;
+						}
+						.ask-modal {
+							margin-left: 5px;
+							font-size: 16px;
+						i {
+							vertical-align: bottom;
+						}
+						}
 					}
 				}
 			}
@@ -156,6 +166,8 @@ student-community-component {
 			ul {
 				li {
 					display: inline-block;
+					.course-container {
+						display: inline-block;
 					.course {
 						display: inline-block;
 						width: auto;
@@ -163,6 +175,7 @@ student-community-component {
 						margin-left: 15px;
 					}
 				}
+			}
 			}
 		}
 		.community-ask-question-wrapper {
