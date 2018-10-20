@@ -4,7 +4,13 @@ import {
 
 export class CommunityPostModel extends Model {
 	public courseId: number;
-	public question: string;
+	public message: string;
 	public attachments: String[];
-	public init (): void {}
+
+	public init (): void {
+		this.setBlankDataStructure({
+			id: undefined,
+			attachments: []
+		});
+	}
 }
