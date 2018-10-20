@@ -18,8 +18,8 @@ import {
 @Injectable()
 export class CommunityApiService extends ApiService {
   public options = {};
-  public baseURI = 'campus';
-	public baseURIPlural = 'campus';
+  public baseURI = 'community';
+  public baseURIPlural = 'community';
 
 	/**
 	*  Get all community
