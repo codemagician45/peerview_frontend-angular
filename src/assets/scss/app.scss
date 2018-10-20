@@ -479,6 +479,13 @@ input[type="checkbox"]:focus {
       height: fit-content;
     }
   }
+  .ask-a-question-modal {
+    width: 450px;
+    .mat-dialog-container {
+      top: auto;
+      height: fit-content;
+    }
+  }
   /* Cancel Saving Ad*/
   .cancel-saving-ad-modal,
   .report-post-modal {
