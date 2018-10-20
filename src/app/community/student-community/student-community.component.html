@@ -5,15 +5,20 @@
 			<li>
 				<a data-toggle="tab">
 					<span>Course</span>
-					<select 
-						class="form-control course" 
-						placeholder = "Select Course" 
-						(change)="onChangeCourse($event.target.value)">
-						<option value="0" disabled>Course</option>
-						<option *ngFor="let course of courses" [value]="course.id">
-							{{course.name}}
-						</option>
-					</select>
+						<span class="course-container">
+							<select 
+							class="form-control course" 
+							placeholder = "Select Course" 
+							(change)="onChangeCourse($event.target.value)">
+							<option value="0" disabled>Course</option>
+							<option *ngFor="let course of courses" [value]="course.id">
+								{{course.name}}
+							</option>
+						</select>
+						<button (click)="onOpenAskQuestionModal()" class="btn-peersview-primary hidden-md hidden-lg btn-sm ask-modal">Ask
+							<i class="material-icons">add</i>
+						</button>
+					</span>
 				</a>
 			</li>
 		</ul>
@@ -37,13 +42,18 @@
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>
 					<div class="question-input-container">
-						<textarea [(ngModel)]="communityPosts.question" type="text" class="form-control" placeholder="What’s your question?"></textarea>
-						<i class="material-icons">link</i>
+						<textarea [(ngModel)]="communityPosts.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
+						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
 					<a 
 						(click)="onAskQuestion()"
 						class="btn-peersview-primary">Post</a>
 				</div>
+				<shared-upload-image-component
+				*ngIf="isToggleUploadComponentVisible"
+				[uploadOptions]="{'queueLimit': 4, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
+				(imageIsSelected)="onImageIsSelected($event)">
+			</shared-upload-image-component>
 			</div>
 		</div>
 	</div>
