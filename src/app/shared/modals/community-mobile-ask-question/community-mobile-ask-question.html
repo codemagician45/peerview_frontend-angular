@@ -21,10 +21,10 @@
 					<i class="input-caret grey-caret"></i>
 					<div class="question-input-container">
 						<textarea [(ngModel)]="communityPosts.message" rows="3" type="text" class="form-control" placeholder="What’s your question?"></textarea>
-						<i class="material-icons">link</i>
+						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
-					<!-- *ngIf="isToggleUploadComponentVisible" -->
-					<shared-upload-image-component
+					<shared-upload-image-component	
+						*ngIf="isToggleUploadComponentVisible"
 						[uploadOptions]="{'queueLimit': 4, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
 						(imageIsSelected)="onImageIsSelected($event)">
 					</shared-upload-image-component>
