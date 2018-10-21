@@ -11,9 +11,10 @@
 	<div class="modal-body">
 		<form
 		#community="ngForm"
-		(ngSubmit)="onSubmit(community.valid);">
+		(ngSubmit)="onSubmit(community);">
 			<div class="form-group">
 				<input 
+					[(ngModel)]="privateCommunity.communityName"
 					name="title"
 					type="text" 
 					required
@@ -22,6 +23,7 @@
 			</div>
 			<div class="form-group">
 				<input 
+					[(ngModel)]="privateCommunity.institutionName"
 					name="title"
 					type="text" 
 					required
