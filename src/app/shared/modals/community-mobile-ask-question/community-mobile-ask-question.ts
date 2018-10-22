@@ -34,7 +34,7 @@ export class ComunityMobileAskQuestionMobileComponent {
 	private hasImageSelected: boolean = false;
 
 	public ngOnInit (): void {
-		console.log(this.user);
+		this.communityPosts.communityId = 1;
 	}
 
 	protected onUploadComplete (attachments): void {
