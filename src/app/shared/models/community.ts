@@ -3,6 +3,7 @@ import {
 } from './model';
 
 export class CommunityPostModel extends Model {
+	public communityId: number;
 	public courseId: number;
 	public message: string;
 	public attachments: String[];
