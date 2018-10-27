@@ -9,6 +9,7 @@ import {
 } from '../api.service';
 import {
 	PrivateCommunityModel,
+	CommunityModel,
 	CommunityPostModel,
 	IResponse
 } from '../../app/shared/models';
@@ -19,19 +20,25 @@ import {
 @Injectable()
 export class CommunityApiService extends ApiService {
   public options = {};
-  public baseURI = 'community';
-  public baseURIPlural = 'community';
+  public baseURI = '';
+  public baseURIPlural = '';
 
-	/**
-	*  Get all community
-	*/
+	/**Create community post*/
 
-	 public promiseCreateStudentCommunityPosts (communityPost: CommunityPostModel): Promise<CommunityPostModel> {
-		 return this.promisePostModelData(`community/post`, communityPost)
+	 public promiseCreateStudentCommunityPosts (communityPost: CommunityModel): Promise<CommunityModel> {
+		 return this.promisePostModelData(`post/v2`, communityPost)
 		 	.then((response: IResponse) => {
 				 return CommunityFactory.createCommunityPost(response.data);
 			 });
 	 }
+
+	/** Get student community posts*/
+	public promiseGetAllCommunityPostsData (courseId: number): Promise<CommunityPostModel> {
+		return this.promiseGetAllResponseData(`community/posts?courseId=${courseId}`)
+		.then((response: IResponse) => {
+			return CommunityFactory.createCommunityFeed(response.data);
+		});
+	}  
 
 	 public promiseCreatePrivateCommunity (privateCommunity: PrivateCommunityModel): Promise<PrivateCommunityModel> {
 		 return this.promisePostModelData(``, privateCommunity)

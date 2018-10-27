@@ -4,7 +4,7 @@ import {
 import {
 	CourseModel,
 	UserModel,
-	CommunityPostModel
+	CommunityModel
 } from '../../shared/models';
 import {
 	CourseApiService,
@@ -43,7 +43,7 @@ export class StudentCommunityComponent {
 	private hasImageSelected: boolean = false;
 	private courses = [];
 	private user: UserModel;
-	protected communityPosts: CommunityPostModel = new CommunityPostModel();
+	protected communityPosts: CommunityModel = new CommunityModel();
 	protected isToggleUploadComponentVisible: boolean = false;
 
 	public ngOnInit (): void {
@@ -69,6 +69,13 @@ export class StudentCommunityComponent {
 
 	protected onChangeCourse (item): void {
 		this.communityPosts.courseId = item;
+		this.communityApiService.promiseGetAllCommunityPostsData(this.communityPosts.courseId)
+		.then((response) => {
+			console.log(response);
+		})
+		.catch(error => {
+			console.log(error);
+		})
 	}
 
 	protected onOpenAskQuestionModal (): void {
@@ -89,6 +96,8 @@ export class StudentCommunityComponent {
 	}
 
 	private createQuestion (): void {
+		this.communityPosts.area = 'community';
+		this.communityPosts.type = 'post';
 		console.log(this.communityPosts);
 		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPosts)
 		.then(() => {})

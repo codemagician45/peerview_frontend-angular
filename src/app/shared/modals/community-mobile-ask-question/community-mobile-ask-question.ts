@@ -8,7 +8,7 @@ import {
 } from '@angular/material';
 import {
 	UserModel,
-	CommunityPostModel
+	CommunityModel
 } from '../../../shared/models';
 import {
 	PostEmitter
@@ -29,7 +29,7 @@ export class ComunityMobileAskQuestionMobileComponent {
 		private communityApiService: CommunityApiService,
 	) {}
 
-	protected communityPosts: CommunityPostModel = new CommunityPostModel();
+	protected communityPosts: CommunityModel = new CommunityModel();
 	protected isToggleUploadComponentVisible: boolean = false;
 	private hasImageSelected: boolean = false;
 
