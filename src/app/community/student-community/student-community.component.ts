@@ -75,7 +75,7 @@ export class StudentCommunityComponent {
 		})
 		.catch(error => {
 			console.log(error);
-		})
+		});
 	}
 
 	protected onOpenAskQuestionModal (): void {

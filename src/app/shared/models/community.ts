@@ -29,7 +29,7 @@ export class PrivateCommunityModel extends Model {
 	public init (): void {}
 }
 
-export class CommunityPostModel extends Model{
+export class CommunityPostModel extends Model {
 	public id?: number;
 	public createdAt: Date;
 	public message: string;
@@ -44,7 +44,7 @@ export class CommunityPostModel extends Model{
 	public roundedRating?: number;
 	public attachments: String[];
 	// use as a virtual holder for postPoll
-  
+
 	public init (): void {
 	  this.setBlankDataStructure({
 		id: undefined,

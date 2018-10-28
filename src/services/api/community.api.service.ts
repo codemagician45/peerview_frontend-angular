@@ -38,7 +38,7 @@ export class CommunityApiService extends ApiService {
 		.then((response: IResponse) => {
 			return CommunityFactory.createCommunityFeed(response.data);
 		});
-	}  
+	}
 
 	 public promiseCreatePrivateCommunity (privateCommunity: PrivateCommunityModel): Promise<PrivateCommunityModel> {
 		 return this.promisePostModelData(``, privateCommunity)
