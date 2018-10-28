@@ -13,21 +13,22 @@
       </div>
       <div class="replies-container" *ngIf="post.postReply">
         <ul *ngFor="let item of post.postReply.slice().reverse()">
+            <cl-image
+            class="post-image"
+            public-id="avatar"
+            >
+            <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
+            </cl-transformation>
+          </cl-image>
           <li class="comment-container">
             <span>
-                <cl-image
-                class="post-image"
-                public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
-                *ngIf="item?.user?.profilePicture"
-                >
-              <cl-transformation width="50" height="50" radius="max" gravity="custom" crop="thumb">
-              </cl-transformation>
-              </cl-image>
+              <!-- public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}" -->
             <span class="purple">
               <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
             </span> {{item.comment}}
             </span>
             <div> <small>{{item.createdAt | date : 'short'}}</small></div>
+            <a>Like</a> &nbsp; <a>Reply</a>
           </li>
         </ul>
       </div>
