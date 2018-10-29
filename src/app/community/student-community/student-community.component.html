@@ -42,7 +42,7 @@
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>
 					<div class="question-input-container">
-						<textarea [(ngModel)]="communityPosts.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
+						<textarea [(ngModel)]="communityPost.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
 						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
 					<a 
@@ -64,11 +64,11 @@
 				<div class="student-community-topics">
 					<b>LATEST DISCUSSIONS</b>
 				</div>
-				<div class="forum-item">
+				<div *ngFor="let post of communityPosts" class="forum-item">
 					<div class="forum-header">
 						<img src="/src/assets/images/courses/course-accounting.jpg" alt="">
 						<h4>
-							What if Kejriwal kills Modi? <br>
+							{{post.message}} <br>
 							<button class="btn-peersview-primary btn-md"> 
 								<i class="material-icons">create</i>
 								ANSWER
@@ -113,56 +113,6 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="forum-item">
-						<div class="forum-header">
-							<img src="/src/assets/images/courses/course-accounting.jpg" alt="">
-							<h4>What if Kejriwal kills Modi? <br>
-								<button class="btn-peersview-primary btn-md"> 
-									<i class="material-icons">create</i>
-									ANSWER
-								</button>
-							</h4>
-						</div>
-				
-						<div class="forum-answers row m-peersview-0">
-							<div class="col-md-6 answer-item">
-								<div class="pull-left">
-									<cl-image
-										width="40px"
-										class="post-share-user-image"
-										public-id="avatar"
-										>
-									</cl-image>
-								</div>
-								
-								<span><b>Maria Angela Magtoto</b></span>
-								<span>City College of Angeles</span>
-								<span>10/2/18, 8:45 PM</span>
-								<div>
-									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-									The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.,
-								</div>
-							</div>
-							<div class="col-md-6 answer-item">
-								<div class="pull-left">
-									<cl-image
-										width="40px"
-										class="post-share-user-image"
-										public-id="avatar"
-										>
-									</cl-image>
-								</div>
-								<span><b>Maria Angela Magtoto</b></span>
-								<span>City College of Angeles</span>
-								<span>10/2/18, 8:45 PM</span>
-								<div class="">
-									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-									The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.,
-								</div>
-							</div>
-						</div>
-					</div>
 			</div>
 			<div class="col-md-4">
 				<community-right-menu-component></community-right-menu-component>
