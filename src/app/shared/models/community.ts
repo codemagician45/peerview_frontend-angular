@@ -4,6 +4,9 @@ import {
 import {
 	PostReplyModel
 } from './post';
+import {
+	UserModel
+} from './user';
 
 export class CommunityModel extends Model {
 	public communityId: number;
@@ -43,6 +46,8 @@ export class CommunityPostModel extends Model {
 	public ratingCount: number;
 	public roundedRating?: number;
 	public attachments: String[];
+	public user: UserModel;
+
 	// use as a virtual holder for postPoll
 
 	public init (): void {
