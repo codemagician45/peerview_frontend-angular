@@ -4,7 +4,8 @@ import {
 import {
 	CourseModel,
 	UserModel,
-	CommunityModel
+	CommunityModel,
+	CommunityPostModel
 } from '../../shared/models';
 import {
 	CourseApiService,
@@ -43,12 +44,24 @@ export class StudentCommunityComponent {
 	private hasImageSelected: boolean = false;
 	private courses = [];
 	private user: UserModel;
-	protected communityPosts: CommunityModel = new CommunityModel();
+	protected communityPost: CommunityModel = new CommunityModel();
+	protected communityPosts: CommunityPostModel[] = [];
 	protected isToggleUploadComponentVisible: boolean = false;
 
 	public ngOnInit (): void {
 		this.getCourse();
+		this.getStudentCommunityFeed();
 		this.user = UserService.getUser();
+	}
+
+	private getStudentCommunityFeed (): void {
+		this.communityApiService.promiseGetAllCommunityPostsData()
+		.then((responseData: CommunityPostModel[]) => {
+			this.communityPosts = responseData;
+		})
+		.catch(error => {
+			console.log(error);
+		});
 	}
 
 	private getCourse (): void {
@@ -68,14 +81,7 @@ export class StudentCommunityComponent {
 	}
 
 	protected onChangeCourse (item): void {
-		this.communityPosts.courseId = item;
-		this.communityApiService.promiseGetAllCommunityPostsData(this.communityPosts.courseId)
-		.then((response) => {
-			console.log(response);
-		})
-		.catch(error => {
-			console.log(error);
-		});
+		this.communityPost.courseId = item;
 	}
 
 	protected onOpenAskQuestionModal (): void {
@@ -91,15 +97,15 @@ export class StudentCommunityComponent {
 	}
 
 	protected onUploadComplete (attachments): void {
-		this.communityPosts.attachments = attachments;
+		this.communityPost.attachments = attachments;
 		this.createQuestion();
 	}
 
 	private createQuestion (): void {
-		this.communityPosts.area = 'community';
-		this.communityPosts.type = 'post';
+		this.communityPost.area = 'community';
+		this.communityPost.type = 'post';
 		console.log(this.communityPosts);
-		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPosts)
+		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
 		.then(() => {})
 		.catch((error) => {
 			console.log(error);
