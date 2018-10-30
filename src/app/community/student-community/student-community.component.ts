@@ -47,6 +47,7 @@ export class StudentCommunityComponent {
 	protected communityPost: CommunityModel = new CommunityModel();
 	protected communityPosts: CommunityPostModel[] = [];
 	protected isToggleUploadComponentVisible: boolean = false;
+	protected sampleReplyString: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
 
 	public ngOnInit (): void {
 		this.getCourse();
@@ -104,7 +105,6 @@ export class StudentCommunityComponent {
 	private createQuestion (): void {
 		this.communityPost.area = 'community';
 		this.communityPost.type = 'post';
-		console.log(this.communityPosts);
 		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
 		.then(() => {})
 		.catch((error) => {
