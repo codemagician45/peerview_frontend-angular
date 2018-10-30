@@ -66,14 +66,28 @@
 				</div>
 				<div *ngFor="let post of communityPosts" class="forum-item">
 					<div class="forum-header">
-						<img src="/src/assets/images/courses/course-accounting.jpg" alt="">
-						<h4>
+						<span *ngIf="post.attachments.length > 0">
+							<cl-image
+							public-id="{{post.attachments[0].cloudinaryPublicId}}"
+							>
+								<cl-transformation
+									[attr.height]="post.attachments.length > 1 ? 500 : 250"
+									width="500"
+									crop="fill"
+									radius="3"
+									gravity="face"
+								>
+								</cl-transformation>
+							</cl-image>
+						</span>
+						<!-- <img src="/src/assets/images/courses/course-accounting.jpg" alt=""> -->
+						<h3>
 							{{post.message}} <br>
 							<button class="btn-peersview-primary btn-md"> 
 								<i class="material-icons">create</i>
 								ANSWER
 							</button>
-						</h4>
+						</h3>
 					</div>
 					<div class="forum-answers row m-peersview-0">
 						<div class="col-md-6 answer-item">
@@ -120,3 +134,5 @@
 		</div>
 	</div>
 </div>
+
+<!-- {{ myString | limitTo: 20 }}{{myString.length > 20 ? '...' : ''}} -->
