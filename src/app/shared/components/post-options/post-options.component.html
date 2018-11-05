@@ -26,7 +26,8 @@
           [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
           (click)="onClickPostLike(post.isUserPostLike)"
         >
-          <i class="material-icons" >thumb_up</i>
+          <i class="material-icons" >thumb_up</i> 
+          <span class="peersview-primary-color colon-separator">:</span>
           <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
         </button>
     </div>
