@@ -68,6 +68,7 @@ export class SharedPostComponent {
   private limit = 5;
   private offset = 0;
   protected userJustVoted: boolean = false;
+  protected isLoadingMorePosts: boolean = false;
 
   public ngOnInit (): void {
     this.getSharedPostSubscriber();
@@ -116,6 +117,7 @@ export class SharedPostComponent {
   }
 
   protected onLoadMorePost (): void {
+    this.isLoadingMorePosts = true;
     this.offset = this.posts.length;
     let campusId: any;
 
@@ -125,6 +127,7 @@ export class SharedPostComponent {
           .then((posts: PostModel[]) => {
             this.posts = this.posts.concat(posts);
             this.checkIfThereAreStillPostAvailable(posts);
+            this.isLoadingMorePosts = false;
           });
         break;
       case 'campus':
@@ -133,6 +136,7 @@ export class SharedPostComponent {
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
+            this.isLoadingMorePosts = false;
           });
         break;
       case 'campusFreshersFeed':
@@ -142,6 +146,7 @@ export class SharedPostComponent {
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
+            this.isLoadingMorePosts = false;
           });
         break;
       case 'campusCourseFeed':
@@ -151,6 +156,7 @@ export class SharedPostComponent {
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
+            this.isLoadingMorePosts = false;
           });
         break;
       case 'campusClasses':
@@ -160,6 +166,7 @@ export class SharedPostComponent {
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
+            this.isLoadingMorePosts = false;
           });
         break;
     }
