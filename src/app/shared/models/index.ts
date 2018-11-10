@@ -8,3 +8,4 @@ export * from './mentor';
 export * from './advance-search';
 export * from './messages';
 export * from './community';
+export * from './notification';

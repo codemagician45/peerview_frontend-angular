@@ -41,7 +41,8 @@ import {
   UserApiService,
   AdvanceSearchService,
   MessagesApiService,
-  CommunityApiService
+  CommunityApiService,
+  NotificationApiService
 } from '../services/api';
 import {
   UtilitiesService,
@@ -136,6 +137,7 @@ tinymce.init({});
     PostApiService,
     UserApiService,
     MessagesApiService,
+    NotificationApiService,
     UtilitiesService,
     TitleService,
     MetaService,

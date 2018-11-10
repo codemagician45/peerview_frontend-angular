@@ -35,16 +35,48 @@
 
   .notification-page {
     .co-info {
-      width: 90%;
+      width: 88%;
     }
   }
 
   /* Custom, iPhone Retina */
-  @media only screen and (min-width : 320px) {}
+  @media only screen and (min-width : 320px) {    
+    .notification-page {
+      .co-info {
+        width: 71%;
+      }
+    }
+  }
+  @media only screen and (min-width : 375px) {
+    .notification-page {
+      .co-info {
+        width: 75%;
+      }
+    }
+  }
+  @media only screen and (min-width : 414px) {
+    .notification-page {
+      .co-info {
+        width: 77%;
+      }
+    }
+  }
   /* Extra Small Devices, Phones */
-  @media only screen and (min-width : 480px) {}
+  @media only screen and (min-width : 480px) {
+    .notification-page {
+      .co-info {
+        width: 75%;
+      }
+    }
+  }
   /* Small Devices, Tablets */
-  @media only screen and (min-width : 768px) {}
+  @media only screen and (min-width : 768px) {
+    .notification-page {
+      .co-info {
+        width: 88%;
+      }
+    }
+  }
   /* Medium Devices, Desktops */
   @media only screen and (min-width : 992px) {
     padding-top: 60px;
