@@ -14,9 +14,7 @@
   }
   .tabs-left {
     border-bottom: none;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    display: grid;
     li {
       float: left;
       margin-bottom: 1px;
