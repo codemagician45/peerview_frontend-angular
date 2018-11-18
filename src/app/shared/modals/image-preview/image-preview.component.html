@@ -45,7 +45,7 @@
   <div
     id="changeProfilePicture"
     class="change-profile-picture-container"
-    *ngIf="imageAttachments.source === 'profile-picture'"
+    *ngIf="imageAttachments.source === 'profile-picture' && !otherUser"
   >
     <button
       class="col-xs-12 remove-photo-button"

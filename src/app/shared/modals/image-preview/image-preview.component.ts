@@ -39,6 +39,7 @@ export class SharedImagePreviewComponent {
   protected isToogleUploadComponentVisible: boolean = false;
   private user: UserModel = new UserModel();
   protected profileUser: UserModel = UserService.getUser();
+  protected otherUser: UserModel = UserService.getOtherUser();
 
   public ngAfterViewInit (): void {
     this.getImageOrientation();
