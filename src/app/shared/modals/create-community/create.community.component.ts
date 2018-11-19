@@ -33,7 +33,9 @@ export class CreateCommunityComponent implements OnInit {
 	protected onSubmit (valid): void {
 		console.log(this.privateCommunity);
 		this.communityApiService.promiseCreatePrivateCommunity(this.privateCommunity)
-		.then(() => {})
+		.then(() => {
+      this.dialog.closeAll();
+    })
 		.catch(error => {
 			console.log(error);
 		});
