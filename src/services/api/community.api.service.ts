@@ -20,8 +20,8 @@ import {
 @Injectable()
 export class CommunityApiService extends ApiService {
   public options = {};
-  public baseURI = 'post/v2';
-  public baseURIPlural = 'post/v2';
+  public baseURI = 'community';
+  public baseURIPlural = 'community';
 
 	/**Create community post*/
 
@@ -34,7 +34,7 @@ export class CommunityApiService extends ApiService {
 
 	/** Get student community posts*/
 	public promiseGetAllCommunityPostsData (): Promise<CommunityPostModel[]> {
-		return this.promiseGetAllResponseData(`list`)
+		return this.promiseGetResponseData(`list`)
 		.then((response: IResponse) => {
 			return CommunityFactory.createCommunityFeed(response.data);
 		});

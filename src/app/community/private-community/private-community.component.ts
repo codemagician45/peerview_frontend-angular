@@ -16,6 +16,9 @@ import {
 import {
 	CreateCommunityComponent
 } from '../../shared/modals';
+import {
+  CommunityApiService
+} from '../../../services/api';
 @Component({
 	selector: 'private-community-component',
 	templateUrl: './private-community.component.html',
@@ -24,10 +27,23 @@ import {
 export class PrivateCommunityComponent {
 	constructor (
 		private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private communityApiService: CommunityApiService
 	) {}
 
-	protected selectedCommunitySelected: string = 'discoverCommunity';
+  protected selectedCommunitySelected: string = 'discoverCommunity';
+  protected communities: any;
+
+  public ngOnInit (): void {
+    this.communityApiService.promiseGetAllCommunityPostsData()
+      .then(response => {
+        // console.log('get privates', response);
+        this.communities = response;
+      })
+      .catch(error => {
+        // console.log('get privates', error)
+      });
+  }
 
 	protected onSelectCommunityType (type): void {
 		this.selectedCommunitySelected = type;
