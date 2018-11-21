@@ -20,6 +20,8 @@ export class CommunityModel extends Model {
 	public init (): void {
 		this.setBlankDataStructure({
 			id: undefined,
+			courseId: null,
+			message: null,
 			attachments: []
 		});
 	}
