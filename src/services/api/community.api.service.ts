@@ -25,18 +25,25 @@ export class CommunityApiService extends ApiService {
 
 	/**Create community post*/
 
-	 public promiseCreateStudentCommunityPosts (communityPost: CommunityModel): Promise<CommunityModel> {
-		 return this.promisePostModelData(``, communityPost)
-		 	.then((response: IResponse) => {
-				 return CommunityFactory.createCommunityPost(response.data);
-			 });
-	 }
+  public promiseCreateStudentCommunityPosts (communityPost: CommunityModel): Promise<CommunityModel> {
+    return this.promisePostModelData(``, communityPost)
+    .then((response: IResponse) => {
+        return CommunityFactory.createCommunityPost(response.data);
+      });
+  }
 
 	/** Get student community posts*/
 	public promiseGetAllCommunityPostsData (): Promise<CommunityPostModel[]> {
 		return this.promiseGetResponseData(`list`)
 		.then((response: IResponse) => {
 			return CommunityFactory.createCommunityFeed(response.data);
+		});
+  }
+
+  public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
+		return this.promiseGetResponseData(`list`)
+		.then((response: IResponse) => {
+			return CommunityFactory.createPrivateCommunityFeed(response.data);
 		});
 	}
 

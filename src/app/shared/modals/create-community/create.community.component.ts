@@ -1,7 +1,9 @@
 import {
 	Component,
 	OnInit,
-	Inject
+  Inject,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import {
   MatDialog,
@@ -26,7 +28,7 @@ export class CreateCommunityComponent implements OnInit {
 		private communityApiService: CommunityApiService,
 	) {}
 
-	protected privateCommunity: PrivateCommunityModel = new PrivateCommunityModel;
+  protected privateCommunity: PrivateCommunityModel = new PrivateCommunityModel;
 
 	public ngOnInit (): void {}
 

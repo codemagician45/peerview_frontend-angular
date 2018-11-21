@@ -19,6 +19,9 @@ import {
 import {
   CommunityApiService
 } from '../../../services/api';
+import {
+  PrivateCommunityModel
+} from '../../shared/models';
 @Component({
 	selector: 'private-community-component',
 	templateUrl: './private-community.component.html',
@@ -32,10 +35,10 @@ export class PrivateCommunityComponent {
 	) {}
 
   protected selectedCommunitySelected: string = 'discoverCommunity';
-  protected communities: any;
+  protected communities: Array<PrivateCommunityModel> = [];
 
   public ngOnInit (): void {
-    this.communityApiService.promiseGetAllCommunityPostsData()
+    this.communityApiService.promiseGetAllPrivateCommunityData()
       .then(response => {
         // console.log('get privates', response);
         this.communities = response;
@@ -54,5 +57,5 @@ export class PrivateCommunityComponent {
 		dialogConfig.panelClass = 'create-community-modal';
 		dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
 		this.dialog.open(CreateCommunityComponent, dialogConfig);
-	}
+  }
 }

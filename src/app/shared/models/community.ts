@@ -28,12 +28,9 @@ export class CommunityModel extends Model {
 }
 
 export class PrivateCommunityModel extends Model {
-	public communityName: string;
+	public name: string;
 	public institutionName: string;
   public users: String[];
-  public message: string = 'This is a private community.';
-  public area: string = 'community';
-  public type: string = 'post';
 
 	public init (): void {}
 }
