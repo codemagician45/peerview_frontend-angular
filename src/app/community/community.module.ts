@@ -25,10 +25,13 @@ import {
 } from './community-routing.component';
 import {
   StudentCommunityComponent
-} from './student-community/student-community.component';
+} from './student-community/landing/student-community.component';
 import {
   PrivateCommunityComponent
 } from './private-community/private-community.component';
+import {
+  AnswerQuestionCommunityComponent
+} from './student-community/answer-question/answer-question.component';
 import {
   CommunityMobileHeader
 } from './components/mobile-header-menu/mobile-header.component';
@@ -49,7 +52,8 @@ import {
     CLImageHoverDirectiveComponent,
     StudentCommunityComponent,
     PrivateCommunityComponent,
-    CommunityMobileHeader
+    CommunityMobileHeader,
+    AnswerQuestionCommunityComponent
   ],
   exports: [],
   providers: [CommunityApiService],
