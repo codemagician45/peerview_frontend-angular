@@ -10,12 +10,14 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 import {
-	PrivateCommunityModel
+  PrivateCommunityModel,
+  UserModel
 } from '../../../shared/models';
 import {
   CommunityApiService,
   AdvanceSearchService
 } from '../../../../services/api';
+import { StringifyOptions } from 'querystring';
 
 @Component({
 	selector: 'create-community-modal-component',
@@ -32,6 +34,9 @@ export class CreateCommunityComponent implements OnInit {
 
   protected privateCommunity: PrivateCommunityModel = new PrivateCommunityModel;
   protected keyword: string = '';
+  protected searchedUsers: Array<UserModel> = [];
+  private timer: any;
+  private selectedUsers: Array<UserModel> = [];
 
 	public ngOnInit (): void {}
 
@@ -52,12 +57,29 @@ export class CreateCommunityComponent implements OnInit {
 
   protected onSearchUser (): void {
     console.log(this.keyword);
-    this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword)
+      .then(response => {
+        this.searchedUsers = response;
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }, 500);
+  }
+
+  protected onResultSelected (item: UserModel, index): void {
+    if (this.privateCommunity.users.indexOf(item.id.toString()) === -1) {
+      this.privateCommunity.users.push(item.id.toString());
+      this.selectedUsers.push(item);
+    }
+    // console.log(this.privateCommunity)
+  }
+
+  protected onClearSelected (index): void {
+    this.selectedUsers.splice(index, 1);
+    this.privateCommunity.users.splice(index, 1);
   }
 }

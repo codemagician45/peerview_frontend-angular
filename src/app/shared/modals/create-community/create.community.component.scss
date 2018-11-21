@@ -47,4 +47,47 @@ create-community-modal-component {
       }
     }
   }
+
+  
+  .result-group {
+    li {
+      padding: 3px;
+    }
+    
+    li:hover {
+      background-color: #ece;
+      cursor: pointer;
+    }
+  }
+
+  .co-img {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-left: 3px;
+    
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+
+  .co-info {
+    display: inline-flex;
+    margin-left: 10px;
+  }
+
+  .selected-users-list {
+    margin-top: 10px;
+  }
+
+  .clear-item {
+    cursor: pointer;
+  }
+
+  .hidden {
+    display: none;
+  }
 }
