@@ -80,10 +80,11 @@
 								</cl-transformation>
 							</cl-image>
 						</span>
-						<!-- <img src="/src/assets/images/courses/course-accounting.jpg" alt=""> -->
 						<h3>
 							{{post.message}} <br>
-							<button class="btn-peersview-primary btn-md"> 
+							<button
+								(click)="onAnswerQuestion(post.id)" 
+								class="btn-peersview-primary btn-md"> 
 								<i class="material-icons">create</i>
 								ANSWER
 							</button>

@@ -6,14 +6,19 @@ import {
 	UserModel,
 	CommunityModel,
 	CommunityPostModel
-} from '../../shared/models';
+} from '../../../shared/models';
+import {
+	ActivatedRoute,
+	Router,
+	Params
+} from '@angular/router';
 import {
 	CourseApiService,
 	CommunityApiService
-} from '../../../services/api';
+} from '../../../../services/api';
 import {
 	UserService
-} from '../../../services';
+} from '../../../../services';
 import {
   MatDialog,
   MatDialogRef,
@@ -24,10 +29,13 @@ import {
 } from '@angular/cdk/overlay';
 import {
 	ComunityMobileAskQuestionMobileComponent
-} from '../../shared/modals';
+} from '../../../shared/modals';
 import {
 	PostEmitter
-} from '../../shared/emitter';
+} from '../../../shared/emitter';
+import {
+	CryptoUtilities
+} from '../../../shared/utilities';
 
 @Component({
 	selector: 'student-community-component',
@@ -36,6 +44,8 @@ import {
 })
 export class StudentCommunityComponent {
 	constructor (
+		private route: ActivatedRoute,
+		private router: Router,
 		private courseApiService: CourseApiService,
 		private communityApiService: CommunityApiService,
 		private dialog: MatDialog,
@@ -59,6 +69,7 @@ export class StudentCommunityComponent {
 		this.communityApiService.promiseGetAllCommunityPostsData()
 		.then((responseData: CommunityPostModel[]) => {
 			this.communityPosts = responseData;
+			console.log(this.communityPosts);
 		})
 		.catch(error => {
 			console.log(error);
@@ -106,9 +117,17 @@ export class StudentCommunityComponent {
 		this.communityPost.area = 'community';
 		this.communityPost.type = 'post';
 		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
-		.then(() => {})
+		.then(() => {
+			this.communityPost.init();
+			this.getStudentCommunityFeed();
+		})
 		.catch((error) => {
 			console.log(error);
 		});
+	}
+
+	protected onAnswerQuestion (id): void {
+		const encryptedItemId = CryptoUtilities.cipher(id);
+		this.router.navigate([`${encryptedItemId}`], {relativeTo: this.route});
 	}
 }
