@@ -13,7 +13,8 @@ import {
 	PrivateCommunityModel
 } from '../../../shared/models';
 import {
-	CommunityApiService
+  CommunityApiService,
+  AdvanceSearchService
 } from '../../../../services/api';
 
 @Component({
@@ -25,10 +26,12 @@ export class CreateCommunityComponent implements OnInit {
 	constructor (
     @Inject(MAT_DIALOG_DATA) protected comunityDetailData: any,
 		private dialog: MatDialog,
-		private communityApiService: CommunityApiService,
+    private communityApiService: CommunityApiService,
+    private advanceSeachService: AdvanceSearchService
 	) {}
 
   protected privateCommunity: PrivateCommunityModel = new PrivateCommunityModel;
+  protected keyword: string = '';
 
 	public ngOnInit (): void {}
 
@@ -45,5 +48,16 @@ export class CreateCommunityComponent implements OnInit {
 
 	protected onTagsChanged (item): void {
 		console.log(item);
-	}
+  }
+
+  protected onSearchUser (): void {
+    console.log(this.keyword);
+    this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 }

@@ -36,7 +36,8 @@ export class AdvanceSearchService extends ApiService {
       });
   }
 
-  public promiseGetAllSearchedUsers (lastName: string, campusName: string, limit: number = 10, offset: number = 0): Promise<UserModel[]> {
+  public promiseGetAllSearchedUsers (lastName: string, campusName: string = '',
+    limit: number = 10, offset: number = 0): Promise<UserModel[]> {
     let params = new HttpParams()
       .set('lastName', lastName.toString())
       .set('campusName', campusName.toString())
