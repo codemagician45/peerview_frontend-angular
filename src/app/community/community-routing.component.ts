@@ -28,10 +28,10 @@ const communityRoutes: Routes = [{
       path: '',
       redirectTo: 'landing',
       pathMatch: 'full',
-    },{
+    }, {
       path: 'landing',
       component: StudentCommunityComponent
-    },{
+    }, {
       path: ':id',
       component:  AnswerQuestionCommunityComponent
     }]
