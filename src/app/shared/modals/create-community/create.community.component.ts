@@ -51,18 +51,13 @@ export class CreateCommunityComponent implements OnInit {
 		});
 	}
 
-	protected onTagsChanged (item): void {
-		console.log(item);
-  }
-
   protected onSearchUser (): void {
-    console.log(this.keyword);
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword)
       .then(response => {
         this.searchedUsers = response;
-        console.log(response);
+        // console.log(response);
       })
       .catch(error => {
         console.log(error);
@@ -71,15 +66,16 @@ export class CreateCommunityComponent implements OnInit {
   }
 
   protected onResultSelected (item: UserModel, index): void {
-    if (this.privateCommunity.users.indexOf(item.id.toString()) === -1) {
-      this.privateCommunity.users.push(item.id.toString());
+    if (this.privateCommunity.communityUsers.indexOf(item.id.toString()) === -1) {
+      this.privateCommunity.communityUsers.push(item.id.toString());
       this.selectedUsers.push(item);
+
+      this.searchedUsers.splice(index, 1);
     }
-    // console.log(this.privateCommunity)
   }
 
   protected onClearSelected (index): void {
     this.selectedUsers.splice(index, 1);
-    this.privateCommunity.users.splice(index, 1);
+    this.privateCommunity.communityUsers.splice(index, 1);
   }
 }

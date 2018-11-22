@@ -42,12 +42,15 @@
           [(ngModel)]="keyword"
           class="form-control" 
           (keydown)="onSearchUser()"
-          autocomplete="off">
-					<button>
+          autocomplete="off"
+          placeholder="Add users">
+					<!-- <button>
 						<i class="material-icons">add_circle_outline</i>
-          </button>
-        <ul class="list-group text-left result-group" *ngIf="searchedUsers.length !== 0; let i = index;">
-          <li class="list-group-item" [ngClass]="{'hidden' : selectedUsers.indexOf(i) !== -1}" *ngFor="let item of searchedUsers;" (click)="onResultSelected(item, i)">
+          </button> -->
+        <ul class="list-group text-left result-group"
+          *ngIf="searchedUsers.length !== 0;">
+          <li class="list-group-item"
+              *ngFor="let item of searchedUsers; let i = index;" (click)="onResultSelected(item, i)">
             <cl-image class="co-img" [public-id]="item.socialImage ? (item.profilePicture === 'avatar' ? item.socialImage: item.profilePicture): item.profilePicture">
               <cl-transformation width="40" height="40" radius="max" gravity="custom" crop="thumb">
               </cl-transformation>
@@ -57,8 +60,8 @@
             </div>
           </li>
         </ul>
-        <div class="selected-users-list" *ngIf="selectedUsers.length !== 0; let i = index;">
-          <div class="list-group" *ngFor="let item of selectedUsers;">
+        <div class="selected-users-list" *ngIf="selectedUsers.length !== 0;">
+          <div class="list-group" *ngFor="let item of selectedUsers; let i = index;">
             <cl-image class="co-img" [public-id]="item.socialImage ? (item.profilePicture === 'avatar' ? item.socialImage: item.profilePicture): item.profilePicture">
               <cl-transformation width="40" height="40" radius="max" gravity="custom" crop="thumb">
               </cl-transformation>
