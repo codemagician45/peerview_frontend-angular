@@ -23,7 +23,6 @@ const communityRoutes: Routes = [{
   component: CommunityComponent,
   children: [ {
     path: 'student-community',
-    component: StudentCommunityComponent,
     children: [{
       path: '',
       redirectTo: 'landing',
