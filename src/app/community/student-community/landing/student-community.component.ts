@@ -128,6 +128,6 @@ export class StudentCommunityComponent {
 
 	protected onAnswerQuestion (id): void {
 		const encryptedItemId = CryptoUtilities.cipher(id);
-		this.router.navigate([`${encryptedItemId}`], {relativeTo: this.route});
+		this.router.navigate([`../${encryptedItemId}`], {relativeTo: this.route});
 	}
 }
