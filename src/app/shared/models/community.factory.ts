@@ -24,4 +24,9 @@ export class CommunityFactory {
 			instanceData => CommunityFactory.createFeed(instanceData)
 		);
 	}
+
+	public static createCommunityQuestionDetails (data: any): CommunityPostModel {
+		return <CommunityPostModel> (new CommunityPostModel ())
+			.assimilate(data);
+	}
 }
