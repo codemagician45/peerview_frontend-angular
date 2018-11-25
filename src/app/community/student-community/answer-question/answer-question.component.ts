@@ -39,7 +39,7 @@ export class  AnswerQuestionCommunityComponent {
 		this.communityApiService.promiseGetQuestionDetail(questionId)
 		.then((responseData: CommunityPostModel) => {
 			console.log(responseData);
-		})
+		});
 	}
 }
 
