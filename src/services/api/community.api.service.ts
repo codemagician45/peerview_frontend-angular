@@ -46,4 +46,12 @@ export class CommunityApiService extends ApiService {
 			 return CommunityFactory.createPrivateCommunity(response);
 		 });
 	 }
+
+	/**Get question details */
+	public promiseGetQuestionDetail (questionId: Number): Promise<CommunityPostModel> {
+		return this.promiseGetResponseData(`${questionId}`)
+		.then((response: IResponse) => {
+			return CommunityFactory.createCommunityQuestionDetails(response.data);
+		});
+	}
 }
