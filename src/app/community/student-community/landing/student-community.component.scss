@@ -149,7 +149,15 @@ student-community-component {
     				color: #989898;
 					}
 				}
-		}
+    }
+    
+    .read-more {
+      display: inline;
+      text-decoration: underline;
+      font-size: 13px;
+      cursor: pointer;
+      color: #ff5a00;
+    }
 	// Custom, iPhone Retina
 	@media only screen and (min-width : 320px) {}
 	// extra Small Devices, Phones

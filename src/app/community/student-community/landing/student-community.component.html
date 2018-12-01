@@ -64,7 +64,7 @@
 				<div class="student-community-topics">
 					<b>LATEST DISCUSSIONS</b>
 				</div>
-				<div *ngFor="let post of communityPosts" class="forum-item">
+				<div *ngFor="let post of communityPosts; let i = index;" class="forum-item">
 					<div class="forum-header">
 						<span *ngIf="post.attachments.length > 0">
 							<cl-image
@@ -105,8 +105,8 @@
 							<span>City College of Angeles</span>
 							<span>10/2/18, 8:45 PM</span>
 							<div>
-								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-								The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.,
+                {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }} 
+                <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
 						</div>
 						<div class="col-md-6 answer-item">
@@ -122,8 +122,8 @@
 							<span>City College of Angeles</span>
 							<span>10/2/18, 8:45 PM</span>
 							<div class="">
-								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
-								The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.,
+                {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }}
+                <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
 						</div>
 					</div>

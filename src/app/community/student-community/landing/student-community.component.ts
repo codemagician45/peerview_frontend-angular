@@ -57,7 +57,11 @@ export class StudentCommunityComponent {
 	protected communityPost: CommunityModel = new CommunityModel();
 	protected communityPosts: CommunityPostModel[] = [];
 	protected isToggleUploadComponentVisible: boolean = false;
-	protected sampleReplyString: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  protected sampleReplyString: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
+  protected sampleAnswer = 'It is a long established fact that a reader will be distracted by the readable \
+  content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less \
+  normal distribution of letters.,';
+  protected showFullAnswer: Array<Array<boolean>> = [];
 
 	public ngOnInit (): void {
 		this.getCourse();
@@ -128,5 +132,10 @@ export class StudentCommunityComponent {
 	protected onAnswerQuestion (id): void {
 		const encryptedItemId = CryptoUtilities.cipher(id);
 		this.router.navigate([`../${encryptedItemId}`], {relativeTo: this.route});
-	}
+  }
+
+  protected trimStory (answer, maxCharacters): string {
+    let trimmedString = answer.substr(0, maxCharacters);
+    return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
+  }
 }
