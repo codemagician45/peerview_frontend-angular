@@ -1,3 +1,56 @@
-<div class="answer-question-component row m-peersview-0">
-	<h2>Latest Replies</h2>
+<div class="answer-question-component" *ngIf="communityPost">
+	<div class="community-header row m-peersview-0 col-md-8 p-persview-0">
+		<div class="col-xs-12 question-images text-center" *ngIf="communityPost">
+			<div 
+				class="image-outer"
+				*ngFor="let attachment of communityPost.attachments; let i = index">
+				<div 
+					class="image-inner"
+					*ngIf="attachment.cloudinaryPublicId">
+						<cl-image
+							public-id="{{attachment.cloudinaryPublicId}}"
+							>
+							<cl-transformation
+								[attr.height]="communityPost.attachments.length > 1 ? 500 : 250"
+								width="500"
+								crop="fill"
+								radius="3"
+								gravity="face"
+							>
+						</cl-transformation>
+					</cl-image>
+				</div>
+			</div>
+		</div>
+		<div class="user-info-container">
+			<span class="user-img">
+				<cl-image
+					public-id="{{communityPost.user.socialImage ? (communityPost.user.profilePicture === 'avatar' ? communityPost.user.socialImage: communityPost.user.profilePicture): communityPost.user.profilePicture}}"
+					*ngIf="communityPost.user?.profilePicture"
+					class="user-img pull-left"
+					[ngStyle]="{'border-radius': '50%'}">
+					<cl-transformation width="55" height="55" radius="max" gravity="custom" crop="thumb">
+					</cl-transformation>
+				</cl-image>
+				<p class="text-left">{{communityPost.user.firstName | titlecase}} {{communityPost.user.lastName | titlecase}}</p>
+			</span>
+		
+		</div>
+			
+	</div>
+<!-- 
+	<div class="col-xs-12"> 
+		<div class="row">
+			<div class="col-md-8 p-persview-0">
+
+			</div>
+			
+		</div>
+	</div> -->
+	<div class="col-md-4">
+			<community-right-menu-component></community-right-menu-component>
+		</div>
 </div>
+<!-- <div class="answer-question-component row m-peersview-0">
+	<h2>Latest Replies</h2>
+</div> -->
