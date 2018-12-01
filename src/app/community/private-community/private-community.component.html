@@ -52,7 +52,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="private-community-body row" *ngIf="selectedCommunitySelected === 'myCommunity'">
+	<div class="private-community-body row" *ngIf="selectedCommunitySelected === 'myCommunity' && communities.length !== 0">
     <div class="col-md-4" *ngFor="let community of communities;">
       <div class="community-item">
         <button class="btn-peersview-primary add-mentor">
@@ -61,21 +61,11 @@
         <h4 class="text-center">{{ community.name }}</h4>	
       </div>
     </div>
-		<!-- <div class="col-md-4">
-				<div class="community-item">
-					<button class="btn-peersview-primary add-mentor">
-						<i class="material-icons">add</i>
-					</button>
-					<h4 class="text-center">Students Fashion</h4>	
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="community-item">
-					<button class="btn-peersview-primary add-mentor">
-						<i class="material-icons">add</i>
-					</button>
-					<h4 class="text-center">Students Fashion</h4>	
-				</div>
-			</div> -->
-	</div>
+  </div>
+  <div class="private-community-body row" *ngIf="selectedCommunitySelected === 'myCommunity' && communities.length === 0">
+    <br/>
+    <div class="text-center">
+      <h4>No Private Communities created yet.</h4>
+    </div>
+  </div>
 </div>
