@@ -1,0 +1,29 @@
+answer-question-component {
+    .community-header {
+        height: auto;
+        background-color: #fff;
+        .user-img {
+            height: 55px;
+            width: 55px;
+        }
+
+        .question-images {
+            display: table;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            .image-outer {
+                display: inline-grid;
+                .image-inner {
+                  margin: 0 0 2px 2px;
+                  border-radius: 3px;
+                  img {
+                    width: 100%;
+                  }
+                }
+            }
+        }
+        .user-info-container {
+            padding: 15px;
+        }
+    }
+}

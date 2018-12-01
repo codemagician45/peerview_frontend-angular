@@ -51,7 +51,7 @@
 				</div>
 				<shared-upload-image-component
 				*ngIf="isToggleUploadComponentVisible"
-				[uploadOptions]="{'queueLimit': 4, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
+				[uploadOptions]="{'queueLimit': 1, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
 				(imageIsSelected)="onImageIsSelected($event)">
 			</shared-upload-image-component>
 			</div>

@@ -69,7 +69,6 @@ export class StudentCommunityComponent {
 		this.communityApiService.promiseGetAllCommunityPostsData()
 		.then((responseData: CommunityPostModel[]) => {
 			this.communityPosts = responseData;
-			console.log(this.communityPosts);
 		})
 		.catch(error => {
 			console.log(error);

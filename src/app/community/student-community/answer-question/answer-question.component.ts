@@ -28,6 +28,8 @@ export class  AnswerQuestionCommunityComponent {
 			private communityApiService: CommunityApiService
 	) {}
 
+	private communityPost: CommunityPostModel;
+
 	public ngOnInit (): void {
 		this.route.params.subscribe((params) => {
 			let questionId = parseInt(CryptoUtilities.decipher(params.id), 10);
@@ -38,7 +40,8 @@ export class  AnswerQuestionCommunityComponent {
 	private getQuestionDetails (questionId): void {
 		this.communityApiService.promiseGetQuestionDetail(questionId)
 		.then((responseData: CommunityPostModel) => {
-			console.log(responseData);
+			this.communityPost = responseData;
+			console.log(this.communityPost);
 		});
 	}
 }
