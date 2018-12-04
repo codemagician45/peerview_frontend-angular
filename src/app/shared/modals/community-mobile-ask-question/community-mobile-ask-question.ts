@@ -8,7 +8,7 @@ import {
 } from '@angular/material';
 import {
 	UserModel,
-	CommunityModel
+	CommunityModel,
 	CommunityPostModel
 } from '../../../shared/models';
 import {
