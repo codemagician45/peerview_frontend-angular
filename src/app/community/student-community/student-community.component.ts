@@ -37,13 +37,9 @@ import {
 export class StudentCommunityComponent {
 	constructor (
 		private courseApiService: CourseApiService,
-<<<<<<< HEAD
 		private communityApiService: CommunityApiService,
 		private dialog: MatDialog,
 		private overlay: Overlay) {}
-=======
-		private communityApiService: CommunityApiService) {}
->>>>>>> Fixed conflict
 
 	private hasImageSelected: boolean = false;
 	private courses = [];
