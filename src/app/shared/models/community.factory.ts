@@ -1,4 +1,5 @@
 import {
+<<<<<<< HEAD
 	CommunityModel,
 	CommunityPostModel,
 	PrivateCommunityModel
@@ -24,4 +25,14 @@ export class CommunityFactory {
 			instanceData => CommunityFactory.createFeed(instanceData)
 		);
 	}
+=======
+  CommunityPostModel
+} from './community';
+
+export class CommunityFactory {
+	public static createCommunityPost (data: any): CommunityPostModel {
+		return <CommunityPostModel> (new CommunityPostModel())
+			.assimilate(data);
+	}
+>>>>>>> Fixed conflict
 }
