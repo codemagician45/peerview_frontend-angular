@@ -14,6 +14,7 @@ export class CommunityModel extends Model {
 	public message: string;
 	public area: string;
 	public type: string;
+	public question: string;
 	public attachments: String[];
 
 	public init (): void {
