@@ -9,4 +9,4 @@ export * from './become-mentor/become-mentor.component';
 export * from './mentor-detail/mentor-detail.component';
 export * from './create-community/create.community.component';
 export * from './create-message/create-message.component';
-
+export * from './community-mobile-ask-question/community-mobile-ask-question';

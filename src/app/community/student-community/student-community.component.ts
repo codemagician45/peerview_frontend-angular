@@ -13,6 +13,9 @@ import {
 import {
 	UserService
 } from '../../../services';
+import {
+	ComunityMobileAskQuestionMobileComponent
+} from '../../shared/modals';
 
 @Component({
 	selector: 'student-community-component',
