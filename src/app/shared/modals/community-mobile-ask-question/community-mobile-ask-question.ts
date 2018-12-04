@@ -9,6 +9,7 @@ import {
 import {
 	UserModel,
 	CommunityModel
+	CommunityPostModel
 } from '../../../shared/models';
 import {
 	PostEmitter
