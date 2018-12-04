@@ -6,7 +6,8 @@ import {
 	UserModel
 } from '../../shared/models';
 import {
-	CourseApiService
+	CourseApiService,
+	CommunityApiService
 } from '../../../services/api';
 import {
 	UserService
@@ -18,7 +19,9 @@ import {
 	styleUrls: ['./student-community.component.scss']
 })
 export class StudentCommunityComponent {
-	constructor (private courseApiService: CourseApiService) {}
+	constructor (
+		private courseApiService: CourseApiService,
+		private communityApiService: CommunityApiService) {}
 
 	private courses = [];
 	private user: UserModel;

@@ -32,6 +32,9 @@ import {
 import {
   CommunityMobileHeader
 } from './components/mobile-header-menu/mobile-header.component';
+import {
+  CommunityApiService
+} from '../../services/api';
 
 @NgModule({
   imports : [
@@ -49,7 +52,7 @@ import {
     CommunityMobileHeader
   ],
   exports: [],
-  providers: [],
+  providers: [CommunityApiService],
   entryComponents: []
 })
 export class CommunityModule {}

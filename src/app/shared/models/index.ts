@@ -7,3 +7,4 @@ export * from './post';
 export * from './mentor';
 export * from './advance-search';
 export * from './messages';
+export * from './community';

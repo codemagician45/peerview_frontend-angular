@@ -5,3 +5,4 @@ export * from './user.factory';
 export * from './interest.factory';
 export * from './advance-search.factory';
 export * from './messages.factory';
+export * from './community.factory';

@@ -40,7 +40,8 @@ import {
   PostApiService,
   UserApiService,
   AdvanceSearchService,
-  MessagesApiService
+  MessagesApiService,
+  CommunityApiService
 } from '../services/api';
 import {
   UtilitiesService,
@@ -139,7 +140,8 @@ tinymce.init({});
     MetaService,
     Title,
     AdvanceSearchService,
-    UtilitiesService
+    UtilitiesService,
+    CommunityApiService
   ],
   declarations: [
     AppComponent,

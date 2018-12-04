@@ -95,21 +95,18 @@ student-community-component {
 				align-items: center;
 				img {
 					float: left;
-					max-height: 100px;
+					max-height: 70px;
 					margin: 10px;
 				}
 			}
 			button {
-				// padding: 8px;
 				padding: 7px 5px;
 				font-size: 13px;
 				margin: 10px 0;
 				font-size: 14px;
 				i {
 					vertical-align: bottom;
-				// font-size: 14px;
-				font-size: 13px;
-
+					font-size: 13px;
 				}
 			}
 		}
@@ -172,6 +169,13 @@ student-community-component {
 			.user-img {
 				height: 55px;
 				width: 55px;
+			}
+		}
+		.forum-item {
+			.forum-header {
+				img {
+					max-height: 100px;
+				}
 			}
 		}
 		.forum-answers {
