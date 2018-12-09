@@ -1,30 +1,33 @@
 import {
-	Model,
+  Model
 } from './model';
-import {
-	PostReplyModel
-} from './post';
-import {
-	UserModel
-} from './user';
 
-export class CommunityModel extends Model {
-	public communityId: number;
-	public courseId: number;
-	public message: string;
-	public area: string;
+export class CommunityPostModel extends Model {
+  public courseId: number;
+  public message: string;
+  public area: string;
 	public type: string;
-	public question: string;
-	public attachments: String[];
+  public attachments: String[];
+  public init (): void {
+    this.setBlankDataStructure ({
+      message: null,
+      attachments: []
+    });
+  }
+}
 
-	public init (): void {
-		this.setBlankDataStructure({
-			id: undefined,
-			courseId: null,
-			message: null,
-			attachments: []
-		});
-	}
+export class CommunityAnswerQuestionModel extends Model {
+  public id?: number;
+  public questionId: number;
+  public comment: String;
+  public courseId: number;
+
+  public init (): void {
+    this.setBlankDataStructure ({
+      id: undefined,
+      comment: null
+    });
+  }
 }
 
 export class PrivateCommunityModel extends Model {
@@ -32,32 +35,10 @@ export class PrivateCommunityModel extends Model {
 	public institutionName: string;
   public communityUsers: String[] = [];
 
-	public init (): void {}
-}
-
-export class CommunityPostModel extends Model {
-	public id?: number;
-	public createdAt: Date;
-	public message: string;
-	public likeCount: number;
-	public isUserLike: number;
-	public isUserPostLike: number;
-	public pageviewCount: number;
-	public campusPostReply: Array<PostReplyModel>;
-	public postShare: CommunityPostModel;
-	public postReply: Array<PostReplyModel>;
-	public ratingCount: number;
-	public roundedRating?: number;
-	public attachments: String[];
-	public user: UserModel;
-
-	// use as a virtual holder for postPoll
-
-	public init (): void {
-	  this.setBlankDataStructure({
-		id: undefined,
-		message: undefined,
-		attachments: []
-	  });
-	}
+  public init (): void {
+    this.setBlankDataStructure ({
+      id: undefined,
+      comment: null
+    });
+  }
 }

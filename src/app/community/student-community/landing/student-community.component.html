@@ -7,14 +7,15 @@
 					<span>Course</span>
 						<span class="course-container">
 							<select 
-							class="form-control course" 
-							placeholder = "Select Course" 
-							(change)="onChangeCourse($event.target.value)">
-							<option value="0" disabled>Course</option>
-							<option *ngFor="let course of courses" [value]="course.id">
-								{{course.name}}
-							</option>
-						</select>
+								required
+								class="form-control course" 
+								placeholder = "Select Course" 
+								(change)="onChangeCourse($event.target.value)">
+								<option value="0" disabled>Course</option>
+								<option *ngFor="let course of courses" [value]="course.id">
+									{{course.name}}
+								</option>
+							</select>
 						<button (click)="onOpenAskQuestionModal()" class="btn-peersview-primary hidden-md hidden-lg btn-sm ask-modal">Ask
 							<i class="material-icons">add</i>
 						</button>
@@ -45,13 +46,15 @@
 						<textarea [(ngModel)]="communityPost.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
 						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
-					<a 
+					
+					<button 
+						[disabled]="communityPost.courseId == null"
 						(click)="onAskQuestion()"
-						class="btn-peersview-primary">Post</a>
+						class="btn-peersview-primary btn-post-question">Post</button>
 				</div>
 				<shared-upload-image-component
 				*ngIf="isToggleUploadComponentVisible"
-				[uploadOptions]="{'queueLimit': 1, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
+				[uploadOptions]="{'queueLimit': 4, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
 				(imageIsSelected)="onImageIsSelected($event)">
 			</shared-upload-image-component>
 			</div>
@@ -63,6 +66,12 @@
 			<div class="col-md-8 p-peersview-0">
 				<div class="student-community-topics">
 					<b>LATEST DISCUSSIONS</b>
+				</div>
+				<div *ngIf="!communityPost.courseId">
+					<h3 class="text-center">Select course first.</h3>
+				</div>
+				<div *ngIf="communityPosts.length == 0 && communityPost.courseId">
+					<h3 class="text-center">No questions available.</h3>
 				</div>
 				<div *ngFor="let post of communityPosts; let i = index;" class="forum-item">
 					<div class="forum-header">

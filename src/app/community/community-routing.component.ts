@@ -31,7 +31,7 @@ const communityRoutes: Routes = [{
       path: 'landing',
       component: StudentCommunityComponent
     }, {
-      path: ':id',
+      path: ':courseId/:id',
       component:  AnswerQuestionCommunityComponent
     }]
   }, {

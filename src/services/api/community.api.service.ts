@@ -1,64 +1,68 @@
 import {
-	Injectable
+  Injectable
 } from '@angular/core';
 import {
-	HttpParams
+  HttpParams
 } from '@angular/common/http';
 import {
-	ApiService
+  ApiService
 } from '../api.service';
 import {
-	PrivateCommunityModel,
-	CommunityModel,
-	CommunityPostModel,
-	IResponse
+  CommunityPostModel,
+  PrivateCommunityModel,
+  CommunityAnswerQuestionModel,
+  IResponse
 } from '../../app/shared/models';
 import {
-	CommunityFactory
+  CommunityFactory
 } from '../../app/shared/models/factory';
 
 @Injectable()
 export class CommunityApiService extends ApiService {
   public options = {};
-  public baseURI = 'community';
-  public baseURIPlural = 'community';
+  public baseURI = 'post/v2/community';
+  public baseURIPlural = 'post/v2/community';
 
-	/**Create community post*/
+	/**
+	*  Get all community
+	*/
 
-  public promiseCreateStudentCommunityPosts (communityPost: CommunityModel): Promise<CommunityModel> {
-    return this.promisePostModelData(``, communityPost)
-    .then((response: IResponse) => {
+  public promiseCreateStudentCommunityPosts (communityPost: CommunityPostModel): Promise<CommunityPostModel> {
+    return this.promisePostModelData(`course/${communityPost.courseId}`, communityPost)
+      .then((response: IResponse) => {
         return CommunityFactory.createCommunityPost(response.data);
       });
   }
 
-	/** Get student community posts*/
-	public promiseGetAllCommunityPostsData (): Promise<CommunityPostModel[]> {
-		return this.promiseGetResponseData(`list`)
-		.then((response: IResponse) => {
-			return CommunityFactory.createCommunityFeed(response.data);
-		});
+  /**Get question details */
+  public promiseGetQuestionDetail (courseId: Number, questionId: Number): Promise<CommunityPostModel> {
+    return this.promiseGetResponseData(`course/${courseId}/${questionId}`)
+      .then((response: IResponse) => {
+        return CommunityFactory.createCommunityQuestionDetails(response.data);
+      });
   }
 
-  public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
-		return this.promiseGetResponseData(`list`)
-		.then((response: IResponse) => {
-			return CommunityFactory.createPrivateCommunityFeed(response.data);
-		});
-	}
+  /**Answer question */
+  public promiseCreateAnswerToQuestion (answer: CommunityAnswerQuestionModel): Promise<CommunityAnswerQuestionModel> {
+    return this.promisePostModelData(`${answer.questionId}/reply`, answer)
+      .then((response: IResponse) => {
+        return CommunityFactory.createCommunityAnswerToQuestion(response.data);
+      });
+  }
 
-	 public promiseCreatePrivateCommunity (privateCommunity: PrivateCommunityModel): Promise<PrivateCommunityModel> {
-		 return this.promisePostModelData(``, privateCommunity)
-		 .then((response: IResponse) => {
-			 return CommunityFactory.createPrivateCommunity(response);
-		 });
-	 }
+  public promiseCreatePrivateCommunity (privateCommunity: PrivateCommunityModel): Promise<PrivateCommunityModel> {
+    return this.promisePostModelData(``, privateCommunity)
+      .then((response: IResponse) => {
+        return CommunityFactory.createPrivateCommunity(response.data);
+      });
+  }
 
-	/**Get question details */
-	public promiseGetQuestionDetail (questionId: Number): Promise<CommunityPostModel> {
-		return this.promiseGetResponseData(`${questionId}`)
-		.then((response: IResponse) => {
-			return CommunityFactory.createCommunityQuestionDetails(response.data);
-		});
-	}
+  /** Get student community posts*/
+  public promiseGetAllCommunityPostsData (courseId: number): Promise<CommunityPostModel[]> {
+    return this.promiseGetAllResponseData(`course/${courseId}/list`)
+      .then((response: IResponse) => {
+        return CommunityFactory.createCommunityFeed(response.data);
+      });
+  }
+
 }
