@@ -34,7 +34,7 @@ export class CommunityApiService extends ApiService {
 			instanceData => CommunityFactory.createFeed(instanceData)
 		);
   }
-  
+
 	/**
 	*  Get all community
 	*/
