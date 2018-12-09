@@ -23,6 +23,18 @@ export class CommunityApiService extends ApiService {
   public baseURI = 'post/v2/community';
   public baseURIPlural = 'post/v2/community';
 
+
+  public static createPrivateCommunity (data: any): PrivateCommunityModel {
+		return <PrivateCommunityModel> (new PrivateCommunityModel())
+			.assimilate(data);
+  }
+
+  public static createPrivateCommunityFeed (data: any): Array<PrivateCommunityModel> {
+		return data.map(
+			instanceData => CommunityFactory.createFeed(instanceData)
+		);
+  }
+  
 	/**
 	*  Get all community
 	*/
@@ -65,4 +77,10 @@ export class CommunityApiService extends ApiService {
       });
   }
 
+  public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
+		return this.promiseGetResponseData(`list`)
+		.then((response: IResponse) => {
+			return CommunityFactory.createPrivateCommunityFeed(response.data);
+		});
+	}
 }

@@ -33,4 +33,10 @@ export class CommunityFactory {
       instanceData => CommunityFactory.createFeed(instanceData)
     );
   }
+
+  public static createPrivateCommunityFeed (data: any): Array<PrivateCommunityModel> {
+		return data.map(
+			instanceData => CommunityFactory.createFeed(instanceData)
+		);
+	}
 }
