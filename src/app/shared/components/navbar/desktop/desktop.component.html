@@ -45,7 +45,7 @@
           <div class="dropdown-menu dropdown-menu-right users-search" aria-labelledby="users-search">
             <div class="input-search">
               <input type="text" class="form-control" [(ngModel)]='keyword' placeholder="Type search text here...">
-              <button class="btn btn-primary btn-xs" [routerLink]="['/advance-search']" [queryParams]="{k: keyword}">
+              <button class="btn btn-primary btn-xs" [routerLink]="['/advance-search']" [queryParams]="{k: keyword, a: true}">
               <i class="material-icons search-icon" >search</i>
               </button>
             </div>

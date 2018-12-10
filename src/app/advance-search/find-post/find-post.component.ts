@@ -23,7 +23,10 @@ export class AdvanceSearchFindPostComponent {
 
   @Output() private postSearchEvent: EventEmitter<any> = new EventEmitter<any>();
   protected keyword: string;
+  private isAll: boolean;
   private routeSubscriber: any;
+  protected campusName: string = '';
+  private allData: Array<any> = [];
 
   public ngOnInit (): void {
     this.routeSubscriber = this.route
@@ -31,6 +34,7 @@ export class AdvanceSearchFindPostComponent {
     .subscribe(params => {
       this.keyword = params.k;
       this.keyword && this.onSearchPosts();
+      params.a && this.onSearchAll();
     });
   }
 
@@ -42,6 +46,26 @@ export class AdvanceSearchFindPostComponent {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  private async onSearchAll () {
+    await this.advanceSeachService.promiseGetAllSearchedPosts(this.keyword)
+    .then(response => {
+      this.postSearchEvent.emit(response);
+      this.allData = response;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    await this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword, this.campusName)
+    .then(response => {
+      console.log('all data', response.concat(this.allData));
+      this.postSearchEvent.emit(response.concat(this.allData));
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   public ngOnDestroy (): void {
