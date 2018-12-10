@@ -4,7 +4,10 @@ export * from './course.factory';
 export * from './user.factory';
 export * from './interest.factory';
 export * from './advance-search.factory';
+<<<<<<< HEAD
 export * from './messages.factory';
 export * from './community.factory';
 export * from './notification.factory';
+=======
+>>>>>>> Merged and fixed conflict rebase
 

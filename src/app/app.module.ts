@@ -39,10 +39,14 @@ import {
   InterestApiService,
   PostApiService,
   UserApiService,
+<<<<<<< HEAD
   AdvanceSearchService,
   MessagesApiService,
   CommunityApiService,
   NotificationApiService
+=======
+  AdvanceSearchService
+>>>>>>> Merged and fixed conflict rebase
 } from '../services/api';
 import {
   UtilitiesService,
@@ -143,8 +147,12 @@ tinymce.init({});
     MetaService,
     Title,
     AdvanceSearchService,
+<<<<<<< HEAD
     UtilitiesService,
     CommunityApiService
+=======
+    UtilitiesService
+>>>>>>> Merged and fixed conflict rebase
   ],
   declarations: [
     AppComponent,
