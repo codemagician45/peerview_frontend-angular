@@ -34,6 +34,9 @@ import {
   MatInputModule
 } from '@angular/material';
 import {
+  NgxSpinnerModule
+} from 'ngx-spinner';
+import {
   CampusApiService,
   CourseApiService,
   InterestApiService,
@@ -111,7 +114,8 @@ tinymce.init({});
     HttpClientModule,
     RouterModule,
     SharedModule,
-    SharedDirectiveModule
+    SharedDirectiveModule,
+    NgxSpinnerModule
   ],
   providers: [{
     provide: MAT_DIALOG_DATA,

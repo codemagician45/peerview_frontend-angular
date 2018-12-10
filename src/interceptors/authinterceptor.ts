@@ -5,8 +5,16 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest
+  HttpRequest,
+  HttpResponse
 } from '@angular/common/http';
+import {
+  NgxSpinnerService
+} from 'ngx-spinner';
+import {
+  catchError,
+  tap
+} from 'rxjs/operators';
 import {
   Observable
 } from 'rxjs/Observable';
@@ -19,9 +27,22 @@ import {
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor () {}
+  constructor (
+    private loadingBar: NgxSpinnerService
+  ) {
+  }
+
+  private totalRequests: number = 0;
+
+  private handleLoadingBar (): void {
+    this.totalRequests--;
+    if (this.totalRequests === 0) {
+      this.loadingBar.hide();
+    }
+  }
 
   public intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.totalRequests++;
     let headers = req.clone({
       setHeaders: {
         'content-type': 'application/json',
@@ -29,7 +50,17 @@ export class AuthInterceptor implements HttpInterceptor {
       },
       url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
-
-    return next.handle(headers);
+    this.loadingBar.show();
+    return next.handle(headers).pipe(
+      tap(res => {
+        if (res instanceof HttpResponse) {
+          this.handleLoadingBar();
+        }
+      }),
+      catchError(error => {
+        this.handleLoadingBar();
+        throw error;
+      })
+    );
   }
 }
