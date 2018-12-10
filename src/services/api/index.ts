@@ -4,10 +4,6 @@ export * from './user.api.service';
 export * from './course.api.service';
 export * from './interest.api.service';
 export * from './advance-search.api.service';
-<<<<<<< HEAD
 export * from './messages.api.service';
 export * from './community.api.service';
 export * from './notification.api.service';
-=======
-
->>>>>>> Merged and fixed conflict rebase

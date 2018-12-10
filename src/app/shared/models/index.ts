@@ -6,10 +6,6 @@ export * from './campus';
 export * from './post';
 export * from './mentor';
 export * from './advance-search';
-<<<<<<< HEAD
 export * from './messages';
 export * from './community';
 export * from './notification';
-=======
-
->>>>>>> Merged and fixed conflict rebase
