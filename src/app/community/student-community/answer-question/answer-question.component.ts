@@ -49,7 +49,6 @@ export class  AnswerQuestionCommunityComponent {
 		this.communityApiService.promiseGetQuestionDetail(courseId, questionId)
 		.then((responseData: CommunityPostModel) => {
 			this.communityPost = responseData;
-			console.log(this.communityPost);
 		});
 	}
 
