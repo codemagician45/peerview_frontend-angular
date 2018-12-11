@@ -100,25 +100,32 @@
 						</h3>
 					</div>
 					<div class="forum-answers row m-peersview-0">
-						<div class="col-md-6 answer-item">
+						<div class="col-md-6 answer-item"  *ngFor="let item of post.reply; let i = index;">
+							<div  *ngIf="i < 2">
+
+						
 							<div class="pull-left">
 								<cl-image
 									width="40px"
 									class="post-share-user-image"
-									public-id="avatar"
+									public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
+									*ngIf="item.user?.profilePicture"
 									>
 								</cl-image>
 							</div>
 							
-							<span><b>Maria Angela Magtoto</b></span>
+							<div >
+									<span><b>{{item.user.name | titlecase}}</b></span>
+							</div>
 							<span>City College of Angeles</span>
-							<span>10/2/18, 8:45 PM</span>
+							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
-                {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }} 
+                {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }} 
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
 						</div>
-						<div class="col-md-6 answer-item">
+					</div>
+						<!-- <div class="col-md-6 answer-item">
 							<div class="pull-left">
 								<cl-image
 									width="40px"
@@ -134,7 +141,7 @@
                 {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }}
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
