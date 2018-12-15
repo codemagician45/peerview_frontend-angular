@@ -30,6 +30,9 @@
     &:hover {
       cursor: pointer;
     }
+    &:focus {
+      outline: none;
+    }
   }
   div {
     padding-left: 0;
