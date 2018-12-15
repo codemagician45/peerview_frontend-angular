@@ -5,7 +5,7 @@
     <ul class="post-action">
       <li >
         <a
-          (click)="findPeople = !findPeople"
+          (click)="findPeople = true; findPost = false; findAll = false;"
           [ngClass]="{'active': findPeople}">
             Find People
         </a>
@@ -13,9 +13,17 @@
       &nbsp;
       <li>
         <a
-          (click)="findPeople = !findPeople"
-          [ngClass]="{'active': !findPeople}">
+          (click)="findPost = true; findPeople = false; findAll = false;"
+          [ngClass]="{'active': findPost}">
             Find Post
+        </a>
+      </li>
+      &nbsp;
+      <li>
+        <a
+          (click)="findAll = true; findPost = false; findPeople = false;"
+          [ngClass]="{'active': findAll}">
+            Find All
         </a>
       </li>
     </ul>

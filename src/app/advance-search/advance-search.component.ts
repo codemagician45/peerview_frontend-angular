@@ -18,7 +18,9 @@ export class AdvanceSearchComponent {
   ) {}
 
   protected results: Array<UserModel|AdvanceSearchModel>;
+  protected findAll: boolean = true;
   protected findPeople: boolean = false;
+  protected findPost: boolean = false;
 
   protected receivedResults (emittedResults: Array<UserModel|AdvanceSearchModel>): void {
     this.results = emittedResults;
