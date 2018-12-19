@@ -3,6 +3,12 @@ import {
   OnInit,
   Input
 } from '@angular/core';
+import {
+  PostRateModel, PostModel
+} from '../../models';
+import {
+  PostApiService
+} from '../../../../services/api';
 
 @Component({
   selector: 'shared-stars-component',
@@ -10,10 +16,14 @@ import {
   styleUrls: ['./stars.component.scss']
 })
 export class SharedStarsComponent implements OnInit {
-  constructor () {}
+  constructor (
+    private postApiService: PostApiService
+  ) {}
 
   @Input() protected ratingCount: number = 0;
   protected stars: Array<string> = [];
+  protected rate: PostRateModel = new PostRateModel();
+  private post: PostModel = new PostModel();
 
   public ngOnInit (): void {
     this.starsToBeAdded();
@@ -40,5 +50,17 @@ export class SharedStarsComponent implements OnInit {
     Array.from({length: remainingStars}, () => {
       this.stars.push('star_border');
     });
+  }
+
+  protected onStarClick (numberOfStars): void {
+    this.rate.rating = numberOfStars;
+    this.post.id = 161;
+    this.postApiService.promisePostRate(this.post, this.rate)
+      .then(response => {
+        console.log('successful rate', response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 }

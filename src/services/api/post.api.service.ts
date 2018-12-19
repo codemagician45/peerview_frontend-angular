@@ -13,7 +13,8 @@ import {
   PostReplyModel,
   ReportPostModel,
   SharePostModel,
-  IResponse
+  IResponse,
+  PostRateModel
 } from '../../app/shared/models';
 import {
   PostFactory
@@ -116,6 +117,14 @@ export class PostApiService extends ApiService {
         return PostFactory.createPost(response.data);
       });
   }
+
+  public promisePostRate (post: PostModel, rate: PostRateModel): Promise<PostModel> {
+    return this.promisePostModelData(`v2/${post.id}/rating`, rate)
+      .then((response: IResponse) => {
+        return PostFactory.createPost(response.data);
+      });
+  }
+
 
   public promiseRemovePostLike (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}/like`)
