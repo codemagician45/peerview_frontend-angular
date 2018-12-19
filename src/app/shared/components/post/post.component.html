@@ -180,6 +180,7 @@
       type="button"
       class="btn-peersview-secondary btn-block btn-peersview-md"
       (click)="onLoadMorePost()"
+      [disabled]="isLoadingMorePosts"
     >
       {{btnLoadMoreText}}
     </button>
