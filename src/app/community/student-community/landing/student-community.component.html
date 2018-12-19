@@ -4,17 +4,18 @@
 		<ul class="text-center">
 			<li>
 				<a data-toggle="tab">
-					<span>Course</span>
+					<span class="hidden-xs hidden-sm">Course</span>
 						<span class="course-container">
 							<select 
-							class="form-control course" 
-							placeholder = "Select Course" 
-							(change)="onChangeCourse($event.target.value)">
-							<option value="0" disabled>Course</option>
-							<option *ngFor="let course of courses" [value]="course.id">
-								{{course.name}}
-							</option>
-						</select>
+								required
+								class="form-control course" 
+								placeholder = "Select Course" 
+								(change)="onChangeCourse($event.target.value)">
+								<option value="0" disabled>Course</option>
+								<option *ngFor="let course of courses" [value]="course.id">
+									{{course.name}}
+								</option>
+							</select>
 						<button (click)="onOpenAskQuestionModal()" class="btn-peersview-primary hidden-md hidden-lg btn-sm ask-modal">Ask
 							<i class="material-icons">add</i>
 						</button>
@@ -45,13 +46,15 @@
 						<textarea [(ngModel)]="communityPost.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
 						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
-					<a 
+					
+					<button 
+						[disabled]="communityPost.courseId == null"
 						(click)="onAskQuestion()"
-						class="btn-peersview-primary">Post</a>
+						class="btn-peersview-primary btn-post-question">Post</button>
 				</div>
 				<shared-upload-image-component
 				*ngIf="isToggleUploadComponentVisible"
-				[uploadOptions]="{'queueLimit': 1, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
+				[uploadOptions]="{'queueLimit': 4, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
 				(imageIsSelected)="onImageIsSelected($event)">
 			</shared-upload-image-component>
 			</div>
@@ -63,6 +66,12 @@
 			<div class="col-md-8 p-peersview-0">
 				<div class="student-community-topics">
 					<b>LATEST DISCUSSIONS</b>
+				</div>
+				<div *ngIf="!communityPost.courseId">
+					<h3 class="text-center">Select course first.</h3>
+				</div>
+				<div *ngIf="communityPosts.length == 0 && communityPost.courseId">
+					<h3 class="text-center">No questions available.</h3>
 				</div>
 				<div *ngFor="let post of communityPosts; let i = index;" class="forum-item">
 					<div class="forum-header">
@@ -91,25 +100,32 @@
 						</h3>
 					</div>
 					<div class="forum-answers row m-peersview-0">
-						<div class="col-md-6 answer-item">
+						<div class="col-md-6 answer-item"  *ngFor="let item of post.reply; let i = index;">
+							<div  *ngIf="i < 2">
+
+						
 							<div class="pull-left">
 								<cl-image
 									width="40px"
 									class="post-share-user-image"
-									public-id="avatar"
+									public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
+									*ngIf="item.user?.profilePicture"
 									>
 								</cl-image>
 							</div>
 							
-							<span><b>Maria Angela Magtoto</b></span>
+							<div >
+									<span><b>{{item.user.name | titlecase}}</b></span>
+							</div>
 							<span>City College of Angeles</span>
-							<span>10/2/18, 8:45 PM</span>
+							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
-                {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }} 
+                {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }} 
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
 						</div>
-						<div class="col-md-6 answer-item">
+					</div>
+						<!-- <div class="col-md-6 answer-item">
 							<div class="pull-left">
 								<cl-image
 									width="40px"
@@ -125,15 +141,14 @@
                 {{ showFullAnswer[i] ? sampleAnswer : trimStory(sampleAnswer, 140) }}
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 hidden-xs hidden-sm">
 				<community-right-menu-component></community-right-menu-component>
 			</div>
 		</div>
 	</div>
 </div>
-
 <!-- {{ myString | limitTo: 20 }}{{myString.length > 20 ? '...' : ''}} -->

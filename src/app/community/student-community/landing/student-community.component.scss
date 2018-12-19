@@ -88,6 +88,10 @@ student-community-component {
 					border: 1px solid #cccccc;
 				}
 			}
+			.btn-post-question[disabled] {
+				opacity: .5;
+				cursor: not-allowed;
+			}
 			.btn-peersview-primary {
 				padding: 16px;
 			}
