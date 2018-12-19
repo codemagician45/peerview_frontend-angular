@@ -1,9 +1,11 @@
 .shared-post-reply-component {
   .reply-container {
     ul {
+      display: flex;
       li.comment-container {
         padding: 10px;
         margin-bottom: 10px;
+        width: 100%;
         border-radius: 10px;
         background-color: #f4f4f4;
 
@@ -25,6 +27,24 @@
           height: 38px;
         }
       }
+    }
+    .reply-comment-container {
+      display: flex;
+      .post-image {
+        margin-left: 40px;
+        height: 40px;
+        width: 40px;
+      }
+      input {
+        margin-top: 7px;
+        margin-left: 40px;
+      }
+    }
+    .btn-row-container {
+      margin: 10px 0
+    }
+    .reply-to-comment-btn {
+      margin-top: 5px;
     }
   }
 }
