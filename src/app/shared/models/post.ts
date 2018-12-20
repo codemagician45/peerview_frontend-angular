@@ -90,3 +90,13 @@ export class PostPollModel extends Model {
     });
   }
 }
+
+export class PostRateModel extends Model {
+  public rating: number;
+
+  public init (): void {
+    this.setBlankDataStructure({
+      rating: 0
+    });
+  }
+}

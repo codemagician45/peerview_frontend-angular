@@ -1,23 +1,22 @@
 import {
-	Component
+  Component
 } from '@angular/core';
 import {
-	CourseModel,
-	UserModel,
-	CommunityModel,
-	CommunityPostModel
+  CourseModel,
+  UserModel,
+  CommunityPostModel
 } from '../../../shared/models';
 import {
-	ActivatedRoute,
-	Router,
-	Params
+  ActivatedRoute,
+  Router,
+  Params
 } from '@angular/router';
 import {
-	CourseApiService,
-	CommunityApiService
+  CourseApiService,
+  CommunityApiService
 } from '../../../../services/api';
 import {
-	UserService
+  UserService
 } from '../../../../services';
 import {
   MatDialog,
@@ -28,110 +27,114 @@ import {
   Overlay
 } from '@angular/cdk/overlay';
 import {
-	ComunityMobileAskQuestionMobileComponent
+  ComunityMobileAskQuestionMobileComponent
 } from '../../../shared/modals';
 import {
-	PostEmitter
+  PostEmitter
 } from '../../../shared/emitter';
 import {
-	CryptoUtilities
+  CryptoUtilities
 } from '../../../shared/utilities';
 
 @Component({
-	selector: 'student-community-component',
-	templateUrl: './student-community.component.html',
-	styleUrls: ['./student-community.component.scss']
+  selector: 'student-community-component',
+  templateUrl: './student-community.component.html',
+  styleUrls: ['./student-community.component.scss']
 })
 export class StudentCommunityComponent {
-	constructor (
-		private route: ActivatedRoute,
-		private router: Router,
-		private courseApiService: CourseApiService,
-		private communityApiService: CommunityApiService,
-		private dialog: MatDialog,
-		private overlay: Overlay) {}
+  constructor (
+    private route: ActivatedRoute,
+    private router: Router,
+    private courseApiService: CourseApiService,
+    private communityApiService: CommunityApiService,
+    private dialog: MatDialog,
+    private overlay: Overlay) { }
 
-	private hasImageSelected: boolean = false;
-	private courses = [];
-	private user: UserModel;
-	protected communityPost: CommunityModel = new CommunityModel();
-	protected communityPosts: CommunityPostModel[] = [];
-	protected isToggleUploadComponentVisible: boolean = false;
+  private hasImageSelected: boolean = false;
+  private courses = [];
+  private user: UserModel;
+  protected communityPost: CommunityPostModel = new CommunityPostModel();
+  protected communityPosts: CommunityPostModel[] = [];
+  protected isToggleUploadComponentVisible: boolean = false;
   protected sampleReplyString: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   protected sampleAnswer = 'It is a long established fact that a reader will be distracted by the readable \
   content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less \
   normal distribution of letters.,';
   protected showFullAnswer: Array<Array<boolean>> = [];
 
-	public ngOnInit (): void {
-		this.getCourse();
-		this.getStudentCommunityFeed();
-		this.user = UserService.getUser();
-	}
+  public ngOnInit (): void {
+    this.getCourse ();
+    this.user = UserService.getUser();
+  }
 
-	private getStudentCommunityFeed (): void {
-		this.communityApiService.promiseGetAllCommunityPostsData()
-		.then((responseData: CommunityPostModel[]) => {
-			this.communityPosts = responseData;
-		})
-		.catch(error => {
-			console.log(error);
-		});
-	}
+  private getStudentCommunityFeed (coureseId): void {
+    this.communityApiService.promiseGetAllCommunityPostsData(coureseId)
+      .then((responseData: CommunityPostModel[]) => {
+        this.communityPosts = responseData;
+        this.isToggleUploadComponentVisible = false;
+        this.communityPost.init();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
-	private getCourse (): void {
-		this.courseApiService.promiseGetAllCourses()
-		.then((courses: CourseModel[]) => {
-			this.courses = courses;
-		})
-		.catch(() => {});
-	}
+  private getCourse (): void {
+    this.courseApiService.promiseGetAllCourses()
+      .then((courses: CourseModel[]) => {
+        this.courses = courses;
+      })
+      .catch(() => { });
+  }
 
-	protected onAskQuestion (): void {
-		if (this.hasImageSelected) {
-			PostEmitter.uploadImages().emit();
-		} else {
-			this.createQuestion();
-		}
-	}
+  protected onAskQuestion (): void {
+    if (this.hasImageSelected) {
+      PostEmitter.uploadImages().emit();
+    } else {
+      this.createQuestion();
+    }
+  }
 
-	protected onChangeCourse (item): void {
-		this.communityPost.courseId = item;
-	}
+  protected onChangeCourse (item): void {
+    this.communityPost.courseId = item;
+    this.getStudentCommunityFeed(this.communityPost.courseId);
+  }
 
-	protected onOpenAskQuestionModal (): void {
+  protected onOpenAskQuestionModal (): void {
     let dialogConfig = new MatDialogConfig();
-		dialogConfig.panelClass = 'ask-a-question-modal';
-		dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-		dialogConfig.data = this.user;
-		this.dialog.open(ComunityMobileAskQuestionMobileComponent, dialogConfig);
-	}
+    dialogConfig.panelClass = 'ask-a-question-modal';
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = this.user;
+    this.dialog.open(ComunityMobileAskQuestionMobileComponent, dialogConfig);
+  }
 
   protected onImageIsSelected (value): void {
     this.hasImageSelected = value;
-	}
+  }
 
-	protected onUploadComplete (attachments): void {
-		this.communityPost.attachments = attachments;
-		this.createQuestion();
-	}
+  protected onUploadComplete (attachments): void {
+    this.communityPost.attachments = attachments;
+    this.createQuestion();
+  }
 
-	private createQuestion (): void {
-		this.communityPost.area = 'community';
-		this.communityPost.type = 'post';
-		this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
-		.then(() => {
-			this.communityPost.init();
-			this.getStudentCommunityFeed();
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-	}
+  private createQuestion (): void {
+	this.communityPost.area = 'community';
+  this.communityPost.type = 'post';
 
-	protected onAnswerQuestion (id): void {
-		const encryptedItemId = CryptoUtilities.cipher(id);
-		this.router.navigate([`../${encryptedItemId}`], {relativeTo: this.route});
+    this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
+      .then(() => {
+        this.communityPost.init();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  protected onAnswerQuestion (id): void {
+    const encryptedItemId = CryptoUtilities.cipher(id);
+    const encryptedItemCourseId = CryptoUtilities.cipher(this.communityPost.courseId);
+
+    this.router.navigate([`../${encryptedItemCourseId}/${encryptedItemId}`], { relativeTo: this.route });
   }
 
   protected trimStory (answer, maxCharacters): string {

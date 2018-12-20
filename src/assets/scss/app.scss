@@ -524,6 +524,13 @@ input[type="checkbox"]:focus {
     }
   }
 }
+// Remove outline on button active 
+button {
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
 // When a Modal is opened, disable page scrolling
 .mat-dialog-is-open {
   overflow-y: hidden;
