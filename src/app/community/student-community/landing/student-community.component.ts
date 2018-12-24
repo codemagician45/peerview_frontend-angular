@@ -148,4 +148,20 @@ export class StudentCommunityComponent {
     let trimmedString = answer.substr(0, maxCharacters);
     return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
   }
+
+
+  protected onDeletePost (postId: number): void {
+    // delete here the post
+    this.communityApiService.promiseRemoveCommunityPost(postId)
+      .then(() => {
+        let index = this.communityPosts.findIndex((filter: any) => {
+          return filter.id === postId;
+        });
+        if (index > -1 ) {
+          this.communityPosts.splice(index, 1);
+        }
+      }).catch((error) => {
+        console.error('error', error);
+    });
+  }
 }

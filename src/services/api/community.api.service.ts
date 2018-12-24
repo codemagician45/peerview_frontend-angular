@@ -83,4 +83,11 @@ export class CommunityApiService extends ApiService {
 			return CommunityFactory.createPrivateCommunityFeed(response.data);
 		});
 	}
+
+  public promiseRemoveCommunityPost (postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`${postId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
 }

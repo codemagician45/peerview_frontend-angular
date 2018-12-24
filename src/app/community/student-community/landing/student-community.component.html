@@ -92,14 +92,22 @@
 						</span>
 						<h3>
 							{{post.message}} <br>
-							<button
-								(click)="onAnswerQuestion(post.id)" 
-								class="btn-peersview-primary btn-md"> 
-								<i class="material-icons">create</i>
-								ANSWER
-							</button>
 						</h3>
 					</div>
+          <div class="row">
+            <button
+              (click)="onAnswerQuestion(post.id)"
+              class="btn-peersview-primary btn-md">
+              <i class="material-icons">create</i>
+              ANSWER
+            </button>
+            <div class="pull-right ">
+              <report-post-component
+                [post]="post"
+                (onDeletePost)="onDeletePost($event)">
+              </report-post-component>
+            </div>
+          </div>
 					<div class="forum-answers row m-peersview-0">
 						<div class="col-md-6 answer-item"  *ngFor="let item of post.reply; let i = index;">
 							<div  *ngIf="i < 2">
