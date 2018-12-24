@@ -35,6 +35,7 @@ import {
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
+import {CommunityPostFollow} from '../../../shared/models/community-post-follow';
 
 @Component({
   selector: 'student-community-component',
@@ -98,7 +99,6 @@ export class StudentCommunityComponent {
       PostEmitter.uploadImages().emit();
     } else {
       this.createQuestion();
-      this.getStudentCommunityFeed(this.communityPost.courseId);
     }
   }
 
@@ -131,6 +131,7 @@ export class StudentCommunityComponent {
     this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
       .then(() => {
         this.communityPost.init();
+        this.getStudentCommunityFeed(this.communityPost.courseId);
       })
       .catch((error) => {
         console.log(error);
@@ -147,5 +148,31 @@ export class StudentCommunityComponent {
   protected trimStory (answer, maxCharacters): string {
     let trimmedString = answer.substr(0, maxCharacters);
     return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
+  }
+
+
+  protected onDeletePost (postId: number): void {
+    // delete here the post
+    this.communityApiService.promiseRemoveCommunityPost(postId)
+      .then(() => {
+        let index = this.communityPosts.findIndex((filter: any) => {
+          return filter.id === postId;
+        });
+        if (index > -1 ) {
+          this.communityPosts.splice(index, 1);
+        }
+      }).catch((error) => {
+        console.error('error', error);
+    });
+  }
+  protected onFollowQuestion (postId: number): void {
+    // follow here the post
+    const follow  = new CommunityPostFollow();
+    follow.postId = postId;
+    this.communityApiService.promiseFollowCommunityPost(postId, follow)
+      .then(() => {
+      }).catch((error) => {
+        console.error('error', error);
+    });
   }
 }
