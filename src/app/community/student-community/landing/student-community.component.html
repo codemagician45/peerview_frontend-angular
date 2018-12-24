@@ -9,7 +9,8 @@
 							<select 
 								required
 								class="form-control course" 
-								placeholder = "Select Course" 
+								placeholder = "Select Course"
+                [(ngModel)]="communityPost.courseId"
 								(change)="onChangeCourse($event.target.value)">
 								<option value="0" disabled>Course</option>
 								<option *ngFor="let course of courses" [value]="course.id">
