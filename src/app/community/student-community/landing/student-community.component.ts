@@ -65,6 +65,12 @@ export class StudentCommunityComponent {
   public ngOnInit (): void {
     this.getCourse ();
     this.user = UserService.getUser();
+
+    if (this.user['userCourses'] && this.user['userCourses'][0] && this.user['userCourses'][0].course) {
+      this.communityPost.courseId = this.user['userCourses'][0].course.id;
+      this.getStudentCommunityFeed(this.communityPost.courseId);
+
+    }
   }
 
   private getStudentCommunityFeed (coureseId): void {
@@ -92,6 +98,7 @@ export class StudentCommunityComponent {
       PostEmitter.uploadImages().emit();
     } else {
       this.createQuestion();
+      this.getStudentCommunityFeed(this.communityPost.courseId);
     }
   }
 
