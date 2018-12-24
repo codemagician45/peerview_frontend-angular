@@ -48,8 +48,8 @@ export class AdvanceSearchFindPostComponent {
       });
   }
 
-  private async onSearchAll () {
-    await this.advanceSeachService.promiseGetAllSearchedPosts(this.keyword)
+  private onSearchAll (): void {
+    this.advanceSeachService.promiseGetAllSearchedPosts(this.keyword)
     .then(response => {
       this.postSearchEvent.emit(response);
       this.allData = response;
@@ -58,7 +58,7 @@ export class AdvanceSearchFindPostComponent {
       console.log(error);
     });
 
-    await this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword, this.campusName)
+    this.advanceSeachService.promiseGetAllSearchedUsers(this.keyword, this.campusName)
     .then(response => {
       console.log('all data', response.concat(this.allData));
       this.postSearchEvent.emit(response.concat(this.allData));
