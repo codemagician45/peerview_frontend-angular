@@ -94,7 +94,6 @@ export class CommunityApiService extends ApiService {
   }
   /** Follow community post*/
   public promiseFollowCommunityPost (postId: number, record: CommunityPostFollow): Promise<IResponse> {
-    console.log('record', record);
     return this.promisePostModelData(`${postId}/follow`, record)
       .then((responseData: IResponse) => {
         return responseData;
