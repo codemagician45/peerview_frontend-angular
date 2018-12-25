@@ -35,6 +35,7 @@ import {
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
+import {CommunityPostFollow} from '../../../shared/models/community-post-follow';
 
 @Component({
   selector: 'student-community-component',
@@ -98,7 +99,6 @@ export class StudentCommunityComponent {
       PostEmitter.uploadImages().emit();
     } else {
       this.createQuestion();
-      this.getStudentCommunityFeed(this.communityPost.courseId);
     }
   }
 
@@ -131,6 +131,7 @@ export class StudentCommunityComponent {
     this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
       .then(() => {
         this.communityPost.init();
+        this.getStudentCommunityFeed(this.communityPost.courseId);
       })
       .catch((error) => {
         console.log(error);
@@ -160,6 +161,16 @@ export class StudentCommunityComponent {
         if (index > -1 ) {
           this.communityPosts.splice(index, 1);
         }
+      }).catch((error) => {
+        console.error('error', error);
+    });
+  }
+  protected onFollowQuestion (postId: number): void {
+    // follow here the post
+    const follow  = new CommunityPostFollow();
+    follow.postId = postId;
+    this.communityApiService.promiseFollowCommunityPost(postId, follow)
+      .then(() => {
       }).catch((error) => {
         console.error('error', error);
     });

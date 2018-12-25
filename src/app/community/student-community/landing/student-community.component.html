@@ -90,9 +90,8 @@
 								</cl-transformation>
 							</cl-image>
 						</span>
-						<h3>
-							{{post.message}} <br>
-						</h3>
+						<h3 class="hidden-xs hidden-sm">{{post.message}}</h3>
+            <p class="hidden-md hidden-lg"><strong>{{post.message}}</strong> </p>
 					</div>
           <div class="row">
             <button
@@ -100,6 +99,12 @@
               class="btn-peersview-primary btn-md">
               <i class="material-icons">create</i>
               ANSWER
+            </button>
+            <button
+              (click)="onFollowQuestion(post.id)"
+              class="btn-peersview-primary btn-md btn-follow">
+              <i class="material-icons">person_add</i>
+              Follow
             </button>
             <div class="pull-right ">
               <report-post-component

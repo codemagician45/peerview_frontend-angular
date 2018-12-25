@@ -16,6 +16,8 @@ import {
 import {
   CommunityFactory
 } from '../../app/shared/models/factory';
+import {Model} from '../../app/shared/models/model';
+import {CommunityPostFollow} from '../../app/shared/models/community-post-follow';
 
 @Injectable()
 export class CommunityApiService extends ApiService {
@@ -83,9 +85,16 @@ export class CommunityApiService extends ApiService {
 			return CommunityFactory.createPrivateCommunityFeed(response.data);
 		});
 	}
-
+	/** Remove community post*/
   public promiseRemoveCommunityPost (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** Follow community post*/
+  public promiseFollowCommunityPost (postId: number, record: CommunityPostFollow): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/follow`, record)
       .then((responseData: IResponse) => {
         return responseData;
       });
