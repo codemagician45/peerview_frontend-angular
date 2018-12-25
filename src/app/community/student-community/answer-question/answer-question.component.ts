@@ -64,5 +64,15 @@ export class  AnswerQuestionCommunityComponent {
 				});
 			}
 	}
+	protected onClickReplyLike (reply): void {
+    this.communityApiService.promiseLikeCommunityPostReplay(reply.postv1Id)
+      .then(() => {
+      }).catch((error) => {
+        console.error('error', error);
+    });
+  }
+  protected onDeletePostReply (replyId): void {
+	  console.log('replyId', replyId);
+  }
 }
 

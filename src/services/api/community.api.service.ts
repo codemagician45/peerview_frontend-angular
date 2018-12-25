@@ -11,7 +11,7 @@ import {
   CommunityPostModel,
   PrivateCommunityModel,
   CommunityAnswerQuestionModel,
-  IResponse
+  IResponse, ReportPostModel
 } from '../../app/shared/models';
 import {
   CommunityFactory
@@ -95,6 +95,19 @@ export class CommunityApiService extends ApiService {
   /** Follow community post*/
   public promiseFollowCommunityPost (postId: number, record: CommunityPostFollow): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/follow`, record)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** Like community post reply */
+  public promiseLikeCommunityPostReplay (postId: number): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/report`, reportPost)
       .then((responseData: IResponse) => {
         return responseData;
       });
