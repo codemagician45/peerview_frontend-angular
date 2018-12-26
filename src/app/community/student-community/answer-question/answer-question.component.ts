@@ -19,6 +19,16 @@ import {
 import {
 	CryptoUtilities
 } from '../../../shared/utilities';
+import {
+  MatDialog,
+  MatDialogConfig
+} from '@angular/material';
+import {
+  SharedCommunityPostReplyComponent
+} from '../../../shared/modals';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
 
 @Component({
 	selector: 'answer-question-component',
@@ -30,6 +40,8 @@ export class  AnswerQuestionCommunityComponent {
 			private route: ActivatedRoute,
 			private router: Router,
 			private communityApiService: CommunityApiService,
+      private dialog: MatDialog,
+      private overlay: Overlay
 	) {}
 
 	private communityPost: CommunityPostModel;
@@ -64,5 +76,57 @@ export class  AnswerQuestionCommunityComponent {
 				});
 			}
 	}
+	protected onClickReplyLike (reply): void {
+    if (reply) {
+      this.communityApiService.promiseLikeCommunityPostReply(reply.id)
+        .then(() => {
+          let index = this.communityPost['reply'].findIndex((filter: any) => {
+            return filter.id === reply.id;
+          });
+          if (index > -1 ) {
+            if (this.communityPost['reply'][index].replyLike) {
+              if (this.communityPost['reply'][index].replyLike && this.communityPost['reply'][index].replyLike[0] === undefined) {
+                this.communityPost['reply'][index].replyLike = [{
+                  replyCount: 0
+                }];
+              }
+            }
+            this.communityPost['reply'][index].replyLike[0].replyCount += 1;
+          }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    }
+  }
+  protected onDeletePostReply (replyId): void {
+	  if (replyId) {
+      this.communityApiService.promiseRemoveCommunityPostReply(replyId)
+        .then(() => {
+          let index = this.communityPost['reply'].findIndex((filter: any) => {
+            return filter.id === replyId;
+          });
+          if (index > -1 ) {
+            this.communityPost['reply'].splice(index, 1);
+          }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    }
+  }
+  protected onClickCommentDetail (reply): void {
+    let dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'post-comment-detail-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      reply: reply,
+      communityPost: this.communityPost,
+      route: this.route,
+      user: this.user,
+      courseId: this.communityAnswer.courseId,
+      questionId: this.communityAnswer.questionId};
+    this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
+  }
 }
 

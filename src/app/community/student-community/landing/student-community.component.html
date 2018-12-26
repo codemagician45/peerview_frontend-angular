@@ -107,10 +107,11 @@
               Follow
             </button>
             <div class="pull-right ">
-              <report-post-component
+              <report-post-community-component
                 [post]="post"
+                [user]="user"
                 (onDeletePost)="onDeletePost($event)">
-              </report-post-component>
+              </report-post-community-component>
             </div>
           </div>
 					<div class="forum-answers row m-peersview-0">
