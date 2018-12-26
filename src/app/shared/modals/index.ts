@@ -11,3 +11,4 @@ export * from './create-community/create.community.component';
 export * from './create-message/create-message.component';
 export * from './community-mobile-ask-question/community-mobile-ask-question';
 export * from './report-post-community/report.post.community.modal.component';
+export * from './community-post-reply/community-post-reply.component';

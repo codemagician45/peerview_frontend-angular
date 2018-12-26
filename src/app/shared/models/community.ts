@@ -21,6 +21,8 @@ export class CommunityAnswerQuestionModel extends Model {
   public questionId: number;
   public comment: String;
   public courseId: number;
+  public quoteReplyId?: number;
+  public tagUserId?: number;
 
   public init (): void {
     this.setBlankDataStructure ({

@@ -100,14 +100,21 @@ export class CommunityApiService extends ApiService {
       });
   }
   /** Like community post reply */
-  public promiseLikeCommunityPostReplay (postId: number): Promise<IResponse> {
-    return this.promisePostModelData(`${postId}/like`)
+  public promiseLikeCommunityPostReply (replyId: number): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${replyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }/* Report community post*/
+  public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/report`, reportPost)
       .then((responseData: IResponse) => {
         return responseData;
       });
   }
-  public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
-    return this.promisePostModelData(`${postId}/report`, reportPost)
+  /** Remove community post reply*/
+  public promiseRemoveCommunityPostReply (replyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${replyId}`)
       .then((responseData: IResponse) => {
         return responseData;
       });

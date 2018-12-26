@@ -102,6 +102,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import {SharedReportPostCommunityComponent} from './report-post-community/report.post.community.component';
+import {SharedCommunityPostReplyComponent} from './community-post-reply/community-post-reply.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -150,7 +151,8 @@ export function provideConfig (): any {
     SharedConverstionListComponent,
     IndexFooterComponent,
     TimeAgoPipe,
-    SharedReportPostCommunityComponent
+    SharedReportPostCommunityComponent,
+    SharedCommunityPostReplyComponent
   ],
   exports: [
     CommonModule,
@@ -181,7 +183,8 @@ export function provideConfig (): any {
     SharedConverstionListComponent,
     IndexFooterComponent,
     MatInputModule,
-    SharedReportPostCommunityComponent
+    SharedReportPostCommunityComponent,
+    SharedCommunityPostReplyComponent
   ],
   providers: [
     {provide: Window, useValue: window},
