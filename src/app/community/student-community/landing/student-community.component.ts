@@ -35,7 +35,9 @@ import {
 import {
   CryptoUtilities
 } from '../../../shared/utilities';
-import {CommunityPostFollow} from '../../../shared/models/community-post-follow';
+import {
+  CommunityPostFollow
+} from '../../../shared/models/community-post-follow';
 
 @Component({
   selector: 'student-community-component',

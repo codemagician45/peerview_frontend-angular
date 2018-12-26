@@ -87,7 +87,9 @@ import {
   SharedPostLikeDetailModalComponent,
   MentorModalComponent,
   CreateCommunityComponent,
-  ComunityMobileAskQuestionMobileComponent, ReportPostCommunityModalComponent, SharedCommunityPostReplyComponent
+  ComunityMobileAskQuestionMobileComponent,
+  ReportPostCommunityModalComponent,
+  SharedCommunityPostReplyComponent
 } from './shared/modals';
 import {
   SharedModule

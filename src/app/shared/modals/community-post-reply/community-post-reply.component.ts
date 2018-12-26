@@ -16,12 +16,8 @@ import {
 } from '../../../shared/utilities';
 import {
   CommunityPostModel,
-  PostModel,
   UserModel
 } from '../../models';
-import {
-  PostApiService
-} from '../../../../services/api';
 
 @Component({
   selector: 'shared-community-post-reply.component',
@@ -32,8 +28,7 @@ export class SharedCommunityPostReplyComponent implements OnInit {
   constructor (
     @Inject(MAT_DIALOG_DATA) protected communityPostReply: any,
     private router: Router,
-    private dialog: MatDialog,
-    private postApiService: PostApiService
+    private dialog: MatDialog
   ) {}
   protected communityPost: CommunityPostModel = this.communityPostReply.communityPost;
   protected reply: any = this.communityPostReply.reply;

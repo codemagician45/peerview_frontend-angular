@@ -19,9 +19,16 @@ import {
 import {
 	CryptoUtilities
 } from '../../../shared/utilities';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import {SharedCommunityPostReplyComponent} from '../../../shared/modals';
-import {Overlay} from '@angular/cdk/overlay';
+import {
+  MatDialog,
+  MatDialogConfig
+} from '@angular/material';
+import {
+  SharedCommunityPostReplyComponent
+} from '../../../shared/modals';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
 
 @Component({
 	selector: 'answer-question-component',

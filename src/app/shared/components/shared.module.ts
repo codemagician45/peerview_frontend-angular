@@ -101,8 +101,12 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
-import {SharedReportPostCommunityComponent} from './report-post-community/report.post.community.component';
-import {SharedCommunityPostReplyComponent} from './community-post-reply/community-post-reply.component';
+import {
+  SharedReportPostCommunityComponent
+} from './report-post-community/report.post.community.component';
+import {
+  SharedCommunityPostReplyComponent
+} from './community-post-reply/community-post-reply.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,

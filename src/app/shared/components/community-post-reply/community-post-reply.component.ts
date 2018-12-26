@@ -7,11 +7,13 @@ import {
   UserService,
 } from '../../../../services';
 import {
-  PostReplyModel,
   UserModel,
-  CommunityPostModel, CommunityAnswerQuestionModel
+  CommunityPostModel,
+  CommunityAnswerQuestionModel
 } from '../../models';
-import {CommunityApiService} from '../../../../services/api';
+import {
+  CommunityApiService
+} from '../../../../services/api';
 
 @Component({
   selector: 'shared-community-post-reply-component',
