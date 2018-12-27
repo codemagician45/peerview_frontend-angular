@@ -52,4 +52,19 @@ export class SharedCommunityPostReplyComponent {
         this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
       });
   }
+  private onDeletePostReply (replyId): void {
+    if (replyId) {
+      this.communityApiService.promiseRemoveCommunityPostReply(replyId)
+        .then(() => {
+          let index = this.communityPost['reply'].findIndex((filter: any) => {
+            return filter.id === replyId;
+          });
+          if (index > -1 ) {
+            this.communityPost['reply'].splice(index, 1);
+          }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    }
+  }
 }
