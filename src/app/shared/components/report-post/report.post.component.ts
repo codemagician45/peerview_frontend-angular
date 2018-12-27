@@ -16,8 +16,9 @@ import {
   SharedConfirmModalComponent
 } from '../../modals';
 import {
-  PostModel,
+  PostModel, UserModel
 } from '../../models';
+import {UserService} from '../../../../services';
 
 @Component({
   selector: 'report-post-component',
@@ -31,7 +32,7 @@ export class SharedReportPostComponent {
   ) {}
   @Output() protected onDeletePost = new EventEmitter();
   @Input() protected post: PostModel;
-
+  private user: UserModel = UserService.getUser();
   protected openReportModal (): void {
     this.dialog.open(ReportPostModalComponent, {
       data: this.post,

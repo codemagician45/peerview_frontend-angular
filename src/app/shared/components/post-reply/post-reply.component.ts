@@ -75,4 +75,20 @@ export class SharedPostReplyComponent {
         break;
     }
   }
+
+  protected onDeletePostReply (replyId: number): void {
+    console.log('replyId', replyId);
+    this.postApiService.promiseRemovePostReply(replyId)
+      .then((response: IResponse) => {
+        console.log('response', response);
+        let index = this.post['postReply'].findIndex((filter: any) => {
+          return filter.id === replyId;
+        });
+        if (index > -1 ) {
+          this.post['postReply'].splice(index, 1);
+        }
+        }).catch(error => {
+        console.error('error', error);
+      });
+  }
 }

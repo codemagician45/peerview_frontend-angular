@@ -139,4 +139,11 @@ export class PostApiService extends ApiService {
         return responseData;
       });
   }
+
+  public promiseRemovePostReply (replyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${replyId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
 }
