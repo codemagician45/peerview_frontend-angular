@@ -1,4 +1,4 @@
-<div class="shared-post-reply-component">
+<div class="shared-post-reply-comment-component">
   <div class="col-xs-12 " >
       <div class="reply-container">
         <div class="form-group">
@@ -7,13 +7,13 @@
             <span class="input-group-btn">
               <button
                   class="btn btn-peersview-primary"
-                  type="button" (click)="onPostReply()"
-                  [disabled]="isUserCurrentlyCommenting">Comment</button>
+                  type="button" (click)="onPostReplyComment()"
+                  [disabled]="isUserCurrentlyCommenting">Reply</button>
             </span>
           </div>
         </div>
       </div>
-      <div *ngIf="post.postReply">
+   <!--   <div *ngIf="post.postReply">
         <div *ngFor="let item of post.postReply.slice().reverse()">
           <ul style="display: flex;">
             <cl-image
@@ -35,10 +35,9 @@
                 [post]="item"
                 (onDeletePost)="onDeletePostReply($event)">
               </report-post-component>
-              <a>Like</a> &nbsp; <a (click)="onOpenReplyComment(item)">Reply</a>
             </li>
           </ul>
-      </div>
-    </div>
+        </div>
+      </div>-->
   </div>
 </div>

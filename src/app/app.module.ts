@@ -89,7 +89,8 @@ import {
   CreateCommunityComponent,
   ComunityMobileAskQuestionMobileComponent,
   ReportPostCommunityModalComponent,
-  SharedCommunityPostReplyComponent
+  SharedCommunityPostReplyComponent,
+  SharedPostReplyCommentModalComponent
 } from './shared/modals';
 import {
   SharedModule
@@ -168,7 +169,8 @@ tinymce.init({});
     CreateCommunityComponent,
     ComunityMobileAskQuestionMobileComponent,
     ReportPostCommunityModalComponent,
-    SharedCommunityPostReplyComponent
+    SharedCommunityPostReplyComponent,
+    SharedPostReplyCommentModalComponent
   ],
   exports: [],
   entryComponents: [
@@ -185,7 +187,8 @@ tinymce.init({});
     CreateCommunityComponent,
     ComunityMobileAskQuestionMobileComponent,
     ReportPostCommunityModalComponent,
-    SharedCommunityPostReplyComponent
+    SharedCommunityPostReplyComponent,
+    SharedPostReplyCommentModalComponent
   ],
   bootstrap: [AppComponent],
 })

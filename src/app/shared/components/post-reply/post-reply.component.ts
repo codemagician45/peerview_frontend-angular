@@ -19,6 +19,15 @@ import {
 import {
   EmitterService
 } from '../../emitter/emitter.component';
+import {
+  MatDialog, MatDialogConfig
+} from '@angular/material';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
+import {
+  SharedPostReplyCommentModalComponent
+} from '../../modals';
 
 @Component({
   selector: 'shared-post-reply-component',
@@ -28,7 +37,9 @@ import {
 export class SharedPostReplyComponent {
   constructor (
     private postApiService: PostApiService,
-    private campusApiService: CampusApiService
+    private campusApiService: CampusApiService,
+    private dialog: MatDialog,
+    private overlay: Overlay
   ) {}
 
   private user: UserModel = UserService.getUser();
@@ -90,5 +101,14 @@ export class SharedPostReplyComponent {
         }).catch(error => {
         console.error('error', error);
       });
+  }
+  protected onOpenReplyComment (reply): void {
+    let dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'share-post-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {post: this.post, reply: reply };
+    this.dialog.open(SharedPostReplyCommentModalComponent, dialogConfig);
   }
 }
