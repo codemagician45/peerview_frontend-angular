@@ -13,11 +13,11 @@
       </div>
     </div>
     <div *ngIf="communityPost">
-      <div *ngFor="let reply of communityPost.reply">
-        <ul *ngIf="reply.quoteReplyId && reply.tagUserId" style="display: flex">
+      <div *ngFor="let item of communityPost.reply">
+        <ul *ngIf="item.quoteReplyId && item.tagUserId && reply.id === item.quoteReplyId" style="display: flex">
           <cl-image
-            public-id="{{reply.user.socialImage ? (reply.user.profilePicture === 'avatar' ? reply.user.socialImage: reply.user.profilePicture): reply.user.profilePicture}}"
-            *ngIf="reply.user?.profilePicture"
+            public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
+            *ngIf="item.user?.profilePicture"
             class="user-img"
             [ngStyle]="{'border-radius': '50%'}">
             <cl-transformation width="55" height="55" radius="max" gravity="custom" crop="thumb">
@@ -26,12 +26,12 @@
           <li class="comment-container">
             <span>
               <span>
-                <b>{{reply.user.firstName | titlecase}} {{reply.user.lastName | titlecase}}</b>
-              </span> {{reply.comment}}
+                <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
+              </span> {{item.comment}}
             </span>
-            <div class="post-time"> <small>{{reply.createdAt | date : 'short'}}</small></div>
+            <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
             <report-post-community-component
-              [post]="reply"
+              [post]="item"
               [user]="user"
               (onDeletePost)="onDeletePostReply($event)">
             </report-post-community-component>
