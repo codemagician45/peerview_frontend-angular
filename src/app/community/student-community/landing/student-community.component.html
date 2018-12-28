@@ -93,7 +93,7 @@
 						<h3 class="hidden-xs hidden-sm">{{post.message}}</h3>
             <p class="hidden-md hidden-lg"><strong>{{post.message}}</strong> </p>
 					</div>
-          <div class="row">
+          <div>
             <button
               (click)="onAnswerQuestion(post.id)"
               class="btn-peersview-primary btn-md">
@@ -106,7 +106,7 @@
               <i class="material-icons">person_add</i>
               Follow
             </button>
-            <div class="pull-right ">
+            <div class="pull-right">
               <report-post-community-component
                 [post]="post"
                 [user]="user"
@@ -132,7 +132,7 @@
 							<div >
 									<span><b>{{item.user.name | titlecase}}</b></span>
 							</div>
-							<span>City College of Angeles</span>
+							<span>{{item.user.institutionName}}</span>
 							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
                 {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }} 

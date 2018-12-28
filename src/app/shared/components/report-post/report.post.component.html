@@ -7,7 +7,7 @@
     </button>
     <ul class="dropdown-menu dropdown-menu-right">
       <li><a (click)="openReportModal()">Report Post</a></li>
-      <li *ngIf="post.isPostUser"><a (click)="onOpenConfirmModal()">Delete Post</a></li>
+      <li *ngIf="(post && post.isPostUser) || post.user.id === user.id"><a (click)="onOpenConfirmModal()">Delete Post</a></li>
     </ul>
   </div>
 </div>

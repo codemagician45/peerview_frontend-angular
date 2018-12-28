@@ -1,24 +1,5 @@
 .shared-community-post-reply-component {
   .reply-container {
-    ul {
-      display: flex;
-      li.comment-container {
-        padding: 10px;
-        margin-bottom: 10px;
-        width: 100%;
-        border-radius: 10px;
-        background-color: #f4f4f4;
-
-        small {
-          color: #777777;
-        }
-      }
-      li {
-        &:focus {
-          outline: none;
-        }
-      }
-    }
     .form-group {
       margin-bottom: 0;
       .input-group {
@@ -46,5 +27,22 @@
     .reply-to-comment-btn {
       margin-top: 5px;
     }
+  }
+
+  .comment-container {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+
+    small {
+      color: #777777;
+    }
+  }
+  .post-time {
+    font-size: 12px;
+    color: #989898;
+    margin: 0;
   }
 }

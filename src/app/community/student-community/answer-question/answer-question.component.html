@@ -82,7 +82,7 @@
 				<div class="answer-container pull-right">
 					{{reply.comment}}
 				</div>
-        <div class="options-text" [ngStyle]="{'width': '100%'}">
+        <div class="options-text row" [ngStyle]="{'width': '100%'}">
           <div class="col-xs-6 text-center post-likes">
             <span *ngIf="reply.replyLike  && reply.replyLike[0] && reply.replyLike[0].replyCount > 0">{{reply.replyLike[0].replyCount}}</span>
             <span>{{reply.replyLike  && reply.replyLike[0] && reply.replyLike[0].replyCount >= 2 ? ' Likes' : ' Like'}}</span>
@@ -91,7 +91,7 @@
           <div class="col-xs-4 text-center"></div>
         </div>
         <hr class="m-peersview-y-1 post-options-hr">
-        <div class="options-logo" [ngStyle]="{'width': '100%'}">
+        <div class="options-logo row" [ngStyle]="{'width': '100%'}">
           <div class="col-xs-6 p-peersview-0 text-center">
             <button
               class="btn-peersivew-transparent like"
@@ -123,29 +123,3 @@
 	</div>
 
 </div>
-
-<!--
-
-<div class="options-logo" [ngStyle]="{'width': '100%'}">
-  <div class="col-xs-6 p-peersview-0 text-center">
-    <button
-      class="btn-peersivew-transparent like"
-      [ngClass]="reply.replyLike[0] &&  reply.replyLike[0].replyCount > 0 ? 'liked' : 'not-yet-liked'"
-      (click)="onClickReplyLike(reply)"            >
-      <i class="material-icons" >thumb_up</i>
-      <span class="like-count"><strong>{{reply.replyLike[0] &&  reply.replyLike[0].replyCount > 0 ? reply.replyLike[0].replyCount : 0}}</strong></span>
-    </button>
-  </div>
-  <div class="col-xs-3 text-center">
-    <button
-      class="btn-peersivew-transparent reply"
-      (click)="onClickCommentDetail();">
-      <i class="material-icons">reply</i>
-    </button>
-  </div>
-  <report-post-community-component
-    [post]="reply"
-    [user]="user"
-    (onDeletePost)="onDeletePostReply($event)">
-  </report-post-community-component>
-</div>-->
