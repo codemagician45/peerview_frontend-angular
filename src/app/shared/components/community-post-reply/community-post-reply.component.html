@@ -25,19 +25,17 @@
           </cl-image>
           <li class="comment-container">
             <span>
-              <span class="purple">
+              <span>
                 <b>{{reply.user.firstName | titlecase}} {{reply.user.lastName | titlecase}}</b>
               </span> {{reply.comment}}
             </span>
-            <div> <small>{{reply.createdAt | date : 'short'}}</small></div>
-          </li>
-          <div style="margin-left: auto">
+            <div class="post-time"> <small>{{reply.createdAt | date : 'short'}}</small></div>
             <report-post-community-component
               [post]="reply"
               [user]="user"
               (onDeletePost)="onDeletePostReply($event)">
             </report-post-community-component>
-          </div>
+          </li>
         </ul>
       </div>
     </div>

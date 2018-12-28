@@ -15,7 +15,7 @@
       </div>
       <div *ngIf="post.postReply">
         <div *ngFor="let item of post.postReply.slice().reverse()">
-          <ul style="display: flex; margin-bottom: 5px">
+          <ul style="display: flex;">
             <cl-image
               public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
               *ngIf="item.user?.profilePicture"
@@ -25,20 +25,18 @@
               </cl-transformation>
             </cl-image>
             <li class="comment-container">
-              <span class="post-time">
-              <span >
-                <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
-              </span> {{item.comment}}
+              <span>
+                <span>
+                  <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
+                </span> {{item.comment}}
               </span>
               <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
-              <a>Like</a> &nbsp; <a>Reply</a>
-            </li>
-            <div style="margin-left: auto">
               <report-post-component
                 [post]="item"
                 (onDeletePost)="onDeletePostReply($event)">
               </report-post-component>
-            </div>
+              <a>Like</a> &nbsp; <a>Reply</a>
+            </li>
           </ul>
       </div>
     </div>
