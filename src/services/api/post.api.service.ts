@@ -118,10 +118,10 @@ export class PostApiService extends ApiService {
       });
   }
 
-  public promisePostRate (post: PostModel, rate: PostRateModel): Promise<PostModel> {
-    return this.promisePostModelData(`v2/${post.id}/rating`, rate)
+  public promisePostRate (postId, rate: PostRateModel): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/rating`, rate)
       .then((response: IResponse) => {
-        return PostFactory.createPost(response.data);
+        return response;
       });
   }
 

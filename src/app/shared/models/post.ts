@@ -44,6 +44,7 @@ export class PostReplyModel extends Model {
   public user?: UserModel;
   public hideComment?: boolean;
   public postPollOptionId?: number;
+  public quoteReplyId?: number;
   public createdAt?: Date;
 
   public init (): void {
@@ -53,6 +54,7 @@ export class PostReplyModel extends Model {
       user: undefined,
       hideComment: undefined,
       postPollOptionId: undefined,
+      quoteReplyId: undefined,
       createdAt: undefined
     });
   }

@@ -24,7 +24,7 @@
           (click)="onClickPostLike(post.isUserPostLike)">
           <i class="material-icons" >thumb_up</i> 
           <span class="peersview-primary-color colon-separator">:</span>
-          <shared-stars-component [ratingCount]="ratingCount"></shared-stars-component>
+          <shared-stars-component [ratingCount]="ratingCount" (onStarClick)="onStarClick($event)"></shared-stars-component>
         </button>
     </div>
     <div class="col-xs-3 text-center">
