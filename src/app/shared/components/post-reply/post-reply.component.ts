@@ -28,6 +28,7 @@ import {
 import {
   SharedPostReplyCommentModalComponent
 } from '../../modals';
+import {CryptoUtilities} from '../../utilities';
 
 @Component({
   selector: 'shared-post-reply-component',
@@ -62,7 +63,10 @@ export class SharedPostReplyComponent {
             this.postReply.createdAt = new Date();
             // clone the postReply
             let postReply: any = this.postReply.clone();
-            this.post.postReply.unshift(postReply);
+            if (response && response.data) {
+              postReply.id = parseInt(CryptoUtilities.decipher(response.data.id), 10);
+              this.post.postReply.unshift(postReply);
+            }
             this.postReply.init(); // this will initialize the data with blank ones
             this.isUserCurrentlyCommenting = false;
           })
@@ -88,10 +92,8 @@ export class SharedPostReplyComponent {
   }
 
   protected onDeletePostReply (replyId: number): void {
-    console.log('replyId', replyId);
     this.postApiService.promiseRemovePostReply(replyId)
       .then((response: IResponse) => {
-        console.log('response', response);
         let index = this.post['postReply'].findIndex((filter: any) => {
           return filter.id === replyId;
         });
@@ -105,7 +107,7 @@ export class SharedPostReplyComponent {
   protected onOpenReplyComment (reply): void {
     let dialogConfig = new MatDialogConfig();
 
-    dialogConfig.panelClass = 'share-post-modal';
+    dialogConfig.panelClass = 'post-comment-detail-modal';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {post: this.post, reply: reply };

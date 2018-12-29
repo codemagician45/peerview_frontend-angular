@@ -110,6 +110,9 @@ import {
 import {
   SharedPostReplyCommentComponent
 } from './post-reply-comment/post-reply-comment.component';
+import {
+  SharedReportPostReplyComponent
+} from './report-post-reply/report-post-reply.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -160,7 +163,8 @@ export function provideConfig (): any {
     TimeAgoPipe,
     SharedReportPostCommunityComponent,
     SharedCommunityPostReplyComponent,
-    SharedPostReplyCommentComponent
+    SharedPostReplyCommentComponent,
+    SharedReportPostReplyComponent
   ],
   exports: [
     CommonModule,
@@ -193,7 +197,8 @@ export function provideConfig (): any {
     MatInputModule,
     SharedReportPostCommunityComponent,
     SharedCommunityPostReplyComponent,
-    SharedPostReplyCommentComponent
+    SharedPostReplyCommentComponent,
+    SharedReportPostReplyComponent
   ],
   providers: [
     {provide: Window, useValue: window},

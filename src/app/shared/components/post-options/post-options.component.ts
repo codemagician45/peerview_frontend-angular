@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   Input
 } from '@angular/core';
@@ -26,7 +27,7 @@ import {
   PostReplyModel,
   CampusPostReplyModel,
   UserModel,
-  IResponse
+  IResponse, PostRateModel
 } from '../../models';
 import {
   PostEmitter
@@ -42,7 +43,8 @@ export class SharedPostOptionsComponent {
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
     private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   @Input() protected likes = 0;
@@ -61,6 +63,7 @@ export class SharedPostOptionsComponent {
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
+  protected rate: PostRateModel = new PostRateModel();
   protected hideReplySection = true;
 
   public ngOnInit (): void {}
@@ -142,5 +145,18 @@ export class SharedPostOptionsComponent {
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {post: this.post, route: this.route, user: this.user};
     this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
+  }
+  protected onStarClick (numberOfStars): void {
+    this.rate.rating = numberOfStars;
+    this.postApiService.promisePostRate(this.post.id, this.rate)
+      .then(response => {
+        this.post.ratingCount = numberOfStars;
+        this.ratingCount = numberOfStars;
+        this.cdRef.detectChanges();
+        this.rate.init();
+      })
+      .catch(error => {
+        console.error('error', error);
+      });
   }
 }

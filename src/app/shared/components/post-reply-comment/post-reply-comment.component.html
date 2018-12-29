@@ -13,9 +13,9 @@
           </div>
         </div>
       </div>
-   <!--   <div *ngIf="post.postReply">
+      <div *ngIf="post.postReply">
         <div *ngFor="let item of post.postReply.slice().reverse()">
-          <ul style="display: flex;">
+          <ul style="display: flex;" *ngIf="item.quoteReplyId && reply.id === item.quoteReplyId">
             <cl-image
               public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"
               *ngIf="item.user?.profilePicture"
@@ -31,13 +31,13 @@
                 </span> {{item.comment}}
               </span>
               <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
-              <report-post-component
-                [post]="item"
-                (onDeletePost)="onDeletePostReply($event)">
-              </report-post-component>
+              <report-post-reply-component
+                [reply]="item"
+                (onDeletePostReply)="onDeletePostReply($event)">
+              </report-post-reply-component>
             </li>
           </ul>
         </div>
-      </div>-->
+      </div>
   </div>
 </div>
