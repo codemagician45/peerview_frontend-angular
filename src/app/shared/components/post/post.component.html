@@ -164,12 +164,13 @@
         <shared-post-options-component
           [post]="post"
           [likes]="post.likeCount"
-          [ratingCount]="post.ratingCount"
+          [ratingCount]="post.roundedRating"
           [views]="post.pageviewCount"
           [share]="post.shareCount"
           [replies]="post.postReplyCount"
           [route]="route"
           [user]="user"
+          (loadPost)="loadPost()"
         >
         </shared-post-options-component>
       </div>

@@ -1,11 +1,9 @@
 import {
-  ChangeDetectorRef,
-  Component,
-  Input
+  Component, EventEmitter,
+  Input, Output
 } from '@angular/core';
 import {
   MatDialog,
-  MatDialogRef,
   MatDialogConfig
 } from '@angular/material';
 import {
@@ -44,7 +42,6 @@ export class SharedPostOptionsComponent {
     private campusApiService: CampusApiService,
     private dialog: MatDialog,
     private overlay: Overlay,
-    private cdRef: ChangeDetectorRef
   ) {}
 
   @Input() protected likes = 0;
@@ -57,6 +54,7 @@ export class SharedPostOptionsComponent {
   @Input() protected disableRepliesLink: boolean;
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   @Input() protected user: UserModel;
+  @Output() protected loadPost = new EventEmitter();
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
@@ -150,10 +148,9 @@ export class SharedPostOptionsComponent {
     this.rate.rating = numberOfStars;
     this.postApiService.promisePostRate(this.post.id, this.rate)
       .then(response => {
-        this.post.ratingCount = numberOfStars;
-        this.ratingCount = numberOfStars;
-        this.cdRef.detectChanges();
         this.rate.init();
+        console.log('third SharedPostOptionsComponent');
+        this.loadPost.emit();
       })
       .catch(error => {
         console.error('error', error);
