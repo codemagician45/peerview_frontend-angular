@@ -146,4 +146,22 @@ export class PostApiService extends ApiService {
         return responseData;
       });
   }
+  public promiseCreatePostReplyLike (postReplyId: number): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${postReplyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promiseRemovePostReplyLike (postReplyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${postReplyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promisePostReplyRate (postReplyId, rate: PostRateModel): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${postReplyId}/rating`, rate)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
 }

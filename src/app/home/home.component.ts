@@ -9,9 +9,6 @@ import {
   PostModel,
 } from '../shared/models';
 import {
-  PostEmitter
-} from '../shared/emitter';
-import {
   UserService
 } from '../../services';
 
@@ -41,5 +38,8 @@ export class HomeComponent implements OnInit {
     .catch(error => {
 
     });
+  }
+  public loadRecord (): void {
+    this.getPosts();
   }
 }

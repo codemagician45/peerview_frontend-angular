@@ -14,13 +14,12 @@ import {
   PostReplyModel,
   CampusPostReplyModel,
   UserModel,
-  IResponse
+  IResponse,
+  PostRateModel
 } from '../../models';
 import {
-  EmitterService
-} from '../../emitter/emitter.component';
-import {
-  MatDialog, MatDialogConfig
+  MatDialog,
+  MatDialogConfig
 } from '@angular/material';
 import {
   Overlay
@@ -28,29 +27,31 @@ import {
 import {
   SharedPostReplyCommentModalComponent
 } from '../../modals';
-import {CryptoUtilities} from '../../utilities';
+import {
+  CryptoUtilities
+} from '../../utilities';
 
 @Component({
   selector: 'shared-post-reply-component',
   templateUrl: './post-reply.component.html',
   styleUrls: ['./post-reply.component.scss']
 })
-export class SharedPostReplyComponent {
+export class SharedPostReplyComponent  {
   constructor (
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
     private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
   ) {}
-
   private user: UserModel = UserService.getUser();
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
   @Input() private post: PostModel = new PostModel();
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
-
-  public ngOnInit (): void {}
+  protected rate: PostRateModel = new PostRateModel();
+  public ngOnInit (): void {
+  }
 
   protected onPostReply (): void {
     this.isUserCurrentlyCommenting = true;
@@ -112,5 +113,57 @@ export class SharedPostReplyComponent {
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {post: this.post, reply: reply };
     this.dialog.open(SharedPostReplyCommentModalComponent, dialogConfig);
+  }
+  protected onClickPostReplyLike (postReplyItem): void {
+    if (postReplyItem.isUserPostReplyLike) {
+      this.postApiService.promiseRemovePostReplyLike(postReplyItem.id)
+        .then((response: IResponse) => {
+          let index = this.post['postReply'].findIndex((filter: any) => {
+            return filter.id === postReplyItem.id;
+          });
+          if (index > -1 ) {
+            postReplyItem.isUserPostReplyLike = false;
+            this.post['postReply'][index] = postReplyItem;
+          }
+      }).catch(error => {
+        console.error('error', error);
+      });
+    } else {
+      this.postApiService.promiseCreatePostReplyLike(postReplyItem.id)
+        .then((response: IResponse) => {
+          let index = this.post['postReply'].findIndex((filter: any) => {
+            return filter.id === postReplyItem.id;
+          });
+          if (index > -1 ) {
+            postReplyItem.isUserPostReplyLike = true;
+            this.post['postReply'][index] = postReplyItem;
+          }
+        }).catch(error => {
+        console.error('error', error);
+      });
+    }
+  }
+  protected onStarClick (numberOfStars: number, item: PostReplyModel): void {
+    this.rate.rating = numberOfStars;
+    this.postApiService.promisePostReplyRate(item.id, this.rate)
+      .then(response => {
+        this.rate.init();
+        item['postReplyRating'].ratingCount += 1;
+        if (item['postReplyRating'].roundedRating === null || item['postReplyRating'].roundedRating === undefined ) {
+          item['postReplyRating'].roundedRating = numberOfStars;
+        } else if (item['postReplyRating'].roundedRating !== null || item['postReplyRating'].roundedRating !== undefined) {
+          item['postReplyRating'].roundedRating =
+            (item['postReplyRating'].roundedRating + item['postReplyRating'].ratingCount) / 2;
+        }
+        let index = this.post['postReply'].findIndex((filter: any) => {
+          return filter.id === item.id;
+        });
+        if (index > -1 ) {
+          this.post['postReply'][index] = item;
+        }
+      })
+      .catch(error => {
+        console.error('error', error);
+      });
   }
 }

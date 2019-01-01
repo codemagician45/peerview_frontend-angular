@@ -3,14 +3,12 @@ import {
   OnInit,
   Input,
   Output,
-  EventEmitter
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 import {
   PostModel
 } from '../../models';
-import {
-  PostApiService
-} from '../../../../services/api';
 
 @Component({
   selector: 'shared-stars-component',
@@ -27,6 +25,18 @@ export class SharedStarsComponent implements OnInit {
 
   public ngOnInit (): void {
     this.starsToBeAdded();
+  }
+
+  public ngOnChanges (changes: SimpleChanges): void {
+    for (let propName in changes) {
+      if (propName) {
+        const newChanges = changes[propName];
+        if (newChanges.previousValue !== undefined && newChanges.currentValue !== newChanges.previousValue) {
+          this.stars.length = 0;
+          this.starsToBeAdded();
+        }
+      }
+    }
   }
 
   /**

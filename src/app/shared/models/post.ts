@@ -55,7 +55,12 @@ export class PostReplyModel extends Model {
       hideComment: undefined,
       postPollOptionId: undefined,
       quoteReplyId: undefined,
-      createdAt: undefined
+      createdAt: undefined,
+      isUserPostReplyLike: false,
+      postReplyRating: {
+        ratingCount: 0,
+        roundedRating: null
+      }
     });
   }
 }
