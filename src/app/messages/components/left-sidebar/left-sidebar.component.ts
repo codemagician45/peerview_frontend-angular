@@ -7,6 +7,9 @@ import {
 } from '@angular/material';
 import {SharedCreateMessageComponent
 } from '../../../shared/modals';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
   selector: 'messages-left-sidebar-component',
@@ -16,8 +19,31 @@ import {SharedCreateMessageComponent
 
 export class MessagesLeftSideBarComponent {
   constructor (
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
+  protected conversations: any = [];
+  private routeSubscriber: any;
+  private isDirectMessage: boolean = false;
+  private timer: any = null;
+  public ngOnInit (): void {
+    this.routeSubscriber = this.route
+      .queryParams
+      .subscribe(params => {
+        if (params.isDirectMessage && params.id) {
+         this.isDirectMessage = params.isDirectMessage;
+        }
+      });
+  }
+
+  public ngAfterViewInit (): void {
+    if (this.isDirectMessage) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.onNewMessageClick();
+      }, 500);
+    }
+  }
 
   protected onNewMessageClick (): void {
     // let queryParams = {
@@ -42,6 +68,10 @@ export class MessagesLeftSideBarComponent {
       // }, error => {
       //   console.log(error);
       // });
+  }
+
+  public ngOnDestroy (): void {
+    this.routeSubscriber.unsubscribe();
   }
 
 }
