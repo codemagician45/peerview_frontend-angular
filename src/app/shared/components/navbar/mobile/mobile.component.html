@@ -27,7 +27,7 @@
           </div>
         </span>
         <i class="material-icons notification-icon" [routerLink]="['/notification']">notifications_none</i>
-        <i class="material-icons notification-icon" [routerLink]="['/messages']" matBadge="2">mail_outline</i>
+        <i class="material-icons notification-icon" [routerLink]="['/messages']" matBadge="{{unReadMessageCount}}" matBadgeColor="warn">mail_outline</i>
         <span class="dropdown users-menu">
            <a id="users-menu" data-toggle="dropdown">
             <cl-image
