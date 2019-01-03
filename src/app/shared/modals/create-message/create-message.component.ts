@@ -17,7 +17,8 @@ import {
   MessageModel
 } from '../../models';
 import {
-  UserApiService, MessagesApiService
+  UserApiService,
+  MessagesApiService
 } from '../../../../services/api';
 import {
   UserService
@@ -74,7 +75,6 @@ export class SharedCreateMessageComponent {
   }
 
   protected onResultSelected (user): void {
-    console.log('user', user);
     this.selectedRecipient = user;
     this.message.toId = user.id;
     this.searchResults = [];
@@ -82,7 +82,6 @@ export class SharedCreateMessageComponent {
   }
 
   protected doSendMessage (): void {
-    console.log(this.message);
     this.messagesApiService.promiseCreateMessage(this.message)
       .then(response => {
         console.log(response);

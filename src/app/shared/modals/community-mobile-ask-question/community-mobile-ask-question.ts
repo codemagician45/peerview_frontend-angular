@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
-  MatDialog, MatDialogConfig
+  MatDialog,
+  MatDialogConfig
 } from '@angular/material';
 import {
   CommunityPostModel,
@@ -48,7 +49,6 @@ export class ComunityMobileAskQuestionMobileComponent {
 
   protected onImageIsSelected (value): void {
     this.hasImageSelected = value;
-    console.log('this.hasImageSelected', this.hasImageSelected);
   }
 
   protected onAskQuestion (): void {

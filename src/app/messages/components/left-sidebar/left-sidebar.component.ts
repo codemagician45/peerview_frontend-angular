@@ -5,7 +5,8 @@ import {
   MatDialogConfig,
   MatDialog
 } from '@angular/material';
-import {SharedCreateMessageComponent
+import {
+  SharedCreateMessageComponent
 } from '../../../shared/modals';
 import {
   ActivatedRoute

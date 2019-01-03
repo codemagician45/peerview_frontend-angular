@@ -65,7 +65,6 @@ export class MessagesComponent {
   protected doSendMessage (): void {
     this.messagesApiService.promiseCreateMessage(this.message)
       .then(response => {
-        console.log(response);
         this.message.detail = null;
         this.getConversation();
       })
