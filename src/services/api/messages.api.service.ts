@@ -57,4 +57,11 @@ export class MessagesApiService extends ApiService {
         return MessagesFactory.create(response);
       });
   }
+
+  public promiseGetUnReadMessageCount (): Promise<MessageModel> {
+    return this.promiseGetResponseData('count')
+      .then((response: IResponse) => {
+        return MessagesFactory.create(response);
+      });
+  }
 }

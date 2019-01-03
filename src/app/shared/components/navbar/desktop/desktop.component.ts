@@ -11,9 +11,19 @@ import {
   TokenStore,
   UserService
 } from '../../../../../services';
-import { MatDialogConfig, MatDialog } from '@angular/material';
-import { Overlay } from '@angular/cdk/overlay';
-import { SharedCreateMessageComponent } from '../../../modals';
+import {
+  MatDialogConfig,
+  MatDialog
+} from '@angular/material';
+import {
+  Overlay
+} from '@angular/cdk/overlay';
+import {
+  SharedCreateMessageComponent
+} from '../../../modals';
+import {
+  MessagesApiService
+} from '../../../../../services/api';
 
 @Component({
   selector: 'navbar-desktop-component',
@@ -24,15 +34,28 @@ export class NavbarDesktopComponent {
   constructor (
     private router: Router,
     private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private messagesApiService: MessagesApiService,
   ) {}
 
   protected user: UserModel = UserService.getUser();
   protected keyword: string = null;
+  protected unReadMessageCount: number = 0;
 
   protected onSignOut (): void {
     TokenStore.expungeData();
     window.location.reload();
+  }
+
+  public  ngAfterViewInit (): void {
+    this.messagesApiService.promiseGetUnReadMessageCount()
+      .then(response => {
+        if (response && response['data']) {
+          this.unReadMessageCount = response['data'];
+        }
+      }).catch(error => {
+      console.log(error);
+    });
   }
 
   protected onNewMessageClick (): void {

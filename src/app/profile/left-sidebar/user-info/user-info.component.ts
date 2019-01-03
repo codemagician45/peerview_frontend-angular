@@ -3,7 +3,8 @@ import {
   Input
 } from '@angular/core';
 import {
-  ActivatedRoute
+  ActivatedRoute,
+  Router
 } from '@angular/router';
 import {
   MatDialog,
@@ -34,6 +35,7 @@ import {
 import {
   SharedImagePreviewComponent
 } from '../../../shared/modals/image-preview/image-preview.component';
+import {UserService} from '../../../../services';
 
 @Component({
   selector: 'profile-left-sidebar-user-info-component',
@@ -44,16 +46,26 @@ export class ProfileLeftSidebarUserInfoComponent {
   constructor (
     private route: ActivatedRoute,
     private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private router: Router
   ) {}
 
   @Input() protected user: UserModel;
   @Input() protected isUserProfile;
-
+  private currentUser: UserModel = UserService.getUser();
   public ngOnInit (): void {}
 
   protected onOpenMessageDiaglogComponent (): void {
-    this.dialog.open(ProfileLeftSidebarUserInfoMessageDiaglogComponent);
+    // this.dialog.open(ProfileLeftSidebarUserInfoMessageDiaglogComponent);
+    let parentId = CryptoUtilities.cipher(this.currentUser.id);
+    let userId = CryptoUtilities.cipher(this.user.id);
+    let queryParams = {
+      isDirectMessage: true,
+      pid: parentId,
+      id: userId
+    };
+
+    this.router.navigate([`/messages`], {queryParams});
   }
 
   protected onOpenPostToDiaglogComponent (): void {

@@ -27,7 +27,8 @@ import {
   Overlay
 } from '@angular/cdk/overlay';
 import {
-  ComunityMobileAskQuestionMobileComponent
+  ComunityMobileAskQuestionMobileComponent,
+  SharedImagePreviewComponent
 } from '../../../shared/modals';
 import {
   PostEmitter
@@ -112,9 +113,13 @@ export class StudentCommunityComponent {
   protected onOpenAskQuestionModal (): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'ask-a-question-modal';
+    dialogConfig.id = 'SharedCommunityMobileAskQuestionMobileComponent';
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = this.user;
-    this.dialog.open(ComunityMobileAskQuestionMobileComponent, dialogConfig);
+    dialogConfig.data = { user: this.user, communityPost: this.communityPost};
+    this.dialog.open(ComunityMobileAskQuestionMobileComponent, dialogConfig).beforeClose()
+      .subscribe(response => {
+        this.getStudentCommunityFeed(this.communityPost.courseId);
+      });
   }
 
   protected onImageIsSelected (value): void {
@@ -176,5 +181,20 @@ export class StudentCommunityComponent {
       }).catch((error) => {
         console.error('error', error);
     });
+  }
+
+  protected onOpenShowImageDialogComponent (user): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'image-preview-modal';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      image: user.socialImage
+        ? (user.profilePicture === 'avatar' ? user.socialImage : user.profilePicture)
+        : user.profilePicture,
+      source: 'profile-picture'
+    };
+    this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 }

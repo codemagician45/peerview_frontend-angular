@@ -14,7 +14,8 @@ import {
 import {
   MatDatepickerModule,
   MatProgressBarModule,
-  MatInputModule
+  MatInputModule,
+  MatBadgeModule
 } from '@angular/material';
 // import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 /*third party*/
@@ -136,7 +137,8 @@ export function provideConfig (): any {
     MatProgressBarModule,
     MatDatepickerModule,
     MatInputModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatBadgeModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -198,7 +200,8 @@ export function provideConfig (): any {
     SharedReportPostCommunityComponent,
     SharedCommunityPostReplyComponent,
     SharedPostReplyCommentComponent,
-    SharedReportPostReplyComponent
+    SharedReportPostReplyComponent,
+    MatBadgeModule
   ],
   providers: [
     {provide: Window, useValue: window},

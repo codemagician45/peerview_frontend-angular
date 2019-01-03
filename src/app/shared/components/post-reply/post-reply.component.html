@@ -41,7 +41,7 @@
                     (click)="onClickPostReplyLike(item)">
                     <i class="material-icons" >thumb_up</i>
                     <span class="peersview-primary-color colon-separator">:</span>
-                    <shared-stars-component [ratingCount]="item.postReplyRating.roundedRating" (onStarClick)="onStarClick($event, item)"></shared-stars-component>
+                    <shared-stars-component [ratingCount]="item.postReplyRating && item.postReplyRating.roundedRating" (onStarClick)="onStarClick($event, item)"></shared-stars-component>
                   </button>
                 </div>
                 <div class="col-xs-3 text-center">
