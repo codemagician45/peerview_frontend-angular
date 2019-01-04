@@ -45,6 +45,7 @@ export class PostReplyModel extends Model {
   public hideComment?: boolean;
   public postPollOptionId?: number;
   public quoteReplyId?: number;
+  public recipientId?: number;
   public createdAt?: Date;
 
   public init (): void {

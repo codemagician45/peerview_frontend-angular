@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {
   NotificationApiService
-} from '../../../../services/api/notification.api.service';
+} from '../../../../services/api';
 import {
   NotificationModel
 } from '../../models';
@@ -18,12 +18,13 @@ export class SharedNotificationListComponent {
     private notificationApiService: NotificationApiService
   ) {}
 
-  protected notifications: NotificationModel;
+  protected notifications: NotificationModel[];
 
   public ngOnInit (): void {
     this.notificationApiService.promiseGetAllNotifications()
       .then(response => {
-        console.log(response);
+        console.log('SharedNotificationListComponent: response ', response);
+          this.notifications = response;
       })
       .catch(error => {
         console.log(error);
