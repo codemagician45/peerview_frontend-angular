@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 import {
 	ActivatedRoute,
@@ -29,16 +30,20 @@ import {
 import {
   Overlay
 } from '@angular/cdk/overlay';
+import {
+  Location
+} from '@angular/common';
 
 @Component({
 	selector: 'answer-question-component',
 	templateUrl: './answer-question.component.html',
 	styleUrls: ['./answer-question.component.scss']
 })
-export class  AnswerQuestionCommunityComponent {
+export class  AnswerQuestionCommunityComponent implements OnInit  {
 	constructor (
 			private route: ActivatedRoute,
 			private router: Router,
+			private location: Location,
 			private communityApiService: CommunityApiService,
       private dialog: MatDialog,
       private overlay: Overlay
@@ -127,6 +132,20 @@ export class  AnswerQuestionCommunityComponent {
       courseId: this.communityAnswer.courseId,
       questionId: this.communityAnswer.questionId};
     this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
+  }
+
+  protected onDeletePost (postId: number): void {
+    // delete here the post
+    this.communityApiService.promiseRemoveCommunityPost(postId)
+      .then(() => {
+        this.location.back();
+      }).catch((error) => {
+      console.error('error', error);
+    });
+  }
+
+  protected goToBack (): void {
+    this.location.back();
   }
 }
 

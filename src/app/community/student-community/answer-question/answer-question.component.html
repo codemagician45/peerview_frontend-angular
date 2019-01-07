@@ -1,5 +1,8 @@
 <div class="answer-question-component" *ngIf="communityPost">
 	<div class="row m-peersview-0 col-md-8 p-persview-0 p-peersview-0">
+    <button class="btn-peersivew-transparent like" (click)="goToBack()">
+      <i class="material-icons" >keyboard_backspace</i>
+    </button>
 		<div class="community-header">
 			<div class="col-xs-12 question-images text-center" *ngIf="communityPost">
 				<div 
@@ -23,8 +26,14 @@
 					</div>
 				</div>
 			</div>
-			<h3 class="text-center">{{communityPost.message}}</h3>
-
+			<h3 class="text-center">
+        {{communityPost.message}}
+        <report-post-community-component
+          [post]="communityPost"
+          [user]="user"
+          (onDeletePost)="onDeletePost($event)">
+        </report-post-community-component>
+      </h3>
 		</div>
 		<!-- Answer form -->
 		<div class="answer-question-form row m-peersview-0">
