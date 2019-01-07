@@ -58,8 +58,6 @@ export class SharedPostReplyComponent  {
   }
 
   protected onPostReply (): void {
-    console.log('this.postReply', this.postReply);
-    console.log('this.post', this.post);
     this.isUserCurrentlyCommenting = true;
 
     switch (this.route.name) {
