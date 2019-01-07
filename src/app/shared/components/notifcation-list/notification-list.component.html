@@ -85,6 +85,27 @@
       </div>
     </li>
 
+    <li class="co-row" *ngIf="notification.type === 'communityQuestionFollow'">
+      <div class="co-img">
+        <a class="user-img">
+          <cl-image
+            public-id="{{notification.subject.socialImage ? (notification.subject.profilePicture === 'avatar' ? notification.subject.socialImage: notification.subject.profilePicture): notification.subject.profilePicture}}"
+            *ngIf="notification.subject?.profilePicture">
+            <cl-transformation width="130" height="130" radius="max" gravity="custom" crop="thumb">
+            </cl-transformation>
+          </cl-image>
+        </a>
+      </div>
+      <div class="co-info">
+        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name}}</b>.</span>
+        <br/>
+      </div>
+      <div class="co-options">
+        <i class="material-icons">more_vert</i>
+        <span class="co-time">{{notification.createdAt | timeAgo }}</span>
+      </div>
+    </li>
+
   </ul>
 </div>
 

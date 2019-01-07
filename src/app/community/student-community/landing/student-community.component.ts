@@ -172,15 +172,36 @@ export class StudentCommunityComponent {
         console.error('error', error);
     });
   }
-  protected onFollowQuestion (postId: number): void {
+  protected onFollowQuestion (post): void {
     // follow here the post
     const follow  = new CommunityPostFollow();
-    follow.postId = postId;
-    this.communityApiService.promiseFollowCommunityPost(postId, follow)
-      .then(() => {
-      }).catch((error) => {
+    follow.postId = post.id;
+    follow.courseId = this.communityPost.courseId;
+    if (post.isUserFollowCommunityQuestion) {
+      this.communityApiService.promiseUnFollowCommunityPost(this.communityPost.courseId, post.id)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          if (index > -1 ) {
+            this.communityPosts[index].isUserFollowCommunityQuestion = false;
+          }
+        }).catch((error) => {
         console.error('error', error);
-    });
+      });
+    } else {
+      this.communityApiService.promiseFollowCommunityPost(this.communityPost.courseId, post.id, follow)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          if (index > -1 ) {
+            this.communityPosts[index].isUserFollowCommunityQuestion = true;
+          }
+        }).catch((error) => {
+          console.error('error', error);
+      });
+    }
   }
 
   protected onOpenShowImageDialogComponent (user): void {

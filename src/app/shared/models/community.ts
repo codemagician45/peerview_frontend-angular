@@ -8,10 +8,12 @@ export class CommunityPostModel extends Model {
   public area: string;
 	public type: string;
   public attachments: String[];
+  public isUserFollowCommunityQuestion: boolean;
   public init (): void {
     this.setBlankDataStructure ({
       message: null,
-      attachments: []
+      attachments: [],
+      isUserFollowCommunityQuestion: false
     });
   }
 }

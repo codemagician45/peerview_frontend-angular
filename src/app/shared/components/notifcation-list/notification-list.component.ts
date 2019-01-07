@@ -23,7 +23,6 @@ export class SharedNotificationListComponent {
   public ngOnInit (): void {
     this.notificationApiService.promiseGetAllNotifications()
       .then(response => {
-        console.log('SharedNotificationListComponent: response ', response);
           this.notifications = response;
       })
       .catch(error => {
