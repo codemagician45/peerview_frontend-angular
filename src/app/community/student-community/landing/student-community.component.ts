@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  OnInit
 } from '@angular/core';
 import {
   CourseModel,
@@ -16,7 +17,8 @@ import {
   CommunityApiService
 } from '../../../../services/api';
 import {
-  UserService
+  UserService,
+  CourseService
 } from '../../../../services';
 import {
   MatDialog,
@@ -45,7 +47,7 @@ import {
   templateUrl: './student-community.component.html',
   styleUrls: ['./student-community.component.scss']
 })
-export class StudentCommunityComponent {
+export class StudentCommunityComponent implements OnInit  {
   constructor (
     private route: ActivatedRoute,
     private router: Router,
@@ -70,10 +72,16 @@ export class StudentCommunityComponent {
     this.getCourse ();
     this.user = UserService.getUser();
 
+    if (CourseService.getCourse()) {
+      const course = CourseService.getCourse();
+      this.communityPost.courseId = course.id;
+      this.getStudentCommunityFeed(this.communityPost.courseId);
+      return;
+    }
     if (this.user['userCourses'] && this.user['userCourses'][0] && this.user['userCourses'][0].course) {
+      CourseService.setCourse(this.user['userCourses'][0].course);
       this.communityPost.courseId = this.user['userCourses'][0].course.id;
       this.getStudentCommunityFeed(this.communityPost.courseId);
-
     }
   }
 
@@ -106,6 +114,12 @@ export class StudentCommunityComponent {
   }
 
   protected onChangeCourse (item): void {
+    let index = this.courses.findIndex((filter: any) => {
+      return filter.id === parseInt(item, 10);
+    });
+    if (index > -1 ) {
+      CourseService.setCourse(this.courses[index]);
+    }
     this.communityPost.courseId = item;
     this.getStudentCommunityFeed(this.communityPost.courseId);
   }
@@ -172,15 +186,36 @@ export class StudentCommunityComponent {
         console.error('error', error);
     });
   }
-  protected onFollowQuestion (postId: number): void {
+  protected onFollowQuestion (post): void {
     // follow here the post
     const follow  = new CommunityPostFollow();
-    follow.postId = postId;
-    this.communityApiService.promiseFollowCommunityPost(postId, follow)
-      .then(() => {
-      }).catch((error) => {
+    follow.postId = post.id;
+    follow.courseId = this.communityPost.courseId;
+    if (post.isUserFollowCommunityQuestion) {
+      this.communityApiService.promiseUnFollowCommunityPost(this.communityPost.courseId, post.id)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          if (index > -1 ) {
+            this.communityPosts[index].isUserFollowCommunityQuestion = false;
+          }
+        }).catch((error) => {
         console.error('error', error);
-    });
+      });
+    } else {
+      this.communityApiService.promiseFollowCommunityPost(this.communityPost.courseId, post.id, follow)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          if (index > -1 ) {
+            this.communityPosts[index].isUserFollowCommunityQuestion = true;
+          }
+        }).catch((error) => {
+          console.error('error', error);
+      });
+    }
   }
 
   protected onOpenShowImageDialogComponent (user): void {

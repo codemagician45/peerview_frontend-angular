@@ -93,8 +93,15 @@ export class CommunityApiService extends ApiService {
       });
   }
   /** Follow community post*/
-  public promiseFollowCommunityPost (postId: number, record: CommunityPostFollow): Promise<IResponse> {
-    return this.promisePostModelData(`${postId}/follow`, record)
+  public promiseFollowCommunityPost (courseId: number, postId: number, record: CommunityPostFollow): Promise<IResponse> {
+    return this.promisePostModelData(`${courseId}/${postId}/follow`, record)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** UnFollow community post*/
+  public promiseUnFollowCommunityPost (courseId: number, postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`${courseId}/${postId}/follow`)
       .then((responseData: IResponse) => {
         return responseData;
       });

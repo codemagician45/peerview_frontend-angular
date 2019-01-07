@@ -43,14 +43,18 @@ export class SharedPostReplyComponent  {
     private dialog: MatDialog,
     private overlay: Overlay,
   ) {}
+
+  @Input() private post: PostModel = new PostModel();
+  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
+
   private user: UserModel = UserService.getUser();
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
-  @Input() private post: PostModel = new PostModel();
-  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
   protected rate: PostRateModel = new PostRateModel();
+
   public ngOnInit (): void {
+    this.postReply.recipientId = this.post.user.id;
   }
 
   protected onPostReply (): void {
@@ -105,6 +109,7 @@ export class SharedPostReplyComponent  {
         console.error('error', error);
       });
   }
+
   protected onOpenReplyComment (reply): void {
     let dialogConfig = new MatDialogConfig();
 
@@ -114,6 +119,7 @@ export class SharedPostReplyComponent  {
     dialogConfig.data = {post: this.post, reply: reply };
     this.dialog.open(SharedPostReplyCommentModalComponent, dialogConfig);
   }
+
   protected onClickPostReplyLike (postReplyItem): void {
     if (postReplyItem.isUserPostReplyLike) {
       this.postApiService.promiseRemovePostReplyLike(postReplyItem.id)
@@ -143,6 +149,7 @@ export class SharedPostReplyComponent  {
       });
     }
   }
+
   protected onStarClick (numberOfStars: number, item: PostReplyModel): void {
     this.rate.rating = numberOfStars;
     this.postApiService.promisePostReplyRate(item.id, this.rate)

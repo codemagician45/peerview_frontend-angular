@@ -101,10 +101,11 @@
               ANSWER
             </button>
             <button
-              (click)="onFollowQuestion(post.id)"
-              class="btn-peersview-primary btn-md btn-follow">
+              (click)="onFollowQuestion(post)"
+              class="btn-md btn-follow"
+              [ngClass]="post.isUserFollowCommunityQuestion === true ? 'btn-peersview-primary' : 'btn-peersview-secondary'">
               <i class="material-icons">person_add</i>
-              Follow
+              {{post.isUserFollowCommunityQuestion ? 'Following': 'Follow'}}
             </button>
             <div class="pull-right">
               <report-post-community-component

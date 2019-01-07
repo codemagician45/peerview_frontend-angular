@@ -41,3 +41,19 @@
 //     return this.http.get(`interest/${categoryId}`);
 //   }
 // }
+
+import {
+  CourseModel
+} from '../app/shared/models';
+
+export class CourseService {
+  private static course: CourseModel;
+
+  public static setCourse (user: CourseModel): void {
+    CourseService.course = user;
+  }
+
+  public static getCourse (): CourseModel {
+    return CourseService.course;
+  }
+}
