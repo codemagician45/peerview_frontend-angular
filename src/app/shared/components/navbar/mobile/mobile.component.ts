@@ -9,7 +9,10 @@ import {
 import {
   UserModel
 } from '../../../models';
-import {MessagesApiService} from '../../../../../services/api';
+import {
+  MessagesApiService,
+  NotificationApiService
+} from '../../../../../services/api';
 
 @Component({
   selector: 'navbar-mobile-component',
@@ -19,11 +22,13 @@ import {MessagesApiService} from '../../../../../services/api';
 export class NavbarMobileComponent implements OnInit {
   constructor (
     private messagesApiService: MessagesApiService,
+    private notificationApiService: NotificationApiService,
 
   ) {}
 
   protected user: UserModel = UserService.getUser();
   protected unReadMessageCount: number = 0;
+  protected unReadNotificationCount: number = 0;
 
   public ngOnInit (): void {}
 
@@ -37,6 +42,15 @@ export class NavbarMobileComponent implements OnInit {
       .then(response => {
         if (response && response['data']) {
           this.unReadMessageCount = response['data'];
+        }
+      }).catch(error => {
+      console.log(error);
+    });
+
+    this.notificationApiService.promiseGetUnReadNotificationCount()
+      .then(response => {
+        if (response && response['data']) {
+          this.unReadNotificationCount = response['data'];
         }
       }).catch(error => {
       console.log(error);

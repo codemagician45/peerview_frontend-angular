@@ -22,7 +22,8 @@ import {
   SharedCreateMessageComponent
 } from '../../../modals';
 import {
-  MessagesApiService
+  MessagesApiService,
+  NotificationApiService
 } from '../../../../../services/api';
 
 @Component({
@@ -36,11 +37,13 @@ export class NavbarDesktopComponent {
     private dialog: MatDialog,
     private overlay: Overlay,
     private messagesApiService: MessagesApiService,
+    private notificationApiService: NotificationApiService,
   ) {}
 
   protected user: UserModel = UserService.getUser();
   protected keyword: string = null;
   protected unReadMessageCount: number = 0;
+  protected unReadNotificationCount: number = 0;
 
   protected onSignOut (): void {
     TokenStore.expungeData();
@@ -52,6 +55,15 @@ export class NavbarDesktopComponent {
       .then(response => {
         if (response && response['data']) {
           this.unReadMessageCount = response['data'];
+        }
+      }).catch(error => {
+      console.log(error);
+    });
+
+    this.notificationApiService.promiseGetUnReadNotificationCount()
+      .then(response => {
+        if (response && response['data']) {
+          this.unReadNotificationCount = response['data'];
         }
       }).catch(error => {
       console.log(error);
