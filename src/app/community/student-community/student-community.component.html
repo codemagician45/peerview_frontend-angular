@@ -29,7 +29,7 @@
 						<cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
 						</cl-transformation>
 					</cl-image>
-					<p class="hidden-xs hidden-sm">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+					<p class="hidden-xs hidden-sm" *ngIf="user">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
 				</span>
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>

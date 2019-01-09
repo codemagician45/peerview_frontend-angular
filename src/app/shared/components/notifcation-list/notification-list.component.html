@@ -1,7 +1,7 @@
 <div class="notification-list-component">
   <ul class="notification-list" *ngFor="let notification of notifications; let i = index">
 
-    <li class="co-row" *ngIf="notification.type === 'newFollower'">
+    <li class="co-row" *ngIf="notification.type === 'newFollower'" (click)="goToUserProfile(notification.subject)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -22,7 +22,7 @@
       </div>
     </li>
 
-    <li class="co-row" *ngIf="notification.type === 'postLike' && notification.post">
+    <li class="co-row" *ngIf="notification.type === 'postLike' && notification.post" (click)="goToUserPostLike(notification.post)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -43,7 +43,7 @@
       </div>
     </li>
 
-    <li class="co-row" *ngIf="notification.type === 'postReply' && notification.post">
+    <li class="co-row" *ngIf="notification.type === 'postReply' && notification.post" (click)="goToUserPostReply(notification.post)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -64,7 +64,7 @@
       </div>
     </li>
 
-    <li class="co-row" *ngIf="notification.type === 'postShare' && notification.post">
+    <li class="co-row" *ngIf="notification.type === 'postShare' && notification.post" (click)="goToUserPostShare(notification.post)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -85,7 +85,7 @@
       </div>
     </li>
 
-    <li class="co-row" *ngIf="notification.type === 'communityQuestionFollow' && notification.postv1">
+    <li class="co-row" *ngIf="notification.type === 'communityQuestionFollow' && notification.postv1" (click)="goToCommunityQuestionFollow(notification.postv1)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -106,7 +106,7 @@
       </div>
     </li>
 
-    <li class="co-row" *ngIf="notification.type === 'communityQuestionPost' && notification.postv1">
+    <li class="co-row" *ngIf="notification.type === 'communityQuestionPost' && notification.postv1" (click)="goToCommunityQuestionFollow(notification.postv1)">
       <div class="co-img">
         <a class="user-img">
           <cl-image
@@ -119,6 +119,27 @@
       </div>
       <div class="co-info">
         <span class="co-name">"{{notification.postv1.message}}" {{notification.message}} <b class="peersview-primary-color"> {{notification.course.name}}</b> community.</span>
+        <br/>
+      </div>
+      <div class="co-options">
+        <i class="material-icons">more_vert</i>
+        <span class="co-time">{{notification.createdAt | timeAgo }}</span>
+      </div>
+    </li>
+
+    <li class="co-row" *ngIf="notification.type === 'communityQuestionReply' && notification.postv1" (click)="goToCommunityQuestionAnswer(notification.postv1)">
+      <div class="co-img">
+        <a class="user-img">
+          <cl-image
+            public-id="{{notification.subject.socialImage ? (notification.subject.profilePicture === 'avatar' ? notification.subject.socialImage: notification.subject.profilePicture): notification.subject.profilePicture}}"
+            *ngIf="notification.subject?.profilePicture">
+            <cl-transformation width="130" height="130" radius="max" gravity="custom" crop="thumb">
+            </cl-transformation>
+          </cl-image>
+        </a>
+      </div>
+      <div class="co-info">
+        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name}}</b>.</span>
         <br/>
       </div>
       <div class="co-options">

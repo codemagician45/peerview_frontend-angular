@@ -67,26 +67,52 @@ export class StudentCommunityComponent implements OnInit  {
   content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less \
   normal distribution of letters.,';
   protected showFullAnswer: Array<Array<boolean>> = [];
+  private routeSubscriber: any;
+  private isShowCommunityAnswerPost: number = 0;
 
   public ngOnInit (): void {
     this.getCourse ();
     this.user = UserService.getUser();
 
-    if (CourseService.getCourse()) {
-      const course = CourseService.getCourse();
-      this.communityPost.courseId = course.id;
-      this.getStudentCommunityFeed(this.communityPost.courseId);
-      return;
-    }
-    if (this.user['userCourses'] && this.user['userCourses'][0] && this.user['userCourses'][0].course) {
-      CourseService.setCourse(this.user['userCourses'][0].course);
-      this.communityPost.courseId = this.user['userCourses'][0].course.id;
-      this.getStudentCommunityFeed(this.communityPost.courseId);
-    }
+    this.routeSubscriber = this.route
+      .queryParams
+      .subscribe(params => {
+        if (params.postId && params.courseId) {
+          const postId = params.postId && parseFloat(CryptoUtilities.decipher(params.postId));
+          const courseId = params.postId && parseFloat(CryptoUtilities.decipher(params.courseId));
+          this.communityPost.courseId = courseId;
+          this.getStudentCommunityFeedByCourseIdAndPostId(courseId, postId);
+          return;
+        } else {
+          if (CourseService.getCourse()) {
+            const course = CourseService.getCourse();
+            this.communityPost.courseId = course.id;
+            this.getStudentCommunityFeed(this.communityPost.courseId);
+            return;
+          }
+          if (this.user['userCourses'] && this.user['userCourses'][0] && this.user['userCourses'][0].course) {
+            CourseService.setCourse(this.user['userCourses'][0].course);
+            this.communityPost.courseId = this.user['userCourses'][0].course.id;
+            this.getStudentCommunityFeed(this.communityPost.courseId);
+          }
+        }
+      });
   }
 
-  private getStudentCommunityFeed (coureseId): void {
-    this.communityApiService.promiseGetAllCommunityPostsData(coureseId)
+  private getStudentCommunityFeedByCourseIdAndPostId (courseId, postId): void {
+    this.communityApiService.promiseGetSingleCommunityPostsData(courseId, postId)
+      .then((responseData: CommunityPostModel) => {
+        this.communityPosts = [responseData];
+        this.isToggleUploadComponentVisible = false;
+        this.communityPost.init();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  private getStudentCommunityFeed (courseId): void {
+    this.communityApiService.promiseGetAllCommunityPostsData(courseId)
       .then((responseData: CommunityPostModel[]) => {
         this.communityPosts = responseData;
         this.isToggleUploadComponentVisible = false;
@@ -171,7 +197,6 @@ export class StudentCommunityComponent implements OnInit  {
     return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
   }
 
-
   protected onDeletePost (postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
@@ -186,6 +211,7 @@ export class StudentCommunityComponent implements OnInit  {
         console.error('error', error);
     });
   }
+
   protected onFollowQuestion (post): void {
     // follow here the post
     const follow  = new CommunityPostFollow();
@@ -231,5 +257,9 @@ export class StudentCommunityComponent implements OnInit  {
       source: 'profile-picture'
     };
     this.dialog.open(SharedImagePreviewComponent, dialogConfig);
+  }
+
+  public ngOnDestroy (): void {
+    this.routeSubscriber.unsubscribe();
   }
 }
