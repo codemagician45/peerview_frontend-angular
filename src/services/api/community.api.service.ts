@@ -79,6 +79,14 @@ export class CommunityApiService extends ApiService {
       });
   }
 
+  /** Get student community single post*/
+  public promiseGetSingleCommunityPostsData (courseId: number, postId: number): Promise<CommunityPostModel> {
+    return this.promiseGetAllResponseData(`course/${courseId}/${postId}`)
+      .then((response: IResponse) => {
+        return CommunityFactory.createFeed(response.data);
+      });
+  }
+
   public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
 		return this.promiseGetResponseData(`list`)
 		.then((response: IResponse) => {

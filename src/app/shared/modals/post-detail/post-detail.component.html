@@ -35,7 +35,7 @@
         </div>
         <!-- Commented user rating in case client would want to add this in the future -->
          <div class="col-xs-12 profile-stars">
-           <shared-user-rating [userCredits]="post.user.userCredits[0]"></shared-user-rating>
+           <shared-user-rating [userCredits]="post.user && post.user.userCredits && post.user.userCredits[0]"></shared-user-rating>
         </div>
         <div class="col-xs-12 post-message">
           <h4 *ngIf="post.title">{{post.title}}</h4>

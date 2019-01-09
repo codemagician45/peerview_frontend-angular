@@ -30,6 +30,12 @@ import {
 import {
   PostEmitter
 } from '../../emitter';
+import {
+  CryptoUtilities
+} from '../../utilities';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
   selector: 'shared-post-options-component',
@@ -42,6 +48,7 @@ export class SharedPostOptionsComponent {
     private campusApiService: CampusApiService,
     private dialog: MatDialog,
     private overlay: Overlay,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   @Input() protected likes = 0;
@@ -63,8 +70,32 @@ export class SharedPostOptionsComponent {
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
   protected rate: PostRateModel = new PostRateModel();
   protected hideReplySection = true;
+  private routeSubscriber: any;
+  private timer: any = null;
+  private postId: number;
+  private isShowPostReply: number = 0;
 
-  public ngOnInit (): void {}
+  public ngOnInit (): void {
+    this.isShowPostReply = 0;
+    this.routeSubscriber = this.activatedRoute
+      .queryParams
+      .subscribe(params => {
+        if (params.postId) {
+          this.postId = params.postId && parseFloat(CryptoUtilities.decipher(params.postId));
+          this.isShowPostReply = params.isShowPostReply && parseFloat(params.isShowPostReply);
+          return;
+        }
+      });
+  }
+
+  public ngAfterViewInit (): void {
+    if (this.isShowPostReply) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.onClickCommentDetail();
+      }, 500);
+    }
+  }
 
   protected openReplyContainer (): void {
     this.hideReplySection = !this.hideReplySection;
@@ -149,11 +180,14 @@ export class SharedPostOptionsComponent {
     this.postApiService.promisePostRate(this.post.id, this.rate)
       .then(response => {
         this.rate.init();
-        console.log('third SharedPostOptionsComponent');
         this.loadPost.emit();
       })
       .catch(error => {
         console.error('error', error);
       });
+  }
+
+  public ngOnDestroy (): void {
+    this.routeSubscriber.unsubscribe();
   }
 }
