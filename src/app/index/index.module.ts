@@ -32,6 +32,9 @@ import {
 import {
   indexRouting
 } from './index-routing.component';
+import {
+  IndexCommunityScreenshotPageComponent
+} from './components/community-screenshot-page/community-screenshot-page.component';
 
 @NgModule({
   imports : [
@@ -46,7 +49,8 @@ import {
     IndexTrendingNowPageComponent,
     IndexLeisurePageComponent,
     IndexStickyNavbarComponent,
-    IndexOnResizeActiveDirectiveComponent
+    IndexOnResizeActiveDirectiveComponent,
+    IndexCommunityScreenshotPageComponent
   ],
   exports: []
 })
