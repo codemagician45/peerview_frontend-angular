@@ -4,6 +4,12 @@ import {
 import {
   PostModel
 } from './post';
+import {
+  CommunityPostModel
+} from './community';
+import {
+  CourseModel
+} from './course';
 
 export class NotificationModel extends Model {
   public rows: any[];
@@ -16,6 +22,8 @@ export class NotificationModel extends Model {
   public subjectId?: number;
   public postId?: number;
   public post?: PostModel;
+  public postv1?: CommunityPostModel;
+  public course?: CourseModel;
   public subject?: SubjectModel;
 
   public init (): void {}

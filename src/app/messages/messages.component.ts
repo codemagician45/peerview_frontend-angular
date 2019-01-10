@@ -38,8 +38,10 @@ export class MessagesComponent {
     this.routeSubscriber = this.route
       .queryParams
       .subscribe(params => {
-        this.message.parentId = params.pid && parseFloat(CryptoUtilities.decipher(params.pid));
-        this.getConversation();
+        if (params.pid) {
+          this.message.parentId = params.pid && parseFloat(CryptoUtilities.decipher(params.pid));
+          this.getConversation();
+        }
       });
   }
 
@@ -47,10 +49,13 @@ export class MessagesComponent {
     this.messagesApiService.promiseGetMessageListByParentId(this.message.parentId)
       .then(response => {
         // console.log('conversations', response);
-        this.conversation = response.reverse();
-
-        this.message.fromId = this.user.id;
-        this.message.toId = this.conversation[0].toId;
+        if (response) {
+          this.conversation = response.reverse();
+          this.message.fromId = this.user.id;
+          if (this.conversation && this.conversation[0] && this.conversation[0].toId) {
+            this.message.toId = this.conversation[0].toId;
+          }
+        }
       })
       .catch(error => {
         console.log(error);
@@ -60,7 +65,6 @@ export class MessagesComponent {
   protected doSendMessage (): void {
     this.messagesApiService.promiseCreateMessage(this.message)
       .then(response => {
-        console.log(response);
         this.message.detail = null;
         this.getConversation();
       })

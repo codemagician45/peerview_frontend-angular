@@ -11,11 +11,13 @@ import {
   CommunityPostModel,
   PrivateCommunityModel,
   CommunityAnswerQuestionModel,
-  IResponse
+  IResponse, ReportPostModel
 } from '../../app/shared/models';
 import {
   CommunityFactory
 } from '../../app/shared/models/factory';
+import {Model} from '../../app/shared/models/model';
+import {CommunityPostFollow} from '../../app/shared/models/community-post-follow';
 
 @Injectable()
 export class CommunityApiService extends ApiService {
@@ -77,10 +79,59 @@ export class CommunityApiService extends ApiService {
       });
   }
 
+  /** Get student community single post*/
+  public promiseGetSingleCommunityPostsData (courseId: number, postId: number): Promise<CommunityPostModel> {
+    return this.promiseGetAllResponseData(`course/${courseId}/${postId}`)
+      .then((response: IResponse) => {
+        return CommunityFactory.createFeed(response.data);
+      });
+  }
+
   public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
 		return this.promiseGetResponseData(`list`)
 		.then((response: IResponse) => {
 			return CommunityFactory.createPrivateCommunityFeed(response.data);
 		});
 	}
+	/** Remove community post*/
+  public promiseRemoveCommunityPost (postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`${postId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** Follow community post*/
+  public promiseFollowCommunityPost (courseId: number, postId: number, record: CommunityPostFollow): Promise<IResponse> {
+    return this.promisePostModelData(`${courseId}/${postId}/follow`, record)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** UnFollow community post*/
+  public promiseUnFollowCommunityPost (courseId: number, postId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`${courseId}/${postId}/follow`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** Like community post reply */
+  public promiseLikeCommunityPostReply (replyId: number): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${replyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }/* Report community post*/
+  public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/report`, reportPost)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  /** Remove community post reply*/
+  public promiseRemoveCommunityPostReply (replyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${replyId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
 }

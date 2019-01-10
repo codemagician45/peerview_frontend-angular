@@ -9,7 +9,7 @@ student-community-component {
 					width: 100%;
 					a {
 						display: block;
-						padding: 5px 25px;
+						padding: 5px 5px;
 						font-size: 16px;
 						color: #d1d1d1;
 						background-color: #646464;
@@ -120,7 +120,7 @@ student-community-component {
 				font-size: 14px;
 				i {
 					vertical-align: bottom;
-					font-size: 13px;
+					font-size: 18px;
 				}
 			}
 		}
@@ -216,4 +216,8 @@ student-community-component {
 	// Large Devices, Wide Screens
 	@media only screen and (min-width : 1200px) {}
 }
+}
+
+.btn-follow {
+  margin-left: 10px !important;
 }

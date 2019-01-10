@@ -6,9 +6,10 @@ import {
 } from '../api.service';
 import {
   NotificationModel,
-  IResponse
+  IResponse, MessageModel
 } from '../../app/shared/models';
 import {
+  MessagesFactory,
   NotificationFactory
 } from '../../app/shared/models/factory';
 
@@ -22,6 +23,13 @@ export class NotificationApiService extends ApiService {
     return this.promiseGetResponseData('list')
       .then((response: IResponse) => {
         return NotificationFactory.createMany(response.data.rows);
+      });
+  }
+
+  public promiseGetUnReadNotificationCount (): Promise<any> {
+    return this.promiseGetResponseData('count')
+      .then((response: IResponse) => {
+        return response;
       });
   }
 }

@@ -17,7 +17,8 @@ import {
   MessageModel
 } from '../../models';
 import {
-  UserApiService, MessagesApiService
+  UserApiService,
+  MessagesApiService
 } from '../../../../services/api';
 import {
   UserService
@@ -42,10 +43,17 @@ export class SharedCreateMessageComponent {
   protected keyword: string = '';
   protected selectedRecipient: UserModel;
   private timer: any = null;
-
+  private otherUser: UserModel = UserService.getOtherUser();
   // api/v1/user/search/via-tag?keyword=
   public ngAfterViewInit (): void {
     this.message.fromId = this.user.id;
+    if (this.otherUser) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.selectedRecipient = this.otherUser;
+        this.message.toId = this.otherUser.id;
+      }, 500);
+    }
   }
 
   protected onChangeSearch (): void {
@@ -74,16 +82,15 @@ export class SharedCreateMessageComponent {
   }
 
   protected doSendMessage (): void {
-    console.log(this.message);
-    // this.messagesApiService.promiseCreateMessage(this.message)
-    //   .then(response => {
-    //     console.log(response);
-    //     this.message.detail = null;
-    //     this.onCloseModal();
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    this.messagesApiService.promiseCreateMessage(this.message)
+      .then(response => {
+        console.log(response);
+        this.message.detail = null;
+        this.onCloseModal();
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }

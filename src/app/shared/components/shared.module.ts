@@ -14,7 +14,8 @@ import {
 import {
   MatDatepickerModule,
   MatProgressBarModule,
-  MatInputModule
+  MatInputModule,
+  MatBadgeModule
 } from '@angular/material';
 // import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 /*third party*/
@@ -101,6 +102,18 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import {
+  SharedReportPostCommunityComponent
+} from './report-post-community/report.post.community.component';
+import {
+  SharedCommunityPostReplyComponent
+} from './community-post-reply/community-post-reply.component';
+import {
+  SharedPostReplyCommentComponent
+} from './post-reply-comment/post-reply-comment.component';
+import {
+  SharedReportPostReplyComponent
+} from './report-post-reply/report-post-reply.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -124,7 +137,8 @@ export function provideConfig (): any {
     MatProgressBarModule,
     MatDatepickerModule,
     MatInputModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatBadgeModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -148,7 +162,11 @@ export function provideConfig (): any {
     SharedNotificationListComponent,
     SharedConverstionListComponent,
     IndexFooterComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    SharedReportPostCommunityComponent,
+    SharedCommunityPostReplyComponent,
+    SharedPostReplyCommentComponent,
+    SharedReportPostReplyComponent
   ],
   exports: [
     CommonModule,
@@ -178,7 +196,12 @@ export function provideConfig (): any {
     SharedNotificationListComponent,
     SharedConverstionListComponent,
     IndexFooterComponent,
-    MatInputModule
+    MatInputModule,
+    SharedReportPostCommunityComponent,
+    SharedCommunityPostReplyComponent,
+    SharedPostReplyCommentComponent,
+    SharedReportPostReplyComponent,
+    MatBadgeModule
   ],
   providers: [
     {provide: Window, useValue: window},

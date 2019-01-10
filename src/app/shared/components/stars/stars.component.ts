@@ -1,14 +1,14 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 import {
-  PostRateModel, PostModel
+  PostModel
 } from '../../models';
-import {
-  PostApiService
-} from '../../../../services/api';
 
 @Component({
   selector: 'shared-stars-component',
@@ -16,17 +16,27 @@ import {
   styleUrls: ['./stars.component.scss']
 })
 export class SharedStarsComponent implements OnInit {
-  constructor (
-    private postApiService: PostApiService
-  ) {}
+  constructor () {}
 
   @Input() protected ratingCount: number = 0;
+  @Output() protected onStarClick = new EventEmitter();
   protected stars: Array<string> = [];
-  protected rate: PostRateModel = new PostRateModel();
   private post: PostModel = new PostModel();
 
   public ngOnInit (): void {
     this.starsToBeAdded();
+  }
+
+  public ngOnChanges (changes: SimpleChanges): void {
+    for (let propName in changes) {
+      if (propName) {
+        const newChanges = changes[propName];
+        if (newChanges.previousValue !== undefined && newChanges.currentValue !== newChanges.previousValue) {
+          this.stars.length = 0;
+          this.starsToBeAdded();
+        }
+      }
+    }
   }
 
   /**
@@ -52,15 +62,7 @@ export class SharedStarsComponent implements OnInit {
     });
   }
 
-  protected onStarClick (numberOfStars): void {
-    this.rate.rating = numberOfStars;
-    this.post.id = 161;
-    this.postApiService.promisePostRate(this.post, this.rate)
-      .then(response => {
-        console.log('successful rate', response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  protected clickOnStarClick (numberOfStars): void {
+    this.onStarClick.emit(numberOfStars);
   }
 }

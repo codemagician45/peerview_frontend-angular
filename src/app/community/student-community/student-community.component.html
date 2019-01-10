@@ -29,7 +29,7 @@
 						<cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
 						</cl-transformation>
 					</cl-image>
-					<p class="hidden-xs hidden-sm">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+					<p class="hidden-xs hidden-sm" *ngIf="user">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
 				</span>
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>
@@ -53,7 +53,7 @@
 					<div class="forum-header">
 						<img src="/src/assets/images/courses/course-accounting.jpg" alt="">
 						<h4>
-							What if Kejriwal kills Modi? <br>
+							What are the advantages of using Angular.js framework? <br>
 							<button class="btn-peersview-primary btn-md"> 
 								<i class="material-icons">create</i>
 								ANSWER
@@ -102,7 +102,7 @@
 				<div class="forum-item">
 						<div class="forum-header">
 							<img src="/src/assets/images/courses/course-accounting.jpg" alt="">
-							<h4>What if Kejriwal kills Modi? <br>
+							<h4>Why use Node.js?<br>
 								<button class="btn-peersview-primary btn-md"> 
 									<i class="material-icons">create</i>
 									ANSWER

@@ -55,7 +55,7 @@
         </div>
         <div class="dropdown message menu">
           <a data-toggle="dropdown" id="users-message">
-          <i class="material-icons notification-icon">mail_outline</i>
+          <i class="material-icons notification-icon"  matBadge="{{unReadMessageCount}}" matBadgeColor="warn">mail_outline</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right users-message" aria-labelledby="users-message">
             <div class="flyout-title">Messages
@@ -67,7 +67,7 @@
         </div>
         <div class="dropdown notification menu">
           <a data-toggle="dropdown" id="users-notification">
-            <i class="material-icons notification-icon">notifications_none</i>
+            <i class="material-icons notification-icon" matBadge="{{unReadNotificationCount}}" matBadgeColor="warn">notifications_none</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right users-notification" aria-labelledby="users-notification">
             <div class="flyout-title">NOTIFICATIONS</div>

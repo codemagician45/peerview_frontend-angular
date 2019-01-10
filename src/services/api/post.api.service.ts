@@ -118,10 +118,10 @@ export class PostApiService extends ApiService {
       });
   }
 
-  public promisePostRate (post: PostModel, rate: PostRateModel): Promise<PostModel> {
-    return this.promisePostModelData(`v2/${post.id}/rating`, rate)
+  public promisePostRate (postId, rate: PostRateModel): Promise<IResponse> {
+    return this.promisePostModelData(`${postId}/rating`, rate)
       .then((response: IResponse) => {
-        return PostFactory.createPost(response.data);
+        return response;
       });
   }
 
@@ -137,6 +137,31 @@ export class PostApiService extends ApiService {
     return this.promiseRemoveData(`${postId}`)
       .then((responseData: IResponse) => {
         return responseData;
+      });
+  }
+
+  public promiseRemovePostReply (replyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${replyId}`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promiseCreatePostReplyLike (postReplyId: number): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${postReplyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promiseRemovePostReplyLike (postReplyId: number): Promise<IResponse> {
+    return this.promiseRemoveData(`reply/${postReplyId}/like`)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+  public promisePostReplyRate (postReplyId, rate: PostRateModel): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${postReplyId}/rating`, rate)
+      .then((response: IResponse) => {
+        return response;
       });
   }
 }

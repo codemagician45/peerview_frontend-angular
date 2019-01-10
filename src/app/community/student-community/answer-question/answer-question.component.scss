@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/variables';
+
 answer-question-component {
 
     .user-img {
@@ -102,6 +104,43 @@ answer-question-component {
                 border-top: 10px solid transparent;
                 border-bottom: 10px solid transparent;
             }
-        }
+          }
+          button.liked {
+            color: #631990;
+          }
+          .options-logo {
+            .like {
+              display: inline-flex;
+              padding: 0;
+            }
+          }
+          .like,
+          .reply,
+          .share {
+            margin: 0;
+            color: $primary-color;
+            cursor: pointer;
+          }
+
+          button.liked {
+            color: #631990;
+          }
+          button.not-yet-liked {
+            color: #bbb;
+          }
+          .options-text {
+            div {
+              padding: 0;
+            }
+          }
+          .post-comments,
+          .post-likes {
+            cursor: pointer;
+          }
+          .like-count{
+            margin-left: 5px;
+            font-size: 20px;
+          }
     }
+
 }

@@ -1,7 +1,7 @@
 <shared-navbar-component></shared-navbar-component>
 <div class="messages-component container">
   <messages-left-sidebar-component class="col-lg-3"></messages-left-sidebar-component>
-  <div class="messages-main-container col-lg-6" *ngIf="conversation">
+  <div class="messages-main-container col-lg-6" *ngIf="conversation && conversation[0]">
     <div class="conversation-header">
       <cl-image class="co-img" [public-id]="conversation[0].to.socialImage ? conversation[0].to.socialImage : 'avatar'">
         <cl-transformation width="80" height="80" radius="max" gravity="custom" crop="thumb">
@@ -9,7 +9,7 @@
       </cl-image>
       <div class="co-info">
         <span class="co-name"><h2>{{ conversation[0].to.name }}</h2></span>
-        <span class="co-location"><h5>Student | Los Angeles, LA</h5></span>
+        <span class="co-location"><h5>Student | {{ conversation[0].to.city }}</h5></span>
       </div>
     </div>
     <div class="conversation-body">
@@ -28,5 +28,4 @@
       </div>
     </div>
   </div>
-  <messages-right-sidebar-component class="col-lg-3"></messages-right-sidebar-component> 
 </div>

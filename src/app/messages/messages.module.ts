@@ -7,9 +7,6 @@ import {
 import {
   MessagesComponent
 } from './messages.component';
-// import {
-//   NotificationRightSidebarComponent
-// } from './right-sidebar/right-sidebar.component';
 
 import {
   SharedModule
@@ -17,6 +14,9 @@ import {
 import {
   messagesRouting
 } from './messages-routing.component';
+import {
+  MessagesLeftSideBarComponent
+} from './components/left-sidebar/left-sidebar.component';
 
 @NgModule({
   imports : [
@@ -25,7 +25,7 @@ import {
   ],
   declarations : [
     MessagesComponent,
-    // NotificationRightSidebarComponent
+    MessagesLeftSideBarComponent
   ],
   exports: []
 })

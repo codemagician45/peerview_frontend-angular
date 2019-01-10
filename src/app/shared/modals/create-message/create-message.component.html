@@ -14,7 +14,11 @@
       <input class="form-control" placeholder="Send message to..." [(ngModel)]="keyword" (input)="onChangeSearch()"/>
       <ul class="list-group text-left result-group" *ngIf="searchResults.length !== 0;">
         <li class="list-group-item" *ngFor="let item of searchResults;" (click)="onResultSelected(item)">
-          <cl-image class="co-img" [public-id]="'avatar'">
+          <cl-image
+            public-id="{{item.socialImage ? (item.profilePicture === 'avatar' ? item.socialImage: item.profilePicture): item.profilePicture}}"
+            *ngIf="item?.profilePicture"
+            class="user-img"
+            [ngStyle]="{'border-radius': '50%'}">
             <cl-transformation width="40" height="40" radius="max" gravity="custom" crop="thumb">
             </cl-transformation>
           </cl-image>

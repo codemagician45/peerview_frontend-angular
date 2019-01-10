@@ -1,10 +1,9 @@
 import {
-  Component,
-  Input
+  Component, EventEmitter,
+  Input, Output
 } from '@angular/core';
 import {
   MatDialog,
-  MatDialogRef,
   MatDialogConfig
 } from '@angular/material';
 import {
@@ -26,11 +25,17 @@ import {
   PostReplyModel,
   CampusPostReplyModel,
   UserModel,
-  IResponse
+  IResponse, PostRateModel
 } from '../../models';
 import {
   PostEmitter
 } from '../../emitter';
+import {
+  CryptoUtilities
+} from '../../utilities';
+import {
+  ActivatedRoute
+} from '@angular/router';
 
 @Component({
   selector: 'shared-post-options-component',
@@ -42,7 +47,8 @@ export class SharedPostOptionsComponent {
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
     private dialog: MatDialog,
-    private overlay: Overlay
+    private overlay: Overlay,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   @Input() protected likes = 0;
@@ -55,15 +61,41 @@ export class SharedPostOptionsComponent {
   @Input() protected disableRepliesLink: boolean;
   @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
   @Input() protected user: UserModel;
+  @Output() protected loadPost = new EventEmitter();
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
   protected isUserCurrentlyCommenting = false;
   protected postReply: PostReplyModel = new PostReplyModel();
   protected campusPostReply: CampusPostReplyModel = new CampusPostReplyModel();
+  protected rate: PostRateModel = new PostRateModel();
   protected hideReplySection = true;
+  private routeSubscriber: any;
+  private timer: any = null;
+  private postId: number;
+  private isShowPostReply: number = 0;
 
-  public ngOnInit (): void {}
+  public ngOnInit (): void {
+    this.isShowPostReply = 0;
+    this.routeSubscriber = this.activatedRoute
+      .queryParams
+      .subscribe(params => {
+        if (params.postId) {
+          this.postId = params.postId && parseFloat(CryptoUtilities.decipher(params.postId));
+          this.isShowPostReply = params.isShowPostReply && parseFloat(params.isShowPostReply);
+          return;
+        }
+      });
+  }
+
+  public ngAfterViewInit (): void {
+    if (this.isShowPostReply) {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.onClickCommentDetail();
+      }, 500);
+    }
+  }
 
   protected openReplyContainer (): void {
     this.hideReplySection = !this.hideReplySection;
@@ -142,5 +174,20 @@ export class SharedPostOptionsComponent {
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {post: this.post, route: this.route, user: this.user};
     this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
+  }
+  protected onStarClick (numberOfStars): void {
+    this.rate.rating = numberOfStars;
+    this.postApiService.promisePostRate(this.post.id, this.rate)
+      .then(response => {
+        this.rate.init();
+        this.loadPost.emit();
+      })
+      .catch(error => {
+        console.error('error', error);
+      });
+  }
+
+  public ngOnDestroy (): void {
+    this.routeSubscriber.unsubscribe();
   }
 }

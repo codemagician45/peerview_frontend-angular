@@ -8,10 +8,12 @@ export class CommunityPostModel extends Model {
   public area: string;
 	public type: string;
   public attachments: String[];
+  public isUserFollowCommunityQuestion: boolean;
   public init (): void {
     this.setBlankDataStructure ({
       message: null,
-      attachments: []
+      attachments: [],
+      isUserFollowCommunityQuestion: false
     });
   }
 }
@@ -21,6 +23,8 @@ export class CommunityAnswerQuestionModel extends Model {
   public questionId: number;
   public comment: String;
   public courseId: number;
+  public quoteReplyId?: number;
+  public tagUserId?: number;
 
   public init (): void {
     this.setBlankDataStructure ({

@@ -9,7 +9,8 @@
 							<select 
 								required
 								class="form-control course" 
-								placeholder = "Select Course" 
+								placeholder = "Select Course"
+                [(ngModel)]="communityPost.courseId"
 								(change)="onChangeCourse($event.target.value)">
 								<option value="0" disabled>Course</option>
 								<option *ngFor="let course of courses" [value]="course.id">
@@ -38,7 +39,7 @@
 						<cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
 						</cl-transformation>
 					</cl-image>
-					<p class="hidden-xs hidden-sm">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+					<p class="hidden-xs hidden-sm" *ngIf="user">{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
 				</span>
 				<div class="by-user-text">
 					<i class="input-caret grey-caret"></i>
@@ -89,16 +90,31 @@
 								</cl-transformation>
 							</cl-image>
 						</span>
-						<h3>
-							{{post.message}} <br>
-							<button
-								(click)="onAnswerQuestion(post.id)" 
-								class="btn-peersview-primary btn-md"> 
-								<i class="material-icons">create</i>
-								ANSWER
-							</button>
-						</h3>
+						<h3 class="hidden-xs hidden-sm">{{post.message}}</h3>
+            <p class="hidden-md hidden-lg"><strong>{{post.message}}</strong> </p>
 					</div>
+          <div>
+            <button
+              (click)="onAnswerQuestion(post.id)"
+              class="btn-peersview-primary btn-md">
+              <i class="material-icons">create</i>
+              ANSWER
+            </button>
+            <button
+              (click)="onFollowQuestion(post)"
+              class="btn-md btn-follow"
+              [ngClass]="post.isUserFollowCommunityQuestion === true ? 'btn-peersview-primary' : 'btn-peersview-secondary'">
+              <i class="material-icons">person_add</i>
+              {{post.isUserFollowCommunityQuestion ? 'Following': 'Follow'}}
+            </button>
+            <div class="pull-right">
+              <report-post-community-component
+                [post]="post"
+                [user]="user"
+                (onDeletePost)="onDeletePost($event)">
+              </report-post-community-component>
+            </div>
+          </div>
 					<div class="forum-answers row m-peersview-0">
 						<div class="col-md-6 answer-item"  *ngFor="let item of post.reply; let i = index;">
 							<div  *ngIf="i < 2">
@@ -117,7 +133,7 @@
 							<div >
 									<span><b>{{item.user.name | titlecase}}</b></span>
 							</div>
-							<span>City College of Angeles</span>
+							<span>{{item.user.institutionName}}</span>
 							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
                 {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }} 

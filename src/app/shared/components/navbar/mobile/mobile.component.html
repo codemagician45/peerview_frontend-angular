@@ -26,8 +26,8 @@
             <a [routerLink]="['/advance-search']" class="advance-search-link">Advanced Search</a>
           </div>
         </span>
-        <i class="material-icons notification-icon" [routerLink]="['/notification']">notifications_none</i>
-        <i class="material-icons notification-icon" [routerLink]="['/messages']">mail_outline</i>
+        <i class="material-icons notification-icon" [routerLink]="['/notification']" matBadge="{{unReadNotificationCount}}" matBadgeColor="warn">notifications_none</i>
+        <i class="material-icons notification-icon" [routerLink]="['/messages']" matBadge="{{unReadMessageCount}}" matBadgeColor="warn">mail_outline</i>
         <span class="dropdown users-menu">
            <a id="users-menu" data-toggle="dropdown">
             <cl-image

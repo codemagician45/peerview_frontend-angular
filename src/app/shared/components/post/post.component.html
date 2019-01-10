@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="col-xs-12 profile-stars">
-        <shared-user-rating [userCredits]="post.user.userCredits[0]"></shared-user-rating>
+        <shared-user-rating [userCredits]="post.user && post.user.userCredits && post.user.userCredits[0]"></shared-user-rating>
       </div>
       <div class="col-xs-12 post-message">
         <h4 *ngIf="post.title">{{post.title}}</h4>
@@ -164,12 +164,13 @@
         <shared-post-options-component
           [post]="post"
           [likes]="post.likeCount"
-          [ratingCount]="post.ratingCount"
+          [ratingCount]="post.roundedRating"
           [views]="post.pageviewCount"
           [share]="post.shareCount"
           [replies]="post.postReplyCount"
           [route]="route"
           [user]="user"
+          (loadPost)="loadPost()"
         >
         </shared-post-options-component>
       </div>

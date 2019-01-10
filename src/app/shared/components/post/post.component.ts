@@ -1,6 +1,6 @@
 import {
-  Component,
-  Input,
+  Component, EventEmitter,
+  Input, Output,
   SimpleChanges
 } from '@angular/core';
 import {
@@ -62,6 +62,7 @@ export class SharedPostComponent {
     campusClassId?: number
   } = {name: 'home'};
   @Input() protected user: UserModel;
+  @Output() protected loadRecord = new EventEmitter();
   protected btnLoadMoreText = 'Load More';
   protected notPostMessage: string;
   private dialogRef: MatDialogRef<SharedImagePreviewComponent>;
@@ -241,5 +242,8 @@ export class SharedPostComponent {
   public ngOnDestroy (): void {
     PostEmitter.removeSubscriber(PostEmitter.getPostSaveName());
     PostEmitter.removeSubscriber(PostEmitter.getPostSaveName());
+  }
+  protected loadPost (): void {
+    this.loadRecord.emit();
   }
 }
