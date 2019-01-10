@@ -20,7 +20,7 @@ init()
   setNodePackageVersion
 
   CONTAINER_NAME=${NODE_PACKAGE_NAME}
-  IMAGE_NAME="caninojories/${NODE_PACKAGE_NAME}"
+  IMAGE_NAME="peersview/${NODE_PACKAGE_NAME}"
   IMAGE_VERSION="${NODE_PACKAGE_VERSION}"
 }
 
