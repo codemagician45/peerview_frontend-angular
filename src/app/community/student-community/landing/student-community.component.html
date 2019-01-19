@@ -6,9 +6,9 @@
 				<a data-toggle="tab">
 					<span class="hidden-xs hidden-sm">Course</span>
 						<span class="course-container">
-							<select 
+							<select
 								required
-								class="form-control course" 
+								class="form-control course"
 								placeholder = "Select Course"
                 [(ngModel)]="communityPost.courseId"
 								(change)="onChangeCourse($event.target.value)">
@@ -47,8 +47,8 @@
 						<textarea [(ngModel)]="communityPost.message" type="text" class="form-control" placeholder="What’s your question?"></textarea>
 						<i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible" class="material-icons">link</i>
 					</div>
-					
-					<button 
+
+					<button
 						[disabled]="communityPost.courseId == null"
 						(click)="onAskQuestion()"
 						class="btn-peersview-primary btn-post-question">Post</button>
@@ -61,7 +61,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-xs-12 student-community-feed">
 		<div class="row">
 			<div class="col-md-8 p-peersview-0">
@@ -75,7 +75,7 @@
 					<h3 class="text-center">No questions available.</h3>
 				</div>
 				<div *ngFor="let post of communityPosts; let i = index;" class="forum-item">
-					<div class="forum-header">
+					<div class="forum-header" (click)="onAnswerQuestion(post.id)" style="cursor: pointer">
 						<span *ngIf="post.attachments.length > 0">
 							<cl-image
 							public-id="{{post.attachments[0].cloudinaryPublicId}}"
@@ -119,7 +119,7 @@
 						<div class="col-md-6 answer-item"  *ngFor="let item of post.reply; let i = index;">
 							<div  *ngIf="i < 2">
 
-						
+
 							<div class="pull-left">
 								<cl-image
 									width="40px"
@@ -129,14 +129,14 @@
 									>
 								</cl-image>
 							</div>
-							
+
 							<div >
 									<span><b>{{item.user.name | titlecase}}</b></span>
 							</div>
 							<span>{{item.user.institutionName}}</span>
 							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
-                {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }} 
+                {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }}
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>
 							</div>
 						</div>
