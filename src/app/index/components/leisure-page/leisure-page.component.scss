@@ -35,6 +35,15 @@
     margin-bottom: 15px;
   }
 
+  .student-image {
+    display: inline-flex;
+    img {
+      display: inline-table;
+      width: 70px;
+      height: 65px;
+      border-radius: 32px;
+    }
+  }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
