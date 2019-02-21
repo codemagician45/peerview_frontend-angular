@@ -75,3 +75,47 @@
     }
   }
 }
+
+@media only screen and (max-width : 319px) {
+  .index-community-page-component {
+    .mobile-outer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 0;
+      width: calc( 100% + 50px);
+    }
+    .mobile-inner {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .mobile-center {
+      padding: 0;
+    }
+    cl-image img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width : 479px) {
+  .index-community-page-component {
+    .mobile-outer {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 0;
+      width: calc( 100% + 50px);
+    }
+    .mobile-inner {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .mobile-center {
+      padding: 0;
+    }
+    cl-image img {
+      width: 100%;
+      height: 100%;
+    }
+  }  
+}
