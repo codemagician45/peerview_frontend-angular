@@ -53,9 +53,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const urlT = req.url;
 
-    const regex = /post\/(?:\d+)\/like/g;
+    const regexL = /post\/(?:\d+)\/like/g;
+    const regexR = /post\/(?:\d+)\/rating/g;
+    const regexP = /posts/g;
 
-    if (urlT.search(regex) === -1) {
+    if ((urlT.search(regexL) === -1) && (urlT.search(regexR) === -1) && (urlT.search(regexP) === -1)) {
       this.loadingBar.show();
     }
     return next.handle(headers).pipe(
