@@ -20,7 +20,7 @@ export class SharedStarsComponent implements OnInit {
 
   @Input() protected ratingCount: number = 0;
   @Output() protected onStarClick = new EventEmitter();
-  protected stars: Array<string> = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
+  protected stars: Array<string> = [];
   private post: PostModel = new PostModel();
 
   public ngOnInit (): void {
@@ -32,6 +32,7 @@ export class SharedStarsComponent implements OnInit {
       if (propName) {
         const newChanges = changes[propName];
         if (newChanges.previousValue !== undefined && newChanges.currentValue !== newChanges.previousValue) {
+          this.stars.length = 0;
           this.starsToBeAdded();
         }
       }
@@ -44,31 +45,26 @@ export class SharedStarsComponent implements OnInit {
    * Post
    */
   private starsToBeAdded (): void {
-    this.stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
+    let roundOf = Math.round(this.ratingCount);
 
-    for (let i = 0; i < this.ratingCount; i++) {
-      this.stars[i] = 'star';
+    Array.from({length: roundOf}, () => {
+      this.stars.push('star');
+    });
+
+    if (roundOf > this.ratingCount) {
+      this.stars.push('star_half');
     }
-  }
 
-  private starsEnterAdd (cnt): void {
-    this.stars = ['star_border', 'star_border', 'star_border', 'star_border', 'star_border'];
+    let remainingStars = 5 - this.stars.length;
 
-    for (let i = 0; i < cnt; i++) {
-      this.stars[i] = 'star';
-    }
+    Array.from({length: remainingStars}, () => {
+      this.stars.push('star_border');
+    });
+
   }
 
   protected clickOnStarClick (numberOfStars): void {
-    this.onStarClick.emit(numberOfStars);
-  }
-
-  protected onStarMouseEnter (numberOfStars): void {
-    this.starsEnterAdd(numberOfStars);
-  }
-
-  protected onStarMouseLeave (numberOfStars): void {
-    this.starsToBeAdded();
+     this.onStarClick.emit(numberOfStars);
   }
 
 }

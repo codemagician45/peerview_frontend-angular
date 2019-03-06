@@ -1,8 +1,3 @@
 <div class="shared-stars-component">
-  <star-elem *ngFor="let star of stars; let i = index;" 
-  		(starClick)="clickOnStarClick(i+1)" 
-  		(mouseEnter)="onStarMouseEnter(i+1)" 
-  		(mouseLeave)="onStarMouseLeave(i+1)"
-  		[star]="star"
-  ></star-elem>
+	<i class="material-icons star" *ngFor="let star of stars; let i = index;" (click)="clickOnStarClick(i+1)">{{star}}</i> 
 </div>
