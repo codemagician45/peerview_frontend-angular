@@ -51,9 +51,6 @@ import {
   SharedStarsComponent
 } from './stars/stars.component';
 import {
-  SharedStarElemComponent
-} from './stars/star-elem/star.elem.component';
-import {
   SharedUserRatingComponent
 } from './user-rating/user-rating.component';
 import {
@@ -152,7 +149,6 @@ export function provideConfig (): any {
     SharedPostOptionsComponent,
     SharedPostReplyComponent,
     SharedStarsComponent,
-    SharedStarElemComponent,
     SharedUserRatingComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,
@@ -184,7 +180,6 @@ export function provideConfig (): any {
     SharedPostOptionsComponent,
     SharedPostReplyComponent,
     SharedStarsComponent,
-    SharedStarElemComponent,
     SharedUserRatingComponent,
     SharedPeersYouMayKnowComponent,
     SharedPostTextareaComponent,
