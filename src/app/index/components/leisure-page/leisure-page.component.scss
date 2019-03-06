@@ -1,10 +1,20 @@
 .index-leisure-page-component {
-  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519065568/leisureBg.jpg') no-repeat 0 -100px #000;
+  // .leisure-image{
+  //   background: url('https://res.cloudinary.com/peersview-com/image/upload/v1533997852/all-students.png') no-repeat 0 -100px #000;
+  // }
+  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519065568/leisureBg.jpg') no-repeat 0 -100px #000; 
   background-size: cover;
   color: #fff;
   padding: 40px 0;
   border-bottom: 1px solid #65298a;
+  p {
+    font-size: 20px;
+  }
   .leisure-block {
+    img {
+      width: 100%;
+      padding-bottom: 50px;
+    }
     .header-block {
       h5 {
         font-size: 20px;
@@ -24,6 +34,11 @@
       padding-top: 30px;
       font-size: 20px;
     }
+    .center p {
+      border: 1px solid #fff;
+      padding: 5px 5px 5px 5px;
+      text-align: left;
+    }
   }
   .col-sm-12 {
     margin-bottom: 30px;
@@ -34,7 +49,9 @@
   .spacing {
     margin-bottom: 15px;
   }
-
+  .header-block p {
+    text-align: center;
+  }
   .student-image {
     display: inline-flex;
     img {

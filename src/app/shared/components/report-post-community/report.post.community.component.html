@@ -5,6 +5,9 @@
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="material-icons">more_vert</i>
     </button>
+    <button 
+    class="btn-peersview-primary btn-sm pull-right follow-btn"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Follow</button>
     <ul class="dropdown-menu dropdown-menu-right">
       <li><a (click)="openReportModal()">Report Post</a></li>
       <li *ngIf="(post && post.isPostUser) || post.userId === user.id"><a (click)="onOpenConfirmModal()">Delete Post</a></li>

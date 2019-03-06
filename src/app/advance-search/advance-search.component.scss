@@ -55,3 +55,14 @@
   }
 }
 
+@media only screen and (max-width : 479px) {
+  .advance-search-component {
+    padding-top: 50px;
+  }
+}
+// Small Devices, Tablets
+@media only screen and (max-width : 767px) {
+  .advance-search-component {
+    padding-top: 50px;
+  }
+}

@@ -52,6 +52,13 @@ export class SharedPeersYouMayKnowComponent {
     });
   }
 
+  protected removePeer (peer): void {
+    let index = this.peers.indexOf(peer);
+    if (index > -1) {
+      this.peers.splice(index, 1);
+    }
+  }
+
   private getPeersList (): void {
     this.userApiService.promiseGetPeersList()
     .then((users: UserModel[]) => {

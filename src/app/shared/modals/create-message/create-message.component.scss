@@ -1,4 +1,4 @@
-.shared-create-message-component{
+.shared-create-message-component {
   // height: 100vh;
   text-align: center;
 	.close-col {
@@ -154,13 +154,46 @@
       width: 81px;
     }
   }
-	/* Custom, iPhone Retina */
-	@media only screen and (min-width : 320px) {}
-	/* Extra Small Devices, Phones */
-	@media only screen and (min-width : 480px) {}
-	/* Small Devices, Tablets */
-	@media only screen and (min-width : 768px) {}
-	/* Medium Devices, Desktops */
-	@media only screen and (min-width : 992px) {}
-	/* Large Devices, Wide Screens */
+}
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  .shared-create-message-component {
+    .conversation-recipient {
+      height: 55vh;
+    }
+    .conversation-footer {
+      textarea {
+        border: 1px solid #ece;
+        width: 70%;
+      }
+    }
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  .shared-create-message-component {
+    .conversation-recipient {
+      height: 55vh;
+    }
+    .conversation-footer {
+      textarea {
+        border: 1px solid #ece;
+        width: 70%;
+      }
+    }
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .shared-create-message-component {
+    .conversation-recipient {
+      height: 60vh;
+    }
+    .conversation-footer {
+      textarea {
+        border: 1px solid #ece;
+        width: 85%;
+      }
+    }
+  } 
 }

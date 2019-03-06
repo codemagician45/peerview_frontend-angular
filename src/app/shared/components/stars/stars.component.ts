@@ -60,9 +60,11 @@ export class SharedStarsComponent implements OnInit {
     Array.from({length: remainingStars}, () => {
       this.stars.push('star_border');
     });
+
   }
 
   protected clickOnStarClick (numberOfStars): void {
-    this.onStarClick.emit(numberOfStars);
+     this.onStarClick.emit(numberOfStars);
   }
+
 }
