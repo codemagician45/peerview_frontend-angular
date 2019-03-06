@@ -50,7 +50,16 @@ export class AuthInterceptor implements HttpInterceptor {
       },
       url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
-    this.loadingBar.show();
+
+    const urlT = req.url;
+
+    const regexL = /post\/(?:\d+)\/like/g;
+    const regexR = /post\/(?:\d+)\/rating/g;
+    const regexP = /posts/g;
+
+    if ((urlT.search(regexL) === -1) && (urlT.search(regexR) === -1) && (urlT.search(regexP) === -1)) {
+      this.loadingBar.show();
+    }
     return next.handle(headers).pipe(
       tap(res => {
         if (res instanceof HttpResponse) {

@@ -17,8 +17,8 @@ answer-question-component {
 
         .question-images {
             display: table;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 0px;
+            margin-bottom: 0px;
             .image-outer {
                 display: inline-grid;
                 .image-inner {
@@ -38,6 +38,9 @@ answer-question-component {
                     display: block;
                 }
             }
+        }
+        h3 {
+            margin-top: 0px;
         }
     }
 
@@ -105,6 +108,7 @@ answer-question-component {
                 border-bottom: 10px solid transparent;
             }
           }
+
           button.liked {
             color: #631990;
           }
@@ -143,4 +147,36 @@ answer-question-component {
           }
     }
 
+}
+
+// extra Small Devices, Phones
+@media only screen and (max-width : 479px) {
+    answer-question-component {
+        .community-header {
+            h3 {
+                font-size: 20px;
+            }
+        }
+        .answers-list-item {
+            .answer-container {
+                width: calc(100% - 110px);
+            }
+        }   
+    }
+}
+
+// Small Devices, Tablets
+@media only screen and (max-width : 767px) {
+    answer-question-component {
+        .community-header {
+            h3 {
+                font-size: 20px;
+            }
+        }        
+        .answers-list-item {
+            .answer-container {
+                width: calc(100% - 110px);
+            }
+        }   
+    }
 }
