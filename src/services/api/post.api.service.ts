@@ -31,9 +31,9 @@ export class PostApiService extends ApiService {
       .set('limit', limit.toString())
       .set('offset', offset.toString());
 
-      this.options = {
-        params: params
-      };
+    this.options = {
+      params: params
+    };
 
     return this.promiseGetAllResponseData('')
       .then((response: IResponse) => {
@@ -162,6 +162,12 @@ export class PostApiService extends ApiService {
     return this.promisePostModelData(`reply/${postReplyId}/rating`, rate)
       .then((response: IResponse) => {
         return response;
+      });
+  }
+  public promiseGetJsonForLinkPreview (url: string): Promise<IResponse> {
+    return this.promiseGetJsonDataForLinkPreview(`link-preview/${encodeURI(url)}`)
+      .then((res: IResponse) => {
+        return res;
       });
   }
 }

@@ -32,4 +32,13 @@ export class NotificationApiService extends ApiService {
         return response;
       });
   }
+
+  public promiseUpdateReadNotificationStatus (subjectId: number, status: boolean): Promise<any> {
+  const notification = new NotificationModel();
+  notification.isRead = status;
+    return this.promisePutModelData('update/' + subjectId, notification)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
 }

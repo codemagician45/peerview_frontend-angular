@@ -36,6 +36,7 @@ import {
 import {
   NgxSpinnerModule
 } from 'ngx-spinner';
+import { NgxLinkifyjsModule } from 'ngx-linkifyjs';
 import {
   CampusApiService,
   CourseApiService,
@@ -118,7 +119,11 @@ tinymce.init({});
     RouterModule,
     SharedModule,
     SharedDirectiveModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxLinkifyjsModule.forRoot({
+      enableHash: false,
+      enableMention: false
+    })
   ],
   providers: [{
     provide: MAT_DIALOG_DATA,

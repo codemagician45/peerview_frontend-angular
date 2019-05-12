@@ -19,7 +19,8 @@
     ],
     "member-access": true,
     "member-ordering": [
-      true, {
+      true,
+      {
         "order": [
           "constructor",
           "static-field",
@@ -63,7 +64,11 @@
       "single"
     ],
     "radix": true,
-    "semicolon": [true, "always", "ignore-interfaces"],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-interfaces"
+    ],
     "space-before-function-paren": true,
     "triple-equals": [
       true,
@@ -74,7 +79,6 @@
       "call-signature",
       "property-declaration"
     ],
-
     "typedef-whitespace": [
       true,
       {
@@ -92,7 +96,12 @@
         "variable-declaration": "space"
       }
     ],
-    "variable-name": [true, "ban-keywords", "check-format", "allow-snake-case"],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-snake-case"
+    ],
     "whitespace": [
       true,
       "check-branch",

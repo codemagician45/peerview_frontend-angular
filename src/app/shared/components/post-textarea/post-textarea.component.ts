@@ -7,6 +7,7 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
+import { NgxLinkifyjsService, Link, LinkType, NgxLinkifyOptions } from 'ngx-linkifyjs';
 import {
   EmitterService
 } from '../../emitter/emitter.component';
@@ -35,6 +36,7 @@ import {
 import {
   CryptoUtilities
 } from '../../utilities';
+import * as _ from 'lodash';
 declare let swal: any;
 
 @Component({
@@ -47,7 +49,8 @@ export class SharedPostTextareaComponent {
   constructor (
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private linkifyService: NgxLinkifyjsService
   ) {
     this.post.postPoll = new PostPollModel();
   }
@@ -72,9 +75,10 @@ export class SharedPostTextareaComponent {
     campusFreshersFeedId?: number,
     campusCourseFeedId?: number,
     campusClassId?: number
-  } = {name: 'home'};
+  } = { name: 'home' };
   protected textAreaIsExpanded: boolean = false;
-
+  private foundLinks: Link[] = [];
+  private linkPreviewData: any[] = [];
   public ngOnInit (): void {
     this.post.postPoll.duration = 1;
   }
@@ -88,7 +92,7 @@ export class SharedPostTextareaComponent {
           instruction: 'Please add a message.'
         }
       },
-      NotificationTypes.Error);
+        NotificationTypes.Error);
     }
 
     if (this.isToogleUploadComponentVisible) {
@@ -134,6 +138,7 @@ export class SharedPostTextareaComponent {
             // this will set the createPost call the setBlankDataStructure
             this.post.init();
             this.isButtonDisabledOnSubmit = false;
+            this.linkPreviewData = [];
           })
           .catch(error => {
             this.isButtonDisabledOnSubmit = false;
@@ -152,7 +157,7 @@ export class SharedPostTextareaComponent {
             this.campusPost.init();
             this.post.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusFreshersFeed':
         let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
@@ -169,7 +174,7 @@ export class SharedPostTextareaComponent {
             this.campusFreshersFeedPost.init();
             this.post.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusCourseFeed':
         let courseId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
@@ -186,7 +191,7 @@ export class SharedPostTextareaComponent {
             this.campusFreshersFeedPost.init();
             this.post.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusClasses':
         let classId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
@@ -203,7 +208,7 @@ export class SharedPostTextareaComponent {
             this.campusFreshersFeedPost.init();
             this.post.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
     }
   }
@@ -221,7 +226,7 @@ export class SharedPostTextareaComponent {
           instruction: 'Only four (4) options are allowed.'
         }
       },
-      NotificationTypes.Warning);
+        NotificationTypes.Warning);
     } else {
       this.postPoll.options.push('');
     }
@@ -250,7 +255,23 @@ export class SharedPostTextareaComponent {
         instruction: instruction
       }
     },
-    NotificationTypes.Error);
+      NotificationTypes.Error);
+  }
+
+  private getLinksFromTextarea = () => {
+    this.foundLinks = this.linkifyService.find(this.post.message);
+    this.linkPreviewData = [];
+    this.foundLinks.forEach(link => {
+      if (link.type === 'url') {
+        if ((_.findIndex(this.linkPreviewData, ['url', link.href])) === -1) {
+          this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(link.href))
+            .then((res: any) => {
+              this.linkPreviewData.push(res.data);
+              this.post.linkPreview = res.data;
+            });
+        }
+      }
+    });
   }
 
   private createPostPoll (): void {
@@ -281,7 +302,7 @@ export class SharedPostTextareaComponent {
             this.postPoll.init();
             this.post.postPoll.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusFreshersFeed':
         let campusFreshersFeedId = parseInt(CryptoUtilities.decipher(this.route.campusFreshersFeedId), 10);
@@ -297,7 +318,7 @@ export class SharedPostTextareaComponent {
             this.postPoll.init();
             this.post.postPoll.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusCourseFeed':
         let courseId = parseInt(CryptoUtilities.decipher(this.route.campusCourseFeedId), 10);
@@ -313,7 +334,7 @@ export class SharedPostTextareaComponent {
             this.postPoll.init();
             this.post.postPoll.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
       case 'campusClasses':
         let classId = parseInt(CryptoUtilities.decipher(this.route.campusClassId), 10);
@@ -329,7 +350,7 @@ export class SharedPostTextareaComponent {
             this.postPoll.init();
             this.post.postPoll.init();
           })
-          .catch(error => {});
+          .catch(error => { });
         break;
     }
   }

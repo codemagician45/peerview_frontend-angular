@@ -144,6 +144,56 @@
       margin: 5px;
     }
   }
+
+  /* link preview */
+
+  /* Left side Image */
+  .link-preview{
+  .link-area{
+    overflow: hidden;
+    position: relative;
+    margin: 1em 0 1em 0;
+    padding: 10px;
+    border: 1px #999 solid;}
+  .descriptions{
+    overflow: hidden;}
+  .og-title{
+    overflow: hidden;
+    font-size: 1.2em;
+    font-weight: bold;}
+  .og-description{
+    font-size: 0.86em;
+    margin-top: 0.2em;}
+  .og-url{
+    overflow: hidden;
+    font-size: 0.7em;
+    font-weight: bold;}
+  .og-image{
+    float:left;
+    margin-right: 10px;}
+    img{
+      max-width: 125px;
+    }
+  }
+
+  // .linkPreview{
+  //   .link-container{
+  //     padding: 10px;
+  //     border: 1px #000 solid;
+  //     img{
+  //       max-width: 100%;
+  //       text-align: center;
+  //     }
+  //     .link-details{
+  //       .link-title{
+  //         overflow: hidden;
+  //         font-weight: bold;
+  //         font-size: 16px;
+  //         margin-top: 5px;
+  //       }
+  //     }
+  //   }
+  // }
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {
     textarea {

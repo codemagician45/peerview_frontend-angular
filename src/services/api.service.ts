@@ -24,8 +24,8 @@ export abstract class ApiService {
   public abstract baseURI: string;
   public abstract baseURIPlural: string;
   public abstract options: any;
-  private cloneURIs: {baseURI: string, baseURIPlural: string};
-
+  private cloneURIs: { baseURI: string, baseURIPlural: string };
+  private linkPreviewApiURL: string = 'https://api.linkpreview.net/?key=5b54e80a65c77848ceaa4630331e8384950e09d392365&q=';
   private getUrlPromises: IGetUrlPromise = {};
 
   private resetAbstractURIs (): void {
@@ -124,6 +124,20 @@ export abstract class ApiService {
         }, (error) => {
           reject(error);
           this.resetAbstractURIs();
+        });
+    });
+  }
+
+  protected promiseGetJsonDataForLinkPreview (url: string): Promise<IResponse> {
+    return new Promise((resolve, reject) => {
+      url = url ? `/${url}` : '';
+      url = `${this.baseURI}${url}`;
+
+      this.http.get(url)
+        .subscribe((res: any) => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
         });
     });
   }

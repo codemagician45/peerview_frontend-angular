@@ -27,6 +27,8 @@ export class PostModel extends Model {
   public postTo?: number;
   // use as a virtual holder for postPoll
   public postPoll: PostPollModel;
+  // link preview metadata
+  public linkPreview?: any[];
 
   public init (): void {
     this.setBlankDataStructure({
@@ -70,7 +72,7 @@ export class SharePostModel extends Model {
   public id?: number;
   public message: string;
 
-  public init (): void {}
+  public init (): void { }
 }
 
 export class ReportPostModel extends Model {

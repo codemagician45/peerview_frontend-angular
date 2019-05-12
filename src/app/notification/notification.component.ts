@@ -1,5 +1,5 @@
 import {
-  Component
+  Component, AfterViewInit
 } from '@angular/core';
 
 import {
@@ -9,7 +9,7 @@ import {
   UserService
 } from '../../services';
 import {
-  UserApiService
+  UserApiService, NotificationApiService
 } from '../../services/api';
 
 @Component({
@@ -18,8 +18,25 @@ import {
   styleUrls: ['./notification.component.scss']
 })
 
-export class NotificationComponent {
-  constructor () {}
+export class NotificationComponent implements AfterViewInit {
+
+  constructor (private notificationService: NotificationApiService) {
+  }
 
   protected user = UserService.getUser();
+
+  private updateNotificationStatusHandler = (userId, status) => {
+    this.notificationService.promiseUpdateReadNotificationStatus(userId, status)
+    .then((res) => {
+
+    })
+    .catch(err => {
+
+    });
+  }
+  public ngAfterViewInit (): void {
+    console.log('user ==> ', this.user);
+
+    this.updateNotificationStatusHandler(this.user.id, true);
+  }
 }
