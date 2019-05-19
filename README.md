@@ -39,5 +39,5 @@ docker pull peersview/peersview-front:v0.0.11
 # Stop the existing running container
 
 # Start New Container (Wait for 3 minutes)
-docker run -d --rm --name peersview-front --publish 443:443 peersview/peersview-front:v0.0.11
+docker run -d --restart unless-stopped --name peersview-front --publish 443:443 peersview/peersview-front:v0.0.11
 ```
