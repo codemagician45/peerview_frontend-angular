@@ -46,7 +46,7 @@ declare let swal: any;
 })
 
 export class SharedPostTextareaComponent {
-  constructor(
+  constructor (
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
     private activatedRoute: ActivatedRoute,
@@ -79,11 +79,11 @@ export class SharedPostTextareaComponent {
   protected textAreaIsExpanded: boolean = false;
   private foundLinks: Link[] = [];
   private linkPreviewData: any[] = [];
-  public ngOnInit(): void {
+  public ngOnInit (): void {
     this.post.postPoll.duration = 1;
   }
 
-  protected onAddPost(): any {
+  protected onAddPost (): any {
     if (!this.post.message) {
       return MessageNotificationService.show({
         notification: {
@@ -102,7 +102,7 @@ export class SharedPostTextareaComponent {
     return this.postMessage();
   }
 
-  protected onUploadComplete(attachments): void {
+  protected onUploadComplete (attachments): void {
     switch (this.route.name) {
       case 'home':
         this.post.attachments = attachments;
@@ -123,7 +123,7 @@ export class SharedPostTextareaComponent {
     this.postMessage(true);
   }
 
-  protected postMessage(isWithAttachments = false): void {
+  protected postMessage (isWithAttachments = false): void {
     // basically post-text-are-component will be use in the
     // campus route so basically we need an identifier to tell
     // if we are in the home or campus route that is
@@ -241,11 +241,11 @@ export class SharedPostTextareaComponent {
     }
   }
 
-  protected onClickWhichTypeIsSelected(type): void {
+  protected onClickWhichTypeIsSelected (type): void {
     this.typePost = type;
   }
 
-  protected onAddPollOption(): void {
+  protected onAddPollOption (): void {
     if (this.postPoll.options.length === 4) {
       MessageNotificationService.show({
         notification: {
@@ -260,7 +260,7 @@ export class SharedPostTextareaComponent {
     }
   }
 
-  protected onAddPoll(): any {
+  protected onAddPoll (): any {
     if (!this.post.postPoll.question) {
       this.onAddPostErrorNotification('Please fill in the form.');
       return;
@@ -275,7 +275,7 @@ export class SharedPostTextareaComponent {
     return this.createPostPoll();
   }
 
-  private onAddPostErrorNotification(instruction): MessageNotificationService {
+  private onAddPostErrorNotification (instruction): MessageNotificationService {
     return MessageNotificationService.show({
       notification: {
         id: 'shared-post-textarea-message',
@@ -302,7 +302,7 @@ export class SharedPostTextareaComponent {
     });
   }
 
-  private createPostPoll(): void {
+  private createPostPoll (): void {
     this.post.postPoll.options = this.post.postPoll.options.filter(option => option.trim() !== '');
     switch (this.route.name) {
       case 'home':
@@ -383,7 +383,7 @@ export class SharedPostTextareaComponent {
     }
   }
 
-  protected onAddStory(): void {
+  protected onAddStory (): void {
     console.log('Story', this.post);
     if (!this.post.title) {
       this.onAddPostErrorNotification('Please fill in the form.');
@@ -399,7 +399,7 @@ export class SharedPostTextareaComponent {
     return this.createPostStory();
   }
 
-  private createPostStory(): void {
+  private createPostStory (): void {
     switch (this.route.name) {
       case 'home':
         this.postApiService.promiseCreatePostStory(this.post)
@@ -424,7 +424,7 @@ export class SharedPostTextareaComponent {
     }
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy (): void {
     PostEmitter.removeSubscriber(PostEmitter.getUploadCompleteName());
   }
 }
