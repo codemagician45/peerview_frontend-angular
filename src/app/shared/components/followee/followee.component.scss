@@ -64,8 +64,10 @@
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {
     .users-list {
-      display: inline-flex;
       padding-left: 8px;
+      li {
+        display: inline-block;
+      }
     }
 
     .follow-user-name { 
