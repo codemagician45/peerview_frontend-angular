@@ -11,6 +11,7 @@
 		}
 	}
 	.mobile-nav-links {
+		border-bottom: 1px solid #999999;
 		ul {
 			display: flex;
 			flex-flow: row wrap;
@@ -20,13 +21,14 @@
 				padding-bottom: 5px;
 				a {
 					font-weight: 500;
-					font-size: 14px;
+					font-size: 12px;
 					text-transform: uppercase;
 					color: #9a9a9a;
 				}
 			}
 			li.active {
 				border-bottom: 2px solid #9a9a9a;
+				a { color: #631990; }
 			}
 			.mobile-nav-menu {
 				margin-top: -3px;

@@ -159,12 +159,12 @@
 @media only screen and (min-width : 320px) {
   .shared-create-message-component {
     .conversation-recipient {
-      height: 55vh;
+      height: 50vh;
     }
     .conversation-footer {
       textarea {
         border: 1px solid #ece;
-        width: 70%;
+        width: 68%;
       }
     }
   }
@@ -173,7 +173,7 @@
 @media only screen and (min-width : 480px) {
   .shared-create-message-component {
     .conversation-recipient {
-      height: 55vh;
+      height: 50vh;
     }
     .conversation-footer {
       textarea {

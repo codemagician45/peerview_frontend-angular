@@ -16,11 +16,13 @@
     font-size: 20px;
     text-align: left;
     background: #fff;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 0 5px #b7b7b7;
     color: #631990
   }
-
+  .third-text {
+    margin: 0 20%;
+  }
   /* Custom, iPhone Retina */
   @media only screen and (min-width : 320px) {}
   /* Extra Small Devices, Phones */

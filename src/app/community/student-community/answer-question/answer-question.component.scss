@@ -85,14 +85,18 @@ answer-question-component {
         span {
             display: inline-block;
         }
+        .answer-date {
+            display: block;
+            text-align: left;
+        }
         .answer-container {
             position:relative;
             padding:1em; 
-            width: calc(100% - 120px);
+            width: calc(100% - 150px);
             color:#000;
             border: 1px solid #ddd;
             border-radius:0.5em;
-
+            margin-top: 60px;
             &::after {
                 content: "";
                 position: absolute;
@@ -149,21 +153,6 @@ answer-question-component {
 
 }
 
-// extra Small Devices, Phones
-@media only screen and (max-width : 479px) {
-    answer-question-component {
-        .community-header {
-            h3 {
-                font-size: 18px;
-            }
-        }
-        .answers-list-item {
-            .answer-container {
-                width: calc(100% - 110px);
-            }
-        }   
-    }
-}
 
 // Small Devices, Tablets
 @media only screen and (max-width : 767px) {
@@ -178,5 +167,24 @@ answer-question-component {
                 width: calc(100% - 110px);
             }
         }   
+    }
+}
+// extra Small Devices, Phones
+@media only screen and (max-width : 479px) {
+    answer-question-component {
+        .community-header {
+            h3 {
+                font-size: 18px;
+                margin-top: -10px;
+                font-weight: bold;
+            }
+        }
+        .answers-list-item {
+            .answer-container {
+                width: calc(100% - 150px);
+                margin-top: 60px;
+            }
+        }
+        i.material-icons { display: none; }
     }
 }

@@ -131,10 +131,10 @@
 							</div>
 
 							<div >
-									<span><b>{{item.user.name | titlecase}}</b></span>
+								<span>{{item.user.institutionName}}</span>
+								<span><b>{{item.user.name | titlecase}}</b></span>
+								<span>{{item.updatedAt | date :'short'}}</span>
 							</div>
-							<span>{{item.user.institutionName}}</span>
-							<span>{{item.updatedAt | date :'short'}}</span>
 							<div>
                 {{ showFullAnswer[i] ? item.comment : trimStory(item.comment, 140) }}
                 <p class="read-more" *ngIf="!showFullAnswer[i]" (click)="showFullAnswer[i] = !showFullAnswer[i]">Read more</p>

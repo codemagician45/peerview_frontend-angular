@@ -85,6 +85,7 @@
 					</cl-image>
 					<p class="text-left m-peersview-0">{{reply.user.firstName | titlecase}} {{reply.user.lastName | titlecase}}</p>
 					<span>{{reply.user.institutionName}}</span>
+					<span class="answer-date">{{reply.updatedAt | date :'short'}}</span>
 				</span>
 				<div class="answer-container pull-right">
 					{{reply.comment}}

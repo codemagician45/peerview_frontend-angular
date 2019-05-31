@@ -35,10 +35,11 @@ campus-component {
 			font-size: 14px;
 			font-weight: 500;
 			a {
-				color: #631990;
+				color: #000000;
 			}
 			a.active {
 				border-bottom: 1px solid #631990;
+				color: #631990;
 			}
 		}
 		.mobile-contents {
@@ -52,7 +53,12 @@ campus-component {
 			}
 		}
 		// Custom, iPhone Retina
-		@media only screen and (min-width : 320px) {}
+		@media only screen and (min-width : 320px) {
+			.timeline-text-link-mobile {
+				font-size: 13px;
+			}
+
+		}
 		// extra Small Devices, Phones
 		@media only screen and (min-width : 480px) {}
 		// Small Devices, Tablets
