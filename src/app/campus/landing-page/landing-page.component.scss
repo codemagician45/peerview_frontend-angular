@@ -24,9 +24,33 @@
     }
   }
   // Custom, iPhone Retina
-  @media only screen and (min-width : 320px) {}
+  @media only screen and (min-width : 320px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 10px;      
+    }
+    h1.campus-des {
+      font-size: 20px;
+    }
+  }
+  @media only screen and (min-width : 375px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 12px;      
+    }
+    h1.campus-des {
+      font-size: 20px;
+    }
+  }  
   // extra Small Devices, Phones
   @media only screen and (min-width : 480px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 14px;      
+    }    
     .contents {
       .join-network {
         margin-right: 10px;
@@ -35,13 +59,43 @@
         margin-left: 10px;
       }
     }
+    h1.campus-des {
+      font-size: 24px;
+    }     
   }
   // Small Devices, Tablets
-  @media only screen and (min-width : 768px) {}
+  @media only screen and (min-width : 768px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }   
+    h1.campus-des {
+      font-size: 24px;
+    }      
+  }
   // Medium Devices, Desktops
-  @media only screen and (min-width : 992px) {}
+  @media only screen and (min-width : 992px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }
+    h1.campus-des {
+      font-size: 36px;
+    }      
+  }
   // Large Devices, Wide Screens
-  @media only screen and (min-width : 1200px) {}
+  @media only screen and (min-width : 1200px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }    
+    h1.campus-des {
+      font-size: 36px;
+    }    
+  }
 }
 .modal-footer {
   .btn-cancel-select-institution {

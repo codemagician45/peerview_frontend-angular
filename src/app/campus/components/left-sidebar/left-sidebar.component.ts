@@ -29,7 +29,7 @@ export class CampusLeftSidebarComponent {
     private router: Router
   ) {}
 
-  protected isDropdowmClassesIsOpen: boolean = true;
+  protected isDropdowmClassesIsOpen: boolean = false;
   protected campusId: number;
   protected campusClassList: Array<any> = [];
   protected selectedClassId: number;
