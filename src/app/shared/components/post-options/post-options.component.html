@@ -10,10 +10,10 @@
       <span *ngIf="post.postReplyCount > 0">{{post.postReplyCount}}</span>
       <span>{{post.postReplyCount >= 2 ? ' Comments' : ' Comment'}}</span>
     </div>
-    <div class="col-xs-3 text-center">
+<!--     <div class="col-xs-3 text-center">
       <span *ngIf="post.shareCount > 0">{{post.shareCount}}</span>
       <span>{{post.shareCount >= 2 ? ' Shares' : ' Share'}}</span>
-    </div>
+    </div> -->
   </div>
   <hr class="m-peersview-y-1 post-options-hr">
   <div class="options-logo" [ngStyle]="{'width': '100%'}">
@@ -35,9 +35,21 @@
       </button>
     </div>
     <div class="col-xs-3 text-center">
-      <button class="btn-peersivew-transparent share" (click)="onOpenShareModal()">
+<!--       <button class="btn-peersivew-transparent share" (click)="onOpenShareModal()">
+        <i class="material-icons">share</i>
+      </button> -->
+      <button
+      class="btn-peersivew-transparent share dropdown-toggle"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="material-icons">share</i>
       </button>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li><a>Quote</a></li>
+        <li><a>Share to Facebook</a></li>
+        <li><a>Share to Twitter</a></li>
+        <li><a>Copy Link</a></li>
+        <!-- <li *ngIf="(post && post.isPostUser) || post.user.id === user.id"><a (click)="onOpenConfirmModal()">Delete Post</a></li> -->
+      </ul>   
     </div>
   </div>
   <shared-post-reply-component

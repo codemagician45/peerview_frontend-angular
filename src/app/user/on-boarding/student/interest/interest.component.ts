@@ -202,13 +202,14 @@ export class UserOnboardingStudentInterestComponent {
         if (error.status === 400) {
           MessageNotificationService.show({
             notification: {
-              id: 'user-onboarding-interest-finish-error',
-              message: 'Unable to Save Interest.',
-              reason: error.error.status_message,
-              instruction: 'Please correct the errors and try again.'
+              id: 'user-onboarding-interest-finish-pleasewait',
+              // message: 'Unable to Save Interest.',
+              message: 'Select 5 interests of yours',
+              // reason: error.error.status_message,
+              instruction: 'Please select 5 interests of yours and try again.'
             }
           },
-          NotificationTypes.Error);
+          NotificationTypes.Info);
         } else {
           MessageNotificationService.show({
             notification: {

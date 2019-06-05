@@ -54,6 +54,24 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
     font-size: 18px;
     font-weight: bold;
   }
+  ul.dropdown-menu {
+    background-color: #fff;
+    padding: 0 5px;
+    li {
+      padding: 3px 0px;
+      color: #000000;
+      font-size: 14px;
+      border-bottom: 1px solid #dbdbdb;
+      &:hover {
+        cursor: pointer;
+      }
+      a {
+        font-size: 14px;
+        color: #631a90;
+        padding-left: 0;
+      }
+    }
+  }  
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
