@@ -13,7 +13,7 @@
   .leisure-block {
     img {
       width: 100%;
-      padding-bottom: 50px;
+      // padding-bottom: 50px;
       padding-top: 30px;
     }
     .header-block {
@@ -39,7 +39,8 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 5px #b7b7b7;
-        color: #631990;          
+        color: #631990;   
+        font-family: "Maven Pro", sans-serif;       
       }
     }
     h3 {
@@ -101,6 +102,7 @@
         p.border {
           margin: 0;
           width: 100%;
+          font-family: "Maven Pro", sans-serif;
         }
       }
     }
@@ -111,6 +113,7 @@
     }    
     .mobile-img {
       display: block;
+      padding:0px;
     }   
     .desktop-img {
       display: none;
@@ -147,6 +150,7 @@
           margin-left: 20%;
           margin-right: 20%;
           width: auto;
+          font-family: "Maven Pro", sans-serif;
         }
       }
     }     
@@ -174,6 +178,7 @@
           margin-left: 20%;
           margin-right: 20%;
           width: auto;
+          font-family: "Maven Pro", sans-serif;
         }
       }
     }     
@@ -197,6 +202,7 @@
           margin-left: 20%;
           margin-right: 20%;
           width: auto;
+          font-family: "Maven Pro", sans-serif;
         }
       }
     }    
