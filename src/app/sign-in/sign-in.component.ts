@@ -23,6 +23,8 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
+import {Meta} from '@angular/platform-browser';
+
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
@@ -31,27 +33,32 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-  constructor (
+  constructor(
     private userApiService: UserApiService,
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private meta: Meta
+  ) {
+
+    this.meta.updateTag({ name: 'description', content: 'Sign in to your Peersview Account' });
+
+  }
 
   protected user: UserModel = new UserModel();
 
-  protected onSignIn (isValid: boolean): void {
+  protected onSignIn(isValid: boolean): void {
     if (!isValid) {
       return;
     }
 
     MessageNotificationService.show({
-      notification: {
-        id: 'sign-in-please-wait',
-        message: 'Logging you in',
-        instruction: 'Please wait...'
-      }
-    },
-    NotificationTypes.Info);
+        notification: {
+          id: 'sign-in-please-wait',
+          message: 'Logging you in',
+          instruction: 'Please wait...'
+        }
+      },
+      NotificationTypes.Info);
 
     this.userApiService.promiseSignIn(this.user)
       .then((user: UserModel) => {
@@ -63,29 +70,29 @@ export class SignInComponent {
       .catch(error => {
         if (error.status === 400) {
           MessageNotificationService.show({
-            notification: {
-              id: 'sign-in-error',
-              message: 'Unable to Login.',
-              reason: error.error.status_message,
-              instruction: 'Please correct the errors and try again.'
-            }
-          },
-          NotificationTypes.Error);
+              notification: {
+                id: 'sign-in-error',
+                message: 'Unable to Login.',
+                reason: error.error.status_message,
+                instruction: 'Please correct the errors and try again.'
+              }
+            },
+            NotificationTypes.Error);
         } else {
           MessageNotificationService.show({
-            notification: {
-              id: 'sign-in-error',
-              message: 'Unable to Login.',
-              reason: 'Some unexpected happened with the application.',
-              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-            }
-          },
-          NotificationTypes.Error);
+              notification: {
+                id: 'sign-in-error',
+                message: 'Unable to Login.',
+                reason: 'Some unexpected happened with the application.',
+                instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+              }
+            },
+            NotificationTypes.Error);
         }
       });
   }
 
-  protected onSignInViaSocial (provider: string): void {
+  protected onSignInViaSocial(provider: string): void {
     let socialProvider = this.getSocialProviderId(provider);
     this.authService.signIn(socialProvider)
       .then((response: SocialUser) => {
@@ -129,7 +136,7 @@ export class SignInComponent {
       });
   }
 
-  private getSocialProviderId (provider): string {
+  private getSocialProviderId(provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
     } else if (provider === 'google') {
