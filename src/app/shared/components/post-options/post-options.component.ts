@@ -187,6 +187,10 @@ export class SharedPostOptionsComponent {
       });
   }
 
+  protected onStarHover (numberOfStars): void {
+    this.rate.rating = numberOfStars;
+  }
+
   public ngOnDestroy (): void {
     this.routeSubscriber.unsubscribe();
   }
