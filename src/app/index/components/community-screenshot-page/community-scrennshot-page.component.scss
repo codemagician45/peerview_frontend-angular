@@ -19,6 +19,24 @@
   }
   .commnity-body {
     padding-top: 50px;
+    .slide-one {
+      width: 800px;
+      height: 490px;
+      background: url('http://res.cloudinary.com/peersview-com/image/upload/home-page-post_hhvit3') no-repeat;
+      margin: auto;
+    }
+    .slide-two {
+      width: 800px;
+      height: 586px;
+      background: url('http://res.cloudinary.com/peersview-com/image/upload/home-page-poll_ugyuaj') no-repeat;
+      margin: auto;
+    }
+    .slide-three {
+      width: 800px;
+      height: 490px;
+      background: url('http://res.cloudinary.com/peersview-com/image/upload/home-page-share-story_lxsmap') no-repeat;
+      margin: auto;
+    }        
   }
   .community-show-sticky {
     display: block;
@@ -34,5 +52,39 @@
   }
   .get-started {
     margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width : 479px) {
+    .index-community-screenshot-page-component {
+      .commnity-body {
+        .slide-one {
+          width: 264px;
+          height: 594px;
+          background: url('https://res.cloudinary.com/peersview-com/image/upload/v1559919653/mobile_home_fs6wet_kpzzei.jpg') no-repeat;
+          margin: auto;
+          background-size:contain;
+        }
+        .slide-two {
+          width: 264px;
+          height: 594px;
+          background: url('https://res.cloudinary.com/peersview-com/image/upload/v1559919653/mobile_home_fs6wet_kpzzei.jpg') no-repeat;
+          margin: auto;
+          background-size:contain;
+        }
+        .slide-three {
+          width: 264px;
+          height: 594px;
+          background: url('https://res.cloudinary.com/peersview-com/image/upload/v1559919653/mobile_home_fs6wet_kpzzei.jpg') no-repeat;
+          margin: auto;
+          background-size:contain;
+        }      
+    }
+  }
+}
+// Small Devices, Tablets
+@media only screen and (max-width : 767px) {
+  .advance-search-component {
+    padding-top: 50px;
   }
 }
