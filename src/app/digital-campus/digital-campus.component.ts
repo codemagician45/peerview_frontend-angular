@@ -6,6 +6,8 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
+import {Meta} from '@angular/platform-browser';
+
 
 @Component({
   selector: 'digital-campus-component',
@@ -15,7 +17,11 @@ import {
 export class DigitalCampusComponent implements AfterViewInit {
   constructor (
     @Inject(Window) private window: Window,
-    private activedRoute: ActivatedRoute) { }
+    private activedRoute: ActivatedRoute, private meta: Meta) {
+    this.meta.updateTag({ name: 'description', content: 'Connect your university\'s community with Peersview' });
+
+
+  }
 
   protected section: string = 'institutions';
   private container;

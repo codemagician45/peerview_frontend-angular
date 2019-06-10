@@ -13,7 +13,7 @@ import {
   NotificationTypes,
   TokenStore,
   UserService
-} from  '../../services';
+} from '../../services';
 import {
   UserApiService
 } from '../../services/api';
@@ -24,6 +24,8 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
+import { Meta} from '@angular/platform-browser';
+
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
@@ -32,17 +34,21 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  constructor (
+  constructor(
     private userApiService: UserApiService,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private meta: Meta
+  ) {
+    this.meta.updateTag({name: 'description', content: 'Sign up to Peersview and start connecting with your peers'});
+
+  }
 
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
 
-  protected onSignUp (): void {
+  protected onSignUp(): void {
     const splitNames = this.user.name.split(' ');
     this.user.assimilate({
       firstName: splitNames[0],
@@ -51,59 +57,59 @@ export class SignUpComponent {
 
     if (this.hasAgreed) {
       MessageNotificationService.show({
-        notification: {
-          id: 'sign-up-please-wait',
-          message: 'Sign-up',
-          instruction: 'Please wait...'
-        }
-      },
-      NotificationTypes.Info);
+          notification: {
+            id: 'sign-up-please-wait',
+            message: 'Sign-up',
+            instruction: 'Please wait...'
+          }
+        },
+        NotificationTypes.Info);
 
       this.userApiService.promiseRegister(this.user)
         .then(() => {
           return MessageNotificationService.show({
-            notification: {
-              id: 'sign-up-success',
-              message: 'Sign-up.. Success!!!',
-              instruction: 'Redirecting...'
-            }
-          },
-          NotificationTypes.Success);
+              notification: {
+                id: 'sign-up-success',
+                message: 'Sign-up.. Success!!!',
+                instruction: 'Redirecting...'
+              }
+            },
+            NotificationTypes.Success);
         })
         .then(notificationState => {
           if (notificationState) {
             notificationState.subscribe(() => {
-              this.router.navigate(['thank-you-for-signing'],  {relativeTo: this.route});
+              this.router.navigate(['thank-you-for-signing'], {relativeTo: this.route});
             });
           }
         })
         .catch(error => {
           if (error.status === 400) {
             MessageNotificationService.show({
-              notification: {
-                id: 'sign-up-error',
-                message: 'Unable to Sign-up.',
-                reason: error.error.status_message,
-                instruction: 'Please correct the errors and try again.'
-              }
-            },
-            NotificationTypes.Error);
+                notification: {
+                  id: 'sign-up-error',
+                  message: 'Unable to Sign-up.',
+                  reason: error.error.status_message,
+                  instruction: 'Please correct the errors and try again.'
+                }
+              },
+              NotificationTypes.Error);
           } else {
             MessageNotificationService.show({
-              notification: {
-                id: 'sign-up-error',
-                message: 'Unable to Sign-up.',
-                reason: 'Some unexpected happened with the application.',
-                instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-              }
-            },
-            NotificationTypes.Error);
+                notification: {
+                  id: 'sign-up-error',
+                  message: 'Unable to Sign-up.',
+                  reason: 'Some unexpected happened with the application.',
+                  instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+                }
+              },
+              NotificationTypes.Error);
           }
         });
     }
   }
 
-  protected onSignUpViaSocial (provider: string): void {
+  protected onSignUpViaSocial(provider: string): void {
     let socialProvider = this.getSocialProviderId(provider);
     this.authService.signIn(socialProvider)
       .then((response: SocialUser) => {
@@ -147,7 +153,7 @@ export class SignUpComponent {
       });
   }
 
-  private getSocialProviderId (provider): string {
+  private getSocialProviderId(provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
     } else if (provider === 'google') {
