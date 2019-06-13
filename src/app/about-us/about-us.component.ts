@@ -11,8 +11,10 @@ import {Meta} from '@angular/platform-browser';
 })
 export class AboutUsComponent {
   constructor (private meta: Meta ) {
-    this.meta.updateTag({ name: 'description', content: 'We aim to empower university students by connecting them with peers that add value to their learning experience.' });
-
-
+    this.meta.updateTag({
+      name: 'description',
+      content: 'We aim to empower university students ' +
+      'by connecting them with peers that ' +
+      'add value to their learning experience.' });
   }
 }

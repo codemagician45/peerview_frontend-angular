@@ -34,7 +34,7 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  constructor(
+  constructor (
     private userApiService: UserApiService,
     private authService: AuthService,
     private router: Router,
@@ -48,7 +48,7 @@ export class SignUpComponent {
   protected hasAgreed: boolean = false;
   protected user: UserModel = new UserModel();
 
-  protected onSignUp(): void {
+  protected onSignUp (): void {
     const splitNames = this.user.name.split(' ');
     this.user.assimilate({
       firstName: splitNames[0],
@@ -109,7 +109,7 @@ export class SignUpComponent {
     }
   }
 
-  protected onSignUpViaSocial(provider: string): void {
+  protected onSignUpViaSocial (provider: string): void {
     let socialProvider = this.getSocialProviderId(provider);
     this.authService.signIn(socialProvider)
       .then((response: SocialUser) => {
@@ -153,7 +153,7 @@ export class SignUpComponent {
       });
   }
 
-  private getSocialProviderId(provider): string {
+  private getSocialProviderId (provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
     } else if (provider === 'google') {
