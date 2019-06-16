@@ -23,6 +23,8 @@ import {
   GoogleLoginProvider,
   LinkedInLoginProvider
 } from 'angularx-social-login';
+import {Meta} from '@angular/platform-browser';
+
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
@@ -34,8 +36,13 @@ export class SignInComponent {
   constructor (
     private userApiService: UserApiService,
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private meta: Meta
+  ) {
+
+    this.meta.updateTag({ name: 'description', content: 'Sign in to your Peersview Account' });
+
+  }
 
   protected user: UserModel = new UserModel();
 
@@ -45,13 +52,13 @@ export class SignInComponent {
     }
 
     MessageNotificationService.show({
-      notification: {
-        id: 'sign-in-please-wait',
-        message: 'Logging you in',
-        instruction: 'Please wait...'
-      }
-    },
-    NotificationTypes.Info);
+        notification: {
+          id: 'sign-in-please-wait',
+          message: 'Logging you in',
+          instruction: 'Please wait...'
+        }
+      },
+      NotificationTypes.Info);
 
     this.userApiService.promiseSignIn(this.user)
       .then((user: UserModel) => {
@@ -63,24 +70,24 @@ export class SignInComponent {
       .catch(error => {
         if (error.status === 400) {
           MessageNotificationService.show({
-            notification: {
-              id: 'sign-in-error',
-              message: 'Unable to Login.',
-              reason: error.error.status_message,
-              instruction: 'Please correct the errors and try again.'
-            }
-          },
-          NotificationTypes.Error);
+              notification: {
+                id: 'sign-in-error',
+                message: 'Unable to Login.',
+                reason: error.error.status_message,
+                instruction: 'Please correct the errors and try again.'
+              }
+            },
+            NotificationTypes.Error);
         } else {
           MessageNotificationService.show({
-            notification: {
-              id: 'sign-in-error',
-              message: 'Unable to Login.',
-              reason: 'Some unexpected happened with the application.',
-              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
-            }
-          },
-          NotificationTypes.Error);
+              notification: {
+                id: 'sign-in-error',
+                message: 'Unable to Login.',
+                reason: 'Some unexpected happened with the application.',
+                instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+              }
+            },
+            NotificationTypes.Error);
         }
       });
   }
