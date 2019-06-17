@@ -40,7 +40,7 @@ const campusAdminRoutes: Routes = [{
   path: '',
   component: CampusAdminComponent,
   children: [{
-    path: '',
+    path: 'landing',
     component: CampusAdminLandingPageComponent
   }, {
     path: ':id',

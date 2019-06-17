@@ -33,7 +33,7 @@ import 'rxjs/add/operator/mergeMap';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-  constructor(
+  constructor (
     private userApiService: UserApiService,
     private authService: AuthService,
     private router: Router,
@@ -46,7 +46,7 @@ export class SignInComponent {
 
   protected user: UserModel = new UserModel();
 
-  protected onSignIn(isValid: boolean): void {
+  protected onSignIn (isValid: boolean): void {
     if (!isValid) {
       return;
     }
@@ -92,7 +92,7 @@ export class SignInComponent {
       });
   }
 
-  protected onSignInViaSocial(provider: string): void {
+  protected onSignInViaSocial (provider: string): void {
     let socialProvider = this.getSocialProviderId(provider);
     this.authService.signIn(socialProvider)
       .then((response: SocialUser) => {
@@ -136,7 +136,7 @@ export class SignInComponent {
       });
   }
 
-  private getSocialProviderId(provider): string {
+  private getSocialProviderId (provider): string {
     if (provider === 'facebook') {
       return FacebookLoginProvider.PROVIDER_ID;
     } else if (provider === 'google') {

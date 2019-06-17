@@ -9,7 +9,7 @@ import {Meta} from '@angular/platform-browser';
   styleUrls: ['./privacy-policy.component.scss']
 })
 export class PrivacyPolicyComponent {
-  constructor(private meta: Meta) {
+  constructor (private meta: Meta) {
     this.meta.updateTag({
       name: 'description',
       content: 'The Peersview Privacy Policy for Applicants gives you an overview of how we collect and process your information'

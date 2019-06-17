@@ -13,7 +13,7 @@
   .leisure-block {
     img {
       width: 100%;
-      padding-bottom: 50px;
+      // padding-bottom: 50px;
       padding-top: 30px;
     }
     .header-block {
@@ -39,7 +39,7 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 5px #b7b7b7;
-        color: #631990;          
+        color: #631990;      
       }
     }
     h3 {
@@ -111,6 +111,7 @@
     }    
     .mobile-img {
       display: block;
+      padding:0px;
     }   
     .desktop-img {
       display: none;

@@ -14,7 +14,7 @@ import {Meta} from '@angular/platform-browser';
   styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnDestroy {
-  constructor(
+  constructor (
     private zendeskWebwidgetService: ngxZendeskWebwidgetService, private meta: Meta
   ) {
     zendeskWebwidgetService.identify({
@@ -26,7 +26,7 @@ export class ContactUsComponent implements OnDestroy {
 
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy (): void {
     this.zendeskWebwidgetService.hide();
   }
 }

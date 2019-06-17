@@ -20,11 +20,10 @@
     <div class="col-xs-6 p-peersview-0 text-center">
         <button
           class="btn-peersivew-transparent like"
-          [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'"
-          (click)="onClickPostLike(post.isUserPostLike)">
-          <i class="material-icons" >thumb_up</i> 
+          [ngClass]="post.isUserPostLike === 1 ? 'liked' : 'not-yet-liked'">
+          <i class="material-icons" (click)="onClickPostLike(post.isUserPostLike)">thumb_up</i> 
           <span class="peersview-primary-color colon-separator">:</span>
-          <shared-stars-component [ratingCount]="ratingCount" (onStarClick)="onStarClick($event)"></shared-stars-component>
+          <shared-stars-component [ratingCount]="ratingCount" (onStarHover)="onStarHover($event)" (onStarClick)="onStarClick($event)"></shared-stars-component>
         </button>
     </div>
     <div class="col-xs-3 text-center">

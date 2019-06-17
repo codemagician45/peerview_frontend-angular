@@ -25,7 +25,7 @@ docker login
 ./docker-build.sh productionBuild
 
 # Push Repo with proper tagged verion (Do not forgot to change version)
-docker push peersview/peersview-front:v0.0.13
+docker push peersview/peersview-front:v0.0.17
 
 # Login Into front-end server
 ssh 
@@ -34,10 +34,10 @@ ssh
 docker login
 
 # Pull Repo with proper tagged verion (Do not forgot to change version)
-docker pull peersview/peersview-front:v0.0.13
+docker pull peersview/peersview-front:v0.0.17
 
 # Stop the existing running container
 
 # Start New Container (Wait for 3 minutes)
-docker run -d --restart unless-stopped --name peersview-front --publish 443:443 peersview/peersview-front:v0.0.13
+docker run -d --restart unless-stopped --name peersview-front --publish 443:443 peersview/peersview-front:v0.0.17
 ```

@@ -50,7 +50,9 @@ export class AuthInterceptor implements HttpInterceptor {
       },
       url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
+
     this.loadingBar.show();
+
     return next.handle(headers).pipe(
       tap(res => {
         if (res instanceof HttpResponse) {

@@ -10,7 +10,7 @@ import {Meta} from '@angular/platform-browser';
 })
 
 export class TermsOfUseComponent {
-  constructor(private meta: Meta) {
+  constructor (private meta: Meta) {
     this.meta.updateTag({
       name: 'description',
       content: 'By using our products and services, you are agreeing to our terms and condition'
