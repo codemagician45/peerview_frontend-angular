@@ -15,7 +15,7 @@ import {
 export const appRoutes: Routes = [{
   path: 'peers',
   loadChildren: './peers/peers.module#PeersModule',
-  data: { state: 'peers' }
+  data: {state: 'peers'}
 }, {
   path: 'campus',
   loadChildren: './campus/campus.module#CampusModule',
@@ -91,59 +91,67 @@ export const appRoutes: Routes = [{
     state: 'contact-us',
     title: 'Contact Us',
   }
-}, {
-  path: 'digital-campus',
-  loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule',
-  data: {
-    state: 'digital-campus',
-    title: 'Peersview Digital Campus',
-  }
-}, {
-  path: 'advance-search',
-  loadChildren: './advance-search/advance-search.module#AdvanceSearchModule',
-  data: {state: 'advance-search'}
-}, {
-  path: 'account-settings',
-  loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
-  data: {state: 'account-settings'}
-}, {
-  path: 'terms-of-use-user',
-  loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
-  data: {
-    state: 'terms-of-use-user',
-    title: 'Service Terms | Peersview Digital Campus',
-  }
-}, {
-  path: 'privacy-policy',
-  loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
-  data: {
-    state: 'privacy-policy',
-    title: 'Privacy policy',
+},
+  {
+    path: 'help-center',
+    loadChildren: './help-center/help-center.module#HelpCenterModule',
+    data: {
+      state: 'help-center',
+      title: 'Help Center'
+    }
+  }, {
+    path: 'digital-campus',
+    loadChildren: './digital-campus/digital-campus.module#DigitalCampusModule',
+    data: {
+      state: 'digital-campus',
+      title: 'Peersview Digital Campus',
+    }
+  }, {
+    path: 'advance-search',
+    loadChildren: './advance-search/advance-search.module#AdvanceSearchModule',
+    data: {state: 'advance-search'}
+  }, {
+    path: 'account-settings',
+    loadChildren: './account-settings/account-settings.module#AccountSettingsModule',
+    data: {state: 'account-settings'}
+  }, {
+    path: 'terms-of-use-user',
+    loadChildren: './terms-of-use-user/terms-of-use-user.module#TermsOfUseUserModule',
+    data: {
+      state: 'terms-of-use-user',
+      title: 'Service Terms | Peersview Digital Campus',
+    }
+  }, {
+    path: 'privacy-policy',
+    loadChildren: './privacy-policy/privacy-policy.module#PrivacyPolicyModule',
+    data: {
+      state: 'privacy-policy',
+      title: 'Privacy policy',
 
-  }
-}, {
-  path: 'notification',
-  loadChildren: './notification/notification.module#NotificationModule',
-  canActivate: [CanActivateUserProfile],
-  data: {state: 'notification'}
-}, {
-  path: 'campus-admin',
-  loadChildren: './campus-admin/campus-admin.module#CampusAdminModule',
-  canActivate: [CanActivateUserProfile],
-  data: {state: 'campus-admin'}
-}, {
-  path: 'terms-of-use',
-  loadChildren: './terms-of-use/terms-of-use.module#TermsOfUseModule',
-  data: {
-    state: 'terms-of-use',
-    title: 'Terms of Use',
-  }
-}, {
-  path: 'messages',
-  loadChildren: './messages/messages.module#MessagesModule',
-  canActivate: [CanActivateUserProfile],
-  data: {state: 'messages'}
-}];
+    }
+  }, {
+    path: 'notification',
+    loadChildren: './notification/notification.module#NotificationModule',
+    canActivate: [CanActivateUserProfile],
+    data: {state: 'notification'}
+  }, {
+    path: 'campus-admin',
+    loadChildren: './campus-admin/campus-admin.module#CampusAdminModule',
+    canActivate: [CanActivateUserProfile],
+    data: {state: 'campus-admin'}
+  }, {
+    path: 'terms-of-use',
+    loadChildren: './terms-of-use/terms-of-use.module#TermsOfUseModule',
+    data: {
+      state: 'terms-of-use',
+      title: 'Terms of Use',
+    }
+  }, {
+    path: 'messages',
+    loadChildren: './messages/messages.module#MessagesModule',
+    canActivate: [CanActivateUserProfile],
+    data: {state: 'messages'}
+  }];
 
 @NgModule({
   imports: [
@@ -154,4 +162,5 @@ export const appRoutes: Routes = [{
     RouterModule
   ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
