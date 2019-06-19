@@ -93,7 +93,7 @@ export const appRoutes: Routes = [{
   }
 },
   {
-    path: 'help-center',
+    path: 'support',
     loadChildren: './help-center/help-center.module#HelpCenterModule',
     data: {
       state: 'help-center',

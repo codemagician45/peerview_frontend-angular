@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port $PORT",
-    "dev": "webpack-dev-server --inline --progress --port 4200",
+    "dev": "webpack-dev-server --inline --progress --port 4200 --watch",
     "build-prod": "rimraf dist && webpack --config config/webpack.prod.ts",
     "build-dev": "rimraf dist && webpack --config config/webpack.dev.ts",
     "prod-lite": "lite-server --baseDir='dist'",
