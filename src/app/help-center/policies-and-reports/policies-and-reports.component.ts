@@ -1,12 +1,6 @@
 import {
-  Component,
-  Inject,
-  AfterViewInit
+  Component
 } from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
-
 
 @Component({
   selector: 'policies-and-reports-component',
@@ -14,8 +8,7 @@ import {
   styleUrls: ['./policies-and-reports.component.scss']
 })
 export class PoliciesAndReportsComponent {
-  constructor(@Inject(Window) private window: Window,
-              private activedRoute: ActivatedRoute) {
+  constructor () {
 
 
   }

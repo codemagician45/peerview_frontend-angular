@@ -1,12 +1,6 @@
 import {
-  Component,
-  Inject,
-  AfterViewInit
+  Component
 } from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
-
 
 @Component({
   selector: 'using-peersview-component',
@@ -14,7 +8,7 @@ import {
   styleUrls: ['./using-peersview.component.scss']
 })
 export class UsingPeersviewComponent {
-  constructor(@Inject(Window) private window: Window, private activedRoute: ActivatedRoute) {
+  constructor () {
 
 
   }

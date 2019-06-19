@@ -1,11 +1,6 @@
 import {
-  Component,
-  Inject,
-  AfterViewInit
+  Component
 } from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
 
 
 @Component({
@@ -14,8 +9,7 @@ import {
   styleUrls: ['./business-organization.component.scss']
 })
 export class BusinessOrganizationComponent {
-  constructor (@Inject(Window) private window: Window,
-              private activedRoute: ActivatedRoute) {
+  constructor  () {
 
   }
 

@@ -1,11 +1,6 @@
 import {
-  Component,
-  Inject,
-  AfterViewInit
+  Component
 } from '@angular/core';
-import {
-  ActivatedRoute
-} from '@angular/router';
 
 
 @Component({
@@ -14,8 +9,7 @@ import {
   styleUrls: ['./using-online-campus.component.scss']
 })
 export class UsingOnlineCampusComponent {
-  constructor(@Inject(Window) private window: Window,
-              private activedRoute: ActivatedRoute) {
+  constructor () {
 
 
   }

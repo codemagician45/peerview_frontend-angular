@@ -14,8 +14,7 @@ import {
   styleUrls: ['./fix-a-problem.component.scss']
 })
 export class FixAProblemComponent {
-  constructor(@Inject(Window) private window: Window,
-    private activedRoute: ActivatedRoute) {
+  constructor () {
 
 
   }
