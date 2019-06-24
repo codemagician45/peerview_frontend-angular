@@ -17,7 +17,7 @@ interface IGetUrlPromise {
 
 @Injectable()
 export abstract class ApiService {
-  constructor(
+  constructor (
     private http: HttpClient
   ) {
   }
@@ -29,7 +29,7 @@ export abstract class ApiService {
   private linkPreviewApiURL: string = 'https://api.linkpreview.net/?key=5b54e80a65c77848ceaa4630331e8384950e09d392365&q=';
   private getUrlPromises: IGetUrlPromise = {};
 
-  private resetAbstractURIs(): void {
+  private resetAbstractURIs (): void {
     if (this.cloneURIs) {
       this.baseURI = this.cloneURIs.baseURI;
       this.baseURIPlural = this.cloneURIs.baseURIPlural;
@@ -38,14 +38,14 @@ export abstract class ApiService {
     this.options = undefined;
   }
 
-  protected cloneAbstractURIs(): void {
+  protected cloneAbstractURIs (): void {
     this.cloneURIs = Object.assign({}, {
       baseURI: this.baseURI,
       baseURIPlural: this.baseURIPlural
     });
   }
 
-  protected promiseGetResponseData(url?: string): Promise<IResponse> {
+  protected promiseGetResponseData (url?: string): Promise<IResponse> {
     url = url ? `/${url}` : '';
     url = `${this.baseURI}${url}`;
 
@@ -63,7 +63,7 @@ export abstract class ApiService {
     return this.getUrlPromises[url];
   }
 
-  protected promiseGetAllResponseData(url?: string, options?: any): Promise<IResponse> {
+  protected promiseGetAllResponseData (url?: string, options?: any): Promise<IResponse> {
     url = url ? `/${url}` : '';
     url = `${this.baseURIPlural}${url}`;
 
@@ -81,7 +81,7 @@ export abstract class ApiService {
     return this.getUrlPromises[url];
   }
 
-  protected promisePostModelData(url: string, dataModel?: Model): Promise<IResponse> {
+  protected promisePostModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
@@ -97,7 +97,7 @@ export abstract class ApiService {
     });
   }
 
-  protected promisePutModelData(url: string, dataModel?: Model): Promise<IResponse> {
+  protected promisePutModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
@@ -113,7 +113,7 @@ export abstract class ApiService {
     });
   }
 
-  protected promiseRemoveData(url: string): Promise<IResponse> {
+  protected promiseRemoveData (url: string): Promise<IResponse> {
     return new Promise((resolve, reject) => {
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;
@@ -129,7 +129,7 @@ export abstract class ApiService {
     });
   }
 
-  protected promiseGetJsonDataForLinkPreview(url: string): Promise<IResponse> {
+  protected promiseGetJsonDataForLinkPreview (url: string): Promise<IResponse> {
     return new Promise((resolve, reject) => {
       url = url ? `/${url}` : '';
       url = `${this.baseURI}${url}`;

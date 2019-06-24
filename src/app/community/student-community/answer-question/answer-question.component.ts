@@ -57,22 +57,22 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
   protected isUserAnsweringQuestion: Boolean = false;
 
-  public ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+  public ngOnInit (): void {
+    this.route.params.subscribe ((params) => {
       this.communityAnswer.courseId = parseInt(CryptoUtilities.decipher(params.courseId), 10);
       this.communityAnswer.questionId = parseInt(CryptoUtilities.decipher(params.id), 10);
       this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
     });
   }
 
-  private getQuestionDetails(courseId, questionId): void {
+  private getQuestionDetails (courseId, questionId): void {
     this.communityApiService.promiseGetQuestionDetail(courseId, questionId)
       .then((responseData: CommunityPostModel) => {
         this.communityPost = responseData;
       });
   }
 
-  protected onSubmit(formIsValid): void {
+  protected onSubmit (formIsValid): void {
     if (formIsValid) {
       this.isUserAnsweringQuestion = true;
 
@@ -85,7 +85,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     }
   }
 
-  protected onClickReplyLike(reply): void {
+  protected onClickReplyLike (reply): void {
     if (reply) {
       this.communityApiService.promiseLikeCommunityPostReply(reply.id)
         .then(() => {
@@ -108,7 +108,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     }
   }
 
-  protected onDeletePostReply(replyId): void {
+  protected onDeletePostReply (replyId): void {
     if (replyId) {
       this.communityApiService.promiseRemoveCommunityPostReply(replyId)
         .then(() => {
@@ -124,7 +124,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     }
   }
 
-  protected onClickCommentDetail(reply): void {
+  protected onClickCommentDetail (reply): void {
     let dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'post-comment-detail-modal';
@@ -141,7 +141,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
   }
 
-  protected onDeletePost(postId: number): void {
+  protected onDeletePost (postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
       .then(() => {
@@ -151,7 +151,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     });
   }
 
-  protected goToBack(): void {
+  protected goToBack (): void {
     this.location.back();
   }
 }
