@@ -3,22 +3,22 @@ import {
   OnInit
 } from '@angular/core';
 import {
-	ActivatedRoute,
-	Router,
-	Params
+  ActivatedRoute,
+  Router,
+  Params
 } from '@angular/router';
 import {
-	CommunityApiService
+  CommunityApiService
 } from '../../../../services/api';
 import {
-	UserService
+  UserService
 } from '../../../../services';
 import {
-	CommunityPostModel,
-	CommunityAnswerQuestionModel
+  CommunityPostModel,
+  CommunityAnswerQuestionModel
 } from '../../../shared/models';
 import {
-	CryptoUtilities
+  CryptoUtilities
 } from '../../../shared/utilities';
 import {
   MatDialog,
@@ -35,60 +35,64 @@ import {
 } from '@angular/common';
 
 @Component({
-	selector: 'answer-question-component',
-	templateUrl: './answer-question.component.html',
-	styleUrls: ['./answer-question.component.scss']
+  selector: 'answer-question-component',
+  templateUrl: './answer-question.component.html',
+  styleUrls: ['./answer-question.component.scss']
 })
-export class  AnswerQuestionCommunityComponent implements OnInit  {
-	constructor (
-			private route: ActivatedRoute,
-			private router: Router,
-			private location: Location,
-			private communityApiService: CommunityApiService,
-      private dialog: MatDialog,
-      private overlay: Overlay
-	) {}
+export class AnswerQuestionCommunityComponent implements OnInit {
 
-	private communityPost: CommunityPostModel;
-	protected user = UserService.getUser();
-	protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
-	protected isUserAnsweringQuestion: Boolean = false;
 
-	public ngOnInit (): void {
-		this.route.params.subscribe((params) => {
-			this.communityAnswer.courseId = parseInt(CryptoUtilities.decipher(params.courseId), 10);
-			this.communityAnswer.questionId = parseInt(CryptoUtilities.decipher(params.id), 10);
-			this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
-		});
-	}
+  constructor (
+    private route: ActivatedRoute,
+    private router: Router,
+    private location: Location,
+    private communityApiService: CommunityApiService,
+    private dialog: MatDialog,
+    private overlay: Overlay
+  ) {
+  }
 
-	private getQuestionDetails (courseId, questionId): void {
-		this.communityApiService.promiseGetQuestionDetail(courseId, questionId)
-		.then((responseData: CommunityPostModel) => {
-			this.communityPost = responseData;
-		});
-	}
+  private communityPost: CommunityPostModel;
+  protected user = UserService.getUser();
+  protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
+  protected isUserAnsweringQuestion: Boolean = false;
 
-	protected onSubmit (formIsValid): void {
-		if (formIsValid) {
-			this.isUserAnsweringQuestion = true;
+  public ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.communityAnswer.courseId = parseInt(CryptoUtilities.decipher(params.courseId), 10);
+      this.communityAnswer.questionId = parseInt(CryptoUtilities.decipher(params.id), 10);
+      this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
+    });
+  }
 
-			this.communityApiService.promiseCreateAnswerToQuestion(this.communityAnswer)
-				.then(() => {
-					this.isUserAnsweringQuestion = false;
-					this.communityAnswer.comment = '';
-					this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
-				});
-			}
-	}
-	protected onClickReplyLike (reply): void {
+  private getQuestionDetails(courseId, questionId): void {
+    this.communityApiService.promiseGetQuestionDetail(courseId, questionId)
+      .then((responseData: CommunityPostModel) => {
+        this.communityPost = responseData;
+      });
+  }
+
+  protected onSubmit(formIsValid): void {
+    if (formIsValid) {
+      this.isUserAnsweringQuestion = true;
+
+      this.communityApiService.promiseCreateAnswerToQuestion(this.communityAnswer)
+        .then(() => {
+          this.isUserAnsweringQuestion = false;
+          this.communityAnswer.comment = '';
+          this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
+        });
+    }
+  }
+
+  protected onClickReplyLike(reply): void {
     if (reply) {
       this.communityApiService.promiseLikeCommunityPostReply(reply.id)
         .then(() => {
           let index = this.communityPost['reply'].findIndex((filter: any) => {
             return filter.id === reply.id;
           });
-          if (index > -1 ) {
+          if (index > -1) {
             if (this.communityPost['reply'][index].replyLike) {
               if (this.communityPost['reply'][index].replyLike && this.communityPost['reply'][index].replyLike[0] === undefined) {
                 this.communityPost['reply'][index].replyLike = [{
@@ -103,14 +107,15 @@ export class  AnswerQuestionCommunityComponent implements OnInit  {
       });
     }
   }
-  protected onDeletePostReply (replyId): void {
-	  if (replyId) {
+
+  protected onDeletePostReply(replyId): void {
+    if (replyId) {
       this.communityApiService.promiseRemoveCommunityPostReply(replyId)
         .then(() => {
           let index = this.communityPost['reply'].findIndex((filter: any) => {
             return filter.id === replyId;
           });
-          if (index > -1 ) {
+          if (index > -1) {
             this.communityPost['reply'].splice(index, 1);
           }
         }).catch((error) => {
@@ -118,7 +123,8 @@ export class  AnswerQuestionCommunityComponent implements OnInit  {
       });
     }
   }
-  protected onClickCommentDetail (reply): void {
+
+  protected onClickCommentDetail(reply): void {
     let dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'post-comment-detail-modal';
@@ -130,11 +136,12 @@ export class  AnswerQuestionCommunityComponent implements OnInit  {
       route: this.route,
       user: this.user,
       courseId: this.communityAnswer.courseId,
-      questionId: this.communityAnswer.questionId};
+      questionId: this.communityAnswer.questionId
+    };
     this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
   }
 
-  protected onDeletePost (postId: number): void {
+  protected onDeletePost(postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
       .then(() => {
@@ -144,7 +151,7 @@ export class  AnswerQuestionCommunityComponent implements OnInit  {
     });
   }
 
-  protected goToBack (): void {
+  protected goToBack(): void {
     this.location.back();
   }
 }

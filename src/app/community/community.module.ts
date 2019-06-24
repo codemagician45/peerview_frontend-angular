@@ -40,11 +40,11 @@ import {
 } from '../../services/api';
 
 @NgModule({
-  imports : [
+  imports: [
     SharedModule,
     communityRouting
   ],
-  declarations : [
+  declarations: [
     CommunityComponent,
     CommunityLeftMenuComponent,
     CommunityRightMenuComponent,
@@ -59,4 +59,5 @@ import {
   providers: [CommunityApiService],
   entryComponents: []
 })
-export class CommunityModule {}
+export class CommunityModule {
+}

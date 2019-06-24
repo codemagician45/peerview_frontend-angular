@@ -47,20 +47,24 @@ import {
   templateUrl: './student-community.component.html',
   styleUrls: ['./student-community.component.scss']
 })
-export class StudentCommunityComponent implements OnInit  {
-  constructor (
+export class StudentCommunityComponent implements OnInit {
+  constructor(
     private route: ActivatedRoute,
     private router: Router,
     private courseApiService: CourseApiService,
     private communityApiService: CommunityApiService,
     private dialog: MatDialog,
-    private overlay: Overlay) { }
+    private overlay: Overlay) {
+  }
 
   private hasImageSelected: boolean = false;
   private courses = [];
   private user: UserModel;
   protected communityPost: CommunityPostModel = new CommunityPostModel();
+
+
   protected communityPosts: CommunityPostModel[] = [];
+
   protected isToggleUploadComponentVisible: boolean = false;
   protected sampleReplyString: string = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.';
   protected sampleAnswer = 'It is a long established fact that a reader will be distracted by the readable \
@@ -70,8 +74,10 @@ export class StudentCommunityComponent implements OnInit  {
   private routeSubscriber: any;
   private isShowCommunityAnswerPost: number = 0;
 
-  public ngOnInit (): void {
-    this.getCourse ();
+  public ngOnInit(): void {
+
+
+    this.getCourse();
     this.user = UserService.getUser();
 
     this.routeSubscriber = this.route
@@ -99,7 +105,9 @@ export class StudentCommunityComponent implements OnInit  {
       });
   }
 
-  private getStudentCommunityFeedByCourseIdAndPostId (courseId, postId): void {
+
+  private getStudentCommunityFeedByCourseIdAndPostId(courseId, postId): void {
+
     this.communityApiService.promiseGetSingleCommunityPostsData(courseId, postId)
       .then((responseData: CommunityPostModel) => {
         this.communityPosts = [responseData];
@@ -111,27 +119,58 @@ export class StudentCommunityComponent implements OnInit  {
       });
   }
 
-  private getStudentCommunityFeed (courseId): void {
-    this.communityApiService.promiseGetAllCommunityPostsData(courseId)
-      .then((responseData: CommunityPostModel[]) => {
-        this.communityPosts = responseData;
-        this.isToggleUploadComponentVisible = false;
-        this.communityPost.init();
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  private getStudentCommunityFeed(courseId): void {
+
+
+    // this.communityApiService.promiseGetAllCommunityPostsData(courseId)
+    //   .then((responseData: CommunityPostModel[]) => {
+    //     this.communityPosts = responseData;
+    //     this.isToggleUploadComponentVisible = false;
+    //     this.communityPost.init();
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+
+
+    //
+    //  data = [{
+    //   courseId: 1,
+    //    message: 'Thisyou' +
+    //     ' is a new message',
+    //   area: 'Lahore,Pakistan',
+    //   type: 'any',
+    //   attachments: [null],
+    //   isUserFollowCommunityQuestion: false,
+    // }];
+
+
+    // this.communityPosts = [{
+    //   courseId: 1,
+    //   message: 'Thisyou' +
+    //     ' is a new message',
+    //   area: 'Lahore,Pakistan',
+    //   type: 'any',
+    //   attachments: [null],
+    //   isUserFollowCommunityQuestion: false,
+    // }];
+
   }
 
-  private getCourse (): void {
-    this.courseApiService.promiseGetAllCourses()
-      .then((courses: CourseModel[]) => {
-        this.courses = courses;
-      })
-      .catch(() => { });
+  private getCourse(): void {
+    // will uncomment
+
+    // this.courseApiService.promiseGetAllCourses()
+    //   .then((courses: CourseModel[]) => {
+    //     this.courses = courses;
+    //   })
+    //   .catch(() => { });
+
+    this.courses = [{id: 1, name: 'programming'}, {id: 2, name: 'Data structure'}, {id: 3, name: 'Computer Networks'}];
+
   }
 
-  protected onAskQuestion (): void {
+  protected onAskQuestion(): void {
     if (this.hasImageSelected) {
       PostEmitter.uploadImages().emit();
     } else {
@@ -139,41 +178,41 @@ export class StudentCommunityComponent implements OnInit  {
     }
   }
 
-  protected onChangeCourse (item): void {
+  protected onChangeCourse(item): void {
     let index = this.courses.findIndex((filter: any) => {
       return filter.id === parseInt(item, 10);
     });
-    if (index > -1 ) {
+    if (index > -1) {
       CourseService.setCourse(this.courses[index]);
     }
     this.communityPost.courseId = item;
     this.getStudentCommunityFeed(this.communityPost.courseId);
   }
 
-  protected onOpenAskQuestionModal (): void {
+  protected onOpenAskQuestionModal(): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'ask-a-question-modal';
     dialogConfig.id = 'SharedCommunityMobileAskQuestionMobileComponent';
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = { user: this.user, communityPost: this.communityPost};
+    dialogConfig.data = {user: this.user, communityPost: this.communityPost};
     this.dialog.open(ComunityMobileAskQuestionMobileComponent, dialogConfig).beforeClose()
       .subscribe(response => {
         this.getStudentCommunityFeed(this.communityPost.courseId);
       });
   }
 
-  protected onImageIsSelected (value): void {
+  protected onImageIsSelected(value): void {
     this.hasImageSelected = value;
   }
 
-  protected onUploadComplete (attachments): void {
+  protected onUploadComplete(attachments): void {
     this.communityPost.attachments = attachments;
     this.createQuestion();
   }
 
-  private createQuestion (): void {
-	this.communityPost.area = 'community';
-  this.communityPost.type = 'post';
+  private createQuestion(): void {
+    this.communityPost.area = 'community';
+    this.communityPost.type = 'post';
 
     this.communityApiService.promiseCreateStudentCommunityPosts(this.communityPost)
       .then(() => {
@@ -185,36 +224,36 @@ export class StudentCommunityComponent implements OnInit  {
       });
   }
 
-  protected onAnswerQuestion (id): void {
+  protected onAnswerQuestion(id): void {
     const encryptedItemId = CryptoUtilities.cipher(id);
     const encryptedItemCourseId = CryptoUtilities.cipher(this.communityPost.courseId);
 
-    this.router.navigate([`../${encryptedItemCourseId}/${encryptedItemId}`], { relativeTo: this.route });
+    this.router.navigate([`../${encryptedItemCourseId}/${encryptedItemId}`], {relativeTo: this.route});
   }
 
-  protected trimStory (answer, maxCharacters): string {
+  protected trimStory(answer, maxCharacters): string {
     let trimmedString = answer.substr(0, maxCharacters);
     return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
   }
 
-  protected onDeletePost (postId: number): void {
+  protected onDeletePost(postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
       .then(() => {
         let index = this.communityPosts.findIndex((filter: any) => {
           return filter.id === postId;
         });
-        if (index > -1 ) {
+        if (index > -1) {
           this.communityPosts.splice(index, 1);
         }
       }).catch((error) => {
-        console.error('error', error);
+      console.error('error', error);
     });
   }
 
-  protected onFollowQuestion (post): void {
+  protected onFollowQuestion(post): void {
     // follow here the post
-    const follow  = new CommunityPostFollow();
+    const follow = new CommunityPostFollow();
     follow.postId = post.id;
     follow.courseId = this.communityPost.courseId;
     if (post.isUserFollowCommunityQuestion) {
@@ -223,7 +262,7 @@ export class StudentCommunityComponent implements OnInit  {
           let index = this.communityPosts.findIndex((filter: any) => {
             return filter.id === post.id;
           });
-          if (index > -1 ) {
+          if (index > -1) {
             this.communityPosts[index].isUserFollowCommunityQuestion = false;
           }
         }).catch((error) => {
@@ -235,16 +274,16 @@ export class StudentCommunityComponent implements OnInit  {
           let index = this.communityPosts.findIndex((filter: any) => {
             return filter.id === post.id;
           });
-          if (index > -1 ) {
+          if (index > -1) {
             this.communityPosts[index].isUserFollowCommunityQuestion = true;
           }
         }).catch((error) => {
-          console.error('error', error);
+        console.error('error', error);
       });
     }
   }
 
-  protected onOpenShowImageDialogComponent (user): void {
+  protected onOpenShowImageDialogComponent(user): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'image-preview-modal';
@@ -259,7 +298,7 @@ export class StudentCommunityComponent implements OnInit  {
     this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 
-  public ngOnDestroy (): void {
+  public ngOnDestroy(): void {
     this.routeSubscriber.unsubscribe();
   }
 }
