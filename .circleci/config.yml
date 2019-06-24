@@ -1,0 +1,15 @@
+general:
+  branches:
+    only:
+      - master
+
+test:
+  override:
+    - echo "test"
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - npm install -g firebase-tools
+      - firebase deploy --token=$FIREBASE_TOKEN --non-interactive
