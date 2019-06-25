@@ -2,10 +2,12 @@
 
 .digital-campus-component {
   height: 100%;
+
   .shared-navbar-unauth-component {
-     position: absolute;
-     width: 100%;
+    position: absolute;
+    width: 100%;
   }
+
   .btn-peersview-white {
     background: #fff;
     font-weight: 500;
@@ -13,6 +15,7 @@
     border: 0;
     outline: none;
   }
+
   .header {
 
     height: 100%;
@@ -20,12 +23,14 @@
     background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519015034/campusHeaderBg.jpg') no-repeat 0 0;
     background-size: cover;
     color: #fff;
+
     p {
       margin: 0 2rem;
       text-align: center;
       font-size: 14px;
       font-weight: 400;
     }
+
     .content-body {
       position: absolute;
       left: 50%;
@@ -33,9 +38,16 @@
       width: 100%;
       transform: translate(-50%, -50%);
     }
+
     h1 {
       font-size: 25px;
     }
+  }
+
+  .button-learn-more {
+    margin-top: 10px;
+    padding: 5px;
+    background: #340551;
   }
 
   .video-player {
@@ -43,17 +55,21 @@
     align-items: center;
     justify-content: center;
   }
+
   .content {
     margin-top: 20px;
     margin-bottom: 50px;
+
     .content-left, .content-right {
       p {
         font-size: 18px;
       }
     }
+
     .content-right p {
       margin-top: 20px;
     }
+
     .card {
       margin-top: 10px;
       margin-bottom: 10px;
@@ -65,22 +81,26 @@
       border-radius: 3px;
       box-shadow: 0 0 5px #b7b7b7;
       color: #631990;
-      }
-      .content-description {
-        padding: 0 15px;
-      }
     }
+
+    .content-description {
+      padding: 0 15px;
+    }
+  }
+
   .benefits-heading {
     position: relative;
     padding: 30px 0;
     background: $primary-color-dark;
     border-bottom: 1px solid $primary-color-light;
+
     .peersview-brand {
       position: absolute;
       left: 50%;
       top: 2px;
       transform: translate(-50%, -50%);
     }
+
     h1 {
       color: #ffffff;
     }
@@ -90,11 +110,13 @@
     li {
       padding: 5px 5px;
     }
+
     a {
       display: block;
       width: 100%;
       border-radius: 5px;
     }
+
     a.active {
       background-color: $secondary-color;
       color: #ffffff;
@@ -104,10 +126,12 @@
   .all-students-page-section {
     background-color: #fff;
   }
+
   // Custom, iPhone Retina
-  @media only screen and (min-width : 320px) {}
+  @media only screen and (min-width: 320px) {
+  }
   // extra Small Devices, Phones
-  @media only screen and (min-width : 480px) {
+  @media only screen and (min-width: 480px) {
     .header {
       p {
         margin: 0 9rem;
@@ -115,11 +139,12 @@
     }
   }
   // Small Devices, Tablets
-  @media only screen and (min-width : 768px) {
+  @media only screen and (min-width: 768px) {
     .header {
       p {
         font-size: 18px;
       }
+
       h1 {
         font-size: 35px;
         margin-bottom: 20px;
@@ -131,13 +156,16 @@
         align-items: center;
         justify-content: center;
       }
+
       .choose-category li a {
         width: unset;
       }
     }
   }
   // Medium Devices, Desktops
-  @media only screen and (min-width : 992px) {}
+  @media only screen and (min-width: 992px) {
+  }
   // Large Devices, Wide Screens
-  @media only screen and (min-width : 1200px) {}
+  @media only screen and (min-width: 1200px) {
+  }
 }

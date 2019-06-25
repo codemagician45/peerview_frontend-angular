@@ -1,8 +1,10 @@
-.shared-navbar-unauth-component {
-  width: 100%;
-  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519015034/campusHeaderBg.jpg');
 
+.nav-bar-institution {
+  background-size: cover;
+  background: url(http://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg);
+  width: 100%;
 }
+
 .digital-campus-institutions-component {
 
   min-height: 500px;
@@ -36,6 +38,16 @@
       }
     }
   }
+
+
+  ul li {
+    list-style: disc;
+  }
+
+  ul {
+    margin-left: 10px
+  }
+
 
   .inline-content {
     overflow: hidden;

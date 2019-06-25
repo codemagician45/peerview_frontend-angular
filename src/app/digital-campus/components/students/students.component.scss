@@ -2,12 +2,21 @@
 
 .digital-campus-students-component {
 
-  padding: 10px 0;
+  .nav-bar-students {
+    background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+    width: 100%;
+    background-size: cover;
+  }
+
+  padding: 0;
   background-color: $primary-color-dark;
   border-top: solid 1px #503462;
+
   h3, h1 {
     color: #ffffff;
   }
+
+
   .inline-widget {
     margin: 10px 0 20px 0;
     padding: 20px;
@@ -15,18 +24,31 @@
     border-radius: 7px;
     border: solid 1px #bababa;
     box-shadow: 0 0 5px #b7b7b7;
+
     .inline-widget-header {
       display: flex;
       align-items: center;
-      .material-icons {
-        margin-right: 10px;
-        cursor: pointer;
-      }
+
     }
+
+    ul {
+      margin-left: 10px
+    }
+
+    ul li {
+      list-style: disc;
+    }
+
   }
+
+  .content {
+    width: 100%;
+    margin: auto auto auto 300px;
+  }
+
   .inline-content {
-    overflow: hidden;
     max-height: 0;
+
     li {
       margin: 6px;
       list-style-type: disc;
