@@ -1,22 +1,26 @@
 <div class="community-private-component">
-	<div>
+
+
+  <div>
 		<ul class="group-container row">
-			<li 
-				(click)="onSelectCommunityType('discoverCommunity')" 
+			<li
+				(click)="onSelectCommunityType('discoverCommunity')"
 				[ngClass]="{active: selectedCommunitySelected === 'discoverCommunity'}"
-				class="col-xs-6 mouse-pointer" 
-				> 
-				<a >Popular Jobs</a> 
+				class="col-xs-6 mouse-pointer"
+				>
+				<a >Popular Jobs</a>
 			</li>
-			<li 
-				(click)="onSelectCommunityType('myCommunity')" 
+			<li
+				(click)="onSelectCommunityType('myCommunity')"
 				[ngClass]="{active: selectedCommunitySelected === 'myCommunity'}"
-				class="col-xs-6 mouse-pointer" 
-				> 
-				<a>My Jobs</a> 
+				class="col-xs-6 mouse-pointer"
+				>
+				<a>My Jobs</a>
 			</li>
 		</ul>
 	</div>
+
+
 	<div class="text-right">
 		<button (click)="onCreateCommunity()" class="btn-peersview-primary btn-peersview-md btn-create">Create a Job
 			<i class="material-icons">add</i>
@@ -32,7 +36,7 @@
 				</button>
 				<h4 class="text-center">
 					Students Fashion
-				</h4>	
+				</h4>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -40,7 +44,7 @@
 					<button class="btn-peersview-primary add-mentor">
 						<i class="material-icons">add</i>
 					</button>
-					<h4 class="text-center">Students Fashion</h4>	
+					<h4 class="text-center">Students Fashion</h4>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -48,24 +52,30 @@
 					<button class="btn-peersview-primary add-mentor">
 						<i class="material-icons">add</i>
 					</button>
-					<h4 class="text-center">Students Fashion</h4>	
+					<h4 class="text-center">Students Fashion</h4>
 				</div>
 			</div>
 	</div>
+
+
 	<div class="private-community-body row" *ngIf="selectedCommunitySelected === 'myCommunity' && communities.length !== 0">
     <div class="col-md-4" *ngFor="let community of communities;">
       <div class="community-item">
         <button class="btn-peersview-primary add-mentor">
           <i class="material-icons">add</i>
         </button>
-        <h4 class="text-center">{{ community.name }}</h4>	
+        <h4 class="text-center">{{ community.name }}</h4>
       </div>
     </div>
   </div>
+
+
   <div class="private-community-body row" *ngIf="selectedCommunitySelected === 'myCommunity' && communities.length === 0">
     <br/>
     <div class="text-center">
       <h4>No Private Communities created yet.</h4>
     </div>
   </div>
+
+
 </div>

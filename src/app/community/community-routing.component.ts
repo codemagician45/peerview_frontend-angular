@@ -21,6 +21,8 @@ import {
 const communityRoutes: Routes = [{
   path: '',
   component: CommunityComponent,
+
+
   children: [ {
     path: 'student-community',
     children: [{

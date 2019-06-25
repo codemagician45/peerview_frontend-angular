@@ -19,7 +19,8 @@ interface IGetUrlPromise {
 export abstract class ApiService {
   constructor (
     private http: HttpClient
-  ) {}
+  ) {
+  }
 
   public abstract baseURI: string;
   public abstract baseURIPlural: string;

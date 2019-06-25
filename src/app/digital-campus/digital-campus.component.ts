@@ -20,7 +20,6 @@ export class DigitalCampusComponent implements AfterViewInit {
     private activedRoute: ActivatedRoute, private meta: Meta) {
     this.meta.updateTag({ name: 'description', content: 'Connect your university\'s community with Peersview' });
 
-
   }
 
   protected section: string = 'institutions';

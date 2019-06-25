@@ -2,13 +2,15 @@ import {
   Model
 } from './model';
 
-export class CommunityPostModel extends Model {
+export class CommunityPostModel extends  Model {
   public courseId: number;
   public message: string;
   public area: string;
 	public type: string;
   public attachments: String[];
   public isUserFollowCommunityQuestion: boolean;
+
+
   public init (): void {
     this.setBlankDataStructure ({
       message: null,
