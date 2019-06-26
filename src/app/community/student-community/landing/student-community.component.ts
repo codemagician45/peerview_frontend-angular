@@ -48,7 +48,7 @@ import {
   styleUrls: ['./student-community.component.scss']
 })
 export class StudentCommunityComponent implements OnInit {
-  constructor(
+  constructor (
     private route: ActivatedRoute,
     private router: Router,
     private courseApiService: CourseApiService,
@@ -74,7 +74,7 @@ export class StudentCommunityComponent implements OnInit {
   private routeSubscriber: any;
   private isShowCommunityAnswerPost: number = 0;
 
-  public ngOnInit(): void {
+  public ngOnInit (): void {
 
 
     this.getCourse();
@@ -106,7 +106,7 @@ export class StudentCommunityComponent implements OnInit {
   }
 
 
-  private getStudentCommunityFeedByCourseIdAndPostId(courseId, postId): void {
+  private getStudentCommunityFeedByCourseIdAndPostId (courseId, postId): void {
 
     this.communityApiService.promiseGetSingleCommunityPostsData(courseId, postId)
       .then((responseData: CommunityPostModel) => {
@@ -119,7 +119,7 @@ export class StudentCommunityComponent implements OnInit {
       });
   }
 
-  private getStudentCommunityFeed(courseId): void {
+  private getStudentCommunityFeed (courseId): void {
 
 
     this.communityApiService.promiseGetAllCommunityPostsData(courseId)
@@ -133,7 +133,7 @@ export class StudentCommunityComponent implements OnInit {
       });
   }
 
-  private getCourse(): void {
+  private getCourse (): void {
 
     this.courseApiService.promiseGetAllCourses()
       .then((courses: CourseModel[]) => {
@@ -146,7 +146,7 @@ export class StudentCommunityComponent implements OnInit {
 
   }
 
-  protected onAskQuestion(): void {
+  protected onAskQuestion (): void {
     if (this.hasImageSelected) {
       PostEmitter.uploadImages().emit();
     } else {
@@ -154,7 +154,7 @@ export class StudentCommunityComponent implements OnInit {
     }
   }
 
-  protected onChangeCourse(item): void {
+  protected onChangeCourse (item): void {
     let index = this.courses.findIndex((filter: any) => {
       return filter.id === parseInt(item, 10);
     });
@@ -165,7 +165,7 @@ export class StudentCommunityComponent implements OnInit {
     this.getStudentCommunityFeed(this.communityPost.courseId);
   }
 
-  protected onOpenAskQuestionModal(): void {
+  protected onOpenAskQuestionModal (): void {
     let dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'ask-a-question-modal';
     dialogConfig.id = 'SharedCommunityMobileAskQuestionMobileComponent';
@@ -177,16 +177,16 @@ export class StudentCommunityComponent implements OnInit {
       });
   }
 
-  protected onImageIsSelected(value): void {
+  protected onImageIsSelected (value): void {
     this.hasImageSelected = value;
   }
 
-  protected onUploadComplete(attachments): void {
+  protected onUploadComplete (attachments): void {
     this.communityPost.attachments = attachments;
     this.createQuestion();
   }
 
-  private createQuestion(): void {
+  private createQuestion (): void {
     this.communityPost.area = 'community';
     this.communityPost.type = 'post';
 
@@ -200,19 +200,19 @@ export class StudentCommunityComponent implements OnInit {
       });
   }
 
-  protected onAnswerQuestion(id): void {
+  protected onAnswerQuestion (id): void {
     const encryptedItemId = CryptoUtilities.cipher(id);
     const encryptedItemCourseId = CryptoUtilities.cipher(this.communityPost.courseId);
 
     this.router.navigate([`../${encryptedItemCourseId}/${encryptedItemId}`], {relativeTo: this.route});
   }
 
-  protected trimStory(answer, maxCharacters): string {
+  protected trimStory (answer, maxCharacters): string {
     let trimmedString = answer.substr(0, maxCharacters);
     return trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + '...';
   }
 
-  protected onDeletePost(postId: number): void {
+  protected onDeletePost (postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
       .then(() => {
@@ -227,7 +227,7 @@ export class StudentCommunityComponent implements OnInit {
     });
   }
 
-  protected onFollowQuestion(post): void {
+  protected onFollowQuestion (post): void {
     // follow here the post
     const follow = new CommunityPostFollow();
     follow.postId = post.id;
@@ -259,7 +259,7 @@ export class StudentCommunityComponent implements OnInit {
     }
   }
 
-  protected onOpenShowImageDialogComponent(user): void {
+  protected onOpenShowImageDialogComponent (user): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'image-preview-modal';
@@ -274,7 +274,7 @@ export class StudentCommunityComponent implements OnInit {
     this.dialog.open(SharedImagePreviewComponent, dialogConfig);
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy (): void {
     this.routeSubscriber.unsubscribe();
   }
 }
