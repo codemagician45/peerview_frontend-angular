@@ -122,51 +122,27 @@ export class StudentCommunityComponent implements OnInit {
   private getStudentCommunityFeed (courseId): void {
 
 
-    // this.communityApiService.promiseGetAllCommunityPostsData(courseId)
-    //   .then((responseData: CommunityPostModel[]) => {
-    //     this.communityPosts = responseData;
-    //     this.isToggleUploadComponentVisible = false;
-    //     this.communityPost.init();
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-
-
-    //
-    //  data = [{
-    //   courseId: 1,
-    //    message: 'Thisyou' +
-    //     ' is a new message',
-    //   area: 'Lahore,Pakistan',
-    //   type: 'any',
-    //   attachments: [null],
-    //   isUserFollowCommunityQuestion: false,
-    // }];
-
-
-    // this.communityPosts = [{
-    //   courseId: 1,
-    //   message: 'Thisyou' +
-    //     ' is a new message',
-    //   area: 'Lahore,Pakistan',
-    //   type: 'any',
-    //   attachments: [null],
-    //   isUserFollowCommunityQuestion: false,
-    // }];
-
+    this.communityApiService.promiseGetAllCommunityPostsData(courseId)
+      .then((responseData: CommunityPostModel[]) => {
+        this.communityPosts = responseData;
+        this.isToggleUploadComponentVisible = false;
+        this.communityPost.init();
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   private getCourse (): void {
-    // will uncomment
 
-    // this.courseApiService.promiseGetAllCourses()
-    //   .then((courses: CourseModel[]) => {
-    //     this.courses = courses;
-    //   })
-    //   .catch(() => { });
+    this.courseApiService.promiseGetAllCourses()
+      .then((courses: CourseModel[]) => {
+        this.courses = courses;
+      })
+      .catch(() => {
+      });
 
-    this.courses = [{id: 1, name: 'programming'}, {id: 2, name: 'Data structure'}, {id: 3, name: 'Computer Networks'}];
+    // this.courses = [{id: 1, name: 'programming'}, {id: 2, name: 'Data structure'}, {id: 3, name: 'Computer Networks'}];
 
   }
 
