@@ -32,6 +32,9 @@
         padding: 0;
       }
     }
+    span {
+      white-space: pre-line;
+    }
   }
   .post-images {
     display: table;
@@ -102,11 +105,11 @@
         padding: 3px;
         border: 1px solid #ddd;
         margin-top: -1px;
-    
+
         input {
           margin-left: 10px;
         }
-        
+
         .vote-shade-percentage {
           width: 0%;
           height: 20px;
