@@ -10,10 +10,13 @@
     }
   }
 
-  .company, .support, .campus {
+  .company, .support, .client-area, .campus {
     span {
       font-size: 16px;
       font-weight: 800;
+      color: #ffffff;
+    }
+    a {
       color: #ffffff;
     }
 
