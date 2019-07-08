@@ -18,26 +18,10 @@ Deployment
 =======
 
 ```
-# Login Into Docker HUB
-docker login
+npm run-script build-prod
 
-# Build App
-./docker-build.sh productionBuild
+firebase login
 
-# Push Repo with proper tagged verion (Do not forgot to change version)
-docker push peersview/peersview-front:v0.0.21
+firebase deploy
 
-# Login Into front-end server
-ssh 
-
-# Login DockerHub again if needed (Requires one time only)
-docker login
-
-# Pull Repo with proper tagged verion (Do not forgot to change version)
-docker pull peersview/peersview-front:v0.0.21
-
-# Stop the existing running container
-
-# Start New Container (Wait for 3 minutes)
-docker run -d --restart unless-stopped --name peersview-front --publish 443:443 peersview/peersview-front:v0.0.21
 ```

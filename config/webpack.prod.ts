@@ -40,8 +40,8 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-        'PEERSVIEW_API': JSON.stringify(process.env.PEERSVIEW_API)
+        'NODE_ENV': JSON.stringify('production'),
+        'PEERSVIEW_API': JSON.stringify('http://api.peersview.com/')
       }
     }),
     new webpack.LoaderOptionsPlugin({
