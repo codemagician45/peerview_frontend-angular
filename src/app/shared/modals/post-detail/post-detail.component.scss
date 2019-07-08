@@ -32,7 +32,7 @@
     margin-top: 3px;
     border-radius: 50%;
   }
-  
+
   /* POST */
   .post {
     margin: 5px 0;
@@ -48,8 +48,11 @@
     white-space: nowrap;
   }
   .post-message {
-    p {
+    div {
       margin: 5px;
+    }
+
+    span {
       font-size: 1.5rem;
       white-space: pre-line;
     }
@@ -62,7 +65,7 @@
       .image-inner {
         margin: 0 0 2px 2px;
         border-radius: 3px;
-  
+
         img {
           width: 100%;
         }

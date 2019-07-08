@@ -162,6 +162,9 @@ export class SharedPostTextareaComponent {
                   PostEmitter.postSave()
                     .emit(postModel);
                 });
+            } else {
+              PostEmitter.postSave()
+                .emit(postModel);
             }
             // this will set the createPost call the setBlankDataStructure
             this.post.init();

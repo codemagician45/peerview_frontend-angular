@@ -1,5 +1,6 @@
 import {
   Component,
+  OnDestroy,
   OnInit
 } from '@angular/core';
 import {
@@ -18,13 +19,14 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import { NgxLinkifyjsService, Link } from 'ngx-linkifyjs';
+import { PostEmitter } from '../shared/emitter';
 
 @Component({
   selector: 'home-component',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   constructor (
     private postApiService: PostApiService,
     private route: ActivatedRoute,
@@ -36,6 +38,7 @@ export class HomeComponent implements OnInit {
   private limit = 5;
   private offset = 10;
   private routeSubscriber: any;
+  private postSaveSubscriber: any;
 
   public ngOnInit (): void {
     this.routeSubscriber = this.route
@@ -48,6 +51,10 @@ export class HomeComponent implements OnInit {
         }
         this.getPosts();
       });
+
+    this.postSaveSubscriber = PostEmitter.postSave().subscribe(() => {
+      this.loadRecord();
+    });
   }
 
   private getPosts (): void {
@@ -102,5 +109,6 @@ export class HomeComponent implements OnInit {
 
   public ngOnDestroy (): void {
     this.routeSubscriber.unsubscribe();
+    this.postSaveSubscriber.unsubscribe();
   }
 }

@@ -29,7 +29,7 @@
         color: #631990;
       }
       p.border {
-        font-family: "Maven Pro", sans-serif;
+        font-family: "Conv_MavenPro-Regular", sans-serif;
         padding: 5px 5px 5px 5px;
         margin-top: 10px;
         margin-left: 20%;
@@ -41,7 +41,8 @@
         background: #fff;
         border-radius: 10px;
         box-shadow: 0 0 5px #b7b7b7;
-        color: #631990;      
+        color: #631990; 
+        height: 70px;     
       }
     }
     h3 {
@@ -66,7 +67,7 @@
   }
   .col-sm-12 {
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 00px;
   }
   .mobile-img {
     display: block;
@@ -101,7 +102,6 @@
     .leisure-block {
       .header-block {
         p.border {
-          font-family: "Maven Pro", sans-serif;
           margin: 0;
           width: 100%;
         }
@@ -128,7 +128,6 @@
     .leisure-block {
       .header-block {
         p.border {
-          font-family: "Maven Pro", sans-serif;
           margin: 0;
           width: 100%;
         }
@@ -148,7 +147,6 @@
     .leisure-block {
       .header-block {
         p.border {
-          font-family: "Maven Pro", sans-serif;
           margin-top: 10px;
           margin-left: 20%;
           margin-right: 20%;
@@ -170,13 +168,9 @@
   }
   // Medium Devices, Desktops
   @media only screen and (min-width : 992px) {
-    .spacing {
-      height: 160px;
-    }
-    .leisure-block {
+      .leisure-block {
       .header-block {
         p.border {
-          font-family: "Maven Pro", sans-serif;
           margin-top: 10px;
           margin-left: 20%;
           margin-right: 20%;
@@ -200,7 +194,6 @@
     .leisure-block {
       .header-block {
         p.border {
-          font-family: "Maven Pro", sans-serif;
           margin-top: 10px;
           margin-left: 20%;
           margin-right: 20%;
@@ -215,4 +208,51 @@
       display: block;
     }
   }
+}
+@media only screen and (max-width : 1024px) { 
+    .center p {
+      font-size: 15px !important;
+    }
+  .spacing {
+    height: 90px !important;
+  }
+  .leisure-block {
+    .header-block {
+      p.border {
+        font-size: 15px !important;
+      }
+    }
+  }  
+}
+
+@media only screen and (max-width : 900px) {  
+  .spacing {
+    height: auto !important;
+  }
+  .index-leisure-page-component {
+     .col-sm-12 {
+        margin: 5px 0px !important;
+     }
+  }
+  .header-block {
+    width: 100% !important;
+  }
+  .leisure-block {
+    .header-block {
+      p.border {
+        width: 100% !important;
+        display: inline-block;
+        margin: 0px !important;
+        height: auto !important;
+        font-size: 20px !important;
+      }
+    }
+  }
+  .center p {
+    font-size: 20px !important;
+  }
+  .info-video.text-center {
+     margin-top: 30px !important;
+  }
+
 }
