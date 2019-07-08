@@ -80,6 +80,28 @@
     }
   }
 }
+.img-landing img{
+  //  height: 316px;
+   width: 100%;
+}
+
+@media only screen and (max-width : 1024px) { 
+  .index-community-page-component  {
+    .width {
+      width: 65%;
+      font-size: 15px;
+   }
+ }
+} 
+@media only screen and (max-width : 900px) { 
+ .img-collaborate {
+    display: inline-block !important;
+    float: none;
+    text-align: center;
+ }
+
+}
+
 
 @media only screen and (max-width : 319px) {
   .index-community-page-component {
