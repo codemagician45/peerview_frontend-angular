@@ -1,4 +1,53 @@
 @import 'src/assets/scss/variables';
+body {
+  font-family: "Comfortaa_Regular" !important ;
+  font-weight : 400;
+}
+p {
+  font-family: "Comfortaa_Regular" !important ;
+}
+.mt-50 {
+   margin-top: 50px !important;
+}
+.mb-50 {
+   margin-bottom: 50px !important;
+}
+.shared-navbar-unauth-component {
+  button.sign-in {
+      background: #340551;
+      border-radius: 50px;
+      padding: 9px 25px;
+      color: #fff;
+  }
+
+}
+.shared-navbar-unauth-component {
+  button.sign-in:hover {
+      background: #340551;
+   }
+}
+.btn-peersview-transparent {
+   color: #000000;
+}
+.btn-peersview-transparent:hover {
+   color: #340551;
+}
+.card-wrapper {
+    padding-top: 30px;
+   .card-body {
+       font-size: 18px;
+       margin-top: 25px;
+       line-height: 30px;
+
+   }
+}
+.common-btn {
+  background: #340551;
+  border-radius: 50px;
+  padding: 9px 25px;
+  color: #000;
+  text-transform: capitalize;
+}
 
 .digital-campus-component {
   height: 100%;
@@ -17,16 +66,13 @@
   }
 
   .header {
-
-    height: 100%;
-    padding: 60px 0;
+    padding: 60px 50px;
     background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519015034/campusHeaderBg.jpg') no-repeat 0 0;
     background-size: cover;
     color: #fff;
+    height: 530px;
 
     p {
-      margin: 0 2rem;
-      text-align: center;
       font-size: 14px;
       font-weight: 400;
     }
@@ -46,8 +92,14 @@
 
   .button-learn-more {
     margin-top: 10px;
-    padding: 5px;
+    padding: 11px 35px;
     background: #340551;
+    border-radius: 50px;
+    border: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
   }
 
   .video-player {
@@ -63,6 +115,7 @@
     .content-left, .content-right {
       p {
         font-size: 18px;
+        line-height: 25px;
       }
     }
 
@@ -85,6 +138,7 @@
 
     .content-description {
       padding: 0 15px;
+      font-size: 25px;
     }
   }
 
@@ -127,17 +181,8 @@
     background-color: #fff;
   }
 
-  // Custom, iPhone Retina
-  @media only screen and (min-width: 320px) {
-  }
   // extra Small Devices, Phones
-  @media only screen and (min-width: 480px) {
-    .header {
-      p {
-        margin: 0 9rem;
-      }
-    }
-  }
+ 
   // Small Devices, Tablets
   @media only screen and (min-width: 768px) {
     .header {
@@ -167,5 +212,47 @@
   }
   // Large Devices, Wide Screens
   @media only screen and (min-width: 1200px) {
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+     h1 {
+      font-size: 25px;
+     }
+  }
+  .content-description {
+    font-size: 18px !important;
+  } 
+  .card-wrapper.mb-50 {
+    margin: 0px !important;
+  }
+  .button-learn-more {
+    margin-top: 20px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .shared-navbar-unauth-component {
+    button.sign-in {
+      background: #631990 !important;
+      border-radius: inherit !important;
+    }
+    .btn-peersview-transparent {
+       color: #fff !important;
+    }
+  }
+} 
+@media only screen and (max-width: 600px) {
+  .header { 
+    height: 100% !important;
+  } 
+  .content {
+     .row  {
+        margin: 0px !important;
+     }
+  }
+  .button-learn-more {
+    font-size: 13px !important;
   }
 }

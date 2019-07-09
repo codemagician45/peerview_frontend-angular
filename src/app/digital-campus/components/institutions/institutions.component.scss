@@ -1,33 +1,48 @@
-
-.nav-bar-institution {
-  background-size: cover;
-  background: url(http://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg);
+.row {
+   margin-left: 0px !important;
+   margin-right: 0px !important;
+}
+.mt-50 {
+  margin-top: 50px !important;
+}
+.mb-50 {
+  margin-bottom: 50px !important;
+}
+.text-color {
+   color: #340551;
+}
+.text-black {
+  color: #000000;
+}
+.btn-common {
+  border-radius: 50px;
+  padding: 14px 40px;
+}
+body {
+  background-color: #fff !important;
   width: 100%;
 }
-
+.institutions-img {
+   img {
+      width: 70%;
+      height: 100%;
+   }
+}
 .digital-campus-institutions-component {
-
-  min-height: 500px;
-  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1519063841/academicBg.jpg') no-repeat 0 150px;
-  background-color: #ffffff;
-
   .header-block {
     h5 {
       font-size: 20px;
-      text-transform: uppercase;
+      margin: 25px 0px;
+      color: #666666;
     }
   }
 
-  .bubble {
-    margin: 10px 0 20px 0;
-    padding: 20px;
-    background: #fff;
-    border: 1px solid #bababa;
-    border-radius: 7px;
-    box-shadow: 0 0 5px #b7b7b7;
-  }
 
   .inline-widget {
+     h4 {
+       font-size: 22px;
+       margin-bottom: 20px;
+     }
     .inline-widget-header {
       display: flex;
       align-items: center;
@@ -39,16 +54,14 @@
     }
   }
 
-
+.inline-widget {
   ul li {
-    list-style: disc;
+    list-style: circle;
+    padding-bottom: 20px;
+    font-size: 15px;
+    line-height: 24px;
   }
-
-  ul {
-    margin-left: 10px
-  }
-
-
+}
   .inline-content {
     overflow: hidden;
     max-height: 0;
@@ -61,9 +74,26 @@
 
   .text-center {
     font-size: 18px;
-    font-weight: 800;
     letter-spacing: 0.5px;
   }
 }
-
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 25px !important;
+   }
+   .inline-widget {
+    margin: 0px !important; 
+    ul li {
+      padding-bottom: 10px !important;
+      font-size: 17px !important;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .institutions-img {
+     img {
+      width: 100% !important;
+     }
+  }
+}
 

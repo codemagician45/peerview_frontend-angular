@@ -1,106 +1,117 @@
+<div class="nav-bar-digital-campus">
+  <shared-navbar-unauth-component
+    [peersviewLogo]=true
+    [logo]=false
+    [aboutUs]=true
+    [signUp]=true
+    [signIn]=true>
+  </shared-navbar-unauth-component>
+</div>
 <div class="digital-campus-component">
-
-
-  <div class="header">
-    <div class="content-body text-center">
+  
+    <div class="text-left">
       <div class="container">
-        <h1>Connect Your University's Community, with Peersview</h1>
-        <p>Drive engagement and collaboration among students in different Campuses, Faculties and Classes from
+        <div class="header">
+          <h1>Connect Your University's Community, <br>with Peersview</h1>
+          <p>Drive engagement and collaboration among students in different Campuses, <br>Faculties and Classes from
           orientation to graduation.</p>
+          <button
+              class="button-learn-more mt-50"
+              [routerLink]="['/about-us']">
+              Request a demo
+            </button>
       </div>
     </div>
   </div>
   <div class="content container">
-    <h2 class="text-center peersview-primary-color">EVERYTHING YOU NEED TO ENGAGE YOUR STUDENTS</h2>
-    <div class="row">
-      <p class="content-description text-center">
+    <h1 class="text-center peersview-primary-color">Everything you need to engage your students
+    </h1>
+    <p class="content-description text-center">
         The digital campus helps your students access broader networks within the school community.
       </p>
-      <div class="col-md-4">
+    <div class="row mt-50">
+     
+      <div class="col-md-5 col-sm-12 col-xs-12">
 
 
-        <div class="card">
+        <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>BUILDS THE STUDENT COMMUNITY</b></h4>
+            <h3 class="peersview-primary-color"><b>Build the student community</b></h3>
           </div>
           <div class="card-body">
             The Digital Campus connects students with relevant people, content, announcements, events,
             and conversations across the institution.
+           
+
           </div>
+          <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='institutions'>Learn more</button>
         </div>
 
 
-        <div class="card">
+        <!-- <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>Academic Institutions</b></h4>
+              <h3 class="peersview-primary-color"><b>Academic Institutions</b></h3>
           </div>
           <div class="card-body">
             Infusing social interactions with learning.<br>
-            <button class="button-learn-more btn-peersview-secondary" routerLink="institutions">Learn more</button>
+            <button class="button-learn-more btn-peersview-secondary mt-50" routerLink="institutions">Learn more</button>
 
           </div>
-        </div>
+        </div> -->
 
 
-        <div class="card">
+        <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>Network Administrators</b></h4>
+              <h3 class="peersview-primary-color"><b>Group managment</b></h3>
           </div>
           <div class="card-body">
             Stay in control of your institution’s campus.You can manage your students and moderate their public
-            conversations.<br>
-            <button class="button-learn-more btn-peersview-secondary" routerLink="network-administrators">Learn more
-            </button>
+            conversations.
+           
 
           </div>
+          <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink="network-administrators">Learn more
+            </button>
         </div>
 
       </div>
 
-      <div class="col-md-4 content-left">
+      <div class="col-md-5 col-sm-12 col-xs-12 col-md-offset-2">
 
-
-        <!--        <div class="image text-center">-->
-        <!--          <cl-image-->
-        <!--            public-id="campusPeersCycle">-->
-        <!--          </cl-image>-->
-        <!--        </div>-->
-
-
-      </div>
-
-      <div class="col-md-4">
-
-        <div class="card">
+        <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>CO-CURRICULAR NETWORK</b></h4>
+            <h3 class="peersview-primary-color"><b>Co-curricular network</b></h3>
           </div>
           <div class="card-body">
             Students can create dedicated Groups and Pages for Clubs and societies,
             or whatever is acceptable at your institution.
+            
           </div>
+          <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='students'>Learn more</button>
+
         </div>
 
 
-        <div class="card">
+        <!-- <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>Students</b></h4>
+              <h3 class="peersview-primary-color"><b>Students</b></h3>
           </div>
           <div class="card-body">
             Join Your Institutions Online Campus.<br>
-            <button class="button-learn-more btn-peersview-secondary" routerLink='students'>Learn more</button>
+            <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='students'>Learn more</button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="card">
+        <div class="card-wrapper mb-50">
           <div class="card-header">
-            <h4><b>FAQ</b></h4>
+              <h3 class="peersview-primary-color"><b>FAQ</b></h3>
           </div>
           <div class="card-body">
-            Frequently asked questions<br>
-            <button class="button-learn-more btn-peersview-secondary" routerLink='faqs'>See more</button>
-
+            Frequently asked questions
+            
           </div>
+          <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='faqs'>See more</button>
+
         </div>
 
       </div>
@@ -109,14 +120,14 @@
 
 
   </div>
-  <div class="all-students-page-section p-peersview-y-2">
+  <!-- <div class="all-students-page-section p-peersview-y-2">
     <h2 class="text-center col-xs-12 peersview-primary-color">STUDENT FRIENDLY & OPTIMIZED FOR FACULTY</h2>
     <cl-image
       public-id="all-students"
       class="img-responsive"
     >
     </cl-image>
-  </div>
+  </div> -->
 
   <!--  <div id="benefits">-->
 

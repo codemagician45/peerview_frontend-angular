@@ -1,57 +1,90 @@
 @import 'src/assets/scss/variables';
 
-.digital-campus-students-component {
-
-  .nav-bar-students {
-    background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
-    width: 100%;
-    background-size: cover;
-  }
-
-  padding: 0;
-  background-color: $primary-color-dark;
-  border-top: solid 1px #503462;
-
-  h3, h1 {
-    color: #ffffff;
+// .row {
+//   margin-left: 0px !important;
+//   margin-right: 0px !important;
+// }
+.mt-50 {
+ margin-top: 50px !important;
+}
+.mb-50 {
+ margin-bottom: 50px !important;
+}
+.text-color {
+  color: #340551;
+}
+.text-black {
+ color: #000000;
+}
+.btn-common {
+ border-radius: 50px;
+ padding: 14px 40px;
+}
+.wrapper-section {
+  .header-block {
+    h5 {
+      font-size: 20px;
+      margin: 25px 0px;
+      color: #666666;
+    }
   }
 
 
   .inline-widget {
-    margin: 10px 0 20px 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 7px;
-    border: solid 1px #bababa;
-    box-shadow: 0 0 5px #b7b7b7;
-
+     h4 {
+       font-size: 21px;
+       margin-bottom: 20px;
+    }
     .inline-widget-header {
       display: flex;
       align-items: center;
 
+      .material-icons {
+        margin-right: 10px;
+        cursor: pointer;
+      }
     }
-
-    ul {
-      margin-left: 10px
-    }
-
-    ul li {
-      list-style: disc;
-    }
-
   }
 
-  .content {
-    width: 100%;
-    margin: auto auto auto 300px;
+.inline-widget {
+  ul li {
+    list-style: circle;
+    padding-bottom: 20px;
+    font-size: 15px;
+    line-height: 24px;
   }
-
+}
   .inline-content {
+    overflow: hidden;
     max-height: 0;
 
     li {
       margin: 6px;
       list-style-type: disc;
     }
+  }
+
+  .text-center {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+}
+.students-img {
+  img {
+    width: 42% !important;
+    height: 100%;
+  }  
+}
+@media only screen and (max-width: 600px) {
+  .students-img {
+    img {
+      width: 100% !important;
+      height: 100%;
+    }  
+  }
+  .main-section  {
+     .row {
+        margin: 0px !important;
+     }
   }
 }
