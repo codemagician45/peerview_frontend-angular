@@ -1,7 +1,7 @@
 @import './variables';
 
 @mixin btn-peersview-primary($bg, $border...) {
-  background: $bg;
+  background: #340551;
   font-weight: 500;
   color: #ffffff;
   border: $border;

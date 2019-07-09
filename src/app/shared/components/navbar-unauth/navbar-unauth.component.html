@@ -9,10 +9,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" [routerLink]="['/']">
+          <a *ngIf="logo" class="navbar-brand" [routerLink]="['/']">
             <cl-image
               alt="peersview"
               public-id="logo"
+              width="80">
+            </cl-image>
+          </a>
+          <a *ngIf="peersviewLogo" class="navbar-brand" [routerLink]="['/']">
+            <cl-image
+              alt="peersview"
+              public-id="peersviewLogo"
               width="80">
             </cl-image>
           </a>
@@ -25,7 +32,16 @@
               <button
                 class="btn-peersview-transparent btn-lg btn-block"
                 [routerLink]="['/digital-campus']">
-                DIGITAL CAMPUS
+                Digital Campus
+              </button>
+            </li>
+            <li
+              class="about-us text-center m-peersview-x-1"
+              *ngIf="digitalCampusSecond">
+              <button
+                class="text-white btn-lg btn-block"
+                [routerLink]="['/digital-campus']">
+                Digital Campus
               </button>
             </li>
             <li
@@ -34,32 +50,65 @@
               <button
                 class="btn-peersview-transparent btn-lg btn-block"
                 [routerLink]="['/about-us']">
-                ABOUT US
+                About Us
+              </button>
+            </li>
+            <li
+              class="about-us text-center m-peersview-x-1"
+              *ngIf="aboutUsSecond">
+              <button
+                class="text-white btn-lg btn-block"
+                [routerLink]="['/about-us']">
+                About Us
               </button>
             </li>
             <li
               class="blog text-center m-peersview-x-1"
               *ngIf="blog">
-              <button class="btn-peersview-transparent btn-lg btn-block" >BLOG</button>
+              <button class="btn-peersview-transparent btn-lg btn-block" >Blog</button>
+            </li>
+            <li
+              class="blog text-center m-peersview-x-1"
+              *ngIf="blogSecond">
+              <button class="text-white btn-lg btn-block" >Blog</button>
             </li>
             <li
               class="press text-center m-peersview-x-1"
               *ngIf="press">
-              <button class="btn-peersview-transparent btn-lg btn-block">PRESS</button>
+              <button class="btn-peersview-transparent btn-lg btn-block">Press</button>
+            </li>
+            <li
+              class="press text-center m-peersview-x-1"
+              *ngIf="press">
+              <button class="text-white btn-lg btn-block">Press</button>
             </li>
             <li
               class="sign-up text-center m-peersview-x-1"
               *ngIf="signUp">
               <button
                 class="btn-peersview-transparent btn-lg btn-block"
-                [routerLink]="['/sign-up']">SIGN UP</button>
+                [routerLink]="['/sign-up']">Sign Up</button>
+            </li>
+            <li
+              class="sign-up text-center m-peersview-x-1"
+              *ngIf="signUpSecond">
+              <button
+                class="text-white btn-lg btn-block"
+                [routerLink]="['/sign-up']">Sign Up</button>
             </li>
             <li
               class="sign-in text-center m-peersview-x-1"
               *ngIf="signIn">
               <button
                 class="btn-peersview-secondary btn-lg btn-block sign-in"
-                [routerLink]="['/sign-in']">SIGN IN</button>
+                [routerLink]="['/sign-in']">Sign In</button>
+            </li>
+            <li
+              class="sign-in text-center m-peersview-x-1"
+              *ngIf="signInSecond">
+              <button
+                class="text-white btn-lg btn-block sign-in"
+                [routerLink]="['/sign-in']">Sign In</button>
             </li>
           </ul>
         </div>
