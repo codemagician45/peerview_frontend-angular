@@ -86,7 +86,7 @@ answer-question-component {
             display: inline-block;
         }
         .answer-date {
-            display: block;
+            // display: block;
             text-align: left;
         }
         .answer-container {
@@ -96,7 +96,6 @@ answer-question-component {
             color:#000;
             border: 1px solid #ddd;
             border-radius:0.5em;
-            margin-top: 60px;
             &::after {
                 content: "";
                 position: absolute;
@@ -175,14 +174,12 @@ answer-question-component {
         .community-header {
             h3 {
                 font-size: 18px;
-                // margin-top: -10px;
                 font-weight: bold;
             }
         }
         .answers-list-item {
             .answer-container {
                 width: calc(100% - 150px);
-                margin-top: 60px;
             }
         }
         // i.material-icons { display: none; }
