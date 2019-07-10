@@ -27,6 +27,14 @@
   button.sign-in {
     border-radius: 5px;
   }
+  .btn-header {
+     color: #ffffff;
+  }
+  .nav > li > .btn-header:hover, .nav > li > .btn-header:focus {
+    text-decoration: none;
+    background-color: transparent;
+    color: #fff;
+}
   // Custom, iPhone Retina
   @media only screen and (min-width : 320px) {}
   // extra Small Devices, Phones
@@ -49,17 +57,16 @@
     }
 
     button.sign-in {
-      background-color:#340551;
-      border-radius: 50px;
+      background-color: $secondary-color;
       &:hover {
-        background-color: #340551;
+        background-color: darken($secondary-color, 5%);
       }
       &:active {
-        background: #340551;
+        background: darken($secondary-color, 5%);
       }
       &:active {
         &:focus, &:hover, &:visited {
-          background: #340551;
+          background: darken($secondary-color, 5%);
         }
       }
     }

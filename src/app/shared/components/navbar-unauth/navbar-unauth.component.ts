@@ -1,8 +1,11 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  Inject
 } from '@angular/core';
+import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'shared-navbar-unauth-component',
@@ -10,7 +13,9 @@ import {
   styleUrls: ['./navbar-unauth.component.scss']
 })
 export class SharedNavbarUnauthComponent {
-  constructor () {}
+
+  constructor () {
+  }
 
   @Input() protected logo: boolean;
   @Input() protected peersviewLogo: boolean;

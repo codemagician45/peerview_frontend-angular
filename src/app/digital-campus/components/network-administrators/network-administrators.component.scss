@@ -1,7 +1,12 @@
 @import 'src/assets/scss/variables';
 
 
-
+#digital-camput-sub-pages {
+  div , button ,p {
+    font-family: "Comfortaa_Regular" !important ;
+    font-weight : 400;
+  }
+}
 .mt-50 {
   margin-top: 50px !important;
  }
