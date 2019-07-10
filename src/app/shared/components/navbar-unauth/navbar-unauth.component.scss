@@ -57,17 +57,16 @@
     }
 
     button.sign-in {
-      background-color:#340551;
-      border-radius: 50px;
+      background-color: $secondary-color;
       &:hover {
-        background-color: #340551;
+        background-color: darken($secondary-color, 5%);
       }
       &:active {
-        background: #340551;
+        background: darken($secondary-color, 5%);
       }
       &:active {
         &:focus, &:hover, &:visited {
-          background: #340551;
+          background: darken($secondary-color, 5%);
         }
       }
     }

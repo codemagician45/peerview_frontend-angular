@@ -4,6 +4,20 @@
     font-family: "Comfortaa_Regular" !important ;
     font-weight : 400;
   }
+  .shared-navbar-unauth-component {
+    button.sign-in {
+        background: #340551;
+        border-radius: 50px;
+        padding: 9px 25px;
+        color: #fff;
+    }
+  
+  }
+  .shared-navbar-unauth-component {
+    button.sign-in:hover {
+        background: #340551;
+     }
+  }
 }
 
 .mt-50 {
@@ -12,20 +26,7 @@
 .mb-50 {
    margin-bottom: 50px !important;
 }
-.shared-navbar-unauth-component {
-  button.sign-in {
-      background: #340551;
-      border-radius: 50px;
-      padding: 9px 25px;
-      color: #fff;
-  }
 
-}
-.shared-navbar-unauth-component {
-  button.sign-in:hover {
-      background: #340551;
-   }
-}
 .btn-peersview-transparent {
    color: #000000;
 }
