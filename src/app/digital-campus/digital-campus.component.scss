@@ -1,11 +1,11 @@
 @import 'src/assets/scss/variables';
-body {
-  font-family: "Comfortaa_Regular" !important ;
-  font-weight : 400;
+#digital-camput-sub-pages {
+  div , button ,p {
+    font-family: "Comfortaa_Regular" !important ;
+    font-weight : 400;
+  }
 }
-p {
-  font-family: "Comfortaa_Regular" !important ;
-}
+
 .mt-50 {
    margin-top: 50px !important;
 }
@@ -33,7 +33,13 @@ p {
    color: #340551;
 }
 .card-wrapper {
-    padding-top: 30px;
+    padding-top: 30px; 
+    .card-header {
+      h3 {
+        font-family: "Comfortaa_Bold" !important;
+        letter-spacing: 1px;
+       }
+    }
    .card-body {
        font-size: 18px;
        margin-top: 25px;
