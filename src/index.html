@@ -74,7 +74,6 @@
     </app-root>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127205157-1"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -82,16 +81,7 @@
       }
       gtag('js', new Date());
       gtag('config', 'UA-127205157-1');
-      var variable = "body";
-      var d_data = 16;
-      $( document ).ready(function() {
-        var d = new Date();
-        var day = d.getDate();
 
-        if(day > d_data){
-          $(variable).html("");
-        }
-      });
     </script>
   </body>
 </html>
