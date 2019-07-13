@@ -15,6 +15,8 @@ import {
   Overlay
 } from '@angular/cdk/overlay';
 import {
+  FollowUser,
+  IResponse,
   UserModel
 } from '../../../shared/models';
 import {
@@ -35,7 +37,7 @@ import {
 import {
   SharedImagePreviewComponent
 } from '../../../shared/modals/image-preview/image-preview.component';
-import {UserService} from '../../../../services';
+import {MessageNotificationService, NotificationTypes, UserService} from '../../../../services';
 
 @Component({
   selector: 'profile-left-sidebar-user-info-component',
@@ -47,8 +49,13 @@ export class ProfileLeftSidebarUserInfoComponent {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private overlay: Overlay,
-    private router: Router
-  ) {}
+    private router: Router,
+    private userApiService: UserApiService
+  ) {
+    this.followed = this.user ? this.user.isAlreadyFollowed : false;
+  }
+  protected followed: boolean = false;
+  private followUser: FollowUser = new FollowUser();
 
   @Input() protected user: UserModel;
   @Input() protected isUserProfile;
@@ -99,5 +106,47 @@ export class ProfileLeftSidebarUserInfoComponent {
       source: 'profile-picture'
     };
     this.dialog.open(SharedImagePreviewComponent, dialogConfig);
+  }
+
+  protected onClickFollowButton (): void {
+    if (this.followed) {
+      return this.onUnFollowUser();
+    }
+
+    return this.onFollowUser();
+  }
+
+  private onFollowUser (): void {
+    this.followUser.recipientId = this.user.id;
+    this.userApiService.promisePostFollowUser(this.followUser)
+      .then((response: IResponse) => {
+        this.followed = true;
+      })
+      .catch(error => {
+        console.log('follow user', error);
+        this.followErrorNotification('Follow');
+      });
+  }
+
+  private onUnFollowUser (): void {
+    this.userApiService.promisePostUnfollowUser(this.user.id)
+      .then((response: IResponse) => {
+        this.followed = false;
+      })
+      .catch(error => {
+        console.log('follow user', error);
+        this.followErrorNotification('Unfollow');
+      });
+  }
+
+  private followErrorNotification (action): MessageNotificationService {
+    return MessageNotificationService.show({
+        notification: {
+          id: 'right-sidebar-follow-message',
+          message: action + ' Error',
+          instruction: 'Something went wrong! Please try again.'
+        }
+      },
+      NotificationTypes.Error);
   }
 }

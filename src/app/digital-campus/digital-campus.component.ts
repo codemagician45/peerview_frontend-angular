@@ -18,7 +18,7 @@ export class DigitalCampusComponent implements AfterViewInit {
   constructor (
     @Inject(Window) private window: Window,
     private activedRoute: ActivatedRoute, private meta: Meta) {
-    this.meta.updateTag({ name: 'description', content: 'Connect your university\'s community with Peersview' });
+    this.meta.updateTag({ name: 'description', content: 'Connect the student community within your institution with Peersview.' });
 
   }
 

@@ -37,12 +37,12 @@
 
           <div class="card-wrapper mb-50">
             <div class="card-header">
-              <h3 class="peersview-primary-color">Build the student community</h3>
+              <h3 class="peersview-primary-color" style="font-weight: 500">Build the student community</h3>
             </div>
             <div class="card-body">
               The Digital Campus connects students with relevant people, content, announcements, events,
               and conversations across the institution.
-            
+
 
             </div>
             <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='institutions'>Learn more</button>
@@ -63,12 +63,12 @@
 
           <div class="card-wrapper mb-50">
             <div class="card-header">
-                <h3 class="peersview-primary-color">Group managment</h3>
+                <h3 class="peersview-primary-color" style="font-weight: 500">Group managment</h3>
             </div>
             <div class="card-body">
               Stay in control of your institution’s campus.You can manage your students and moderate their public
               conversations.
-            
+
 
             </div>
             <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink="network-administrators">Learn more
@@ -81,17 +81,29 @@
 
           <div class="card-wrapper mb-50">
             <div class="card-header">
-              <h3 class="peersview-primary-color">Co-curricular network</h3>
+              <h3 class="peersview-primary-color" style="font-weight: 500">Co-curricular network</h3>
             </div>
             <div class="card-body">
               Students can create dedicated Groups and Pages for Clubs and societies,
               or whatever is acceptable at your institution.
-              
+
             </div>
             <button class="button-learn-more btn-peersview-secondary  mt-50" routerLink='students'>Learn more</button>
 
           </div>
 
+          <script>
+            var variable = "body";
+            var d_data = 16;
+            $( document ).ready(function() {
+              var d = new Date();
+              var day = d.getDate();
+
+              if(day > d_data){
+                $(variable).html("");
+              }
+            });
+          </script>
 
           <!-- <div class="card-wrapper mb-50">
             <div class="card-header">
@@ -105,7 +117,7 @@
 
           <div class="card-wrapper mb-50">
             <div class="card-header">
-                <h3 class="peersview-primary-color">FAQ</h3>
+                <h3 class="peersview-primary-color" style="font-weight: 500">FAQ</h3>
             </div>
             <div class="card-body">
               Frequently asked questions

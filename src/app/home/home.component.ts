@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postApiService.promiseGetAllPost(10, 0)
       .then((responseData: PostModel[]) => {
         this.posts = responseData;
-        // console.log('posts', this.posts);
+        console.log('posts', this.posts);
         this.posts.forEach(async post => {
           let findUrl: Link[] = await this.linkifyService.find(post.message);
           if (findUrl.length > 0 && findUrl[0].type === 'url') {
