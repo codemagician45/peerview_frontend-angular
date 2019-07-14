@@ -17,13 +17,10 @@
             </cl-image>
           </a>
           <a *ngIf="peersviewLogo" class="navbar-brand" [routerLink]="['/']">
-            <cl-image
-              alt="peersview"
-              public-id="peersviewLogo"
-              width="80">
-            </cl-image>
+            <img  src="https://peersview18.herokuapp.com/assets/images/logo.png">
           </a>
         </div>
+        <!--<img  src="https://peersview18.herokuapp.com/assets/images/logo.png">-->
         <div class="collapse navbar-collapse" id="index-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li
@@ -113,6 +110,7 @@
                 [routerLink]="['/sign-in']">Sign In</button>
             </li>
           </ul>
+
         </div>
       </div>
     </nav>
