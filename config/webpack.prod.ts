@@ -41,7 +41,7 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'PEERSVIEW_API': JSON.stringify('http://api.peersview.com/')
+        'PEERSVIEW_API': JSON.stringify('https://api.peersview.com/api/v1/')
       }
     }),
     new webpack.LoaderOptionsPlugin({
