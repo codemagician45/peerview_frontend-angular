@@ -1,5 +1,5 @@
 export const PRODUCTION = {
-  api: 'http://api.peersview.com/',
+  api: 'https://api.peersview.com/api/v1/',
   socialProviders: {
     'google': {
       'clientId': '728624358526-dvsj7v3t4l7i6s9hbulrl7plintkt7ip.apps.googleusercontent.com'
