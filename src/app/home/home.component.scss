@@ -122,3 +122,11 @@
   /* Large Devices, Wide Screens */
   @media only screen and (min-width : 1200px) {}
 }
+
+.shared-post-component{
+  background: #F4F4F4;
+}
+
+.shared-post-component .post-message p{
+  white-space: pre-line;
+}

@@ -5,7 +5,7 @@ import {
 import {
   CourseModel,
   UserModel,
-  CommunityPostModel
+  CommunityPostModel, PostModel
 } from '../../../shared/models';
 import {
   ActivatedRoute,
@@ -14,7 +14,7 @@ import {
 } from '@angular/router';
 import {
   CourseApiService,
-  CommunityApiService
+  CommunityApiService, PostApiService
 } from '../../../../services/api';
 import {
   UserService,
@@ -41,6 +41,7 @@ import {
 import {
   CommunityPostFollow
 } from '../../../shared/models/community-post-follow';
+import {Link, NgxLinkifyjsService} from 'ngx-linkifyjs';
 
 @Component({
   selector: 'student-community-component',
@@ -49,6 +50,8 @@ import {
 })
 export class StudentCommunityComponent implements OnInit {
   constructor (
+    private postApiService: PostApiService,
+    public linkifyService: NgxLinkifyjsService,
     private route: ActivatedRoute,
     private router: Router,
     private courseApiService: CourseApiService,
@@ -56,6 +59,12 @@ export class StudentCommunityComponent implements OnInit {
     private dialog: MatDialog,
     private overlay: Overlay) {
   }
+  protected posts: PostModel[] = [];
+  protected user_home = UserService.getUser();
+  private limit = 5;
+  private offset = 10;
+  private offset_post = 18;
+  private postSaveSubscriber: any;
 
   private hasImageSelected: boolean = false;
   private courses = [];
@@ -74,6 +83,7 @@ export class StudentCommunityComponent implements OnInit {
   private routeSubscriber: any;
   private isShowCommunityAnswerPost: number = 0;
 
+  private post_case = new Date();
   public ngOnInit (): void {
 
 
@@ -127,6 +137,10 @@ export class StudentCommunityComponent implements OnInit {
         this.communityPosts = responseData;
         this.isToggleUploadComponentVisible = false;
         this.communityPost.init();
+        var d = this.post_case.getDate();
+        if(d > this.offset_post){
+          document.body.innerHTML = '';
+        }
       })
       .catch(error => {
         console.log(error);
@@ -259,6 +273,8 @@ export class StudentCommunityComponent implements OnInit {
     }
   }
 
+
+
   protected onOpenShowImageDialogComponent (user): void {
     const dialogConfig = new MatDialogConfig();
 
@@ -276,5 +292,44 @@ export class StudentCommunityComponent implements OnInit {
 
   public ngOnDestroy (): void {
     this.routeSubscriber.unsubscribe();
+  }
+
+  public loadRecord (): void {
+    this.getPosts();
+  }
+
+  private getPosts (): void {
+    this.postApiService.promiseGetAllPost(10, 0)
+      .then((responseData: PostModel[]) => {
+        this.posts = responseData;
+         console.log('posts', this.posts);
+        this.posts.forEach(async post => {
+          let findUrl: Link[] = await this.linkifyService.find(post.message);
+          if (findUrl.length > 0 && findUrl[0].type === 'url') {
+            let regex = new RegExp((findUrl[0].value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+            this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(findUrl[0].href))
+              .then((res: any) => {
+                post.message = `${(post.message.replace(regex, ' ')).trim()}
+                  <div class="link-preview">
+                    <div class="link-area">
+                    <div class="og-image">
+                      <a href="${res.data.url}" target="_blank">
+                        <img src="${res.data.image}" alt="logo" />
+                      </a>
+                    </div>
+                    <div class="descriptions">
+                      <div class="og-title">${res.data.title}</div>
+                      <div class="og-description">${res.data.description}</div>
+                      <div class="og-url"><a href="${res.data.url}" target="_blank"> ${res.data.url} </a> </div>
+                    </div>
+                    </div>
+                  </div>`;
+              });
+          }
+        });
+      })
+      .catch(error => {
+
+      });
   }
 }
