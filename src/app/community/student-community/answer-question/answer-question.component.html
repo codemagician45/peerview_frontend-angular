@@ -82,7 +82,7 @@
     <div
       class="row m-peersview-0"
       *ngFor="let reply of communityPost.reply">
-      <div class="answers-list-item" *ngIf="!reply.quoteReplyId && !reply.tagUserId">
+      <div class="answers-list-item" *ngIf="!reply.quoteReplyId && !reply.tagUserId && communityPost.reply.length != 0">
 				<span class="text-center">
 					<cl-image
             public-id="{{reply.user.socialImage ? (reply.user.profilePicture === 'avatar' ? reply.user.socialImage: reply.user.profilePicture): reply.user.profilePicture}}"
@@ -114,7 +114,7 @@
           <div class="col-xs-6 p-peersview-0 text-center">
             <button
               class="btn-peersivew-transparent like"
-              [ngClass]="reply.replyLike[0] &&  reply.replyLike[0].replyCount > 0 ? 'liked' : 'not-yet-liked'"
+              [ngClass]="reply.replyLike && reply.replyLike[0] &&  reply.replyLike[0].replyCount > 0 ? 'liked' : 'not-yet-liked'"
               (click)="onClickReplyLike(reply)">
               <i class="material-icons">thumb_up</i>
             </button>
