@@ -161,9 +161,9 @@
                 </div>
 
                 <div>
-                  <span>{{item.user.firstName}} {{item.user.lastName }}</span> 
+                  <span ><b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b></span> 
                   <span>{{item.user.institutionName}}</span>
-                  <span><b>{{item.user.name | titlecase}}</b></span>
+                  
                   <span>{{item.updatedAt | date :'short'}}</span>
                 </div>
                 <div>

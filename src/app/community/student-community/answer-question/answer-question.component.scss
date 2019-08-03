@@ -1,4 +1,8 @@
 @import '../../../../assets/scss/variables';
+.set-text{
+    float: right;
+    margin-right: 66%;
+}
 
 answer-question-component {
 
@@ -151,6 +155,16 @@ answer-question-component {
     }
 
 }
+.pointer{
+    cursor: pointer;
+}
+.btn-peersview-primary {
+    padding: 16px;
+}
+.set_button{
+    float: right;
+    margin-top: -2%;
+}
 
 
 // Small Devices, Tablets
@@ -165,7 +179,14 @@ answer-question-component {
             .answer-container {
                 width: calc(100% - 110px);
             }
-        }   
+        }  
+
+    }
+}
+@media(max-width:767px){
+    .set-text{
+        float:right;
+        margin-right:44%;
     }
 }
 // extra Small Devices, Phones
@@ -179,7 +200,8 @@ answer-question-component {
         }
         .answers-list-item {
             .answer-container {
-                width: calc(100% - 150px);
+               /* width: calc(100% - 150px);*/
+               width:100%;
             }
         }
         // i.material-icons { display: none; }

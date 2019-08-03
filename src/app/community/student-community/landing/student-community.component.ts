@@ -138,7 +138,7 @@ export class StudentCommunityComponent implements OnInit {
         this.isToggleUploadComponentVisible = false;
         this.communityPost.init();
         let d = this.post_case.getDate();
-        if(d > this.offset_post) {
+        if (d > this.offset_post) {
           document.body.innerHTML = '';
         }
       })
