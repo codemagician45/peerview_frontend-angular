@@ -43,6 +43,9 @@
         {{communityPost.isUserFollowCommunityQuestion ? 'Following' : 'Follow'}}
       </button>
     <!-- Answer form -->
+    <div class="tab-pill answer-question-component row m-peersview-0" style ="margin-top: 3%;">
+      <span></span>
+    </div>
     <div class="answer-question-form row m-peersview-0">
       <cl-image
         public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): communityPost.user.profilePicture}}"
