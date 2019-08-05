@@ -17,10 +17,10 @@ export class ContactUsComponent implements OnDestroy {
   constructor (
     private zendeskWebwidgetService: ngxZendeskWebwidgetService, private meta: Meta
   ) {
-    zendeskWebwidgetService.identify({
-      name: 'Info@peersview.com',
-      email: 'Peersview-40'
-    });
+    // zendeskWebwidgetService.identify({
+    //   name: 'Peersview Support',
+    //   email: 'support@peersviewhelpyouhelp.zendesk.com'
+    // });
     this.zendeskWebwidgetService.show();
     this.meta.updateTag({name: 'description', content: 'Have any questions? Let us know how we can help!'});
 
