@@ -51,7 +51,8 @@ export class CommunityApiService extends ApiService {
   /**Get question details */
   public promiseGetQuestionDetail (courseId: Number, questionId: Number): Promise<CommunityPostModel> {
     return this.promiseGetResponseData(`course/${courseId}/${questionId}`)
-      .then((response: IResponse) => {
+      .then((response: any ) => {
+        response.data.isUserFollowCommunityQuestion = response.isUserFollowCommunityQuestion;
         return CommunityFactory.createCommunityQuestionDetails(response.data);
       });
   }

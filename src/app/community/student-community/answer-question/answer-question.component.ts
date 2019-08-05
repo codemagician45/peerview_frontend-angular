@@ -33,6 +33,9 @@ import {
 import {
   Location
 } from '@angular/common';
+import {
+  CommunityPostFollow
+} from '../../../shared/models/community-post-follow';
 
 @Component({
   selector: 'answer-question-component',
@@ -56,6 +59,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   protected user = UserService.getUser();
   protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
   protected isUserAnsweringQuestion: Boolean = false;
+  protected communityPosts: CommunityPostModel[] = [];
 
   public ngOnInit (): void {
     this.route.params.subscribe ((params) => {
@@ -151,8 +155,52 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     });
   }
 
+  protected onClickUserProfile (user): Promise<boolean> {
+    let userId = CryptoUtilities.cipher(user.id);
+    let currentLoginUser = UserService.getUser();
+
+    if (user.id === currentLoginUser.id) {
+      return this.router.navigate([`/profile`]);
+    }
+
+    return this.router.navigate([`/profile/${userId}`]);
+  }
+
   protected goToBack (): void {
     this.location.back();
+  }
+
+  protected onFollowQuestion (post): void {
+    // follow here the post
+    const follow = new CommunityPostFollow();
+    follow.postId = post.id;
+    follow.courseId = this.communityAnswer.courseId;
+    if (post.isUserFollowCommunityQuestion) {
+      this.communityApiService.promiseUnFollowCommunityPost(this.communityAnswer.courseId, post.id)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          // if (index > -1) {
+            this.communityPost.isUserFollowCommunityQuestion = false;
+            console.log('sdd', this.communityPost);
+          // }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    } else {
+      this.communityApiService.promiseFollowCommunityPost(this.communityAnswer.courseId, post.id, follow)
+        .then(() => {
+          let index = this.communityPosts.findIndex((filter: any) => {
+            return filter.id === post.id;
+          });
+          // f (index > -1) {i
+            this.communityPost.isUserFollowCommunityQuestion = true;
+          // }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    }
   }
 }
 
