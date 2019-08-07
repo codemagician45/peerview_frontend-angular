@@ -158,12 +158,20 @@ answer-question-component {
 .pointer{
     cursor: pointer;
 }
-.btn-peersview-primary {
-    padding: 16px;
-}
+// .btn-peersview-primary {
+//     padding: 16px;
+// }
 .set_button{
     float: right;
     margin-top: -2%;
+}
+.attach{
+    position: absolute;
+    /* top: 0px; */
+    margin-top: 4%;
+    right: 21px;
+    color: #cccccc;
+    cursor: pointer;
 }
 
 
