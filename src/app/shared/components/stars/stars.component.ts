@@ -47,8 +47,7 @@ export class SharedStarsComponent implements OnInit {
    */
   private starsToBeAdded (): void {
     let roundOf = Math.round(this.ratingCount);
-
-    Array.from({length: roundOf}, () => {
+      Array.from({length: roundOf}, () => {
       this.stars.push('star');
     });
 

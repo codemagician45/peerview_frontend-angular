@@ -27,7 +27,7 @@ export class CommunityAnswerQuestionModel extends Model {
   public courseId: number;
   public quoteReplyId?: number;
   public tagUserId?: number;
-
+  public attachments?: any;
   public init (): void {
     this.setBlankDataStructure ({
       id: undefined,

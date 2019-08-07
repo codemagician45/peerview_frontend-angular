@@ -36,6 +36,9 @@ import {
 import {
   CommunityPostFollow
 } from '../../../shared/models/community-post-follow';
+import {
+  PostEmitter
+} from '../../../shared/emitter';
 
 @Component({
   selector: 'answer-question-component',
@@ -60,6 +63,8 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
   protected isUserAnsweringQuestion: Boolean = false;
   protected communityPosts: CommunityPostModel[] = [];
+  protected isToggleUploadComponentVisible: boolean = false;
+  private hasImageSelected: boolean = false;
 
   public ngOnInit (): void {
     this.route.params.subscribe ((params) => {
@@ -76,6 +81,23 @@ export class AnswerQuestionCommunityComponent implements OnInit {
       });
   }
 
+  protected onReply (formIsValid): void {
+    if (this.hasImageSelected) {
+      PostEmitter.uploadImages().emit();
+    } else {
+      this.onSubmit(formIsValid);
+    }
+  }
+
+  protected onImageIsSelected (value): void {
+    this.hasImageSelected = value;
+  }
+
+  protected onUploadComplete (attachments): void {
+    this.communityAnswer.attachments = attachments;
+    this.onSubmit(true);
+  }
+
   protected onSubmit (formIsValid): void {
     if (formIsValid) {
       this.isUserAnsweringQuestion = true;
@@ -85,6 +107,8 @@ export class AnswerQuestionCommunityComponent implements OnInit {
           this.isUserAnsweringQuestion = false;
           this.communityAnswer.comment = '';
           this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
+          this.isToggleUploadComponentVisible = false;
+
         });
     }
   }
