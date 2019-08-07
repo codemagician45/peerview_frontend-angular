@@ -18,6 +18,7 @@ export class SharedNavbarUnauthComponent {
   }
 
   @Input() protected logo: boolean;
+  @Input() protected isLogoBlue: boolean = false;
   @Input() protected peersviewLogo: boolean;
   @Input() protected aboutUs: boolean;
   @Input() protected digitalCampus: boolean;

@@ -13,12 +13,17 @@
             <cl-image
               alt="peersview"
               public-id="logo"
-              width="80">
+              width="80" *ngIf="isLogoBlue == false">
+            </cl-image>
+            <cl-image alt="peersview" public-id="peersviewLogo" width="80" *ngIf="isLogoBlue == true">
             </cl-image>
           </a>
-          <a class="navbar-brand" [routerLink]="['/']">
+          <!-- <a class="navbar-brand" [routerLink]="['/']" *ngIf="isLogoBlue == false">
             <img  src="https://peersview18.herokuapp.com/assets/images/logo.png" style="width: 80px">
           </a>
+          <a class="navbar-brand" [routerLink]="['/']" *ngIf="isLogoBlue == true">
+            <img src="https://peersview18.herokuapp.com/assets/images/logo-blue.png" style="width: 80px">
+          </a> -->
         </div>
         <!--<img  src="https://peersview18.herokuapp.com/assets/images/logo.png">-->
         <div class="collapse navbar-collapse" id="index-collapse">
