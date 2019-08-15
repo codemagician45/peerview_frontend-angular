@@ -103,7 +103,7 @@
 				<span class="text-center pointer">
 					<cl-image
             public-id="{{reply.user.socialImage ? (reply.user.profilePicture === 'avatar' ? reply.user.socialImage: reply.user.profilePicture): reply.user.profilePicture}}"
-            *ngIf="reply.user?.profilePicture"
+            *ngIf="reply && reply.user?.profilePicture"
             class="user-img"
             (click)="onClickUserProfile(reply.user);"
             [ngStyle]="{'border-radius': '50%'}">
@@ -119,7 +119,7 @@
           <span class="answer-date">{{reply.updatedAt | date :'short'}}</span>
         </div>
         <div class="answer-container" style = "margin-top: 3%;margin-left: 4%;">
-            <span *ngIf="reply.attachment.length > 0">
+            <span *ngIf="reply && reply.attachment && reply.attachment.length > 0">
                 <cl-image style="width: 40%"
                   public-id="{{reply.attachment[0].cloudinaryPublicId}}"
                 >
