@@ -21,15 +21,20 @@
     </div>
     <ul class="mobile-options">
       <li
+        [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
+       >
+        <a (click)="onClickSelectMobileLink('accomplishments')">Accomplishments</a>
+      </li>
+      <li
         [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
         >
         <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
       </li>
-      <li
+<!--       <li
         [ngClass]="{'active' : mobileLinkSelected === 'media'}"
         >
         <a (click)="onClickSelectMobileLink('media')">Media</a>
-      </li>
+      </li> -->
       <li
         [ngClass]="{'active' : mobileLinkSelected === 'following'}"
         >
@@ -39,11 +44,6 @@
         [ngClass]="{'active' : mobileLinkSelected === 'followers'}"
         >
         <a (click)="onClickSelectMobileLink('followers')">Followers ({{followers.length}})</a>
-      </li>
-      <li
-        [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
-       >
-        <a (click)="onClickSelectMobileLink('accomplishments')">Accomplishments</a>
       </li>
     </ul>
     <div class="mobile-layout-content">
