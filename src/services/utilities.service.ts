@@ -82,6 +82,30 @@ export class UtilitiesService {
 
     return _.orderBy(languages, ['value'], ['asc']);
   }
+
+  public getBirthDate(date) : string {
+    var mm, dd, yyyy;
+    if(typeof date == 'string') {
+      var datestring = date.split('T')[0];
+
+      var dateitems = datestring.split('-');
+      mm = dateitems[1];
+      dd = dateitems[2];
+      yyyy = dateitems[0];
+    } else {
+      mm = date.getMonth() + 1;
+      mm = (mm>9 ? '' : '0') + mm;
+      dd = date.getDate();
+      dd = (dd>9 ? '' : '0') + dd;
+      yyyy = date.getFullYear();
+    }
+
+    return [
+      mm,
+      dd,
+      yyyy
+     ].join('/');
+  };
 }
 
 
