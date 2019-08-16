@@ -1,5 +1,7 @@
 import {
-  Component
+  Component,
+  OnInit,
+  Input
 } from '@angular/core';
 import {
   UserApiService
@@ -8,6 +10,7 @@ import {
   UserService
 } from '../../../services/user.service';
 import {
+  PostModel,
   UserModel,
   IResponse,
   FollowUser
@@ -73,3 +76,23 @@ export class ProfileRightSidebarComponent {
     NotificationTypes.Error);
   }
 }
+// export class ProfileContentComponent implements OnInit {
+//   constructor (private userApiService: UserApiService) {}
+
+//   @Input() protected user: UserModel;
+//   protected posts: PostModel[] = [];
+
+//   public ngOnInit (): void {
+//     this.getUserTimeline();
+//   }
+
+//   protected onShowPostDetailDialogComponent (): void {}
+
+//   private getUserTimeline (): void {
+//     this.userApiService.promiseGetTimeline(this.user.id)
+//       .then((posts: PostModel[]) => {
+//         this.posts = posts;
+//       })
+//       .catch(error => {});
+//   }
+// }

@@ -1,5 +1,100 @@
 .profile-content-component {
+
+  height: 100%;
+  background: #fff;
+  .about-me {
+    display: flex;
+    align-items: center;
+    // min-height: 60px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .profile-top-section {
+    border: 1px solid #dbdbdb;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  .profile-bottom-section {
+    margin-top: 30px;
+    border: 1px solid #dbdbdb;
+    background-color: #ffffff;
+
+    .accomplishments, .collections, .interests, .media-pictures  {
+      min-height: 50px;
+      padding-top: 10px;
+      border-top: 0;
+      border-bottom: 1px solid #e5e5e5;
+      font-size: 14px;
+      // font-weight: 500;
+      // font-family: 'Conv_MavenPro-Bold';
+      // color: #333;
+    }    
+    .interests-data {
+      li {
+        margin: 18px;
+        border: 1px solid #631990;
+        border-radius: 20px;
+        padding: 3px;
+      }
+      .row {
+        margin: 0;
+      }
+    }
+    i {
+      color: #631990;
+    }
+
+    .accomplishments-data {
+      font-size: 14px;
+      font-family: 'unset';
+      color: #333333;
+    }
+    // .font-size {
+    //   font-size: 21px;
+    // }    
+  }
+  .company, .institution, .course, .birth-date, .about-me {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .user {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .follow-btn {
+    position: absolute;
+    right: 7px;
+  }
+  .edit-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  div:nth-child(2) {
+    word-wrap: break-word;
+    color: #6e6e6e;
+  }
+  .followed-btn {
+    background-color: #631990;
+    color: #fff;
+  }
+
   .timeline-text {
+    margin-top: 30px;
+    margin-bottom: 20px;
     background: transparent;
     color: #323c47;
     font-weight: bold;
