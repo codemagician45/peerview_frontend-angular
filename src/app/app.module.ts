@@ -102,6 +102,7 @@ import {
   RedirectToHomeComponent,
   RedirectToIndexComponent
 } from './shared/can-activate';
+import {SharedSetRatingsModalComponent} from './shared/components/set-ratings-modal/set-ratings.component';
 
 declare var tinymce: any;
 tinymce.init({});
@@ -193,7 +194,8 @@ tinymce.init({});
     ComunityMobileAskQuestionMobileComponent,
     ReportPostCommunityModalComponent,
     SharedCommunityPostReplyComponent,
-    SharedPostReplyCommentModalComponent
+    SharedPostReplyCommentModalComponent,
+    SharedSetRatingsModalComponent
   ],
   bootstrap: [AppComponent],
 })

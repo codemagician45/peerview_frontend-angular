@@ -125,6 +125,13 @@ export class PostApiService extends ApiService {
       });
   }
 
+  public promiseRemoveRate (postId): Promise<IResponse> {
+    return this.promiseRemoveData(`${postId}/rating`)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
+
 
   public promiseRemovePostLike (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}/like`)

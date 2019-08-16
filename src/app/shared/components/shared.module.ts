@@ -114,6 +114,7 @@ import {
 import {
   SharedReportPostReplyComponent
 } from './report-post-reply/report-post-reply.component';
+import {SharedSetRatingsModalComponent} from './set-ratings-modal/set-ratings.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -166,7 +167,8 @@ export function provideConfig (): any {
     SharedReportPostCommunityComponent,
     SharedCommunityPostReplyComponent,
     SharedPostReplyCommentComponent,
-    SharedReportPostReplyComponent
+    SharedReportPostReplyComponent,
+    SharedSetRatingsModalComponent
   ],
   exports: [
     CommonModule,

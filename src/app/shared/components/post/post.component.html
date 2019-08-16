@@ -2,6 +2,7 @@
   <h2 class="no-post-yet text-center" *ngIf="posts.length === 0">
     {{notPostMessage}}
   </h2>
+
   <div class="post" *ngFor="let post of posts">
     <div class="row">
       <report-post-component [post]="post" (onDeletePost)="onDeletePost($event)">

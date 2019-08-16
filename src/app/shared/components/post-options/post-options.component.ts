@@ -36,6 +36,7 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
+import {SharedSetRatingsModalComponent} from '../set-ratings-modal/set-ratings.component';
 
 @Component({
   selector: 'shared-post-options-component',
@@ -49,17 +50,18 @@ export class SharedPostOptionsComponent {
     private dialog: MatDialog,
     private overlay: Overlay,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   @Input() protected likes = 0;
   @Input() protected replies = 0;
   @Input() protected views = 0;
   @Input() protected share = 0;
   @Input() protected isShareable: boolean = false;
-  @Input() protected post: PostModel|CampusPostModel;
+  @Input() protected post: PostModel | CampusPostModel;
   @Input() protected ratingCount: number = 0;
   @Input() protected disableRepliesLink: boolean;
-  @Input() protected route: {name: string, campusId?: number, campusFreshersFeedId?: number};
+  @Input() protected route: { name: string, campusId?: number, campusFreshersFeedId?: number };
   @Input() protected user: UserModel;
   @Output() protected loadPost = new EventEmitter();
   @Input('reply-link') private replyLink = '';
@@ -112,7 +114,7 @@ export class SharedPostOptionsComponent {
     dialogConfig.id = 'SharePostModalComponent';
     this.dialog.open(SharedSharePostModalComponent, dialogConfig)
       .afterClosed()
-      .subscribe((post: PostModel|CampusPostModel) => {
+      .subscribe((post: PostModel | CampusPostModel) => {
         if (post) {
           PostEmitter.postShare().emit(post);
         }
@@ -132,6 +134,26 @@ export class SharedPostOptionsComponent {
   }
 
   protected onClickPostLike (isUserPostLike: boolean): void {
+
+    if (!isUserPostLike) {
+      const dialogRef = this.dialog.open(SharedSetRatingsModalComponent, {
+        width: '175px',
+        data: this.post
+      });
+
+      dialogRef.afterClosed().subscribe((numberOfStars: number) => {
+        if (numberOfStars) {
+          this.onStarClick(numberOfStars);
+          this.markAsLike_Unlike();
+        }
+      });
+    } else {
+      this.markAsLike_Unlike();
+      this.onStarClick(0);
+    }
+  }
+
+  protected markAsLike_Unlike (): void {
     let service: any;
     switch (this.route.name) {
       case 'home':
@@ -148,14 +170,16 @@ export class SharedPostOptionsComponent {
           this.post.isUserPostLike = 0;
           this.post.likeCount -= 1;
         })
-        .catch(error => {});
+        .catch(error => {
+        });
     } else {
       this[service].promiseCreatePostLike(this.post.id)
         .then((response: IResponse) => {
           this.post.isUserPostLike = 1;
           this.post.likeCount += 1;
         })
-        .catch(error => {});
+        .catch(error => {
+        });
     }
   }
 
@@ -175,16 +199,29 @@ export class SharedPostOptionsComponent {
     dialogConfig.data = {post: this.post, route: this.route, user: this.user};
     this.dialog.open(SharedPostDetailModalComponent, dialogConfig);
   }
+
   protected onStarClick (numberOfStars): void {
-    this.rate.rating = numberOfStars;
-    this.postApiService.promisePostRate(this.post.id, this.rate)
-      .then(response => {
-        this.rate.init();
-        this.loadPost.emit();
-      })
-      .catch(error => {
-        console.error('error', error);
-      });
+    if (numberOfStars === 0) {
+      this.postApiService.promiseRemoveRate(this.post.id)
+        .then(response => {
+          this.rate.init();
+          this.loadPost.emit();
+        })
+        .catch(error => {
+          console.error('error', error);
+        });
+    } else {
+      this.rate.rating = numberOfStars;
+      this.postApiService.promisePostRate(this.post.id, this.rate)
+        .then(response => {
+          this.rate.init();
+          this.loadPost.emit();
+        })
+        .catch(error => {
+          console.error('error', error);
+        });
+    }
+
   }
 
   protected onStarHover (numberOfStars): void {

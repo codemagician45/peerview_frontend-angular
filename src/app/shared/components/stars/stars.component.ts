@@ -64,23 +64,23 @@ export class SharedStarsComponent implements OnInit {
   }
 
   protected clickOnStarClick (numberOfStars): void {
-     this.onStarClick.emit(numberOfStars);
+     // this.onStarClick.emit(numberOfStars);
   }
 
   public mouseover (numberOfStars): void {
-    this.stars = [];
-
-    Array.from({length: numberOfStars}, () => {
-      this.stars.push('star');
-    });
-
-    let remainingStars = 5 - this.stars.length;
-
-    Array.from({length: remainingStars}, () => {
-      this.stars.push('star_border');
-    });
-
-    this.onStarHover.emit(numberOfStars);
+    // this.stars = [];
+    //
+    // Array.from({length: numberOfStars}, () => {
+    //   this.stars.push('star');
+    // });
+    //
+    // let remainingStars = 5 - this.stars.length;
+    //
+    // Array.from({length: remainingStars}, () => {
+    //   this.stars.push('star_border');
+    // });
+    //
+    // this.onStarHover.emit(numberOfStars);
   }
 
 }
