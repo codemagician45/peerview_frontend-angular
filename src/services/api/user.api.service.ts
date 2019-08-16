@@ -104,6 +104,27 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public sendVerifyEmailCode (data: any): Promise<any> {
+    return this.promisePostData('send-verify-code', data)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
+
+  public verifyChangedPrimaryEmail (data: any): Promise<any> {
+    return this.promisePostData('verify-changed-email', data)
+    .then((response: IResponse) => {
+      return response;
+    });
+  }
+
+  public promiseUpdateGeneralSetting (data: any): Promise<any> {
+    return this.promisePostData('general-setting', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
   public promiseUpdateOnboardingDetails (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData('onboarding/details', user)
       .then((responseData: IResponse) => {

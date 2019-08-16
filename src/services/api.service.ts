@@ -97,6 +97,23 @@ export abstract class ApiService {
     });
   }
 
+
+  protected promisePostData (url: string, dataModel?: any): Promise<IResponse> {
+    return new Promise((resolve, reject) => {
+      url = url ? `/${url}` : '';
+      url = `${this.baseURI}${url}`;
+
+      this.http.post(url, dataModel ? dataModel : {})
+        .subscribe((response: any) => {
+          resolve(response);
+          this.resetAbstractURIs();
+        }, (error) => {
+          reject(error);
+          this.resetAbstractURIs();
+        });
+    });
+  }
+
   protected promisePutModelData (url: string, dataModel?: Model): Promise<IResponse> {
     return new Promise((resolve, reject) => {
       url = url ? `/${url}` : '';

@@ -8,11 +8,11 @@
     <li>
       <label class="setting-label">Name:</label>
       <span class="setting-value" 
-        *ngIf="name.status === 'Edit'">John Smith</span>
+        *ngIf="name.status === 'Edit'">{{name.firstName + ' ' + name.lastName}}</span>
       <span class="edit-field" 
         *ngIf="name.status === 'Save'">
-        <input type="text" value="John" class="input-setting">
-        <input type="text" value="Smith" class="input-setting">
+        <input type="text" [(ngModel)]="name.firstName" class="input-setting">
+        <input type="text" [(ngModel)]="name.lastName" class="input-setting">
       </span>
       <a class="setting-edit mouse-pointer" 
         *ngIf="name.status === 'Edit'" 
@@ -21,12 +21,21 @@
     <li>
       <label class="setting-label">Primary Email:</label>
       <span class="setting-value"
-      *ngIf="email.status === 'Edit'">john@gmail.com</span>
-      <span class="edit-field"
-        *ngIf="email.status === 'Save'"><input type="text" value="john@gmail.com" class="input-setting"></span>
+      *ngIf="email.status === 'Edit'">{{email.value}}</span>
+      <span class="edit-field" *ngIf="email.status === 'Save'">
+        <input type="text" [(ngModel)]="email.value" class="input-setting">
+        <button (click)="sendEmailVerifyCode(email.value)" [disabled]="userInfo.email == email.value">send code</button>
+      </span>
+      
       <a class="setting-edit mouse-pointer"
         *ngIf="email.status === 'Edit'" 
-        (click)="onEditOrSave(email)">Edit</a>
+        (click)="onEditOrSave(email)">
+        Edit
+      </a>
+      <div *ngIf="isSentVerifyCode" class="verify-code-wrapper">
+        <input type="text" [(ngModel)]="verifyCode" class="input-setting"/>
+        <button (click)="verifyEmailAddress(verifyCode)">Verify</button>
+      </div>
     </li>
     <li>
       <label class="setting-label">Language:</label>
@@ -43,7 +52,7 @@
     </li>
     <li class="date-of-birth-container">
       <label class="setting-label">Date of Birth:</label>
-      <span class="setting-value" *ngIf="dateOfBirth.status === 'Edit'" >02/07/1985</span>
+      <span class="setting-value" *ngIf="dateOfBirth.status === 'Edit'" >{{birthString}}</span>
       <span class="edit-field">
         <!-- <input type="text" value="john@gmail.com" class="input-setting" *ngIf="dateOfBirth.status === 'Save'"> -->
         <mat-form-field *ngIf="dateOfBirth.status === 'Save'">
@@ -51,8 +60,9 @@
               matInput
               placeholder="Date of birth"
               [matDatepicker]="picker"
-              name="dateOfBirth"
               name="birthDate"
+              [value]="dateOfBirth.value"
+              [(ngModel)]="dateOfBirth.value"
               required
               >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -67,9 +77,9 @@
   <li class="setting-action m-peersview-yt-2 text-center" id="general-action" style="display: list-item;">
     <label class="setting-lbl">&nbsp;</label>
     <span class="setting-value">
-      <input type="button" ng-click="vm.cancelEdit()" value="Save Changes" class="btn btn-sm btn-peersview-primary">
+      <button (click)="saveGeneralInfo()" class="btn btn-sm btn-peersview-primary" [disabled]="!checkUpdatable()">Save Changes</button>
       &nbsp;&nbsp;
-      <input type="button" ng-click="vm.cancelEdit()" value="Cancel" class="btn btn-white btn-sm">
+      <input type="button" (click)="cancelEdit()" value="Cancel" class="btn btn-white btn-sm">
       </span>
   </li>
   <!-- <div class="row p-peersview-y-1">
