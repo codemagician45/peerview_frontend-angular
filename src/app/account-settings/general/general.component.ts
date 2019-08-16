@@ -29,7 +29,7 @@ export class AccountSettingsGeneralComponent {
   private birthString: string = 'mm/dd/yyyy';
   private languagesData = this.utilitiesService.getlanguages();
   private userInfo: any;
-  private isSentVerifyCode : boolean = false;
+  private isSentVerifyCode: boolean = false;
   private verifyPendingEmailAddress: string;
 
   public ngOnInit (): void {
@@ -42,7 +42,7 @@ export class AccountSettingsGeneralComponent {
       this.birthString = this.utilitiesService.getBirthDate(userInfo.birthDate);
       this.languages.value = userInfo.language ? userInfo.language : 'English (UK)';
       this.userInfo = userInfo;
-    })
+    });
   }
 
   protected onEditOrSave (item): void {
@@ -71,10 +71,10 @@ export class AccountSettingsGeneralComponent {
     this.languages.value = value;
   }
 
-  private sendEmailVerifyCode(email): void {
+  private sendEmailVerifyCode (email): void {
     this.verifyPendingEmailAddress = email;
-    if(this.userInfo.email != email) {
-      var data = {
+    if (this.userInfo.email !== email) {
+      let data = {
         email: email
       };
 
@@ -90,38 +90,38 @@ export class AccountSettingsGeneralComponent {
           }
         },
         NotificationTypes.Error);
-      })
+      });
     }
   }
 
-  private verifyEmailAddress(code): void {
+  private verifyEmailAddress (code): void {
     let data = {
-      email: this.verifyPendingEmailAddress, 
+      email: this.verifyPendingEmailAddress,
       code: code
-    }
+    };
 
     this.userApiService.verifyChangedPrimaryEmail(data).then((res: any) => {
-      this.email.status = "Edit";
+      this.email.status = 'Edit';
       this.isSentVerifyCode = false;
       this.userInfo.email = this.verifyPendingEmailAddress;
-    })
+    });
   }
 
-  private checkUpdatable() {
-    if(
+  private checkUpdatable (): boolean {
+    if (
       this.userInfo &&
-      this.userInfo.firstName == this.name.firstName && 
-      this.userInfo.lastName == this.name.lastName && 
-      this.userInfo.language == this.languages.value && 
-      this.userInfo.birthDate == this.dateOfBirth.value) {
+      this.userInfo.firstName === this.name.firstName &&
+      this.userInfo.lastName === this.name.lastName &&
+      this.userInfo.language === this.languages.value &&
+      this.userInfo.birthDate === this.dateOfBirth.value) {
         return false;
     } else {
       return true;
     }
   }
 
-  private saveGeneralInfo(): void {
-    if(this.checkUpdatable()) {
+  private saveGeneralInfo (): void {
+    if (this.checkUpdatable()) {
       let data = {
         firstName: this.name.firstName,
         lastName: this.name.lastName,
@@ -134,11 +134,11 @@ export class AccountSettingsGeneralComponent {
         this.userInfo.lastName = this.name.lastName;
         this.userInfo.language = this.languages.value;
         this.userInfo.birthDate = this.dateOfBirth.value;
-        this.name.status = "Edit";
-        this.languages.status = "Edit";
-        this.dateOfBirth.status = "Edit";
+        this.name.status = 'Edit';
+        this.languages.status = 'Edit';
+        this.dateOfBirth.status = 'Edit';
         this.birthString = this.utilitiesService.getBirthDate(this.dateOfBirth.value);
-      })
+      });
     }
   }
 
