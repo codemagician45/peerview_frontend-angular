@@ -119,15 +119,15 @@ export class ProfileAddSkillsDialogComponent implements OnInit {
     }
   }
 
-  private closeList() {
+  private closeList (): void {
     this.skillText = '';
   }
 
-  private addSkill(skill: any) {
+  private addSkill (skill: any): void {
     this.selectedSkills.push(skill);
   }
 
-  private removeSkill(skill: any) {
+  private removeSkill (skill: any): void {
     let index = this.selectedSkills.indexOf(skill);
     this.selectedSkills.splice(index, 1);
   }

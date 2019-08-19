@@ -32,7 +32,7 @@ export class ProfileContentComponent implements OnInit {
 
   @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
-  
+
   public ngOnInit (): void {
     this.getUserTimeline();
   }

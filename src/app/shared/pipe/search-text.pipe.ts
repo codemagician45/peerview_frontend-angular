@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     pure: false
 })
 export class SearchTextPipe implements PipeTransform {
-    transform(items: any[], searchText: string, selectedSkills: any[]): any[] {
+    public transform (items: any[], searchText: string, selectedSkills: any[]): any[] {
 
         if (!items) {
             return [];
@@ -21,14 +21,15 @@ export class SearchTextPipe implements PipeTransform {
             let check = true;
 
             selectedSkills.map((skill, index1) => {
-                if (item.id == skill.id) {
+                if (item.id === skill.id) {
                     check = false;
                 }
-            })
+            });
 
-            if(check)
+            if (check) {
                 filterItems.push(item);
-        })
+            }
+        });
 
         return filterItems.filter(it => {
             return it.name.toLocaleLowerCase().includes(searchText);

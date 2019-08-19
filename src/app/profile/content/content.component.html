@@ -1,64 +1,5 @@
 <div class="profile-content-component">
-	<div class="profile-top-section">
-		<div class="about-me text-center">
-			<div class="col-xs-2">
-				<a data-toggle="tooltip" title="Bio">
-					<i class="material-icons peersview-primary-color">info</i>
-				</a>
-			</div>
-			<div class="col-xs-8">
-				<span *ngIf="!isUserProfile">
-					{{user?.aboutMe || 'Tell us about yourself'}}
-				</span>
-				<span *ngIf="isUserProfile">
-					{{user?.aboutMe || 'No Details to Show'}}
-				</span>
-			</div>
-			<div class="col-xs-2" (click)="onOpenAboutMeDialog()" *ngIf="isUserProfile">
-				<i class="material-icons peersview-primary-color">create</i>
-			</div>
-		</div>
-		<div class="company text-center">
-			<div class="col-xs-2">
-				<a data-toggle="tooltip" title="Institution">
-					<i class="material-icons peersview-primary-color">person</i>
-				</a>
-			</div>
-			<div class="col-xs-10">
-				{{user?.userType?.name}} | {{user?.company || user?.schoolName}}
-			</div>
-		</div>
-		<div class="institution text-center">
-			<div class="col-xs-2">
-				<a data-toggle="tooltip" title="Status & Location">
-					<i class="material-icons peersview-primary-color">account_balance</i>
-				</a>
-			</div>
-			<div class="col-xs-10">
-				{{user?.city}}
-			</div>
-		</div>
-		<div class="course text-center">
-			<div class="col-xs-2">
-				<a data-toggle="tooltip" title="Court/Expertise">
-					<i class="material-icons peersview-primary-color">school</i>
-				</a>
-			</div>
-			<div class="col-xs-10">
-				<span *ngFor="let item of user?.userCourses">
-					{{item.course.name}}
-				</span>
-			</div>
-		</div>
-		<div class="birth-date text-center">
-			<div class="col-xs-2">
-				<i class="material-icons peersview-primary-color">today</i>
-			</div>
-			<div class="col-xs-10">
-				{{user?.birthDate | date :'longDate'}}
-			</div>
-		</div>
-	</div>
+	
 	<div class="accomplishments hidden-xs">
 		<span>
 			<strong>Accomplishments</strong>
@@ -70,31 +11,20 @@
 		</div>
 	</div>
 	<div class="profile-bottom-section">
-		<div class="media-pictures text-center hidden-xs" (click)="openAddExperienceDialog()">
+		<div class="media-pictures text-center hidden-xs">
 			<span>
-				Add your work experience
+				Your work experience
 			</span>
+			<i class="material-icons color-purple profile-add-icon" (click)="openAddExperienceDialog()">add</i>
 		</div>
 
-		<div class="collections text-center hidden-xs" (click)="openAddSkillsDialog()">
+		<div class="collections text-center hidden-xs">
 			<span>
-				Add your skills
+				Your skills
 			</span>
+			<i class="material-icons color-purple profile-add-icon" (click)="openAddSkillsDialog()">add</i>
 		</div>
-		<div class="interests text-center hidden-xs">
-			<div class="row">
-				<span>
-					Interests
-				</span>
-			</div>
-			<div class="row">
-				<ul class="interests-data">
-					<li *ngFor="let interest of user?.userInterests">
-						<a>{{interest.interest.name}}</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+		
 	</div>
 	<div class="timeline-text hidden-xs"><span>Activities</span></div>
 	<shared-post-component [posts]="posts" [user]="user"></shared-post-component>

@@ -8,6 +8,9 @@ import {
 import {
   UserService
 } from '../../../services';
+import { Overlay } from '@angular/cdk/overlay';
+import { MatDialog } from '@angular/material';
+import { ProfileLeftSidebarUserInfoAboutMeDialogComponent } from './user-info/modal/about-me-modal.component';
 
 @Component({
   selector: 'profile-left-sidebar-component',
@@ -15,7 +18,10 @@ import {
   styleUrls: ['./left-sidebar.component.scss']
 })
 export class ProfileLeftSidebarComponent {
-  constructor () {}
+  constructor (
+    private dialog: MatDialog,
+    private overlay: Overlay
+  ) {}
 
   @Input() protected user: UserModel;
   protected isUserProfile: boolean = true;
@@ -29,4 +35,17 @@ export class ProfileLeftSidebarComponent {
       this.isUserProfile = true;
     }
   }
+
+  protected onOpenAboutMeDialog (): void {
+    this.dialog.open(ProfileLeftSidebarUserInfoAboutMeDialogComponent, {
+      id: 'ProfileLeftSidebarUserInfoAboutMeDialogComponent',
+      data: this.user.aboutMe
+    })
+    .afterClosed()
+    .subscribe(aboutMe => {
+      if (!aboutMe) { return; }
+      this.user.aboutMe = aboutMe;
+    });
+  }
+
 }
