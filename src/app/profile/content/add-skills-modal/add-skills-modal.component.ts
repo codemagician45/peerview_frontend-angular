@@ -110,7 +110,7 @@ export class ProfileAddSkillsDialogComponent implements OnInit {
 
       this.userApiService.promiseUpdateAboutMe(this.user)
         .then(() => {
-          let aboutModelComponentRef = this.dialog.getDialogById('ProfileLeftSidebarUserInfoAboutMeDialogComponent');
+          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddSkillsDialogComponent');
           aboutModelComponentRef.close(this.data);
         })
         .catch(error => {

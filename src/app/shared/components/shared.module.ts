@@ -115,6 +115,7 @@ import {
   SharedReportPostReplyComponent
 } from './report-post-reply/report-post-reply.component';
 import {SharedSetRatingsModalComponent} from './set-ratings-modal/set-ratings.component';
+import { AddSocialLinksDialogComponent } from './social/add-social-link-modal/add-social-link-modal.component';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -168,7 +169,8 @@ export function provideConfig (): any {
     SharedCommunityPostReplyComponent,
     SharedPostReplyCommentComponent,
     SharedReportPostReplyComponent,
-    SharedSetRatingsModalComponent
+    SharedSetRatingsModalComponent,
+    AddSocialLinksDialogComponent
   ],
   exports: [
     CommonModule,
@@ -203,7 +205,11 @@ export function provideConfig (): any {
     SharedCommunityPostReplyComponent,
     SharedPostReplyCommentComponent,
     SharedReportPostReplyComponent,
-    MatBadgeModule
+    MatBadgeModule,
+    AddSocialLinksDialogComponent
+  ],
+  entryComponents: [
+    AddSocialLinksDialogComponent
   ],
   providers: [
     {provide: Window, useValue: window},
