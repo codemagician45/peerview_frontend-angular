@@ -125,6 +125,34 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseAddWorkExperience (data: any): Promise<any> {
+    return this.promisePostData('add-work-experience', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseUpdateWorkExperience (data: any): Promise<any> {
+    return this.promisePostData('add-work-experience', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseDeleteWorkExperience (data: any): Promise<any> {
+    return this.promisePostData('add-work-experience', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseAddSkill (data: any): Promise<any> {
+    return this.promisePostData('add-skill', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
   public promiseUpdateOnboardingDetails (user: UserModel): Promise<IResponse> {
     return this.promisePostModelData('onboarding/details', user)
       .then((responseData: IResponse) => {

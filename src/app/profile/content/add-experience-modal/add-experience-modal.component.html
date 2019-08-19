@@ -1,0 +1,51 @@
+<div class="add-experience-modal">
+  <h5 class="modal-heading">Add Work Experience</h5>
+  <div class="modal-body ng-scope">
+    <div class="form-group">
+      <label>Company:</label>
+      <input type="text" [(ngModel)]="company" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Role:</label>
+      <input type="text" [(ngModel)]="role" class="form-control">
+    </div>
+    <div class="form-group flex">
+      <div class="datepicker-wrapper">
+        <label>From:</label>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Date of birth"
+            [matDatepicker]="picker1"
+            name="from"
+            [value]="from"
+            [(ngModel)]="from"
+            required
+            >
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="datepicker-wrapper">
+        <label>Till:</label>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Date of birth"
+            [matDatepicker]="picker2"
+            name="till"
+            [value]="till"
+            [(ngModel)]="till"
+            required
+            >
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn-peersview-secondary btn-peersview-sm" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn-peersview-primary btn-peersview-sm" (click)="onSave();">Save</button>
+  </div>
+</div>

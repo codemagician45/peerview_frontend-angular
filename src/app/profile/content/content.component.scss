@@ -14,12 +14,30 @@
     background-color: #ffffff;
     text-align: center;
   }
+
+  .accomplishments {
+    min-height: 50px;
+    padding-top: 10px;
+    border-top: 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 18px;
+    margin-top: 0px;
+    color: #323c47 !important;
+
+    .accomplishments-data {
+      font-size: 14px;
+      font-family: 'unset';
+      color: #333333;
+    }
+  }    
+  
   .profile-bottom-section {
     margin-top: 30px;
     border: 1px solid #dbdbdb;
     background-color: #ffffff;
 
-    .accomplishments, .collections, .interests, .media-pictures  {
+    .collections, .interests, .media-pictures  {
+      position: relative;
       min-height: 50px;
       padding-top: 10px;
       border-top: 0;
@@ -40,15 +58,19 @@
         margin: 0;
       }
     }
+
+    .profile-add-icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+
     i {
       color: #631990;
     }
 
-    .accomplishments-data {
-      font-size: 14px;
-      font-family: 'unset';
-      color: #333333;
-    }
+    
     // .font-size {
     //   font-size: 21px;
     // }    
@@ -85,7 +107,7 @@
   }
   div:nth-child(2) {
     word-wrap: break-word;
-    color: #6e6e6e;
+    // color: #6e6e6e;
   }
   .followed-btn {
     background-color: #631990;
@@ -98,7 +120,9 @@
     background: transparent;
     color: #323c47;
     font-weight: bold;
+    font-size: 18px;
     border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 15px;
   }
   .post-message {
     padding-top: 30px;
