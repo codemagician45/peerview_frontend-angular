@@ -655,3 +655,10 @@ button {
     width: 50%;
   }
 }
+
+.add-skills-modal {
+  .mat-dialog-container {
+    overflow: inherit;
+    top: 0px !important;
+  }
+}

@@ -8,16 +8,21 @@ import {
 import {
   SharedLocalDatePipeComponent
 } from './local-date.pipe';
+import {
+  SearchTextPipe
+} from './search-text.pipe';
 
 @NgModule({
   imports: [],
   declarations: [
     SharedFilterPipeComponent,
-    SharedLocalDatePipeComponent
+    SharedLocalDatePipeComponent,
+    SearchTextPipe
   ],
   exports: [
     SharedFilterPipeComponent,
-    SharedLocalDatePipeComponent
+    SharedLocalDatePipeComponent,
+    SearchTextPipe
   ]
 })
 export class SharedPipeModule {}

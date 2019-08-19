@@ -38,10 +38,14 @@ import {
 import {
   profileRouting
 } from './profile-routing.component';
+import { ProfileAddExperienceDialogComponent } from './content/add-experience-modal/add-experience-modal.component';
+import { ProfileAddSkillsDialogComponent } from './content/add-skills-modal/add-skills-modal.component';
+import { SharedPipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports : [
     SharedModule,
+    SharedPipeModule,
     profileRouting
   ],
   declarations : [
@@ -53,17 +57,23 @@ import {
     ProfileContentComponent,
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
-    ProfileLeftSidebarUserInfoAboutMeDialogComponent
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent,
+    ProfileAddExperienceDialogComponent,
+    ProfileAddSkillsDialogComponent
   ],
   exports: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
-    ProfileLeftSidebarUserInfoAboutMeDialogComponent
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent,
+    ProfileAddExperienceDialogComponent,
+    ProfileAddSkillsDialogComponent
   ],
   entryComponents: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
-    ProfileLeftSidebarUserInfoAboutMeDialogComponent
+    ProfileLeftSidebarUserInfoAboutMeDialogComponent,
+    ProfileAddExperienceDialogComponent,
+    ProfileAddSkillsDialogComponent
   ],
   providers: [
     CanActivateOtherProfile

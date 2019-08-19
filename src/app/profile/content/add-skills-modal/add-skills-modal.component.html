@@ -1,0 +1,25 @@
+<div class="add-skills-modal">
+  <h5 class="modal-heading">Add Skills</h5>
+  <div class="modal-body ng-scope">
+    <div class="form-group">
+      <div class="search-input-wrapper">
+        <input type="search" [(ngModel)]="skillText" placeholder="Search text" class="form-control">
+      </div>
+      <div class="skill-list" *ngIf="skillText?.length > 2">
+        <ul (click)="closeList()">
+          <li *ngFor="let skill of skillsArray | searchText: skillText: selectedSkills" class="list-item" (click)="addSkill(skill)">{{skill.name}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="selected-skills-wrapper">
+      <div class="selected-item" *ngFor="let selectedItem of selectedSkills">
+        {{selectedItem.name}}
+        <i class="material-icons" (click)="removeSkill(selectedItem)">close</i>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn-peersview-secondary btn-peersview-sm" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn-peersview-primary btn-peersview-sm" (click)="onSave();">Save</button>
+  </div>
+</div>
