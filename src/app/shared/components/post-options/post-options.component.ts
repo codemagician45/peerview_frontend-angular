@@ -76,6 +76,7 @@ export class SharedPostOptionsComponent {
   private timer: any = null;
   private postId: number;
   private isShowPostReply: number = 0;
+  protected showPostStars: boolean = false;
 
   public ngOnInit (): void {
     this.isShowPostReply = 0;
@@ -133,24 +134,12 @@ export class SharedPostOptionsComponent {
     this.dialog.open(SharedPostLikeDetailModalComponent, dialogConfig);
   }
 
-  protected onClickPostLike (isUserPostLike: boolean): void {
-
-    if (!isUserPostLike) {
-      const dialogRef = this.dialog.open(SharedSetRatingsModalComponent, {
-        width: '175px',
-        data: this.post
-      });
-
-      dialogRef.afterClosed().subscribe((numberOfStars: number) => {
-        if (numberOfStars) {
-          this.onStarClick(numberOfStars);
-          this.markAsLike_Unlike();
-        }
-      });
-    } else {
-      this.markAsLike_Unlike();
-      this.onStarClick(0);
+  protected onClickPostLike (numberOfStars: number): void {
+    if (this.post.isUserPostLike) {
+      numberOfStars = 0;
     }
+    this.onStarClick(numberOfStars);
+    this.markAsLike_Unlike();
   }
 
   protected markAsLike_Unlike (): void {
@@ -180,6 +169,14 @@ export class SharedPostOptionsComponent {
         })
         .catch(error => {
         });
+    }
+  }
+
+  protected togglePostRatingStars (): void {
+    this.showPostStars = !this.post.isUserPostLike;
+    if (!this.showPostStars) {
+      this.markAsLike_Unlike();
+      this.onStarClick(0);
     }
   }
 

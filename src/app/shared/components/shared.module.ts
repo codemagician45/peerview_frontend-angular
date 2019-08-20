@@ -15,7 +15,7 @@ import {
   MatDatepickerModule,
   MatProgressBarModule,
   MatInputModule,
-  MatBadgeModule
+  MatBadgeModule, MatMenuModule, MatIconModule
 } from '@angular/material';
 // import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 /*third party*/
@@ -134,13 +134,15 @@ export function provideConfig (): any {
     RouterModule,
     CommonModule,
     FormsModule,
-    CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'peersview-com' } as CloudinaryConfiguration),
+    CloudinaryModule.forRoot({Cloudinary}, {cloud_name: 'peersview-com'} as CloudinaryConfiguration),
     FileUploadModule,
     MatProgressBarModule,
     MatDatepickerModule,
     MatInputModule,
     SocialLoginModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatMenuModule,
+    MatIconModule
   ],
   declarations: [
     SharedSidebarFooterComponent,

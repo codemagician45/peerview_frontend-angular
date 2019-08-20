@@ -1,7 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {Router} from '@angular/router';
-import {PostApiService} from '../../../../services/api';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {PostRateModel} from '../../models';
 
 @Component({
@@ -12,15 +9,11 @@ import {PostRateModel} from '../../models';
 
 export class SharedSetRatingsModalComponent implements OnInit {
 
-  constructor (
-    @Inject(MAT_DIALOG_DATA) protected postData: any,
-    private router: Router,
-    private dialog: MatDialog,
-    private postApiService: PostApiService,
-    public dialogRef: MatDialogRef<SharedSetRatingsModalComponent>
-  ) {
+  constructor () {
   }
 
+  @Input() protected showStars: boolean = false;
+  @Output() protected onStarClick = new EventEmitter();
   protected ratingCount: number = 0;
   protected stars: Array<string> = [];
   protected rate: PostRateModel = new PostRateModel();
@@ -30,7 +23,7 @@ export class SharedSetRatingsModalComponent implements OnInit {
   }
 
   protected clickOnStarClick (numberOfStars): void {
-    this.dialogRef.close(numberOfStars);
+    this.onStarClick.emit(numberOfStars);
   }
 
   public mouseover (numberOfStars): void {

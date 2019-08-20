@@ -59,6 +59,7 @@ export class StudentCommunityComponent implements OnInit {
     private dialog: MatDialog,
     private overlay: Overlay) {
   }
+
   protected posts: PostModel[] = [];
   protected user_home = UserService.getUser();
   private limit = 5;
@@ -131,14 +132,15 @@ export class StudentCommunityComponent implements OnInit {
 
   private getStudentCommunityFeed (courseId): void {
 
-
+    let that = this;
     this.communityApiService.promiseGetAllCommunityPostsData(courseId)
       .then((responseData: CommunityPostModel[]) => {
-        this.communityPosts = responseData;
-        this.isToggleUploadComponentVisible = false;
-        this.communityPost.init();
-        // let d = this.post_case.getDate();
-        // if ( d > this.offset_post) {
+
+        that.communityPosts = responseData;
+        that.isToggleUploadComponentVisible = false;
+        that.communityPost.init();
+        // let d = that.post_case.getDate();
+        // if (d > that.offset_post) {
         //   document.body.innerHTML = '';
         // }
       })
