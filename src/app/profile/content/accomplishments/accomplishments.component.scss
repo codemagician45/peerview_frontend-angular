@@ -1,0 +1,80 @@
+.profile-accomplishments {
+  .accomplishments {
+    min-height: 50px;
+    padding-top: 10px;
+    border-top: 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 18px;
+    margin-top: 0px;
+    color: #323c47 !important;
+
+    .accomplishments-data {
+      font-size: 14px;
+      font-family: 'unset';
+      color: #333333;
+    }
+  }    
+  
+  .profile-bottom-section {
+    margin-top: 20px;
+    border: 1px solid #dbdbdb;
+    background-color: #ffffff;
+
+    .collections, .interests, .media-pictures  {
+      position: relative;
+      min-height: 50px;
+      padding-top: 10px;
+      // border-top: 0;
+      border-bottom: 1px solid #e5e5e5;
+      border-top: 1px solid #e5e5e5;
+      font-size: 14px;
+      // font-weight: 500;
+      // font-family: 'Conv_MavenPro-Bold';
+      // color: #333;
+    }    
+    .interests-data {
+      li {
+        margin: 18px;
+        border: 1px solid #631990;
+        border-radius: 20px;
+        padding: 3px;
+      }
+      .row {
+        margin: 0;
+      }
+    }
+
+    .profile-add-icon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+
+    i {
+      color: #631990;
+    }
+
+    
+    // .font-size {
+    //   font-size: 21px;
+    // }   
+    
+    .experience-item {
+      padding: 5px;
+
+      .company-name {
+        margin-bottom: 0;
+      }
+
+      .company-duration {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
+      .company-role {
+
+      }
+    }
+  }
+}

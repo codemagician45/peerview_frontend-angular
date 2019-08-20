@@ -43,6 +43,10 @@ export class UserModel extends Model  {
   public subInterestIds: number[] = [];
   public isUserAlreadyFollowed: boolean;
   public isAlreadyFollowed: boolean;
+  public facebook_profile?: string;
+  public twitter_profile?: string;
+  public instagram_profile?: string;
+  public snapchat_profile?: string;
 
   public init (): void {}
 }

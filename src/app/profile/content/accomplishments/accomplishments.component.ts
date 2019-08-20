@@ -5,25 +5,25 @@ import {
 } from '@angular/core';
 import {
   UserApiService
-} from '../../../services/api';
+} from '../../../../services/api';
 import {
   UserService
-} from '../../../services';
+} from '../../../../services';
 import {
   PostModel,
   UserModel
-} from '../../shared/models';
+} from '../../../shared/models';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { Overlay } from '@angular/cdk/overlay';
-import { ProfileAddExperienceDialogComponent } from './add-experience-modal/add-experience-modal.component';
-import { ProfileAddSkillsDialogComponent } from './add-skills-modal/add-skills-modal.component';
+import { ProfileAddExperienceDialogComponent } from '../add-experience-modal/add-experience-modal.component';
+import { ProfileAddSkillsDialogComponent } from '../add-skills-modal/add-skills-modal.component';
 
 @Component({
-  selector: 'profile-content-component',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  selector: 'profile-content-accomplishments-component',
+  templateUrl: './accomplishments.component.html',
+  styleUrls: ['./accomplishments.component.scss']
 })
-export class ProfileContentComponent implements OnInit {
+export class ProfileContentAccomplishmentsComponent implements OnInit {
   constructor (
     private userApiService: UserApiService,
     private dialog: MatDialog,
@@ -36,7 +36,6 @@ export class ProfileContentComponent implements OnInit {
   protected isUserProfile: boolean = true;
 
   public ngOnInit (): void {
-    this.getUserTimeline();
     this.getWorkExperience();
     let currentLoginUser = UserService.getUser();
 
@@ -48,14 +47,6 @@ export class ProfileContentComponent implements OnInit {
   }
 
   protected onShowPostDetailDialogComponent (): void {}
-
-  private getUserTimeline (): void {
-    this.userApiService.promiseGetTimeline(this.user.id)
-      .then((posts: PostModel[]) => {
-        this.posts = posts;
-      })
-      .catch(error => {});
-  }
 
   private getWorkExperience (): void {
     this.userApiService.promiseGetWorkExperience(this.user.id)
@@ -76,7 +67,12 @@ export class ProfileContentComponent implements OnInit {
       image: 'test',
       source: 'profile-picture'
     };
-    this.dialog.open(ProfileAddExperienceDialogComponent, dialogConfig);
+    this.dialog.open(ProfileAddExperienceDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      this.workExperiences.push(data);
+    });
   }
 
   private openAddSkillsDialog (): void {
@@ -90,7 +86,12 @@ export class ProfileContentComponent implements OnInit {
       image: 'test',
       source: 'profile-picture'
     };
-    this.dialog.open(ProfileAddSkillsDialogComponent, dialogConfig);
+    this.dialog.open(ProfileAddSkillsDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(aboutMe => {
+      if (!aboutMe) { return; }
+      this.user.aboutMe = aboutMe;
+    });
   }
 }
 

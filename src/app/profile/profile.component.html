@@ -47,17 +47,16 @@
       </li>
     </ul>
     <div class="mobile-layout-content">
-      <profile-content-component
-        *ngIf="mobileLinkSelected === 'timeline'"
-        [user]="user"></profile-content-component>
+      <profile-content-accomplishments-component [user]="user" *ngIf="mobileLinkSelected === 'accomplishments'"></profile-content-accomplishments-component>
+      <profile-content-activities-component [user]="user" *ngIf="mobileLinkSelected === 'timeline'"></profile-content-activities-component>
       <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'media'">
         <h4 class="text-center">No images available.</h4>
       </div>
       <shared-followee-component *ngIf="mobileLinkSelected === 'following'"></shared-followee-component>
       <shared-followers-component *ngIf="mobileLinkSelected === 'followers'"></shared-followers-component>
-      <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'accomplishments'">
+      <!-- <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'accomplishments'">
           <h4 class="text-center">No accomplishments available.</h4>
-        </div>
+        </div> -->
     </div>
   </div>
 </div>

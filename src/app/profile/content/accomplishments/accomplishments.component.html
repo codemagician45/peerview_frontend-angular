@@ -1,0 +1,39 @@
+<div class="profile-accomplishments">
+	
+	<div class="accomplishments hidden-xs">
+		<span>
+			<strong>Accomplishments</strong>
+		</span>
+		<div class="row">
+			<div class="col-sm-12 accomplishments-data">
+				<span class="peersview-secondary-color font-size">{{user?.accomplishments}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="profile-bottom-section">
+		<div class="media-pictures text-center">
+			<span *ngIf="isUserProfile">
+				Your work experience
+			</span>
+			<span *ngIf="!isUserProfile">
+				Work experience
+			</span>
+			<i class="material-icons color-purple profile-add-icon" (click)="openAddExperienceDialog()" *ngIf="isUserProfile">add</i>
+		</div>
+		<div *ngFor="let experience of workExperiences" class="experience-item">
+			<p class="company-name">{{experience.name}}</p>
+			<p class="company-duration">From: {{experience.from | localDate}}</p>
+			<p class="company-duration">Till: {{experience.to | localDate}}</p>
+			<p class="company-role">Role: {{experience.role}}</p>
+		</div>
+		<div class="collections text-center">
+			<span *ngIf="isUserProfile">
+				Your skills
+			</span>
+			<span *ngIf="!isUserProfile">
+				Skills
+			</span>
+			<i class="material-icons color-purple profile-add-icon" (click)="openAddSkillsDialog()" *ngIf="isUserProfile">add</i>
+		</div>
+	</div>
+</div>

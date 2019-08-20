@@ -76,6 +76,19 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseGetWorkExperience (userId?: number): Promise<PostModel[]> {
+    let params: HttpParams;
+    if (userId) {
+      params = new HttpParams()
+        .set('userId', userId.toString());
+    }
+
+    return this.promiseGetAllResponseData('work-experience', {params: params})
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
+
   public promiseGetStudyLevels (): Promise<UserStudyLevelModel[]> {
     return this.promiseGetAllResponseData('study-levels')
       .then((response: IResponse) => {
@@ -133,7 +146,7 @@ export class UserApiService extends ApiService {
   }
 
   public promiseUpdateWorkExperience (data: any): Promise<any> {
-    return this.promisePostData('add-work-experience', data)
+    return this.promisePostData('update-work-experience', data)
       .then((responseData: IResponse) => {
         return responseData;
       });
@@ -148,6 +161,13 @@ export class UserApiService extends ApiService {
 
   public promiseAddSkill (data: any): Promise<any> {
     return this.promisePostData('add-skill', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseUpdateSocialLinks (data: any): Promise<any> {
+    return this.promisePostData('update-social-links', data)
       .then((responseData: IResponse) => {
         return responseData;
       });

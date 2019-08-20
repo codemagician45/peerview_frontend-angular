@@ -41,6 +41,8 @@ import {
 import { ProfileAddExperienceDialogComponent } from './content/add-experience-modal/add-experience-modal.component';
 import { ProfileAddSkillsDialogComponent } from './content/add-skills-modal/add-skills-modal.component';
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
+import { ProfileContentAccomplishmentsComponent } from './content/accomplishments/accomplishments.component';
+import { ProfileContentActivitiesComponent } from './content/activities/activities.component';
 
 @NgModule({
   imports : [
@@ -59,7 +61,9 @@ import { SharedPipeModule } from '../shared/pipe/pipe.module';
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
-    ProfileAddSkillsDialogComponent
+    ProfileAddSkillsDialogComponent,
+    ProfileContentActivitiesComponent,
+    ProfileContentAccomplishmentsComponent
   ],
   exports: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,

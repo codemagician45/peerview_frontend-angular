@@ -20,18 +20,21 @@ import {
   styleUrls: ['./add-experience-modal.component.scss']
 })
 export class ProfileAddExperienceDialogComponent implements OnInit {
+
   constructor (
     @Inject (MAT_DIALOG_DATA)
-    private aboutMe: any,
+    private data: any,
     private dialog: MatDialog,
     private userApiService: UserApiService
   ) {}
+
+  private form: any = {};
 
   private user: UserModel = new UserModel();
   // private aboutMe: string;
 
   public ngOnInit (): void {
-    console.log(this.aboutMe);
+    console.log(this.data);
   }
 
   protected onCancel (): void {
@@ -39,15 +42,11 @@ export class ProfileAddExperienceDialogComponent implements OnInit {
   }
 
   protected onSave (): void {
-    if (this.aboutMe) {
-      this.user.assimilate({
-        aboutMe: this.aboutMe
-      });
-
-      this.userApiService.promiseUpdateAboutMe(this.user)
-        .then(() => {
-          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddExperienceDialogComponent');
-          aboutModelComponentRef.close(this.aboutMe);
+    if (this.form.name && this.form.role && this.form.from && this.form.to) {
+      this.userApiService.promiseAddWorkExperience(this.form)
+        .then((res) => {
+          let addExperienceModelComponentRef = this.dialog.getDialogById('ProfileAddExperienceDialogComponent');
+          addExperienceModelComponentRef.close(this.form);
         })
         .catch(error => {
 
