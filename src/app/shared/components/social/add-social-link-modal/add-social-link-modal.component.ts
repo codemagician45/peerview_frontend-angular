@@ -9,17 +9,17 @@ import {
 } from '@angular/material';
 import {
   UserApiService
-} from '../../../../services/api';
+} from '../../../../../services/api';
 import {
   UserModel
-} from '../../../shared/models';
+} from '../../../models';
 
 @Component({
-  selector: 'app-add-experience-modal',
-  templateUrl: './add-experience-modal.component.html',
-  styleUrls: ['./add-experience-modal.component.scss']
+  selector: 'app-add-social-link-modal',
+  templateUrl: './add-social-link-modal.component.html',
+  styleUrls: ['./add-social-link-modal.component.scss']
 })
-export class ProfileAddExperienceDialogComponent implements OnInit {
+export class AddSocialLinksDialogComponent implements OnInit {
   constructor (
     @Inject (MAT_DIALOG_DATA)
     private aboutMe: any,
@@ -46,7 +46,7 @@ export class ProfileAddExperienceDialogComponent implements OnInit {
 
       this.userApiService.promiseUpdateAboutMe(this.user)
         .then(() => {
-          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddExperienceDialogComponent');
+          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddSocialLinkModalComponent');
           aboutModelComponentRef.close(this.aboutMe);
         })
         .catch(error => {

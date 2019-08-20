@@ -51,6 +51,7 @@ export class ProfileContentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'add-experience-modal';
+    dialogConfig.id = 'ProfileAddExperienceDialogComponent';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {
@@ -64,6 +65,7 @@ export class ProfileContentComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.panelClass = 'add-skills-modal';
+    dialogConfig.id = 'ProfileAddSkillsDialogComponent';
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {
