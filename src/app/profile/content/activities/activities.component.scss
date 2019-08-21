@@ -1,0 +1,61 @@
+.profile-activities {
+  .company, .institution, .course, .birth-date, .about-me {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .user {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .follow-btn {
+    position: absolute;
+    right: 7px;
+  }
+  .edit-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  div {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  div:nth-child(2) {
+    word-wrap: break-word;
+    // color: #6e6e6e;
+  }
+  .followed-btn {
+    background-color: #631990;
+    color: #fff;
+  }
+
+  .timeline-text {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: transparent;
+    color: #323c47;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 15px;
+  }
+  .post-message {
+    padding-top: 30px;
+  }
+  .load-more button {
+    margin-bottom: 10px;
+  }
+  shared-stars-component {
+    display: flex;
+    align-items: center;
+  }
+}

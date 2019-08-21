@@ -13,6 +13,7 @@ import {
 import {
   UserModel
 } from '../../../models';
+import { V4MAPPED } from 'dns';
 
 @Component({
   selector: 'app-add-social-link-modal',
@@ -20,18 +21,24 @@ import {
   styleUrls: ['./add-social-link-modal.component.scss']
 })
 export class AddSocialLinksDialogComponent implements OnInit {
+
   constructor (
     @Inject (MAT_DIALOG_DATA)
-    private aboutMe: any,
+    private data: any,
     private dialog: MatDialog,
     private userApiService: UserApiService
   ) {}
+  private form: any = {};
 
   private user: UserModel = new UserModel();
   // private aboutMe: string;
 
   public ngOnInit (): void {
-    console.log(this.aboutMe);
+    console.log(this.data);
+    this.form.facebook_profile = this.data.user.facebook_profile;
+    this.form.twitter_profile = this.data.user.twitter_profile;
+    this.form.instagram_profile = this.data.user.instagram_profile;
+    this.form.snapchat_profile = this.data.user.snapchat_profile;
   }
 
   protected onCancel (): void {
@@ -39,15 +46,11 @@ export class AddSocialLinksDialogComponent implements OnInit {
   }
 
   protected onSave (): void {
-    if (this.aboutMe) {
-      this.user.assimilate({
-        aboutMe: this.aboutMe
-      });
-
-      this.userApiService.promiseUpdateAboutMe(this.user)
+    if (this.form.facebook_profile || this.form.twitter_profile || this.form.instagram_profile || this.form.snapchat_profile ) {
+      this.userApiService.promiseUpdateSocialLinks(this.form)
         .then(() => {
-          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddSocialLinkModalComponent');
-          aboutModelComponentRef.close(this.aboutMe);
+          let socialLinksModalComponentRef = this.dialog.getDialogById('ProfileAddSocialLinkModalComponent');
+          socialLinksModalComponentRef.close(this.form);
         })
         .catch(error => {
 

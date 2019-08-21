@@ -116,6 +116,7 @@ import {
 } from './report-post-reply/report-post-reply.component';
 import {SharedSetRatingsModalComponent} from './set-ratings-modal/set-ratings.component';
 import { AddSocialLinksDialogComponent } from './social/add-social-link-modal/add-social-link-modal.component';
+import { SharedPipeModule } from '../pipe/pipe.module';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -142,7 +143,8 @@ export function provideConfig (): any {
     SocialLoginModule,
     MatBadgeModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    SharedPipeModule
   ],
   declarations: [
     SharedSidebarFooterComponent,

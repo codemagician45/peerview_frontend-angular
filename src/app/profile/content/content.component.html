@@ -1,31 +1,4 @@
 <div class="profile-content-component">
-	
-	<div class="accomplishments hidden-xs">
-		<span>
-			<strong>Accomplishments</strong>
-		</span>
-		<div class="row">
-			<div class="col-sm-12 accomplishments-data">
-				<span class="peersview-secondary-color font-size">{{user?.accomplishments}}</span>
-			</div>
-		</div>
-	</div>
-	<div class="profile-bottom-section">
-		<div class="media-pictures text-center hidden-xs">
-			<span>
-				Your work experience
-			</span>
-			<i class="material-icons color-purple profile-add-icon" (click)="openAddExperienceDialog()">add</i>
-		</div>
-
-		<div class="collections text-center hidden-xs">
-			<span>
-				Your skills
-			</span>
-			<i class="material-icons color-purple profile-add-icon" (click)="openAddSkillsDialog()">add</i>
-		</div>
-		
-	</div>
-	<div class="timeline-text hidden-xs"><span>Activities</span></div>
-	<shared-post-component [posts]="posts" [user]="user"></shared-post-component>
+	<profile-content-accomplishments-component [user]="user"></profile-content-accomplishments-component>
+	<profile-content-activities-component [user]="user"></profile-content-activities-component>
 </div>

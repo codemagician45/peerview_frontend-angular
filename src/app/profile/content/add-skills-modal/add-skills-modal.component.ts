@@ -8,7 +8,7 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material';
 import {
-  UserApiService
+  UserApiService, SkillApiService
 } from '../../../../services/api';
 import {
   UserModel
@@ -24,78 +24,62 @@ export class ProfileAddSkillsDialogComponent implements OnInit {
     @Inject (MAT_DIALOG_DATA)
     public data: any,
     private dialog: MatDialog,
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private skillApiService: SkillApiService
   ) {}
 
   private user: UserModel = new UserModel();
-  private skillsArray = [
-    {
-      id: 0,
-      name: 'Hello World'
-    },
-    {
-      id: 1,
-      name: 'Hello World2'
-    },
-    {
-      id: 2,
-      name: 'Hello World3'
-    },
-    {
-      id: 3,
-      name: 'Hello World4'
-    },
-    {
-      id: 4,
-      name: 'Hello World5'
-    },
-    {
-      id: 5,
-      name: 'Alax Lu'
-    },
-    {
-      id: 6,
-      name: 'Alax Lu2'
-    },
-    {
-      id: 7,
-      name: 'Alax Lu3'
-    },
-    {
-      id: 8,
-      name: 'Alaxiom Lu'
-    },
-    {
-      id: 9,
-      name: 'Alaxiom Lu2'
-    },
-    {
-      id: 10,
-      name: 'Alaxiom Lu3'
-    },
-    {
-      id: 11,
-      name: 'Bellow Tom'
-    },
-    {
-      id: 12,
-      name: 'Bellow Tom2'
-    },
-    {
-      id: 13,
-      name: 'Bellow Tom3'
-    },
-    {
-      id: 14,
-      name: 'Bellow Tom4'
-    }
-  ];
+  private skillsArray: any[] = [];
   private skillText: string = '';
-  private selectedSkills = [];
+  private selectedSkills: any[] = [];
   // private aboutMe: string;
 
   public ngOnInit (): void {
     console.log(this.data);
+    this.selectedSkills = this.data.userSkills;
+  }
+
+  public ngAfterViewInit (): void {
+    setTimeout(() => {
+      this.getAllSkill();
+    });
+  }
+
+  private getAllSkill (): void {
+    this.skillApiService.promiseGetSkill()
+      .then((skills: any[]) => {
+        this.skillsArray = skills;
+      })
+      .catch(error => {});
+  }
+
+  protected checkNewSkill (txt: string): boolean {
+    if (txt && txt.length > 2) {
+      for (let i = 0; i < this.skillsArray.length; i ++) {
+        if (this.skillsArray[i].name.toLocaleLowerCase() === txt.toLocaleLowerCase()) {
+          return false;
+        }
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  protected addNewSkill (txt: string): void {
+    let data = {
+      name: txt
+    };
+
+    this.skillApiService.promiseAddSkill(data)
+      .then((res) => {
+        this.skillsArray.push(res);
+        this.skillText = '';
+        this.selectedSkills.push(res);
+      })
+      .catch(error => {
+
+      });
   }
 
   protected onCancel (): void {
@@ -103,15 +87,15 @@ export class ProfileAddSkillsDialogComponent implements OnInit {
   }
 
   protected onSave (): void {
-    if (this.data) {
-      this.user.assimilate({
-        aboutMe: this.data
-      });
+    if (this.selectedSkills.length > 0) {
+      let data = {
+        items: this.selectedSkills
+      };
 
-      this.userApiService.promiseUpdateAboutMe(this.user)
+      this.userApiService.promiseAddSkill(data)
         .then(() => {
-          let aboutModelComponentRef = this.dialog.getDialogById('ProfileAddSkillsDialogComponent');
-          aboutModelComponentRef.close(this.data);
+          let addSkillModelComponentRef = this.dialog.getDialogById('ProfileAddSkillsDialogComponent');
+          addSkillModelComponentRef.close(this.selectedSkills);
         })
         .catch(error => {
 

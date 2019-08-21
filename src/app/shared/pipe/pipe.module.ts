@@ -11,18 +11,23 @@ import {
 import {
   SearchTextPipe
 } from './search-text.pipe';
+import {
+  SharedAvailablePostPipeComponent
+} from './available-post.pipe';
 
 @NgModule({
   imports: [],
   declarations: [
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
-    SearchTextPipe
+    SearchTextPipe,
+    SharedAvailablePostPipeComponent
   ],
   exports: [
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
-    SearchTextPipe
+    SearchTextPipe,
+    SharedAvailablePostPipeComponent
   ]
 })
 export class SharedPipeModule {}

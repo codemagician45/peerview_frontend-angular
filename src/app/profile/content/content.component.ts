@@ -32,9 +32,19 @@ export class ProfileContentComponent implements OnInit {
 
   @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
+  protected workExperiences: any[] = [];
+  protected isUserProfile: boolean = true;
 
   public ngOnInit (): void {
     this.getUserTimeline();
+    this.getWorkExperience();
+    let currentLoginUser = UserService.getUser();
+
+    if (currentLoginUser.id !== this.user.id) {
+      this.isUserProfile = false;
+    } else {
+      this.isUserProfile = true;
+    }
   }
 
   protected onShowPostDetailDialogComponent (): void {}
@@ -43,6 +53,14 @@ export class ProfileContentComponent implements OnInit {
     this.userApiService.promiseGetTimeline(this.user.id)
       .then((posts: PostModel[]) => {
         this.posts = posts;
+      })
+      .catch(error => {});
+  }
+
+  private getWorkExperience (): void {
+    this.userApiService.promiseGetWorkExperience(this.user.id)
+      .then((workExperiences: any[]) => {
+        this.workExperiences = workExperiences;
       })
       .catch(error => {});
   }
