@@ -38,6 +38,7 @@ import {
 import {
   CommunityApiService
 } from '../../services/api';
+import {AnswerReplyCommunityComponent} from './student-community/answer-reply/answer-reply-community.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import {
     StudentCommunityComponent,
     PrivateCommunityComponent,
     CommunityMobileHeader,
-    AnswerQuestionCommunityComponent
+    AnswerQuestionCommunityComponent,
+    AnswerReplyCommunityComponent
   ],
   exports: [],
   providers: [CommunityApiService],

@@ -177,6 +177,10 @@ export class SharedPostOptionsComponent {
     if (!this.showPostStars) {
       this.markAsLike_Unlike();
       this.onStarClick(0);
+    } else {
+      setTimeout(() => {
+        this.showPostStars = false;
+      }, 10000);
     }
   }
 

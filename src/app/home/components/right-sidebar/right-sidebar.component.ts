@@ -12,15 +12,30 @@ import {
   MessageNotificationService,
   NotificationTypes
 } from '../../../../services';
+
 @Component({
   selector: 'home-right-sidebar-component',
   templateUrl: './right-sidebar.component.html',
   styleUrls: ['./right-sidebar.component.scss']
 })
 export class HomeRightSidebarComponent {
-  constructor (private userApiService: UserApiService) {}
+
+
+  constructor (private userApiService: UserApiService) {
+  }
 
   protected user: UserModel = new UserModel();
+
+  private inviteNotificationError (instruction): void {
+    MessageNotificationService.show({
+        notification: {
+          id: 'shared-post-textarea-message',
+          message: 'Sending Invite',
+          instruction: instruction
+        }
+      },
+      NotificationTypes.Error);
+  }
 
   protected onInviteUser (): any {
     if (!this.user.email) {
@@ -28,6 +43,17 @@ export class HomeRightSidebarComponent {
     }
 
     return this.inviteUser();
+  }
+
+  private inviteNotificationSuccess (): void {
+    MessageNotificationService.show({
+        notification: {
+          id: 'user-invited',
+          message: 'Invitation Sent!',
+          instruction: 'You have invited ' + this.user.email + ' to Peersview.'
+        }
+      },
+      NotificationTypes.Info);
   }
 
   protected inviteUser (): void {
@@ -41,25 +67,5 @@ export class HomeRightSidebarComponent {
       });
   }
 
-  private inviteNotificationSuccess (): void {
-    MessageNotificationService.show({
-      notification: {
-        id: 'user-invited',
-        message: 'Invitation Sent!',
-        instruction: 'You have invited ' + this.user.email + ' to Peersview.'
-      }
-    },
-    NotificationTypes.Info);
-  }
 
-  private inviteNotificationError (instruction): void {
-    MessageNotificationService.show({
-      notification: {
-        id: 'shared-post-textarea-message',
-        message: 'Sending Invite',
-        instruction: instruction
-      }
-    },
-    NotificationTypes.Error);
-  }
 }

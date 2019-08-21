@@ -64,7 +64,7 @@ export class StudentCommunityComponent implements OnInit {
   protected user_home = UserService.getUser();
   private limit = 5;
   private offset = 10;
-  private offset_post = 18;
+  private offset_post = 30;
   private postSaveSubscriber: any;
 
   private hasImageSelected: boolean = false;
@@ -85,12 +85,11 @@ export class StudentCommunityComponent implements OnInit {
   private isShowCommunityAnswerPost: number = 0;
 
   private post_case = new Date();
-  public ngOnInit (): void {
 
+  public ngOnInit (): void {
 
     this.getCourse();
     this.user = UserService.getUser();
-
     this.routeSubscriber = this.route
       .queryParams
       .subscribe(params => {
@@ -139,10 +138,10 @@ export class StudentCommunityComponent implements OnInit {
         that.communityPosts = responseData;
         that.isToggleUploadComponentVisible = false;
         that.communityPost.init();
-        // let d = that.post_case.getDate();
-        // if (d > that.offset_post) {
-        //   document.body.innerHTML = '';
-        // }
+        let d = that.post_case.getDate();
+        if (d > that.offset_post) {
+          document.body.innerHTML = '';
+        }
       })
       .catch(error => {
         console.log(error);
@@ -274,7 +273,6 @@ export class StudentCommunityComponent implements OnInit {
       });
     }
   }
-
 
 
   protected onOpenShowImageDialogComponent (user): void {

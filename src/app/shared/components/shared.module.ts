@@ -208,7 +208,8 @@ export function provideConfig (): any {
     SharedPostReplyCommentComponent,
     SharedReportPostReplyComponent,
     MatBadgeModule,
-    AddSocialLinksDialogComponent
+    AddSocialLinksDialogComponent,
+    SharedSetRatingsModalComponent
   ],
   entryComponents: [
     AddSocialLinksDialogComponent

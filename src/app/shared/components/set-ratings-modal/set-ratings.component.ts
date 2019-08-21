@@ -17,13 +17,18 @@ export class SharedSetRatingsModalComponent implements OnInit {
   protected ratingCount: number = 0;
   protected stars: Array<string> = [];
   protected rate: PostRateModel = new PostRateModel();
+  protected selectedNumberOfStars: number = 0;
 
   public ngOnInit (): void {
     this.starsToBeAdded();
   }
 
   protected clickOnStarClick (numberOfStars): void {
-    this.onStarClick.emit(numberOfStars);
+    this.selectedNumberOfStars = numberOfStars;
+  }
+
+  protected onOkClickSaveRating (): void {
+    this.onStarClick.emit(this.selectedNumberOfStars);
   }
 
   public mouseover (numberOfStars): void {
@@ -40,6 +45,7 @@ export class SharedSetRatingsModalComponent implements OnInit {
     });
 
     this.onStarHover(numberOfStars);
+    this.selectedNumberOfStars = numberOfStars;
   }
 
   protected onStarHover (numberOfStars): void {

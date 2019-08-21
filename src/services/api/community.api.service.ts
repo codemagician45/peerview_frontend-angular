@@ -11,7 +11,8 @@ import {
   CommunityPostModel,
   PrivateCommunityModel,
   CommunityAnswerQuestionModel,
-  IResponse, ReportPostModel
+  IResponse, ReportPostModel,
+  PostRateModel
 } from '../../app/shared/models';
 import {
   CommunityFactory
@@ -27,19 +28,19 @@ export class CommunityApiService extends ApiService {
 
 
   public static createPrivateCommunity (data: any): PrivateCommunityModel {
-		return <PrivateCommunityModel> (new PrivateCommunityModel())
-			.assimilate(data);
+    return <PrivateCommunityModel>(new PrivateCommunityModel())
+      .assimilate(data);
   }
 
   public static createPrivateCommunityFeed (data: any): Array<PrivateCommunityModel> {
-		return data.map(
-			instanceData => CommunityFactory.createFeed(instanceData)
-		);
+    return data.map(
+      instanceData => CommunityFactory.createFeed(instanceData)
+    );
   }
 
-	/**
-	*  Get all community
-	*/
+  /**
+   *  Get all community
+   */
 
   public promiseCreateStudentCommunityPosts (communityPost: CommunityPostModel): Promise<CommunityPostModel> {
     return this.promisePostModelData(`course/${communityPost.courseId}`, communityPost)
@@ -51,7 +52,7 @@ export class CommunityApiService extends ApiService {
   /**Get question details */
   public promiseGetQuestionDetail (courseId: Number, questionId: Number): Promise<CommunityPostModel> {
     return this.promiseGetResponseData(`course/${courseId}/${questionId}`)
-      .then((response: any ) => {
+      .then((response: any) => {
         response.data.isUserFollowCommunityQuestion = response.isUserFollowCommunityQuestion;
         return CommunityFactory.createCommunityQuestionDetails(response.data);
       });
@@ -89,18 +90,20 @@ export class CommunityApiService extends ApiService {
   }
 
   public promiseGetAllPrivateCommunityData (): Promise<PrivateCommunityModel[]> {
-		return this.promiseGetResponseData(`list`)
-		.then((response: IResponse) => {
-			return CommunityFactory.createPrivateCommunityFeed(response.data);
-		});
-	}
-	/** Remove community post*/
+    return this.promiseGetResponseData(`list`)
+      .then((response: IResponse) => {
+        return CommunityFactory.createPrivateCommunityFeed(response.data);
+      });
+  }
+
+  /** Remove community post*/
   public promiseRemoveCommunityPost (postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${postId}`)
       .then((responseData: IResponse) => {
         return responseData;
       });
   }
+
   /** Follow community post*/
   public promiseFollowCommunityPost (courseId: number, postId: number, record: CommunityPostFollow): Promise<IResponse> {
     return this.promisePostModelData(`${courseId}/${postId}/follow`, record)
@@ -108,6 +111,7 @@ export class CommunityApiService extends ApiService {
         return responseData;
       });
   }
+
   /** UnFollow community post*/
   public promiseUnFollowCommunityPost (courseId: number, postId: number): Promise<IResponse> {
     return this.promiseRemoveData(`${courseId}/${postId}/follow`)
@@ -115,19 +119,31 @@ export class CommunityApiService extends ApiService {
         return responseData;
       });
   }
+
   /** Like community post reply */
   public promiseLikeCommunityPostReply (replyId: number): Promise<IResponse> {
     return this.promisePostModelData(`reply/${replyId}/like`)
       .then((responseData: IResponse) => {
         return responseData;
       });
-  }/* Report community post*/
+  }
+
+  /** Rate community post reply */
+  public promiseRateCommunityPostReply (replyId: number, rate: PostRateModel): Promise<IResponse> {
+    return this.promisePostModelData(`reply/${replyId}/rating`, rate)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  /* Report community post*/
   public promiseReportPost (postId: number, reportPost: ReportPostModel): Promise<IResponse> {
     return this.promisePostModelData(`${postId}/report`, reportPost)
       .then((responseData: IResponse) => {
         return responseData;
       });
   }
+
   /** Remove community post reply*/
   public promiseRemoveCommunityPostReply (replyId: number): Promise<IResponse> {
     return this.promiseRemoveData(`reply/${replyId}`)

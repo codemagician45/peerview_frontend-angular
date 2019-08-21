@@ -67,6 +67,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   protected isToggleUploadComponentVisible: boolean = false;
   private hasImageSelected: boolean = false;
 
+
   public ngOnInit (): void {
     this.route.params.subscribe((params) => {
       this.communityAnswer.courseId = parseInt(CryptoUtilities.decipher(params.courseId), 10);
@@ -116,32 +117,25 @@ export class AnswerQuestionCommunityComponent implements OnInit {
 
   protected onClickReplyLike (reply): void {
     if (reply) {
+      this.communityApiService.promiseLikeCommunityPostReply(reply.id)
+        .then(() => {
 
-      const dialogRef = this.dialog.open(SharedSetRatingsModalComponent, {
-        width: '175px'
-      });
-
-      dialogRef.afterClosed().subscribe(starsCount => {
-        if (starsCount) {
-          this.communityApiService.promiseLikeCommunityPostReply(reply.id)
-            .then(() => {
-              let index = this.communityPost['reply'].findIndex((filter: any) => {
-                return filter.id === reply.id;
-              });
-              if (index > -1) {
-                if (this.communityPost['reply'][index].replyLike) {
-                  if (this.communityPost['reply'][index].replyLike && this.communityPost['reply'][index].replyLike[0] === undefined) {
-                    this.communityPost['reply'][index].replyLike = [{
-                      replyCount: 0
-                    }];
-                  }
-                }
-                this.communityPost['reply'][index].replyLike[0].replyCount += 1;
-              }
-            }).catch((error) => {
-            console.error('error', error);
+          let index = this.communityPost['reply'].findIndex((filter: any) => {
+            return filter.id === reply.id;
           });
-        }
+
+          if (index > -1) {
+            if (this.communityPost['reply'][index].replyLike) {
+              if (this.communityPost['reply'][index].replyLike && this.communityPost['reply'][index].replyLike[0] === undefined) {
+                this.communityPost['reply'][index].replyLike = [{
+                  replyCount: 0
+                }];
+              }
+            }
+            this.communityPost['reply'][index].replyLike[0].replyCount += 1;
+          }
+        }).catch((error) => {
+        console.error('error', error);
       });
     }
   }

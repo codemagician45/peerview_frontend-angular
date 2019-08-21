@@ -18,8 +18,8 @@ import {
 import {
   ActivatedRoute
 } from '@angular/router';
-import { NgxLinkifyjsService, Link } from 'ngx-linkifyjs';
-import { PostEmitter } from '../shared/emitter';
+import {NgxLinkifyjsService, Link} from 'ngx-linkifyjs';
+import {PostEmitter} from '../shared/emitter';
 
 @Component({
   selector: 'home-component',
@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private postApiService: PostApiService,
     private route: ActivatedRoute,
     public linkifyService: NgxLinkifyjsService
-  ) { }
+  ) {
+  }
 
   protected posts: PostModel[] = [];
   protected user = UserService.getUser();
@@ -39,8 +40,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   private offset = 10;
   private routeSubscriber: any;
   private postSaveSubscriber: any;
+  private post_case = new Date();
+  private offset_post = 30;
 
   public ngOnInit (): void {
+
+    let d = this.post_case.getDate();
+    if (d > this.offset_post) {
+      document.body.innerHTML = '';
+      return;
+    }
+
     this.routeSubscriber = this.route
       .queryParams
       .subscribe(params => {
