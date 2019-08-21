@@ -29,12 +29,17 @@ export class ProfileAddExperienceDialogComponent implements OnInit {
   ) {}
 
   private form: any = {};
+  private isEdit: boolean = false;
 
   private user: UserModel = new UserModel();
   // private aboutMe: string;
 
   public ngOnInit (): void {
     console.log(this.data);
+    if (this.data.experience) {
+      this.form = this.data.experience;
+      this.isEdit = true;
+    }
   }
 
   protected onCancel (): void {
@@ -43,7 +48,17 @@ export class ProfileAddExperienceDialogComponent implements OnInit {
 
   protected onSave (): void {
     if (this.form.name && this.form.role && this.form.from && this.form.to) {
-      this.userApiService.promiseAddWorkExperience(this.form)
+      if (this.isEdit) {
+        this.userApiService.promiseUpdateWorkExperience(this.form)
+        .then((res) => {
+          let addExperienceModelComponentRef = this.dialog.getDialogById('ProfileUpdateExperienceDialogComponent');
+          addExperienceModelComponentRef.close(this.form);
+        })
+        .catch(error => {
+
+        });
+      } else {
+        this.userApiService.promiseAddWorkExperience(this.form)
         .then((res) => {
           let addExperienceModelComponentRef = this.dialog.getDialogById('ProfileAddExperienceDialogComponent');
           addExperienceModelComponentRef.close(this.form);
@@ -51,6 +66,7 @@ export class ProfileAddExperienceDialogComponent implements OnInit {
         .catch(error => {
 
         });
+      }
     }
   }
 }

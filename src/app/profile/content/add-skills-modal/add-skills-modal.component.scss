@@ -7,6 +7,14 @@
         position: relative;
 
         .search-input-wrapper {
+            position: relative;
+
+            .add-button {
+                position: absolute;
+                right: 5px;
+                top: 7px;
+            }
+
             input {
     
             }
@@ -38,6 +46,7 @@
             padding: 5px;
             border-radius: 20px;
             border: 1px solid;
+            margin: 5px;
         }
     }
 }

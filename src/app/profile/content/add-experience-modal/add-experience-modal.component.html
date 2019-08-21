@@ -1,5 +1,6 @@
 <div class="add-experience-modal">
-  <h5 class="modal-heading">Add Work Experience</h5>
+  <h5 class="modal-heading" *ngIf="isEdit">Edit Work Experience</h5>
+  <h5 class="modal-heading" *ngIf="!isEdit">Add Work Experience</h5>
   <div class="modal-body ng-scope">
     <div class="form-group">
       <label>Company:</label>

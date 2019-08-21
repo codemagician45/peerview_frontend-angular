@@ -33,10 +33,12 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
   protected workExperiences: any[] = [];
+  protected userSkills: any[] = [];
   protected isUserProfile: boolean = true;
 
   public ngOnInit (): void {
     this.getWorkExperience();
+    this.getUserSkill();
     let currentLoginUser = UserService.getUser();
 
     if (currentLoginUser.id !== this.user.id) {
@@ -52,6 +54,16 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     this.userApiService.promiseGetWorkExperience(this.user.id)
       .then((workExperiences: any[]) => {
         this.workExperiences = workExperiences;
+      })
+      .catch(error => {});
+  }
+
+  private getUserSkill (): void {
+    this.userApiService.promiseGetSkill(this.user.id)
+      .then((skills: any[]) => {
+        skills.map((item, index) => {
+          this.userSkills.push(item.skill);
+        });
       })
       .catch(error => {});
   }
@@ -75,6 +87,25 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     });
   }
 
+  private openUpdateExperienceDialog (experience: any): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-experience-modal';
+    dialogConfig.id = 'ProfileUpdateExperienceDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      experience: experience
+    };
+    this.dialog.open(ProfileAddExperienceDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      let index = this.workExperiences.indexOf(experience);
+      this.workExperiences[index] = data;
+    });
+  }
+
   private openAddSkillsDialog (): void {
     const dialogConfig = new MatDialogConfig();
 
@@ -83,14 +114,13 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
     dialogConfig.data = {
-      image: 'test',
-      source: 'profile-picture'
+      userSkills:  this.userSkills
     };
     this.dialog.open(ProfileAddSkillsDialogComponent, dialogConfig)
     .afterClosed()
-    .subscribe(aboutMe => {
-      if (!aboutMe) { return; }
-      this.user.aboutMe = aboutMe;
+    .subscribe(skills => {
+      if (!skills) { return; }
+      this.userSkills = skills;
     });
   }
 }

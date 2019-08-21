@@ -4,6 +4,7 @@
     <div class="form-group">
       <div class="search-input-wrapper">
         <input type="search" [(ngModel)]="skillText" placeholder="Search text" class="form-control">
+        <button class="add-button" *ngIf="checkNewSkill(skillText)" (click)="addNewSkill(skillText)">Add as New Skill</button>
       </div>
       <div class="skill-list" *ngIf="skillText?.length > 2">
         <ul (click)="closeList()">

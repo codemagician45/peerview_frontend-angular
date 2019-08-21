@@ -89,6 +89,19 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseGetSkill (userId?: number): Promise<PostModel[]> {
+    let params: HttpParams;
+    if (userId) {
+      params = new HttpParams()
+        .set('userId', userId.toString());
+    }
+
+    return this.promiseGetAllResponseData('skill', {params: params})
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
+
   public promiseGetStudyLevels (): Promise<UserStudyLevelModel[]> {
     return this.promiseGetAllResponseData('study-levels')
       .then((response: IResponse) => {

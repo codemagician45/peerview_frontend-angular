@@ -25,6 +25,7 @@
 			<p class="company-duration">From: {{experience.from | localDate}}</p>
 			<p class="company-duration">Till: {{experience.to | localDate}}</p>
 			<p class="company-role">Role: {{experience.role}}</p>
+			<i class="material-icons color-purple profile-update-icon" (click)="openUpdateExperienceDialog(experience)" *ngIf="isUserProfile">create</i>
 		</div>
 		<div class="collections text-center">
 			<span *ngIf="isUserProfile">
@@ -34,6 +35,9 @@
 				Skills
 			</span>
 			<i class="material-icons color-purple profile-add-icon" (click)="openAddSkillsDialog()" *ngIf="isUserProfile">add</i>
+		</div>
+		<div class="skills-wrapper">
+			<span *ngFor="let skill of userSkills" class="skill-item">{{skill.name}}</span>
 		</div>
 	</div>
 </div>
