@@ -38,11 +38,8 @@ import {
 import {
   CommunityApiService
 } from '../../services/api';
-<<<<<<< HEAD
 import {AnswerReplyCommunityComponent} from './student-community/answer-reply/answer-reply-community.component';
-=======
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
->>>>>>> dev_cleverjack
 
 @NgModule({
   imports: [
