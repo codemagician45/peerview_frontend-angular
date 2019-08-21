@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <h3 class="text-center">{{communityPost.message}}</h3>
+      <h3 class="text-center" [innerHtml]="communityPost.message"></h3>
       <report-post-community-component
         [post]="communityPost"
         [user]="user"

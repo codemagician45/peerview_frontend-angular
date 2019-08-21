@@ -92,7 +92,7 @@
 
         <!--Community post part starts-->
 
-        <div *ngFor="let post of communityPosts; let i = index;" class="forum-item">
+        <div *ngFor="let post of communityPosts | availablePost; let i = index;" class="forum-item">
           <div class="forum-header" (click)="onAnswerQuestion(post.id)" style="cursor: pointer">
 						<span *ngIf="post.attachments.length > 0">
 							<cl-image
@@ -108,8 +108,9 @@
 								</cl-transformation>
 							</cl-image>
 						</span>
-            <h3 class="hidden-xs hidden-sm">{{post.message}}</h3>
-            <p class="hidden-md hidden-lg"><strong>{{post.message}}</strong></p>
+            <h3 class="hidden-xs hidden-sm">
+              <span [innerHtml]="post.message"></span></h3>
+            <p class="hidden-md hidden-lg"><strong [innerHtml]="post.message"></strong></p>
 
           </div>
 

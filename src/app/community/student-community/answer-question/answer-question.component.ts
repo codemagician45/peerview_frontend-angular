@@ -8,7 +8,7 @@ import {
   Params
 } from '@angular/router';
 import {
-  CommunityApiService
+  CommunityApiService, PostApiService
 } from '../../../../services/api';
 import {
   UserService
@@ -40,6 +40,7 @@ import {
   PostEmitter
 } from '../../../shared/emitter';
 import {SharedSetRatingsModalComponent} from '../../../shared/components/set-ratings-modal/set-ratings.component';
+import { Link, NgxLinkifyjsService } from 'ngx-linkifyjs';
 
 @Component({
   selector: 'answer-question-component',
@@ -50,6 +51,8 @@ export class AnswerQuestionCommunityComponent implements OnInit {
 
 
   constructor (
+    private postApiService: PostApiService,
+    public linkifyService: NgxLinkifyjsService,
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
@@ -59,7 +62,7 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   ) {
   }
 
-  private communityPost: CommunityPostModel;
+  private communityPost: any;
   protected user = UserService.getUser();
   protected communityAnswer: CommunityAnswerQuestionModel = new CommunityAnswerQuestionModel();
   protected isUserAnsweringQuestion: Boolean = false;
@@ -78,8 +81,55 @@ export class AnswerQuestionCommunityComponent implements OnInit {
 
   private getQuestionDetails (courseId, questionId): void {
     this.communityApiService.promiseGetQuestionDetail(courseId, questionId)
-      .then((responseData: CommunityPostModel) => {
+      .then(async (responseData: any) => {
         this.communityPost = responseData;
+        let findUrl: Link[] = await this.linkifyService.find(this.communityPost.message);
+        if (findUrl.length > 0 && findUrl[0].type === 'url') {
+          let regex = new RegExp((findUrl[0].value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+          this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(findUrl[0].href))
+            .then((res: any) => {
+              this.communityPost.message = `${(this.communityPost.message.replace(regex, ' ')).trim()}
+                <div class="link-preview">
+                  <div class="link-area">
+                  <div class="og-image">
+                    <a href="${res.data.url}" target="_blank">
+                      <img src="${res.data.image}" alt="logo" />
+                    </a>
+                  </div>
+                  <div class="descriptions">
+                    <div class="og-title">${res.data.title}</div>
+                    <div class="og-description">${res.data.description}</div>
+                    <div class="og-url"><a href="${res.data.url}" target="_blank"> ${res.data.url} </a> </div>
+                  </div>
+                  </div>
+                </div>`;
+            });
+        }
+
+        this.communityPost.reply.forEach(async reply => {
+          findUrl = await this.linkifyService.find(reply.comment);
+          if (findUrl.length > 0 && findUrl[0].type === 'url') {
+            let regex = new RegExp((findUrl[0].value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+            this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(findUrl[0].href))
+              .then((res: any) => {
+                reply.comment = `${(reply.comment.replace(regex, ' ')).trim()}
+                  <div class="link-preview">
+                    <div class="link-area">
+                    <div class="og-image">
+                      <a href="${res.data.url}" target="_blank">
+                        <img src="${res.data.image}" alt="logo" />
+                      </a>
+                    </div>
+                    <div class="descriptions">
+                      <div class="og-title">${res.data.title}</div>
+                      <div class="og-description">${res.data.description}</div>
+                      <div class="og-url"><a href="${res.data.url}" target="_blank"> ${res.data.url} </a> </div>
+                    </div>
+                    </div>
+                  </div>`;
+              });
+          }
+        });
       });
   }
 

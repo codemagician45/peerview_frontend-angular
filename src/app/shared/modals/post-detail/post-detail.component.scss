@@ -55,6 +55,10 @@
     span {
       font-size: 1.5rem;
       white-space: pre-line;
+
+      .link-preview {
+        white-space: initial;
+      }
     }
   }
   .post-images {

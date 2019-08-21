@@ -14,6 +14,9 @@ import {
 import {
   SharedAvailablePostPipeComponent
 } from './available-post.pipe';
+import {
+  SharedLinkPreviewPipeComponent
+} from './link-preview.pipe';
 
 @NgModule({
   imports: [],
@@ -21,13 +24,15 @@ import {
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
     SearchTextPipe,
-    SharedAvailablePostPipeComponent
+    SharedAvailablePostPipeComponent,
+    SharedLinkPreviewPipeComponent
   ],
   exports: [
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
     SearchTextPipe,
-    SharedAvailablePostPipeComponent
+    SharedAvailablePostPipeComponent,
+    SharedLinkPreviewPipeComponent
   ]
 })
 export class SharedPipeModule {}
