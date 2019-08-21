@@ -38,10 +38,12 @@ import {
 import {
   CommunityApiService
 } from '../../services/api';
+import { SharedPipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports: [
     SharedModule,
+    SharedPipeModule,
     communityRouting
   ],
   declarations: [
