@@ -1,5 +1,5 @@
 <div class="notification-list-component">
-  <ul class="notification-list" *ngFor="let notification of notifications; let i = index">
+  <ul class="notification-list" *ngFor="let notification of notifications | availableNotification; let i = index">
 
     <li class="co-row" *ngIf="notification.type === 'newFollower'" (click)="goToUserProfile(notification.subject)">
       <div class="co-img">
