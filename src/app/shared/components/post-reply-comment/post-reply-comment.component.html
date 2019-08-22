@@ -28,7 +28,8 @@
               <span>
                 <span>
                   <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
-                </span> {{item.comment}}
+                </span> 
+                <span [innerHtml]="item.comment"></span>
               </span>
               <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
               <report-post-reply-component

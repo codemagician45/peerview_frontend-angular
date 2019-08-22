@@ -206,23 +206,6 @@ export class AnswerQuestionCommunityComponent implements OnInit {
     }
   }
 
-  protected onClickCommentDetail (reply): void {
-    let dialogConfig = new MatDialogConfig();
-
-    dialogConfig.panelClass = 'post-comment-detail-modal';
-    dialogConfig.disableClose = true;
-    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = {
-      reply: reply,
-      communityPost: this.communityPost,
-      route: this.route,
-      user: this.user,
-      courseId: this.communityAnswer.courseId,
-      questionId: this.communityAnswer.questionId
-    };
-    this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
-  }
-
   protected onDeletePost (postId: number): void {
     // delete here the post
     this.communityApiService.promiseRemoveCommunityPost(postId)
