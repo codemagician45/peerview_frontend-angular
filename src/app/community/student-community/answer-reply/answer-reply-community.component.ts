@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CommunityApiService, PostApiService} from '../../../../services/api';
 import {PostRateModel} from '../../../shared/models';
 import { MatDialogConfig, MatDialog } from '@angular/material';
@@ -35,6 +35,7 @@ export class AnswerReplyCommunityComponent implements OnInit {
   @Input() public user: any;
   @Input() protected communityPost: any;
   @Input() protected communityAnswer: any;
+  @Output() protected reloadCommunity = new EventEmitter();
 
   protected rate: PostRateModel = new PostRateModel();
 
@@ -53,6 +54,7 @@ export class AnswerReplyCommunityComponent implements OnInit {
       this.communityApiService.promiseRateCommunityPostReply(this.reply.id, this.rate).then(response => {
         console.log('');
         this.showReplyRatingStarsPopup = false;
+        this.reloadCommunity.emit();
       });
     }
   }

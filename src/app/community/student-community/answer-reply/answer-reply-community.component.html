@@ -24,8 +24,8 @@
   <div class="options-text row" [ngStyle]="{'width': '100%'}">
     <div class="col-xs-6 text-center post-likes">
       <span
-        *ngIf="reply.replyLike  && reply.replyLike[0] && reply.replyLike[0].replyCount > 0">{{reply.replyLike[0].replyCount}}</span>
-      <span>{{reply.replyLike && reply.replyLike[0] && reply.replyLike[0].replyCount >= 2 ? ' Likes' : ' Like'}}</span>
+        *ngIf="reply.replyLikeCount > 0">{{reply.replyLikeCount}}</span>
+      <span> {{reply.replyLikeCount >= 2 ? ' Likes' : ' Like'}}</span>
     </div>
     <div class="col-xs-3 text-center post-comments"><span>Reply</span></div>
     <div class="col-xs-4 text-center"></div>
@@ -34,11 +34,11 @@
   <div class="options-logo row" [ngStyle]="{'width': '100%'}">
     <div class="col-xs-6 p-peersview-0 text-center">
       <button class="btn-peersivew-transparent like"
-        [ngClass]="reply.replyLike && reply.replyLike[0] &&  reply.replyLike[0].replyCount > 0 ? 'liked' : 'not-yet-liked'"
+        [ngClass]="reply.isReplyLikeUser ? 'liked' : 'not-yet-liked'"
         (click)="onClickToggleReplyRatingStars()">
         <i class="material-icons">thumb_up</i>
         <span class="peersview-primary-color colon-separator">:</span>
-        <shared-stars-component [ratingCount]="ratingCount" (onStarHover)="onStarHover($event)"
+        <shared-stars-component [ratingCount]="reply.roundedRating" (onStarHover)="onStarHover($event)"
           (onStarClick)="onStarClick($event)"></shared-stars-component>
       </button>
       <shared-set-ratings-modal-component style="position: absolute;left: 62px;top: 15px;"

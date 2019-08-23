@@ -99,7 +99,7 @@
     </div>
 
     <div class="row m-peersview-0" *ngFor="let reply of communityPost.reply">
-      <answer-reply-component [communityAnswer]="communityAnswer" [communityPost]="communityPost" [reply]="reply" [user]="user"></answer-reply-component>
+      <answer-reply-component [communityAnswer]="communityAnswer" [communityPost]="communityPost" [reply]="reply" [user]="user" (reloadCommunity)="reloadCommunityQuestion()"></answer-reply-component>
     </div>
 
   </div>

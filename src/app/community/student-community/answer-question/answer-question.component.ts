@@ -236,5 +236,9 @@ export class AnswerQuestionCommunityComponent implements OnInit {
       });
     }
   }
+
+  public reloadCommunityQuestion (): void {
+    this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
+  }
 }
 
