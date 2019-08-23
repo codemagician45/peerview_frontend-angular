@@ -7,7 +7,7 @@
     <li
       data-toggle="tooltip"
       title="{{follows.followee.firstName}} {{follows.followee.lastName}}"
-      *ngFor="let follows of followees">
+      *ngFor="let follows of followees | availableFollowee">
         <!-- <cl-image
           public-id="{{follows.followee.profilePicture}}"
           radius="max"

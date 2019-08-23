@@ -44,7 +44,7 @@
           </button>
         </p>
       </div>
-      <div class="col-xs-12 poll-options" *ngIf="!!post.question">
+      <div class="col-xs-12 poll-options" *ngIf="!!post.question && post.postPollOptions && post.postPollOptions.fulfillmentValue">
         <ul>
           <form>
             <li *ngFor="let option of post.postPollOptions?.fulfillmentValue; let i = index;">

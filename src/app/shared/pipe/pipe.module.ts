@@ -20,6 +20,12 @@ import {
 import {
   SharedAvailableNotificationPipeComponent
 } from './available-notification.pipe';
+import {
+  SharedAvailableFollowerPipeComponent
+} from './available-follower.pipe';
+import {
+  SharedAvailableFolloweePipeComponent
+} from './available-followee.pipe';
 
 @NgModule({
   imports: [],
@@ -29,7 +35,9 @@ import {
     SearchTextPipe,
     SharedAvailablePostPipeComponent,
     SharedLinkPreviewPipeComponent,
-    SharedAvailableNotificationPipeComponent
+    SharedAvailableNotificationPipeComponent,
+    SharedAvailableFollowerPipeComponent,
+    SharedAvailableFolloweePipeComponent
   ],
   exports: [
     SharedFilterPipeComponent,
@@ -37,7 +45,9 @@ import {
     SearchTextPipe,
     SharedAvailablePostPipeComponent,
     SharedLinkPreviewPipeComponent,
-    SharedAvailableNotificationPipeComponent
+    SharedAvailableNotificationPipeComponent,
+    SharedAvailableFollowerPipeComponent,
+    SharedAvailableFolloweePipeComponent
   ]
 })
 export class SharedPipeModule {}

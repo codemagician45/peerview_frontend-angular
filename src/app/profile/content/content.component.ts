@@ -36,7 +36,7 @@ export class ProfileContentComponent implements OnInit {
   protected isUserProfile: boolean = true;
 
   public ngOnInit (): void {
-    this.getUserTimeline();
+    // this.getUserTimeline();
     this.getWorkExperience();
     let currentLoginUser = UserService.getUser();
 
@@ -49,13 +49,13 @@ export class ProfileContentComponent implements OnInit {
 
   protected onShowPostDetailDialogComponent (): void {}
 
-  private getUserTimeline (): void {
-    this.userApiService.promiseGetTimeline(this.user.id)
-      .then((posts: PostModel[]) => {
-        this.posts = posts;
-      })
-      .catch(error => {});
-  }
+  // private getUserTimeline (): void {
+  //   this.userApiService.promiseGetTimeline(this.user.id, 10, 0)
+  //     .then((posts: PostModel[]) => {
+  //       this.posts = posts;
+  //     })
+  //     .catch(error => {});
+  // }
 
   private getWorkExperience (): void {
     this.userApiService.promiseGetWorkExperience(this.user.id)

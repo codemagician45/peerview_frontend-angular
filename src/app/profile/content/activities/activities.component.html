@@ -1,4 +1,9 @@
 <div class="profile-activities">
 	<div class="timeline-text hidden-xs"><span>Activities</span></div>
-	<shared-post-component [posts]="posts" [user]="user"></shared-post-component>
+	<shared-post-component [posts]="posts" [user]="user" 
+		[route]="{
+			'name': 'profile',
+			'userId': user.id
+		}">
+	</shared-post-component>
 </div>

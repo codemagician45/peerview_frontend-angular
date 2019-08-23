@@ -48,7 +48,7 @@ export class ProfileContentActivitiesComponent implements OnInit {
   protected onShowPostDetailDialogComponent (): void {}
 
   private getUserTimeline (): void {
-    this.userApiService.promiseGetTimeline(this.user.id)
+    this.userApiService.promiseGetTimeline(this.user.id, 10, 0)
       .then((posts: PostModel[]) => {
         this.posts = posts;
       })

@@ -19,7 +19,7 @@
     <li
       data-toggle="tooltip"
       title="{{follows.follower.firstName}} {{follows.follower.lastName}}"
-      *ngFor="let follows of followers">
+      *ngFor="let follows of followers | availableFollower">
         <cl-image
           public-id="{{follows.follower.socialImage ? (follows.follower.profilePicture === 'avatar' ? follows.follower.socialImage: follows.follower.profilePicture): follows.follower.profilePicture}}"
           *ngIf="follows.follower?.profilePicture"

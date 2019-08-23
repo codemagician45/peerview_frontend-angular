@@ -63,11 +63,18 @@ export class UserApiService extends ApiService {
       });
   }
 
-  public promiseGetTimeline (userId?: number): Promise<PostModel[]> {
+  public promiseGetTimeline (userId?: number, limit?: number, offset?: number): Promise<PostModel[]> {
     let params: HttpParams;
+
     if (userId) {
       params = new HttpParams()
-        .set('userId', userId.toString());
+      .set('limit', limit.toString())
+      .set('offset', offset.toString())
+      .set('userId', userId.toString());
+    } else {
+      params = new HttpParams()
+      .set('limit', limit.toString())
+      .set('offset', offset.toString());
     }
 
     return this.promiseGetAllResponseData('timeline', {params: params})

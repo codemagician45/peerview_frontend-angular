@@ -23,7 +23,8 @@ import {
 } from '../../models';
 import {
   PostApiService,
-  CampusApiService
+  CampusApiService,
+  UserApiService
 } from '../../../../services/api';
 import {
   PostEmitter
@@ -48,6 +49,7 @@ export class SharedPostComponent {
   constructor (
     private postApiService: PostApiService,
     private campusApiService: CampusApiService,
+    private userApiService: UserApiService,
     private router: Router,
     private dialog: MatDialog,
     private overlay: Overlay
@@ -59,7 +61,8 @@ export class SharedPostComponent {
     campusId?: number,
     campusFreshersFeedId?: number,
     campusCourseFeedId?: number,
-    campusClassId?: number
+    campusClassId?: number,
+    userId?: number
   } = {name: 'home'};
   @Input() protected user: UserModel;
   @Output() protected loadRecord = new EventEmitter();
@@ -167,6 +170,15 @@ export class SharedPostComponent {
           .then((campusPost: CampusPostModel[]) => {
             this.posts = this.posts.concat(campusPost);
             this.checkIfThereAreStillPostAvailable(campusPost);
+            this.isLoadingMorePosts = false;
+          });
+        break;
+      case 'profile':
+        let userId = this.route.userId;
+        this.userApiService.promiseGetTimeline(userId, this.limit, this.offset)
+          .then((timelinePost: PostModel[]) => {
+            this.posts = this.posts.concat(timelinePost);
+            this.checkIfThereAreStillPostAvailable(timelinePost);
             this.isLoadingMorePosts = false;
           });
         break;
