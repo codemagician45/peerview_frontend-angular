@@ -1,10 +1,10 @@
 main > {
   router-outlet ~ * {
-    // position: absolute;
-    display: block;
+    // display: block;
     height: 100%;
+    position: absolute;
     width: 100%;
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
     min-height: 100vh;
   }
 }

@@ -151,6 +151,14 @@ export const appRoutes: Routes = [{
     loadChildren: './messages/messages.module#MessagesModule',
     canActivate: [CanActivateUserProfile],
     data: {state: 'messages'}
+  }, {
+    path: 'create-ad',
+    loadChildren: './create-ad/create-ad.module#CreateAdModule',
+    canActivate: [CanActivateUserProfile],
+    data: {
+      state: 'create-ad',
+      title: 'Create Ad'
+    }
   }];
 
 @NgModule({
