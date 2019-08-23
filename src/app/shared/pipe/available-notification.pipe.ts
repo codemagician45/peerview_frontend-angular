@@ -14,11 +14,13 @@ export class SharedAvailableNotificationPipeComponent implements PipeTransform {
   public transform (items: any[]): any[] {
     let returnData: any[] = [];
 
-    items.map((item, index) => {
-      if (item.subject) {
-        returnData.push(item);
-      }
-    });
+    if (items && items.length) {
+      items.map((item, index) => {
+        if (item.subject) {
+          returnData.push(item);
+        }
+      });
+    }
 
     return returnData;
   }

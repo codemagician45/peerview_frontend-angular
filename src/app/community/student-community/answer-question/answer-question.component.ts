@@ -133,6 +133,16 @@ export class AnswerQuestionCommunityComponent implements OnInit {
       });
   }
 
+  protected onDeletePost (postId: number): void {
+    // delete here the post
+    this.communityApiService.promiseRemoveCommunityPost(postId)
+      .then(() => {
+        this.location.back();
+      }).catch((error) => {
+      console.error('error', error);
+    });
+  }
+
   protected onReply (formIsValid): void {
     if (this.hasImageSelected) {
       PostEmitter.uploadImages().emit();
@@ -188,43 +198,6 @@ export class AnswerQuestionCommunityComponent implements OnInit {
         console.error('error', error);
       });
     }
-  }
-
-  protected onDeletePostReply (replyId): void {
-    if (replyId) {
-      this.communityApiService.promiseRemoveCommunityPostReply(replyId)
-        .then(() => {
-          let index = this.communityPost['reply'].findIndex((filter: any) => {
-            return filter.id === replyId;
-          });
-          if (index > -1) {
-            this.communityPost['reply'].splice(index, 1);
-          }
-        }).catch((error) => {
-        console.error('error', error);
-      });
-    }
-  }
-
-  protected onDeletePost (postId: number): void {
-    // delete here the post
-    this.communityApiService.promiseRemoveCommunityPost(postId)
-      .then(() => {
-        this.location.back();
-      }).catch((error) => {
-      console.error('error', error);
-    });
-  }
-
-  protected onClickUserProfile (user): Promise<boolean> {
-    let userId = CryptoUtilities.cipher(user.id);
-    let currentLoginUser = UserService.getUser();
-
-    if (user.id === currentLoginUser.id) {
-      return this.router.navigate([`/profile`]);
-    }
-
-    return this.router.navigate([`/profile/${userId}`]);
   }
 
   protected goToBack (): void {

@@ -6,6 +6,11 @@ import { NgxLinkifyjsService } from 'ngx-linkifyjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Overlay } from '@angular/cdk/overlay';
 import { SharedCommunityPostReplyComponent } from '../../../shared/modals';
+import {
+  Location
+} from '@angular/common';
+import { CryptoUtilities } from '../../../shared/utilities';
+import { UserService } from '../../../../services';
 
 @Component({
   selector: 'answer-reply-component',
@@ -18,8 +23,10 @@ export class AnswerReplyCommunityComponent implements OnInit {
     private communityApiService: CommunityApiService,
     private postApiService: PostApiService,
     public linkifyService: NgxLinkifyjsService,
+    private location: Location,
     private route: ActivatedRoute,
     private dialog: MatDialog,
+    private router: Router,
     private overlay: Overlay
   ) {
   }
@@ -45,6 +52,7 @@ export class AnswerReplyCommunityComponent implements OnInit {
       this.rate.rating = numberOfStars;
       this.communityApiService.promiseRateCommunityPostReply(this.reply.id, this.rate).then(response => {
         console.log('');
+        this.showReplyRatingStarsPopup = false;
       });
     }
   }
@@ -65,4 +73,32 @@ export class AnswerReplyCommunityComponent implements OnInit {
     };
     this.dialog.open(SharedCommunityPostReplyComponent, dialogConfig);
   }
+
+  protected onDeletePostReply (replyId): void {
+    if (replyId) {
+      this.communityApiService.promiseRemoveCommunityPostReply(replyId)
+        .then(() => {
+          let index = this.communityPost['reply'].findIndex((filter: any) => {
+            return filter.id === replyId;
+          });
+          if (index > -1) {
+            this.communityPost['reply'].splice(index, 1);
+          }
+        }).catch((error) => {
+        console.error('error', error);
+      });
+    }
+  }
+
+  protected onClickUserProfile (user): Promise<boolean> {
+    let userId = CryptoUtilities.cipher(user.id);
+    let currentLoginUser = UserService.getUser();
+
+    if (user.id === currentLoginUser.id) {
+      return this.router.navigate([`/profile`]);
+    }
+
+    return this.router.navigate([`/profile/${userId}`]);
+  }
+
 }

@@ -1,5 +1,12 @@
 .report-post-community-component {
+  display: flex;
+  justify-content: center;
+  
   .dropdown {
+    button {
+      display: flex;
+    }
+
     ul {
       background-color: #fff;
       padding: 0 15px;

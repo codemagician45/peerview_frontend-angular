@@ -14,11 +14,13 @@ export class SharedAvailablePostPipeComponent implements PipeTransform {
   public transform (items: any[]): any[] {
     let returnData: any[] = [];
 
-    items.map((item, index) => {
-      if (item.user) {
-        returnData.push(item);
-      }
-    });
+    if (items && items.length) {
+      items.map((item, index) => {
+        if (item.user) {
+          returnData.push(item);
+        }
+      });
+    }
 
     return returnData;
   }

@@ -28,20 +28,22 @@
       </div>
 
       <h3 class="text-center" [innerHtml]="communityPost.message"></h3>
-      <report-post-community-component
-        [post]="communityPost"
-        [user]="user"
-        (onDeletePost)="onDeletePost($event)">
-
-      </report-post-community-component>
+      <div class="actions-wrapper">
+        <button
+          (click)="onFollowQuestion(communityPost)"
+          class="btn-md btn-follow"
+          [ngClass]="communityPost.isUserFollowCommunityQuestion === true ? 'btn-peersview-secondary' : 'btn-peersview-warning'">
+          <i class="material-icons" style="font-size: 100%;">person_add</i>
+          {{communityPost.isUserFollowCommunityQuestion ? 'Following' : 'Follow'}}
+        </button>
+        <report-post-community-component
+          [post]="communityPost"
+          [user]="user"
+          (onDeletePost)="onDeletePost($event)">
+        </report-post-community-component>
+      </div>
     </div>
-    <button
-      (click)="onFollowQuestion(communityPost)"
-      class="btn-md btn-follow set_button"
-      [ngClass]="communityPost.isUserFollowCommunityQuestion === true ? 'btn-peersview-secondary' : 'btn-peersview-warning'">
-      <i class="material-icons" style="font-size: 100%;">person_add</i>
-      {{communityPost.isUserFollowCommunityQuestion ? 'Following' : 'Follow'}}
-    </button>
+    
     <!-- Answer form -->
     <hr size='10' style="border-top: 4px solid #eeeeee;">
     <!-- <div class="tab-pill answer-question-component row m-peersview-0" style ="margin-top: 3%;"> -->
