@@ -10,7 +10,7 @@
           <select class="form-control" name="courseId" required (change)="onChangeCourse($event.target.value)">
             <option value="0">Course</option>
             <option *ngFor="let course of courses" [value]="course.id">
-              {{course.name}}
+              {{course.name | removeAmp}}
             </option>
           </select>
         </div>
@@ -19,7 +19,7 @@
       <div class="professional-course-added">
         <ul class="added-tags-list">
           <li *ngFor="let course of courseAdded">
-            <span>{{course.name}}</span>
+            <span>{{course.name | removeAmp}}</span>
             <a (click)="removeCourseAdded(course)" class="delete-tag" title="Delete"></a>
           </li>
         </ul>

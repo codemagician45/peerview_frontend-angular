@@ -75,15 +75,17 @@ export class UserOnboardingProfessionalComponent implements OnInit {
 
   protected onSubmit (): void {
     console.log(this.user);
+    let that = this;
+
     this.userApiService.promiseGetType('professionals')
       .then((userType: UserTypeModel) => {
-        this.user.userTypeId = userType.id;
-        this.currentUser.userTypeId = userType.id;
-        this.currentUser.assimilate(this.user);
-        return this.userApiService.promiseUpdateOnboardingDetails(this.user);
+        that.user.userTypeId = userType.id;
+        that.currentUser.userTypeId = userType.id;
+        that.currentUser.assimilate(that.user);
+        return that.userApiService.promiseUpdateOnboardingDetails(that.user);
       })
       .then(() => {
-        this.router.navigate(['/user/on-boarding/status/student/interest']);
+        that.router.navigate(['/user/on-boarding/status/student/interest']);
       })
       .catch(() => {});
   }

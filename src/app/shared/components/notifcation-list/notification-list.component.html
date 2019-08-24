@@ -97,7 +97,7 @@
         </a>
       </div>
       <div class="co-info">
-        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name}}</b>.</span>
+        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name | removeAmp}}</b>.</span>
         <br/>
       </div>
       <div class="co-options">
@@ -118,7 +118,7 @@
         </a>
       </div>
       <div class="co-info">
-        <span class="co-name">"{{notification.postv1.message}}" {{notification.message}} <b class="peersview-primary-color"> {{notification.course.name}}</b> community.</span>
+        <span class="co-name">"{{notification.postv1.message}}" {{notification.message}} <b class="peersview-primary-color"> {{notification.course.name | removeAmp}}</b> community.</span>
         <br/>
       </div>
       <div class="co-options">
@@ -139,7 +139,7 @@
         </a>
       </div>
       <div class="co-info">
-        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name}}</b>.</span>
+        <span class="co-name"><b class="peersview-primary-color">{{notification.subject.firstName }}&nbsp;{{notification.subject.lastName}}</b> {{notification.message}} "{{notification.postv1.message}}" in the <b class="peersview-primary-color"> {{notification.course.name | removeAmp}}</b>.</span>
         <br/>
       </div>
       <div class="co-options">

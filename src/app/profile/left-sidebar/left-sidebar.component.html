@@ -55,7 +55,7 @@
 			</div>
 			<div class="info-text">
 				<span *ngFor="let item of user?.userCourses">
-					{{item.course.name}}
+					{{item.course.name | removeAmp}}
 				</span>
 			</div>
 		</div>

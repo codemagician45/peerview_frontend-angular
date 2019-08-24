@@ -24,7 +24,7 @@
         >
         <div class="box-list">
           <div class="m-peersview-yb-2 box-title">
-            <a (click)="onClickNavigate(item.id)">{{item.course.name}}</a>
+            <a (click)="onClickNavigate(item.id)">{{item.course.name | removeAmp}}</a>
           </div>
           <img src="/src/assets/images/courses/course-biology.jpg" class="img-responsive" alt="">
           <p>{{item.course.description }}</p>
@@ -39,7 +39,7 @@
         >
         <div class="box-list" >
           <div class="m-peersview-yb-2 box-title">
-            <a (click)="onClickNavigate(item.id)">{{item.course.name}}</a>
+            <a (click)="onClickNavigate(item.id)">{{item.course.name | removeAmp}}</a>
           </div>
           <img src="/src/assets/images/courses/course-biology.jpg" class="img-responsive" alt="">
           <p>{{item.course.description }}</p>

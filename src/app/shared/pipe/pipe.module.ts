@@ -26,6 +26,9 @@ import {
 import {
   SharedAvailableFolloweePipeComponent
 } from './available-followee.pipe';
+import {
+  RemoveAmpPipe
+} from './remove-amp.pipe';
 
 @NgModule({
   imports: [],
@@ -37,7 +40,8 @@ import {
     SharedLinkPreviewPipeComponent,
     SharedAvailableNotificationPipeComponent,
     SharedAvailableFollowerPipeComponent,
-    SharedAvailableFolloweePipeComponent
+    SharedAvailableFolloweePipeComponent,
+    RemoveAmpPipe
   ],
   exports: [
     SharedFilterPipeComponent,
@@ -47,7 +51,8 @@ import {
     SharedLinkPreviewPipeComponent,
     SharedAvailableNotificationPipeComponent,
     SharedAvailableFollowerPipeComponent,
-    SharedAvailableFolloweePipeComponent
+    SharedAvailableFolloweePipeComponent,
+    RemoveAmpPipe
   ]
 })
 export class SharedPipeModule {}
