@@ -83,8 +83,8 @@ export class UserOnboardingStudentComponent implements OnInit {
     MessageNotificationService.show({
       notification: {
         id: 'on-boarding-status',
-        message: 'Cannot continue',
-        instruction: this.user.courseIds.length === 0 ? 'Please fill out the fields.' : error.error.status_message
+        message: 'What is missing I?',
+        instruction: this.user.courseIds.length === 0 ? 'Please fill out the fields.' : error.error.statusMessage
       }
     },
     NotificationTypes.Warning);

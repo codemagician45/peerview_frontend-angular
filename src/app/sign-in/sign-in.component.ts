@@ -73,7 +73,7 @@ export class SignInComponent {
               notification: {
                 id: 'sign-in-error',
                 message: 'Unable to Login.',
-                reason: error.error.status_message,
+                reason: 'Email does not exist in our records, wrong password or email.',
                 instruction: 'Please correct the errors and try again.'
               }
             },

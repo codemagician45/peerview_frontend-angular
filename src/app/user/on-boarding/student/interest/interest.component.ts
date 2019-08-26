@@ -206,7 +206,7 @@ export class UserOnboardingStudentInterestComponent {
               // message: 'Unable to Save Interest.',
               message: 'Select 5 interests of yours',
               // reason: error.error.status_message,
-              instruction: 'Please select 5 interests of yours and try again.'
+              instruction: 'please select a sub-interest and try again.'
             }
           },
           NotificationTypes.Info);
