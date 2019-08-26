@@ -86,10 +86,12 @@ import {
 import {
   ClassPostComponent
 } from './main/class-posts/class-posts.component';
+import { SharedPipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports : [
     SharedModule,
+    SharedPipeModule,
     campusRouting
   ],
   declarations : [

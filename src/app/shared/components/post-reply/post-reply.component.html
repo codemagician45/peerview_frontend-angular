@@ -14,7 +14,7 @@
         </div>
       </div>
       <div *ngIf="post.postReply">
-        <div *ngFor="let item of post.postReply.slice().reverse()">
+        <div *ngFor="let item of post.postReply.slice().reverse() | availablePost">
           <ul style="display: flex;" *ngIf="!item.quoteReplyId">
             <cl-image
               public-id="{{item.user.socialImage ? (item.user.profilePicture === 'avatar' ? item.user.socialImage: item.user.profilePicture): item.user.profilePicture}}"

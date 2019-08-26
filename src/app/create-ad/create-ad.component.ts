@@ -70,32 +70,6 @@ export class CreateAdComponent implements OnInit, OnDestroy {
   private getPosts (): void {
     this.postApiService.promiseGetAllPost(10, 0)
       .then((responseData: PostModel[]) => {
-        this.posts = responseData;
-        console.log('posts', this.posts);
-        this.posts.forEach(async post => {
-          let findUrl: Link[] = await this.linkifyService.find(post.message);
-          if (findUrl.length > 0 && findUrl[0].type === 'url') {
-            let regex = new RegExp((findUrl[0].value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
-            this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(findUrl[0].href))
-              .then((res: any) => {
-                post.message = `${(post.message.replace(regex, ' ')).trim()}
-                  <div class="link-preview">
-                    <div class="link-area">
-                    <div class="og-image">
-                      <a href="${res.data.url}" target="_blank">
-                        <img src="${res.data.image}" alt="logo" />
-                      </a>
-                    </div>
-                    <div class="descriptions">
-                      <div class="og-title">${res.data.title}</div>
-                      <div class="og-description">${res.data.description}</div>
-                      <div class="og-url"><a href="${res.data.url}" target="_blank"> ${res.data.url} </a> </div>
-                    </div>
-                    </div>
-                  </div>`;
-              });
-          }
-        });
       })
       .catch(error => {
 

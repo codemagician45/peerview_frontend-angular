@@ -49,10 +49,12 @@ import {
 import {
   RegistryAcademicsChart
 } from './main/registry/charts/academics/academics.chart';
+import { SharedPipeModule } from '../shared/pipe/pipe.module';
 
 @NgModule({
   imports : [
     SharedModule,
+    SharedPipeModule,
     campusAdminRouting
   ],
   declarations : [
