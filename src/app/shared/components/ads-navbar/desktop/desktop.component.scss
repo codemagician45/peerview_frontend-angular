@@ -1,0 +1,74 @@
+.ads-navbar-desktop-component {
+  .container {
+    display: flex;
+    align-items: center;
+    color: white;
+
+    .title {
+      flex: 1;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
+  .navbar-default {
+    display: flex;
+    align-items: center;
+    font-family: 'Conv_MavenPro-Bold';
+    font-size: 15px;
+    background-color: #631a90;
+  }
+  .nav-right {
+    position: relative;
+    display: inline-flex;
+    height: 48px;
+    float: right;
+    .menu {
+      margin: auto;
+      padding: 0 5px;
+    }
+  }
+  .nav-left {
+    position: relative;
+    float: left;
+    display: flex;
+    .brand-image {
+      margin: auto;
+      cursor: pointer;
+    }
+    .nav-link {
+      display: contents;
+    }
+  }
+  .users-menu {
+    margin: auto;
+    padding-left: 5px;
+    .welcome-user {
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    #users-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+    }
+  }
+  .users-dropdown {
+    &:before {
+      content: "";
+      position: absolute;
+      border-bottom: 10px solid white;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      top: -10px;
+      right: 5px;
+    }
+  }
+  .users-dropdown {
+    a {
+      font-family: 'ProximaNovaAltRegular';
+    }
+  }
+}
