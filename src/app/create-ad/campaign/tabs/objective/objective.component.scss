@@ -1,0 +1,21 @@
+.create-ad-campaign-objective-component {
+    .content {
+        padding-top: 50px;
+
+        .card-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            mat-card {
+                flex: 1;
+                margin: 10px;
+
+                i {
+                    font-size: 40px;
+                    color: purple;
+                }
+            }
+        }
+    }
+}
