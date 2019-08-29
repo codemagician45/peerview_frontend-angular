@@ -14,10 +14,11 @@
       height="40px"
       radius="max"
       class="peer-list-img"
+      (click)="onClickUser(peer);"
       >
     </cl-image>
     
-    <p class="peer-name">{{peer.firstName}} {{peer.lastName}}</p>
+    <p class="peer-name" (click)="onClickUser(peer);">{{peer.firstName}} {{peer.lastName}}</p>
     <span *ngIf="peer.schoolName">
       <i class="material-icons">account_balance</i>
       {{peer.schoolName}}

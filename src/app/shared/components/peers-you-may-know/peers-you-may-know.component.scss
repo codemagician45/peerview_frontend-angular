@@ -26,8 +26,10 @@
     padding: 5px 0;
     border-bottom: solid 1px #d8d8d8;
     border-bottom: solid 1px #d8d8d8;
+    
     .peer-list-img {
       position: absolute;
+      cursor: pointer;
     }
     .peer-name {
       margin-left: 45px;
@@ -37,6 +39,7 @@
       margin-bottom: 0;
       color: #323c47;
       text-transform: capitalize;
+      cursor: pointer;
     }
     span {
       display: flex;
