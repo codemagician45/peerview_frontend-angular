@@ -13,6 +13,10 @@ import {
   MessageNotificationService,
   NotificationTypes
 } from '../../../../services';
+import {
+  CryptoUtilities
+} from '../../../shared/utilities';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shared-peers-you-may-know-component',
@@ -21,7 +25,8 @@ import {
 })
 export class SharedPeersYouMayKnowComponent {
   constructor (
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private router: Router
   ) {}
 
   public peers: any[];
@@ -66,5 +71,10 @@ export class SharedPeersYouMayKnowComponent {
       this.peers = usersThatAreNotYetFollowed;
     })
     .catch(() => {});
+  }
+
+  protected onClickUser (user): void {
+    let userId = CryptoUtilities.cipher(user.id);
+    this.router.navigate([`/profile/${userId}`]);
   }
 }

@@ -1,6 +1,12 @@
-<shared-navbar-component></shared-navbar-component>
+<shared-ads-navbar-component></shared-ads-navbar-component>
 <div class="create-ad-component container">
-  <div class="col-lg-9 col-md-9 row center-section">
-    
+  <div class="col-lg-3 col-md-3 hidden-xs hidden-sm left-sidebar">
+    <create-ad-left-side-menu-component></create-ad-left-side-menu-component>
+  </div>
+  <mobile-create-ad-nav-component class="hidden-md hidden-lg"></mobile-create-ad-nav-component>
+  <div class="col-lg-9 col-md-9 contents">
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

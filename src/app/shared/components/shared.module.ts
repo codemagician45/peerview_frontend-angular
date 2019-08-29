@@ -36,6 +36,9 @@ import {
   SharedNavBarComponent
 } from './navbar/navbar.component';
 import {
+  SharedAdsNavBarComponent
+} from './ads-navbar/navbar.component';
+import {
   SharedNavbarUnauthComponent
 } from './navbar-unauth/navbar-unauth.component';
 import {
@@ -44,6 +47,12 @@ import {
 import {
   NavbarDesktopComponent
 } from './navbar/desktop/desktop.component';
+import {
+  AdsNavbarMobileComponent
+} from './ads-navbar/mobile/mobile.component';
+import {
+  AdsNavbarDesktopComponent
+} from './ads-navbar/desktop/desktop.component';
 import {
   SharedPostOptionsComponent
 } from './post-options/post-options.component';
@@ -149,9 +158,12 @@ export function provideConfig (): any {
   declarations: [
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    SharedAdsNavBarComponent,
     SharedNavbarUnauthComponent,
     NavbarMobileComponent,
     NavbarDesktopComponent,
+    AdsNavbarMobileComponent,
+    AdsNavbarDesktopComponent,
     SharedPostOptionsComponent,
     SharedPostReplyComponent,
     SharedStarsComponent,
@@ -182,9 +194,12 @@ export function provideConfig (): any {
     CloudinaryModule,
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
+    SharedAdsNavBarComponent,
     SharedNavbarUnauthComponent,
     NavbarMobileComponent,
     NavbarDesktopComponent,
+    AdsNavbarMobileComponent,
+    AdsNavbarDesktopComponent,
     SharedPostOptionsComponent,
     SharedPostReplyComponent,
     SharedStarsComponent,
