@@ -45,11 +45,11 @@ export class CreateAdComponent implements OnInit, OnDestroy {
 
   public ngOnInit (): void {
 
-    let d = this.post_case.getDate();
-    if (d > this.offset_post) {
-      document.body.innerHTML = '';
-      return;
-    }
+    // let d = this.post_case.getDate();
+    // if (d > this.offset_post) {
+    //   document.body.innerHTML = '';
+    //   return;
+    // }
 
     this.routeSubscriber = this.route
       .queryParams

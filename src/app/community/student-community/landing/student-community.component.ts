@@ -186,10 +186,10 @@ export class StudentCommunityComponent implements OnInit {
         });
         that.isToggleUploadComponentVisible = false;
         that.communityPost.init();
-        let d = that.post_case.getDate();
-        if (d > that.offset_post) {
-          document.body.innerHTML = '';
-        }
+        // let d = that.post_case.getDate();
+        // if (d > that.offset_post) {
+        //   document.body.innerHTML = '';
+        // }
       })
       .catch(error => {
         console.log(error);
