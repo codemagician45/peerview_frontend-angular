@@ -16,7 +16,7 @@ export class SharedAvailableFollowerPipeComponent implements PipeTransform {
 
     if (items && items.length) {
       items.map((item, index) => {
-        if (item.follows && item.follows.follower) {
+        if (item && item.follower) {
           returnData.push(item);
         }
       });

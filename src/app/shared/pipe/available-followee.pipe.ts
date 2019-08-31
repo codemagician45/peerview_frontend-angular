@@ -16,7 +16,7 @@ export class SharedAvailableFolloweePipeComponent implements PipeTransform {
 
     if (items && items.length) {
       items.map((item, index) => {
-        if (item.follows && item.follows.followee) {
+        if (item && item.followee) {
           returnData.push(item);
         }
       });
