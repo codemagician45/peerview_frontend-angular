@@ -17,10 +17,10 @@
 			</div>
 			<div class="info-text">
 				<span *ngIf="!isUserProfile">
-					{{user?.aboutMe || 'Tell us about yourself'}}
+					{{user?.aboutMe || 'No Details to Show'}}
 				</span>
 				<span *ngIf="isUserProfile">
-					{{user?.aboutMe || 'No Details to Show'}}
+					{{user?.aboutMe || 'Tell us about yourself'}}
 				</span>
 			</div>
 			<div class="info-action" (click)="onOpenAboutMeDialog()" *ngIf="isUserProfile">
