@@ -52,6 +52,10 @@ export const appRoutes: Routes = [{
   loadChildren: './leisure/leisure.module#LeisureModule',
   data: {state: 'leisure'}
 }, {
+  path: 'jobs-search-result',
+  loadChildren: './jobs-search/jobs-search.module#JobsSearchModule',
+  data: {state: 'jobs-search-result'}
+}, {
   path: '',
   loadChildren: './index/index.module#IndexModule',
   resolve: [RedirectToOnboardingComponent, RedirectToHomeComponent],

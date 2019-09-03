@@ -12,6 +12,34 @@
     .small-device {
       font-size: 20px;
     }
+
+    h1 {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .form-control {
+      background-color: transparent;
+      border: none;
+      height: auto;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+      }
+
+      button {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #631a90;
+        border: none;
+        font-size: 20px;
+        color: white;
+      }
+    }
   }
   .coming-soon-label {
     position: absolute;

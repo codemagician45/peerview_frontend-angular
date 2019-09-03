@@ -1,0 +1,21 @@
+.job-search-result-component {
+  padding-top: 50px;
+
+  .empty-content {
+    margin-top: 50px;
+
+    .title {
+      border-bottom: 2px solid;
+
+      h1 {
+        text-align: center;
+      }
+    }
+
+    .desc-wrapper {
+      padding: 50px;
+      font-size: 30px;
+    }
+  }
+}
+
