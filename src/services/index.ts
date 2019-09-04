@@ -5,3 +5,4 @@ export * from './user.service';
 export * from './title.service';
 export * from './meta.service';
 export * from './course.service';
+export * from './check-profile-completion.service';

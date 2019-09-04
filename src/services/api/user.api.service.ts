@@ -235,10 +235,10 @@ export class UserApiService extends ApiService {
       });
   }
 
-  public promiseUpdateAboutMe (user: UserModel): Promise<UserModel> {
+  public promiseUpdateAboutMe (user: UserModel): Promise<any> {
     return this.promisePutModelData('about-me', user)
       .then((response: IResponse) => {
-        return UserFactory.create(response.data);
+        return response;
       });
   }
 

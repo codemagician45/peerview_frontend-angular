@@ -45,7 +45,7 @@ export class ProfileLeftSidebarUserInfoAboutMeDialogComponent implements OnInit 
       });
 
       this.userApiService.promiseUpdateAboutMe(this.user)
-        .then(() => {
+        .then((data) => {
           let aboutModelComponentRef = this.dialog.getDialogById('ProfileLeftSidebarUserInfoAboutMeDialogComponent');
           aboutModelComponentRef.close(this.aboutMe);
         })

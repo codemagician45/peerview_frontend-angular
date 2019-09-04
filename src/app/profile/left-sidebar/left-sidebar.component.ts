@@ -11,6 +11,7 @@ import {
 import { Overlay } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material';
 import { ProfileLeftSidebarUserInfoAboutMeDialogComponent } from './user-info/modal/about-me-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'profile-left-sidebar-component',
@@ -19,12 +20,14 @@ import { ProfileLeftSidebarUserInfoAboutMeDialogComponent } from './user-info/mo
 })
 export class ProfileLeftSidebarComponent {
   constructor (
+    private route: ActivatedRoute,
     private dialog: MatDialog,
     private overlay: Overlay
   ) {}
 
   @Input() protected user: UserModel;
   protected isUserProfile: boolean = true;
+  private routeSubscriber: any;
 
   public ngOnInit (): void {
     let currentLoginUser = UserService.getUser();
@@ -34,6 +37,20 @@ export class ProfileLeftSidebarComponent {
     } else {
       this.isUserProfile = true;
     }
+
+    this.routeSubscriber = this.route
+      .queryParams
+      .subscribe(params => {
+        if (params.mt) {
+          switch (params.mt) {
+            case '0':
+              this.onOpenAboutMeDialog();
+              break;
+            default:
+              break;
+          }
+        }
+      });
   }
 
   protected onOpenAboutMeDialog (): void {

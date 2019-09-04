@@ -13,3 +13,4 @@ export * from './community-mobile-ask-question/community-mobile-ask-question';
 export * from './report-post-community/report.post.community.modal.component';
 export * from './community-post-reply/community-post-reply.component';
 export * from './post-reply-comment/post-reply-comment.component';
+export * from './complete-profile/complete-profile-modal.component';

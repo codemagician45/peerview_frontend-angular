@@ -6,11 +6,15 @@ import {
   Title
 } from '@angular/platform-browser';
 import {
-  MessageNotificationService
+  MessageNotificationService, CheckProfileCompletionService
 } from '../services';
 import {
   routerTransition
 } from './animations';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { CompleteProfileDialogComponent } from './shared/modals/complete-profile/complete-profile-modal.component';
+import { Overlay } from '@angular/cdk/overlay';
+import { ProfileCompleteModel } from './shared/models';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +23,12 @@ import {
   animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
-  constructor (private titleService: Title) {}
+  constructor (
+    private titleService: Title,
+    private dialog: MatDialog,
+    private overlay: Overlay,
+    private checkProfileIncompletion: CheckProfileCompletionService
+  ) {}
 
   protected loading: boolean;
   protected messageNotificationService: Array<any> = [];
@@ -29,6 +38,12 @@ export class AppComponent implements OnInit {
       this.messageNotificationService = [];
       for (let id of Object.keys(messageNotification.notifications)) {
         this.messageNotificationService.push(messageNotification.notifications[id]);
+      }
+    });
+
+    this.checkProfileIncompletion.getStatus().subscribe(value => {
+      if (value.status === true) {
+        this.openProfileCompleteDialog(value);
       }
     });
   }
@@ -48,5 +63,16 @@ export class AppComponent implements OnInit {
     }
 
     return data;
+  }
+
+  private openProfileCompleteDialog (value: ProfileCompleteModel): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'complete-profile-modal-wrapper';
+    dialogConfig.id = 'CompleteProfileDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = value;
+    this.dialog.open(CompleteProfileDialogComponent, dialogConfig);
   }
 }

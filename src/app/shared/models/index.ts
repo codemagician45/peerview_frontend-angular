@@ -9,3 +9,4 @@ export * from './advance-search';
 export * from './messages';
 export * from './community';
 export * from './notification';
+export * from './profile-complete';

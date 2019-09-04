@@ -17,6 +17,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { Overlay } from '@angular/cdk/overlay';
 import { ProfileAddExperienceDialogComponent } from './add-experience-modal/add-experience-modal.component';
 import { ProfileAddSkillsDialogComponent } from './add-skills-modal/add-skills-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'profile-content-component',
@@ -25,6 +26,7 @@ import { ProfileAddSkillsDialogComponent } from './add-skills-modal/add-skills-m
 })
 export class ProfileContentComponent implements OnInit {
   constructor (
+    private route: ActivatedRoute,
     private userApiService: UserApiService,
     private dialog: MatDialog,
     private overlay: Overlay
@@ -34,6 +36,7 @@ export class ProfileContentComponent implements OnInit {
   protected posts: PostModel[] = [];
   protected workExperiences: any[] = [];
   protected isUserProfile: boolean = true;
+  private routeSubscriber: any;
 
   public ngOnInit (): void {
     // this.getUserTimeline();
@@ -45,6 +48,23 @@ export class ProfileContentComponent implements OnInit {
     } else {
       this.isUserProfile = true;
     }
+
+    this.routeSubscriber = this.route
+      .queryParams
+      .subscribe(params => {
+        if (params.mt) {
+          switch (params.mt) {
+            case '1':
+              this.openAddExperienceDialog();
+              break;
+            case '2':
+              this.openAddSkillsDialog();
+              break;
+            default:
+              break;
+          }
+        }
+      });
   }
 
   protected onShowPostDetailDialogComponent (): void {}
