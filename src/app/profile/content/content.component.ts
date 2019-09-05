@@ -55,10 +55,14 @@ export class ProfileContentComponent implements OnInit {
         if (params.mt) {
           switch (params.mt) {
             case '1':
-              this.openAddExperienceDialog();
+              setTimeout(() => {
+                this.openAddExperienceDialog();
+              });
               break;
             case '2':
-              this.openAddSkillsDialog();
+              setTimeout(() => {
+                this.openAddSkillsDialog();
+              });
               break;
             default:
               break;

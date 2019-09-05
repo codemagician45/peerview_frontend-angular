@@ -36,7 +36,9 @@ export class ProfileAddSkillsDialogComponent implements OnInit {
 
   public ngOnInit (): void {
     console.log(this.data);
-    this.selectedSkills = this.data.userSkills;
+    if (this.data.userSkills) {
+      this.selectedSkills = this.data.userSkills;
+    }
   }
 
   public ngAfterViewInit (): void {
