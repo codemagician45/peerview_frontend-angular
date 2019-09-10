@@ -39,7 +39,7 @@ export class ProfileLeftSidebarUserInfoAboutMeDialogComponent implements OnInit 
   }
 
   protected onSave (): void {
-    if (this.aboutMe) {
+    if (this.aboutMe && this.aboutMe.length < 300) {
       this.user.assimilate({
         aboutMe: this.aboutMe
       });

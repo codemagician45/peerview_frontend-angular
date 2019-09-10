@@ -39,6 +39,10 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
     border-radius: 10px;
     background-color: #f4f4f4;
 
+    .comment-user-name {
+      margin-right: 20px;
+    }
+    
     small {
       color: #777777;
     }
@@ -91,9 +95,9 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
   .post-options-hr {
     width: 100%;
   }
-  shared-stars-component {
-    margin-top: 5px;
-  }
+  // shared-stars-component {
+  //   margin-top: 5px;
+  // }
   // extra Small Devices, Phones
   @media only screen and (max-width : 479px) {
     cl-image {

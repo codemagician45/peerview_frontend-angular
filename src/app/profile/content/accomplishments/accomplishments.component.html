@@ -22,9 +22,8 @@
 		</div>
 		<div *ngFor="let experience of workExperiences" class="experience-item">
 			<p class="company-name">{{experience.name}}</p>
-			<p class="company-duration">From: {{experience.from | localDate}}</p>
-			<p class="company-duration">Till: {{experience.to | localDate}}</p>
-			<p class="company-role">Role: {{experience.role}}</p>
+			<p class="company-role">{{experience.role}}</p>
+			<p class="company-duration">{{experience.from | experienceDate}} - {{experience.to | experienceDate}}</p>
 			<i class="material-icons color-purple profile-update-icon" (click)="openUpdateExperienceDialog(experience)" *ngIf="isUserProfile">create</i>
 		</div>
 		<div class="collections text-center">

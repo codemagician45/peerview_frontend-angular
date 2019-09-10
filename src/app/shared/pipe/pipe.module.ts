@@ -9,6 +9,9 @@ import {
   SharedLocalDatePipeComponent
 } from './local-date.pipe';
 import {
+  SharedExperienceDatePipeComponent
+} from './experience-date.pipe';
+import {
   SearchTextPipe
 } from './search-text.pipe';
 import {
@@ -35,6 +38,7 @@ import {
   declarations: [
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
+    SharedExperienceDatePipeComponent,
     SearchTextPipe,
     SharedAvailablePostPipeComponent,
     SharedLinkPreviewPipeComponent,
@@ -46,6 +50,7 @@ import {
   exports: [
     SharedFilterPipeComponent,
     SharedLocalDatePipeComponent,
+    SharedExperienceDatePipeComponent,
     SearchTextPipe,
     SharedAvailablePostPipeComponent,
     SharedLinkPreviewPipeComponent,

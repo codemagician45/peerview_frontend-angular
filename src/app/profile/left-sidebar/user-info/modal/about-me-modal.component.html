@@ -6,7 +6,11 @@
       class="form-control"
       rows="5"
       placeholder="Tell people about yourself..."
-      [(ngModel)]="aboutMe"></textarea>
+      [(ngModel)]="aboutMe"
+      [ngClass]="{'text-warning' : aboutMe && aboutMe.length > 300}"></textarea>
+    </div>
+    <div class="text-limit">
+      {{aboutMe ? aboutMe.length : 0}} / 300
     </div>
   </div>
   <div class="modal-footer text-center">
