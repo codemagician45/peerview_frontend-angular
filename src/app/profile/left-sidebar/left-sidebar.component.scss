@@ -6,9 +6,10 @@
 
         .info-item {
             display: flex;
-            line-height: 40px;
+            // line-height: 40px;
             align-items: center;
             border-bottom: 1px solid #dedede;
+            padding: 10px 0;
 
             &:last-child {
                 border-bottom: none;
@@ -23,14 +24,29 @@
                 }
             }
 
-            .info-text {
-                flex: 1;
-            }
+            
 
             .info-action {
                 display: flex;
             }
+
+            &.about-me {
+                .info-text {
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    -ms-word-break: break-all;
+                    word-break: break-all;
+                    word-break: break-word;
+                    -ms-hyphens: auto;
+                    -moz-hyphens: auto;
+                    -webkit-hyphens: auto;
+                    hyphens: auto;
+                    line-height: 20px;
+                    flex: 1;
+                } 
+            }
         }
+
     }
 
     .interests {
