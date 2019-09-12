@@ -17,6 +17,7 @@ import { MatDialogConfig, MatDialog } from '@angular/material';
 import { Overlay } from '@angular/cdk/overlay';
 import { ProfileAddExperienceDialogComponent } from '../add-experience-modal/add-experience-modal.component';
 import { ProfileAddSkillsDialogComponent } from '../add-skills-modal/add-skills-modal.component';
+import { ProfileAddGPADialogComponent } from '../add-gpa-modal/add-gpa-modal.component';
 
 @Component({
   selector: 'profile-content-accomplishments-component',
@@ -35,11 +36,14 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   protected workExperiences: any[] = [];
   protected userSkills: any[] = [];
   protected isUserProfile: boolean = true;
+  protected gpa: any;
 
   public ngOnInit (): void {
     this.getWorkExperience();
     this.getUserSkill();
     let currentLoginUser = UserService.getUser();
+
+    this.gpa = currentLoginUser.gpa;
 
     if (currentLoginUser.id !== this.user.id) {
       this.isUserProfile = false;
@@ -121,6 +125,24 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     .subscribe(skills => {
       if (!skills) { return; }
       this.userSkills = skills;
+    });
+  }
+
+  private openAddGpaDialog (): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-gpa-modal';
+    dialogConfig.id = 'ProfileAddGPADialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      gpa:  this.gpa
+    };
+    this.dialog.open(ProfileAddGPADialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(gpa => {
+      if (!gpa) { return; }
+      this.gpa = gpa;
     });
   }
 }

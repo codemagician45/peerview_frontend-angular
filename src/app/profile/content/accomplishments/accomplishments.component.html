@@ -11,24 +11,27 @@
 		</div>
 	</div>
 	<div class="profile-bottom-section">
-			<div class="media-pictures text-center">
-				<span *ngIf="isUserProfile">
-					Current GPA
-				</span>
-				<span *ngIf="!isUserProfile">
-					Current GPA
-				</span>
-				<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile">add</i>
-			</div>
-			<div class="media-pictures text-center">
-				<span *ngIf="isUserProfile">
-					Awards / Certifications
-				</span>
-				<span *ngIf="!isUserProfile">
-					Awards / Certifications
-				</span>
-				<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile">add</i>
-			</div>
+		<div class="media-pictures text-center">
+			<span *ngIf="isUserProfile">
+				Current GPA
+			</span>
+			<span *ngIf="!isUserProfile">
+				Current GPA
+			</span>
+			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile" (click)="openAddGpaDialog()">add</i>
+		</div>
+		<div *ngIf="gpa" class="experience-item">
+			<p class="company-name">{{gpa}}</p>
+		</div>
+		<div class="media-pictures text-center">
+			<span *ngIf="isUserProfile">
+				Awards / Certifications
+			</span>
+			<span *ngIf="!isUserProfile">
+				Awards / Certifications
+			</span>
+			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile">add</i>
+		</div>
 		<div class="media-pictures text-center">
 			<span *ngIf="isUserProfile">
 				Your work experience

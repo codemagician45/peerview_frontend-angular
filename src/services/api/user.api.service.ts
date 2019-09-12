@@ -186,6 +186,13 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseSaveGPA (data: any): Promise<any> {
+    return this.promisePostData('save-gpa', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
   public promiseUpdateSocialLinks (data: any): Promise<any> {
     return this.promisePostData('update-social-links', data)
       .then((responseData: IResponse) => {

@@ -40,6 +40,7 @@ import {
 } from './profile-routing.component';
 import { ProfileAddExperienceDialogComponent } from './content/add-experience-modal/add-experience-modal.component';
 import { ProfileAddSkillsDialogComponent } from './content/add-skills-modal/add-skills-modal.component';
+import { ProfileAddGPADialogComponent } from './content/add-gpa-modal/add-gpa-modal.component';
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
 import { ProfileContentAccomplishmentsComponent } from './content/accomplishments/accomplishments.component';
 import { ProfileContentActivitiesComponent } from './content/activities/activities.component';
@@ -62,6 +63,7 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
     ProfileAddSkillsDialogComponent,
+    ProfileAddGPADialogComponent,
     ProfileContentActivitiesComponent,
     ProfileContentAccomplishmentsComponent
   ],
@@ -70,14 +72,16 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
-    ProfileAddSkillsDialogComponent
+    ProfileAddSkillsDialogComponent,
+    ProfileAddGPADialogComponent
   ],
   entryComponents: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,
     ProfileLeftSidebarUserInfoPostToDiaglogComponent,
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
-    ProfileAddSkillsDialogComponent
+    ProfileAddSkillsDialogComponent,
+    ProfileAddGPADialogComponent
   ],
   providers: [
     CanActivateOtherProfile
