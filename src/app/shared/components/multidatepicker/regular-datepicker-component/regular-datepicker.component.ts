@@ -115,13 +115,13 @@ export class RegularDatepickerComponent
   private y_inputCtrl: FormControl = new FormControl();
 
   // Function to call when the date changes.
-  private onChange = (date: Date) => {};
+  protected onChange = (date: Date) => {};
 
   // Function to call when the input is touched (when a star is clicked).
-  private onTouched = () => {};
+  protected onTouched = () => {};
 
   /** send the focus away from the input so it doesn't open again */
-  private y_takeFocusAway = (datepicker: MatDatepicker<Moment>) => {};
+  protected y_takeFocusAway = (datepicker: MatDatepicker<Moment>) => {};
 
   public ngAfterViewInit (): void {
     this.y_takeFocusAway = this.parent.y_takeFocusAway;
@@ -151,19 +151,19 @@ export class RegularDatepickerComponent
     isDisabled ? this.y_inputCtrl.disable() : this.y_inputCtrl.enable();
   }
 
-  private y_dateChangeHandler (chosenDate: Moment): void {
+  protected y_dateChangeHandler (chosenDate: Moment): void {
     this.onChange(chosenDate.toDate());
     this.onTouched();
   }
 
-  private y_openDatepickerOnClick (datepicker: MatDatepicker<Moment>): void {
+  protected y_openDatepickerOnClick (datepicker: MatDatepicker<Moment>): void {
     if (!datepicker.opened) {
       datepicker.open();
       this.onTouched();
     }
   }
 
-  private y_setupFilter (): void {
+  protected y_setupFilter (): void {
     switch (this.mode) {
       case 'WEEK':
         this.y_customFilter = (d: Moment) => {

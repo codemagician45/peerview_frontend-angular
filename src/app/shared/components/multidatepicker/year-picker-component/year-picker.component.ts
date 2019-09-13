@@ -104,13 +104,13 @@ export class YearPickerComponent
   private y_inputCtrl: FormControl = new FormControl();
 
   // Function to call when the date changes.
-  private onChange = (year: Date) => { };
+  protected onChange = (year: Date) => { };
 
   // Function to call when the input is touched (when a star is clicked).
-  private onTouched = () => { };
+  protected onTouched = () => { };
 
   /** send the focus away from the input so it doesn't open again */
-  private y_takeFocusAway = (datepicker: MatDatepicker<Moment>) => { };
+  protected y_takeFocusAway = (datepicker: MatDatepicker<Moment>) => { };
 
 
   public ngAfterViewInit (): void {
@@ -142,7 +142,7 @@ export class YearPickerComponent
     isDisabled ? this.y_inputCtrl.disable() : this.y_inputCtrl.enable();
   }
 
-  public _yearSelectedHandler (chosenDate: Moment, datepicker: MatDatepicker<Moment>): void {
+  public y_yearSelectedHandler (chosenDate: Moment, datepicker: MatDatepicker<Moment>): void {
     datepicker.close();
 
     if (!this.y_isYearEnabled(chosenDate.year())) {
@@ -163,7 +163,7 @@ export class YearPickerComponent
   }
 
   /** Whether the given year is enabled. */
-  private y_isYearEnabled (year: number): boolean {
+  protected y_isYearEnabled (year: number): boolean {
     // disable if the year is greater than maxDate lower than minDate
     if (
       year === undefined ||

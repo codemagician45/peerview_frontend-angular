@@ -1,5 +1,5 @@
 <app-year-picker *ngIf="mode === 'YEAR'"
-                 [formControl]="_yearPickerCtrl"
+                 [formControl]="y_yearPickerCtrl"
                  [jpCustomFormFieldClass]="jpCustomFormFieldClass"
                  [label]="label"
                  [max]="max"
@@ -7,8 +7,8 @@
                  [touchUi]="touchUi">
 </app-year-picker>
 
-<app-month-picker *ngIf="_showMonthPicker"
-                  [formControl]="_monthPickerCtrl"
+<app-month-picker *ngIf="y_showMonthPicker"
+                  [formControl]="y_monthPickerCtrl"
                   [jpCustomFormFieldClass]="jpCustomFormFieldClass"
                   [label]="label"
                   [max]="max"
@@ -17,8 +17,8 @@
                   [touchUi]="touchUi">
 </app-month-picker>
 
-<app-regular-datepicker *ngIf="_showRegularDatepicker"
-                        [formControl]="_regularPickerCtrl"
+<app-regular-datepicker *ngIf="y_showRegularDatepicker"
+                        [formControl]="y_regularPickerCtrl"
                         [jpCustomFormFieldClass]="jpCustomFormFieldClass"
                         [label]="label"
                         [max]="max"
