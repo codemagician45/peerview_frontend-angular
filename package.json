@@ -24,6 +24,7 @@
     "@angular/http": "6.0.9",
     "@angular/language-service": "6.0.9",
     "@angular/material": "6.3.3",
+    "@angular/material-moment-adapter": "6.3.3",
     "@angular/platform-browser": "6.0.9",
     "@angular/platform-browser-dynamic": "6.0.9",
     "@angular/platform-server": "6.0.9",

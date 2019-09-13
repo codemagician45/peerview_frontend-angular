@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  ViewChild
 } from '@angular/core';
 import {
   Router,
@@ -22,6 +23,7 @@ import {
 import {
   CryptoUtilities
 } from '../../shared/utilities';
+import { MatDatepicker } from '@angular/material';
 
 @Component({
   selector: 'campus-landing-page-component',
@@ -37,6 +39,7 @@ export class CampusLandingPageComponent implements OnInit {
 
   protected campuses: Array<CampusModel> = [];
   private campus: CampusModel;
+  @ViewChild('picker') private datePicker: MatDatepicker<any>; //
 
   public ngOnInit (): void {
     this.campusApiService.getCampuses()
@@ -53,5 +56,9 @@ export class CampusLandingPageComponent implements OnInit {
   protected onJoinWithInstitution (): void {
     const campusId = CryptoUtilities.cipher(this.campus.id);
     this.router.navigate([`${campusId}/all-students`], {relativeTo: this.route});
+  }
+
+  protected close ($event): void {
+    this.datePicker.close();
   }
 }

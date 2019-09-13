@@ -126,6 +126,7 @@ import {
 import {SharedSetRatingsModalComponent} from './set-ratings-modal/set-ratings.component';
 import { AddSocialLinksDialogComponent } from './social/add-social-link-modal/add-social-link-modal.component';
 import { SharedPipeModule } from '../pipe/pipe.module';
+import { MultiDatepickerModule } from './multidatepicker/multidatepicker.module';
 
 let config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -153,7 +154,8 @@ export function provideConfig (): any {
     MatBadgeModule,
     MatMenuModule,
     MatIconModule,
-    SharedPipeModule
+    SharedPipeModule,
+    MultiDatepickerModule
   ],
   declarations: [
     SharedSidebarFooterComponent,
@@ -192,6 +194,8 @@ export function provideConfig (): any {
     CommonModule,
     FormsModule,
     CloudinaryModule,
+    SharedPipeModule,
+    MultiDatepickerModule,
     SharedSidebarFooterComponent,
     SharedNavBarComponent,
     SharedAdsNavBarComponent,

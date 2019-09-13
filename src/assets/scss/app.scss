@@ -668,3 +668,11 @@ button {
     width: 400px;
   }
 }
+
+.modal-backdrop {
+  z-index: 940;
+}
+
+.modal {
+  z-index: 950;
+}

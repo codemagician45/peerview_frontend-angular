@@ -12,11 +12,11 @@
         >
         </cl-image>
       </div>
-      <h4 class="modal-heading text-center">Join Your University</h4>
+      <h4 class="modal-heading text-center">Digital Campus</h4>
       <div class="modal-body">
         <div>
           <div class="form-group">
-            <label class="form-label">Select Your Institution</label>
+            <label class="form-label">Search for Your Institution</label>
             <select
               class="form-control"
               (change)="onSelectedCampus($event.target.value);"
@@ -29,19 +29,26 @@
             </select>
           </div>
         </div>
+        <div class="create-modal-btn">
+          <a class="create-modal-btn-link"
+            data-toggle="modal"
+            data-target="#create-modal">
+            Can't Find Your Institution? Create Your Digital Campus
+          </a>
+        </div>
       </div>
       <div class="modal-footer">
         <button
-          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1 btn-cancel-select-institution"
+          class="btn-peersview-primary btn-peersview-md m-peersview-xr-1"
+          (click)="modalClose.click();onJoinWithInstitution();"
+        >
+          Done
+        </button>
+        <button
+          class="btn-peersview-cancel btn-peersview-md btn-cancel-select-institution"
           data-dismiss="modal"
           #modalClose
         > Cancel
-        </button>
-        <button
-          class="btn-peersview-primary btn-peersview-md"
-          (click)="modalClose.click();onJoinWithInstitution();"
-        >
-          Join With Institutions Account
         </button>
       </div>
     </div>
@@ -86,6 +93,55 @@
         </button>
         <button class="btn-peersview-primary btn-peersview-md">
           Invite
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  id="create-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-brand text-center p-peersview-1">
+        <cl-image
+          class="mouse-pointer"
+          public-id="peersviewBrand"
+        >
+        </cl-image>
+      </div>
+      <h4 class="modal-heading text-center">Create Your Digital Campus</h4>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Name of institution</label>
+          <input class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Institution Email</label>
+          <input class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Select your Year of Enrollment</label>
+          <jp-multi-datepicker class="form-control" tabindex="-1"  mode="YEAR" [(ngModel)]="chosenYearDate" [max]="2020"></jp-multi-datepicker>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Add logo</label>
+          <input type="file" class="form-control" />
+        </div>
+      </div>
+      <div class="modal-footer right">
+        <button
+          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1 btn-cancel-select-institution"
+          data-dismiss="modal"
+        > Cancel
+        </button>
+        <button class="btn-peersview-primary btn-peersview-md">
+          Done
         </button>
       </div>
     </div>

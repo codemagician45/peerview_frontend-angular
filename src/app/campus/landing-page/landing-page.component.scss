@@ -96,9 +96,55 @@
       font-size: 36px;
     }    
   }
+
 }
 .modal-footer {
+  text-align: left;
+
+  &.right {
+    text-align: right;
+  }
+  
   .btn-cancel-select-institution {
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
+    background: #4a4949;
+  }
+}
+
+.create-modal-btn {
+  text-align: right;
+
+  .create-modal-btn-link {
+    color: #340551;
+    text-decoration: underline;
+  }
+}
+
+#create-modal {
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  app-year-picker {
+    display: flex;
+    flex: 1;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-flex {
+      padding-top: 0;
+
+      .mat-form-field-infix {
+        border-top: 0;
+        width: 100%;
+        padding: 5px 0;
+      }
+    }
   }
 }
