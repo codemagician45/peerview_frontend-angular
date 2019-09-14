@@ -240,4 +240,11 @@ export class CampusApiService extends ApiService {
       return responseData;
     });
   }
+
+  public promiseCreateCampus (data: CampusModel): Promise<any> {
+    return this.promisePostModelData(`create`, data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
 }

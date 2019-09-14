@@ -14,9 +14,11 @@ import {
 
 export class CampusModel extends Model {
   public id?: number;
-  public name: string;
-  public email: string;
-  public password: string;
+  public name?: string;
+  public email?: string;
+  public password?: string;
+  public logo?: string;
+  public enrollment_year?: string;
 
   public init (): void {}
 }

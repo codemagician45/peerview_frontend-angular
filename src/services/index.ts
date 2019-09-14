@@ -6,3 +6,4 @@ export * from './title.service';
 export * from './meta.service';
 export * from './course.service';
 export * from './check-profile-completion.service';
+export * from './cloudinary-upload.service';

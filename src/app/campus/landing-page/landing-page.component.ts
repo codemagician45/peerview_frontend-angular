@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   Input,
-  ViewChild
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import {
   Router,
@@ -11,6 +12,9 @@ import {
 import {
   CampusApiService
 } from '../../../services/api/campus.api.service';
+import {
+  CloudinaryUploadService
+} from '../../../services';
 import {
   CampusFactory
 } from '../../shared/models/campus.factory';
@@ -34,12 +38,17 @@ export class CampusLandingPageComponent implements OnInit {
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private campusApiService: CampusApiService
+    private campusApiService: CampusApiService,
+    private cloudinaryUploadService: CloudinaryUploadService
   ) {}
 
+  protected logoFile: any;
   protected campuses: Array<CampusModel> = [];
   private campus: CampusModel;
+  private newCampus: CampusModel = new CampusModel();
+
   @ViewChild('picker') private datePicker: MatDatepicker<any>; //
+  @ViewChild('closeCreateCampusModal') private closeCreateCampusModal: ElementRef;
 
   public ngOnInit (): void {
     this.campusApiService.getCampuses()
@@ -60,5 +69,22 @@ export class CampusLandingPageComponent implements OnInit {
 
   protected close ($event): void {
     this.datePicker.close();
+  }
+
+  protected onFileChange (event): void {
+    this.logoFile = event.target.files[0];
+  }
+
+  protected uploadLogo (): void {
+    this.cloudinaryUploadService.uploadFileToCloudinary(this.logoFile)
+      .then((res: any) => {
+        this.newCampus.logo = res.public_id;
+        this.campusApiService.promiseCreateCampus(this.newCampus)
+          .then((res1: any) => {
+            this.closeCreateCampusModal.nativeElement.click();
+          })
+          .catch(() => {});
+      })
+      .catch(() => {});
   }
 }
