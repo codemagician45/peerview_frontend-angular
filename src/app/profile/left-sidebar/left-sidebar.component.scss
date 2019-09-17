@@ -30,6 +30,14 @@
                 display: flex;
             }
 
+            .info-text {
+                flex: 1;
+                
+                .grey-text {
+                    color: grey;
+                }
+            }
+
             &.about-me {
                 .info-text {
                     overflow-wrap: break-word;

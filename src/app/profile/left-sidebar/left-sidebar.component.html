@@ -19,7 +19,7 @@
 				<span *ngIf="!isUserProfile">
 					{{user?.aboutMe || 'No Details to Show'}}
 				</span>
-				<span *ngIf="isUserProfile">
+				<span *ngIf="isUserProfile" [ngClass]="{'grey-text': !user || !user.aboutMe}">
 					{{user?.aboutMe || 'Tell us about yourself'}}
 				</span>
 			</div>
