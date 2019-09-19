@@ -44,11 +44,14 @@ export class CampusLandingPageComponent implements OnInit {
 
   protected logoFile: any;
   protected campuses: Array<CampusModel> = [];
-  private campus: CampusModel;
+  private campus: CampusModel = new CampusModel();
   private newCampus: CampusModel = new CampusModel();
 
   @ViewChild('picker') private datePicker: MatDatepicker<any>; //
   @ViewChild('closeCreateCampusModal') private closeCreateCampusModal: ElementRef;
+  @ViewChild('openEmailVerifyCampusModal') private openEmailVerifyCampusModal: ElementRef;
+  @ViewChild('openJoinCampusModal') private openJoinCampusModal: ElementRef;
+  @ViewChild('closeJoinCampusModal') private closeJoinCampusModal: ElementRef;
 
   public ngOnInit (): void {
     this.campusApiService.getCampuses()
@@ -63,8 +66,18 @@ export class CampusLandingPageComponent implements OnInit {
   }
 
   protected onJoinWithInstitution (): void {
-    const campusId = CryptoUtilities.cipher(this.campus.id);
-    this.router.navigate([`${campusId}/all-students`], {relativeTo: this.route});
+    this.openJoinCampusModal.nativeElement.click();
+  }
+
+  protected joinCampus (): void {
+    // const campusId = CryptoUtilities.cipher(this.campus.id);
+    // this.router.navigate([`${campusId}/all-students`], {relativeTo: this.route});
+    this.campusApiService.promiseJoinCampus(this.campus)
+      .then((res: any) => {
+        this.closeJoinCampusModal.nativeElement.click();
+        this.openEmailVerifyCampusModal.nativeElement.click();
+      })
+      .catch(() => {});
   }
 
   protected close ($event): void {
@@ -82,6 +95,7 @@ export class CampusLandingPageComponent implements OnInit {
         this.campusApiService.promiseCreateCampus(this.newCampus)
           .then((res1: any) => {
             this.closeCreateCampusModal.nativeElement.click();
+            this.openEmailVerifyCampusModal.nativeElement.click();
           })
           .catch(() => {});
       })

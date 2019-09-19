@@ -43,6 +43,13 @@ export class CampusApiService extends ApiService {
       });
   }
 
+  public getCampusUser (): Promise<any> {
+    return this.promiseGetResponseData(`user-campus`)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
+
   public promiseGetAllPost (campusId: number, limit: number = 10, offset: number = 0): Promise<CampusPostModel[]> {
     let params = new HttpParams()
       .set('limit', limit.toString())
@@ -245,6 +252,20 @@ export class CampusApiService extends ApiService {
     return this.promisePostModelData(`create`, data)
       .then((responseData: IResponse) => {
         return responseData;
+      });
+  }
+
+  public promiseJoinCampus (data: CampusModel): Promise<IResponse> {
+    return this.promisePostModelData(`join`, data)
+      .then((response: IResponse) => {
+        return response;
+      });
+  }
+
+  public promiseVerifyCampusEmail (data: any): Promise<IResponse> {
+    return this.promisePostData(`verify-email/${data.jotToken}`, {token: data.token})
+      .then((response: IResponse) => {
+        return response;
       });
   }
 }

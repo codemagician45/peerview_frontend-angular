@@ -9,6 +9,9 @@ import {
   CampusComponent
 } from './campus.component';
 import {
+  CampusVerifyEmailComponent
+} from './verify-email/verify-email.component';
+import {
   CampusLandingPageComponent
 } from './landing-page/landing-page.component';
 import {
@@ -87,6 +90,8 @@ import {
   ClassPostComponent
 } from './main/class-posts/class-posts.component';
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
+import { RedirectToMainCampus } from './redirect-to-main';
+import { RedirectToLandingCampus } from './redirect-to-landing';
 
 @NgModule({
   imports : [
@@ -96,6 +101,7 @@ import { SharedPipeModule } from '../shared/pipe/pipe.module';
   ],
   declarations : [
     CampusComponent,
+    CampusVerifyEmailComponent,
     CampusLandingPageComponent,
     CampusLeftSidebarComponent,
     CampusRightSidebarComponent,
@@ -122,7 +128,11 @@ import { SharedPipeModule } from '../shared/pipe/pipe.module';
     ClassPostComponent
   ],
   exports: [],
-  providers: [CampusApiService]
+  providers: [
+    RedirectToMainCampus,
+    RedirectToLandingCampus,
+    CampusApiService
+  ]
 })
 export class CampusModule {}
 

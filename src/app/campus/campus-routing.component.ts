@@ -71,16 +71,25 @@ import {
 import {
   ClassPostComponent
 } from './main/class-posts/class-posts.component';
+import { CampusVerifyEmailComponent } from './verify-email/verify-email.component';
+import { RedirectToMainCampus } from './redirect-to-main';
+import { RedirectToLandingCampus } from './redirect-to-landing';
 
 const campusRoutes: Routes = [{
   path: '',
   component: CampusComponent,
   children: [{
     path: '',
-    component: CampusLandingPageComponent
+    component: CampusLandingPageComponent,
+    resolve: [RedirectToMainCampus],
+  }, {
+    path: 'verify-email',
+    component: CampusVerifyEmailComponent,
+    resolve: [RedirectToMainCampus],
   }, {
     path: ':id',
     component: CampusMainComponent,
+    resolve: [RedirectToLandingCampus],
     children: [{
       path: 'class-posts',
       component: ClassPostComponent,

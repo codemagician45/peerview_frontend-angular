@@ -149,6 +149,81 @@
   </div>
 </div>
 
+<input type="hidden" data-toggle="modal" data-target="#join-campus-modal" #openJoinCampusModal/>
+<div
+  id="join-campus-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-brand text-center p-peersview-1">
+        <cl-image
+          class="mouse-pointer"
+          public-id="peersviewBrand"
+        >
+        </cl-image>
+      </div>
+      <h4 class="modal-heading text-center">Join Your Digital Campus</h4>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Institution Email</label>
+          <input class="form-control" type="text" [(ngModel)]="campus.email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Select your Year of Enrollment</label>
+          <jp-multi-datepicker class="form-control" tabindex="-1"  mode="YEAR" [(ngModel)]="campus.enrollment_year" [max]="2020"></jp-multi-datepicker>
+        </div>
+      </div>
+      <div class="modal-footer right">
+        <button
+          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1 btn-cancel-select-institution"
+          data-dismiss="modal"
+          #closeJoinCampusModal
+        > Cancel
+        </button>
+        <button class="btn-peersview-primary btn-peersview-md" (click)="joinCampus()">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="hidden" data-toggle="modal" data-target="#email-verify-modal" #openEmailVerifyCampusModal/>
+<div
+  id="email-verify-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-brand text-center p-peersview-1">
+        <cl-image
+          class="mouse-pointer"
+          public-id="peersviewBrand"
+        >
+        </cl-image>
+      </div>
+      <h4 class="modal-heading text-center">Verify Your Email Address</h4>
+      <div class="modal-body">
+        <p>
+          We've sent an email to your email address. Please check your email and verify your email address first.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn-peersview-cancel btn-peersview-md m-peersview-xr-1"
+          data-dismiss="modal"
+        > Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="campus-landing-page-component">
   <div class="col-md-12 text-center contents">
     <div class="wrapper">
