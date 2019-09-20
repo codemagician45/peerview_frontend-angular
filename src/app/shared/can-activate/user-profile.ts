@@ -36,20 +36,20 @@ export class CanActivateUserProfile implements CanActivate {
           TokenStore.setAccessToken(userData.token);
           UserService.setUser(userData);
 
-          if (
-            !userData.aboutMe ||
-            !userData.userSkills ||
-            userData.userSkills.length === 0 ||
-            !userData.workExperiences ||
-            userData.workExperiences.length === 0
-          ) {
-            let model = new ProfileCompleteModel;
-            model.status = true;
-            model.aboutme = !userData.aboutMe;
-            model.workExperience = !userData.workExperiences || userData.workExperiences.length === 0;
-            model.skills = !userData.userSkills || userData.userSkills.length === 0;
-            this.checkProfileIncompletion.setStatus(model);
-          }
+          // if (
+          //   !userData.aboutMe ||
+          //   !userData.userSkills ||
+          //   userData.userSkills.length === 0 ||
+          //   !userData.workExperiences ||
+          //   userData.workExperiences.length === 0
+          // ) {
+          //   let model = new ProfileCompleteModel;
+          //   model.status = true;
+          //   model.aboutme = !userData.aboutMe;
+          //   model.workExperience = !userData.workExperiences || userData.workExperiences.length === 0;
+          //   model.skills = !userData.userSkills || userData.userSkills.length === 0;
+          //   this.checkProfileIncompletion.setStatus(model);
+          // }
 
           resolve(true);
         })

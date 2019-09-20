@@ -64,6 +64,7 @@ export class SharedPostOptionsComponent {
   @Input() protected route: { name: string, campusId?: number, campusFreshersFeedId?: number };
   @Input() protected user: UserModel;
   @Output() protected loadPost = new EventEmitter();
+  @Output() protected updatePost = new EventEmitter();
   @Input('reply-link') private replyLink = '';
   protected stars: Array<string> = [];
   protected isLikingOrUnlikingPost = false;
@@ -77,6 +78,7 @@ export class SharedPostOptionsComponent {
   private postId: number;
   private isShowPostReply: number = 0;
   protected showPostStars: boolean = false;
+  protected checkEmitUpdatePost = false;
 
   public ngOnInit (): void {
     this.isShowPostReply = 0;
@@ -135,6 +137,8 @@ export class SharedPostOptionsComponent {
   }
 
   protected onClickPostLike (numberOfStars: number): void {
+    this.checkEmitUpdatePost = false;
+
     if (this.post.isUserPostLike) {
       numberOfStars = 0;
     }
@@ -158,6 +162,11 @@ export class SharedPostOptionsComponent {
         .then((response: IResponse) => {
           this.post.isUserPostLike = 0;
           this.post.likeCount -= 1;
+          if (!this.checkEmitUpdatePost) {
+            this.checkEmitUpdatePost = true;
+          } else {
+            this.updatePost.emit({originPost: this.post, updatedPost: response.data});
+          }
         })
         .catch(error => {
         });
@@ -166,6 +175,11 @@ export class SharedPostOptionsComponent {
         .then((response: IResponse) => {
           this.post.isUserPostLike = 1;
           this.post.likeCount += 1;
+          if (!this.checkEmitUpdatePost) {
+            this.checkEmitUpdatePost = true;
+          } else {
+            this.updatePost.emit({originPost: this.post, updatedPost: response.data});
+          }
         })
         .catch(error => {
         });
@@ -173,6 +187,7 @@ export class SharedPostOptionsComponent {
   }
 
   protected togglePostRatingStars (): void {
+    this.checkEmitUpdatePost = false;
     this.showPostStars = !this.post.isUserPostLike;
     if (!this.showPostStars) {
       this.markAsLike_Unlike();
@@ -206,7 +221,13 @@ export class SharedPostOptionsComponent {
       this.postApiService.promiseRemoveRate(this.post.id)
         .then(response => {
           this.rate.init();
-          this.loadPost.emit();
+          // console.log(response);
+          // this.loadPost.emit();
+          if (!this.checkEmitUpdatePost) {
+            this.checkEmitUpdatePost = true;
+          } else {
+            this.updatePost.emit({originPost: this.post, updatedPost: response.data});
+          }
         })
         .catch(error => {
           console.error('error', error);
@@ -216,7 +237,13 @@ export class SharedPostOptionsComponent {
       this.postApiService.promisePostRate(this.post.id, this.rate)
         .then(response => {
           this.rate.init();
-          this.loadPost.emit();
+          // console.log(response);
+          // this.loadPost.emit();
+          if (!this.checkEmitUpdatePost) {
+            this.checkEmitUpdatePost = true;
+          } else {
+            this.updatePost.emit({originPost: this.post, updatedPost: response.data});
+          }
         })
         .catch(error => {
           console.error('error', error);

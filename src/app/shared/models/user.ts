@@ -48,6 +48,9 @@ export class UserModel extends Model  {
   public instagram_profile?: string;
   public snapchat_profile?: string;
   public gpa?: string;
+  public userSkills?: string;
+  public workExperiences?: string;
+  public initialized?: boolean;
 
   public init (): void {}
 }

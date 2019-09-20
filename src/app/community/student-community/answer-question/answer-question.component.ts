@@ -240,5 +240,10 @@ export class AnswerQuestionCommunityComponent implements OnInit {
   public reloadCommunityQuestion (): void {
     this.getQuestionDetails(this.communityAnswer.courseId, this.communityAnswer.questionId);
   }
+
+  public updateReply (data: any): void {
+    let index = this.communityPost.reply.indexOf(data.originReply);
+    this.communityPost.reply[index] = data.updatedReply;
+  }
 }
 

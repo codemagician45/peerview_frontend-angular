@@ -258,4 +258,15 @@ export class SharedPostComponent {
   protected loadPost (): void {
     this.loadRecord.emit();
   }
+
+  protected updatePost (data: any): void {
+    console.log(data);
+    // let index = this.posts.indexOf(data.originPost);
+    for (let i = 0; i < this.posts.length; i ++) {
+      if (this.posts[i].id === data.updatedPost.id) {
+        this.posts[i] = data.updatedPost;
+      }
+    }
+    // this.posts[index] = data.updatedPost;
+  }
 }

@@ -41,11 +41,15 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.checkProfileIncompletion.getStatus().subscribe(value => {
-      if (value.status === true) {
-        this.openProfileCompleteDialog(value);
-      }
-    });
+    // this.checkProfileIncompletion.getStatus().subscribe(value => {
+    //   if (value.status === true && value.initialized !== true) {
+    //     value.initialized = true;
+    //     this.checkProfileIncompletion.setStatus(value);
+    //     setTimeout(() => {
+    //       this.openProfileCompleteDialog(value);
+    //     });
+    //   }
+    // });
   }
 
   protected getState (outlet): void {
@@ -65,14 +69,14 @@ export class AppComponent implements OnInit {
     return data;
   }
 
-  private openProfileCompleteDialog (value: ProfileCompleteModel): void {
-    const dialogConfig = new MatDialogConfig();
+  // private openProfileCompleteDialog (value: ProfileCompleteModel): void {
+  //   const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.panelClass = 'complete-profile-modal-wrapper';
-    dialogConfig.id = 'CompleteProfileDialogComponent';
-    dialogConfig.disableClose = true;
-    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
-    dialogConfig.data = value;
-    this.dialog.open(CompleteProfileDialogComponent, dialogConfig);
-  }
+  //   dialogConfig.panelClass = 'complete-profile-modal-wrapper';
+  //   dialogConfig.id = 'CompleteProfileDialogComponent';
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+  //   dialogConfig.data = value;
+  //   this.dialog.open(CompleteProfileDialogComponent, dialogConfig);
+  // }
 }

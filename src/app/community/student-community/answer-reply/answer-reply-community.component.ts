@@ -36,6 +36,7 @@ export class AnswerReplyCommunityComponent implements OnInit {
   @Input() protected communityPost: any;
   @Input() protected communityAnswer: any;
   @Output() protected reloadCommunity = new EventEmitter();
+  @Output() protected updateReply = new EventEmitter();
 
   protected rate: PostRateModel = new PostRateModel();
 
@@ -54,7 +55,8 @@ export class AnswerReplyCommunityComponent implements OnInit {
       this.communityApiService.promiseRateCommunityPostReply(this.reply.id, this.rate).then(response => {
         console.log('');
         this.showReplyRatingStarsPopup = false;
-        this.reloadCommunity.emit();
+        // this.reloadCommunity.emit();
+        this.updateReply.emit({originReply: this.reply, updatedReply: response.data});
       });
     }
   }

@@ -143,6 +143,9 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     .subscribe(gpa => {
       if (!gpa) { return; }
       this.gpa = gpa;
+      let currentLoginUser = UserService.getUser();
+      currentLoginUser.gpa = gpa;
+      UserService.setUser(currentLoginUser);
     });
   }
 }

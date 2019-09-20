@@ -42,7 +42,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   public intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this.totalRequests++;
     let headers = req.clone({
       setHeaders: {
         'content-type': 'application/json',
@@ -51,18 +50,31 @@ export class AuthInterceptor implements HttpInterceptor {
       url: `${CONFIG[CONFIG.environment].api}${req.url}`
     });
 
-    this.loadingBar.show();
+    if (req.url.includes('/like') || req.url.includes('/rating') || req.url.includes('/follow')) {
+      return next.handle(headers).pipe(
+        tap(res => {
+          if (res instanceof HttpResponse) {
+          }
+        }),
+        catchError(error => {
+          throw error;
+        })
+      );
+    } else {
+      this.totalRequests++;
+      this.loadingBar.show();
 
-    return next.handle(headers).pipe(
-      tap(res => {
-        if (res instanceof HttpResponse) {
+      return next.handle(headers).pipe(
+        tap(res => {
+          if (res instanceof HttpResponse) {
+            this.handleLoadingBar();
+          }
+        }),
+        catchError(error => {
           this.handleLoadingBar();
-        }
-      }),
-      catchError(error => {
-        this.handleLoadingBar();
-        throw error;
-      })
-    );
+          throw error;
+        })
+      );
+    }
   }
 }

@@ -7,10 +7,10 @@ import {
   PostApiService
 } from '../../services/api';
 import {
-  PostModel,
+  PostModel, ProfileCompleteModel,
 } from '../shared/models';
 import {
-  UserService
+  UserService, CheckProfileCompletionService
 } from '../../services';
 import {
   CryptoUtilities
@@ -20,6 +20,9 @@ import {
 } from '@angular/router';
 import {NgxLinkifyjsService, Link} from 'ngx-linkifyjs';
 import {PostEmitter} from '../shared/emitter';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { CompleteProfileDialogComponent } from '../shared/modals';
+import { Overlay } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'home-component',
@@ -30,7 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor (
     private postApiService: PostApiService,
     private route: ActivatedRoute,
-    public linkifyService: NgxLinkifyjsService
+    private dialog: MatDialog,
+    private overlay: Overlay,
+    public linkifyService: NgxLinkifyjsService,
+    private checkProfileIncompletion: CheckProfileCompletionService
   ) {
   }
 
@@ -50,6 +56,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     //   document.body.innerHTML = '';
     //   return;
     // }
+
+    if (this.user.initialized !== true) {
+      this.user.initialized = true;
+      UserService.setUser(this.user);
+      if (
+        !this.user.aboutMe ||
+        !this.user.userSkills ||
+        this.user.userSkills.length === 0 ||
+        !this.user.workExperiences ||
+        this.user.workExperiences.length === 0
+      ) {
+        let model = new ProfileCompleteModel;
+        model.status = true;
+        model.aboutme = !this.user.aboutMe;
+        model.workExperience = !this.user.workExperiences || this.user.workExperiences.length === 0;
+        model.skills = !this.user.userSkills || this.user.userSkills.length === 0;
+        // this.checkProfileIncompletion.setStatus(model);
+        setTimeout(() => {
+          this.openProfileCompleteDialog(model);
+        });
+      }
+    }
 
     this.routeSubscriber = this.route
       .queryParams
@@ -120,5 +148,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   public ngOnDestroy (): void {
     this.routeSubscriber.unsubscribe();
     this.postSaveSubscriber.unsubscribe();
+  }
+
+  private openProfileCompleteDialog (value: ProfileCompleteModel): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'complete-profile-modal-wrapper';
+    dialogConfig.id = 'CompleteProfileDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = value;
+    this.dialog.open(CompleteProfileDialogComponent, dialogConfig);
   }
 }

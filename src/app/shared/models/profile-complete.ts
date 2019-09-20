@@ -7,6 +7,7 @@ export class ProfileCompleteModel extends Model {
     public aboutme?: boolean;
     public workExperience?: boolean;
     public skills?: boolean;
+    public initialized?: boolean;
 
     public init (): void { }
 }

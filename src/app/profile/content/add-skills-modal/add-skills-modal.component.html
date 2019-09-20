@@ -3,7 +3,7 @@
   <div class="modal-body ng-scope">
     <div class="form-group">
       <div class="search-input-wrapper">
-        <input type="search" [(ngModel)]="skillText" placeholder="Search text" class="form-control">
+        <input type="search" [(ngModel)]="skillText" placeholder="I.e Soft Skills, ms excel, Css, Html, Sales...." class="form-control">
         <button class="add-button" *ngIf="checkNewSkill(skillText)" (click)="addNewSkill(skillText)">Add as New Skill</button>
       </div>
       <div class="skill-list" *ngIf="skillText?.length > 2">
