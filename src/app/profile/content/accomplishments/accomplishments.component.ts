@@ -18,6 +18,8 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ProfileAddExperienceDialogComponent } from '../add-experience-modal/add-experience-modal.component';
 import { ProfileAddSkillsDialogComponent } from '../add-skills-modal/add-skills-modal.component';
 import { ProfileAddGPADialogComponent } from '../add-gpa-modal/add-gpa-modal.component';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'profile-content-accomplishments-component',
@@ -28,8 +30,9 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   constructor (
     private userApiService: UserApiService,
     private dialog: MatDialog,
-    private overlay: Overlay
-  ) {}
+    private overlay: Overlay,
+    private route: ActivatedRoute
+  ) { }
 
   @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
@@ -37,19 +40,50 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   protected userSkills: any[] = [];
   protected isUserProfile: boolean = true;
   protected gpa: any;
+  private otherUserSubscriber: Subscription;
+  private routeSubscriber: any;
 
   public ngOnInit (): void {
     this.getWorkExperience();
     this.getUserSkill();
     let currentLoginUser = UserService.getUser();
+    this.gpa = this.user.gpa;
 
-    this.gpa = currentLoginUser.gpa;
+    this.otherUserSubscriber = UserService.getOtherUserSubject().subscribe((user: UserModel) => {
+      this.user = user;
+      this.gpa = this.user.gpa;
+      this.getWorkExperience();
+      this.getUserSkill();
+      this.isUserProfile = false;
+    });
 
     if (currentLoginUser.id !== this.user.id) {
       this.isUserProfile = false;
     } else {
       this.isUserProfile = true;
     }
+
+
+    this.routeSubscriber = this.route
+      .queryParams
+      .subscribe(params => {
+        if (params.mt) {
+          switch (params.mt) {
+            case '1':
+              setTimeout(() => {
+                this.openAddExperienceDialog();
+              });
+              break;
+            case '2':
+              setTimeout(() => {
+                this.openAddSkillsDialog();
+              });
+              break;
+            default:
+              break;
+          }
+        }
+      });
   }
 
   protected onShowPostDetailDialogComponent (): void {}
@@ -147,6 +181,10 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
       currentLoginUser.gpa = gpa;
       UserService.setUser(currentLoginUser);
     });
+  }
+
+  public ngOnDestroy (): void {
+    this.otherUserSubscriber.unsubscribe();
   }
 }
 

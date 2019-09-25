@@ -29,6 +29,7 @@ export class SharedSetRatingsModalComponent implements OnInit {
 
   protected onOkClickSaveRating (): void {
     this.onStarClick.emit(this.selectedNumberOfStars);
+    this.showStars = false;
   }
 
   public mouseover (numberOfStars): void {

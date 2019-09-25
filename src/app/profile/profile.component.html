@@ -12,6 +12,8 @@
   >
   </profile-content-component>
   <profile-right-sidebar-component
+    [followees]="followees"
+    [followers]="followers"
     class="col-lg-3 col-md-3 hidden-xs hidden-sm">
   </profile-right-sidebar-component>
 
@@ -52,8 +54,8 @@
       <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'media'">
         <h4 class="text-center">No images available.</h4>
       </div>
-      <shared-followee-component *ngIf="mobileLinkSelected === 'following'"></shared-followee-component>
-      <shared-followers-component *ngIf="mobileLinkSelected === 'followers'"></shared-followers-component>
+      <shared-followee-component *ngIf="mobileLinkSelected === 'following'" [followees]="followees"></shared-followee-component>
+      <shared-followers-component *ngIf="mobileLinkSelected === 'followers'" [followers]="followers"></shared-followers-component>
       <!-- <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'accomplishments'">
           <h4 class="text-center">No accomplishments available.</h4>
         </div> -->

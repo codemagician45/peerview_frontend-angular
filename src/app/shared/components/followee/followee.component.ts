@@ -4,7 +4,8 @@
  */
 import {
   Component,
-  OnInit
+  OnInit,
+  Input
 } from '@angular/core';
 import {
   Router
@@ -33,20 +34,20 @@ export class SharedFolloweeComponent implements OnInit {
     private router: Router
   ) {}
 
-  protected followees: Array<UserModel> = [];
+  @Input() protected followees: Array<UserModel> = [];
   private user: UserModel = UserService.getOtherUser() || UserService.getUser();
 
   public ngOnInit (): void {
-    this.getUserFollowee();
+    // this.getUserFollowee();
   }
 
-  private getUserFollowee (): void {
-    this.userApiService.promiseGetFollowees(this.user.id)
-      .then((followees: UserModel[]) => {
-        this.followees = followees;
-      })
-      .catch(() => {});
-  }
+  // private getUserFollowee (): void {
+  //   this.userApiService.promiseGetFollowees(this.user.id)
+  //     .then((followees: UserModel[]) => {
+  //       this.followees = followees;
+  //     })
+  //     .catch(() => {});
+  // }
 
   protected onClickUserProfile (user): Promise<boolean> {
     let userId = CryptoUtilities.cipher(user.id);

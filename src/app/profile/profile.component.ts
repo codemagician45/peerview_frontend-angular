@@ -17,6 +17,7 @@ import {
 import {
   UserApiService
 } from '../../services/api';
+import { Subscribable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'profile-component',
@@ -32,6 +33,11 @@ export class ProfileComponent {
     this.getUser();
     this.getUserFollowers();
     this.getUserFollowees();
+    this.otherUserSubscriber = UserService.getOtherUserSubject().subscribe((user: UserModel) => {
+      this.user = user;
+      this.getUserFollowers();
+      this.getUserFollowees();
+    });
   }
 
   protected followers: Array<UserModel> = [];
@@ -40,6 +46,7 @@ export class ProfileComponent {
   protected mobileLinkSelected: string = 'accomplishments';
   protected userId: number;
   private user: UserModel = UserService.getOtherUser() || UserService.getUser();
+  private otherUserSubscriber: Subscription;
 
   public onClickSelectMobileLink (type): void {
     this.mobileLinkSelected = type;
@@ -67,5 +74,9 @@ export class ProfileComponent {
         this.followees = followees;
       })
       .catch(() => {});
+  }
+
+  public ngOnDestroy (): void {
+    this.otherUserSubscriber.unsubscribe();
   }
 }

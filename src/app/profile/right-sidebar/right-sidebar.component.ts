@@ -30,6 +30,8 @@ export class ProfileRightSidebarComponent {
     this.followed = this.user ? this.user.isAlreadyFollowed : false;
   }
 
+  @Input() protected followers: Array<UserModel> = [];
+  @Input() protected followees: Array<UserModel> = [];
   protected user: UserModel = UserService.getOtherUser();
   protected followed: boolean = false;
   private followUser: FollowUser = new FollowUser();

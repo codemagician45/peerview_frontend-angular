@@ -38,6 +38,7 @@ export class CanActivateOtherProfile implements CanActivate {
       return this.userApiService.promiseGetUser(userId)
         .then((user: UserModel) => {
           UserService.setOtherUser(user);
+          UserService.setOtherUserSubject(user);
 
           resolve(true);
         })
