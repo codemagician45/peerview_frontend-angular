@@ -125,7 +125,7 @@ export class SharedPostReplyComponent  {
             this.isUserCurrentlyCommenting = false;
           })
           .catch(error => {
-
+            console.log(error);
           });
         break;
       case 'campus':

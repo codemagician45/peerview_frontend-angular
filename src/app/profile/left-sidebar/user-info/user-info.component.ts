@@ -60,7 +60,9 @@ export class ProfileLeftSidebarUserInfoComponent {
   @Input() protected user: UserModel;
   @Input() protected isUserProfile;
   private currentUser: UserModel = UserService.getUser();
-  public ngOnInit (): void {}
+  public ngOnInit (): void {
+    this.followed = this.user ? this.user.isAlreadyFollowed : false;
+  }
 
   protected onOpenMessageDiaglogComponent (): void {
     // this.dialog.open(ProfileLeftSidebarUserInfoMessageDiaglogComponent);
