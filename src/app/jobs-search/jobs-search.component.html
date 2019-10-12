@@ -1,7 +1,7 @@
 <shared-navbar-component></shared-navbar-component>
 <div class="job-search-result-component">
   <div class="container">
-      <div class="empty-content">
+      <div class="empty-content" *ngIf="false">
         <div class="title">
           <h1 class="">Sorry, your search returned no results.</h1>
         </div>
@@ -10,6 +10,36 @@
           <span class="desc">
             Please widen your search criteria or set up <span style="color: purple;">job alert</span> to receive any new jobs, that match your search directly into your inbox.
           </span>
+        </div>
+      </div>
+      <div class="job-list-wrapper">
+        <div class="title">
+          <h1 class="">1 job</h1>
+        </div>
+        <div class="job-list">
+          <div class="job-item">
+            <h2>Full Time Opportunities for Students or Recent Graduates: Software Engineering & Program Management</h2>
+            <div class="job-item-content">
+              <p class="status-item">
+                <i class="material-icons">public</i>
+                <span>internship</span>
+              </p>
+              <p class="status-item">
+                <i class="material-icons">location_city</i>
+                <span>United State</span>
+              </p>
+              <p>
+                Software engineers at Microsoft are passionate about building technologies 
+                that make the world a better place. At Microsoft, you will collaborate 
+                with others to solve problems and build some of the world's most advanced 
+                services and devices. Your efforts on the design, development, and testing 
+                of next-generation applications will have an impact on millions of people. 
+              </p>
+            </div>
+            <div class="actions-wrapper">
+              <a class="view-job-btn" href="https://bit.ly/2YWb58t" target="_blank">View Job</a>
+            </div>
+          </div>
         </div>
       </div>
   </div>

@@ -1,6 +1,33 @@
 .job-search-result-component {
   padding-top: 50px;
 
+  .job-list-wrapper {
+    .title {
+      border-bottom: 2px solid;
+    }
+
+    .job-item {
+      .status-item {
+        display: flex;
+        align-items: center;
+
+        .material-icons {
+          margin-right: 10px;
+        }
+      }
+
+      .actions-wrapper {
+        margin: 20px 0;
+
+        .view-job-btn {
+          padding: 10px 20px;
+          background-color: #631a90;
+          color: white;
+        }
+      }
+    }
+  }
+
   .empty-content {
     margin-top: 50px;
 
@@ -15,6 +42,12 @@
     .desc-wrapper {
       padding: 50px;
       font-size: 30px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .title {
+        margin-top: 64px;
     }
   }
 }
