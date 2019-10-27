@@ -18,26 +18,41 @@
 			<span *ngIf="!isUserProfile">
 				Current GPA
 			</span>
-			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile" (click)="openAddGpaDialog()">add</i>
+			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile" (click)="openAddGpaDialog()">{{gpa ? 'create' : 'add'}}</i>
 		</div>
 		<div *ngIf="gpa" class="experience-item">
 			<p class="gpa-text">{{gpa}}</p>
 		</div>
 		<div class="media-pictures text-center">
 			<span *ngIf="isUserProfile">
-				Awards / Certifications
+				Education
 			</span>
 			<span *ngIf="!isUserProfile">
-				Awards / Certifications
+				Education
+			</span>
+			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile">add</i>
+		</div>
+		<div *ngFor="let education of eductions" class="experience-item">
+			<p class="company-name">{{education.name}}</p>
+			<p class="company-role">{{education.role}}</p>
+			<p class="company-duration">{{education.from | experienceDate}} - {{education.to | experienceDate}}</p>
+			<i class="material-icons color-purple profile-update-icon" (click)="openUpdateExperienceDialog(experience)" *ngIf="isUserProfile">create</i>
+		</div>
+		<div class="media-pictures text-center">
+			<span *ngIf="isUserProfile">
+				Awards / Extracurriculars
+			</span>
+			<span *ngIf="!isUserProfile">
+				Awards / Extracurriculars
 			</span>
 			<i class="material-icons color-purple profile-add-icon" *ngIf="isUserProfile">add</i>
 		</div>
 		<div class="media-pictures text-center">
 			<span *ngIf="isUserProfile">
-				Your work experience
+				Work & Volunteer Experience
 			</span>
 			<span *ngIf="!isUserProfile">
-				Work experience
+				Work & Volunteer Experience
 			</span>
 			<i class="material-icons color-purple profile-add-icon" (click)="openAddExperienceDialog()" *ngIf="isUserProfile">add</i>
 		</div>
