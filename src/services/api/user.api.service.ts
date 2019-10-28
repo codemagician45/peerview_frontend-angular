@@ -173,7 +173,28 @@ export class UserApiService extends ApiService {
   }
 
   public promiseDeleteWorkExperience (data: any): Promise<any> {
-    return this.promisePostData('add-work-experience', data)
+    return this.promisePostData('remove-work-experience', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseAddEducation (data: any): Promise<any> {
+    return this.promisePostData('add-education', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseUpdateEducation (data: any): Promise<any> {
+    return this.promisePostData('update-education', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseDeleteEducation (data: any): Promise<any> {
+    return this.promisePostData('remove-education', data)
       .then((responseData: IResponse) => {
         return responseData;
       });

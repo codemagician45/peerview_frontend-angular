@@ -20,6 +20,7 @@ import { ProfileAddSkillsDialogComponent } from '../add-skills-modal/add-skills-
 import { ProfileAddGPADialogComponent } from '../add-gpa-modal/add-gpa-modal.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ProfileAddEducationDialogComponent } from '../add-education-modal/add-education-modal.component';
 
 @Component({
   selector: 'profile-content-accomplishments-component',
@@ -37,6 +38,7 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   @Input() protected user: UserModel;
   protected posts: PostModel[] = [];
   protected workExperiences: any[] = [];
+  protected educations: any[] = [];
   protected userSkills: any[] = [];
   protected isUserProfile: boolean = true;
   protected gpa: any;
@@ -141,6 +143,44 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
       if (!data) { return; }
       let index = this.workExperiences.indexOf(experience);
       this.workExperiences[index] = data;
+    });
+  }
+
+  private openAddEducationDialog (): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-education-modal';
+    dialogConfig.id = 'ProfileAddEducationDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      image: 'test',
+      source: 'profile-picture'
+    };
+    this.dialog.open(ProfileAddEducationDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      this.educations.push(data);
+    });
+  }
+
+  private openUpdateEducationDialog (education: any): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-education-modal';
+    dialogConfig.id = 'ProfileUpdateEducationDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      education: education
+    };
+    this.dialog.open(ProfileAddEducationDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      let index = this.educations.indexOf(education);
+      this.educations[index] = data;
     });
   }
 

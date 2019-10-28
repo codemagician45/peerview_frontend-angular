@@ -663,6 +663,12 @@ button {
   }
 }
 
+.add-education-modal {
+  .mat-dialog-container {
+    top: 0px !important;
+  }
+}
+
 .complete-profile-modal-wrapper {
   .mat-dialog-container {
     width: 400px;
