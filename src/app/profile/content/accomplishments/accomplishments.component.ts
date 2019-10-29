@@ -21,6 +21,7 @@ import { ProfileAddGPADialogComponent } from '../add-gpa-modal/add-gpa-modal.com
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileAddEducationDialogComponent } from '../add-education-modal/add-education-modal.component';
+import { ProfileAddAwardsDialogComponent } from '../add-awards-modal/add-awards-modal.component';
 
 @Component({
   selector: 'profile-content-accomplishments-component',
@@ -39,6 +40,7 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   protected posts: PostModel[] = [];
   protected workExperiences: any[] = [];
   protected educations: any[] = [];
+  protected awards: any[] = [];
   protected userSkills: any[] = [];
   protected isUserProfile: boolean = true;
   protected gpa: any;
@@ -48,6 +50,8 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
   public ngOnInit (): void {
     this.getWorkExperience();
     this.getUserSkill();
+    this.getAward();
+    this.getEducation();
     let currentLoginUser = UserService.getUser();
     this.gpa = this.user.gpa;
 
@@ -56,6 +60,8 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
       this.gpa = this.user.gpa;
       this.getWorkExperience();
       this.getUserSkill();
+      this.getAward();
+      this.getEducation();
       this.isUserProfile = false;
     });
 
@@ -94,6 +100,22 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
     this.userApiService.promiseGetWorkExperience(this.user.id)
       .then((workExperiences: any[]) => {
         this.workExperiences = workExperiences;
+      })
+      .catch(error => {});
+  }
+
+  private getAward (): void {
+    this.userApiService.promiseGetAward(this.user.id)
+      .then((awards: any[]) => {
+        this.awards = awards;
+      })
+      .catch(error => {});
+  }
+
+  private getEducation (): void {
+    this.userApiService.promiseGetEducation(this.user.id)
+      .then((educations: any[]) => {
+        this.educations = educations;
       })
       .catch(error => {});
   }
@@ -181,6 +203,44 @@ export class ProfileContentAccomplishmentsComponent implements OnInit {
       if (!data) { return; }
       let index = this.educations.indexOf(education);
       this.educations[index] = data;
+    });
+  }
+
+  private openAddAwardsDialog (): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-awards-modal';
+    dialogConfig.id = 'ProfileAddAwardsDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      image: 'test',
+      source: 'profile-picture'
+    };
+    this.dialog.open(ProfileAddAwardsDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      this.awards.push(data);
+    });
+  }
+
+  private openUpdateAwardsDialog (award: any): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.panelClass = 'add-awards-modal';
+    dialogConfig.id = 'ProfileUpdateAwardsDialogComponent';
+    dialogConfig.disableClose = true;
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.block();
+    dialogConfig.data = {
+      award: award
+    };
+    this.dialog.open(ProfileAddAwardsDialogComponent, dialogConfig)
+    .afterClosed()
+    .subscribe(data => {
+      if (!data) { return; }
+      let index = this.awards.indexOf(award);
+      this.awards[index] = data;
     });
   }
 

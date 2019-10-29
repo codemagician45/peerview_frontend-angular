@@ -1,14 +1,17 @@
 <div class="add-experience-modal">
-  <h5 class="modal-heading" *ngIf="isEdit">Edit Education</h5>
-  <h5 class="modal-heading" *ngIf="!isEdit">Add Education</h5>
+  <h5 class="modal-heading" *ngIf="isEdit">Edit Awards / Extracurriculars</h5>
+  <h5 class="modal-heading" *ngIf="!isEdit">Add Awards / Extracurriculars</h5>
   <div class="modal-body ng-scope">
     <div class="form-group">
-      <label>School Name:</label>
-      <input type="text" [(ngModel)]="form.name" class="form-control">
+      <label>Position:</label>
+      <input type="text" [(ngModel)]="form.position" class="form-control">
     </div>
     <div class="form-group">
-      <label>Education Level:</label>
-      <input type="text" [(ngModel)]="form.level" class="form-control">
+      <label>Organization:</label>
+      <input type="text" [(ngModel)]="form.organization" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="checkbox" [(ngModel)]="form.current_position"/> Current Position
     </div>
     <div class="form-group flex">
       <div class="datepicker-wrapper">
@@ -45,24 +48,12 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Major:</label>
-      <input type="text" [(ngModel)]="form.major" class="form-control">
+      <label>Location:</label>
+      <input type="text" [(ngModel)]="form.location" class="form-control">
     </div>
     <div class="form-group">
-      <label>Minor:</label>
-      <input type="text" [(ngModel)]="form.minor" class="form-control">
-    </div>
-    <div class="form-group flex">
-      <div class="datepicker-wrapper p-peersview-xr-1">
-        <label>Department GPA:</label>
-        <input type="text" [(ngModel)]="form.department_gpa" class="form-control">
-        <input type="checkbox" [(ngModel)]="form.is_hide_department_gpa"/> Hide from employers
-      </div>
-      <div class="datepicker-wrapper">
-        <label>Cumulative GPA:</label>
-        <input type="text" [(ngModel)]="form.cumulative_gpa" class="form-control">
-        <input type="checkbox" [(ngModel)]="form.is_hide_cumulative_gpa"/> Hide from employers
-      </div>
+      <label>Description:</label>
+      <textarea type="text" [(ngModel)]="form.description" class="form-control"></textarea>
     </div>
   </div>
   <div class="modal-footer text-center">

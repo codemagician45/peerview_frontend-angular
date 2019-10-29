@@ -15,11 +15,11 @@ import {
 } from '../../../shared/models';
 
 @Component({
-  selector: 'app-add-education-modal',
-  templateUrl: './add-education-modal.component.html',
-  styleUrls: ['./add-education-modal.component.scss']
+  selector: 'app-add-awards-modal',
+  templateUrl: './add-awards-modal.component.html',
+  styleUrls: ['./add-awards-modal.component.scss']
 })
-export class ProfileAddEducationDialogComponent implements OnInit {
+export class ProfileAddAwardsDialogComponent implements OnInit {
 
   constructor (
     @Inject (MAT_DIALOG_DATA)
@@ -36,8 +36,8 @@ export class ProfileAddEducationDialogComponent implements OnInit {
 
   public ngOnInit (): void {
     console.log(this.data);
-    if (this.data.education) {
-      this.form = this.data.education;
+    if (this.data.award) {
+      this.form = this.data.award;
       this.isEdit = true;
     }
   }
@@ -47,21 +47,21 @@ export class ProfileAddEducationDialogComponent implements OnInit {
   }
 
   protected onSave (): void {
-    if (this.form.name && this.form.level && this.form.from && this.form.to) {
+    if (this.form.position && this.form.organization && this.form.from) {
       if (this.isEdit) {
-        this.userApiService.promiseUpdateEducation(this.form)
+        this.userApiService.promiseUpdateAwards(this.form)
         .then((res) => {
-          let addEducationModelComponentRef = this.dialog.getDialogById('ProfileUpdateEducationDialogComponent');
-          addEducationModelComponentRef.close(this.form);
+          let addAwardsModelComponentRef = this.dialog.getDialogById('ProfileUpdateAwardsDialogComponent');
+          addAwardsModelComponentRef.close(this.form);
         })
         .catch(error => {
 
         });
       } else {
-        this.userApiService.promiseAddEducation(this.form)
+        this.userApiService.promiseAddAwards(this.form)
         .then((res) => {
-          let addEducationModelComponentRef = this.dialog.getDialogById('ProfileAddEducationDialogComponent');
-          addEducationModelComponentRef.close(this.form);
+          let addAwardsModelComponentRef = this.dialog.getDialogById('ProfileAddAwardsDialogComponent');
+          addAwardsModelComponentRef.close(this.form);
         })
         .catch(error => {
 

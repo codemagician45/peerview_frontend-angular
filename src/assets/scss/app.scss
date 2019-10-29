@@ -232,6 +232,21 @@ input[type="checkbox"]:focus {
 .p-peersview-x-5 {
   @include padding-x-5;
 }
+.p-peersview-xr-0 {
+  @include padding-xr-0;
+}
+.p-peersview-xr-1 {
+  @include padding-xr-1;
+}
+.p-peersview-xr-2 {
+  @include padding-xr-2;
+}
+.p-peersview-xr-3 {
+  @include padding-xr-3;
+}
+.p-peersview-xr-4 {
+  @include padding-xr-4;
+}
 
 // margin
 .m-peersview-0 {
@@ -663,7 +678,7 @@ button {
   }
 }
 
-.add-education-modal {
+.add-education-modal, .add-awards-modal {
   .mat-dialog-container {
     top: 0px !important;
   }

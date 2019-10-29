@@ -207,6 +207,24 @@
   padding-right: $spacers * 3rem;
   padding-left: $spacers * 3rem;
 }
+@mixin padding-xr-0() {
+  padding-right: 0;
+}
+@mixin padding-xr-1() {
+  padding-right: $spacers * .25rem;
+}
+@mixin padding-xr-2() {
+  padding-right: $spacers * .5rem;
+}
+@mixin padding-xr-3() {
+  padding-right: $spacers * 1rem;
+}
+@mixin padding-xr-4() {
+  padding-right: $spacers * 1.5rem;
+}
+@mixin padding-xr-5() {
+  padding-right: $spacers * 3rem;
+}
 
 // margin
 @mixin margin-0() {

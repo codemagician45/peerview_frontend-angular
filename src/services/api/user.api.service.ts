@@ -96,6 +96,32 @@ export class UserApiService extends ApiService {
       });
   }
 
+  public promiseGetEducation (userId?: number): Promise<PostModel[]> {
+    let params: HttpParams;
+    if (userId) {
+      params = new HttpParams()
+        .set('userId', userId.toString());
+    }
+
+    return this.promiseGetAllResponseData('education', {params: params})
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
+
+  public promiseGetAward (userId?: number): Promise<PostModel[]> {
+    let params: HttpParams;
+    if (userId) {
+      params = new HttpParams()
+        .set('userId', userId.toString());
+    }
+
+    return this.promiseGetAllResponseData('award', {params: params})
+      .then((response: IResponse) => {
+        return response.data;
+      });
+  }
+
   public promiseGetSkill (userId?: number): Promise<PostModel[]> {
     let params: HttpParams;
     if (userId) {
@@ -195,6 +221,27 @@ export class UserApiService extends ApiService {
 
   public promiseDeleteEducation (data: any): Promise<any> {
     return this.promisePostData('remove-education', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseAddAwards (data: any): Promise<any> {
+    return this.promisePostData('add-awards', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseUpdateAwards (data: any): Promise<any> {
+    return this.promisePostData('update-awards', data)
+      .then((responseData: IResponse) => {
+        return responseData;
+      });
+  }
+
+  public promiseDeleteAwards (data: any): Promise<any> {
+    return this.promisePostData('remove-awards', data)
       .then((responseData: IResponse) => {
         return responseData;
       });

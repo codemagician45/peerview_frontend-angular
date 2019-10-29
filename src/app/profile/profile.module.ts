@@ -40,6 +40,7 @@ import {
 } from './profile-routing.component';
 import { ProfileAddExperienceDialogComponent } from './content/add-experience-modal/add-experience-modal.component';
 import { ProfileAddEducationDialogComponent } from './content/add-education-modal/add-education-modal.component';
+import { ProfileAddAwardsDialogComponent } from './content/add-awards-modal/add-awards-modal.component';
 import { ProfileAddSkillsDialogComponent } from './content/add-skills-modal/add-skills-modal.component';
 import { ProfileAddGPADialogComponent } from './content/add-gpa-modal/add-gpa-modal.component';
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
@@ -64,6 +65,7 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
     ProfileAddEducationDialogComponent,
+    ProfileAddAwardsDialogComponent,
     ProfileAddSkillsDialogComponent,
     ProfileAddGPADialogComponent,
     ProfileContentActivitiesComponent,
@@ -75,6 +77,7 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
     ProfileAddEducationDialogComponent,
+    ProfileAddAwardsDialogComponent,
     ProfileAddSkillsDialogComponent,
     ProfileAddGPADialogComponent
   ],
@@ -84,6 +87,7 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileLeftSidebarUserInfoAboutMeDialogComponent,
     ProfileAddExperienceDialogComponent,
     ProfileAddEducationDialogComponent,
+    ProfileAddAwardsDialogComponent,
     ProfileAddSkillsDialogComponent,
     ProfileAddGPADialogComponent
   ],
