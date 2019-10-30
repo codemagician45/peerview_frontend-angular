@@ -3,16 +3,16 @@
     <li role="presentation" [ngClass]="{'active' : typePost === 'Post'}">
       <a (click)="onClickWhichTypeIsSelected('Post')">Write a Post</a></li>
     <li role="presentation" *ngIf="pollMenu" [ngClass]="{'active' : typePost === 'Poll'}">
-      <a (click)="onClickWhichTypeIsSelected('Poll')">Create Poll</a></li>
+      <a (click)="onClickWhichTypeIsSelected('Poll')">Create a Poll</a></li>
     <li role="presentation" *ngIf="shareMenu" [ngClass]="{'active' : typePost === 'Story'}">
-      <a (click)="onClickWhichTypeIsSelected('Story')">Share a Story</a></li>
+      <a (click)="onClickWhichTypeIsSelected('Story')">Write a Story</a></li>
     <li role="presentation" *ngIf="askAQuestionMenu" [ngClass]="{'active' : typePost === 'Question'}">
       <a (click)="onClickWhichTypeIsSelected('Question')">Ask a Question</a>
     </li>
   </div>
   <!-- POST -->
   <div class="post" *ngIf="typePost === 'Post'">
-    <textarea class="form-control" placeholder="Whats happening?" name="post_title" (keyup)="getLinksFromTextarea()"
+    <textarea class="form-control" placeholder="Share your thoughts." name="post_title" (keyup)="getLinksFromTextarea()"
       [(ngModel)]="post.message" [ngClass]="{'text-area-expanded' : textAreaIsExpanded}"></textarea>
     <!-- bigger full width link preview -->
     <!-- <div class="linkPreview">
