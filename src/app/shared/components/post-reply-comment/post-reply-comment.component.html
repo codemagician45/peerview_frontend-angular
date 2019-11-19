@@ -29,9 +29,9 @@
                 <span class="comment-user-name">
                   <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
                 </span> 
-                <span [innerHtml]="item.comment"></span>
+                <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
               </span>
-              <div class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></div>
+              <span class="post-comment" [innerHtml]="item.comment"></span>
               <report-post-reply-component
                 [reply]="item"
                 (onDeletePostReply)="onDeletePostReply($event)">
