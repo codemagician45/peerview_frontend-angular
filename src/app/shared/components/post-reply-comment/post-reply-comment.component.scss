@@ -43,11 +43,14 @@
     small {
       color: #777777;
     }
-  }
-
-  .post-time {
-    font-size: 12px;
-    color: #989898;
-    margin: 0;
+    .post-time {
+      display: inline-block;
+      font-size: 12px;
+      color: #989898;
+      margin: 0;
+    }
+    .post-comment {
+      display: block;
+    }
   }
 }
