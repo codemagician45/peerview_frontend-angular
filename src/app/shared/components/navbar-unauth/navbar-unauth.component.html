@@ -48,6 +48,24 @@
             </li>
             <li
               class="about-us text-center m-peersview-x-1"
+              *ngIf="employers">
+              <button
+                class="btn-peersview-transparent btn-lg btn-block"
+                [routerLink]="['/employers']">
+                Employers
+              </button>
+            </li>
+            <li
+              class="about-us text-center m-peersview-x-1"
+              *ngIf="employersSecond">
+              <button
+                class="text-white btn-lg btn-block"
+                [routerLink]="['/employers']">
+                Employers
+              </button>
+            </li>            
+            <li
+              class="about-us text-center m-peersview-x-1"
               *ngIf="aboutUs">
               <button
                 class="btn-peersview-transparent btn-lg btn-block"

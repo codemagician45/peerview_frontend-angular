@@ -1,0 +1,177 @@
+.employers-community-component {
+  color: #631990;
+  padding: 50px 0;
+  display: inline-block;
+
+  .first-text {
+    padding-top: 10%;
+    padding-left: 6%;
+    text-align: left;
+
+  }
+
+  .first-img {
+    img {
+      width: 70%;
+    }
+
+    text-align: center;
+  }
+
+  .second-text {
+    padding-top: 3%;
+    padding-left: 6%;
+    text-align: left;
+  }
+
+  .second-img {
+    img {
+      width: 70%;
+    }
+
+    text-align: center;
+  }
+
+  .third-text {
+    padding-top: 2%;
+    padding-left: 6%;
+    text-align: left;
+  }
+
+  .third-img {
+    img {
+      width: 70%;
+    }
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 1.7rem;
+  }
+  .second-img-mobile {
+    img {
+      width: 70%;
+    }
+
+    text-align: center;
+    display: none;
+  }
+  .second-img {
+    display: block;
+  }
+  .last-h3 {
+    text-align: center;
+  }
+  .sign-up-button {
+    text-align: center;
+    padding-top: 60px;
+  }
+  img {
+      width: 100%;
+      // padding-bottom: 50px;
+      padding-top: 30px;
+  }
+  button {
+    border-radius: 50px;
+  }  
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {
+    .second-img-mobile {
+      display: block;
+    }
+    .second-img {
+      display: none;
+    }
+    .first-text {
+      padding-top: 0px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {
+    .second-img-mobile {
+      display: block;
+    }
+    .second-img {
+      display: none;
+    }
+    .first-text {
+      padding-top: 0px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {
+    h1 {
+      font-size: 8rem;
+    }
+    .second-img-mobile {
+      display: block;
+    }
+    .second-img {
+      display: none;
+    }
+    .first-text {
+      padding-top: 0px;
+    }
+    h3 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 20px;
+    }    
+  }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {
+    .second-img-mobile {
+      display: none;
+    }
+    .second-img {
+      display: block;
+    }
+    .first-text {
+      padding-top: 10%;
+      padding-left: 6%;
+      text-align: left;
+    }
+    h3 {
+      font-size: 41px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {
+    .second-img-mobile {
+      display: none;
+    }
+    .second-img {
+      display: block;
+    }
+    .first-text {
+      padding-top: 10%;
+      padding-left: 6%;
+      text-align: left;
+    }
+    h3 {
+      font-size: 41px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
