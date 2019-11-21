@@ -22,11 +22,13 @@ export class SharedNavbarUnauthComponent {
   @Input() protected peersviewLogo: boolean;
   @Input() protected aboutUs: boolean;
   @Input() protected digitalCampus: boolean;
+  @Input() protected employers: boolean;
   @Input() protected blog: boolean;
   @Input() protected press: boolean;
   @Input() protected signIn: boolean;
   @Input() protected signUp: boolean;
   @Input() protected aboutUsSecond: boolean;
+  @Input() protected employersSecond: boolean;
   @Input() protected digitalCampusSecond: boolean;
   @Input() protected blogSecond: boolean;
   @Input() protected pressSecond: boolean;

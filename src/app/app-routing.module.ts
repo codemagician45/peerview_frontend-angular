@@ -93,6 +93,13 @@ export const appRoutes: Routes = [{
     title: 'About Peersview',
   }
 }, {
+  path: 'employers',
+  loadChildren: './employers/employers.module#EmployersModule',
+  data: {
+    state: 'employers',
+    title: 'Employers',
+  }
+}, {
   path: 'contact-us',
   loadChildren: './contact-us/contact-us.module#ContactUsModule',
   data: {
