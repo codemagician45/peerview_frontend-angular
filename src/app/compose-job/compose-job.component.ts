@@ -11,4 +11,10 @@ export class ComposeJobComponent {
   constructor () {}
 
   private form: any = {};
+
+  protected onSave (isValid: boolean): void {
+    if (!isValid) {
+      return;
+    }
+  }
 }

@@ -4,80 +4,68 @@
       <div class="title">
         <h1>Compose Job</h1>
       </div>
-      <div>
-        <div class="form-group">
-          <label>Job Title:</label>
-          <input type="text" [(ngModel)]="form.title" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Company Name:</label>
-          <input type="text" [(ngModel)]="form.company" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Brief Company Bio:</label>
-          <textarea type="text" [(ngModel)]="form.company_bio" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Country:</label>
-          <input type="text" [(ngModel)]="form.country" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>City:</label>
-          <input type="text" [(ngModel)]="form.city" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Contact Information:</label>
-          <input type="text" [(ngModel)]="form.contact" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Type:</label>
-          <select [(ngModel)]="form.type" class="form-control">
-            <option value="0">Part-Time</option>
-            <option value="1">Full-Time</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Experience:</label>
-          <input type="text" [(ngModel)]="form.experience" class="form-control">
-        </div>
-        <div class="form-group">
-          <label>Job Function:</label>
-          <input type="text" [(ngModel)]="form.jobfunction" class="form-control">
-        </div>
-        <div class="form-group">
-          <!-- <div class="datepicker-wrapper"> -->
+      <div class="p-peersview-y-2">
+        <form #jobComposeForm="ngForm" (ngSubmit)="onSave(jobComposeForm.valid)">
+          <div class="form-group">
+            <label>Job Title:</label>
+            <input type="text" [(ngModel)]="form.title" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Company Name:</label>
+            <input type="text" [(ngModel)]="form.company" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Brief Company Bio:</label>
+            <textarea type="text" [(ngModel)]="form.company_bio" [ngModelOptions]="{standalone: true}" class="form-control" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Country:</label>
+            <input type="text" [(ngModel)]="form.country" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>City:</label>
+            <input type="text" [(ngModel)]="form.city" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Contact Information:</label>
+            <input type="text" [(ngModel)]="form.contact" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Type:</label>
+            <select [(ngModel)]="form.type" [ngModelOptions]="{standalone: true}" class="form-control" required>
+              <option value="0">Part-Time</option>
+              <option value="1">Full-Time</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Experience:</label>
+            <input type="text" [(ngModel)]="form.experience" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Job Function:</label>
+            <input type="text" [(ngModel)]="form.jobfunction" [ngModelOptions]="{standalone: true}" class="form-control" required>
+          </div>
+          <div class="form-group">
             <label>Application Deadline:</label>
-            <mat-form-field class="form-control">
+            <mat-form-field>
               <input
                 matInput
-                placeholder="From"
+                placeholder="Deadline"
                 [matDatepicker]="picker1"
                 name="from"
                 [value]="form.deadline"
                 [(ngModel)]="form.deadline"
+                [ngModelOptions]="{standalone: true}"
                 required
                 >
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-          <!-- </div> -->
-          <!-- <div class="datepicker-wrapper">
-            <label>Till:</label>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="Till"
-                [matDatepicker]="picker2"
-                name="to"
-                [value]="form.to"
-                [(ngModel)]="form.to"
-                required
-                >
-              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-          </div> -->
-        </div>
+          </div>
+          <div class="button-wrapper">
+            <button type="submit" class="btn-peersview-primary btn-peersview-md">Save</button>
+          </div>
+        </form>
       </div>
   </div>
 </div>
