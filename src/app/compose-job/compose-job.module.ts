@@ -3,24 +3,24 @@ import {
   NgModule
 } from '@angular/core';
 import {
-  JobsSearchComponent
-} from './jobs-search.component';
+  ComposeJobComponent
+} from './compose-job.component';
 import {
   SharedModule
 } from '../shared/components/shared.module';
 import {
-  jobsSearchRouting
-} from './jobs-search-routing.component';
+  composeJobRouting
+} from './compose-job-routing.component';
 
 @NgModule({
   imports : [
     SharedModule,
-    jobsSearchRouting
+    composeJobRouting
   ],
   declarations : [
-    JobsSearchComponent
+    ComposeJobComponent
   ],
   exports: [],
   providers: []
 })
-export class JobsSearchModule {}
+export class ComposeJobModule {}

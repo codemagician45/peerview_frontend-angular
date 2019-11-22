@@ -9,9 +9,9 @@ import {
   ComposeJobComponent
 } from './compose-job.component';
 
-const composeJobRouting: Routes = [{
+const composeJobRoutes: Routes = [{
   path: '',
   component: ComposeJobComponent
 }];
 
-export const composeJobRouting: ModuleWithProviders = RouterModule.forChild(composeJobRouting);
+export const composeJobRouting: ModuleWithProviders = RouterModule.forChild(composeJobRoutes);
