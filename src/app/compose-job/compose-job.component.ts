@@ -9,4 +9,6 @@ import {
 })
 export class ComposeJobComponent {
   constructor () {}
+
+  private form: any = {};
 }

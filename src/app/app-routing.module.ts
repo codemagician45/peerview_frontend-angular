@@ -58,7 +58,7 @@ export const appRoutes: Routes = [{
 }, {
   path: 'compose-job',
   loadChildren: './compose-job/compose-job.module#ComposeJobModule',
-  data: {state: 'compose-job-result'}
+  data: {state: 'compose-job'}
 }, {
   path: '',
   loadChildren: './index/index.module#IndexModule',
