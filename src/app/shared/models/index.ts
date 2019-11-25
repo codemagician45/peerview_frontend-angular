@@ -10,3 +10,4 @@ export * from './messages';
 export * from './community';
 export * from './notification';
 export * from './profile-complete';
+export * from './job';

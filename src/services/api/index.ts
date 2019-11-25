@@ -8,3 +8,4 @@ export * from './messages.api.service';
 export * from './community.api.service';
 export * from './notification.api.service';
 export * from './skill.api.service';
+export * from './job.api.service';

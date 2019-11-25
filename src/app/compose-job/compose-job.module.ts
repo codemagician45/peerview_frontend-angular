@@ -11,6 +11,7 @@ import {
 import {
   composeJobRouting
 } from './compose-job-routing.component';
+import { JobApiService } from '../../services/api';
 
 @NgModule({
   imports : [
