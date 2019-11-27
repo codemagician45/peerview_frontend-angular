@@ -37,13 +37,17 @@
 
       .filter-content {
         padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
 
         .filter-item {
           padding: 6px 10px;
           border-radius: 20px;
           border: 1px solid #0087ff;
           color: #0087ff;
-          line-height: 39px;
+          line-height: 20px;
+          margin-bottom: 10px;
+          white-space: nowrap;
         }
       }
     }
@@ -57,7 +61,9 @@
     }
 
     .job-item {
-
+      padding: 10px;
+      border-bottom: 1px solid #e0e0e0;
+      
       .status-wrapper {
         display: flex;
       }
@@ -74,12 +80,13 @@
       }
 
       .actions-wrapper {
-        margin: 20px 0;
+        margin: 10px 0;
 
         .view-job-btn {
           padding: 10px 20px;
           background-color: #631a90;
           color: white;
+          display: inline-block;
         }
       }
     }

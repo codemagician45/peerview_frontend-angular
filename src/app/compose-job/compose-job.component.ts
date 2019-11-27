@@ -3,6 +3,7 @@ import {
 } from '@angular/core';
 import { JobApiService } from '../../services/api';
 import { JobModel } from '../shared/models';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'compose-job-component',
@@ -12,6 +13,8 @@ import { JobModel } from '../shared/models';
 export class ComposeJobComponent {
   constructor (
     private jobApiService: JobApiService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) {}
 
   private form: JobModel = new JobModel;
@@ -24,6 +27,7 @@ export class ComposeJobComponent {
     this.jobApiService.promisePostJob(this.form)
       .then((res) => {
         console.log(res);
+        this.router.navigate([`/jobs-search-result`], {relativeTo: this.route});
       })
       .catch(error => {
         console.log(error);
