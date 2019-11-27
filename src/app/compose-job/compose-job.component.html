@@ -1,0 +1,118 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="compose-job-component">
+  <div class="container">
+      <div class="title">
+        <h1>Compose Job</h1>
+      </div>
+      <div class="p-peersview-y-2">
+        <form #jobComposeForm="ngForm" (ngSubmit)="onSave(jobComposeForm.valid)">
+          <div class="form-group">
+            <label>Job Title:</label>
+            <input type="text" [(ngModel)]="form.title" [ngModelOptions]="{standalone: true}" #title="ngModel" class="form-control" required>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+              <div *ngIf="title.errors.required">
+                Job title is required.
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Company Name:</label>
+            <input type="text" [(ngModel)]="form.company" [ngModelOptions]="{standalone: true}" #company="ngModel" class="form-control" required>
+            <div *ngIf="company.invalid && (company.dirty || company.touched)" class="alert alert-danger">
+              <div *ngIf="company.errors.required">
+                Company Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Brief Company Bio:</label>
+            <textarea type="text" [(ngModel)]="form.company_bio" [ngModelOptions]="{standalone: true}" #company_bio="ngModel" class="form-control" required></textarea>
+            <div *ngIf="company_bio.invalid && (company_bio.dirty || company_bio.touched)" class="alert alert-danger">
+              <div *ngIf="company_bio.errors.required">
+                Brief Company Bio is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Country:</label>
+            <input type="text" [(ngModel)]="form.country" [ngModelOptions]="{standalone: true}" #country="ngModel" class="form-control" required>
+            <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger">
+              <div *ngIf="country.errors.required">
+                Country is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>City:</label>
+            <input type="text" [(ngModel)]="form.city" [ngModelOptions]="{standalone: true}" #city="ngModel" class="form-control" required>
+            <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+              <div *ngIf="city.errors.required">
+                City is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contact Information:</label>
+            <input type="text" [(ngModel)]="form.contact" [ngModelOptions]="{standalone: true}" #contact="ngModel" class="form-control" required>
+            <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert alert-danger">
+              <div *ngIf="contact.errors.required">
+                Contact information is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Type:</label>
+            <select [(ngModel)]="form.type" [ngModelOptions]="{standalone: true}" #type="ngModel" class="form-control" required>
+              <option value="0">Part-Time</option>
+              <option value="1">Full-Time</option>
+            </select>
+            <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger">
+              <div *ngIf="type.errors.required">
+                Type is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Experience:</label>
+            <input type="text" [(ngModel)]="form.experience" [ngModelOptions]="{standalone: true}" #experience="ngModel" class="form-control" required>
+            <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="alert alert-danger">
+              <div *ngIf="experience.errors.required">
+                Experience is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Job Function:</label>
+            <input type="text" [(ngModel)]="form.jobfunction" [ngModelOptions]="{standalone: true}" #jobfunction="ngModel" class="form-control" required>
+            <div *ngIf="jobfunction.invalid && (jobfunction.dirty || jobfunction.touched)" class="alert alert-danger">
+              <div *ngIf="jobfunction.errors.required">
+                Job function is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Application Deadline:</label>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Deadline"
+                [matDatepicker]="picker1"
+                name="from"
+                [value]="form.deadline"
+                [(ngModel)]="form.deadline"
+                [ngModelOptions]="{standalone: true}"
+                #deadline="ngModel"
+                required
+                >
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="button-wrapper">
+            <button type="submit" class="btn-peersview-primary btn-peersview-md">Save</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>

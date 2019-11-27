@@ -14,20 +14,44 @@
       </div>
       <div class="job-list-wrapper">
         <div class="title">
-          <h1 class="">1 job</h1>
+          <h1 class="">Job Search</h1>
+          <a [routerLink]="['/compose-job']">
+            <span>Create a Job</span>
+          </a>
+        </div>
+        <div class="job-search-wrapper">
+          <form>
+            <div class="search-content">
+                <input type="text" [(ngModel)]="jobTitle" class="form-control m-peersview-xr-1" [ngModelOptions]="{standalone: true}" placeholder="Job Title">
+                <input type="text" [(ngModel)]="region" class="form-control m-peersview-xl-1" [ngModelOptions]="{standalone: true}" placeholder="Region, City ...">
+            </div>
+            <div class="filter-content">
+              <span class="filter-item m-peersview-xr-1">Full-Time Job</span>
+              <span class="filter-item m-peersview-xr-1">Part-Time Job</span>
+              <span class="filter-item m-peersview-xr-1">Internship</span>
+              <span class="filter-item m-peersview-xr-1">On-Campus</span>
+              <span class="filter-item m-peersview-xr-1">
+                <i></i>
+                Filters
+              </span>
+            </div>
+          </form>
         </div>
         <div class="job-list">
           <div class="job-item">
             <h2>Full Time Opportunities for Students or Recent Graduates: Software Engineering & Program Management</h2>
             <div class="job-item-content">
-              <p class="status-item">
-                <i class="material-icons">public</i>
-                <span>internship</span>
-              </p>
-              <p class="status-item">
-                <i class="material-icons">location_city</i>
-                <span>United State</span>
-              </p>
+              <div class="status-wrapper">
+                  <p class="status-item">
+                    <i class="material-icons">public</i>
+                    <span>internship</span>
+                  </p>
+                  <p class="status-item">
+                    <i class="material-icons">location_city</i>
+                    <span>United State</span>
+                  </p>
+              </div>
+              
               <p>
                 Software engineers at Microsoft are passionate about building technologies 
                 that make the world a better place. At Microsoft, you will collaborate 

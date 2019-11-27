@@ -47,7 +47,8 @@ import {
   MessagesApiService,
   CommunityApiService,
   NotificationApiService,
-  SkillApiService
+  SkillApiService,
+  JobApiService
 } from '../services/api';
 import {
   UtilitiesService,
@@ -152,6 +153,7 @@ tinymce.init({});
     PostApiService,
     UserApiService,
     SkillApiService,
+    JobApiService,
     MessagesApiService,
     NotificationApiService,
     UtilitiesService,

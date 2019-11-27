@@ -1,0 +1,23 @@
+.compose-job-component {
+  padding-top: 50px;
+
+  .title {
+    padding: 5px;
+    border-bottom: 1px solid;
+
+    h1 {
+      font-size: 26px;
+    }
+  }
+
+  .mat-form-field {
+    display: block;
+  }
+  
+  @media (max-width: 991px) {
+    .title {
+      padding: 5px;
+      border-bottom: 1px solid;
+    }
+  }
+}
