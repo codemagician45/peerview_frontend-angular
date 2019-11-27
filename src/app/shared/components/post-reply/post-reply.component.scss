@@ -52,8 +52,12 @@ $iconArrowRight: url('https://res.cloudinary.com/peersview-com/image/upload/v151
     font-size: 12px;
     color: #989898;
     margin: 0;
+    display: inline-block;
   }
 
+  .comment-text {
+    display: block;
+  }
   .star {
     margin: 0;
     font-size: 18px;
