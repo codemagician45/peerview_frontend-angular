@@ -16,8 +16,8 @@
     [followers]="followers"
     class="col-lg-3 col-md-3 hidden-xs hidden-sm">
   </profile-right-sidebar-component>
-
-  <div class="mobile-view-for-timeline-and-right-component hidden-md hidden-lg">
+  <!-- Student / Ex-Student Profile -->
+  <div class="mobile-view-for-timeline-and-right-component hidden-md hidden-lg" *ngIf="user?.userTypeId != 3">
     <!-- <div class="mobile-social-media-container">
       <shared-social-component></shared-social-component>
     </div> -->
@@ -59,6 +59,46 @@
       <!-- <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'accomplishments'">
           <h4 class="text-center">No accomplishments available.</h4>
         </div> -->
+    </div>
+  </div>
+  <!-- Organization/Institution Profile -->
+  <div class="mobile-view-for-timeline-and-right-component hidden-md hidden-lg" *ngIf="user?.userTypeId == 3">
+    <ul class="mobile-options">
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'jobs'}"
+       >
+        <a (click)="onClickSelectMobileLink('jobs')">Jobs</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'events'}"
+       >
+        <a (click)="onClickSelectMobileLink('events')">Events</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
+        >
+        <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'following'}"
+        >
+        <a (click)="onClickSelectMobileLink('following')">Following ({{followees.length}})</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'followers'}"
+        >
+        <a (click)="onClickSelectMobileLink('followers')">Followers ({{followers.length}})</a>
+      </li>
+    </ul>
+    <div class="mobile-layout-content">
+      <profile-content-jobs-component [user]="user" *ngIf="mobileLinkSelected === 'jobs'"></profile-content-jobs-component>
+      <profile-content-events-component [user]="user" *ngIf="mobileLinkSelected === 'events'"></profile-content-events-component>
+      <profile-content-activities-component [user]="user" *ngIf="mobileLinkSelected === 'timeline'"></profile-content-activities-component>
+      <div class="temporary-containers-for-mobile-tab" *ngIf="mobileLinkSelected === 'media'">
+        <h4 class="text-center">No images available.</h4>
+      </div>
+      <shared-followee-component *ngIf="mobileLinkSelected === 'following'" [followees]="followees"></shared-followee-component>
+      <shared-followers-component *ngIf="mobileLinkSelected === 'followers'" [followers]="followers"></shared-followers-component>
     </div>
   </div>
 </div>

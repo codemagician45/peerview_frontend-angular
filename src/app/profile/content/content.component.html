@@ -1,4 +1,5 @@
 <div class="profile-content-component">
-	<profile-content-accomplishments-component [user]="user"></profile-content-accomplishments-component>
+	<profile-content-accomplishments-component [user]="user" *ngIf="user?.userTypeId != 3"></profile-content-accomplishments-component>
+	<profile-content-jobs-component [user]="user" *ngIf="user?.userTypeId == 3"></profile-content-jobs-component>
 	<profile-content-activities-component [user]="user"></profile-content-activities-component>
 </div>

@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.posts = responseData;
         console.log('posts', this.posts);
         this.posts.forEach(async post => {
-          let findUrl: Link[] = await this.linkifyService.find(post.message);
+          let findUrl: Link[] = await this.linkifyService.find(post.message ? post.message : '');
           if (findUrl.length > 0 && findUrl[0].type === 'url') {
             let regex = new RegExp((findUrl[0].value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
             this.postApiService.promiseGetJsonForLinkPreview(encodeURIComponent(findUrl[0].href))

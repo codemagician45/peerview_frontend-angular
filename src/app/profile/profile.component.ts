@@ -57,6 +57,7 @@ export class ProfileComponent {
       this.user = UserService.getOtherUser();
     } else {
       this.user = UserService.getUser();
+      console.log(this.user);
     }
   }
 

@@ -47,7 +47,7 @@
 				{{user?.city}}
 			</div>
 		</div>
-		<div class="info-item text-center">
+		<div class="info-item text-center" *ngIf="user?.userTypeId != 3">
 			<div class="info-icon">
 				<a data-toggle="tooltip" title="Court/Expertise">
 					<i class="material-icons peersview-primary-color">school</i>
@@ -59,7 +59,7 @@
 				</span>
 			</div>
 		</div>
-		<div class="info-item text-center">
+		<div class="info-item text-center" *ngIf="user?.userTypeId != 3">
 			<div class="info-icon">
 				<i class="material-icons peersview-primary-color">today</i>
 			</div>

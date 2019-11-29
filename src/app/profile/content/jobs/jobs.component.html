@@ -1,0 +1,9 @@
+<div class="profile-jobs">
+	<div class="timeline-text hidden-xs"><span>Jobs</span></div>
+	<shared-job-component [jobs]="jobs" [user]="user" 
+		[route]="{
+			'name': 'profile',
+			'userId': user.id
+		}">
+	</shared-job-component>
+</div>
