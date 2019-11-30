@@ -7,4 +7,4 @@ export * from './advance-search.factory';
 export * from './messages.factory';
 export * from './community.factory';
 export * from './notification.factory';
-
+export * from './job.factory';
