@@ -55,6 +55,9 @@
     .third-text {
       margin: auto;
     }
+    .mobile-img  img {
+      width: 100%;
+    }
   }
   /* Medium Devices, Desktops */
   @media only screen and (min-width : 992px) {
@@ -64,11 +67,17 @@
     .mobile-img {
       text-align: center;
     }
+    .mobile-img  img {
+      height: 600px;
+    }
   }
   /* Large Devices, Wide Screens */
   @media only screen and (min-width : 1200px) {
     .third-text {
       margin: 0 25%;
     }  
+    .mobile-img  img {
+      height: 600px;
+    }
   }
 }
