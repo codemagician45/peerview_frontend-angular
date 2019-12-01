@@ -1,0 +1,18 @@
+<div class="shared-job-component">
+  <h2 class="no-post-yet text-center" *ngIf="jobs.length === 0">
+    {{notJobMessage}}
+  </h2>
+
+  <div class="job" *ngFor="let job of jobs">
+    <div>
+      <p>{{job.title}}</p>
+      <p>{{job.jobfunction}}</p>
+    </div>
+  </div>
+  <div class="load-more" *ngIf="jobs.length !== 0">
+    <button type="button" class="btn-peersview-secondary btn-block btn-peersview-md" (click)="onLoadMoreJob()"
+      [disabled]="isLoadingMoreJobs">
+      {{btnLoadMoreText}}
+    </button>
+  </div>
+</div>
