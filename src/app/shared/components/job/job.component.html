@@ -3,10 +3,25 @@
     {{notJobMessage}}
   </h2>
 
-  <div class="job" *ngFor="let job of jobs">
-    <div>
-      <p>{{job.title}}</p>
-      <p>{{job.jobfunction}}</p>
+  <div class="job-item" *ngFor="let job of jobs">
+    <h2>{{job.title}}</h2>
+    <div class="job-item-content">
+      <div class="status-wrapper">
+          <p class="status-item">
+            <i class="material-icons">public</i>
+            <span>internship</span>
+          </p>
+          <p class="status-item">
+            <i class="material-icons">location_city</i>
+            <span>United State</span>
+          </p>
+      </div>
+      <p>
+        {{job.jobfunction}}
+      </p>
+    </div>
+    <div class="actions-wrapper">
+      <a class="view-job-btn" href="{{job.source_link}}" target="_blank">View Job</a>
     </div>
   </div>
   <div class="load-more" *ngIf="jobs.length !== 0">

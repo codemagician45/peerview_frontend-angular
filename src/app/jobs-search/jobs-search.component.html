@@ -38,32 +38,11 @@
           </form>
         </div>
         <div class="job-list">
-          <div class="job-item" *ngFor="let job of jobs">
-            <h2>{{job.title}}</h2>
-            <div class="job-item-content">
-              <div class="status-wrapper">
-                  <p class="status-item">
-                    <i class="material-icons">public</i>
-                    <span>internship</span>
-                  </p>
-                  <p class="status-item">
-                    <i class="material-icons">location_city</i>
-                    <span>United State</span>
-                  </p>
-              </div>
-              
-              <p>
-                Software engineers at Microsoft are passionate about building technologies 
-                that make the world a better place. At Microsoft, you will collaborate 
-                with others to solve problems and build some of the world's most advanced 
-                services and devices. Your efforts on the design, development, and testing 
-                of next-generation applications will have an impact on millions of people. 
-              </p>
-            </div>
-            <div class="actions-wrapper">
-              <a class="view-job-btn" href="https://bit.ly/2YWb58t" target="_blank">View Job</a>
-            </div>
-          </div>
+          <shared-job-component [jobs]="jobs" [user]="user" 
+            [route]="{
+              'name': 'profile'
+            }">
+          </shared-job-component>
         </div>
       </div>
   </div>

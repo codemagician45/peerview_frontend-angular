@@ -3,7 +3,8 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobApiService } from '../../services/api';
-import { JobModel } from '../shared/models';
+import { JobModel, UserModel } from '../shared/models';
+import { UserService } from '../../services';
 
 @Component({
   selector: 'jobs-search-component',
@@ -17,9 +18,11 @@ export class JobsSearchComponent {
     private jobApiService: JobApiService
   ) {
     this.getJobs();
+    this.user = UserService.getUser();
   }
 
   protected jobs: JobModel[] = [];
+  protected user: UserModel = UserService.getUser();
 
   private getJobs (): void {
     this.jobApiService.promiseGetJobs()
