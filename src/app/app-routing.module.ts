@@ -52,9 +52,9 @@ export const appRoutes: Routes = [{
   loadChildren: './leisure/leisure.module#LeisureModule',
   data: {state: 'leisure'}
 }, {
-  path: 'jobs-search-result',
+  path: 'jobs-search',
   loadChildren: './jobs-search/jobs-search.module#JobsSearchModule',
-  data: {state: 'jobs-search-result'}
+  data: {state: 'jobs-search'}
 }, {
   path: 'compose-job',
   loadChildren: './compose-job/compose-job.module#ComposeJobModule',

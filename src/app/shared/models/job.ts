@@ -17,6 +17,7 @@ export class JobModel extends Model {
     public userId?: number;
     public createAt?: Date;
     public updatedAt?: Date;
+    public source_link?: string;
 
     public init (): void {
         this.setBlankDataStructure({

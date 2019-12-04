@@ -75,7 +75,7 @@
           </div>
           <div class="form-group">
             <label>Experience:</label>
-            <input type="text" [(ngModel)]="form.experience" [ngModelOptions]="{standalone: true}" #experience="ngModel" class="form-control" required>
+            <textarea type="text" [(ngModel)]="form.experience" [ngModelOptions]="{standalone: true}" #experience="ngModel" class="form-control" required></textarea>
             <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="alert alert-danger">
               <div *ngIf="experience.errors.required">
                 Experience is required.
@@ -84,7 +84,7 @@
           </div>
           <div class="form-group">
             <label>Job Function:</label>
-            <input type="text" [(ngModel)]="form.jobfunction" [ngModelOptions]="{standalone: true}" #jobfunction="ngModel" class="form-control" required>
+            <textarea type="text" [(ngModel)]="form.jobfunction" [ngModelOptions]="{standalone: true}" #jobfunction="ngModel" class="form-control" required></textarea>
             <div *ngIf="jobfunction.invalid && (jobfunction.dirty || jobfunction.touched)" class="alert alert-danger">
               <div *ngIf="jobfunction.errors.required">
                 Job function is required.
@@ -108,6 +108,15 @@
               <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
               <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label>Source Link:</label>
+            <input type="text" [(ngModel)]="form.source_link" [ngModelOptions]="{standalone: true}" #source_link="ngModel" class="form-control" required>
+            <div *ngIf="source_link.invalid && (source_link.dirty || source_link.touched)" class="alert alert-danger">
+              <div *ngIf="source_link.errors.required">
+                Source link is required.
+              </div>
+            </div>
           </div>
           <div class="button-wrapper">
             <button type="submit" class="btn-peersview-primary btn-peersview-md">Save</button>
