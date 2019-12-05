@@ -13,7 +13,7 @@
           </p>
           <p class="status-item">
             <i class="material-icons">location_city</i>
-            <span>United State</span>
+            <span>{{job.country}}</span>
           </p>
       </div>
       <p>
@@ -21,7 +21,8 @@
       </p>
     </div>
     <div class="actions-wrapper">
-      <a class="view-job-btn" href="{{job.source_link}}" target="_blank">View Job</a>
+      <!-- <a class="view-job-btn" href="{{job.source_link}}" target="_blank">View Job</a> -->
+      <a class="view-job-btn" (click)="showJobDetail(job)">View Job</a>
     </div>
   </div>
   <div class="load-more" *ngIf="jobs.length !== 0">

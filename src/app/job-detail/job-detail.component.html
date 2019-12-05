@@ -1,0 +1,45 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="job-detail-component">
+  <div class="container">
+    <a [routerLink]="['/jobs-search']" class="back-btn">
+      <i class="material-icons">keyboard_arrow_left</i>
+      Back to Jobs List
+    </a>
+    <div class="job-content" *ngIf="job">
+      <div>
+        <h3 class="job-title">{{job.title}}</h3>
+        <div class="info">
+          <div class="city-company">
+            <span>{{job.city + ', ' + job.country}}</span>
+            <span>{{'Company: ' + job.company}}</span>
+          </div>
+          <div class="price-deadline">
+            <span>${{job.price}}</span>
+            <span>Due to: {{job.deadline | localDate}}</span>
+          </div>
+        </div>
+        <hr/>
+        <div class="content">
+          <p>About us</p>
+          <span>
+            {{job.company_bio}}
+          </span>
+          <p>Experience</p>
+          <span>
+            {{job.experience}}
+          </span>
+          <p>Job Description</p>
+          <span>
+            {{job.jobfunction}}
+          </span>
+          <p>Contact</p>
+          <span>{{job.contact}}</span>
+        </div>
+      </div>
+      <hr/>
+      <div>
+        <a class="apply-btn btn-peersview-md" href="{{job.source_link}}" target="_blank">Apply</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -59,10 +59,10 @@ export class JobApiService extends ApiService {
             });
     }
 
-    public promiseGetJob (jobId?: number): Promise<IResponse> {
+    public promiseGetJob (jobId?: number): Promise<JobModel> {
         return this.promiseGetResponseData(`${jobId}`)
             .then((response: IResponse) => {
-                return response;
+                return JobFactory.createJob(response.data);
             });
     }
 

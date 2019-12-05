@@ -108,6 +108,12 @@ export class SharedJobComponent {
       .catch(() => {});
   }
 
+  protected showJobDetail (job: JobModel): Promise<boolean> {
+    let jobId = CryptoUtilities.cipher(job.id);
+
+    return this.router.navigate([`/job-detail/${jobId}`]);
+  }
+
   protected onLoadMoreJob (): void {
     this.isLoadingMoreJobs = true;
     this.offset = this.jobs.length;

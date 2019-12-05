@@ -60,6 +60,10 @@ export const appRoutes: Routes = [{
   loadChildren: './compose-job/compose-job.module#ComposeJobModule',
   data: {state: 'compose-job'}
 }, {
+  path: 'job-detail',
+  loadChildren: './job-detail/job-detail.module#JobDetailModule',
+  data: {state: 'job-detail'}
+}, {
   path: '',
   loadChildren: './index/index.module#IndexModule',
   resolve: [RedirectToOnboardingComponent, RedirectToHomeComponent],
