@@ -20,7 +20,7 @@
       .price-deadline {
         text-align: right;
       }
-
+      margin-top: 53px;
       span{
         display: block;
       }
@@ -43,8 +43,8 @@
     }
   }
   @media (max-width: 991px) {
-    .title {
-        margin-top: 64px;
+    .container {
+        margin-top: 54px;
     }
   }
 }
