@@ -18,6 +18,7 @@ export class JobModel extends Model {
     public createAt?: Date;
     public updatedAt?: Date;
     public source_link?: string;
+    public price?: number;
 
     public init (): void {
         this.setBlankDataStructure({

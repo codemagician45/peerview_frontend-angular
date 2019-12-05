@@ -1,0 +1,51 @@
+.job-detail-component {
+  padding-top: 50px;
+
+  .back-btn {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .job-content {
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+
+      .city-company {
+        flex: 1;
+        text-align: left;
+      }
+
+      .price-deadline {
+        text-align: right;
+      }
+
+      span{
+        display: block;
+      }
+    }
+
+    hr {
+      border-top: 1px solid #b5b5b5;
+    }
+
+    .content {
+      p {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    }
+
+    .apply-btn {
+      background-color: #631a90;
+      color: white;
+    }
+  }
+  @media (max-width: 991px) {
+    .title {
+        margin-top: 64px;
+    }
+  }
+}
+
