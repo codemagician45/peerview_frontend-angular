@@ -66,11 +66,10 @@ export class SignInComponent {
 
         if (user.token) {
           TokenStore.setAccessToken(user.token);
+          return this.router.navigate(['/home']);
         } else {
-          this.router.navigate(['/sign-up/thank-you-for-signing']);
+          return this.router.navigate(['/sign-up/thank-you-for-signing']);
         }
-
-        return this.router.navigate(['/home']);
       })
       .catch(error => {
         if (error.status === 400) {
