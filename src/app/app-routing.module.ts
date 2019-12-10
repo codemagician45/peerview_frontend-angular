@@ -32,7 +32,7 @@ export const appRoutes: Routes = [{
 }, {
   path: 'user',
   loadChildren: './user/user.module#UserModule',
-  canActivate: [AuthGuard, CanActivateUserProfile],
+  canActivate: [CanActivateUserProfile],
   data: {state: 'user'}
 }, {
   path: 'profile',

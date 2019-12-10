@@ -63,7 +63,12 @@ export class SignInComponent {
     this.userApiService.promiseSignIn(this.user)
       .then((user: UserModel) => {
         UserService.setUser(user);
-        TokenStore.setAccessToken(user.token);
+
+        if (user.token) {
+          TokenStore.setAccessToken(user.token);
+        } else {
+          this.router.navigate(['/sign-up/thank-you-for-signing']);
+        }
 
         return this.router.navigate(['/home']);
       })
