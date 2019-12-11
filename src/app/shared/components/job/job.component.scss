@@ -23,6 +23,18 @@
       }
     }
 
+    .price-deadline {
+      display: flex;
+
+      .deadline {
+        flex: 1;
+      }
+    }
+
+    .job-description {
+      white-space: pre-line;
+    }
+
     .actions-wrapper {
       margin: 10px 0;
 

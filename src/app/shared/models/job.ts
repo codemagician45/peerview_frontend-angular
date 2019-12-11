@@ -19,6 +19,7 @@ export class JobModel extends Model {
     public updatedAt?: Date;
     public source_link?: string;
     public price?: number;
+    public currency?: string;
 
     public init (): void {
         this.setBlankDataStructure({
@@ -26,7 +27,8 @@ export class JobModel extends Model {
             title: undefined,
             userId: undefined,
             company: undefined,
-            type: undefined
+            type: undefined,
+            currency: '$'
         });
     }
 }

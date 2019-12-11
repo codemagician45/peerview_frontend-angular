@@ -93,7 +93,13 @@
           </div>
           <div class="form-group">
             <label>Offer/Salary:</label>
-            <input type="text" [(ngModel)]="form.price" [ngModelOptions]="{standalone: true}" #price="ngModel" class="form-control" required>
+            <div class="price-wrapper">
+              <input type="text" [(ngModel)]="form.price" [ngModelOptions]="{standalone: true}" #price="ngModel" class="form-control" required>
+              <select [(ngModel)]="form.currency" [ngModelOptions]="{standalone: true}" class="form-control">
+                <option value="$">$</option>
+                <option value="£">£</option>
+              </select>
+            </div>
             <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
               <div *ngIf="price.errors.required">
                 Offer/Salary is required.
