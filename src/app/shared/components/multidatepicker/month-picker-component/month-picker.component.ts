@@ -117,6 +117,8 @@ export class MonthPickerComponent
 
   @Input() private touchUi = false;
 
+  @Input() private requried = false;
+
   private y_customFilter: (d: Moment) => boolean;
 
   @ViewChild(MatDatepicker) private y_picker: MatDatepicker<Moment>;
@@ -140,7 +142,7 @@ export class MonthPickerComponent
   }
 
   public writeValue (date: Date): void {
-    if (date && this._isMonthEnabled(date.getFullYear(), date.getMonth())) {
+    if (date && this.y_isMonthEnabled(date.getFullYear(), date.getMonth())) {
       const momentDate = moment(date);
       if (momentDate.isValid()) {
         momentDate.set({ date: 1 });
@@ -167,11 +169,11 @@ export class MonthPickerComponent
     isDisabled ? this.y_inputCtrl.disable() : this.y_inputCtrl.enable();
   }
 
-  private _yearSelectedHandler (
+  private y_yearSelectedHandler (
     chosenMonthDate: Moment,
     datepicker: MatDatepicker<Moment>,
   ): void {
-    if (!this._isYearEnabled(chosenMonthDate.year())) {
+    if (!this.y_isYearEnabled(chosenMonthDate.year())) {
       datepicker.close();
 
       // wait for some time before enabling the calendar again
@@ -179,11 +181,11 @@ export class MonthPickerComponent
     }
   }
 
-  private _monthSelectedHandler (chosenMonthDate: Moment, datepicker: MatDatepicker<Moment>): void {
+  public y_monthSelectedHandler (chosenMonthDate: Moment, datepicker: MatDatepicker<Moment>): void {
     datepicker.close();
 
     if (
-      !this._isMonthEnabled(chosenMonthDate.year(), chosenMonthDate.month())
+      !this.y_isMonthEnabled(chosenMonthDate.year(), chosenMonthDate.month())
     ) {
       this.dialog.open(InfoDialogComponent);
       return;
@@ -205,7 +207,7 @@ export class MonthPickerComponent
   }
 
   /** Whether the given year is enabled. */
-  private _isYearEnabled (year: number): boolean {
+  private y_isYearEnabled (year: number): boolean {
     // disable if the year is greater than maxDate lower than minDate
     if (
       year === undefined ||
@@ -234,12 +236,12 @@ export class MonthPickerComponent
   }
 
   /** Whether the given year is enabled. */
-  private _isMonthEnabled (year: number, month: number): boolean {
+  private y_isMonthEnabled (year: number, month: number): boolean {
     if (
       month === undefined ||
       month === null ||
-      this._isYearAndMonthAfterMaxDate(year, month) ||
-      this._isYearAndMonthBeforeMinDate(year, month)
+      this.y_isYearAndMonthAfterMaxDate(year, month) ||
+      this.y_isYearAndMonthBeforeMinDate(year, month)
     ) {
       return false;
     }
@@ -264,7 +266,7 @@ export class MonthPickerComponent
    * Tests whether the combination month/year is after this.maxDate, considering
    * just the month and year of this.maxDate
    */
-  private _isYearAndMonthAfterMaxDate (year: number, month: number): boolean {
+  private y_isYearAndMonthAfterMaxDate (year: number, month: number): boolean {
     if (this.y_max) {
       const maxYear = this.y_max.year();
       const maxMonth = this.y_max.month();
@@ -279,7 +281,7 @@ export class MonthPickerComponent
    * Tests whether the combination month/year is before this.minDate, considering
    * just the month and year of this.minDate
    */
-  private _isYearAndMonthBeforeMinDate (year: number, month: number): boolean {
+  private y_isYearAndMonthBeforeMinDate (year: number, month: number): boolean {
     if (this.min) {
       const minYear = this.y_min.year();
       const minMonth = this.y_min.month();

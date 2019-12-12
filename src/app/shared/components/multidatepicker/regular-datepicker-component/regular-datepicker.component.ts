@@ -108,6 +108,8 @@ export class RegularDatepickerComponent
 
   @Input() private touchUi = false;
 
+  @Input() private required = false;
+
   private y_customFilter: (d: Moment) => boolean;
 
   @ViewChild(MatDatepicker) private y_picker: MatDatepicker<Moment>;
