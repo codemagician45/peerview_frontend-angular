@@ -50,9 +50,14 @@ answer-question-component {
                 }
             }
         }
-        h3 {
-            margin-top: 0px;
+        .btn-peersview-warning {
+            background: #631990 !important;
+            color: #fff !important;
+            border: none;
         }
+/*        h3 {
+            margin-top: 0px;
+        }*/
     }
 
     .tab-pill {
