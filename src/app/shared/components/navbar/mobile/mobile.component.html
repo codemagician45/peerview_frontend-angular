@@ -17,9 +17,9 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right users-search" aria-labelledby="users-search">
             <div class="input-search">
-              <input type="text" class="form-control" placeholder="Type search text here...">
-              <button class="btn btn-primary btn-xs">
-              <i class="material-icons search-icon" >search</i>
+              <input type="text" class="form-control" [(ngModel)]='keyword' placeholder="Type search text here...">
+              <button class="btn btn-primary btn-xs" [routerLink]="['/advance-search']" [queryParams]="{k: keyword, a: true}">
+                <i class="material-icons search-icon" >search</i>
               </button>
             </div>
             <div class="clear"></div>
@@ -72,7 +72,7 @@
     <div class="col-xs-3 p-peersview-0 text-center campus">
       <a 
         [routerLinkActive]="'page-active'"
-        [routerLink]="['/leisure']">
+        [routerLink]="['/jobs-search']">
         <i class="material-icons">card_giftcard</i>
         <span>Jobs</span>
       </a>

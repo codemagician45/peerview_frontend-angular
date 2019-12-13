@@ -103,7 +103,8 @@ import {
   CanActivateUserProfile,
   RedirectToOnboardingComponent,
   RedirectToHomeComponent,
-  RedirectToIndexComponent
+  RedirectToIndexComponent,
+  AuthGuard
 } from './shared/can-activate';
 import {SharedSetRatingsModalComponent} from './shared/components/set-ratings-modal/set-ratings.component';
 
@@ -144,6 +145,7 @@ tinymce.init({});
     multi: true,
   },
     CanActivateUserProfile,
+    AuthGuard,
     RedirectToOnboardingComponent,
     RedirectToHomeComponent,
     RedirectToIndexComponent,

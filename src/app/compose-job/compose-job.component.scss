@@ -14,6 +14,14 @@
     display: block;
   }
 
+  .price-wrapper {
+    display: flex;
+
+    select {
+      width: 60px;
+    }
+  }
+
   @media (max-width: 991px) {
     .title {
       margin-top: 53px;

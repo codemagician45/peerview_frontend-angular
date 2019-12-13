@@ -1,0 +1,60 @@
+.shared-job-component {
+  
+  .job-item {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    
+    h2 {
+      margin-top: 0px;
+    }
+
+    .status-wrapper {
+      display: flex;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      color: grey;
+
+      .material-icons {
+        margin-right: 3px;
+      }
+    }
+
+    .price-deadline {
+      display: flex;
+
+      .deadline {
+        flex: 1;
+      }
+    }
+
+    .job-description {
+      white-space: pre-line;
+    }
+
+    .actions-wrapper {
+      margin: 10px 0;
+
+      .view-job-btn {
+        padding: 10px 20px;
+        background-color: #631a90;
+        color: white;
+        display: inline-block;
+      }
+    }
+  }
+  
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {}
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {}
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {}
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {}
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {}
+}

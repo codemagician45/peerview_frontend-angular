@@ -27,7 +27,7 @@ export class ComposeJobComponent {
     this.jobApiService.promisePostJob(this.form)
       .then((res) => {
         console.log(res);
-        this.router.navigate([`/jobs-search-result`], {relativeTo: this.route});
+        this.router.navigate([`/jobs-search`], {relativeTo: this.route});
       })
       .catch(error => {
         console.log(error);

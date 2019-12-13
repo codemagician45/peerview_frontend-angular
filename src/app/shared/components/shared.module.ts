@@ -104,6 +104,9 @@ import {
 import {
   TimeAgoPipe
 } from 'time-ago-pipe';
+import {
+  SharedJobComponent
+} from './job/job.component';
 /*providers*/
 import {
   SocialLoginModule,
@@ -188,7 +191,8 @@ export function provideConfig (): any {
     SharedPostReplyCommentComponent,
     SharedReportPostReplyComponent,
     SharedSetRatingsModalComponent,
-    AddSocialLinksDialogComponent
+    AddSocialLinksDialogComponent,
+    SharedJobComponent
   ],
   exports: [
     CommonModule,
@@ -230,7 +234,8 @@ export function provideConfig (): any {
     SharedReportPostReplyComponent,
     MatBadgeModule,
     AddSocialLinksDialogComponent,
-    SharedSetRatingsModalComponent
+    SharedSetRatingsModalComponent,
+    SharedJobComponent
   ],
   entryComponents: [
     AddSocialLinksDialogComponent

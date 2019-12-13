@@ -16,7 +16,7 @@ import {
   OnBoardingEmitter
 } from '../../../shared/emitter';
 import {
- UserService
+ UserService, MessageNotificationService, NotificationTypes
 } from '../../../../services';
 
 @Component({
@@ -52,8 +52,45 @@ export class UserOnboardingOrganisationComponent {
         return this.userApiService.promiseUpdateOnboardingDetails(this.user);
       })
       .then(() => {
-        this.router.navigate(['/user/on-boarding/status/student/interest']);
+        return MessageNotificationService.show({
+          notification: {
+            id: 'user-onboarding-organization-finish-success',
+            message: 'Saved... Success!!!',
+            instruction: 'Redirecting...'
+          }
+        },
+        NotificationTypes.Success);
       })
-      .catch(() => {});
+      .then(notificationState => {
+        if (notificationState) {
+          notificationState.subscribe((data: any) => {
+            window.location.href = '/home';
+          });
+        }
+      })
+      .catch(error => {
+        if (error.status === 400) {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-organization-finish-pleasewait',
+              // message: 'Unable to Save Interest.',
+              message: 'Invalid Data',
+              // reason: error.error.status_message,
+              instruction: 'please try again.'
+            }
+          },
+          NotificationTypes.Info);
+        } else {
+          MessageNotificationService.show({
+            notification: {
+              id: 'user-onboarding-interest-finish-error',
+              message: 'Unable to Save.',
+              reason: 'Some unexpected happened with the application.',
+              instruction: 'Please try again, if the issue persists, please try refreshing your browser.'
+            }
+          },
+          NotificationTypes.Error);
+        }
+      });
   }
 }

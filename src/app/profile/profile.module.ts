@@ -46,6 +46,8 @@ import { ProfileAddGPADialogComponent } from './content/add-gpa-modal/add-gpa-mo
 import { SharedPipeModule } from '../shared/pipe/pipe.module';
 import { ProfileContentAccomplishmentsComponent } from './content/accomplishments/accomplishments.component';
 import { ProfileContentActivitiesComponent } from './content/activities/activities.component';
+import { ProfileContentJobsComponent } from './content/jobs/jobs.component';
+import { ProfileContentEventsComponent } from './content/events/events.component';
 
 @NgModule({
   imports : [
@@ -69,7 +71,9 @@ import { ProfileContentActivitiesComponent } from './content/activities/activiti
     ProfileAddSkillsDialogComponent,
     ProfileAddGPADialogComponent,
     ProfileContentActivitiesComponent,
-    ProfileContentAccomplishmentsComponent
+    ProfileContentAccomplishmentsComponent,
+    ProfileContentJobsComponent,
+    ProfileContentEventsComponent
   ],
   exports: [
     ProfileLeftSidebarUserInfoMessageDiaglogComponent,

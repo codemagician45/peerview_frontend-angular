@@ -63,9 +63,13 @@ export class SignInComponent {
     this.userApiService.promiseSignIn(this.user)
       .then((user: UserModel) => {
         UserService.setUser(user);
-        TokenStore.setAccessToken(user.token);
 
-        return this.router.navigate(['/home']);
+        if (user.token) {
+          TokenStore.setAccessToken(user.token);
+          return this.router.navigate(['/home']);
+        } else {
+          return this.router.navigate(['/sign-up/thank-you-for-signing']);
+        }
       })
       .catch(error => {
         if (error.status === 400) {
