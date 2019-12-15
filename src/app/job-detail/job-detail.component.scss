@@ -16,9 +16,13 @@
         flex: 1;
         text-align: left;
       }
-
+      .under-txt {
+        font-weight: bold;
+        float: left;
+      }
       .price-deadline {
         text-align: right;
+        width: 141px;
       }
       margin-top: 53px;
       span{
