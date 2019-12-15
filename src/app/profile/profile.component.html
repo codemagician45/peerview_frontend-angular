@@ -23,14 +23,14 @@
     </div> -->
     <ul class="mobile-options">
       <li
-        [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
-       >
-        <a (click)="onClickSelectMobileLink('accomplishments')">Accomplishments</a>
-      </li>
-      <li
         [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
         >
         <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
+       >
+        <a (click)="onClickSelectMobileLink('accomplishments')">Accomplishments</a>
       </li>
 <!--       <li
         [ngClass]="{'active' : mobileLinkSelected === 'media'}"
@@ -65,6 +65,11 @@
   <div class="mobile-view-for-timeline-and-right-component hidden-md hidden-lg" *ngIf="user?.userTypeId == 3">
     <ul class="mobile-options">
       <li
+        [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
+        >
+        <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
+      </li>
+      <li
         [ngClass]="{'active' : mobileLinkSelected === 'jobs'}"
        >
         <a (click)="onClickSelectMobileLink('jobs')">Jobs</a>
@@ -73,11 +78,6 @@
         [ngClass]="{'active' : mobileLinkSelected === 'events'}"
        >
         <a (click)="onClickSelectMobileLink('events')">Events</a>
-      </li>
-      <li
-        [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
-        >
-        <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
       </li>
       <li
         [ngClass]="{'active' : mobileLinkSelected === 'following'}"
