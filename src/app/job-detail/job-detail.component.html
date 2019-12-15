@@ -10,12 +10,12 @@
         <h3 class="job-title">{{job.title}}</h3>
         <div class="info">
           <div class="city-company">
-            <span class="bold">{{job.city + ', ' + job.country}}</span>
-            <span><strong>Company: </strong>{{job.company}}</span>
+            <span class="under-txt" style="float: none;">{{job.city + ', ' + job.country}}</span>
+            <span class="under-txt">Company:</span><span>{{job.company}}</span>
           </div>
           <div class="price-deadline">
-            <span>{{job.currency + job.price}}</span>
-            <span><strong>Due to: </strong>{{job.deadline | localDate}}</span>
+            <span>${{job.price}}</span>
+            <span class="under-txt">Due in:</span><span>{{job.deadline | localDate}}</span>
           </div>
         </div>
         <hr/>
