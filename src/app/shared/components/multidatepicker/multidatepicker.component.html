@@ -4,7 +4,8 @@
                  [label]="label"
                  [max]="max"
                  [min]="min"
-                 [touchUi]="touchUi">
+                 [touchUi]="touchUi"
+                 [required]="required">
 </app-year-picker>
 
 <app-month-picker *ngIf="y_showMonthPicker"
@@ -14,7 +15,8 @@
                   [max]="max"
                   [min]="min"
                   [mode]="mode"
-                  [touchUi]="touchUi">
+                  [touchUi]="touchUi"
+                  [required]="required">
 </app-month-picker>
 
 <app-regular-datepicker *ngIf="y_showRegularDatepicker"
@@ -24,5 +26,6 @@
                         [max]="max"
                         [min]="min"
                         [mode]="mode"
-                        [touchUi]="touchUi">
+                        [touchUi]="touchUi"
+                        [required]="required">
 </app-regular-datepicker>

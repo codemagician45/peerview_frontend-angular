@@ -23,6 +23,17 @@
         </select>
       </div>
       <div class="col-sm-12 m-peersview-yb-1">
+        <jp-multi-datepicker 
+          tabindex="-1"  
+          mode="MONTH" 
+          [(ngModel)]="user.graduate_at" 
+          [ngModelOptions]="{standalone: true}" 
+          [min]="'01/2000'" 
+          [max]="'12/2100'"
+          [label]="'When do you expect to graduate?'"
+        ></jp-multi-datepicker>
+      </div>
+      <div class="col-sm-12 m-peersview-yb-1">
         <input
           type="text"
           class="form-control"

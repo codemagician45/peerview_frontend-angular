@@ -99,6 +99,8 @@ export class YearPickerComponent
 
   @Input() private touchUi = false;
 
+  @Input() private requried = false;
+
   @ViewChild(MatDatepicker) private y_picker: MatDatepicker<Moment>;
 
   private y_inputCtrl: FormControl = new FormControl();

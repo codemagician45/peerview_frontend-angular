@@ -57,6 +57,7 @@
 				<span *ngFor="let item of user?.userCourses">
 					{{item.course.name | removeAmp}}
 				</span>
+				<p class="graduate-at">Graduates {{user?.graduate_at | date :'MMMM yyyy'}}</p>
 			</div>
 		</div>
 		<div class="info-item text-center" *ngIf="user?.userTypeId != 3">

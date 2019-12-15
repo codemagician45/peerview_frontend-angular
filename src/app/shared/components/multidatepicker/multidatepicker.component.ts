@@ -47,6 +47,8 @@ export class MultiDatepickerComponent implements ControlValueAccessor, AfterView
 
   @Input() private touchUi = false;
 
+  @Input() private required = false;
+
   private y_disabled = false;
   @Input()
   get disabled (): boolean {
