@@ -18,4 +18,34 @@
   .btn-clicked {
     background: #ccc !important;
   }
+
+  jp-multi-datepicker {
+    app-month-picker {
+      display: flex;
+
+      .mat-form-field {
+        width: 100%;
+
+        .mat-form-field-wrapper {
+          width: 100%;
+
+          .mat-form-field-flex {
+            padding-top: 0px;
+
+            mat-datepicker-toggle {
+              .mat-icon-button {
+                width: 1.5em;
+                height: 1.5em;
+
+                .mat-datepicker-toggle-default-icon {
+                  width: 1em;
+                  height: 1em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

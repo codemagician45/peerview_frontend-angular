@@ -9,3 +9,17 @@
     display: none;
   }
 }
+
+jp-multi-datepicker {
+  .app-month-picker {
+    display: flex;
+
+    .mat-form-field {
+      width: 100%;
+
+      .mat-form-field-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
