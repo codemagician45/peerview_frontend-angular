@@ -12,6 +12,7 @@ import {
   composeJobRouting
 } from './compose-job-routing.component';
 import { JobApiService } from '../../services/api';
+import { CanActivateJobCompose } from './checkIfOraganization';
 
 @NgModule({
   imports : [
@@ -22,6 +23,6 @@ import { JobApiService } from '../../services/api';
     ComposeJobComponent
   ],
   exports: [],
-  providers: []
+  providers: [ CanActivateJobCompose ]
 })
 export class ComposeJobModule {}
