@@ -8,10 +8,12 @@ import {
 import {
   ComposeJobComponent
 } from './compose-job.component';
+import { CanActivateJobCompose } from './checkIfOraganization';
 
 const composeJobRoutes: Routes = [{
   path: '',
-  component: ComposeJobComponent
+  component: ComposeJobComponent,
+  canActivate: [CanActivateJobCompose]
 }];
 
 export const composeJobRouting: ModuleWithProviders = RouterModule.forChild(composeJobRoutes);
