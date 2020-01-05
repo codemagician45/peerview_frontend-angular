@@ -15,7 +15,7 @@
       <div class="job-list-wrapper">
         <div class="title">
           <h1 class="">Job Search</h1>
-          <a [routerLink]="['/compose-job']">
+          <a [routerLink]="['/compose-job']" *ngIf="user?.userTypeId == 3">
             <span>Create a Job</span>
           </a>
         </div>
