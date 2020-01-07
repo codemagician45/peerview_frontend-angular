@@ -43,7 +43,7 @@ export class ProfileComponent {
   protected followers: Array<UserModel> = [];
   protected followees: Array<UserModel> = [];
 
-  protected mobileLinkSelected: string = 'timeline';
+  protected mobileLinkSelected: string = 'accomplishments';
   protected userId: number;
   private user: UserModel = UserService.getOtherUser() || UserService.getUser();
   private otherUserSubscriber: Subscription;

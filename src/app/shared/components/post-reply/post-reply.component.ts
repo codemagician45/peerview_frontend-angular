@@ -3,6 +3,9 @@ import {
   Input
 } from '@angular/core';
 import {
+  Router
+} from '@angular/router';
+import {
   PostApiService,
   CampusApiService
 } from '../../../../services/api';
@@ -42,6 +45,7 @@ export class SharedPostReplyComponent  {
     private postApiService: PostApiService,
     public linkifyService: NgxLinkifyjsService,
     private campusApiService: CampusApiService,
+    private router: Router,
     private dialog: MatDialog,
     private overlay: Overlay,
   ) {}
@@ -245,4 +249,16 @@ export class SharedPostReplyComponent  {
         console.error('error', error);
       });
   }
+
+  protected onClickUserProfile (user): Promise<boolean> {
+    let userId = CryptoUtilities.cipher(user.id);
+    let currentLoginUser = UserService.getUser();
+
+    if (user.id === currentLoginUser.id) {
+      return this.router.navigate([`/profile`]);
+    }
+
+    return this.router.navigate([`/profile/${userId}`]);
+  }
+
 }
