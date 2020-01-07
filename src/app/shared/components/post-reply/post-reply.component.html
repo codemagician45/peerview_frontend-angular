@@ -1,4 +1,5 @@
 <div class="shared-post-reply-component">
+
   <div class="col-xs-12 " >
       <div class="reply-container">
         <div class="form-group">
@@ -26,7 +27,7 @@
             </cl-image>
             <li class="comment-container">
               <span>
-                <span class="comment-user-name">
+                <span (click)="onClickUserProfile(item.user);" class="comment-user-name">
                   <b>{{item.user.firstName | titlecase}} {{item.user.lastName | titlecase}}</b>
                 </span> 
                 <span class="post-time"> <small>{{item.createdAt | date : 'short'}}</small></span>

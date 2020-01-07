@@ -23,14 +23,14 @@
     </div> -->
     <ul class="mobile-options">
       <li
-        [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
-        >
-        <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
-      </li>
-      <li
         [ngClass]="{'active' : mobileLinkSelected === 'accomplishments'}"
        >
         <a (click)="onClickSelectMobileLink('accomplishments')">Accomplishments</a>
+      </li>
+      <li
+        [ngClass]="{'active' : mobileLinkSelected === 'timeline'}"
+        >
+        <a (click)="onClickSelectMobileLink('timeline')">Timeline</a>
       </li>
 <!--       <li
         [ngClass]="{'active' : mobileLinkSelected === 'media'}"
