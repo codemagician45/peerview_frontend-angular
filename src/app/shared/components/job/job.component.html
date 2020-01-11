@@ -30,6 +30,7 @@
     <div class="actions-wrapper">
       <!-- <a class="view-job-btn" href="{{job.source_link}}" target="_blank">View Job</a> -->
       <a class="view-job-btn" (click)="showJobDetail(job)">View Job</a>
+      <a *ngIf="job.userId==currentUser.id" class="view-job-btn" (click)="onDeleteJob(job.id)" style="margin-left: 10px;background-color: brown;">Delete Job</a>
     </div>
   </div>
   <div class="load-more" *ngIf="jobs.length !== 0">

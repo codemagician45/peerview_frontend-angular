@@ -42,6 +42,7 @@ import {
   styleUrls: ['./job.component.scss']
 })
 export class SharedJobComponent {
+  // public currentUser = UserService.getUser();
   constructor (
     private jobApiService: JobApiService,
     private campusApiService: CampusApiService,
@@ -52,6 +53,7 @@ export class SharedJobComponent {
   ) {}
 
   @Input() protected jobs: Array<JobModel> = [];
+  @Input() protected currentUser = UserService.getUser();
   @Input() protected route: {
     name: string,
     campusId?: number,
@@ -72,6 +74,7 @@ export class SharedJobComponent {
 
   public ngOnInit (): void {
     // this.jobSavedSubcribers();
+    // console.log(this.currentUser.id)
   }
 
   public ngOnChanges (changes: SimpleChanges): void {
@@ -102,10 +105,14 @@ export class SharedJobComponent {
     // delete here the job
     this.jobApiService.promiseRemoveJob(jobId)
       .then(() => {
+        // console.log(jobId)
         let index = this.jobs.findIndex(filter => filter.id === jobId);
         this.jobs.splice(index, 1);
+        // alert("success");
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   protected showJobDetail (job: JobModel): Promise<boolean> {
