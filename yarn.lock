@@ -102,6 +102,13 @@
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-6.0.9.tgz#46663338185d321dc5cabeed72bec695775a104d"
 
+"@angular/material-moment-adapter@6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-6.3.3.tgz#958d69207ba5c7ad7da01b1f0a5456e85619f0d2"
+  integrity sha512-YFi1iED8gcHhCwkWGMkyJtHX/tWAsQWnRNrh1AwbWl4JW1739vPAM/OimdIijeGAZ5dVVZX4A4EscCBb74b4dA==
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/material@6.3.3":
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.3.3.tgz#4f74402ba6e4b80cf0426e62c1240244e6974069"
@@ -8328,8 +8335,9 @@ string_decoder@~0.10.x:
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 stringstream@~0.0.4, stringstream@~0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
+  integrity sha512-87GEBAkegbBcweToUrdzf3eLhWNg06FJTebl4BVJz/JgWy8CvEr9dRtX5qWphiynMSQlxxi+QqN0z5T32SLlhA==
 
 strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
