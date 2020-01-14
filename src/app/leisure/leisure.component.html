@@ -1,0 +1,26 @@
+<shared-navbar-component></shared-navbar-component>
+<div class="leisure-component">
+  <div class="container">
+  </div>
+  <div class="social-events-label">
+    <h1 class="">Find Jobs and Internship Opportunities </h1>
+    <!-- <h3 class="hidden-md hidden-lg small-device">Find Jobs and Internship Opportunities in Your City</h3> -->
+    <div class="job-search-form">
+      <form>
+        <div class="form-control">
+            <input type="text" [(ngModel)]="jobTitle" class="input-setting" [ngModelOptions]="{standalone: true}" placeholder="Job Title">
+        </div>
+        <div class="form-control">
+            <input type="text" [(ngModel)]="region" class="input-setting" [ngModelOptions]="{standalone: true}" placeholder="Region, City ...">
+        </div>
+        <div class="form-control">
+            <button (click)="searchJobs()">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- <div class="coming-soon-label">
+    COMING SOON...
+  </div> -->
+</div>

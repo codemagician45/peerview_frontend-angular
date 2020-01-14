@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <div class="dropdown-content" [ngClass]="showStars?'show':''">
+    <div class="text-center">
+      <p class="peersview-font-weigth-bold">Rate the Post</p>
+      <div class="shared-set-stars-component">
+        <i class="material-icons star" *ngFor="let star of stars; let i = index;" (mouseover)="mouseover(i+1)"
+           (click)="clickOnStarClick(i+1)">{{star}}</i>
+      </div>
+      <button (click)="onOkClickSaveRating()" class="btn-peersview btn-peersview-primary">OK</button>
+    </div>
+  </div>
+</div>
+
+

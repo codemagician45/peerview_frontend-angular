@@ -1,0 +1,72 @@
+<div class="add-experience-modal">
+  <h5 class="modal-heading" *ngIf="isEdit">Edit Education</h5>
+  <h5 class="modal-heading" *ngIf="!isEdit">Add Education</h5>
+  <div class="modal-body ng-scope">
+    <div class="form-group">
+      <label>School Name:</label>
+      <input type="text" [(ngModel)]="form.name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Education Level:</label>
+      <input type="text" [(ngModel)]="form.level" class="form-control">
+    </div>
+    <div class="form-group flex">
+      <div class="datepicker-wrapper">
+        <label>From:</label>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="From"
+            [matDatepicker]="picker1"
+            name="from"
+            [value]="form.from"
+            [(ngModel)]="form.from"
+            required
+            >
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="datepicker-wrapper">
+        <label>Till:</label>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Till"
+            [matDatepicker]="picker2"
+            name="to"
+            [value]="form.to"
+            [(ngModel)]="form.to"
+            required
+            >
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Major:</label>
+      <input type="text" [(ngModel)]="form.major" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Minor:</label>
+      <input type="text" [(ngModel)]="form.minor" class="form-control">
+    </div>
+    <div class="form-group flex">
+      <div class="datepicker-wrapper p-peersview-xr-1">
+        <label>Department GPA:</label>
+        <input type="text" [(ngModel)]="form.department_gpa" class="form-control">
+        <input type="checkbox" [(ngModel)]="form.is_hide_department_gpa"/> Hide from employers
+      </div>
+      <div class="datepicker-wrapper">
+        <label>Cumulative GPA:</label>
+        <input type="text" [(ngModel)]="form.cumulative_gpa" class="form-control">
+        <input type="checkbox" [(ngModel)]="form.is_hide_cumulative_gpa"/> Hide from employers
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn-peersview-secondary btn-peersview-sm" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn-peersview-primary btn-peersview-sm" (click)="onSave()">Save</button>
+  </div>
+</div>

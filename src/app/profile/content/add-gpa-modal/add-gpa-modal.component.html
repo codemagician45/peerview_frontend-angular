@@ -1,0 +1,14 @@
+<div class="add-skills-modal">
+  <h5 class="modal-heading">Current GPA</h5>
+  <div class="modal-body ng-scope">
+    <div class="form-group">
+      <div class="search-input-wrapper">
+        <input type="search" [(ngModel)]="gpa" placeholder="Current GPA" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn-peersview-secondary btn-peersview-sm" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn-peersview-primary btn-peersview-sm" (click)="onSave();">Save</button>
+  </div>
+</div>

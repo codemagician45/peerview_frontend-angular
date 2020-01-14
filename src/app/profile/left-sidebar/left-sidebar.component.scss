@@ -1,0 +1,81 @@
+.profile-left-sidebar-component {
+    .profile-top-section {
+        margin-top: 20px;
+        padding: 5px;
+        border: 1px solid #dedede;
+
+        .info-item {
+            display: flex;
+            // line-height: 40px;
+            align-items: center;
+            border-bottom: 1px solid #dedede;
+            padding: 10px 0;
+
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            .info-icon {
+                flex: 0 0 30px;
+                display: flex;
+
+                a {
+                    display: flex;
+                }
+            }
+
+            
+
+            .info-action {
+                display: flex;
+            }
+
+            .info-text {
+                flex: 1;
+                
+                .grey-text {
+                    color: grey;
+                }
+
+                .graduate-at {
+                    margin-bottom: 0px;
+                    font-size: 12px;
+                }
+            }
+
+            &.about-me {
+                .info-text {
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                    -ms-word-break: break-all;
+                    word-break: break-all;
+                    word-break: break-word;
+                    -ms-hyphens: auto;
+                    -moz-hyphens: auto;
+                    -webkit-hyphens: auto;
+                    hyphens: auto;
+                    line-height: 20px;
+                    flex: 1;
+                } 
+            }
+        }
+
+    }
+
+    .interests {
+        margin-top: 20px;
+
+        .interests-data {
+            li {
+              margin: 18px;
+              border: 1px solid #631990;
+              border-radius: 20px;
+              padding: 3px;
+            }
+            .row {
+              margin: 0;
+            }
+        }
+    }
+    
+}

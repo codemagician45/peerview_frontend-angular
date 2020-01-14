@@ -1,0 +1,33 @@
+@import '../../../../assets/scss/variables';
+
+.shared-set-stars-component {
+  color: $primary-color;
+  .star {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0px;
+    cursor: pointer;
+  }
+  .yellow-fill {
+    color: orange;
+  }
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  padding-top:7px;
+  padding-bottom: 7px;
+}
+

@@ -1,0 +1,112 @@
+<div class="answer-question-component" *ngIf="communityPost">
+  <div class="row m-peersview-0 col-md-8 p-persview-0 p-peersview-0">
+
+    <div class="community-header">
+
+
+      <div class="col-xs-12 question-images text-center" *ngIf="communityPost">
+        <div
+          class="image-outer"
+          *ngFor="let attachment of communityPost.attachments; let i = index">
+          <div
+            class="image-inner"
+            *ngIf="attachment.cloudinaryPublicId">
+            <cl-image
+              public-id="{{attachment.cloudinaryPublicId}}"
+            >
+              <cl-transformation
+                [attr.height]="communityPost.attachments.length > 1 ? 500 : 250"
+                width="500"
+                crop="fill"
+                radius="3"
+                gravity="face"
+              >
+              </cl-transformation>
+            </cl-image>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-center" [innerHtml]="communityPost.message"></h3>
+      <div class="actions-wrapper">
+        <button
+          (click)="onFollowQuestion(communityPost)"
+          class="btn-md btn-follow"
+          [ngClass]="communityPost.isUserFollowCommunityQuestion === true ? 'btn-peersview-secondary' : 'btn-peersview-warning'">
+          <i class="material-icons" style="font-size: 100%;">person_add</i>
+          {{communityPost.isUserFollowCommunityQuestion ? 'Following' : 'Follow'}}
+        </button>
+        <report-post-community-component
+          [post]="communityPost"
+          [user]="user"
+          (onDeletePost)="onDeletePost($event)">
+        </report-post-community-component>
+      </div>
+    </div>
+    
+    <!-- Answer form -->
+    <hr size='10' style="border-top: 4px solid #eeeeee;">
+    <!-- <div class="tab-pill answer-question-component row m-peersview-0" style ="margin-top: 3%;"> -->
+    <!-- <span></span>
+  </div> -->
+    <div class="answer-question-form row m-peersview-0">
+      <cl-image
+        public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): communityPost.user.profilePicture}}"
+        *ngIf="user?.profilePicture"
+        class="user-img pull-left"
+        [ngStyle]="{'border-radius': '50%'}">
+        <cl-transformation width="55" height="55" radius="max" gravity="custom" crop="thumb">
+        </cl-transformation>
+      </cl-image>
+      <form
+        #answerQuestion="ngForm"
+        class="answer-form"
+        (ngSubmit)="onReply(answerQuestion.valid);"
+      >
+        <div class="question-input-container">
+				<textarea
+          required
+          [(ngModel)]="communityAnswer.comment"
+          name="reply-text"
+          rows="3"></textarea>
+          <i (click)="isToggleUploadComponentVisible = !isToggleUploadComponentVisible"
+             class="material-icons attach">link</i>
+          <shared-upload-image-component
+            *ngIf="isToggleUploadComponentVisible"
+            [uploadOptions]="{'queueLimit': 1, 'event': 'askQuestion'}" (uploadComplete)="onUploadComplete($event)"
+            (imageIsSelected)="onImageIsSelected($event)">
+          </shared-upload-image-component>
+        </div>
+        <button
+          [disabled]="!answerQuestion.valid || isUserAnsweringQuestion"
+          class="btn-peersview-primary btn-sm pull-right answer-btn"
+          type="submit">ANSWER
+        </button>
+      </form>
+    </div>
+
+    <!-- Answer form Ends -->
+
+
+    <div class="tab-pill answer-question-component row m-peersview-0">
+      <span>LATEST REPLIES</span>
+    </div>
+
+    <div
+      class="no-answers-container"
+      *ngIf="communityPost.reply.length == 0">
+      <h1 class="text-center">No Answers yet.</h1>
+    </div>
+
+    <div class="row m-peersview-0" *ngFor="let reply of communityPost.reply">
+      <answer-reply-component [communityAnswer]="communityAnswer" [communityPost]="communityPost" [reply]="reply" [user]="user" (reloadCommunity)="reloadCommunityQuestion()" (updateReply)="updateReply($event)"></answer-reply-component>
+    </div>
+
+  </div>
+
+
+  <div class="col-md-4">
+    <community-right-menu-component></community-right-menu-component>
+  </div>
+
+</div>

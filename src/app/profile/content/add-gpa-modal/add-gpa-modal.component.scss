@@ -1,0 +1,52 @@
+.add-skills-modal {
+    .modal-body {
+        padding: 10px 0;
+    }
+
+    .form-group {
+        position: relative;
+
+        .search-input-wrapper {
+            position: relative;
+
+            .add-button {
+                position: absolute;
+                right: 5px;
+                top: 7px;
+            }
+
+            input {
+    
+            }
+        }
+    
+        .skill-list {
+            position: absolute;
+            width: 100%;
+            background-color: white;
+            border: 1px solid #cccccc;
+            border-top: none;
+            max-height: 196px;
+            overflow-y: auto;
+
+            .list-item {
+                padding: 10px;
+
+                &:hover {
+                    background-color: #dedede;
+                }
+            }
+        }
+    }
+
+    .selected-skills-wrapper {
+        .selected-item {
+            align-items: center;
+            display: inline-flex;
+            padding: 5px;
+            border-radius: 20px;
+            border: 1px solid;
+            margin: 5px;
+        }
+    }
+}

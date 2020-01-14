@@ -1,0 +1,85 @@
+.index-footer-component {
+  background: #340551;
+  padding: 50px 0 40px 0;
+
+  .copyright {
+    color: #ffffff;
+
+    img {
+      margin-bottom: 10px;
+    }
+  }
+
+  .company, .support, .client-area, .campus, .connect-with-us-wrapper  {
+    span {
+      font-size: 16px;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+    a {
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      margin-top: 10px;
+
+      li {
+        padding: 5px 0;
+      }
+    }
+
+    ul li a {
+      color: #ffffff;
+    }
+  }
+
+
+
+  .social-list1 {
+    margin-top: 10px;
+
+    a {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+      background: url('https://res.cloudinary.com/peersview-com/image/upload/v1562657208/social-media_pu2loi.png') no-repeat 0 0;
+    }
+    a:first-child {
+      margin-left: 0px;
+    } 
+    a.facebook-wrap {
+      background-position: 0 0;
+    }
+
+    a.twitter {
+      background-position: -41px 0;
+    }
+
+    a.instagram-wrap {
+      background-position: -121px 0
+    }
+
+    a.linkedIn-wrap {
+      background-position: -81px 0;
+    }
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .social-list1 {
+    a { 
+     margin-left: 5px !important; 
+    }
+  }
+}
+@media only screen and (max-width: 768px) { 
+  .company, .support, .client-area, .campus, .connect-with-us-wrapper  {
+    span {
+      font-weight: 100;
+      padding-top: 0px;
+      display: inline-block;
+    }
+  }
+}

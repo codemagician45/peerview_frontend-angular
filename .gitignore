@@ -1,0 +1,16 @@
+dist
+.DS_Store
+.idea
+*debug.log
+**/*.js
+**/*.map
+node_modules
+*.log
+*.error
+*.log.*
+package-lock.json
+# Elastic Beanstalk Files
+.elasticbeanstalk
+# vscode configuration directory
+.vscode
+.firebase

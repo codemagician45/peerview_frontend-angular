@@ -1,0 +1,31 @@
+<app-year-picker *ngIf="mode === 'YEAR'"
+                 [formControl]="y_yearPickerCtrl"
+                 [jpCustomFormFieldClass]="jpCustomFormFieldClass"
+                 [label]="label"
+                 [max]="max"
+                 [min]="min"
+                 [touchUi]="touchUi"
+                 [required]="required">
+</app-year-picker>
+
+<app-month-picker *ngIf="y_showMonthPicker"
+                  [formControl]="y_monthPickerCtrl"
+                  [jpCustomFormFieldClass]="jpCustomFormFieldClass"
+                  [label]="label"
+                  [max]="max"
+                  [min]="min"
+                  [mode]="mode"
+                  [touchUi]="touchUi"
+                  [required]="required">
+</app-month-picker>
+
+<app-regular-datepicker *ngIf="y_showRegularDatepicker"
+                        [formControl]="y_regularPickerCtrl"
+                        [jpCustomFormFieldClass]="jpCustomFormFieldClass"
+                        [label]="label"
+                        [max]="max"
+                        [min]="min"
+                        [mode]="mode"
+                        [touchUi]="touchUi"
+                        [required]="required">
+</app-regular-datepicker>

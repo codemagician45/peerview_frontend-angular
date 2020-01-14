@@ -1,0 +1,45 @@
+<div class="profile-left-sidebar-user-info-component">
+  <div class="user text-center">
+    <cl-image
+      public-id="{{user.socialImage ? (user.profilePicture === 'avatar' ? user.socialImage: user.profilePicture): user.profilePicture}}"
+      *ngIf="user?.profilePicture"
+      [ngStyle]="{'border-radius': '50%'}"
+      (click)="onOpenShowImageDialogComponent(user)">
+      <cl-transformation width="120" height="120" radius="max" gravity="custom" crop="thumb">
+      </cl-transformation>
+    </cl-image>
+
+    <input
+      type="button"
+      *ngIf="!isUserProfile"
+      class="hidden-md hidden-lg btn btn-white follow-btn"
+      [value]="followed ? 'Followed': 'Follow'"
+      [ngClass]="{'followed-btn' : followed}"
+      (click)="onClickFollowButton()"
+    />
+
+    <h2>{{user?.firstName}} {{user?.lastName}}</h2>
+    <shared-user-rating [userCredits]="user.userCredits && user.userCredits[0]"></shared-user-rating>
+    <div
+      routerLink="/account-settings/general" 
+      class="edit-profile" 
+      *ngIf="isUserProfile">
+      Edit Profile
+      <i class="material-icons color-purple">create</i>
+    </div>
+    <div *ngIf="!isUserProfile">
+      <a
+        class="peersview-primary-color m-peersview-xr-2"
+         (click)="onOpenMessageDiaglogComponent()">
+        <i class="material-icons">comment</i>
+        Message
+      </a>
+      <a
+        class="peersview-primary-color"
+        (click)="onOpenPostToDiaglogComponent()">
+        <i class="material-icons">border_color</i>
+        Post To
+      </a>
+    </div>
+  </div>
+</div>

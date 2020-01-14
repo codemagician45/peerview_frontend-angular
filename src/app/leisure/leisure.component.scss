@@ -1,0 +1,55 @@
+.leisure-component {
+  height: 100%;
+  background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+  background-size: cover;
+  .social-events-label {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    margin-right: -50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    .small-device {
+      font-size: 20px;
+    }
+
+    h1 {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .form-control {
+      background-color: transparent;
+      border: none;
+      height: auto;
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+      }
+
+      button {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #631a90;
+        border: none;
+        font-size: 20px;
+        color: white;
+      }
+    }
+  }
+  .coming-soon-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+}
+

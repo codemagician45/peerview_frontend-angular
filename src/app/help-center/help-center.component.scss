@@ -1,0 +1,108 @@
+help-center-component {
+
+  .help-center {
+    background: url(https://res.cloudinary.com/peersview-com/image/upload/v1518100226/pageBg.jpg) no-repeat;
+    background-size: cover;
+    padding: 0 0 50px 0;
+    margin: 0 0 30px 0;
+    border-bottom: solid 5px #631990;
+
+    h1, p {
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .body {
+    .heading {
+      font-family: 'Conv_MavenPro-Bold';
+      font-size: 18px;
+    }
+
+    .sub-heading {
+      font-family: 'Conv_MavenPro-Bold';
+    }
+
+    p {
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .help-content {
+      min-height: 110px;
+      padding: 0 15px;
+    }
+
+    .help-widget {
+      border: solid 1px #631a90;
+      margin-bottom: 20px;
+    }
+
+    .help-widget .help-title {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-family: 'Conv_MavenPro-Bold';
+      padding: 15px;
+      background: #f5f5f5;
+      margin: 0 0 10px 0;
+      border-bottom: solid 1px #d8d8d8;
+    }
+
+    //.help-title {
+    //  text-transform: uppercase;
+    //  font-size: 13px;
+    //  font-family: 'Conv_MavenPro-Bold';
+    //  padding: 15px;
+    //  background: #f5f5f5;
+    //  margin: 0 0 10px 0;
+    //  border-bottom: solid 1px #d8d8d8;
+    //}
+
+    .help-content {
+      min-height: 110px;
+      padding: 0 15px;
+    }
+
+  }
+
+  .view-more {
+    text-align: center;
+    display: block;
+    padding: 10px;
+    border-top: solid 1px #d8d8d8;
+    text-transform: uppercase;
+    font-family: 'Conv_MavenPro-Bold';
+  }
+
+
+  a {
+    color: #631a90;
+    background-color: #864b4b00;
+
+  }
+
+  .btn-blue {
+    background: #631990;
+    padding: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    border-color: #631990;
+    font-size: 14px;
+  }
+
+  .btn {
+    font-family: 'Conv_MavenPro-Bold';
+  }
+
+
+  .list-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    border: solid 1px #ddd;
+  }
+}
+

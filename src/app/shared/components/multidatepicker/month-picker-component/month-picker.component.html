@@ -1,0 +1,42 @@
+<mat-form-field appearance="standard"
+                [ngClass]="jpCustomFormFieldClass">
+  <mat-label>{{label}}</mat-label>
+  <input *ngIf="!required"
+          matInput
+         (click)="y_openDatepickerOnClick(datepicker)"
+         (keydown.arrowdown)="y_openDatepickerOnClick(datepicker)"
+         (keydown.enter)="y_openDatepickerOnClick(datepicker)"
+         [formControl]="y_inputCtrl"
+         [matDatepickerFilter]="y_customFilter"
+         [matDatepicker]="datepicker"
+         [max]="y_max"
+         [min]="y_min"
+         readonly>
+  <input *ngIf="required"
+          matInput
+         (click)="y_openDatepickerOnClick(datepicker)"
+         (keydown.arrowdown)="y_openDatepickerOnClick(datepicker)"
+         (keydown.enter)="y_openDatepickerOnClick(datepicker)"
+         [formControl]="y_inputCtrl"
+         [matDatepickerFilter]="y_customFilter"
+         [matDatepicker]="datepicker"
+         [max]="y_max"
+         [min]="y_min"
+         readonly
+         required>
+  <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+  <mat-datepicker #datepicker
+                (closed)="y_takeFocusAway(datepicker)"
+                (monthSelected)="y_monthSelectedHandler($event,datepicker)"
+                [touchUi]="touchUi"
+                panelClass="jp-month-picker"
+                startView="multi-year">
+  </mat-datepicker>
+</mat-form-field>
+<!-- <mat-datepicker #datepicker
+                (closed)="y_takeFocusAway(datepicker)"
+                (monthSelected)="y_monthSelectedHandler($event,datepicker)"
+                [touchUi]="touchUi"
+                panelClass="jp-month-picker"
+                startView="multi-year">
+</mat-datepicker> -->

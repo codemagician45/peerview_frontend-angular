@@ -1,0 +1,43 @@
+main > {
+  router-outlet ~ * {
+    // display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    /* background-color: #f3f3f3; */
+    min-height: 100vh;
+  }
+}
+.peersiew-navbar {
+  z-index: 3;
+}
+#global-notifications .alert .text-container {
+  position: relative;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+#global-notifications {
+  .alert {
+    .text-container {
+      position: relative;
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+    .icon .material-icons {
+      font-size: 2rem;
+      vertical-align: top;
+    }
+    button.close {
+      font-size: 3rem;
+      vertical-align: top;
+      vertical-align: top;
+      line-height: 1rem;
+    }
+  }
+}
+
+// Handle LoadingBar Full Screen and Model Layout
+.black-overlay {
+  position:fixed !important;
+}

@@ -1,0 +1,88 @@
+<div class="profile-left-sidebar-component">
+  <profile-left-sidebar-user-info-component
+    [user]="user"
+    [isUserProfile]="isUserProfile">
+  </profile-left-sidebar-user-info-component>
+  
+  <profile-left-sidebar-user-other-info-component
+    [user]="user"
+    [isUserProfile]="isUserProfile">
+  </profile-left-sidebar-user-other-info-component>
+  <div class="profile-top-section">
+		<div class="info-item text-center about-me">
+			<div class="info-icon">
+				<a data-toggle="tooltip" title="Bio">
+					<i class="material-icons peersview-primary-color">info</i>
+				</a>
+			</div>
+			<div class="info-text">
+				<span *ngIf="!isUserProfile">
+					{{user?.aboutMe || 'No Details to Show'}}
+				</span>
+				<span *ngIf="isUserProfile" [ngClass]="{'grey-text': !user || !user.aboutMe}">
+					{{user?.aboutMe || 'Tell us about yourself'}}
+				</span>
+			</div>
+			<div class="info-action" (click)="onOpenAboutMeDialog()" *ngIf="isUserProfile">
+				<i class="material-icons peersview-primary-color">create</i>
+			</div>
+		</div>
+		<div class="info-item text-center">
+			<div class="info-icon">
+				<a data-toggle="tooltip" title="Institution">
+					<i class="material-icons peersview-primary-color">person</i>
+				</a>
+			</div>
+			<div class="info-text">
+				{{user?.userType?.name}} | {{user?.company || user?.schoolName}}
+			</div>
+		</div>
+		<div class="info-item text-center">
+			<div class="info-icon">
+				<a data-toggle="tooltip" title="Status & Location">
+					<i class="material-icons peersview-primary-color">account_balance</i>
+				</a>
+			</div>
+			<div class="info-text">
+				{{user?.city}}
+			</div>
+		</div>
+		<div class="info-item text-center" *ngIf="user?.userTypeId != 3">
+			<div class="info-icon">
+				<a data-toggle="tooltip" title="Court/Expertise">
+					<i class="material-icons peersview-primary-color">school</i>
+				</a>
+			</div>
+			<div class="info-text">
+				<span *ngFor="let item of user?.userCourses">
+					{{item.course.name | removeAmp}}
+				</span>
+				<p class="graduate-at">Graduates {{user?.graduate_at | date :'MMMM yyyy'}}</p>
+			</div>
+		</div>
+		<div class="info-item text-center" *ngIf="user?.userTypeId != 3">
+			<div class="info-icon">
+				<i class="material-icons peersview-primary-color">today</i>
+			</div>
+			<div class="info-text">
+				{{user?.birthDate | date :'longDate'}}
+			</div>
+		</div>
+  </div>
+  <div class="interests text-center hidden-xs">
+    <div class="row">
+      <span>
+        Interests
+      </span>
+    </div>
+    <div class="row">
+      <ul class="interests-data">
+        <li *ngFor="let interest of user?.userInterests">
+          <a>{{interest.interest.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <shared-social-component [user]="user" [isUserProfile]="isUserProfile"></shared-social-component>
+</div>

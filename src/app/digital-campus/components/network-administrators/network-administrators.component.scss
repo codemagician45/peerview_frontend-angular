@@ -1,0 +1,95 @@
+@import 'src/assets/scss/variables';
+
+
+#digital-camput-sub-pages {
+  div , button ,p {
+    font-family: "Comfortaa_Regular" !important ;
+    font-weight : 400;
+  }
+}
+.mt-50 {
+  margin-top: 50px !important;
+ }
+ .mb-50 {
+  margin-bottom: 50px !important;
+ }
+ .text-color {
+   color: #340551;
+ }
+ .text-black {
+  color: #000000;
+ }
+ .btn-common {
+  border-radius: 50px;
+  padding: 14px 40px;
+ }
+ .wrapper-section {
+   .header-block {
+     h5 {
+       font-size: 20px;
+       margin: 25px 0px;
+       color: #666666;
+     }
+   }
+ 
+ 
+   .inline-widget {
+      h4 {
+        font-size: 23px;
+        margin-bottom: 20px;
+     }
+     .inline-widget-header {
+       display: flex;
+       align-items: center;
+ 
+       .material-icons {
+         margin-right: 10px;
+         cursor: pointer;
+       }
+     }
+   }
+ 
+ .inline-widget {
+   ul li {
+     list-style: circle;
+     padding-bottom: 20px;
+     font-size: 16px;
+     line-height: 24px;
+   }
+ }
+   .inline-content {
+     overflow: hidden;
+     max-height: 0;
+ 
+     li {
+       margin: 6px;
+       list-style-type: disc;
+     }
+   }
+   .content-description {
+      color: #666666;
+    }
+   .text-center {
+     font-size: 18px;
+     letter-spacing: 0.5px;
+   }
+ }
+ .network-img {
+  img { 
+    width: 75% !important;
+  }
+}
+ @media only screen and (max-width: 600px) {
+  .network-img {
+    img {
+      width: 100% !important;
+      height: 100%;
+      margin-bottom: 20px;
+    }  
+  }
+  .main-section  {
+     .row {
+        margin: 0px !important;
+     }
+  }
+}

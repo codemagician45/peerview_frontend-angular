@@ -1,0 +1,20 @@
+<div class="about-me-modal-modal">
+  <h5 class="modal-heading">About Me</h5>
+  <div class="modal-body ng-scope">
+    <div class="form-group">
+      <textarea
+      class="form-control"
+      rows="5"
+      placeholder="Tell people about yourself..."
+      [(ngModel)]="aboutMe"
+      [ngClass]="{'text-warning' : aboutMe && aboutMe.length > 300}"></textarea>
+    </div>
+    <div class="text-limit">
+      {{aboutMe ? aboutMe.length : 0}} / 300
+    </div>
+  </div>
+  <div class="modal-footer text-center">
+    <button type="button" class="btn-peersview-secondary btn-peersview-sm" (click)="onCancel()">Cancel</button>
+    <button type="button" class="btn-peersview-primary btn-peersview-sm" (click)="onSave()">Save</button>
+  </div>
+</div>

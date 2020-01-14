@@ -1,0 +1,150 @@
+.campus-landing-page-component {
+  height: 100%;
+  background: url('https://res.cloudinary.com/peersview-com/image/upload/v1518882672/indexFirstPageBg.jpg') no-repeat;
+  background-size: cover;
+  .contents {
+    position: relative;
+    height: 100%;
+    .wrapper {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      color: #ffffff;
+      transform: translate(-50%, -40%);
+    }
+    .wrapper div {
+      font-family: 'Conv_MavenPro-Regular';
+    }
+    .join-network {
+      margin-right: 0;
+    }
+    .invite-university {
+      margin-left: 0;
+    }
+  }
+  // Custom, iPhone Retina
+  @media only screen and (min-width : 320px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 10px;      
+    }
+    h1.campus-des {
+      font-size: 20px;
+    }
+  }
+  @media only screen and (min-width : 375px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 12px;      
+    }
+    h1.campus-des {
+      font-size: 20px;
+    }
+  }  
+  // extra Small Devices, Phones
+  @media only screen and (min-width : 480px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 14px;      
+    }    
+    .contents {
+      .join-network {
+        margin-right: 10px;
+      }
+      .invite-university {
+        margin-left: 10px;
+      }
+    }
+    h1.campus-des {
+      font-size: 24px;
+    }     
+  }
+  // Small Devices, Tablets
+  @media only screen and (min-width : 768px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }   
+    h1.campus-des {
+      font-size: 24px;
+    }      
+  }
+  // Medium Devices, Desktops
+  @media only screen and (min-width : 992px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }
+    h1.campus-des {
+      font-size: 36px;
+    }      
+  }
+  // Large Devices, Wide Screens
+  @media only screen and (min-width : 1200px) {
+    .btn-peersview-lg{
+      padding: 15px 20px;
+      margin-top: 20px;
+      font-size: 16px;      
+    }    
+    h1.campus-des {
+      font-size: 36px;
+    }    
+  }
+
+}
+.modal-footer {
+  text-align: left;
+
+  &.right {
+    text-align: right;
+  }
+  
+  .btn-cancel-select-institution {
+    // margin-bottom: 10px;
+    background: #4a4949;
+  }
+}
+
+.create-modal-btn {
+  text-align: right;
+
+  .create-modal-btn-link {
+    color: #340551;
+    text-decoration: underline;
+  }
+}
+
+#create-modal, #join-campus-modal {
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  app-year-picker {
+    display: flex;
+    flex: 1;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-flex {
+      padding-top: 0;
+
+      .mat-form-field-infix {
+        border-top: 0;
+        width: 100%;
+        padding: 5px 0;
+      }
+    }
+  }
+}
