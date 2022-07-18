@@ -102,6 +102,13 @@
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-6.0.9.tgz#46663338185d321dc5cabeed72bec695775a104d"
 
+"@angular/material-moment-adapter@6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-6.3.3.tgz#958d69207ba5c7ad7da01b1f0a5456e85619f0d2"
+  integrity sha512-YFi1iED8gcHhCwkWGMkyJtHX/tWAsQWnRNrh1AwbWl4JW1739vPAM/OimdIijeGAZ5dVVZX4A4EscCBb74b4dA==
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/material@6.3.3":
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.3.3.tgz#4f74402ba6e4b80cf0426e62c1240244e6974069"
@@ -8483,8 +8490,9 @@ tfunk@^3.0.1:
     object-path "^0.9.0"
 
 thenify@^3.1.0, thenify@^3.2.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.0.tgz#e69e38a1babe969b0108207978b9f62b88604839"
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/thenify/-/thenify-3.3.1.tgz#8932e686a4066038a016dd9e2ca46add9838a95f"
+  integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
 
